@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// 유저 장애물 설치 및 철거
+/// </summary>
 public class ObstacleBuilder : MonoBehaviour
 {
+    [SerializeField] private StageManager stage;
     [SerializeField] private GridManager gridManager;
     [SerializeField] private PathFinder pathFinder;
     [SerializeField] private Camera mainCamera;
@@ -20,16 +23,17 @@ public class ObstacleBuilder : MonoBehaviour
         if (mainCamera == null)
             mainCamera = Camera.main;
 
-        gridManager = Managers.Grid;
+        gridManager = stage.Grid;
+        pathFinder = stage.Path;
         obstacleMap = new GameObject[gridManager.GridWidth, gridManager.GridHeight];
 
-        spawnCell = new Vector2Int(Managers.Grid.SpawnPos.x, Managers.Grid.SpawnPos.y);
-        goalCell = new Vector2Int(Managers.Grid.GoalPos.x, Managers.Grid.GoalPos.y);
+        spawnCell = new Vector2Int(stage.SpawnPos.x, stage.SpawnPos.y);
+        goalCell = new Vector2Int(stage.GoalPos.x, stage.GoalPos.y);
     }
 
     private void Awake()
     {
-        Managers.Game.OnAfterSettingsInit += Initialized;
+        stage.OnAfterSettingsInit += Initialized;
     }
 
     private void Update()
@@ -42,9 +46,12 @@ public class ObstacleBuilder : MonoBehaviour
 
     private void OnDestroy()
     {
-        Managers.Game.OnAfterSettingsInit -= Initialized;
+        stage.OnAfterSettingsInit -= Initialized;
     }
 
+    /// <summary>
+    /// 장애물 생성
+    /// </summary>
     private void TryPlaceObstacle()
     {
         Vector3 mouseWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);

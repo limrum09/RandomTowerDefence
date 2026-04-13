@@ -1,15 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
 {
-    [SerializeField]
+    private StageManager stage;
     private GridManager gridManager;
-    [SerializeField]
     private PathFinder path;
-    [SerializeField]
-    private float moveSpeed = 3f;
+    private float moveSpeed;
 
     [Header("Path Test")]
     [SerializeField]
@@ -25,9 +24,16 @@ public class EnemyMove : MonoBehaviour
         MoveAlongPath();
     }
 
-    private void Start()
+    public void Initialize(StageManager getStage, Vector2Int getStartCell, Vector2Int getEndCell, float getMoveSpeed)
     {
-        gridManager = Managers.Grid;
+        stage = getStage;
+        gridManager = stage.Grid;
+        path = stage.Path;
+
+        startCell = getStartCell;
+        endCell = getEndCell;
+        moveSpeed = getMoveSpeed;
+
         transform.position = gridManager.CellToWorldCenter(startCell.x, startCell.y);
         RecalculatePath();
     }
@@ -66,9 +72,14 @@ public class EnemyMove : MonoBehaviour
 
             if (pathIndex >= currentPath.Count)
             {
+                Destroy(gameObject);
                 Debug.Log("적이 목표 지점에 도착했습니다.");
             }
         }
+    }
+    private void OnDestroy()
+    {
+        stage.RegisterReachedEnemy();
     }
 
     private void OnDrawGizmos()

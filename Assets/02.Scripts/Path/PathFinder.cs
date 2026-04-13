@@ -5,9 +5,8 @@ using UnityEngine;
 /// <summary>
 /// 
 /// </summary>
-public class PathFinder : MonoBehaviour
+public class PathFinder
 {
-    [SerializeField]
     private GridManager gridManager;
 
     private readonly Vector2Int[] directions =
@@ -18,10 +17,7 @@ public class PathFinder : MonoBehaviour
         new Vector2Int(1, 0)
     };
 
-    private void Start()
-    {
-        gridManager = Managers.Grid;
-    }
+    public PathFinder(GridManager getGridManager) => gridManager = getGridManager;
 
     public List<GridNode> FindPath(Vector2Int startCell, Vector2Int goalCell)
     {
