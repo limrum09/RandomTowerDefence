@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 /// <summary>
 /// 유저 장애물 설치 및 철거
 /// </summary>
@@ -17,6 +18,16 @@ public class ObstacleBuilder : MonoBehaviour
     [SerializeField] private Vector2Int goalCell;
 
     private GameObject[,] obstacleMap;
+    private bool isObstacleMode;
+    private bool isRemoveObstacle;
+
+    public bool HasObstacle(Vector2Int cell)
+    {
+        if (!gridManager.IsInBounds(cell))
+            return false;
+
+        return obstacleMap[cell.x, cell.y] != null;
+    }
 
     public void Initialized()
     {
@@ -34,19 +45,71 @@ public class ObstacleBuilder : MonoBehaviour
     private void Awake()
     {
         stage.OnAfterSettingsInit += Initialized;
+        isObstacleMode = false;
+        isRemoveObstacle = false;
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(Managers.InputKey.GetKeyCode(InputAction.MakeObstacle)))
+        {
+            isObstacleMode = true;
+        }
+
+        if (Input.GetKeyDown(Managers.InputKey.GetKeyCode(InputAction.RemoveObstacle)))
+        {
+            isRemoveObstacle = true;
+        }
+
+        if (isObstacleMode && Input.GetMouseButtonDown(0))
         {
             TryPlaceObstacle();
+        }
+
+        if(isRemoveObstacle && Input.GetMouseButtonDown(0))
+        {
+            RemoveObstacle();
         }
     }
 
     private void OnDestroy()
     {
         stage.OnAfterSettingsInit -= Initialized;
+    }
+
+    private void RemoveObstacle()
+    {
+        Vector3 mouseWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorld.z = 0;
+
+        Vector2Int cell = gridManager.WorldToCell(mouseWorld);
+
+        if (!gridManager.IsInBounds(cell))
+        {
+            isRemoveObstacle = false;
+            return;
+        }
+            
+
+        if (cell == spawnCell || cell == goalCell)
+        {
+            isRemoveObstacle = false;
+            return;
+        }
+
+        if (obstacleMap[cell.x, cell.y] == null)
+        {
+            isRemoveObstacle = false;
+            return;
+        }
+            
+
+        GameObject obstacle = obstacleMap[cell.x, cell.y];
+        Destroy(obstacle);
+        obstacleMap[cell.x, cell.y] = null;
+        gridManager.SetBlocked(cell.x, cell.y, false);
+
+        isRemoveObstacle = false;
     }
 
     /// <summary>
@@ -65,14 +128,14 @@ public class ObstacleBuilder : MonoBehaviour
         // 시작칸 / 목표칸에는 설치 금지
         if (cell == spawnCell || cell == goalCell)
         {
-            Debug.Log("시작점/도착점에는 설치할 수 없습니다.");
+            isObstacleMode = false;
             return;
         }
 
         // 이미 장애물이 있으면 설치 금지
         if (obstacleMap[cell.x, cell.y] != null)
         {
-            Debug.Log("이미 장애물이 있는 칸입니다.");
+            isObstacleMode = false;
             return;
         }
 
@@ -84,7 +147,7 @@ public class ObstacleBuilder : MonoBehaviour
         if (testPath == null || testPath.Count == 0)
         {
             gridManager.SetBlocked(cell.x, cell.y, false);
-            Debug.Log("길이 막혀서 설치할 수 없습니다.");
+            isObstacleMode = false;
             return;
         }
 
@@ -92,7 +155,6 @@ public class ObstacleBuilder : MonoBehaviour
         Vector3 spawnPos = gridManager.CellToWorldCenter(cell.x, cell.y);
         GameObject obstacle = Instantiate(obstaclePrefab, spawnPos, Quaternion.identity);
         obstacleMap[cell.x, cell.y] = obstacle;
-
-        Debug.Log($"장애물 설치 완료: ({cell.x}, {cell.y})");
+        isObstacleMode = false;
     }
 }
