@@ -30,32 +30,43 @@ public class TowerController : MonoBehaviour
         pendingTowerUID = string.Empty;
         isBuildMode = false;
         grid = stage.Grid;
+        isTowerMove = false;
         towerMap = new Tower[grid.GridWidth, grid.GridHeight];
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!isTowerMove && Input.GetMouseButtonDown(0))
+        if (isTowerMove)
+        {
+            if (Input.GetMouseButtonDown(0))
+                TryMoveTower();
+
+            return;
+        }
+
+        if (isBuildMode)
+        {
+            if (Input.GetMouseButtonDown(0))
+                TryBuildPendingTower();
+
+            return;
+        }
+
+        if (Input.GetMouseButtonDown(0))
         {
             ClickTower();
         }
 
-        if(isTowerMove && Input.GetMouseButtonDown (0))
+        if(selectedTower != null && Input.GetKeyDown(Managers.InputKey.GetKeyCode(InputAction.MoveTower)))
         {
-            TryMoveTower();
-        }
-
-        if (isBuildMode && Input.GetMouseButtonDown(0))
-        {
-            TryBuildPendingTower();
+            isTowerMove = true;
         }
     }
     public void BeginBuildTower(string towerUID, int index, QueueController tQueue)
     {
         pendingTowerUID = towerUID;
         isBuildMode = true;
-        isTowerMove = false;
         selectedTower = null;
 
         tempQueue = tQueue;
@@ -77,6 +88,9 @@ public class TowerController : MonoBehaviour
         if (!success)
         {
             Debug.Log("타워 설치 실패");
+            queIndex = 0;
+            tempQueue = null;
+            return;
         }
 
         tempQueue.RemoveTower(queIndex);
@@ -87,6 +101,12 @@ public class TowerController : MonoBehaviour
 
     private bool BuildTower(string towerUID, Vector2Int cell)
     {
+        if (!grid.IsInBounds(cell))
+        {
+            Debug.Log("바깥");
+            return false;
+        }
+
         if (HasTower(cell))
         {
             Debug.Log("타워가 존재");
@@ -99,17 +119,9 @@ public class TowerController : MonoBehaviour
             return false;
         }
 
-        if (!grid.IsInBounds(cell))
-        {
-            isTowerMove = false;
-            Debug.Log("바깥");
-            return false;
-        }
-
         if (cell == stage.SpawnPos || cell == stage.GoalPos)
         {
             Debug.Log("스폰 지역, 골 지역 선택 불가");
-            isTowerMove = false;
             return false;
         }
 
@@ -141,27 +153,42 @@ public class TowerController : MonoBehaviour
 
     private void ClickTower()
     {
+        Debug.Log("타워 클릭");
         Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         Vector2 point = new Vector2(mousePosition.x, mousePosition.y);
 
         Collider2D hit = Physics2D.OverlapPoint(point);
         if (hit == null)
+        {
+            selectedTower = null;
+            selectTowerCell = Vector2Int.zero;
+            Debug.Log("아무것도 안부딪힘");
             return;
+        }
+            
 
         Tower tower = hit.GetComponent<Tower>();
-        if(tower == null) 
+        if(tower == null)
+        {
+            selectedTower = null;
+            selectTowerCell = Vector2Int.zero;
+            Debug.Log("타워 없음");
             return;
+        }
+
+        Debug.Log("타워 있음");
 
         TowerData data = Managers.TowerData.GetTowerData(tower.TowerUID);
         if (data == null)
-            return;
-
-        if (Input.GetKey(Managers.InputKey.GetKeyCode(InputAction.MoveTower)))
         {
-            selectedTower = tower;
-            isTowerMove = true;
-            selectTowerCell = grid.WorldToCell(mousePosition);
-        }
+            selectedTower = null;
+            selectTowerCell = Vector2Int.zero;
+            return;
+        }   
+
+        selectedTower = tower;
+        selectTowerCell = grid.WorldToCell(mousePosition);
+        Debug.Log("타워 이동 입력");
     }
 
     private void TryMoveTower()
@@ -202,15 +229,32 @@ public class TowerController : MonoBehaviour
         if (HasTower(cell))
         {
             Debug.Log("타워가 있음");
+
+            Tower tempTower = towerMap[cell.x, cell.y];
+            tempTower.GetComponent<TowerMove>().SetTowerPosition(selectTowerCell);
+            towerMap[cell.x, cell.y] = selectedTower;
+
+            selectedTower.GetComponent<TowerMove>().SetTowerPosition(cell);
+            towerMap[selectTowerCell.x, selectTowerCell.y] = tempTower;
+
+            selectedTower = null;
+            isTowerMove = false;
+            selectTowerCell = Vector2Int.zero;
+            return;
+        }
+        
+        TowerMove move = selectedTower.gameObject.GetComponent<TowerMove>();
+        if(move == null)
+        {
             isTowerMove = false;
             return;
         }
 
-        
-        TowerMove move = selectedTower.gameObject.GetComponent<TowerMove>();
         move.SetTowerPosition(cell);
+
         towerMap[cell.x, cell.y] = selectedTower;
         towerMap[selectTowerCell.x, selectTowerCell.y] = null;
+        
         Debug.Log("이동 완료");
     }
 
