@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public enum TowerType
@@ -15,7 +16,7 @@ public enum CostType
     Gold,
     MetaEXP
 }
-[SerializeField]
+[Serializable]
 public class TowerData
 {
     public string towerUID;
@@ -30,6 +31,8 @@ public class TowerData
     public int sellPrice;
     public string skillID;
     public string iconPath;
+
+    public string TowerUID => towerUID;
 
     public TowerData(string getUID,  TowerType getType, string getStringKey, int getGrade,
         int getBaseAtk, float getBaseAtkSpeed, float getRange, CostType getCostType, int getBuyPrice,

@@ -24,10 +24,11 @@ public class Managers : MonoBehaviour
     private GameManager game = new GameManager();
     private InputManager input = new InputManager();
     private TowerDataManager tower = new TowerDataManager();
+    private EnemyDataManager enemy = new EnemyDataManager();
     public static GameManager Game { get { return Instance.game; } }
     public static InputManager InputKey { get { return Instance.input; } }
     public static TowerDataManager TowerData { get { return Instance.tower; } }
-
+    public static EnemyDataManager EnemyData { get { return Instance.enemy; } }
     private void Start()
     {
         // 임시, 나중에 지워야 함
@@ -46,6 +47,7 @@ public class Managers : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         TowerData.Init();
+        EnemyData.Init();
     }
 
     private void OnApplicationQuit()
