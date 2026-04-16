@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     [SerializeField]
     private Animator anim;
+    [SerializeField]
+    private EnemyMove move;
 
     [SerializeField]
     private string enemyUID;
@@ -40,6 +42,7 @@ public class Enemy : MonoBehaviour
     private int maxShield;
     [SerializeField]
     private int currentShield;
+    private bool isDead;
 
     public int Level => level;
     public string StringKey => stringKey;
@@ -48,6 +51,7 @@ public class Enemy : MonoBehaviour
     public int MaxShield => maxShield;
     public float MoveSpeed => moveSpeed;
     public float RewardGold => rewardGold;
+    public bool IsDead => isDead;
 
     public void Init(string uid, int getLevel)
     {
@@ -71,6 +75,7 @@ public class Enemy : MonoBehaviour
         increaseShield = data.increaseShield;
         rewardGold = data.rewardGold;
         iconPath = data.iconPath;
+        isDead = false;
 
         SetState();
         SetAnimator(iconPath);
@@ -92,7 +97,15 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
+        move.IsDead();
         anim.SetBool("Die", true);
+
+        Invoke("Dead", 1f);
+    }
+
+    private void Dead()
+    {
+        Destroy(this.gameObject);
     }
 
     public void EnemyGeTakeDamage(int damage)

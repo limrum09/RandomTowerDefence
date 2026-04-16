@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: AnimatorDatas
   m_EditorClassIdentifier: 
   anis:
+  - {fileID: 9100000, guid: b7875c412de9f874b8d420fd020723df, type: 2}
   - {fileID: 9100000, guid: 6f9363ce94c1e3e4c99fe8f29daa8966, type: 2}
   - {fileID: 9100000, guid: 6d57d3d23cfc3e1478ef0c5333e1cbb3, type: 2}
   - {fileID: 9100000, guid: 6edac6238e16f1940a0f0c71350f1ec5, type: 2}
+  - {fileID: 9100000, guid: 5399d2fdb74a60b4ea682d834014bb94, type: 2}
+  - {fileID: 9100000, guid: b449f88fe27fabd4b86fdef3933252fe, type: 2}
+  - {fileID: 9100000, guid: 4d54291ff0c26ad4da26ed072b124847, type: 2}
+  - {fileID: 9100000, guid: e6488f15a0c477c4aaa877d56c61bf1c, type: 2}

@@ -8,7 +8,7 @@ public enum TowerType
     Dwarf,
     Orc,
     Dragonian,
-    WereBreast
+    WereBeast
 }
 
 public enum CostType
@@ -31,12 +31,13 @@ public class TowerData
     public int sellPrice;
     public string skillID;
     public string iconPath;
+    public string nextGradeUID;
 
     public string TowerUID => towerUID;
 
     public TowerData(string getUID,  TowerType getType, string getStringKey, int getGrade,
         int getBaseAtk, float getBaseAtkSpeed, float getRange, CostType getCostType, int getBuyPrice,
-        int getSellPirce, string getSkillID, string getIconPath)
+        int getSellPirce, string getSkillID, string getIconPath, string GetNextGradeUID)
     {
         towerUID = getUID;
         towerType = getType;
@@ -50,5 +51,6 @@ public class TowerData
         sellPrice = getSellPirce;
         skillID = getSkillID;
         iconPath = getIconPath;
+        nextGradeUID = GetNextGradeUID;
     }
 }
