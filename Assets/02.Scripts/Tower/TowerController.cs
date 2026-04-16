@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class TowerController : MonoBehaviour
 {
@@ -18,9 +19,13 @@ public class TowerController : MonoBehaviour
     [Header("Viewer")]
     [SerializeField]
     private TowerGradeUpgradeView towerGradeUpgradeView;
+    [SerializeField]
+    private TowerActionMenuView towerActionMenuView;
 
     // 타워 상세 UI 제어
     private TowerGradeUpgradePresenter towerGradeUpgradePreseter;
+    // 타워 클릭시 보이는 버튼 제어
+    private TowerActionMenuPresenter towerActionMenuPresenter;
     // StageManager의 그리드 참조
     private GridManager grid;
 
@@ -52,8 +57,19 @@ public class TowerController : MonoBehaviour
         isTowerMove = false;
         towerMap = new Tower[grid.GridWidth, grid.GridHeight];
 
-        towerGradeUpgradePreseter = new TowerGradeUpgradePresenter(towerGradeUpgradeView);
+        towerGradeUpgradePreseter = new TowerGradeUpgradePresenter(towerGradeUpgradeView, this);
         towerGradeUpgradePreseter.HideModel();
+
+        towerActionMenuPresenter = new TowerActionMenuPresenter(towerActionMenuView);
+        towerActionMenuPresenter.Hide();
+        towerActionMenuPresenter.OnClickMove += SetTowerMoveMode;
+        towerActionMenuPresenter.OnClickGradeUpgrade += towerGradeUpgradePreseter.SetModel;
+    }
+
+    private void OnDestroy()
+    {
+        towerActionMenuPresenter.OnClickMove -= SetTowerMoveMode;
+        towerActionMenuPresenter.OnClickGradeUpgrade -= towerGradeUpgradePreseter.SetModel;
     }
 
     /// <summary>
@@ -86,6 +102,11 @@ public class TowerController : MonoBehaviour
         {
             isTowerMove = true;
         }
+    }
+
+    public void SetTowerMoveMode()
+    {
+        isTowerMove = true;
     }
 
     /// <summary>
@@ -168,6 +189,9 @@ public class TowerController : MonoBehaviour
     {
         Debug.Log("타워 클릭");
 
+        if (IsPointerOverUI())
+            return;
+
         Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         Vector2 point = new Vector2(mousePosition.x, mousePosition.y);
 
@@ -178,7 +202,6 @@ public class TowerController : MonoBehaviour
             Debug.Log("아무것도 안부딪힘");
             return;
         }
-
 
         Tower tower = hit.GetComponent<Tower>();
         if (tower == null)
@@ -203,7 +226,8 @@ public class TowerController : MonoBehaviour
         }
 
         Debug.Log("타워 있음");
-        towerGradeUpgradePreseter.SetModel(tower);
+        towerActionMenuPresenter.SetModel(tower);
+        towerGradeUpgradePreseter.HideModel();
 
         if (selectedTower != null)
             selectedTower.ShowAttackRange(false);
@@ -289,7 +313,10 @@ public class TowerController : MonoBehaviour
 
         // 필요 시 간세 UI도 함께 닫음
         if (hideView)
+        {
             towerGradeUpgradePreseter.HideModel();
+            towerActionMenuPresenter.Hide();
+        }            
     }
 
     /// <summary>
@@ -326,11 +353,21 @@ public class TowerController : MonoBehaviour
         return grid.WorldToCell(mouseWorld);
     }
 
+    /// <summary>
+    /// 해당 셀이 시작지점이나 도착지점인지 확인
+    /// </summary>
+    /// <param name="cell"></param>
+    /// <returns></returns>
     private bool IsBlockedCell(Vector2Int cell)
     {
         return cell == stage.SpawnPos || cell == stage.GoalPos;
     }
 
+    /// <summary>
+    /// 타워를 만들기 적확한지 확인
+    /// </summary>
+    /// <param name="cell"></param>
+    /// <returns></returns>
     private bool CanUseTowerCell(Vector2Int cell)
     {
         if (!grid.IsInBounds(cell))
@@ -354,6 +391,15 @@ public class TowerController : MonoBehaviour
             return false;
 
         return true;
+    }
+
+    /// <summary>
+    /// 마우스가 UI를 클릭하는지 확인
+    /// </summary>
+    /// <returns></returns>
+    private bool IsPointerOverUI()
+    {
+        return EventSystem.current != null && EventSystem.current.IsPointerOverGameObject();
     }
 
     /// <summary>

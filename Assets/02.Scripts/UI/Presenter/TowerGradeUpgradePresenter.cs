@@ -1,33 +1,43 @@
 public class TowerGradeUpgradePresenter
 {
     private Tower model;
-    private TowerGradeUpgradeView view;
+    private TowerController towerCtr;
+    private TowerGradeUpgradeView gradeUpgradeView;
 
-    public TowerGradeUpgradePresenter(TowerGradeUpgradeView getView)
+    public TowerGradeUpgradePresenter(TowerGradeUpgradeView getView, TowerController ctr)
     {
-        view = getView;
+        gradeUpgradeView = getView;
+        towerCtr = ctr;
+    }
+
+    public void SetTowerController(TowerController controller)
+    {
+        if (towerCtr != null)
+            return;
+
+        towerCtr = controller;
     }
 
     public void SetModel(Tower getModel)
     {
         this.model = getModel;
 
-        view.Show();
-        view.SetIconImage(model.IconPath);
-        view.TowerGrade(model.Grade, model.nextGradeUID);
-        view.SetTowerName(model.IconPath);
-        view.SetSkillName(model.SkillID);
-        view.SetSkillDes("타워 스킬 설명");
-        view.SetDamageCurrentValue(model.BaseAtk);
-        view.SetAttackSpeedCurrentValue(model.BaseAtkSpeed);
-        view.SetRangeCurrentValue(model.AtkRange);
-        view.PremiumUpgradePirce(1000);
-        view.NormalUpgradePrice(300);
-        view.TowerSellPrice(model.SellPrice);
+        gradeUpgradeView.Show();
+        gradeUpgradeView.SetIconImage(model.IconPath);
+        gradeUpgradeView.TowerGrade(model.Grade, model.nextGradeUID);
+        gradeUpgradeView.SetTowerName(model.IconPath);
+        gradeUpgradeView.SetSkillName(model.SkillID);
+        gradeUpgradeView.SetSkillDes("타워 스킬 설명");
+        gradeUpgradeView.SetDamageCurrentValue(model.BaseAtk);
+        gradeUpgradeView.SetAttackSpeedCurrentValue(model.BaseAtkSpeed);
+        gradeUpgradeView.SetRangeCurrentValue(model.AtkRange);
+        gradeUpgradeView.PremiumUpgradePirce(1000);
+        gradeUpgradeView.NormalUpgradePrice(300);
+        gradeUpgradeView.TowerSellPrice(model.SellPrice);
     }
 
     public void HideModel()
     {
-        view.Hide();
+        gradeUpgradeView.Hide();
     }
 }
