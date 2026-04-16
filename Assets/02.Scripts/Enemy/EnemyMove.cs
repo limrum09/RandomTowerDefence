@@ -18,9 +18,13 @@ public class EnemyMove : MonoBehaviour
 
     private List<GridNode> currentPath;
     private int pathIndex;
+    private bool isMove;
 
     private void Update()
     {
+        if (!isMove)
+            return;
+
         MoveAlongPath();
     }
 
@@ -33,9 +37,15 @@ public class EnemyMove : MonoBehaviour
         startCell = getStartCell;
         endCell = getEndCell;
         moveSpeed = getMoveSpeed;
+        isMove = true;
 
         transform.position = gridManager.CellToWorldCenter(startCell.x, startCell.y);
         RecalculatePath();
+    }
+
+    public void IsDead()
+    {
+        isMove = false;
     }
 
     private void RecalculatePath()

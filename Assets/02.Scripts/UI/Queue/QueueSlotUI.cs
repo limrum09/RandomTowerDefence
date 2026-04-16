@@ -1,4 +1,3 @@
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,12 +7,13 @@ public class QueueSlotUI : MonoBehaviour
     private Image icon;
     [SerializeField]
     private Button btn;
+    [SerializeField]
+    private Animator anim;
 
     private string towerUID;
     private int slotIndex;
     private TowerData data;
     private QueueController owner;
-
     private void Refresh()
     {
         bool isEmpty = string.IsNullOrEmpty(towerUID);
@@ -22,12 +22,37 @@ public class QueueSlotUI : MonoBehaviour
 
         if (!isEmpty)
         {
-            data = Managers.TowerData.GetTowerData(towerUID);
+            data = Managers.TowerData.GetTowerData(towerUID);            
 
             if (data != null)
             {
-                // icon.sprite
+                string path = data.iconPath;
+
+                AnimatorDatas aniDatas = Resources.Load<AnimatorDatas>("Anis/AnimatorDatas");
+
+                if(aniDatas == null)
+                {
+                    icon.sprite = null;
+                    anim.runtimeAnimatorController = null;
+                    return;
+                }
+
+                RuntimeAnimatorController aniController = aniDatas.FindByCode("UI_" + path + "Ani");
+
+                if (aniController == null)
+                {
+                    icon.sprite = null;
+                    anim.runtimeAnimatorController = null;
+                    return;
+                }
+                    
+                anim.runtimeAnimatorController = aniController;
             }
+        }
+        else
+        {
+            icon.sprite = null;
+            anim.runtimeAnimatorController = null;
         }
     }
 

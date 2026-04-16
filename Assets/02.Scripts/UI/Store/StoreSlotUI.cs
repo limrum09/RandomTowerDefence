@@ -10,6 +10,8 @@ public class StoreSlotUI : MonoBehaviour
     private StoreController owner;
     private Button btn;
     [SerializeField]
+    private Image image;
+    [SerializeField]
     private TextMeshProUGUI tempText;
     public string UID => uid;
     private void Start()
@@ -22,7 +24,22 @@ public class StoreSlotUI : MonoBehaviour
         owner = store;
         uid = getUID;
         TowerData data = Managers.TowerData.GetTowerData(getUID);
-        tempText.text = data.towerType.ToString();
+
+        string path = data.iconPath;
+        
+        Sprite icon = Resources.Load<Sprite>($"Tower/Images/{path}_Idle");
+
+        if(icon != null)
+        {
+            tempText.text = "";
+            image.gameObject.SetActive(true);
+            image.sprite = icon;
+        }
+        else
+        {
+            tempText.text = data.towerType.ToString();
+            image.gameObject.SetActive(false);
+        }
     }
 
     private void OnClickUI()

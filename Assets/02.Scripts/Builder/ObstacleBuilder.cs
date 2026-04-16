@@ -7,15 +7,24 @@ using UnityEngine.UIElements;
 /// </summary>
 public class ObstacleBuilder : MonoBehaviour
 {
-    [SerializeField] private StageManager stage;
-    [SerializeField] private GridManager gridManager;
-    [SerializeField] private PathFinder pathFinder;
-    [SerializeField] private Camera mainCamera;
-    [SerializeField] private GameObject obstaclePrefab;
+    [SerializeField] 
+    private StageManager stage;
+    [SerializeField] 
+    private GridManager gridManager;
+    [SerializeField] 
+    private PathFinder pathFinder;
+    [SerializeField] 
+    private Camera mainCamera;
+    [SerializeField] 
+    private GameObject obstaclePrefab;
+    [SerializeField]
+    private GameObject obstacles; 
 
     [Header("Path Rule")]
-    [SerializeField] private Vector2Int spawnCell;
-    [SerializeField] private Vector2Int goalCell;
+    [SerializeField] 
+    private Vector2Int spawnCell;
+    [SerializeField] 
+    private Vector2Int goalCell;
 
     private GameObject[,] obstacleMap;
     private bool isObstacleMode;
@@ -153,7 +162,7 @@ public class ObstacleBuilder : MonoBehaviour
 
         // 角力 厘局拱 积己
         Vector3 spawnPos = gridManager.CellToWorldCenter(cell.x, cell.y);
-        GameObject obstacle = Instantiate(obstaclePrefab, spawnPos, Quaternion.identity);
+        GameObject obstacle = Instantiate(obstaclePrefab, spawnPos, Quaternion.identity, obstacles.transform);
         obstacleMap[cell.x, cell.y] = obstacle;
         isObstacleMode = false;
     }
