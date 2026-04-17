@@ -27,9 +27,9 @@ public class StoreSlotUI : MonoBehaviour
 
         string path = data.iconPath;
         
-        Sprite icon = Resources.Load<Sprite>($"Tower/Images/{path}_Idle");
-
-        if(icon != null)
+        Sprite icon = Resources.Load<Sprite>($"Tower/Images/Icon_Tower_{path}_Idle");
+        
+        if (icon != null)
         {
             tempText.text = "";
             image.gameObject.SetActive(true);
