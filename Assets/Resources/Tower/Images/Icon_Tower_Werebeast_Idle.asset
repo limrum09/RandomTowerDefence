@@ -6,7 +6,7 @@ Sprite:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Werebeast_Idle
+  m_Name: Icon_Tower_Werebeast_Idle
   m_Rect:
     serializedVersion: 2
     x: 42

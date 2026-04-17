@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class TowerGradeUpgradeView : MonoBehaviour, IPopUpPublicUI
@@ -28,9 +29,19 @@ public class TowerGradeUpgradeView : MonoBehaviour, IPopUpPublicUI
     [SerializeField]
     private TextMeshProUGUI towerSellPriceText;
     [SerializeField]
+    private TextMeshProUGUI normalBtnText;
+    [SerializeField]
+    private TextMeshProUGUI premiumBtnText;
+    [SerializeField]
     private Image upgradeMaster1;
     [SerializeField]
     private Image upgradeMaster2;
+    [SerializeField]
+    private Button normalUpgradeBtn;
+    [SerializeField]
+    private Button premiumUpgradeBtn;
+    [SerializeField]
+    private Button sellBtn;
 
     public void Clear()
     {
@@ -44,6 +55,11 @@ public class TowerGradeUpgradeView : MonoBehaviour, IPopUpPublicUI
         normalUpgradePriceText.text = "300";
         towerSellPriceText.text = "";
         towerGradeText.text = "";
+
+        normalBtnText.text = $"일반 강화 ({Managers.InputKey.GetKeyCode(InputAction.TowerGradeNormalUpgrade)})";
+        premiumBtnText.text = $"고정 강화 ({Managers.InputKey.GetKeyCode(InputAction.TowerGradePremiunUpgrade)})";
+        normalUpgradeBtn.interactable = true;
+        premiumUpgradeBtn.interactable = true;
 
         upgradeMaster1.gameObject.SetActive(false);
         upgradeMaster2.gameObject.SetActive(false);
@@ -62,7 +78,7 @@ public class TowerGradeUpgradeView : MonoBehaviour, IPopUpPublicUI
 
     public void SetIconImage(string path)
     {
-        Sprite icon = Resources.Load<Sprite>("Tower/Images/" + path + "_Idle");
+        Sprite icon = Resources.Load<Sprite>("Tower/Images/Icon_Tower_" + path + "_Idle");
         iconImage.sprite = icon;
     }
 
@@ -73,6 +89,9 @@ public class TowerGradeUpgradeView : MonoBehaviour, IPopUpPublicUI
             towerGradeText.text = "Master";
             upgradeMaster1.gameObject.SetActive(true);
             upgradeMaster2.gameObject.SetActive(true);
+
+            normalUpgradeBtn.interactable = false;
+            premiumUpgradeBtn.interactable = false;
             return;
         }
 
@@ -90,4 +109,7 @@ public class TowerGradeUpgradeView : MonoBehaviour, IPopUpPublicUI
     public void PremiumUpgradePirce(int value) => premiunUpgradePriceText.text = value.ToString();
     public void NormalUpgradePrice(int value) => normalUpgradePriceText.text = value.ToString();
     public void TowerSellPrice(float value) => towerSellPriceText.text = value.ToString();
+
+    public void BindNormalUpgrade(UnityAction action) => normalUpgradeBtn.onClick.AddListener(action);
+    public void BindPreminumUpgrade(UnityAction action) => premiumUpgradeBtn.onClick.AddListener(action);
 }

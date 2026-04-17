@@ -8,7 +8,7 @@ public class TowerActionMenuPresenter
 
     public event Action OnClickMove;
     public event Action<Tower> OnClickGradeUpgrade;
-    public event Action OnClickStatUpgrade;
+    public event Action<Tower> OnClickStatUpgrade;
 
     public TowerActionMenuPresenter(TowerActionMenuView getView)
     {
@@ -16,7 +16,7 @@ public class TowerActionMenuPresenter
 
         view.BindMove(OnClickedMove);
         view.BindGradeUpgrade(OnClickedGradeUpgrade);
-        
+        view.BindStatUpgrade(OnClickedStatUpgrade);
     }
 
     public void SetModel(Tower getModel)
@@ -33,5 +33,5 @@ public class TowerActionMenuPresenter
 
     private void OnClickedMove() => OnClickMove?.Invoke();
     private void OnClickedGradeUpgrade() => OnClickGradeUpgrade?.Invoke(model);
-    private void OnClickedStatUpgrade() => OnClickStatUpgrade?.Invoke();
+    private void OnClickedStatUpgrade() => OnClickStatUpgrade?.Invoke(model);
 }

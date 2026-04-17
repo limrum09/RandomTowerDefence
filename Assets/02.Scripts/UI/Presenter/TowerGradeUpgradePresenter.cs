@@ -1,43 +1,57 @@
+using System;
+using Unity.VisualScripting;
+
 public class TowerGradeUpgradePresenter
 {
     private Tower model;
-    private TowerController towerCtr;
-    private TowerGradeUpgradeView gradeUpgradeView;
+    private TowerGradeUpgradeView view;
 
-    public TowerGradeUpgradePresenter(TowerGradeUpgradeView getView, TowerController ctr)
+    public event Action onClickNormalUpgrade;
+    public event Action onClickPremiumUpgrade;
+    public TowerGradeUpgradePresenter(TowerGradeUpgradeView getView)
     {
-        gradeUpgradeView = getView;
-        towerCtr = ctr;
-    }
+        view = getView;
 
-    public void SetTowerController(TowerController controller)
-    {
-        if (towerCtr != null)
-            return;
-
-        towerCtr = controller;
+        view.BindNormalUpgrade(OnClickNormalUpgrade);
+        view.BindPreminumUpgrade(OnClickPremiunUpgrade);
     }
 
     public void SetModel(Tower getModel)
     {
         this.model = getModel;
 
-        gradeUpgradeView.Show();
-        gradeUpgradeView.SetIconImage(model.IconPath);
-        gradeUpgradeView.TowerGrade(model.Grade, model.nextGradeUID);
-        gradeUpgradeView.SetTowerName(model.IconPath);
-        gradeUpgradeView.SetSkillName(model.SkillID);
-        gradeUpgradeView.SetSkillDes("타워 스킬 설명");
-        gradeUpgradeView.SetDamageCurrentValue(model.BaseAtk);
-        gradeUpgradeView.SetAttackSpeedCurrentValue(model.BaseAtkSpeed);
-        gradeUpgradeView.SetRangeCurrentValue(model.AtkRange);
-        gradeUpgradeView.PremiumUpgradePirce(1000);
-        gradeUpgradeView.NormalUpgradePrice(300);
-        gradeUpgradeView.TowerSellPrice(model.SellPrice);
+        view.Show();
+        view.SetIconImage(model.IconPath);
+        view.TowerGrade(model.Grade, model.nextGradeUID);
+        view.SetTowerName(model.IconPath);
+        view.SetSkillName(model.SkillID);
+        view.SetSkillDes("타워 스킬 설명");
+        view.SetDamageCurrentValue(model.BaseAtk);
+        view.SetAttackSpeedCurrentValue(model.BaseAtkSpeed);
+        view.SetRangeCurrentValue(model.AtkRange);
+        view.PremiumUpgradePirce(1000);
+        view.NormalUpgradePrice(300);
+        view.TowerSellPrice(model.SellPrice);
     }
 
     public void HideModel()
     {
-        gradeUpgradeView.Hide();
+        view.Hide();
+    }
+
+    private void OnClickNormalUpgrade()
+    {
+        if (model == null)
+            return;
+
+        onClickNormalUpgrade?.Invoke();
+    }
+
+    private void OnClickPremiunUpgrade()
+    {
+        if (model == null)
+            return;
+
+        onClickPremiumUpgrade?.Invoke();
     }
 }

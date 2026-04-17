@@ -7,7 +7,12 @@ public enum InputAction
 {
     MoveTower,
     MakeTower,
-    UpgradeTower,
+    ShowGradeUpgradeTowerView,
+    ShowStatUpgradeTowerView,
+    TowerGradeNormalUpgrade,
+    TowerGradePremiunUpgrade,
+    TowerStatDamgeUpgrade,
+    TowerStatAttackSpeedUpgrade,
     Buy,
     MakeObstacle,
     RemoveObstacle,
@@ -22,7 +27,12 @@ public class KeyData
     {
         keys[InputAction.MoveTower] = KeyCode.M;
         keys[InputAction.MakeTower] = KeyCode.N;
-        keys[InputAction.UpgradeTower] = KeyCode.E;
+        keys[InputAction.ShowGradeUpgradeTowerView] = KeyCode.Z;
+        keys[InputAction.ShowStatUpgradeTowerView] = KeyCode.X;
+        keys[InputAction.TowerGradeNormalUpgrade] = KeyCode.E;
+        keys[InputAction.TowerGradePremiunUpgrade] = KeyCode.D;
+        keys[InputAction.TowerStatDamgeUpgrade] = KeyCode.W;
+        keys[InputAction.TowerStatAttackSpeedUpgrade] = KeyCode.S;
         keys[InputAction.Buy] = KeyCode.B;
         keys[InputAction.MakeObstacle] = KeyCode.R;
         keys[InputAction.RemoveObstacle] = KeyCode.T;
