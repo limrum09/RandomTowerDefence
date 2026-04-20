@@ -1,5 +1,6 @@
-using System;
+ï»¿using System;
 using Unity.VisualScripting;
+using UnityEngine;
 
 public class TowerGradeUpgradePresenter
 {
@@ -21,11 +22,11 @@ public class TowerGradeUpgradePresenter
         this.model = getModel;
 
         view.Show();
+        view.SetTowerName(model.TowerName());
         view.SetIconImage(model.IconPath);
         view.TowerGrade(model.Grade, model.nextGradeUID);
-        view.SetTowerName(model.IconPath);
-        view.SetSkillName(model.SkillID);
-        view.SetSkillDes("Å¸¿ö ½ºÅ³ ¼³¸í");
+        view.SetSkillName(model.SkillName());
+        view.SetSkillDes(model.SkillDes());
         view.SetDamageCurrentValue(model.BaseAtk);
         view.SetAttackSpeedCurrentValue(model.BaseAtkSpeed);
         view.SetRangeCurrentValue(model.AtkRange);

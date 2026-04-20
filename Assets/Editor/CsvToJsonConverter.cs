@@ -1,4 +1,4 @@
-using NUnit.Framework;
+ï»¿using NUnit.Framework;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
@@ -12,7 +12,7 @@ public static class CsvToJsonConverter
         string csvPath = "Assets/RawData/Tower_Table.csv";
         string jsonPath = "Assets/Resources/Data/TowerData.json";
 
-        string csvText = File.ReadAllText(csvPath); ;
+        string csvText = File.ReadAllText(csvPath);
         List<Dictionary<string, string>> rows = CsvUtility.Parse(csvText);
 
         TowerDataRowList data = new TowerDataRowList();
@@ -21,19 +21,19 @@ public static class CsvToJsonConverter
         {
             TowerDataRow item = new TowerDataRow
             {
-                TowerUID = DataParseHelper.GetString(row, "TowerUID"),
-                TowerType = DataParseHelper.GetString(row, "TowerType"),
-                StringKey = DataParseHelper.GetString(row, "StringKey"),
+                TowerUID = DataParseHelper.GetString(row, "Tower_UID"),
+                TowerType = DataParseHelper.GetString(row, "Type"),
+                StringKey = DataParseHelper.GetString(row, "String_Key"),
                 Grade = DataParseHelper.GetInt(row, "Grade"),
-                BaseAtk = DataParseHelper.GetInt(row, "BaseAtk"),
-                BaseAtkSpeed = DataParseHelper.GetFloat(row, "BaseAtkSpeed"),
-                Range = DataParseHelper.GetFloat(row, "Range"),
-                CostType = DataParseHelper.GetString(row, "CostType"),
-                BuyPrice = DataParseHelper.GetInt(row, "BuyPrice"),
-                SellPrice = DataParseHelper.GetInt(row, "SellPrice"),
+                BaseAtk = DataParseHelper.GetInt(row, "Base_ATK"),
+                BaseAtkSpeed = DataParseHelper.GetFloat(row, "Base_Atk_Speed(s)"),
+                Range = DataParseHelper.GetFloat(row, "Range(Tile)"),
+                CostType = DataParseHelper.GetString(row, "Cost_Type"),
+                BuyPrice = DataParseHelper.GetInt(row, "Buy_Price"),
+                SellPrice = DataParseHelper.GetInt(row, "Sell_Price"),
                 SkillID = DataParseHelper.GetString(row, "SkillID"),
-                IconPath = DataParseHelper.GetString(row, "IconPath"),
-                NextGradeUID = DataParseHelper.GetString(row, "NextGradeUID")
+                IconPath = DataParseHelper.GetString(row, "Icon_UID"),
+                NextGradeUID = DataParseHelper.GetString(row, "Next_UID")
             };
 
             data.datas.Add(item);
@@ -53,21 +53,49 @@ public static class CsvToJsonConverter
 
         LocalizationRowList data = new LocalizationRowList();
 
-        if (rows.Count > 0)
-        {
-            foreach (var pair in rows[0])
-            {
-                Debug.Log($"HEADER=[{pair.Key}] VALUE=[{pair.Value}]");
-            }
-        }
-
         foreach (var row in rows)
         {
             LocalizationDataRow item = new LocalizationDataRow
             {
-                key = DataParseHelper.GetString(row, "StringKey"),
+                key = DataParseHelper.GetString(row, "String_Key"),
                 KR = DataParseHelper.GetString(row, "KR"),
                 EN = DataParseHelper.GetString(row, "EN")
+            };
+
+            data.datas.Add(item);
+        }
+
+        SaveJson(jsonPath, data);
+    }
+
+    [MenuItem("Tools/Data/Convert Tower Skill CXSV To JSON")]
+    public static void ConvertTowerSkill()
+    {
+        string csvPath = "Assets/RawData/TowerSkill_Table .csv";
+        string jsonPath = "Assets/Resources/Data/TowerSkillData.json";
+
+        string csvText = File.ReadAllText(csvPath);
+        List<Dictionary<string, string>> rows = CsvUtility.Parse(csvText);
+
+        TowerDataRowList data = new TowerDataRowList();
+
+        foreach (var row in rows)
+        {
+            TowerDataRow item = new TowerDataRow
+            {
+                TowerUID = DataParseHelper.GetString(row, "Tower_UID"),
+                TowerType = DataParseHelper.GetString(row, "Type"),
+                StringKey = DataParseHelper.GetString(row, "String_Key"),
+                Grade = DataParseHelper.GetInt(row, "Grade"),
+                BaseAtk = DataParseHelper.GetInt(row, "Base_ATK"),
+                BaseAtkSpeed = DataParseHelper.GetFloat(row, "Base_Atk_Speed(s)"),
+                Range = DataParseHelper.GetFloat(row, "Range(Tile)"),
+                CostType = DataParseHelper.GetString(row, "Cost_Type"),
+                BuyPrice = DataParseHelper.GetInt(row, "Buy_Price"),
+                SellPrice = DataParseHelper.GetInt(row, "Sell_Price"),
+                SkillID = DataParseHelper.GetString(row, "SkillID"),
+                IconPath = DataParseHelper.GetString(row, "Icon_UID"),
+                NextGradeUID = DataParseHelper.GetString(row, "Next_UID")
             };
 
             data.datas.Add(item);
@@ -86,6 +114,6 @@ public static class CsvToJsonConverter
         File.WriteAllText(jsonPath, json);
         AssetDatabase.Refresh();
 
-        Debug.Log("Json ÀúÀå ¿Ï·á");
+        Debug.Log("Json ì €ìž¥ ì™„ë£Œ");
     }
 }

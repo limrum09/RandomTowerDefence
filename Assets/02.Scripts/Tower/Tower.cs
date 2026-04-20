@@ -1,4 +1,4 @@
-using System.Runtime.CompilerServices;
+ï»¿using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Tower : MonoBehaviour
@@ -47,9 +47,32 @@ public class Tower : MonoBehaviour
     public string NextGradeUID => nextGradeUID;
     public int CurrentDamage => baseAtk;
     public float CurrentAtkSpeed => baseAtkSpeed;
-    public string TowerName => towerName;
-    public string SkillName => skillName;
-    public string SkillDes => skillDes;
+    public string TowerName()
+    {
+        return Managers.Local.GetString(stringKey);
+    }
+    public string SkillName()
+    {
+        skillName = string.Empty;
+
+        TowerSkillData tempData = Managers.TowerSkill.GetTowerSkillData(skillID);
+
+        string skillUID = tempData.Stringkey;
+        skillName = Managers.Local.GetString(skillUID);
+
+        return skillName;
+    }
+    public string SkillDes()
+    {
+        skillDes = string.Empty;
+
+        TowerSkillData tempData = Managers.TowerSkill.GetTowerSkillData(skillID);
+        
+        string skillDesUID = tempData.DesStringKey;
+        skillDes = Managers.Local.GetString(skillDesUID);
+
+        return skillDes;
+    }
 
 
     private void SetAnimation()
@@ -119,7 +142,7 @@ public class Tower : MonoBehaviour
     }
 
     /// <summary>
-    /// Å¸¿ö°¡ °ø°Ý Áß
+    /// íƒ€ì›Œê°€ ê³µê²© ì¤‘
     /// </summary>
     /// <param name="isAttack"></param>
     public void Attack(bool isAttack)

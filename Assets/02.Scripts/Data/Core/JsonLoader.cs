@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public static class JsonLoader
 {
@@ -7,14 +7,14 @@ public static class JsonLoader
         TextAsset textAsset = Resources.Load<TextAsset>(resourcePath);
         if(textAsset == null)
         {
-            Debug.LogWarning("Json ÆÄÀÏÀ» Ã£À» ¤Ì¤µ ¾øÀ½ : " +  resourcePath);
+            Debug.LogWarning("Json íŒŒì¼ì„ ì°¾ì„ ìˆ˜ ì—†ìŒ : " +  resourcePath);
             return null;
         }
 
         T data = JsonUtility.FromJson<T>(textAsset.text);
         if(data == null)
         {
-            Debug.Log("Json ¿ªÁú·ÄÈ­ ½ÇÆĞ : " + resourcePath);
+            Debug.Log("Json ì—­ì§ˆë ¬í™” ì‹¤íŒ¨ : " + resourcePath);
             return null;
         }
 

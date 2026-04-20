@@ -1,4 +1,4 @@
-using NUnit.Framework.Interfaces;
+ï»¿using NUnit.Framework.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,13 +25,17 @@ public class Managers : MonoBehaviour
     private InputManager input = new InputManager();
     private TowerDataManager tower = new TowerDataManager();
     private EnemyDataManager enemy = new EnemyDataManager();
+    private LocalizationDataManager local = new LocalizationDataManager();
+    private TowerSkillDataManager towerSkill = new TowerSkillDataManager();
     public static GameManager Game { get { return Instance.game; } }
     public static InputManager InputKey { get { return Instance.input; } }
     public static TowerDataManager TowerData { get { return Instance.tower; } }
     public static EnemyDataManager EnemyData { get { return Instance.enemy; } }
+    public static LocalizationDataManager Local { get { return Instance.local; } }
+    public static TowerSkillDataManager TowerSkill { get { return Instance.towerSkill; } } 
     private void Start()
     {
-        // ÀÓ½Ã, ³ªÁß¿¡ Áö¿ö¾ß ÇÔ
+        // ì„ì‹œ, ë‚˜ì¤‘ì— ì§€ì›Œì•¼ í•¨
         InputKey.ResetKeyCode();
     }
 
@@ -48,6 +52,8 @@ public class Managers : MonoBehaviour
 
         TowerData.Init();
         EnemyData.Init();
+        Local.Init();
+        TowerSkill.Init();
     }
 
     private void OnApplicationQuit()
