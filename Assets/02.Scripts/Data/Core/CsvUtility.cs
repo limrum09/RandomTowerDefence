@@ -1,6 +1,12 @@
+﻿using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
+using Unity.VisualScripting;
+using UnityEditor;
+using UnityEditor.Search;
+using UnityEngine;
 
 public static class CsvUtility
 {
@@ -11,33 +17,31 @@ public static class CsvUtility
         if (string.IsNullOrEmpty(csvText))
             return result;
 
-        string[] lines = csvText.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
-        if (lines.Length < 2)
+        List<List<string>> rows = ParseRows(csvText);
+        if (rows.Count < 2)
             return result;
 
-        string[] headers = SplitCsvLine(lines[0]);
+        List<string> headers = rows[0];
+        int headersLen = headers.Count;
 
-        for (int i = 0; i < headers.Length; i++)
+        for (int i = 0; i < headersLen; i++)
         {
             headers[i] = headers[i].Trim().Trim('\uFEFF');
         }
 
-
-        int length = lines.Length;
-        for(int i = 1; i < length; i++)
+        int rowLen = rows.Count;
+        for(int i = 1; i < rowLen; i++)
         {
-            string line = lines[i].Trim();
-            if (string.IsNullOrEmpty(line))
-                continue;
-
-            string[] values = SplitCsvLine(line);
+            List<string> values = rows[i];
             Dictionary<string, string> row = new Dictionary<string, string>();
 
-            int headerLength = headers.Length;
-            for(int j = 0; j < headerLength; j++)
+            for(int j = 0; j < headersLen; j++)
             {
-                string header = headers[j].Trim();
-                string value = j < values.Length ? values[j].Trim() : string.Empty;
+                string header = headers[j];
+                if (string.IsNullOrEmpty(header))
+                    continue;
+
+                string value = j < values.Count ? values[j] : string.Empty; ;
                 row[header] = value;
             }
 
@@ -45,6 +49,78 @@ public static class CsvUtility
         }
 
         return result;
+    }
+
+    private static List<List<string>> ParseRows(string csvText)
+    {
+        List<List<string>> rows = new List<List<string>>();
+        List<string> currentRow = new List<string>();
+        StringBuilder currentField = new StringBuilder();
+
+        bool inQu = false;
+        int csvLen = csvText.Length;
+
+        for(int i = 0; i < csvLen; i++)
+        {
+            char c = csvText[i];
+
+            // 큰 따움표에서 ""는 실체 "문자
+            if (c == '"')
+            {
+                if(inQu && i + 1 < csvLen && csvText[i + 1] == '"')
+                {
+                    currentField.Append('"');
+                    i++;
+                }
+                else
+                {
+                    inQu = !inQu;
+                }
+            }
+            // 필드 종료
+            else if(c == ',' && !inQu)
+            {
+                currentRow.Add(currentField.ToString());
+                currentField.Clear();
+            }
+            // 행 종료
+            else if((c == '\n' || c == '\r') && !inQu)
+            {
+                if (c == '\r' && i + 1 < csvLen && csvText[i + 1] == '\n')
+                    i++;
+
+                currentRow.Add(currentField.ToString());
+                currentField.Clear();
+
+                if (!IsRowEmpty(currentRow))
+                    rows.Add(currentRow);
+
+                currentRow = new List<string>();
+            }
+            else
+            {
+                currentField.Append(c);
+            }
+        }
+
+        currentRow.Add(currentField.ToString());
+
+        if (!IsRowEmpty(currentRow))
+            rows.Add(currentRow);
+
+        return rows;
+    }
+
+    private static bool IsRowEmpty(List<string> row)
+    {
+        int rowLen = row.Count;
+        for(int i = 0; i < rowLen; i++)
+        {
+            if (!string.IsNullOrEmpty(row[i]))
+                return false;
+        }
+
+        return true;
     }
 
     private static string[] SplitCsvLine(string line)

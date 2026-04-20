@@ -1,4 +1,4 @@
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.UI;
@@ -10,7 +10,11 @@ public class StoreSlotUI : MonoBehaviour
     private StoreController owner;
     private Button btn;
     [SerializeField]
-    private Image image;
+    private Image iconImage;
+    [SerializeField]
+    private TextMeshProUGUI towerGradeText;
+    [SerializeField]
+    private TextMeshProUGUI towerPriceText;
     [SerializeField]
     private TextMeshProUGUI tempText;
     public string UID => uid;
@@ -19,11 +23,25 @@ public class StoreSlotUI : MonoBehaviour
         btn = GetComponent<Button>();
         btn.onClick.AddListener(OnClickUI);
     }
-    public void SetStoreSlot(string getUID, StoreController store)
+
+    public void SetStoreCTR(StoreController store) => owner = store;
+
+    public void SetStoreSlot(string getUID)
     {
-        owner = store;
         uid = getUID;
         TowerData data = Managers.TowerData.GetTowerData(getUID);
+
+        if(data == null)
+        {
+            SetStoreSlot();
+            return;
+        }
+
+        int grade = data.grade;
+        towerGradeText.text = grade.ToString();
+
+        int price = data.buyPrice;
+        towerPriceText.text = price.ToString();
 
         string path = data.iconPath;
         
@@ -32,14 +50,19 @@ public class StoreSlotUI : MonoBehaviour
         if (icon != null)
         {
             tempText.text = "";
-            image.gameObject.SetActive(true);
-            image.sprite = icon;
+            iconImage.gameObject.SetActive(true);
+            iconImage.sprite = icon;
         }
         else
         {
             tempText.text = data.towerType.ToString();
-            image.gameObject.SetActive(false);
+            iconImage.gameObject.SetActive(false);
         }
+    }
+
+    public void SetStoreSlot()
+    {
+        tempText.text = "타워를 넣지 못함";
     }
 
     private void OnClickUI()

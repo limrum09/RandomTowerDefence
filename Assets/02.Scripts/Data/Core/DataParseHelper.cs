@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
@@ -7,8 +7,8 @@ public static class DataParseHelper
 {
     public static string GetString(Dictionary<string, string> row, string key, string defaultValue = "")
     {
-        if (row.TryGetValue(key, out string vlaue))
-            return defaultValue;
+        if (row.TryGetValue(key, out string value))
+            return value;
         return defaultValue;
     }
 
@@ -17,7 +17,7 @@ public static class DataParseHelper
         if (row.TryGetValue(key, out string value) && int.TryParse(value, out int result))
             return result;
 
-        Debug.LogWarning("Int ÆÄ½Ì ½ÇÆÐ");
+        Debug.LogWarning("Int íŒŒì‹± ì‹¤íŒ¨");
         return defaultValue; ;
     }
 
@@ -26,7 +26,7 @@ public static class DataParseHelper
         if (row.TryGetValue(key, out string value) && float.TryParse(value, NumberStyles.Float, CultureInfo.InvariantCulture, out float result))
             return result;
 
-        Debug.Log("Float ÆÄ½Ì ½ÇÆÐ");
+        Debug.Log("Float íŒŒì‹± ì‹¤íŒ¨");
         return defaultValue;
     }
 
@@ -41,7 +41,7 @@ public static class DataParseHelper
             if (value == "0") return false;
         }
 
-        Debug.LogWarning("Bool ÆÄ½Ì ½ÇÆÐ");
+        Debug.LogWarning("Bool íŒŒì‹± ì‹¤íŒ¨");
         return defaultValue;
     }
 
@@ -50,7 +50,7 @@ public static class DataParseHelper
         if (row.TryGetValue(key, out string value) && Enum.TryParse(value, true, out T result))
             return result;
 
-        Debug.LogWarning("Enum ÆÄ½Ì ½ÇÆÐ");
+        Debug.LogWarning("Enum íŒŒì‹± ì‹¤íŒ¨");
         return defalutValue;
     }
 
