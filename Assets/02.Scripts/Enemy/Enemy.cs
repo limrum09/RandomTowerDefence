@@ -97,7 +97,7 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        move.IsDead();
+        move.IsDead((int)RewardGold);
         anim.SetBool("Die", true);
 
         Invoke("Dead", 1f);

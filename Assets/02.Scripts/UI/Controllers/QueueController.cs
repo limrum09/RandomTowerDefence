@@ -7,7 +7,7 @@ using UnityEngine;
 public class QueueController : MonoBehaviour
 {
     [SerializeField]
-    private TowerController tempTower;
+    private TowerController towerController;
     [SerializeField]
     private List<QueueSlotUI> slots = new List<QueueSlotUI>();
     private string[] towerUID;
@@ -25,6 +25,11 @@ public class QueueController : MonoBehaviour
             slots[i].Init(this, i);
             slots[i].RemoveSlotUI();
         }
+    }
+
+    public void BindTowerController(TowerController getTowerController)
+    {
+        towerController = getTowerController;
     }
 
     public bool AddTower(string uid)
@@ -70,6 +75,6 @@ public class QueueController : MonoBehaviour
         if (!towerUID.Contains(uid))
             return;
 
-        tempTower.BeginBuildTower(uid, index, this);
+        towerController.BeginBuildTower(uid, index, this);
     }
 }
