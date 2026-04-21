@@ -43,9 +43,13 @@ public class EnemyMove : MonoBehaviour
         RecalculatePath();
     }
 
-    public void IsDead()
+    public void IsDead(int rewardGold)
     {
         isMove = false;
+
+        stage.RunSession.AddGold(rewardGold);
+        stage.RunSession.AddkillCount(1);
+        stage.RegisterDeadEnemy();
     }
 
     private void RecalculatePath()
@@ -56,11 +60,11 @@ public class EnemyMove : MonoBehaviour
 
         if (currentPath == null || currentPath.Count == 0)
         {
-            Debug.LogWarning("°æ·Î¸¦ Ã£Áö ¸øÇß½À´Ï´Ù.");
+            Debug.LogWarning("ê²½ë¡œë¥¼ ì°¾ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.");
             return;
         }
 
-        Debug.Log($"°æ·Î ±æÀÌ : {currentPath.Count}");
+        Debug.Log($"ê²½ë¡œ ê¸¸ì´ : {currentPath.Count}");
     }
 
     private void MoveAlongPath()
@@ -82,14 +86,15 @@ public class EnemyMove : MonoBehaviour
 
             if (pathIndex >= currentPath.Count)
             {
+                stage.RegisterReachedEnemy();
                 Destroy(gameObject);
-                Debug.Log("ÀûÀÌ ¸ñÇ¥ ÁöÁ¡¿¡ µµÂøÇß½À´Ï´Ù.");
+                Debug.Log("ì ì´ ëª©í‘œ ì§€ì ì— ë„ì°©í–ˆìŠµë‹ˆë‹¤.");
             }
         }
     }
     private void OnDestroy()
     {
-        stage.RegisterReachedEnemy();
+        
     }
 
     private void OnDrawGizmos()

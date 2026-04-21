@@ -1,8 +1,9 @@
 using System.Security.Cryptography;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TowerUIController : MonoBehaviour
+public class StageUIController : MonoBehaviour
 {
     [Header("References")]
     [SerializeField]
@@ -13,10 +14,17 @@ public class TowerUIController : MonoBehaviour
     private TowerStatUpgradeView statUpgradeView;
     [SerializeField]
     private TowerActionMenuView actionMenuView;
+    [SerializeField]
+    private SessionInfoView sessionView;
+
+    [Header("Controllers")]
+    [SerializeField]
+    private QueueController queueCtr;
 
     private TowerGradeUpgradePresenter gradePresenter;
     private TowerActionMenuPresenter actionMenuPresenter;
     private TowerStatUpgradePresernter statPresenter;
+    private SessionInfoPresenter sessionInfoPresenter;
 
     private Tower selectedTower;
 
@@ -25,6 +33,7 @@ public class TowerUIController : MonoBehaviour
         gradePresenter = new TowerGradeUpgradePresenter(gradeUpgradeView);
         actionMenuPresenter = new TowerActionMenuPresenter(actionMenuView);
         statPresenter = new TowerStatUpgradePresernter(statUpgradeView);
+        sessionInfoPresenter = new SessionInfoPresenter(sessionView);
 
         gradePresenter.onClickNormalUpgrade += OnTowerGradeNormalUpgrade;
         gradePresenter.onClickPremiumUpgrade += OnTowerGradePreminumUpgrade;
@@ -35,6 +44,13 @@ public class TowerUIController : MonoBehaviour
 
         statPresenter.onClickDamageUpgrade += OnTowerStatDamageUpgrade;
         statPresenter.onClickAttackSpeedUpgrade += OnTowerStatAttackSpeedUpgrade;
+
+        towerCtr.OnTowerSelectCleared += ClearSelection;
+        towerCtr.OnTowerSelected += SetSelectedTower;
+        towerCtr.OnShowGradeUpgrade += OnClickGradeUpgrade;
+        towerCtr.OnShowStatUpgrade += OnClickStatUpgrade;
+
+        queueCtr.BindTowerController(towerCtr);
 
         gradePresenter.HideModel();
         actionMenuPresenter.Hide();
@@ -52,6 +68,18 @@ public class TowerUIController : MonoBehaviour
 
         statPresenter.onClickDamageUpgrade -= OnTowerStatDamageUpgrade;
         statPresenter.onClickAttackSpeedUpgrade -= OnTowerStatAttackSpeedUpgrade;
+
+        towerCtr.OnTowerSelectCleared -= ClearSelection;
+        towerCtr.OnTowerSelected -= SetSelectedTower;
+        towerCtr.OnShowGradeUpgrade -= OnClickGradeUpgrade;
+        towerCtr.OnShowStatUpgrade -= OnClickStatUpgrade;
+
+        sessionInfoPresenter.UnBindAction();
+    }
+
+    public void BindSessionDataManager(RunSessionDataManager getRunSession)
+    {
+        sessionInfoPresenter.GetRunSessionDatamanager(getRunSession);
     }
 
     public void SetSelectedTower(Tower getTower)

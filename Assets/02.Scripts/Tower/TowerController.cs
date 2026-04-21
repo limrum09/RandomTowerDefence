@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
@@ -18,20 +19,13 @@ public class TowerController : MonoBehaviour
     [SerializeField]
     private GameObject towers;
 
-    [Header("Viewer")]
-    [SerializeField]
-    private TowerGradeUpgradeView towerGradeUpgradeView;
-    [SerializeField]
-    private TowerActionMenuView towerActionMenuView;
-
-    [SerializeField]
-    private TowerUIController towerUICtr;
+    public event Action<Tower> OnTowerSelected;
+    public event Action OnTowerSelectCleared;
+    public event Action<Tower> OnShowGradeUpgrade;
+    public event Action<Tower> OnShowStatUpgrade;
 
     private readonly List<RaycastResult> raycastResults = new List<RaycastResult>();
-    /*// 타워 상세 UI 제어
-    private TowerGradeUpgradePresenter towerGradeUpgradePreseter;
-    // 타워 클릭시 보이는 버튼 제어
-    private TowerActionMenuPresenter towerActionMenuPresenter;*/
+
     // StageManager의 그리드 참조
     private GridManager grid;
 
@@ -72,6 +66,10 @@ public class TowerController : MonoBehaviour
         needupgradeTowerCnt = 3;
     }
 
+    private void OnDestroy()
+    {
+
+    }
 
     /// <summary>
     /// 현재 상태에 따라 타워 이동, 타워 설치, 타워 성택 입력을 처리
@@ -104,21 +102,21 @@ public class TowerController : MonoBehaviour
             if (Input.GetKeyDown(Managers.InputKey.GetKeyCode(InputAction.MoveTower)))
             {
                 SetTowerMoveMode();
-                towerUICtr.ClearSelection();
+                OnTowerSelectCleared?.Invoke();
                 return;
             }
 
             if (Input.GetKeyDown(Managers.InputKey.GetKeyCode(InputAction.ShowGradeUpgradeTowerView)))
             {
                 isGradeUpgradeMode = true;
-                towerUICtr.OnClickGradeUpgrade(selectedTower);
+                OnShowGradeUpgrade?.Invoke(selectedTower);
                 return;
             }
 
             if (Input.GetKeyDown(Managers.InputKey.GetKeyCode(InputAction.ShowStatUpgradeTowerView)))
             {
                 isStatUpgradeMode = true;
-                towerUICtr.OnClickStatUpgrade(selectedTower);
+                OnShowStatUpgrade?.Invoke(selectedTower);
                 return;
             }
 
@@ -255,7 +253,7 @@ public class TowerController : MonoBehaviour
 
         Debug.Log("타워 있음");
 
-        towerUICtr.ClearSelection();
+        OnTowerSelectCleared?.Invoke();
         isGradeUpgradeMode = false;
         isStatUpgradeMode = false;
 
@@ -266,7 +264,7 @@ public class TowerController : MonoBehaviour
         selectedTower.ShowAttackRange(true);
         selectedTowerCell = move.GetTowerPosition();
 
-        towerUICtr.SetSelectedTower(selectedTower);
+        OnTowerSelected?.Invoke(selectedTower);
 
         Debug.Log("타워 이동 입력 : ");
     }
@@ -348,7 +346,7 @@ public class TowerController : MonoBehaviour
         // 필요 시 간세 UI도 함께 닫음
         if (hideView)
         {
-            towerUICtr.ClearSelection();
+            OnTowerSelectCleared?.Invoke();
         }            
     }
 
@@ -539,7 +537,7 @@ public class TowerController : MonoBehaviour
 
         string[] nextTowerUIDs = Managers.TowerData.GetTowerGradeUID(towers[0].Grade + 1);
         int cnt = nextTowerUIDs.Length;
-        int idx = Random.Range(0, cnt - 1);
+        int idx = UnityEngine.Random.Range(0, cnt - 1);
 
         string buildTowerUID = nextTowerUIDs[idx];
 

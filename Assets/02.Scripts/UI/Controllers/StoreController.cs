@@ -1,14 +1,24 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class StoreController : MonoBehaviour
 {
     [SerializeField]
+    private StageManager stage;
+    [SerializeField]
     private List<StoreSlotUI> slots = new List<StoreSlotUI>();
+    [SerializeField]
+    private TextMeshProUGUI currentGoldText;
     [SerializeField]
     private QueueController tempQueue;
 
     private int len;
+
+    private void OnDestroy()
+    {
+        stage.RunSession.OnGoldAmountChanged -= ChangedGold;
+    }
     private void Start()
     {
         len = slots.Count;
@@ -18,6 +28,9 @@ public class StoreController : MonoBehaviour
         }
 
         RerollStoreUI(0);
+
+        stage.RunSession.OnGoldAmountChanged += ChangedGold;
+        ChangedGold(stage.RunSession.SessionState.Gold);
     }
 
     private void SetStoreUI()
@@ -43,13 +56,25 @@ public class StoreController : MonoBehaviour
         }
     }
 
-    public void RerollStoreUI(int pay)
+    public void ChangedGold(int value)
     {
+        currentGoldText.text = value.ToString();
+    }
+
+    public void RerollStoreUI(int amount)
+    {
+        stage.RunSession.UsingGold(amount);
         SetStoreUI();
     }
 
     public void OnClickSlotUI(string uid)
     {
         tempQueue.AddTower(uid);
+    }
+
+    public void BuyEXP(int amount)
+    {
+        if(stage.RunSession.UsingGold(amount))
+            stage.RunSession.AddExp(2);
     }
 }

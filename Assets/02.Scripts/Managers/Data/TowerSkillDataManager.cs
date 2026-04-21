@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -106,7 +106,6 @@ public class TowerSkillDataManager
                 EffectUnit, row.Duration, row.BossApply, row.BossModifier, row.Icon_UID
             );
 
-            Debug.Log("스킬 데이터 저장 : " + data.towerSkillUID);
             skillDatas[data.towerSkillUID] = data;
         }
     }
@@ -119,7 +118,6 @@ public class TowerSkillDataManager
 
     public TowerSkillData GetTowerSkillData(string uid)
     {
-        Debug.Log("Tower Skill Data : " + uid);
         if (skillDatas.TryGetValue(uid, out TowerSkillData data))
             return data;
 
