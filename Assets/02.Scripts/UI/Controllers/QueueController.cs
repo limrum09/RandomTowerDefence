@@ -36,7 +36,7 @@ public class QueueController : MonoBehaviour
     {
         for(int i = 0; i < length; i++)
         {
-            if (towerUID[i] == string.Empty)
+            if (slots[i].IsQueueEmpty)
             {
                 towerUID[i] = uid;
                 slots[i].SetSlotUI(uid);

@@ -1,0 +1,580 @@
+{
+  "datas": [
+    {
+      "Tower_UID": "T0011",
+      "Tower_Grade": 1,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 10,
+      "Base_Cost": 80,
+      "Increase_Cost": 40
+    },
+    {
+      "Tower_UID": "T0011",
+      "Tower_Grade": 1,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.05,
+      "Base_Cost": 100,
+      "Increase_Cost": 50
+    },
+    {
+      "Tower_UID": "T0012",
+      "Tower_Grade": 2,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 15,
+      "Base_Cost": 80,
+      "Increase_Cost": 40
+    },
+    {
+      "Tower_UID": "T0012",
+      "Tower_Grade": 2,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.05,
+      "Base_Cost": 100,
+      "Increase_Cost": 50
+    },
+    {
+      "Tower_UID": "T0013",
+      "Tower_Grade": 3,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 20,
+      "Base_Cost": 80,
+      "Increase_Cost": 40
+    },
+    {
+      "Tower_UID": "T0013",
+      "Tower_Grade": 3,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.07,
+      "Base_Cost": 100,
+      "Increase_Cost": 50
+    },
+    {
+      "Tower_UID": "T0014",
+      "Tower_Grade": 4,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 25,
+      "Base_Cost": 80,
+      "Increase_Cost": 40
+    },
+    {
+      "Tower_UID": "T0014",
+      "Tower_Grade": 4,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.07,
+      "Base_Cost": 100,
+      "Increase_Cost": 50
+    },
+    {
+      "Tower_UID": "T0015",
+      "Tower_Grade": 5,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 30,
+      "Base_Cost": 80,
+      "Increase_Cost": 40
+    },
+    {
+      "Tower_UID": "T0015",
+      "Tower_Grade": 5,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.1,
+      "Base_Cost": 100,
+      "Increase_Cost": 50
+    },
+    {
+      "Tower_UID": "T0016",
+      "Tower_Grade": 6,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 40,
+      "Base_Cost": 80,
+      "Increase_Cost": 40
+    },
+    {
+      "Tower_UID": "T0016",
+      "Tower_Grade": 6,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.1,
+      "Base_Cost": 100,
+      "Increase_Cost": 50
+    },
+    {
+      "Tower_UID": "T0021",
+      "Tower_Grade": 1,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 5,
+      "Base_Cost": 100,
+      "Increase_Cost": 60
+    },
+    {
+      "Tower_UID": "T0021",
+      "Tower_Grade": 1,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.08,
+      "Base_Cost": 150,
+      "Increase_Cost": 80
+    },
+    {
+      "Tower_UID": "T0022",
+      "Tower_Grade": 2,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 8,
+      "Base_Cost": 100,
+      "Increase_Cost": 60
+    },
+    {
+      "Tower_UID": "T0022",
+      "Tower_Grade": 2,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.1,
+      "Base_Cost": 150,
+      "Increase_Cost": 80
+    },
+    {
+      "Tower_UID": "T0023",
+      "Tower_Grade": 3,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 12,
+      "Base_Cost": 100,
+      "Increase_Cost": 60
+    },
+    {
+      "Tower_UID": "T0023",
+      "Tower_Grade": 3,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.12,
+      "Base_Cost": 150,
+      "Increase_Cost": 80
+    },
+    {
+      "Tower_UID": "T0024",
+      "Tower_Grade": 4,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 15,
+      "Base_Cost": 100,
+      "Increase_Cost": 60
+    },
+    {
+      "Tower_UID": "T0024",
+      "Tower_Grade": 4,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.15,
+      "Base_Cost": 150,
+      "Increase_Cost": 80
+    },
+    {
+      "Tower_UID": "T0025",
+      "Tower_Grade": 5,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 20,
+      "Base_Cost": 100,
+      "Increase_Cost": 60
+    },
+    {
+      "Tower_UID": "T0025",
+      "Tower_Grade": 5,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.18,
+      "Base_Cost": 150,
+      "Increase_Cost": 80
+    },
+    {
+      "Tower_UID": "T0026",
+      "Tower_Grade": 6,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 25,
+      "Base_Cost": 100,
+      "Increase_Cost": 60
+    },
+    {
+      "Tower_UID": "T0026",
+      "Tower_Grade": 6,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.2,
+      "Base_Cost": 150,
+      "Increase_Cost": 80
+    },
+    {
+      "Tower_UID": "T0031",
+      "Tower_Grade": 1,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 30,
+      "Base_Cost": 150,
+      "Increase_Cost": 100
+    },
+    {
+      "Tower_UID": "T0031",
+      "Tower_Grade": 1,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.01,
+      "Base_Cost": 200,
+      "Increase_Cost": 150
+    },
+    {
+      "Tower_UID": "T0032",
+      "Tower_Grade": 2,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 45,
+      "Base_Cost": 150,
+      "Increase_Cost": 100
+    },
+    {
+      "Tower_UID": "T0032",
+      "Tower_Grade": 2,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.01,
+      "Base_Cost": 200,
+      "Increase_Cost": 150
+    },
+    {
+      "Tower_UID": "T0033",
+      "Tower_Grade": 3,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 60,
+      "Base_Cost": 150,
+      "Increase_Cost": 100
+    },
+    {
+      "Tower_UID": "T0033",
+      "Tower_Grade": 3,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.02,
+      "Base_Cost": 200,
+      "Increase_Cost": 150
+    },
+    {
+      "Tower_UID": "T0034",
+      "Tower_Grade": 4,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 80,
+      "Base_Cost": 150,
+      "Increase_Cost": 100
+    },
+    {
+      "Tower_UID": "T0034",
+      "Tower_Grade": 4,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0,
+      "Base_Cost": 200,
+      "Increase_Cost": 150
+    },
+    {
+      "Tower_UID": "T0035",
+      "Tower_Grade": 5,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 100,
+      "Base_Cost": 150,
+      "Increase_Cost": 100
+    },
+    {
+      "Tower_UID": "T0035",
+      "Tower_Grade": 5,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.03,
+      "Base_Cost": 20,
+      "Increase_Cost": 150
+    },
+    {
+      "Tower_UID": "T0036",
+      "Tower_Grade": 6,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 150,
+      "Base_Cost": 150,
+      "Increase_Cost": 100
+    },
+    {
+      "Tower_UID": "T0036",
+      "Tower_Grade": 6,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.03,
+      "Base_Cost": 200,
+      "Increase_Cost": 150
+    },
+    {
+      "Tower_UID": "T0041",
+      "Tower_Grade": 1,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 20,
+      "Base_Cost": 120,
+      "Increase_Cost": 100
+    },
+    {
+      "Tower_UID": "T0041",
+      "Tower_Grade": 1,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.04,
+      "Base_Cost": 120,
+      "Increase_Cost": 150
+    },
+    {
+      "Tower_UID": "T0042",
+      "Tower_Grade": 2,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 30,
+      "Base_Cost": 120,
+      "Increase_Cost": 100
+    },
+    {
+      "Tower_UID": "T0042",
+      "Tower_Grade": 2,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.05,
+      "Base_Cost": 120,
+      "Increase_Cost": 150
+    },
+    {
+      "Tower_UID": "T0043",
+      "Tower_Grade": 3,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 40,
+      "Base_Cost": 120,
+      "Increase_Cost": 100
+    },
+    {
+      "Tower_UID": "T0043",
+      "Tower_Grade": 3,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.06,
+      "Base_Cost": 120,
+      "Increase_Cost": 150
+    },
+    {
+      "Tower_UID": "T0044",
+      "Tower_Grade": 4,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 50,
+      "Base_Cost": 120,
+      "Increase_Cost": 100
+    },
+    {
+      "Tower_UID": "T0044",
+      "Tower_Grade": 4,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.07,
+      "Base_Cost": 120,
+      "Increase_Cost": 150
+    },
+    {
+      "Tower_UID": "T0045",
+      "Tower_Grade": 5,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 65,
+      "Base_Cost": 120,
+      "Increase_Cost": 100
+    },
+    {
+      "Tower_UID": "T0045",
+      "Tower_Grade": 5,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.08,
+      "Base_Cost": 120,
+      "Increase_Cost": 150
+    },
+    {
+      "Tower_UID": "T0046",
+      "Tower_Grade": 6,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 80,
+      "Base_Cost": 120,
+      "Increase_Cost": 100
+    },
+    {
+      "Tower_UID": "T0046",
+      "Tower_Grade": 6,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.1,
+      "Base_Cost": 120,
+      "Increase_Cost": 150
+    },
+    {
+      "Tower_UID": "T0051",
+      "Tower_Grade": 1,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 50,
+      "Base_Cost": 250,
+      "Increase_Cost": 200
+    },
+    {
+      "Tower_UID": "T0051",
+      "Tower_Grade": 1,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.05,
+      "Base_Cost": 300,
+      "Increase_Cost": 250
+    },
+    {
+      "Tower_UID": "T0052",
+      "Tower_Grade": 2,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 70,
+      "Base_Cost": 250,
+      "Increase_Cost": 200
+    },
+    {
+      "Tower_UID": "T0052",
+      "Tower_Grade": 2,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.06,
+      "Base_Cost": 300,
+      "Increase_Cost": 250
+    },
+    {
+      "Tower_UID": "T0053",
+      "Tower_Grade": 3,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 90,
+      "Base_Cost": 250,
+      "Increase_Cost": 200
+    },
+    {
+      "Tower_UID": "T0053",
+      "Tower_Grade": 3,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.07,
+      "Base_Cost": 300,
+      "Increase_Cost": 250
+    },
+    {
+      "Tower_UID": "T0054",
+      "Tower_Grade": 4,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 120,
+      "Base_Cost": 250,
+      "Increase_Cost": 200
+    },
+    {
+      "Tower_UID": "T0054",
+      "Tower_Grade": 4,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.08,
+      "Base_Cost": 300,
+      "Increase_Cost": 250
+    },
+    {
+      "Tower_UID": "T0055",
+      "Tower_Grade": 5,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 160,
+      "Base_Cost": 250,
+      "Increase_Cost": 200
+    },
+    {
+      "Tower_UID": "T0055",
+      "Tower_Grade": 5,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.1,
+      "Base_Cost": 300,
+      "Increase_Cost": 250
+    },
+    {
+      "Tower_UID": "T0056",
+      "Tower_Grade": 6,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 220,
+      "Base_Cost": 250,
+      "Increase_Cost": 200
+    },
+    {
+      "Tower_UID": "T0056",
+      "Tower_Grade": 1,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.15,
+      "Base_Cost": 300,
+      "Increase_Cost": 250
+    },
+    {
+      "Tower_UID": "T0061",
+      "Tower_Grade": 1,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 8,
+      "Base_Cost": 100,
+      "Increase_Cost": 60
+    },
+    {
+      "Tower_UID": "T0061",
+      "Tower_Grade": 1,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.02,
+      "Base_Cost": 180,
+      "Increase_Cost": 120
+    },
+    {
+      "Tower_UID": "T0062",
+      "Tower_Grade": 2,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 12,
+      "Base_Cost": 100,
+      "Increase_Cost": 60
+    },
+    {
+      "Tower_UID": "T0062",
+      "Tower_Grade": 2,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.02,
+      "Base_Cost": 180,
+      "Increase_Cost": 120
+    },
+    {
+      "Tower_UID": "T0063",
+      "Tower_Grade": 3,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 16,
+      "Base_Cost": 100,
+      "Increase_Cost": 60
+    },
+    {
+      "Tower_UID": "T0063",
+      "Tower_Grade": 3,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.03,
+      "Base_Cost": 180,
+      "Increase_Cost": 120
+    },
+    {
+      "Tower_UID": "T0064",
+      "Tower_Grade": 4,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 20,
+      "Base_Cost": 100,
+      "Increase_Cost": 60
+    },
+    {
+      "Tower_UID": "T0064",
+      "Tower_Grade": 4,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.03,
+      "Base_Cost": 180,
+      "Increase_Cost": 120
+    },
+    {
+      "Tower_UID": "T0065",
+      "Tower_Grade": 5,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 25,
+      "Base_Cost": 100,
+      "Increase_Cost": 60
+    },
+    {
+      "Tower_UID": "T0065",
+      "Tower_Grade": 5,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.04,
+      "Base_Cost": 180,
+      "Increase_Cost": 120
+    },
+    {
+      "Tower_UID": "T0066",
+      "Tower_Grade": 6,
+      "Upgrade_Type": "Damge",
+      "Increase_Value": 35,
+      "Base_Cost": 100,
+      "Increase_Cost": 60
+    },
+    {
+      "Tower_UID": "T0066",
+      "Tower_Grade": 6,
+      "Upgrade_Type": "Speed",
+      "Increase_Value": 0.05,
+      "Base_Cost": 180,
+      "Increase_Cost": 120
+    }
+  ]
+}

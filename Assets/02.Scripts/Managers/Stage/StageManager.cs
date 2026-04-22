@@ -21,9 +21,11 @@ public class StageManager : MonoBehaviour
     [SerializeField]
     private Transform goalPoint;
 
-    [Header("Stage UI Controller")]
+    [Header("Controllers")]
     [SerializeField]
     private StageUIController stageUICtr;
+    [SerializeField]
+    private ItemSlotController itemCtr;
 
     [Header("Temp Settings Value")]
     [SerializeField]
@@ -43,11 +45,15 @@ public class StageManager : MonoBehaviour
     public GridManager Grid { get; private set; }
     public PathFinder Path { get; private set; }
     private RunSessionDataManager sessionManager;
+    private RunEffectDataManager effectDataManager;
+    private RunStatUpgradeManager statUpgradeManager;
 
     public Vector2Int SpawnPos => Grid.SpawnPos;
     public Vector2Int GoalPos => Grid.GoalPos;
 
     public RunSessionDataManager RunSession => sessionManager;
+    public RunEffectDataManager EffectDataManager => effectDataManager;
+    public RunStatUpgradeManager StatUpgradeManager => statUpgradeManager;
     public StageUIController StageUICtr => stageUICtr;
 
     private void Awake()
@@ -58,15 +64,37 @@ public class StageManager : MonoBehaviour
         sessionManager = new RunSessionDataManager();
         sessionManager.Init(1, life, increaseGold, increaseFreeRollCnt, increaseFreeObstacleCnt);
 
+        effectDataManager = new RunEffectDataManager();
+        statUpgradeManager = new RunStatUpgradeManager();
+
         Path = new PathFinder(Grid);
     }
     void Start()
     {
-        Grid.InitializeGrid(gridWidth, gridHeight, cellSize, mapPlane);
         SetSettings();
 
-        StageUICtr.BindSessionDataManager(sessionManager);
+        if(itemCtr != null)
+        {
+            itemCtr.OnItemAdd += ItemAddHandler;
+            itemCtr.OnItemSell += ItemSellHander;
+        }
+
+        if(stageUICtr != null)
+        {
+            StageUICtr.BindSessionDataManager(sessionManager);
+            stageUICtr.OnTowerStatUpgrade += TowerStatUpgradeHandler;
+        }
     }
+
+    private void OnDestroy()
+    {
+        if(itemCtr != null)
+        {
+            itemCtr.OnItemAdd -= ItemAddHandler;
+            itemCtr.OnItemSell -= ItemSellHander;
+        }
+    }
+
     public void StageStart()
     {
         if (isStagePlaying)
@@ -134,5 +162,44 @@ public class StageManager : MonoBehaviour
     public void UserDead()
     {
 
+    }
+
+    public void TowerStatUpgradeHandler(Tower tower, UpgradeType type)
+    {
+        TowerSessionUpgradeData upgradeData = Managers.SessionTowerUpgrade.GetUpgradeStepData(tower.TowerUID, type);
+
+        if (upgradeData != null)
+            return;
+
+        if (type == UpgradeType.Damge)
+            DamageStatUpgrade(upgradeData, tower);
+        else if(type == UpgradeType.Speed)
+        {
+
+        }        
+    }
+
+    private void DamageStatUpgrade(TowerSessionUpgradeData upgradeData,Tower tower)
+    {
+        int cost = upgradeData.baseCost + (upgradeData.increaseCost * statUpgradeManager.GetAtkDamageStep(tower.Type));
+        if (sessionManager.SessionState.Gold < cost)
+            return;
+
+        sessionManager.AddGold(cost);
+
+        statUpgradeManager.AddStatAtkDamage(tower.Type, 1);
+    }
+
+    public void ItemAddHandler(ItemData item)
+    {
+        if(item.itemOption == ItemOptions.AtkDamageUP)
+            statUpgradeManager.AddItemAtkDamage(item.scopeRange, item.value);
+        else if(item.itemOption == ItemOptions.AtkSpeedUp)
+            statUpgradeManager.AddItemAtkSpeed(item.scopeRange, item.value);
+    }
+
+    public void ItemSellHander(ItemData item, int index)
+    {
+        sessionManager.AddGold(item.salePrice);
     }
 }

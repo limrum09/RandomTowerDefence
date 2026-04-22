@@ -11,7 +11,9 @@ public class StoreController : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI currentGoldText;
     [SerializeField]
-    private QueueController tempQueue;
+    private QueueController queueSlots;
+    [SerializeField]
+    private ItemSlotController itemSlots;
 
     private int len;
 
@@ -39,20 +41,45 @@ public class StoreController : MonoBehaviour
 
         for (int i = 0; i < len; i++)
         {
-            int ranGrade = Random.Range(1, 5);
-            int ranTower = Random.Range(0, 5);
+            int ran = Random.Range(0, 5);
 
-            string[] tempTower = Managers.TowerData.GetTowerGradeUID(ranGrade);
-
-            if(tempTower.Length == 6)
-            {
-                string selectTower = tempTower[ranTower];
-                slots[i].SetStoreSlot(selectTower);
-            }
+            if (ran <= 3)
+                SlotGetTowerUID(i);
             else
-            {
-                slots[i].SetStoreSlot();
-            }
+                SlotGetItemUID(i);
+        }
+    }
+
+    private void SlotGetTowerUID(int i)
+    {
+        int ranGrade = Random.Range(1, 5);
+        int ranTower = Random.Range(0, 5);
+
+        string[] tempTower = Managers.TowerData.GetTowerGradeUID(ranGrade);
+
+        if (tempTower.Length == 6)
+        {
+            string selectTower = tempTower[ranTower];
+            slots[i].SetStoreSlot(selectTower);
+        }
+        else
+        {
+            slots[i].SetStoreSlot();
+        }
+    }
+
+    private void SlotGetItemUID(int i)
+    {
+        int uidIndex = Random.Range(0, 18);
+        string getUID = Managers.Item.GetItemUID(uidIndex);
+
+        if (!string.IsNullOrEmpty(getUID))
+        {
+            slots[i].SetStoreSlot(getUID);
+        }
+        else
+        {
+            slots[i].SetStoreSlot();
         }
     }
 
@@ -67,9 +94,14 @@ public class StoreController : MonoBehaviour
         SetStoreUI();
     }
 
-    public void OnClickSlotUI(string uid)
+    public void OnClickTowerSlotUI(string uid)
     {
-        tempQueue.AddTower(uid);
+        queueSlots.AddTower(uid);
+    }
+
+    public void OnClickItemSlotUI(string uid)
+    {
+        itemSlots.AddItemSlot(uid);
     }
 
     public void BuyEXP(int amount)
