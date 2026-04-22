@@ -6,8 +6,8 @@ public class TowerStatUpgradePresernter
     private Tower model;
     private TowerStatUpgradeView view;
 
-    public event Action onClickDamageUpgrade;
-    public event Action onClickAttackSpeedUpgrade;
+    public event Action<Tower> onClickDamageUpgrade;
+    public event Action<Tower> onClickAttackSpeedUpgrade;
     public TowerStatUpgradePresernter(TowerStatUpgradeView getView)
     {
         view = getView;
@@ -19,6 +19,7 @@ public class TowerStatUpgradePresernter
     public void SetModel(Tower getModel)
     {
         model = getModel;
+        string modelUid = model.TowerUID;
 
         view.SetIconImage(model.IconPath);
         view.SetTowerName(model.IconPath);
@@ -60,7 +61,7 @@ public class TowerStatUpgradePresernter
         if (model == null)
             return;
 
-        onClickDamageUpgrade?.Invoke();
+        onClickDamageUpgrade?.Invoke(model);
     }
 
     public void OnClickAttakSpeedUpgrade()
@@ -68,6 +69,6 @@ public class TowerStatUpgradePresernter
         if (model == null) 
             return;
 
-        onClickAttackSpeedUpgrade?.Invoke();
+        onClickAttackSpeedUpgrade?.Invoke(model);
     }
 }

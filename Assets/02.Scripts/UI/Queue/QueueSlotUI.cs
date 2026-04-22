@@ -14,13 +14,13 @@ public class QueueSlotUI : MonoBehaviour
     private int slotIndex;
     private TowerData data;
     private QueueController owner;
+
+    public bool IsQueueEmpty => string.IsNullOrEmpty(towerUID);
     private void Refresh()
     {
-        bool isEmpty = string.IsNullOrEmpty(towerUID);
+        icon.gameObject.SetActive(!IsQueueEmpty);
 
-        icon.gameObject.SetActive(!isEmpty);
-
-        if (!isEmpty)
+        if (!IsQueueEmpty)
         {
             data = Managers.TowerData.GetTowerData(towerUID);            
 

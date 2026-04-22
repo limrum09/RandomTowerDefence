@@ -139,8 +139,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uid: 
   iconImage: {fileID: 399008913276267947}
-  towerGradeText: {fileID: 6432957795183874884}
-  towerPriceText: {fileID: 6109239810476668896}
+  gradeText: {fileID: 6432957795183874884}
+  priceText: {fileID: 6109239810476668896}
   tempText: {fileID: 7053073264352579528}
 --- !u!1 &2521053810077184004
 GameObject:
@@ -209,8 +209,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f1807beb9b1369a48826315623384e6c, type: 2}
+  m_sharedMaterial: {fileID: 1978062938476995478, guid: f1807beb9b1369a48826315623384e6c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -240,7 +240,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -466,7 +466,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -40, y: -40}
+  m_SizeDelta: {x: -30, y: -30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4092189325556781663
 CanvasRenderer:
