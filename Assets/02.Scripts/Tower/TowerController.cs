@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Net.NetworkInformation;
-using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -23,16 +21,13 @@ public class TowerController : MonoBehaviour
     public event Action OnTowerSelectCleared;
     public event Action<Tower> OnShowGradeUpgrade;
     public event Action<Tower> OnShowStatUpgrade;
+    public event Action<int> OnGoldInterection;
 
     private readonly List<RaycastResult> raycastResults = new List<RaycastResult>();
 
+    private FieldTowerManager fieldTowerManager;
     // StageManager의 그리드 참조
     private GridManager grid;
-
-    // 필드에 배치된 타워 목록
-    private List<Tower> fieldTowers = new List<Tower>();
-    // 그리드 기준 타워 배치 상태 저장
-    private Tower[,] towerMap;
     // 현재 선택된 타워
     private Tower selectedTower;
     // 선택된 타워의 현제 셀 위치
@@ -56,13 +51,15 @@ public class TowerController : MonoBehaviour
 
     private void Start()
     {
+        fieldTowerManager = stage.FieldTowerManager;
+        grid = stage.Grid;
         selectedTowerUID = string.Empty;
         isBuildMode = false;
-        grid = stage.Grid;
+
         isTowerMove = false;
         isGradeUpgradeMode = false;
         isStatUpgradeMode = false;
-        towerMap = new Tower[grid.GridWidth, grid.GridHeight];
+
         needupgradeTowerCnt = 3;
     }
 
@@ -180,6 +177,7 @@ public class TowerController : MonoBehaviour
     {
         if (!CanPlaceTower(cell))
             return false;
+
         ClearSelectedTower();
 
         Vector3 worldPos = grid.CellToWorldCenter(cell.x, cell.y);
@@ -193,7 +191,7 @@ public class TowerController : MonoBehaviour
             return false;
         }
 
-        tower.Init(towerUID, fieldTowers.Count);
+        tower.Init(towerUID, fieldTowerManager.GetTotalTowerCount(), stage.StatUpgradeManager);
 
         TowerMove towerMove = towerObj.GetComponent<TowerMove>();
         if (towerMove != null)
@@ -202,8 +200,13 @@ public class TowerController : MonoBehaviour
             towerMove.SetTowerPosition(cell);
         }
 
-        towerMap[cell.x, cell.y] = tower;
-        fieldTowers.Add(tower);
+        bool registerd = fieldTowerManager.RegisterTower(tower, cell);
+
+        if (!registerd)
+        {
+            Destroy(towerObj);
+            return false;
+        }
 
         return true;
     }
@@ -290,25 +293,39 @@ public class TowerController : MonoBehaviour
             return;
         }
 
-        if (towerMap[selectedTowerCell.x, selectedTowerCell.y] != selectedTower)
+        if (fieldTowerManager.GetTower(selectedTowerCell) != selectedTower)
         {
             EndMoveMode();
             return;
         }
 
         // 타워가 있다면 서로 위치 교환
-        if (HasTower(cell))
+        if (fieldTowerManager.HasTower(cell))
         {
             Debug.Log("타워가 있음");
 
-            Tower tempTower = towerMap[cell.x, cell.y];
-            tempTower.GetComponent<TowerMove>().SetTowerPosition(selectedTowerCell);
-            towerMap[cell.x, cell.y] = selectedTower;
+            Tower tempTower = fieldTowerManager.GetTower(cell);
+            if(tempTower == null)
+            {
+                EndMoveMode();
+                return;
+            }
 
-            selectedTower.GetComponent<TowerMove>().SetTowerPosition(cell);
-            towerMap[selectedTowerCell.x, selectedTowerCell.y] = tempTower;
+            TowerMove tempMove = tempTower.GetComponent<TowerMove>();
+            TowerMove selectedMove = selectedTower.GetComponent<TowerMove>();
 
+            if (tempMove == null || selectedMove == null)
+            {
+                EndMoveMode();
+                return;
+            }
+
+            tempMove.SetTowerPosition(selectedTowerCell);
+            selectedMove.SetTowerPosition(cell);
+
+            fieldTowerManager.SwapTower(selectedTowerCell, cell);
             EndMoveMode();
+
             return;
         }
 
@@ -321,8 +338,7 @@ public class TowerController : MonoBehaviour
 
         move.SetTowerPosition(cell);
 
-        towerMap[cell.x, cell.y] = selectedTower;
-        towerMap[selectedTowerCell.x, selectedTowerCell.y] = null;
+        fieldTowerManager.MoveTower(selectedTower, selectedTowerCell, cell);
 
         EndMoveMode();
 
@@ -454,57 +470,18 @@ public class TowerController : MonoBehaviour
         return false;
     }
 
-    private bool TryGetUpgradeTowers(out List<Tower> towers, out List<TowerMove> moves)
+    private void TowerGradeUpgrade(string buildUID, List<Tower> towers)
     {
-        int upgradeCnt = needupgradeTowerCnt;
-        towers = new List<Tower>();
-        moves = new List<TowerMove>();
+        Vector2Int spawnCell = towers[0].GetComponent<TowerMove>().GetTowerPosition();
 
-        if (selectedTower.Grade == 6 || selectedTower.nextGradeUID == "MASTER" || selectedTower.nextGradeUID == "Master")
-            return false;
-
-        foreach (var t in fieldTowers)
-        {
-            if (t.Grade != selectedTower.Grade || t.Type != selectedTower.Type)
-                continue;
-
-            TowerMove move = t.GetComponent<TowerMove>();
-
-            if (move == null)
-                continue;
-
-            towers.Add(t);
-            moves.Add(move);
-
-            if (towers.Count == upgradeCnt)
-                break;
-        }
-
-        if (towers.Count == upgradeCnt && moves.Count == upgradeCnt)
-            return true;
-
-        return false;
-    }
-
-    private void TowerGradeUpgrade(string buildUID, List<Tower> towers, List<TowerMove> moves)
-    {
-        Vector2Int spawnCell = moves[0].GetTowerPosition();
-
-        RemoveTower(towers, moves);
+        fieldTowerManager.RemoveTowers(towers);
         BuildTower(buildUID, spawnCell);
         ClearSelectedTower();
     }
 
-    private void RemoveTower(List<Tower> rTowers, List<TowerMove> rMoves)
+    private void GoldInterction(int value)
     {
-        int cnt = rTowers.Count;
-        for (int i = 0; i < cnt; i++)
-        {
-            fieldTowers.Remove(rTowers[i]);
-            Vector2Int cell = rMoves[i].GetTowerPosition();
-            towerMap[cell.x, cell.y] = null;
-            Destroy(rTowers[i].gameObject);
-        }
+        OnGoldInterection?.Invoke(value);
     }
 
     /// <summary>
@@ -514,10 +491,7 @@ public class TowerController : MonoBehaviour
     /// <returns>타워 유무</returns>
     public bool HasTower(Vector2Int cell)
     {
-        if (!grid.IsInBounds(cell))
-            return false;
-
-        return towerMap[cell.x, cell.y] != null;
+        return fieldTowerManager != null && fieldTowerManager.HasTower(cell);
     }
 
     public void SetTowerMoveMode()
@@ -529,7 +503,7 @@ public class TowerController : MonoBehaviour
     {
         int upgradeCnt = needupgradeTowerCnt;
 
-        if (!TryGetUpgradeTowers(out List<Tower> towers, out List<TowerMove> moves))
+        if (!fieldTowerManager.TryGetGradeUpgradeTower(selectedTower, upgradeCnt, out List<Tower> towers))
             return;
 
         if (towers.Count != upgradeCnt)
@@ -537,24 +511,34 @@ public class TowerController : MonoBehaviour
 
         string[] nextTowerUIDs = Managers.TowerData.GetTowerGradeUID(towers[0].Grade + 1);
         int cnt = nextTowerUIDs.Length;
-        int idx = UnityEngine.Random.Range(0, cnt - 1);
+        int idx = UnityEngine.Random.Range(0, cnt);
 
         string buildTowerUID = nextTowerUIDs[idx];
 
-        TowerGradeUpgrade(buildTowerUID, towers, moves);
+        TowerGradeUpgrade(buildTowerUID, towers);
     }
 
     public void TowerGradePreminumUpgrade()
     {
         int upgradeCnt = needupgradeTowerCnt;
 
-        if (!TryGetUpgradeTowers(out List<Tower> towers, out List<TowerMove> moves))
+        if (!fieldTowerManager.TryGetGradeUpgradeTower(selectedTower, upgradeCnt, out List<Tower> towers))
             return;
 
         if (towers.Count != upgradeCnt)
             return;
 
         string buildTowerUID = towers[0].NextGradeUID;
-        TowerGradeUpgrade(buildTowerUID, towers, moves);
+        TowerGradeUpgrade(buildTowerUID, towers);
+    }
+
+    public void RemoveTower()
+    {
+        int price = selectedTower.SellPrice;
+        if (fieldTowerManager.RemoveTower(selectedTower))
+        {
+            GoldInterction(price);
+            ClearSelectedTower();
+        }
     }
 }

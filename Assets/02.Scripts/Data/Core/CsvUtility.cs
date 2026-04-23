@@ -1,13 +1,9 @@
-﻿using JetBrains.Annotations;
+using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 using Unity.VisualScripting;
-using UnityEditor;
-using UnityEditor.Search;
-using UnityEngine;
-
 public static class CsvUtility
 {
     public static List<Dictionary<string, string>> Parse(string csvText)

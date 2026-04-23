@@ -56,8 +56,8 @@ public class TowerGradeUpgradeView : MonoBehaviour, IPopUpPublicUI
         towerSellPriceText.text = "";
         towerGradeText.text = "";
 
-        normalBtnText.text = $"ÀÏ¹Ý °­È­ ({Managers.InputKey.GetKeyCode(InputAction.TowerGradeNormalUpgrade)})";
-        premiumBtnText.text = $"°íÁ¤ °­È­ ({Managers.InputKey.GetKeyCode(InputAction.TowerGradePremiunUpgrade)})";
+        normalBtnText.text = $"ì¼ë°˜ ê°•í™” ({Managers.InputKey.GetKeyCode(InputAction.TowerGradeNormalUpgrade)})";
+        premiumBtnText.text = $"ê³ ì • ê°•í™” ({Managers.InputKey.GetKeyCode(InputAction.TowerGradePremiunUpgrade)})";
         normalUpgradeBtn.interactable = true;
         premiumUpgradeBtn.interactable = true;
 
@@ -95,7 +95,7 @@ public class TowerGradeUpgradeView : MonoBehaviour, IPopUpPublicUI
             return;
         }
 
-        towerGradeText.text = grade.ToString() + "µî±Þ";
+        towerGradeText.text = grade.ToString() + "ë“±ê¸‰";
         upgradeMaster1.gameObject.SetActive(false);
         upgradeMaster2.gameObject.SetActive(false);
     }
@@ -112,4 +112,5 @@ public class TowerGradeUpgradeView : MonoBehaviour, IPopUpPublicUI
 
     public void BindNormalUpgrade(UnityAction action) => normalUpgradeBtn.onClick.AddListener(action);
     public void BindPreminumUpgrade(UnityAction action) => premiumUpgradeBtn.onClick.AddListener(action);
+    public void BindTowerSell(UnityAction action) => sellBtn.onClick.AddListener(action);
 }

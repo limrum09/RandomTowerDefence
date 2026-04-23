@@ -90,23 +90,28 @@ public class StoreController : MonoBehaviour
 
     public void RerollStoreUI(int amount)
     {
-        stage.RunSession.UsingGold(amount);
+        UsingGold(-amount);
         SetStoreUI();
     }
 
-    public void OnClickTowerSlotUI(string uid)
+    public bool UsingGold(int amount)
     {
-        queueSlots.AddTower(uid);
+        return stage.RunSession.ChangeGold(amount);
     }
 
-    public void OnClickItemSlotUI(string uid)
+    public bool OnClickTowerSlotUI(string uid)
     {
-        itemSlots.AddItemSlot(uid);
+        return queueSlots.AddTower(uid);
+    }
+
+    public bool OnClickItemSlotUI(string uid)
+    {
+        return itemSlots.AddItemSlot(uid);
     }
 
     public void BuyEXP(int amount)
     {
-        if(stage.RunSession.UsingGold(amount))
+        if(UsingGold(-amount))
             stage.RunSession.AddExp(2);
     }
 }

@@ -127,7 +127,7 @@ public class ObstacleBuilder : MonoBehaviour
 
         if(obstacleCnt > 0)
         {
-            stage.RunSession.AddGold(tempCost);
+            stage.RunSession.ChangeGold(tempCost);
             obstacleCnt--;
             return;
         }
@@ -177,7 +177,7 @@ public class ObstacleBuilder : MonoBehaviour
 
         if (!stage.RunSession.UsingFreeObstable())
         {
-            if (!stage.RunSession.UsingGold(tempCost))
+            if (!stage.RunSession.ChangeGold(tempCost))
                 return;
             else
                 obstacleCnt++;
