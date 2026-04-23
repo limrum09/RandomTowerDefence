@@ -47,10 +47,10 @@ public class RunEffectDataManager
         switch (item.itemOption)
         {
             case ItemOptions.AtkDamageUP:
-                RemoveAtkDamage(item);
+                RemoveItemAtkDamage(item);
                 break;
             case ItemOptions.AtkSpeedUp:
-                RemoveAtkSpeed(item);
+                RemoveItemAtkSpeed(item);
                 break;
             case ItemOptions.GoldDropIncrease:
                 RemoveGoldDrop(item);
@@ -66,15 +66,15 @@ public class RunEffectDataManager
         if (item.target != ItemTarget.Tower)
             return;
 
-        statUpgrade.AddAtkDamage(item.scopeRange, item.value);
+        statUpgrade.AddItemAtkDamage(item.scopeRange, item.value);
     }
 
-    private void RemoveAtkDamage(ItemData item)
+    private void RemoveItemAtkDamage(ItemData item)
     {
         if (item.target != ItemTarget.Tower)
             return;
 
-        statUpgrade.RemoveAtkDamageStep(item.scopeRange, item.value);
+        statUpgrade.AddItemAtkDamage(item.scopeRange, -item.value);
     }
 
     private void ApplyAtkSpeed(ItemData item)
@@ -82,15 +82,15 @@ public class RunEffectDataManager
         if (item.target != ItemTarget.Tower)
             return;
 
-        statUpgrade.AddAtkSpeed(item.scopeRange, item.value);
+        statUpgrade.AddItemAtkSpeed(item.scopeRange, item.value);
     }
 
-    private void RemoveAtkSpeed(ItemData item)
+    private void RemoveItemAtkSpeed(ItemData item)
     {
         if (item.target != ItemTarget.Tower)
             return;
 
-        statUpgrade.RemoveAtkSpeedStep(item.scopeRange, item.value);
+        statUpgrade.AddItemAtkSpeed(item.scopeRange, -item.value);
     }
 
     private void ApplyHealLife(ItemData item)
@@ -107,12 +107,12 @@ public class RunEffectDataManager
             return;
 
         int gold = Random.Range(1, item.value + 1);
-        session.AddGold(gold);
+        session.ChangeGold(gold);
     }
 
 
     private void ApplyGoldDrop(ItemData item) => statUpgrade.AddGoldDropIncrease(item.value);
-    private void RemoveGoldDrop(ItemData item) => statUpgrade.RemoveGoldDropIncrease(item.value);
+    private void RemoveGoldDrop(ItemData item) => statUpgrade.AddGoldDropIncrease(-item.value);
     private void ApplyInterestBoost(ItemData item) => statUpgrade.AddInterestBoost(item.value);
-    private void RemoveInterestBoost(ItemData item) => statUpgrade.RemoveInterestBoost(item.value);
+    private void RemoveInterestBoost(ItemData item) => statUpgrade.AddInterestBoost(-item.value);
 }

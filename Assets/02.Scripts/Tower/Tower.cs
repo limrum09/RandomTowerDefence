@@ -1,4 +1,3 @@
-﻿using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Tower : MonoBehaviour
@@ -12,6 +11,7 @@ public class Tower : MonoBehaviour
     [SerializeField]
     private Transform attackRangeIndicator;
     private int index;
+    private RunStatUpgradeManager statUpgrade;
 
     private string towerUID;
     private TowerType towerType;
@@ -26,6 +26,9 @@ public class Tower : MonoBehaviour
     private string skillID;
     private string iconPath;
     public string nextGradeUID;
+
+    private float increaseAtkDamage;
+    private float increaseAtkSpeed;
 
     private string towerName;
     private string skillName;
@@ -45,8 +48,11 @@ public class Tower : MonoBehaviour
     public string SkillID => skillID;
     public string IconPath => iconPath;
     public string NextGradeUID => nextGradeUID;
-    public int CurrentDamage => baseAtk;
-    public float CurrentAtkSpeed => baseAtkSpeed;
+    public int CurrentDamage => baseAtk + (int)(increaseAtkDamage * (statUpgrade.GetAtkDamageStep(towerType) 
+        + statUpgrade.GetItemAtkDamageStep(towerType) + statUpgrade.GetSkillAtkDamageStep(towerType)));
+    public float CurrentAtkSpeed => baseAtkSpeed + (increaseAtkSpeed * (statUpgrade.GetAtkSpeedStep(towerType) 
+        + statUpgrade.GetItemAtkSpeedStep(towerType) + statUpgrade.GetSkillAtkSpeedStep(towerType)));
+    public RunStatUpgradeManager StatUpgrade => statUpgrade;
     public string TowerName()
     {
         return Managers.Local.GetString(stringKey);
@@ -100,13 +106,6 @@ public class Tower : MonoBehaviour
         anim.runtimeAnimatorController = aniController;
     }
 
-    /*private void SetTowerStringInfo()
-    {
-        towerName;
-        skillName;
-        skillDes;
-    }*/
-
     private void SetRangeVisiual()
     {
         if (attackRangeIndicator == null)
@@ -116,8 +115,9 @@ public class Tower : MonoBehaviour
         attackRangeIndicator.localScale = new Vector3(d, d, 1f);
     }
 
-    public void Init(string getTowerUID, int getIndex)
+    public void Init(string getTowerUID, int getIndex, RunStatUpgradeManager getStatManager)
     {
+        statUpgrade = getStatManager;
         towerUID = getTowerUID;
         index = getIndex;
 
@@ -135,6 +135,9 @@ public class Tower : MonoBehaviour
         skillID = data.skillID ;
         iconPath = data.iconPath;
         nextGradeUID = data.nextGradeUID;
+
+        increaseAtkDamage = Managers.SessionTowerUpgrade.GetUpgradeStepData(towerUID, UpgradeType.Damge).increaseValue;
+        increaseAtkSpeed = Managers.SessionTowerUpgrade.GetUpgradeStepData(towerUID, UpgradeType.Speed).increaseValue;
 
         SetAnimation();
         SetRangeVisiual();

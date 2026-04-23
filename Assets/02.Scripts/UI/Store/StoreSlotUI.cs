@@ -1,8 +1,5 @@
-using System;
-using System.IO;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Playables;
 using UnityEngine.UI;
 
 public class StoreSlotUI : MonoBehaviour
@@ -16,8 +13,6 @@ public class StoreSlotUI : MonoBehaviour
 
     [SerializeField]
     private string uid;
-    private StoreController owner;
-    private Button btn;
     [SerializeField]
     private Image iconImage;
     [SerializeField]
@@ -27,20 +22,37 @@ public class StoreSlotUI : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI tempText;
 
+    private StoreController owner;
+    private Button btn;
     private SlotType type;
+    private int price;
     public string UID => uid;
     private void Start()
     {
         btn = GetComponent<Button>();
         btn.onClick.AddListener(OnClickUI);
+        price = 0;
     }
 
     private void OnClickUI()
     {
+        if (!owner.UsingGold(-price))
+            return;
+
         if (type == SlotType.Tower)
-            owner.OnClickTowerSlotUI(uid);
+        {
+            if (owner.OnClickTowerSlotUI(uid))
+                price = 0;
+            else
+                owner.UsingGold(price);
+        }            
         else if (type == SlotType.Item)
-            owner.OnClickItemSlotUI(uid);
+        {
+            if(owner.OnClickItemSlotUI(uid))
+                price = 0;
+            else
+                owner.UsingGold(price);
+        }
     }
 
     private void GetTowerData(TowerData data)
@@ -121,6 +133,7 @@ public class StoreSlotUI : MonoBehaviour
         {
             type = SlotType.Tower;
             GetTowerData(tower);
+            price = tower.buyPrice;
             return;
         }
 
@@ -129,6 +142,7 @@ public class StoreSlotUI : MonoBehaviour
         {
             type = SlotType.Item;
             GetItemData(item);
+            price = item.buyPrice;
             return;
         }
 
@@ -140,6 +154,7 @@ public class StoreSlotUI : MonoBehaviour
     {
         tempText.text = "타워를 넣지 못함";
         gradeText.text = "0";
+        price = 0;
         iconImage.gameObject.SetActive(false);
     }
 }

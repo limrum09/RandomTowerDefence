@@ -452,7 +452,7 @@
         },
         {
             "TowerUID": "T0061",
-            "TowerType": "WereBeast",
+            "TowerType": "Werebeast",
             "StringKey": "TOWER_NAME_006",
             "Grade": 1,
             "BaseAtk": 12,
@@ -467,7 +467,7 @@
         },
         {
             "TowerUID": "T0062",
-            "TowerType": "WereBeast",
+            "TowerType": "Werebeast",
             "StringKey": "TOWER_NAME_006",
             "Grade": 2,
             "BaseAtk": 18,
@@ -482,7 +482,7 @@
         },
         {
             "TowerUID": "T0063",
-            "TowerType": "WereBeast",
+            "TowerType": "Werebeast",
             "StringKey": "TOWER_NAME_006",
             "Grade": 3,
             "BaseAtk": 26,
@@ -497,7 +497,7 @@
         },
         {
             "TowerUID": "T0064",
-            "TowerType": "WereBeast",
+            "TowerType": "Werebeast",
             "StringKey": "TOWER_NAME_006",
             "Grade": 4,
             "BaseAtk": 38,
@@ -512,7 +512,7 @@
         },
         {
             "TowerUID": "T0065",
-            "TowerType": "WereBeast",
+            "TowerType": "Werebeast",
             "StringKey": "TOWER_NAME_006",
             "Grade": 5,
             "BaseAtk": 52,
@@ -527,7 +527,7 @@
         },
         {
             "TowerUID": "T0066",
-            "TowerType": "WereBeast",
+            "TowerType": "Werebeast",
             "StringKey": "TOWER_NAME_006",
             "Grade": 6,
             "BaseAtk": 70,

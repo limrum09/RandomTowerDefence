@@ -47,7 +47,7 @@ public class EnemyMove : MonoBehaviour
     {
         isMove = false;
 
-        stage.RunSession.AddGold(rewardGold);
+        stage.RunSession.ChangeGold(rewardGold);
         stage.RunSession.AddkillCount(1);
         stage.RegisterDeadEnemy();
     }

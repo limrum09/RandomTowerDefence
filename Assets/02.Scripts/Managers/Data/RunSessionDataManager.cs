@@ -110,24 +110,18 @@ public class RunSessionDataManager
         OnExpChanged?.Invoke(state.CurrentExp, rule.GetNeedEXP(state.Level));
     }
 
-    public void AddGold(int amount)
+    public bool ChangeGold(int amount)
     {
-        if (state == null || amount <= 0)
-            return;
+        if(state == null)
+            return false;
+
+        if(amount < 0)
+        {
+            if (state.Gold < Mathf.Abs(amount))
+                return false;
+        }
 
         state.SetGold(state.Gold + amount);
-        OnGoldAmountChanged?.Invoke(state.Gold);
-    }
-
-    public bool UsingGold(int amount)
-    {
-        if(state == null || amount <= 0)
-            return false;
-
-        if (state.Gold < amount)
-            return false;
-
-        state.SetGold(state.Gold - amount);
         OnGoldAmountChanged?.Invoke(state.Gold);
 
         return true;

@@ -8,7 +8,7 @@ public enum TowerType
     Dwarf,
     Orc,
     Dragonian,
-    WereBeast
+    Werebeast
 }
 
 public enum CostType

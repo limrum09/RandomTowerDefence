@@ -32,6 +32,7 @@ public class StageUIController : MonoBehaviour
     private Tower selectedTower;
 
     public event Action<Tower, UpgradeType> OnTowerStatUpgrade;
+    public event Action<int> onGoldToTowerInterection;
 
     private void Awake()
     {
@@ -43,6 +44,7 @@ public class StageUIController : MonoBehaviour
 
         gradePresenter.onClickNormalUpgrade += OnTowerGradeNormalUpgrade;
         gradePresenter.onClickPremiumUpgrade += OnTowerGradePreminumUpgrade;
+        gradePresenter.onClickTowerSell += OnClickTowerSell;
 
         actionMenuPresenter.OnClickMove += OnClickMove;
         actionMenuPresenter.OnClickGradeUpgrade += OnClickGradeUpgrade;
@@ -55,6 +57,7 @@ public class StageUIController : MonoBehaviour
         towerCtr.OnTowerSelected += SetSelectedTower;
         towerCtr.OnShowGradeUpgrade += OnClickGradeUpgrade;
         towerCtr.OnShowStatUpgrade += OnClickStatUpgrade;
+        towerCtr.OnGoldInterection += OnGoldToTowerIntertion;
 
         queueCtr.BindTowerController(towerCtr);
 
@@ -73,6 +76,7 @@ public class StageUIController : MonoBehaviour
     {
         gradePresenter.onClickNormalUpgrade -= OnTowerGradeNormalUpgrade;
         gradePresenter.onClickPremiumUpgrade -= OnTowerGradePreminumUpgrade;
+        gradePresenter.onClickTowerSell -= OnClickTowerSell;
 
         actionMenuPresenter.OnClickMove -= OnClickMove;
         actionMenuPresenter.OnClickGradeUpgrade -= OnClickGradeUpgrade;
@@ -88,6 +92,7 @@ public class StageUIController : MonoBehaviour
         towerCtr.OnTowerSelected -= SetSelectedTower;
         towerCtr.OnShowGradeUpgrade -= OnClickGradeUpgrade;
         towerCtr.OnShowStatUpgrade -= OnClickStatUpgrade;
+        towerCtr.OnGoldInterection -= OnGoldToTowerIntertion;
 
         itemCtr.OnClickItem -= OnClickItemInfo;
 
@@ -176,19 +181,32 @@ public class StageUIController : MonoBehaviour
 
         towerCtr.TowerGradePreminumUpgrade();
     }
+    private void OnClickTowerSell()
+    {
+        if (towerCtr == null)
+            return;
 
+        towerCtr.RemoveTower();
+    }
     private void OnTowerStatDamageUpgrade(Tower tower)
     {
         OnTowerStatUpgrade?.Invoke(tower, UpgradeType.Damge);
+        statPresenter.SetModel(tower);
     }
 
     private void OnTowerStatAttackSpeedUpgrade(Tower tower)
     {
         OnTowerStatUpgrade?.Invoke(tower, UpgradeType.Speed);
+        statPresenter.SetModel(tower);
     }
 
     private void OnClickItemSellButton(int index)
     {
         itemInfoPresenter.Hide();
+    }
+
+    private void OnGoldToTowerIntertion(int value)
+    {
+        onGoldToTowerInterection?.Invoke(value);
     }
 }
