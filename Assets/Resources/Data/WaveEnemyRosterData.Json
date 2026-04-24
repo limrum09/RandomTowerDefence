@@ -1,0 +1,1104 @@
+{
+  "datas": [
+    {
+      "WaveID": "W001",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E001",
+      "EnemyLevel": 1,
+      "SpawnCount": 50,
+      "StartTime": "0",
+      "SpawnInterval": 0.86,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W002",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E003",
+      "EnemyLevel": 1,
+      "SpawnCount": 50,
+      "StartTime": "0",
+      "SpawnInterval": 0.85,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W003",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E004",
+      "EnemyLevel": 1,
+      "SpawnCount": 50,
+      "StartTime": "0",
+      "SpawnInterval": 0.85,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W004",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E001",
+      "EnemyLevel": 1,
+      "SpawnCount": 50,
+      "StartTime": "0",
+      "SpawnInterval": 0.84,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W005",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E001",
+      "EnemyLevel": 1,
+      "SpawnCount": 25,
+      "StartTime": "0",
+      "SpawnInterval": 0.86,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W005",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E004",
+      "EnemyLevel": 1,
+      "SpawnCount": 25,
+      "StartTime": "20.9",
+      "SpawnInterval": 0.86,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W006",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E007",
+      "EnemyLevel": 2,
+      "SpawnCount": 50,
+      "StartTime": "0",
+      "SpawnInterval": 0.84,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W007",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E002",
+      "EnemyLevel": 2,
+      "SpawnCount": 50,
+      "StartTime": "0",
+      "SpawnInterval": 0.83,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W008",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E002",
+      "EnemyLevel": 2,
+      "SpawnCount": 33,
+      "StartTime": "0",
+      "SpawnInterval": 0.84,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W008",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E007",
+      "EnemyLevel": 2,
+      "SpawnCount": 17,
+      "StartTime": "27.1",
+      "SpawnInterval": 0.86,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W009",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E004",
+      "EnemyLevel": 2,
+      "SpawnCount": 33,
+      "StartTime": "0",
+      "SpawnInterval": 0.83,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W009",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E008",
+      "EnemyLevel": 2,
+      "SpawnCount": 17,
+      "StartTime": "27",
+      "SpawnInterval": 0.86,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W010",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E018",
+      "EnemyLevel": 2,
+      "SpawnCount": 1,
+      "StartTime": "0",
+      "SpawnInterval": 0,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W011",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E003",
+      "EnemyLevel": 3,
+      "SpawnCount": 50,
+      "StartTime": "0",
+      "SpawnInterval": 0.82,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W012",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E001",
+      "EnemyLevel": 3,
+      "SpawnCount": 23,
+      "StartTime": "0",
+      "SpawnInterval": 0.83,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W012",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E005",
+      "EnemyLevel": 3,
+      "SpawnCount": 27,
+      "StartTime": "18.6",
+      "SpawnInterval": 0.83,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W013",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E008",
+      "EnemyLevel": 3,
+      "SpawnCount": 50,
+      "StartTime": "0",
+      "SpawnInterval": 0.81,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W014",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E006",
+      "EnemyLevel": 3,
+      "SpawnCount": 35,
+      "StartTime": "0",
+      "SpawnInterval": 0.81,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W014",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E007",
+      "EnemyLevel": 3,
+      "SpawnCount": 15,
+      "StartTime": "27.9",
+      "SpawnInterval": 0.84,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W015",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E002",
+      "EnemyLevel": 3,
+      "SpawnCount": 39,
+      "StartTime": "0",
+      "SpawnInterval": 0.8,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W015",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E010",
+      "EnemyLevel": 4,
+      "SpawnCount": 11,
+      "StartTime": "30.9",
+      "SpawnInterval": 0.86,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W016",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E001",
+      "EnemyLevel": 4,
+      "SpawnCount": 50,
+      "StartTime": "0",
+      "SpawnInterval": 0.8,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W017",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E002",
+      "EnemyLevel": 4,
+      "SpawnCount": 23,
+      "StartTime": "0",
+      "SpawnInterval": 0.81,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W017",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E005",
+      "EnemyLevel": 4,
+      "SpawnCount": 27,
+      "StartTime": "18.1",
+      "SpawnInterval": 0.81,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W018",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E009",
+      "EnemyLevel": 4,
+      "SpawnCount": 50,
+      "StartTime": "0",
+      "SpawnInterval": 0.79,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W019",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E003",
+      "EnemyLevel": 4,
+      "SpawnCount": 34,
+      "StartTime": "0",
+      "SpawnInterval": 0.79,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W019",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E008",
+      "EnemyLevel": 4,
+      "SpawnCount": 16,
+      "StartTime": "26.4",
+      "SpawnInterval": 0.82,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W020",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E019",
+      "EnemyLevel": 4,
+      "SpawnCount": 1,
+      "StartTime": "0",
+      "SpawnInterval": 0,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W021",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E005",
+      "EnemyLevel": 5,
+      "SpawnCount": 50,
+      "StartTime": "0",
+      "SpawnInterval": 0.78,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W022",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E006",
+      "EnemyLevel": 5,
+      "SpawnCount": 36,
+      "StartTime": "0",
+      "SpawnInterval": 0.78,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W022",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E008",
+      "EnemyLevel": 5,
+      "SpawnCount": 14,
+      "StartTime": "27.5",
+      "SpawnInterval": 0.81,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W023",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E002",
+      "EnemyLevel": 5,
+      "SpawnCount": 50,
+      "StartTime": "0",
+      "SpawnInterval": 0.77,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W024",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E011",
+      "EnemyLevel": 6,
+      "SpawnCount": 10,
+      "StartTime": "0",
+      "SpawnInterval": 0.83,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W024",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E003",
+      "EnemyLevel": 5,
+      "SpawnCount": 40,
+      "StartTime": "7.8",
+      "SpawnInterval": 0.77,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W025",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E001",
+      "EnemyLevel": 5,
+      "SpawnCount": 23,
+      "StartTime": "0",
+      "SpawnInterval": 0.78,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W025",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E006",
+      "EnemyLevel": 5,
+      "SpawnCount": 27,
+      "StartTime": "17.4",
+      "SpawnInterval": 0.77,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W026",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E007",
+      "EnemyLevel": 6,
+      "SpawnCount": 50,
+      "StartTime": "0",
+      "SpawnInterval": 0.76,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W027",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E002",
+      "EnemyLevel": 6,
+      "SpawnCount": 33,
+      "StartTime": "0",
+      "SpawnInterval": 0.76,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W027",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E009",
+      "EnemyLevel": 6,
+      "SpawnCount": 17,
+      "StartTime": "24.6",
+      "SpawnInterval": 0.78,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W028",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E012",
+      "EnemyLevel": 7,
+      "SpawnCount": 19,
+      "StartTime": "0",
+      "SpawnInterval": 0.77,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W028",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E008",
+      "EnemyLevel": 6,
+      "SpawnCount": 31,
+      "StartTime": "14.2",
+      "SpawnInterval": 0.76,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W029",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E005",
+      "EnemyLevel": 6,
+      "SpawnCount": 35,
+      "StartTime": "0",
+      "SpawnInterval": 0.75,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W029",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E009",
+      "EnemyLevel": 6,
+      "SpawnCount": 15,
+      "StartTime": "25.8",
+      "SpawnInterval": 0.78,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W030",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E020",
+      "EnemyLevel": 6,
+      "SpawnCount": 1,
+      "StartTime": "0",
+      "SpawnInterval": 0,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W031",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E002",
+      "EnemyLevel": 7,
+      "SpawnCount": 23,
+      "StartTime": "0",
+      "SpawnInterval": 0.75,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W031",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E005",
+      "EnemyLevel": 7,
+      "SpawnCount": 27,
+      "StartTime": "16.9",
+      "SpawnInterval": 0.75,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W032",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E003",
+      "EnemyLevel": 7,
+      "SpawnCount": 33,
+      "StartTime": "0",
+      "SpawnInterval": 0.74,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W032",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E008",
+      "EnemyLevel": 7,
+      "SpawnCount": 17,
+      "StartTime": "23.9",
+      "SpawnInterval": 0.76,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W033",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E014",
+      "EnemyLevel": 8,
+      "SpawnCount": 25,
+      "StartTime": "0",
+      "SpawnInterval": 0.74,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W033",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E010",
+      "EnemyLevel": 8,
+      "SpawnCount": 25,
+      "StartTime": "18.1",
+      "SpawnInterval": 0.74,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W034",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E006",
+      "EnemyLevel": 7,
+      "SpawnCount": 50,
+      "StartTime": "0",
+      "SpawnInterval": 0.72,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W035",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E009",
+      "EnemyLevel": 7,
+      "SpawnCount": 50,
+      "StartTime": "0",
+      "SpawnInterval": 0.72,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W036",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E005",
+      "EnemyLevel": 8,
+      "SpawnCount": 35,
+      "StartTime": "0",
+      "SpawnInterval": 0.72,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W036",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E008",
+      "EnemyLevel": 8,
+      "SpawnCount": 15,
+      "StartTime": "24.8",
+      "SpawnInterval": 0.75,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W037",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E002",
+      "EnemyLevel": 8,
+      "SpawnCount": 31,
+      "StartTime": "0",
+      "SpawnInterval": 0.72,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W037",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E011",
+      "EnemyLevel": 9,
+      "SpawnCount": 10,
+      "StartTime": "21.9",
+      "SpawnInterval": 0.77,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W037",
+      "SpawnOrder": 3,
+      "Enemy_UID": "E015",
+      "EnemyLevel": 9,
+      "SpawnCount": 9,
+      "StartTime": "29.1",
+      "SpawnInterval": 0.78,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W038",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E001",
+      "EnemyLevel": 8,
+      "SpawnCount": 24,
+      "StartTime": "0",
+      "SpawnInterval": 0.72,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W038",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E006",
+      "EnemyLevel": 8,
+      "SpawnCount": 26,
+      "StartTime": "16.9",
+      "SpawnInterval": 0.72,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W039",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E003",
+      "EnemyLevel": 8,
+      "SpawnCount": 33,
+      "StartTime": "0",
+      "SpawnInterval": 0.71,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W039",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E009",
+      "EnemyLevel": 8,
+      "SpawnCount": 17,
+      "StartTime": "23",
+      "SpawnInterval": 0.73,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W040",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E021",
+      "EnemyLevel": 8,
+      "SpawnCount": 1,
+      "StartTime": "0",
+      "SpawnInterval": 0,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W041",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E012",
+      "EnemyLevel": 10,
+      "SpawnCount": 25,
+      "StartTime": "0",
+      "SpawnInterval": 0.71,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W041",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E014",
+      "EnemyLevel": 10,
+      "SpawnCount": 25,
+      "StartTime": "17.3",
+      "SpawnInterval": 0.71,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W042",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E005",
+      "EnemyLevel": 9,
+      "SpawnCount": 29,
+      "StartTime": "0",
+      "SpawnInterval": 0.7,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W042",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E008",
+      "EnemyLevel": 9,
+      "SpawnCount": 14,
+      "StartTime": "19.9",
+      "SpawnInterval": 0.73,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W042",
+      "SpawnOrder": 3,
+      "Enemy_UID": "E011",
+      "EnemyLevel": 10,
+      "SpawnCount": 7,
+      "StartTime": "29.7",
+      "SpawnInterval": 0.79,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W043",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E009",
+      "EnemyLevel": 9,
+      "SpawnCount": 50,
+      "StartTime": "0",
+      "SpawnInterval": 0.69,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W044",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E002",
+      "EnemyLevel": 9,
+      "SpawnCount": 33,
+      "StartTime": "0",
+      "SpawnInterval": 0.69,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W044",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E013",
+      "EnemyLevel": 10,
+      "SpawnCount": 9,
+      "StartTime": "22.3",
+      "SpawnInterval": 0.75,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W044",
+      "SpawnOrder": 3,
+      "Enemy_UID": "E017",
+      "EnemyLevel": 10,
+      "SpawnCount": 8,
+      "StartTime": "28.7",
+      "SpawnInterval": 0.76,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W045",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E003",
+      "EnemyLevel": 9,
+      "SpawnCount": 23,
+      "StartTime": "0",
+      "SpawnInterval": 0.69,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W045",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E006",
+      "EnemyLevel": 9,
+      "SpawnCount": 27,
+      "StartTime": "15.6",
+      "SpawnInterval": 0.69,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W046",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E001",
+      "EnemyLevel": 10,
+      "SpawnCount": 29,
+      "StartTime": "0",
+      "SpawnInterval": 0.68,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W046",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E008",
+      "EnemyLevel": 10,
+      "SpawnCount": 14,
+      "StartTime": "19.4",
+      "SpawnInterval": 0.71,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W046",
+      "SpawnOrder": 3,
+      "Enemy_UID": "E015",
+      "EnemyLevel": 11,
+      "SpawnCount": 7,
+      "StartTime": "29",
+      "SpawnInterval": 0.77,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W047",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E016",
+      "EnemyLevel": 11,
+      "SpawnCount": 18,
+      "StartTime": "0",
+      "SpawnInterval": 0.69,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W047",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E009",
+      "EnemyLevel": 10,
+      "SpawnCount": 32,
+      "StartTime": "12.1",
+      "SpawnInterval": 0.68,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W048",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E005",
+      "EnemyLevel": 10,
+      "SpawnCount": 30,
+      "StartTime": "0",
+      "SpawnInterval": 0.67,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W048",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E008",
+      "EnemyLevel": 10,
+      "SpawnCount": 13,
+      "StartTime": "19.9",
+      "SpawnInterval": 0.71,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W048",
+      "SpawnOrder": 3,
+      "Enemy_UID": "E012",
+      "EnemyLevel": 11,
+      "SpawnCount": 7,
+      "StartTime": "28.6",
+      "SpawnInterval": 0.76,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W049",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E014",
+      "EnemyLevel": 11,
+      "SpawnCount": 17,
+      "StartTime": "0",
+      "SpawnInterval": 0.69,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W049",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E016",
+      "EnemyLevel": 11,
+      "SpawnCount": 17,
+      "StartTime": "11.3",
+      "SpawnInterval": 0.69,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W049",
+      "SpawnOrder": 3,
+      "Enemy_UID": "E010",
+      "EnemyLevel": 11,
+      "SpawnCount": 16,
+      "StartTime": "22.6",
+      "SpawnInterval": 0.69,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W050",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E022",
+      "EnemyLevel": 10,
+      "SpawnCount": 1,
+      "StartTime": "0",
+      "SpawnInterval": 0,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W051",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E011",
+      "EnemyLevel": 12,
+      "SpawnCount": 25,
+      "StartTime": "0",
+      "SpawnInterval": 0.67,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W051",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E012",
+      "EnemyLevel": 12,
+      "SpawnCount": 25,
+      "StartTime": "16.3",
+      "SpawnInterval": 0.67,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W052",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E002",
+      "EnemyLevel": 11,
+      "SpawnCount": 21,
+      "StartTime": "0",
+      "SpawnInterval": 0.67,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W052",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E005",
+      "EnemyLevel": 11,
+      "SpawnCount": 24,
+      "StartTime": "13.7",
+      "SpawnInterval": 0.66,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W052",
+      "SpawnOrder": 3,
+      "Enemy_UID": "E014",
+      "EnemyLevel": 12,
+      "SpawnCount": 5,
+      "StartTime": "29.2",
+      "SpawnInterval": 0.79,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W053",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E009",
+      "EnemyLevel": 11,
+      "SpawnCount": 33,
+      "StartTime": "0",
+      "SpawnInterval": 0.65,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W053",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E010",
+      "EnemyLevel": 12,
+      "SpawnCount": 17,
+      "StartTime": "21.2",
+      "SpawnInterval": 0.67,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W054",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E006",
+      "EnemyLevel": 11,
+      "SpawnCount": 30,
+      "StartTime": "0",
+      "SpawnInterval": 0.65,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W054",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E008",
+      "EnemyLevel": 11,
+      "SpawnCount": 13,
+      "StartTime": "19.1",
+      "SpawnInterval": 0.68,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W054",
+      "SpawnOrder": 3,
+      "Enemy_UID": "E017",
+      "EnemyLevel": 12,
+      "SpawnCount": 7,
+      "StartTime": "27.6",
+      "SpawnInterval": 0.73,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W055",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E013",
+      "EnemyLevel": 12,
+      "SpawnCount": 17,
+      "StartTime": "0",
+      "SpawnInterval": 0.66,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W055",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E016",
+      "EnemyLevel": 12,
+      "SpawnCount": 17,
+      "StartTime": "10.9",
+      "SpawnInterval": 0.66,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W055",
+      "SpawnOrder": 3,
+      "Enemy_UID": "E015",
+      "EnemyLevel": 12,
+      "SpawnCount": 16,
+      "StartTime": "21.8",
+      "SpawnInterval": 0.67,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W056",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E003",
+      "EnemyLevel": 12,
+      "SpawnCount": 28,
+      "StartTime": "0",
+      "SpawnInterval": 0.64,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W056",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E009",
+      "EnemyLevel": 12,
+      "SpawnCount": 15,
+      "StartTime": "17.7",
+      "SpawnInterval": 0.66,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W056",
+      "SpawnOrder": 3,
+      "Enemy_UID": "E012",
+      "EnemyLevel": 12,
+      "SpawnCount": 7,
+      "StartTime": "27.3",
+      "SpawnInterval": 0.72,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W057",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E005",
+      "EnemyLevel": 12,
+      "SpawnCount": 25,
+      "StartTime": "0",
+      "SpawnInterval": 0.64,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W057",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E006",
+      "EnemyLevel": 12,
+      "SpawnCount": 25,
+      "StartTime": "15.7",
+      "SpawnInterval": 0.64,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W058",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E014",
+      "EnemyLevel": 12,
+      "SpawnCount": 17,
+      "StartTime": "0",
+      "SpawnInterval": 0.65,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W058",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E017",
+      "EnemyLevel": 12,
+      "SpawnCount": 17,
+      "StartTime": "10.7",
+      "SpawnInterval": 0.65,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W058",
+      "SpawnOrder": 3,
+      "Enemy_UID": "E011",
+      "EnemyLevel": 12,
+      "SpawnCount": 16,
+      "StartTime": "21.4",
+      "SpawnInterval": 0.65,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W059",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E006",
+      "EnemyLevel": 12,
+      "SpawnCount": 30,
+      "StartTime": "0",
+      "SpawnInterval": 0.63,
+      "SpawnType": "Immediate"
+    },
+    {
+      "WaveID": "W059",
+      "SpawnOrder": 2,
+      "Enemy_UID": "E009",
+      "EnemyLevel": 12,
+      "SpawnCount": 13,
+      "StartTime": "18.5",
+      "SpawnInterval": 0.66,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W059",
+      "SpawnOrder": 3,
+      "Enemy_UID": "E016",
+      "EnemyLevel": 12,
+      "SpawnCount": 7,
+      "StartTime": "26.7",
+      "SpawnInterval": 0.71,
+      "SpawnType": "Sequential"
+    },
+    {
+      "WaveID": "W060",
+      "SpawnOrder": 1,
+      "Enemy_UID": "E023",
+      "EnemyLevel": 12,
+      "SpawnCount": 1,
+      "StartTime": "0",
+      "SpawnInterval": 0,
+      "SpawnType": "Immediate"
+    }
+  ]
+}

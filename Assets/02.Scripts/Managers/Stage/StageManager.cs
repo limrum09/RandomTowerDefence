@@ -1,11 +1,13 @@
 using System;
 using Unity.VisualScripting;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
-    public Action OnAfterSettingsInit;
-    public Action OnStageStart;
+    public event Action OnAfterSettingsInit;
+    public event Action OnWaveStart;
+    public event Action OnWaveEnd;
 
     [Header("Grid Settings")]
     [SerializeField] private int gridWidth;
@@ -20,7 +22,13 @@ public class StageManager : MonoBehaviour
     [SerializeField]
     private Transform goalPoint;
 
-    [Header("Controllers")]
+    [Header("Field Ctrs")]
+    [SerializeField]
+    private EnemySpawn enemySpawn;
+    [SerializeField]
+    private StageWaveManager waveManager;
+
+    [Header("UIs")]
     [SerializeField]
     private StageUIController stageUICtr;
     [SerializeField]
@@ -41,6 +49,7 @@ public class StageManager : MonoBehaviour
     private bool isSpawning;
     private bool isStagePlaying;
     private int aliveEnemyCnt;
+    private int currentWave;
 
 
     public GridManager Grid { get; private set; }
@@ -59,6 +68,7 @@ public class StageManager : MonoBehaviour
     public RunStatUpgradeManager StatUpgradeManager => statUpgradeManager;
     public StageUIController StageUICtr => stageUICtr;
 
+    public int Wave => currentWave;
     private void Awake()
     {
         Grid = new GridManager();
@@ -80,8 +90,6 @@ public class StageManager : MonoBehaviour
     }
     void Start()
     {
-        SetSettings();
-
         if(itemCtr != null)
         {
             itemCtr.OnItemAdd += ItemAddHandler;
@@ -99,6 +107,26 @@ public class StageManager : MonoBehaviour
         {
             towerCntSkill.BindManager(fieldTowerManager);
         }
+
+        if(waveManager != null)
+        {
+            OnWaveEnd += waveManager.WaveEnd;
+            waveManager.onWaveRosterData += StageUICtr.SetWaveEnemyInfo;
+        }
+
+        if(enemySpawn != null)
+        {
+            OnWaveStart += enemySpawn.EnemySpawnStart;
+            enemySpawn.OnEnemySpawn += RegisterSpawnEnemy;
+            enemySpawn.OnSpawnEnd += EnemySpawnEnd;
+            enemySpawn.OnEnemyReached += RegisterReachedEnemy;
+            enemySpawn.OnEnemyDead += RegisterDeadEnemy;
+            waveManager.onWaveRosterData += enemySpawn.SetSpawnEnemyInfo;
+        }
+
+        currentWave = 1;
+        sessionManager.SetWave(currentWave);
+        SetSettings();
     }
 
     private void OnDestroy()
@@ -114,22 +142,46 @@ public class StageManager : MonoBehaviour
             stageUICtr.OnTowerStatUpgrade -= TowerStatUpgradeHandler;
             stageUICtr.onGoldToTowerInterection -= UsingGold;
         }
+
+        if(waveManager != null)
+        {
+            OnWaveEnd -= waveManager.WaveEnd;
+            waveManager.onWaveRosterData -= StageUICtr.SetWaveEnemyInfo;
+        }
+        if (enemySpawn != null)
+        {
+            OnWaveStart -= enemySpawn.EnemySpawnStart;
+            enemySpawn.OnEnemySpawn -= RegisterSpawnEnemy;
+            enemySpawn.OnSpawnEnd -= EnemySpawnEnd;
+            enemySpawn.OnEnemyReached -= RegisterReachedEnemy;
+            enemySpawn.OnEnemyDead -= RegisterDeadEnemy;
+            waveManager.onWaveRosterData -= enemySpawn.SetSpawnEnemyInfo;
+        }
     }
 
     public void StageStart()
     {
         if (isStagePlaying)
+        {
+            CheckWaveEnd();
+            Debug.Log("웨이브 시작 불가능");
+            Debug.Log(isSpawning);
+            Debug.Log(aliveEnemyCnt);
+            Debug.Log(sessionManager.SessionState.CurrentLife <= 0);
             return;
+        }
 
         isStagePlaying = true;
         isSpawning = true;
         aliveEnemyCnt = 0;
 
-        OnStageStart?.Invoke();
+        OnWaveStart?.Invoke();
     }
 
     private void AfterSettingsInit()
     {
+        enemySpawn.SetInitalized(Grid, Path);
+        OnWaveEnd?.Invoke(); 
         OnAfterSettingsInit?.Invoke();
     }
 
@@ -156,6 +208,10 @@ public class StageManager : MonoBehaviour
         }
 
         isStagePlaying = false;
+        currentWave++;
+        sessionManager.SetWave(currentWave);
+        RunSession.AddExp(3);
+        OnWaveEnd?.Invoke();
     }
     public void EnemySpawnEnd()
     {
@@ -167,8 +223,10 @@ public class StageManager : MonoBehaviour
         aliveEnemyCnt++;
     }
 
-    public void RegisterDeadEnemy()
+    public void RegisterDeadEnemy(int reward)
     {
+        UsingGold(reward);
+        sessionManager.AddkillCount(1);
         aliveEnemyCnt--;
         CheckWaveEnd();
     }
@@ -182,7 +240,7 @@ public class StageManager : MonoBehaviour
 
     public void UserDead()
     {
-
+        currentWave = 0;
     }
 
     public void TowerStatUpgradeHandler(Tower tower, UpgradeType type)
@@ -204,7 +262,7 @@ public class StageManager : MonoBehaviour
         if (sessionManager.SessionState.Gold < cost)
             return;
 
-        sessionManager.ChangeGold(cost);
+        UsingGold(-cost);
 
         statUpgradeManager.AddStatAtkDamage(tower.Type, 1);
     }
@@ -215,7 +273,7 @@ public class StageManager : MonoBehaviour
         if (sessionManager.SessionState.Gold < cost)
             return;
 
-        sessionManager.ChangeGold(cost);
+        UsingGold(-cost);
 
         statUpgradeManager.AddStatAtkSpeed(tower.Type, 1);
     }
@@ -228,12 +286,12 @@ public class StageManager : MonoBehaviour
     public void ItemAddHandler(ItemData item)
     {
         effectDataManager.ApplyItemEffect(item);
-        sessionManager.ChangeGold(item.buyPrice);
+        UsingGold(item.buyPrice);
     }
 
     public void ItemSellHander(ItemData item, int index)
     {
         effectDataManager.RemoveItemEffect(item);
-        sessionManager.ChangeGold(item.salePrice);
+        UsingGold(item.salePrice);
     }
 }

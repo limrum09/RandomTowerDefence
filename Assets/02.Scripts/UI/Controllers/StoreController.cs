@@ -52,8 +52,8 @@ public class StoreController : MonoBehaviour
 
     private void SlotGetTowerUID(int i)
     {
-        int ranGrade = Random.Range(1, 5);
-        int ranTower = Random.Range(0, 5);
+        int ranGrade = Random.Range(1, 6);
+        int ranTower = Random.Range(0, 6);
 
         string[] tempTower = Managers.TowerData.GetTowerGradeUID(ranGrade);
 

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [Serializable]
@@ -23,8 +24,6 @@ public class EnemySpawnInfo
 public class EnemySpawn : MonoBehaviour
 {
     [SerializeField]
-    private StageManager stage;
-    [SerializeField]
     private Enemy baseEnemy;
     [SerializeField]
     private List<EnemySpawnInfo> spawnEnemeys = new List<EnemySpawnInfo>();
@@ -34,34 +33,38 @@ public class EnemySpawn : MonoBehaviour
     private float spawnDelay = 1.0f;
 
     private GridManager grid;
+    private PathFinder path;
     private Vector3 spawnPoint;
-    void Awake()
-    {
-        stage.OnStageStart += EnemySpawnStart;
-        stage.OnAfterSettingsInit += SetInitalized;
-    }
-    private void OnDestroy()
-    {
-        stage.OnStageStart -= EnemySpawnStart;
-        stage.OnAfterSettingsInit -= SetInitalized;
-    }
+
+    public event Action OnEnemySpawn;
+    public event Action OnSpawnEnd;
+    public event Action OnEnemyReached;
+    public event Action<int> OnEnemyDead;
 
     private void Start()
     {
         spawnEnemeys.Clear();
-        SetSpawnEnemyInfo("E001", 5, 10);
-        SetSpawnEnemyInfo("E005", 5, 10);
+    }
+    public void SetSpawnEnemyInfo(List<WaveEnemyRosterData> enemyRoster)
+    {
+        spawnEnemeys.Clear();
+        for (int i = 0; i < enemyRoster.Count; i++)
+        {
+            SetEnemyInfo(enemyRoster[i].enemyUID, enemyRoster[i].enemyLevel, enemyRoster[i].enemyCount);
+            // spawn start등 아직 추가할 것들이 많음
+        }
     }
 
-    public void SetSpawnEnemyInfo(string enemyUID, int level, int spawnCnt)
+    public void SetEnemyInfo(string enemyUID, int level, int spawnCnt)
     {
         EnemySpawnInfo newEnemy = new EnemySpawnInfo(enemyUID, level, spawnCnt);
         spawnEnemeys.Add(newEnemy);
     }
 
-    public void SetInitalized()
+    public void SetInitalized(GridManager getGrid, PathFinder getPath)
     {
-        grid = stage.Grid;
+        grid = getGrid;
+        path = getPath;
         spawnPoint = grid.CellToWorldCenter(grid.SpawnPos.x, grid.SpawnPos.y);
     }
 
@@ -70,16 +73,21 @@ public class EnemySpawn : MonoBehaviour
         StartCoroutine(StartEnemySpawn(5,2f));
     }
 
+    private void EnemyReachGoal() => OnEnemyReached?.Invoke();
+    private void EnemyDead(int rewardGold) => OnEnemyDead?.Invoke(rewardGold);
+
     private void SpawnOneEnemy(EnemySpawnInfo spawnInfo)
     {
         Enemy enemyObj = Instantiate(baseEnemy, spawnPoint, Quaternion.identity);
         enemyObj.Init(spawnInfo.enemyUID, spawnInfo.level);
 
         EnemyMove enemyMove = enemyObj.GetComponent<EnemyMove>();
+        enemyMove.onReachGoal += EnemyReachGoal;
+        enemyMove.onDead += EnemyDead;
 
         if (enemyMove != null)
         {
-            enemyMove.Initialize(stage, grid.SpawnPos, grid.GoalPos, enemyObj.MoveSpeed);
+            enemyMove.Initialize(grid, path, grid.SpawnPos, grid.GoalPos, enemyObj.MoveSpeed);
         }
     }
 
@@ -88,11 +96,10 @@ public class EnemySpawn : MonoBehaviour
         int cnt = spawnCount;
         while (cnt > 0)
         {
-
             for(int i = 0; i< spawnEnemeys.Count; i++)
             {
                 SpawnOneEnemy(spawnEnemeys[i]);
-                stage.RegisterSpawnEnemy();
+                OnEnemySpawn?.Invoke();
             }
 
             cnt--;
@@ -100,7 +107,7 @@ public class EnemySpawn : MonoBehaviour
             yield return new WaitForSeconds(delayTime);
         }
 
-        stage.EnemySpawnEnd();
+        OnSpawnEnd?.Invoke();
         yield return null;
     }
 }

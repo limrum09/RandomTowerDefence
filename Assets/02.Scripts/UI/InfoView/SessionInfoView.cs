@@ -32,7 +32,6 @@ public class SessionInfoView : MonoBehaviour
         needExpText.text = needExp.ToString();
 
         float expPer = (float)currentExp / needExp;
-        Debug.Log("EXP Per - " + expPer);
         expBar.fillAmount = expPer;
     }
     public void SetCurrentWave(int value) => currentWaveText.text = value.ToString();
