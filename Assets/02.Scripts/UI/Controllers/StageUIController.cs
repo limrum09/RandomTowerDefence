@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class StageUIController : MonoBehaviour
@@ -16,18 +17,23 @@ public class StageUIController : MonoBehaviour
     private SessionInfoView sessionView;
     [SerializeField]
     private ItemInfoView itemView;
+    [SerializeField]
+    private EnemyInfoView enemyInfoView;
 
     [Header("Controllers")]
     [SerializeField]
     private QueueController queueCtr;
     [SerializeField]
     private ItemSlotController itemCtr;
+    [SerializeField]
+    private WaveEnemyController enemyInfoCtr;
 
     private TowerGradeUpgradePresenter gradePresenter;
     private TowerActionMenuPresenter actionMenuPresenter;
     private TowerStatUpgradePresernter statPresenter;
     private SessionInfoPresenter sessionInfoPresenter;
     private ItemInfoPresenter itemInfoPresenter;
+    private EnemyInfoPresenter enemyInfoPresenter;
 
     private Tower selectedTower;
 
@@ -41,6 +47,7 @@ public class StageUIController : MonoBehaviour
         statPresenter = new TowerStatUpgradePresernter(statUpgradeView);
         sessionInfoPresenter = new SessionInfoPresenter(sessionView);
         itemInfoPresenter = new ItemInfoPresenter(itemView);
+        enemyInfoPresenter = new EnemyInfoPresenter(enemyInfoView);
 
         gradePresenter.onClickNormalUpgrade += OnTowerGradeNormalUpgrade;
         gradePresenter.onClickPremiumUpgrade += OnTowerGradePreminumUpgrade;
@@ -66,10 +73,13 @@ public class StageUIController : MonoBehaviour
         itemInfoPresenter.OnItemSell += OnClickItemSellButton;
         itemInfoPresenter.OnItemSell += itemCtr.SellItem;
 
+        enemyInfoCtr.onClickEnemyInfo += OnClickWaveEnemyInfo;
+
         gradePresenter.HideModel();
         actionMenuPresenter.Hide();
         statPresenter.Hide();
         itemInfoPresenter.Hide();
+        enemyInfoPresenter.Hide();
     }
 
     private void OnDestroy()
@@ -94,6 +104,8 @@ public class StageUIController : MonoBehaviour
         towerCtr.OnShowStatUpgrade -= OnClickStatUpgrade;
         towerCtr.OnGoldInterection -= OnGoldToTowerIntertion;
 
+        enemyInfoCtr.onClickEnemyInfo -= OnClickWaveEnemyInfo;
+
         itemCtr.OnClickItem -= OnClickItemInfo;
 
         sessionInfoPresenter.UnBindAction();
@@ -104,6 +116,11 @@ public class StageUIController : MonoBehaviour
         sessionInfoPresenter.GetRunSessionDatamanager(getRunSession);
     }
 
+    public void SetWaveEnemyInfo(List<WaveEnemyRosterData> data)
+    {
+        enemyInfoCtr.GetWaveInfo(data);
+    }
+
     public void SetSelectedTower(Tower getTower)
     {
         selectedTower = getTower;
@@ -112,6 +129,7 @@ public class StageUIController : MonoBehaviour
         gradePresenter.HideModel();
         statPresenter.Hide();
         itemInfoPresenter.Hide();
+        enemyInfoPresenter.Hide();
     }
 
     public void ClearSelection()
@@ -121,6 +139,7 @@ public class StageUIController : MonoBehaviour
         actionMenuPresenter.Hide();
         statPresenter.Hide();
         itemInfoPresenter.Hide();
+        enemyInfoPresenter.Hide();
     }
 
     private void OnClickMove()
@@ -132,6 +151,7 @@ public class StageUIController : MonoBehaviour
         actionMenuPresenter.Hide();
         statPresenter.Hide();
         itemInfoPresenter.Hide();
+        enemyInfoPresenter.Hide();
 
         towerCtr.SetTowerMoveMode();
     }
@@ -144,6 +164,7 @@ public class StageUIController : MonoBehaviour
         itemInfoPresenter.Hide();
         statPresenter.Hide();
         gradePresenter.SetModel(tower);
+        enemyInfoPresenter.Hide();
     }
 
     public void OnClickStatUpgrade(Tower tower)
@@ -154,6 +175,7 @@ public class StageUIController : MonoBehaviour
         gradePresenter.HideModel();
         itemInfoPresenter.Hide();
         statPresenter.SetModel(tower);
+        enemyInfoPresenter.Hide();
     }
 
     public void OnClickItemInfo(ItemData item, int index)
@@ -164,6 +186,7 @@ public class StageUIController : MonoBehaviour
         gradePresenter.HideModel();
         statPresenter.Hide();
         itemInfoPresenter.SetModel(item, index);
+        enemyInfoPresenter.Hide();
     }
 
     private void OnTowerGradeNormalUpgrade()
@@ -208,5 +231,15 @@ public class StageUIController : MonoBehaviour
     private void OnGoldToTowerIntertion(int value)
     {
         onGoldToTowerInterection?.Invoke(value);
+    }
+
+    private void OnClickWaveEnemyInfo(WaveEnemyRosterData waveEnemy)
+    {
+        enemyInfoPresenter.GetModel(waveEnemy);
+
+        gradePresenter.HideModel();
+        actionMenuPresenter.Hide();
+        statPresenter.Hide();
+        itemInfoPresenter.Hide();
     }
 }

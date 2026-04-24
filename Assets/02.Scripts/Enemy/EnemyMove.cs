@@ -1,11 +1,9 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
 {
-    private StageManager stage;
     private GridManager gridManager;
     private PathFinder path;
     private float moveSpeed;
@@ -20,6 +18,9 @@ public class EnemyMove : MonoBehaviour
     private int pathIndex;
     private bool isMove;
 
+    public event Action<int> onDead;
+    public event Action onReachGoal;
+
     private void Update()
     {
         if (!isMove)
@@ -28,11 +29,10 @@ public class EnemyMove : MonoBehaviour
         MoveAlongPath();
     }
 
-    public void Initialize(StageManager getStage, Vector2Int getStartCell, Vector2Int getEndCell, float getMoveSpeed)
+    public void Initialize(GridManager getGrid, PathFinder getPath, Vector2Int getStartCell, Vector2Int getEndCell, float getMoveSpeed)
     {
-        stage = getStage;
-        gridManager = stage.Grid;
-        path = stage.Path;
+        gridManager = getGrid;
+        path = getPath;
 
         startCell = getStartCell;
         endCell = getEndCell;
@@ -45,11 +45,13 @@ public class EnemyMove : MonoBehaviour
 
     public void IsDead(int rewardGold)
     {
-        isMove = false;
+        if (!isMove)
+            return;
 
-        stage.RunSession.ChangeGold(rewardGold);
-        stage.RunSession.AddkillCount(1);
-        stage.RegisterDeadEnemy();
+        isMove = false;
+        onDead?.Invoke(rewardGold);
+
+        Destroy(gameObject);
     }
 
     private void RecalculatePath()
@@ -86,15 +88,11 @@ public class EnemyMove : MonoBehaviour
 
             if (pathIndex >= currentPath.Count)
             {
-                stage.RegisterReachedEnemy();
+                onReachGoal?.Invoke();
                 Destroy(gameObject);
                 Debug.Log("적이 목표 지점에 도착했습니다.");
             }
         }
-    }
-    private void OnDestroy()
-    {
-        
     }
 
     private void OnDrawGizmos()

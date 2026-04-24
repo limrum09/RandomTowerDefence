@@ -1,0 +1,53 @@
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class WaveEnemyInfo : MonoBehaviour
+{
+    [SerializeField]
+    private Image icon;
+    [SerializeField]
+    private Button btn;
+    [SerializeField]
+    private TextMeshProUGUI enemyLevel;
+    [SerializeField]
+    private TextMeshProUGUI enemyCnt;
+    private string enemyUID;
+    private WaveEnemyController owner;
+    private int index;
+
+    public void Init(WaveEnemyController getOwner, int getIndex)
+    {
+        owner = getOwner;
+        index = getIndex;
+
+        btn.onClick.AddListener(OnClickEnemyInfo);
+        enemyUID = string.Empty;
+    }
+
+    public void SetWaveEnemyInfo(string uid, int level, int cnt)
+    {
+        enemyUID = uid;
+
+        string iconPath = Managers.EnemyData.GetEnemyData(uid).iconPath;
+
+        if(iconPath != null)
+            icon.sprite = Resources.Load<Sprite>("Enemy/Images" + iconPath);
+
+        enemyLevel.text = $"Lv. {level}";
+        enemyCnt.text = cnt.ToString();
+    }
+
+    public void Clear()
+    {
+        enemyUID = string.Empty;
+        enemyLevel.text = "";
+        enemyCnt.text = "";
+        icon.sprite = null;
+    }
+
+    public void OnClickEnemyInfo()
+    {
+        owner.OnClickEnemyInfo(index);
+    }
+}

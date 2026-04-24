@@ -14,7 +14,6 @@ public class TowerCntSkillInfoController : MonoBehaviour
         List<string> tower = new List<string> { "T0011" , "T0021" , "T0031" , "T0041" , "T0051" , "T0061" };
         for(int i = 0; i < len; i++)
         {
-            Debug.Log((TowerType)i);
             info[i].Init((TowerType)i, tower[i]);
         }
 
