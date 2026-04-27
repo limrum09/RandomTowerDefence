@@ -63,7 +63,7 @@ public class StoreSlotUI : MonoBehaviour
 
         string path = data.iconPath;
 
-        Sprite icon = Resources.Load<Sprite>($"Tower/Images/Icon_Tower_{path}_Idle");
+        Sprite icon = Resources.Load<Sprite>($"Tower/SpriteLibrary/{path}/{path}_{grade}");
 
         if (icon != null)
         {

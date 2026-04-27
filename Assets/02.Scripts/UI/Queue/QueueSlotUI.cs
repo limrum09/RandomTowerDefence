@@ -4,57 +4,15 @@ using UnityEngine.UI;
 public class QueueSlotUI : MonoBehaviour
 {
     [SerializeField]
-    private Image icon;
-    [SerializeField]
     private Button btn;
     [SerializeField]
-    private Animator anim;
+    private TowerPreviewCharacter tpc;
 
     private string towerUID;
     private int slotIndex;
-    private TowerData data;
     private QueueController owner;
 
     public bool IsQueueEmpty => string.IsNullOrEmpty(towerUID);
-    private void Refresh()
-    {
-        icon.gameObject.SetActive(!IsQueueEmpty);
-
-        if (!IsQueueEmpty)
-        {
-            data = Managers.TowerData.GetTowerData(towerUID);            
-
-            if (data != null)
-            {
-                string path = data.iconPath;
-
-                AnimatorDatas aniDatas = Resources.Load<AnimatorDatas>("Anis/AnimatorDatas");
-
-                if(aniDatas == null)
-                {
-                    icon.sprite = null;
-                    anim.runtimeAnimatorController = null;
-                    return;
-                }
-
-                RuntimeAnimatorController aniController = aniDatas.FindByCode("UI_" + path + "Ani");
-
-                if (aniController == null)
-                {
-                    icon.sprite = null;
-                    anim.runtimeAnimatorController = null;
-                    return;
-                }
-                    
-                anim.runtimeAnimatorController = aniController;
-            }
-        }
-        else
-        {
-            icon.sprite = null;
-            anim.runtimeAnimatorController = null;
-        }
-    }
 
     public void Init(QueueController getOwner, int getIndex)
     {
@@ -66,14 +24,16 @@ public class QueueSlotUI : MonoBehaviour
 
     public void SetSlotUI(string uid)
     {
-        towerUID = uid; ;
-        Refresh();
+        towerUID = uid;
+
+        tpc.SetShow();
+        tpc.SetTower(uid);
     }
 
     public void RemoveSlotUI()
     {
         towerUID = string.Empty;
-        Refresh();
+        tpc.SetHide();
     }
 
     private void OnClickSlot()
