@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.U2D.Animation;
 
 public class Tower : MonoBehaviour
 {
@@ -10,6 +11,12 @@ public class Tower : MonoBehaviour
     private Sprite baseSprite;
     [SerializeField]
     private Transform attackRangeIndicator;
+    [SerializeField]
+    private SpriteLibrary spriteLibrary;
+    [SerializeField]
+    private RuntimeAnimatorController commonController;
+
+
     private int index;
     private RunStatUpgradeManager statUpgrade;
 
@@ -83,27 +90,47 @@ public class Tower : MonoBehaviour
 
     private void SetAnimation()
     {
-        string path = iconPath;
+        if (anim == null)
+            return;
 
-        AnimatorDatas aniDatas = Resources.Load<AnimatorDatas>("Anis/AnimatorDatas");
+        anim.runtimeAnimatorController = commonController;
 
-        if (aniDatas == null)
+        SpriteLibraryAsset library = Resources.Load<SpriteLibraryAsset>($"Tower/SpriteLibrary/{iconPath}/{iconPath}_{grade}");
+
+        if(spriteLibrary == null)
         {
-            spriteRenderer.sprite = baseSprite;
-            anim.runtimeAnimatorController = null;
+            Debug.LogWarning("Sprite Library 로드 실패 : ");
             return;
         }
 
-        RuntimeAnimatorController aniController = aniDatas.FindByCode(path + "Ani");
-
-        if (aniController == null)
+        if(library == null)
         {
-            spriteRenderer.sprite = baseSprite;
-            anim.runtimeAnimatorController = null;
+            Debug.LogWarning("Library 로드 실패 : ");
             return;
         }
 
-        anim.runtimeAnimatorController = aniController;
+        spriteLibrary.spriteLibraryAsset = library;
+
+        SetAnimatorTypeParameters();
+    }
+
+    private void SetAnimatorTypeParameters()
+    {
+        if (anim == null)
+            return;
+
+        anim.SetBool("IsBow", false);
+        anim.SetBool("IsMagic", false);
+
+        switch (towerType)
+        {
+            case TowerType.Elf:
+                anim.SetBool("IsBow", true);
+                break;
+            case TowerType.Dragonian:
+                anim.SetBool("IsMagic", true);
+                break;
+        }
     }
 
     private void SetRangeVisiual()
