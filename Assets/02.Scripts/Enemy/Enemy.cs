@@ -5,11 +5,10 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
-    private SpriteRenderer spriteRenderer;
-    [SerializeField]
-    private Animator anim;
-    [SerializeField]
     private EnemyMove move;
+    [SerializeField]
+    private EnemyAnim anim;
+
 
     [SerializeField]
     private string enemyUID;
@@ -78,7 +77,7 @@ public class Enemy : MonoBehaviour
         isDead = false;
 
         SetState();
-        SetAnimator(iconPath);
+        anim.SetAnim(uid);
     }
 
     private void SetState()
@@ -87,18 +86,10 @@ public class Enemy : MonoBehaviour
         maxShield = currentShield = basicShield + (increaseShield * level);
     }
 
-    private void SetAnimator(string path)
-    {
-        AnimatorDatas aniDatas = Resources.Load<AnimatorDatas>("Anis/AnimatorDatas");
-        RuntimeAnimatorController aniController = aniDatas.FindByCode(iconPath + "Ani");
-
-        anim.runtimeAnimatorController = aniController;
-    }
-
     private void Die()
     {
         move.IsDead((int)RewardGold);
-        anim.SetBool("Die", true);
+        anim.Die();
 
         Invoke("Dead", 1f);
     }

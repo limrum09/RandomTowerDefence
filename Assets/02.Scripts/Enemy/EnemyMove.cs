@@ -50,8 +50,6 @@ public class EnemyMove : MonoBehaviour
 
         isMove = false;
         onDead?.Invoke(rewardGold);
-
-        Destroy(gameObject);
     }
 
     private void RecalculatePath()

@@ -22,9 +22,9 @@ public class TowerActionMenuView : MonoBehaviour
 
     public void Show()
     {
-        towerMoveBtnText.text = $"Å¸¿öÀÌµ¿({Managers.InputKey.GetKeyCode(InputAction.MoveTower)})";
-        towerGradeupGradeBtnText.text = $"Å¸¿ö Á¤º¸ º¸±â({Managers.InputKey.GetKeyCode(InputAction.ShowGradeUpgradeTowerView)})";
-        towerStatUpgradeBtnText.text = $"Å¸¿ö ½ºÅÈ °­È­({Managers.InputKey.GetKeyCode(InputAction.ShowStatUpgradeTowerView)})";
+        towerMoveBtnText.text = $"íƒ€ì›Œì´ë™({Managers.InputData.GetKeyCode(InputAction.MoveTower)})";
+        towerGradeupGradeBtnText.text = $"íƒ€ì›Œ ì •ë³´ ë³´ê¸°({Managers.InputData.GetKeyCode(InputAction.ShowGradeUpgradeTowerView)})";
+        towerStatUpgradeBtnText.text = $"íƒ€ì›Œ ìŠ¤íƒ¯ ê°•í™”({Managers.InputData.GetKeyCode(InputAction.ShowStatUpgradeTowerView)})";
 
         root.SetActive(true);
     }

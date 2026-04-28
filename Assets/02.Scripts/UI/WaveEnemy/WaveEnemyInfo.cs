@@ -29,10 +29,8 @@ public class WaveEnemyInfo : MonoBehaviour
     {
         enemyUID = uid;
 
-        string iconPath = Managers.EnemyData.GetEnemyData(uid).iconPath;
-
-        if(iconPath != null)
-            icon.sprite = Resources.Load<Sprite>("Enemy/Images" + iconPath);
+        if (!string.IsNullOrEmpty(enemyUID))
+            icon.sprite = Resources.Load<Sprite>($"Enemy/SpriteLibrary/{enemyUID}");
 
         enemyLevel.text = $"Lv. {level}";
         enemyCnt.text = cnt.ToString();

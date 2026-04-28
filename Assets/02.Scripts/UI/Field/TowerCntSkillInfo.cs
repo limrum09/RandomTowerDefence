@@ -32,7 +32,7 @@ public class TowerCntSkillInfo : MonoBehaviour
         towerType = getType;
 
         string path = tower.iconPath;
-        skillIcon.sprite = Resources.Load<Sprite>("Tower/Images/Icon_Tower_" + path + "_Idle");
+        skillIcon.sprite = Resources.Load<Sprite>($"Tower/Images/Icon_Tower_{tower.towerType}_{tower.grade}_Idle");
 
         towerCnt = 0;
 
