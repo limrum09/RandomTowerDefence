@@ -34,7 +34,7 @@ public class Managers : MonoBehaviour
     private WaveEnemyRosterDataManager waveRoster = new WaveEnemyRosterDataManager();
 
     public static GameManager Game { get { return Instance.game; } }
-    public static InputManager InputKey { get { return Instance.input; } }
+    public static InputManager InputData { get { return Instance.input; } }
     public static TowerDataManager TowerData { get { return Instance.tower; } }
     public static EnemyDataManager EnemyData { get { return Instance.enemy; } }
     public static EnemySkillDataManager EnemySkillData { get { return Instance.enemySkill; } }
@@ -47,7 +47,7 @@ public class Managers : MonoBehaviour
     private void Start()
     {
         // 임시, 나중에 지워야 함
-        InputKey.ResetKeyCode();
+        InputData.ResetKeyCode();
     }
 
     private void Awake()

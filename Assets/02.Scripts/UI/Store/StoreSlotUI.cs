@@ -21,6 +21,8 @@ public class StoreSlotUI : MonoBehaviour
     private TextMeshProUGUI priceText;
     [SerializeField]
     private TextMeshProUGUI tempText;
+    [SerializeField]
+    private HorizontalLayoutGroup layoutGroup;
 
     private StoreController owner;
     private Button btn;
@@ -63,7 +65,7 @@ public class StoreSlotUI : MonoBehaviour
 
         string path = data.iconPath;
 
-        Sprite icon = Resources.Load<Sprite>($"Tower/SpriteLibrary/{path}/{path}_{grade}");
+        Sprite icon = Resources.Load<Sprite>($"Tower/Images/Icon_Tower_{data.towerType}_{data.grade}_Idle");
 
         if (icon != null)
         {
@@ -147,6 +149,8 @@ public class StoreSlotUI : MonoBehaviour
         }
 
         type = SlotType.None;
+        layoutGroup.CalculateLayoutInputHorizontal();
+        layoutGroup.SetLayoutHorizontal();
         SetStoreSlot();
     }
 

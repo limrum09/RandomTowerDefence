@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Net.NetworkInformation;
 using UnityEngine;
-using UnityEngine.UIElements;
 /// <summary>
 /// 유저 장애물 설치 및 철거
 /// </summary>
@@ -65,12 +61,12 @@ public class ObstacleBuilder : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(Managers.InputKey.GetKeyCode(InputAction.MakeObstacle)))
+        if (Input.GetKeyDown(Managers.InputData.GetKeyCode(InputAction.MakeObstacle)))
         {
             isObstacleMode = true;
         }
 
-        if (Input.GetKeyDown(Managers.InputKey.GetKeyCode(InputAction.RemoveObstacle)))
+        if (Input.GetKeyDown(Managers.InputData.GetKeyCode(InputAction.RemoveObstacle)))
         {
             isRemoveObstacle = true;
         }
@@ -133,7 +129,6 @@ public class ObstacleBuilder : MonoBehaviour
         }
 
         stage.RunSession.GetFreeObstacle(1);
-        Debug.Log("추가 된 후 무료 장애물 개수 :"   + stage.RunSession.SessionState.FreeObstacleCnt);
     }
 
     /// <summary>
@@ -141,10 +136,7 @@ public class ObstacleBuilder : MonoBehaviour
     /// </summary>
     private void TryPlaceObstacle()
     {
-        Vector3 mouseWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        mouseWorld.z = 0;
-
-        Vector2Int cell = gridManager.WorldToCell(mouseWorld);
+        Vector2Int cell = Managers.InputData.GetMouseCellPosition(mainCamera, gridManager);
 
         if (!gridManager.IsInBounds(cell))
             return;

@@ -96,34 +96,34 @@ public class TowerController : MonoBehaviour
 
         if (selectedTower != null)
         {
-            if (Input.GetKeyDown(Managers.InputKey.GetKeyCode(InputAction.MoveTower)))
+            if (Input.GetKeyDown(Managers.InputData.GetKeyCode(InputAction.MoveTower)))
             {
                 SetTowerMoveMode();
                 OnTowerSelectCleared?.Invoke();
                 return;
             }
 
-            if (Input.GetKeyDown(Managers.InputKey.GetKeyCode(InputAction.ShowGradeUpgradeTowerView)))
+            if (Input.GetKeyDown(Managers.InputData.GetKeyCode(InputAction.ShowGradeUpgradeTowerView)))
             {
                 isGradeUpgradeMode = true;
                 OnShowGradeUpgrade?.Invoke(selectedTower);
                 return;
             }
 
-            if (Input.GetKeyDown(Managers.InputKey.GetKeyCode(InputAction.ShowStatUpgradeTowerView)))
+            if (Input.GetKeyDown(Managers.InputData.GetKeyCode(InputAction.ShowStatUpgradeTowerView)))
             {
                 isStatUpgradeMode = true;
                 OnShowStatUpgrade?.Invoke(selectedTower);
                 return;
             }
 
-            if(isGradeUpgradeMode && Input.GetKeyDown(Managers.InputKey.GetKeyCode(InputAction.TowerGradeNormalUpgrade)))
+            if(isGradeUpgradeMode && Input.GetKeyDown(Managers.InputData.GetKeyCode(InputAction.TowerGradeNormalUpgrade)))
             {
                 isGradeUpgradeMode = false;
                 TowerGradeNormalUpgrade();
             }
 
-            if (isGradeUpgradeMode && Input.GetKeyDown(Managers.InputKey.GetKeyCode(InputAction.TowerGradePremiunUpgrade)))
+            if (isGradeUpgradeMode && Input.GetKeyDown(Managers.InputData.GetKeyCode(InputAction.TowerGradePremiunUpgrade)))
             {
                 isGradeUpgradeMode = false;
                 TowerGradePreminumUpgrade();
@@ -218,21 +218,16 @@ public class TowerController : MonoBehaviour
     {
         Debug.Log("타워 클릭");
 
-        if (IsPointerOverUI())
+        if (Managers.InputData.IsPointerOverUI<TowerUIRaycastTarget>())
             return;
 
-        Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 point = new Vector2(mousePosition.x, mousePosition.y);
-
-        Collider2D hit = Physics2D.OverlapPoint(point);
-        if (hit == null)
+        if (!Managers.InputData.TryGetMouseComponent(mainCamera, out Tower tower)
         {
             ClearSelectedTower();
             Debug.Log("아무것도 안부딪힘");
             return;
         }
 
-        Tower tower = hit.GetComponent<Tower>();
         if (tower == null)
         {
             ClearSelectedTower();
@@ -440,34 +435,6 @@ public class TowerController : MonoBehaviour
             return false;
 
         return true;
-    }
-
-    /// <summary>
-    /// 마우스가 UI를 클릭하는지 확인
-    /// TowerUIRaycastTarget.cs를 소유하고 있는 UI를 클릭시 true 반환
-    /// </summary>
-    /// <returns></returns>
-    private bool IsPointerOverUI()
-    {
-        if (EventSystem.current == null)
-            return false;
-
-        PointerEventData eventData = new PointerEventData(EventSystem.current);
-        eventData.position = Input.mousePosition;
-
-        raycastResults.Clear();
-        EventSystem.current.RaycastAll(eventData, raycastResults);
-
-        foreach(RaycastResult result in raycastResults)
-        {
-            if (result.gameObject == null)
-                continue;
-
-            if (result.gameObject.GetComponentInParent<TowerUIRaycastTarget>() != null)
-                return true;
-        }
-
-        return false;
     }
 
     private void TowerGradeUpgrade(string buildUID, List<Tower> towers)

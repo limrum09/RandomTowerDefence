@@ -56,8 +56,8 @@ public class TowerGradeUpgradeView : MonoBehaviour, IPopUpPublicUI
         towerSellPriceText.text = "";
         towerGradeText.text = "";
 
-        normalBtnText.text = $"일반 강화 ({Managers.InputKey.GetKeyCode(InputAction.TowerGradeNormalUpgrade)})";
-        premiumBtnText.text = $"고정 강화 ({Managers.InputKey.GetKeyCode(InputAction.TowerGradePremiunUpgrade)})";
+        normalBtnText.text = $"일반 강화 ({Managers.InputData.GetKeyCode(InputAction.TowerGradeNormalUpgrade)})";
+        premiumBtnText.text = $"고정 강화 ({Managers.InputData.GetKeyCode(InputAction.TowerGradePremiunUpgrade)})";
         normalUpgradeBtn.interactable = true;
         premiumUpgradeBtn.interactable = true;
 

@@ -142,6 +142,7 @@ MonoBehaviour:
   gradeText: {fileID: 6432957795183874884}
   priceText: {fileID: 6109239810476668896}
   tempText: {fileID: 7053073264352579528}
+  layoutGroup: {fileID: 7841143491402182303}
 --- !u!1 &2521053810077184004
 GameObject:
   m_ObjectHideFlags: 0

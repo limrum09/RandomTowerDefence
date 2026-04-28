@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class EnemyInfoPresenter
 {
     private EnemyInfoView view;
@@ -18,6 +20,9 @@ public class EnemyInfoPresenter
         int level = model.enemyLevel;
 
         EnemyData temp = Managers.EnemyData.GetEnemyData(model.enemyUID);
+
+        Sprite icon = Resources.Load<Sprite>($"Enemy/SpriteLibrary/{temp.enemyUID}");
+        view.SetIcon(icon);
 
         string enemyName = Managers.Local.GetString(temp.stringKey);
         view.SetName(enemyName);
