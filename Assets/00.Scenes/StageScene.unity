@@ -20610,11 +20610,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b837bbe0ccd6a754885c6ea0e7e07b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  min: {x: -20, y: 20}
-  max: {x: 12, y: 12}
-  zoomMin: 8
-  zoomMax: 20
-  zoomSpeed: 2
+  min: {x: 0, y: 0}
+  max: {x: 0, y: 0}
+  zoomMin: 10
+  zoomMax: 24
+  zoomSpeed: 5
   mainCamera: {fileID: 1654911749}
 --- !u!1 &1660303228
 GameObject:

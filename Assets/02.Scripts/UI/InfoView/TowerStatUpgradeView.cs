@@ -67,11 +67,7 @@ public class TowerStatUpgradeView : MonoBehaviour
         this.gameObject.SetActive(true);
     }
 
-    public void SetIconImage(string path)
-    {
-        Sprite icon = Resources.Load<Sprite>("Tower/Images/Icon_Tower_" + path + "_Idle");
-        iconImage.sprite = icon;
-    }
+    public void SetIconImage(Sprite icon) => iconImage.sprite = icon;
 
     public void TowerGrade(int grade, string nextUGUI)
     {
@@ -81,19 +77,19 @@ public class TowerStatUpgradeView : MonoBehaviour
             return;
         }
 
-        towerGradeText.text = grade.ToString() + "µî±Þ";
+        towerGradeText.text = grade.ToString() + "ë“±ê¸‰";
     }
 
     public void SetTowerName(string name) => towerNameText.text = name;
     public void SetSkillName(string name) => towerSkillText.text = name;
-    public void SetCurrentDamageStepText(int value) => currentDamageStepText.text = $"{value}°­";
+    public void SetCurrentDamageStepText(int value) => currentDamageStepText.text = $"{value}ê°•";
     public void SetCurrentDamageText(int value) => currentDamageValueText.text = value.ToString();
-    public void SetNextDamageStepText(int value) => nextDamageStepText.text = $"{value}°­";
+    public void SetNextDamageStepText(int value) => nextDamageStepText.text = $"{value}ê°•";
     public void SetNextDamageText(string value) => nextDamageValueText.text = value;
     public void SetDamaePriceText(int value) => damagePriceText.text = value.ToString();
-    public void SetCurrentAttakSpeedStepText(int value) => currentAttackSpeedStepText.text = $"{value}°­";
+    public void SetCurrentAttakSpeedStepText(int value) => currentAttackSpeedStepText.text = $"{value}ê°•";
     public void SetCurrentAttakSpeedText(float value) => currentAttackSpeedValueText.text = value.ToString();
-    public void SetNextAttakSpeedStepText(int value) => nextAttackSpeedStepText.text = $"{value}°­";
+    public void SetNextAttakSpeedStepText(int value) => nextAttackSpeedStepText.text = $"{value}ê°•";
     public void SetNextAttakSpeedText(string value) => nextAttackSpeedValueText.text = value;
     public void SetAttakSpeedPriceText(int value) => attackSpeedPriceText.text = value.ToString();
 

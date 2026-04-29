@@ -50,7 +50,7 @@ public class GridManager
             }
         }
 
-        Debug.Log($"2D Grid ª˝º∫ øœ∑· : {gridWidth} X {gridHeight}, Origin : {mapOrigin}");
+        Debug.Log($"2D Grid ÏÉùÏÑ± ÏôÑÎ£å : {gridWidth} X {gridHeight}, Origin : {mapOrigin}");
     }
 
     public GridNode GetNode(int x, int y)
@@ -106,32 +106,5 @@ public class GridManager
         }
 
         Debug.Log($"Grid Manager, Spawn Cell Pos : {spawnPos}, Goal Cell Pos : {goalPos}");
-    }
-
-    private void OnDrawGizmos()
-    {
-        if (mapPlane == null)
-            return;
-
-        float width = gridWidth * cellSize;
-        float height = gridHeight * cellSize;
-
-        Vector3 origin = new Vector3(mapPlane.position.x - width * 0.5f, mapPlane.position.y - height * 0.5f, 0f);
-
-        Gizmos.color = Color.blue;
-
-        for (int x = 0; x <= gridWidth; x++)
-        {
-            Vector3 start = new Vector3(origin.x + x * cellSize, origin.y, 0f);
-            Vector3 end = new Vector3(origin.x + x * cellSize, origin.y + height, 0f);
-            Gizmos.DrawLine(start, end);
-        }
-
-        for (int x = 0; x <= gridHeight; x++)
-        {
-            Vector3 start = new Vector3(origin.x, origin.y + x * cellSize, 0f);
-            Vector3 end = new Vector3(origin.x + width, origin.y + x * cellSize, 0f);
-            Gizmos.DrawLine(start, end);
-        }
     }
 }

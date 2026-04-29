@@ -242,7 +242,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 832
+        y: 840
         width: 64
         height: 64
       alignment: 9
@@ -330,7 +330,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 704
+        y: 712
         width: 64
         height: 64
       alignment: 9
@@ -352,7 +352,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 704
+        y: 712
         width: 64
         height: 64
       alignment: 9
@@ -374,7 +374,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 704
+        y: 712
         width: 64
         height: 64
       alignment: 9
@@ -396,7 +396,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 704
+        y: 712
         width: 64
         height: 64
       alignment: 9
@@ -747,7 +747,7 @@ TextureImporter:
       name: Slash_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 320
         width: 64
         height: 64
@@ -1012,7 +1012,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
+        y: 72
         width: 64
         height: 64
       alignment: 9
@@ -1034,7 +1034,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 64
+        y: 72
         width: 64
         height: 64
       alignment: 9
@@ -1056,7 +1056,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 64
+        y: 72
         width: 64
         height: 64
       alignment: 9

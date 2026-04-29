@@ -78,7 +78,7 @@ public class EnemyMove : MonoBehaviour
         GridNode targetNode = currentPath[pathIndex];
         Vector3 targetPos = gridManager.CellToWorldCenter(targetNode.x, targetNode.y);
 
-        transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime * 3.0f);
 
         if (Vector3.Distance(transform.position, targetPos) < 0.05f)
         {

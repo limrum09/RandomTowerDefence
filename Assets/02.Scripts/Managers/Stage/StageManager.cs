@@ -1,6 +1,4 @@
 using System;
-using Unity.VisualScripting;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class StageManager : MonoBehaviour
@@ -27,6 +25,9 @@ public class StageManager : MonoBehaviour
     private EnemySpawn enemySpawn;
     [SerializeField]
     private StageWaveManager waveManager;
+    [SerializeField]
+    private DrawGridLine line;
+    
 
     [Header("UIs")]
     [SerializeField]
@@ -126,6 +127,7 @@ public class StageManager : MonoBehaviour
 
         currentWave = 1;
         sessionManager.SetWave(currentWave);
+        line.Init(gridWidth, gridHeight, cellSize, mapPlane.transform.position);
         SetSettings();
     }
 
