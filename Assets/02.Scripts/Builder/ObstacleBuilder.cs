@@ -137,6 +137,7 @@ public class ObstacleBuilder : MonoBehaviour
     private void TryPlaceObstacle()
     {
         Vector2Int cell = Managers.InputData.GetMouseCellPosition(mainCamera, gridManager);
+        Debug.Log("셀 위치 : " + cell);
 
         if (!gridManager.IsInBounds(cell))
             return;
@@ -151,6 +152,7 @@ public class ObstacleBuilder : MonoBehaviour
         // 이미 장애물이 있으면 설치 금지
         if (obstacleMap[cell.x, cell.y] != null)
         {
+            Debug.Log("설치 실패");
             isObstacleMode = false;
             return;
         }

@@ -76,12 +76,7 @@ public class TowerGradeUpgradeView : MonoBehaviour, IPopUpPublicUI
         this.gameObject.SetActive(true);
     }
 
-    public void SetIconImage(string path)
-    {
-        Sprite icon = Resources.Load<Sprite>("Tower/Images/Icon_Tower_" + path + "_Idle");
-        iconImage.sprite = icon;
-    }
-
+    public void SetIconImage(Sprite icon) => iconImage.sprite = icon;
     public void TowerGrade(int grade, string nextUGUI)
     {
         if (nextUGUI == "Master" || nextUGUI == "MASTER")

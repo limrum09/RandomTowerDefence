@@ -221,7 +221,7 @@ public class TowerController : MonoBehaviour
         if (Managers.InputData.IsPointerOverUI<TowerUIRaycastTarget>())
             return;
 
-        if (!Managers.InputData.TryGetMouseComponent(mainCamera, out Tower tower)
+        if (!Managers.InputData.TryGetMouseComponent(mainCamera, out Tower tower))
         {
             ClearSelectedTower();
             Debug.Log("아무것도 안부딪힘");
@@ -392,9 +392,7 @@ public class TowerController : MonoBehaviour
     /// <returns>마우스 클릭 위치의 그리드 좌표</returns>
     private Vector2Int GetMouseCellPosition()
     {
-        Vector3 mouseWorld = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        mouseWorld.z = 0f;
-        return grid.WorldToCell(mouseWorld);
+        return Managers.InputData.GetMouseCellPosition(mainCamera, grid);
     }
 
     /// <summary>

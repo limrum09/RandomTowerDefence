@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 412883367955799033}
   - component: {fileID: 9136004676860325637}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AttackRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -76,7 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b,
+    type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 0.31764707}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,7 +101,7 @@ GameObject:
   - component: {fileID: 1932966795710432765}
   - component: {fileID: 4613138691751606132}
   - component: {fileID: 3887299799772881127}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +146,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -165,7 +166,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 9
   m_Sprite: {fileID: 21300000, guid: 9347459f92544e6ca99b833cf679d978, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -242,7 +243,7 @@ GameObject:
   - component: {fileID: 5410287563213680058}
   - component: {fileID: -7411303448696666612}
   - component: {fileID: 9022169934043843894}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BaseTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,7 +281,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 3887299799772881127}
   spriteRenderer: {fileID: 6022529758740813783}
-  baseSprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  baseSprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6,
+    type: 3}
   attackRangeIndicator: {fileID: 412883367955799033}
   spriteLibrary: {fileID: 1932966795710432765}
   commonController: {fileID: 9100000, guid: e49b22f83cf00c2429e1c751a6d173f9, type: 2}
@@ -300,7 +302,7 @@ MonoBehaviour:
   tower: {fileID: 7529320156765697536}
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 256
 --- !u!114 &-7411303448696666612
 MonoBehaviour:
   m_ObjectHideFlags: 0

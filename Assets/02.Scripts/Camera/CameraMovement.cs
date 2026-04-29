@@ -28,18 +28,14 @@ public class CameraMovement : MonoBehaviour
             return;
 
         CameraZoomAndOut();
-
-        if (Input.GetMouseButton(0))
-            CameraDrag();
-
+        CameraDrag();
         ClampCamera();
     }
     private void CameraZoomAndOut()
     {
-        float value = Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
+        float value = mainCamera.orthographicSize - Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
 
-        mainCamera.orthographicSize -= value;
-        mainCamera.orthographicSize = Mathf.Clamp(mainCamera.orthographicSize, zoomMin, zoomMax);
+        mainCamera.orthographicSize = Mathf.Clamp(value, zoomMin, zoomMax);
     }
 
     private void CameraDrag()
@@ -50,23 +46,26 @@ public class CameraMovement : MonoBehaviour
             return;
         }
 
-        Vector3 currentWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 drag = dragStartWorldPosition - currentWorldPos;
+        if (Input.GetMouseButton(0))
+        {
+            Vector3 currentWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 drag = dragStartWorldPosition - currentWorldPos;
 
-        transform.position += drag;
+            transform.position += drag;
+        }
     }
 
     private void ClampCamera()
     {
         Vector3 pos = transform.position;
 
-        float halfHeight = mainCamera.orthographicSize;
+        float halfHeight = mainCamera.orthographicSize * 0.7f;
         float halfWidth = halfHeight * mainCamera.aspect;
 
-        float minX = min.x + halfWidth;
-        float maxX = max.x - halfWidth;
-        float minY = min.y + halfHeight;
-        float maxY = max.y - halfHeight;
+        float minX = min.x - halfWidth;
+        float maxX = max.x + halfWidth;
+        float minY = min.y - halfHeight;
+        float maxY = max.y + halfHeight;
 
         pos.x = Mathf.Clamp(pos.x, minX, maxX);
         pos.y = Mathf.Clamp(pos.y, minY, maxY);

@@ -46,7 +46,7 @@ public class EnemyInfoView : MonoBehaviour
 
     public void SetIcon(Sprite icon) => iconImage.sprite = icon;
     public void SetName(string name) => enemyNameText.text = name;
-    public void SetLevel(int value) => enemyLevelText.text = value.ToString();
+    public void SetLevel(string value) => enemyLevelText.text = value;
     public void SetHealthText(int value) => enemyHealthValueText.text = value.ToString();
     public void SetSheildText(int value) => enemySheildValueText.text = value.ToString();
     public void SetSpeedText(float value) => enemySpeedValueText.text = value.ToString();

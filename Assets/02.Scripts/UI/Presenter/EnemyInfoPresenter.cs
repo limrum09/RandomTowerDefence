@@ -27,7 +27,7 @@ public class EnemyInfoPresenter
         string enemyName = Managers.Local.GetString(temp.stringKey);
         view.SetName(enemyName);
 
-        view.SetLevel(level);
+        view.SetLevel($"Lv. {level}");
         view.SetHealthText(temp.basicHp + (temp.increaseHP * level));
         view.SetSheildText(temp.basicShield + (temp.increaseShield * level));
         view.SetSpeedText(temp.moveSpeed);
