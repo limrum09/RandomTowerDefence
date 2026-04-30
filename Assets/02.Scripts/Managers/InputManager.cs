@@ -42,7 +42,6 @@ public class InputManager
         Vector3 mouseWorld = camera.ScreenToWorldPoint(Input.mousePosition);
         mouseWorld.z = 0f;
 
-        Debug.Log("마우스 이벤트 위치 : " + mouseWorld);
         return mouseWorld;
     }
 

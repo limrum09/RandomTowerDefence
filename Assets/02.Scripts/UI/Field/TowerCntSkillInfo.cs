@@ -43,6 +43,4 @@ public class TowerCntSkillInfo : MonoBehaviour
         towerCnt = value;
         Refresh();
     }
-    public void BuildTowerInField() => towerCnt++;
-    public void RemoveTowerInField() => towerCnt--;
 }

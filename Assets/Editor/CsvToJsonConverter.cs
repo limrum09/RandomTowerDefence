@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
@@ -57,7 +57,7 @@ public static class CsvToJsonConverter
         {
             LocalizationDataRow item = new LocalizationDataRow
             {
-                key = DataParseHelper.GetString(row, "String_Key"),
+                String_Key = DataParseHelper.GetString(row, "String_Key"),
                 KR = DataParseHelper.GetString(row, "KR"),
                 EN = DataParseHelper.GetString(row, "EN")
             };

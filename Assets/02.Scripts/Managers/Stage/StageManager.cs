@@ -1,4 +1,5 @@
 using System;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class StageManager : MonoBehaviour
@@ -59,6 +60,7 @@ public class StageManager : MonoBehaviour
     private RunSessionDataManager sessionManager;
     private RunEffectDataManager effectDataManager;
     private RunStatUpgradeManager statUpgradeManager;
+    private TowerSkillEffect towerSkillEffect;
 
     public Vector2Int SpawnPos => Grid.SpawnPos;
     public Vector2Int GoalPos => Grid.GoalPos;
@@ -84,6 +86,9 @@ public class StageManager : MonoBehaviour
         fieldTowerManager = new FieldTowerManager();
         fieldTowerManager.Init(Grid);
 
+        towerSkillEffect = new TowerSkillEffect();
+        towerSkillEffect.Init();
+
         statUpgradeManager.Init();
         effectDataManager.Init(sessionManager, statUpgradeManager);
 
@@ -104,9 +109,10 @@ public class StageManager : MonoBehaviour
             stageUICtr.onGoldToTowerInterection += UsingGold;
         }
 
-        if(towerCntSkill != null)
+        if(fieldTowerManager != null)
         {
-            towerCntSkill.BindManager(fieldTowerManager);
+            fieldTowerManager.OnFieldTowerChanged += towerCntSkill.ChangeFiledTower;
+            fieldTowerManager.OnFieldTowerChanged += towerSkillEffect.ChangeTowerCount;
         }
 
         if(waveManager != null)
@@ -123,6 +129,11 @@ public class StageManager : MonoBehaviour
             enemySpawn.OnEnemyReached += RegisterReachedEnemy;
             enemySpawn.OnEnemyDead += RegisterDeadEnemy;
             waveManager.onWaveRosterData += enemySpawn.SetSpawnEnemyInfo;
+        }
+
+        if(towerSkillEffect != null)
+        {
+            towerSkillEffect.OnChangedTowerSkillStep += TowerSkillStepChangeHandler;
         }
 
         currentWave = 1;
@@ -145,6 +156,12 @@ public class StageManager : MonoBehaviour
             stageUICtr.onGoldToTowerInterection -= UsingGold;
         }
 
+        if(fieldTowerManager != null)
+        {
+            fieldTowerManager.OnFieldTowerChanged -= towerCntSkill.ChangeFiledTower;
+            fieldTowerManager.OnFieldTowerChanged -= towerSkillEffect.ChangeTowerCount;
+        }
+
         if(waveManager != null)
         {
             OnWaveEnd -= waveManager.WaveEnd;
@@ -158,6 +175,11 @@ public class StageManager : MonoBehaviour
             enemySpawn.OnEnemyReached -= RegisterReachedEnemy;
             enemySpawn.OnEnemyDead -= RegisterDeadEnemy;
             waveManager.onWaveRosterData -= enemySpawn.SetSpawnEnemyInfo;
+        }
+
+        if (towerSkillEffect != null)
+        {
+            towerSkillEffect.OnChangedTowerSkillStep -= TowerSkillStepChangeHandler;
         }
     }
 
@@ -256,6 +278,39 @@ public class StageManager : MonoBehaviour
             DamageStatUpgrade(upgradeData, tower);
         else if(type == UpgradeType.Speed)
             SpeedStatUpgrade(upgradeData, tower);
+    }
+
+    public void TowerSkillStepChangeHandler(TowerType type,int step, float value)
+    {
+        if(TowerType.Orc == type && step == 4)
+        {
+            return;
+        }
+
+        switch (type)
+        {
+            case TowerType.Elf:
+            case TowerType.Orc:
+            case TowerType.Dragonian:
+                statUpgradeManager.AddSkillAtkDamage(type, (int)value);
+                break;
+            case TowerType.Human:
+                HumanTowerSkill();
+                break;
+            case TowerType.Werebeast:
+                WerebeastTowerSkill();
+                break;
+        }
+    }
+
+    private void HumanTowerSkill()
+    {
+
+    }
+
+    private void WerebeastTowerSkill()
+    {
+
     }
 
     private void DamageStatUpgrade(TowerSessionUpgradeData upgradeData,Tower tower)

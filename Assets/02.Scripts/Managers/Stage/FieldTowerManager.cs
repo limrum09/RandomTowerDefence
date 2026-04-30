@@ -1,11 +1,6 @@
-using JetBrains.Annotations;
-using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using System.Net.NetworkInformation;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class FieldTowerManager
 {
@@ -14,7 +9,7 @@ public class FieldTowerManager
     private readonly List<Tower> fieldTowers = new List<Tower>();
     private readonly Dictionary<TowerType, int> towerTypeCnt = new Dictionary<TowerType, int>();
 
-    public event Action<TowerType> OnFieldTowerChanged;
+    public event Action<TowerType, int> OnFieldTowerChanged;
 
     private bool IsValidCell(Vector2Int cell)
     {
@@ -60,7 +55,8 @@ public class FieldTowerManager
 
         towerTypeCnt[tower.Type]++;
 
-        OnFieldTowerChanged?.Invoke(tower.Type);
+        int cnt = GetTowerCount(tower.Type);
+        OnFieldTowerChanged?.Invoke(tower.Type, cnt);
 
         return true;
     }
@@ -82,8 +78,11 @@ public class FieldTowerManager
         if (towerTypeCnt.ContainsKey(tower.Type))
             towerTypeCnt[tower.Type] = Mathf.Max(0, towerTypeCnt[tower.Type] - 1);
 
-        if(notify)
-            OnFieldTowerChanged?.Invoke(tower.Type);
+        if (notify)
+        {
+            int cnt = GetTowerCount(tower.Type);
+            OnFieldTowerChanged?.Invoke(tower.Type, cnt);
+        }
 
         return true;
     }
@@ -105,7 +104,8 @@ public class FieldTowerManager
         towerMap[fromCell.x, fromCell.y] = null;
         towerMap[toCell.x, toCell.y] = tower;
 
-        OnFieldTowerChanged?.Invoke(tower.Type);
+        int cnt = GetTowerCount(tower.Type);
+        OnFieldTowerChanged?.Invoke(tower.Type, cnt);
         return true;
     }
 
@@ -208,7 +208,8 @@ public class FieldTowerManager
             RemoveTower(removeTowers[i], false);
         }
 
-        OnFieldTowerChanged?.Invoke(type);
+        int tCnt = GetTowerCount(type);
+        OnFieldTowerChanged?.Invoke(type, tCnt);
         return true;
     }
     

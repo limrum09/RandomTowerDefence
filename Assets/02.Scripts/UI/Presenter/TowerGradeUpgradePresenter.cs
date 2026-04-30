@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -30,13 +31,29 @@ public class TowerGradeUpgradePresenter
         view.SetIconImage(icon);
         view.TowerGrade(model.Grade, model.nextGradeUID);
         view.SetSkillName(model.SkillName());
-        view.SetSkillDes(model.SkillDes());
         view.SetDamageCurrentValue(model.CurrentDamage);
         view.SetAttackSpeedCurrentValue(model.CurrentAtkSpeed);
         view.SetRangeCurrentValue(model.AtkRange);
         view.PremiumUpgradePirce(1000);
         view.NormalUpgradePrice(300);
         view.TowerSellPrice(model.SellPrice);
+
+
+        string skillDesSplit = model.SkillDes();
+
+        List<SkillValueCollect> skill = Managers.TowerSkill.GetTowerCollections(model.Type);
+
+        object[] des = new object[skill.Count * 2];
+
+        for(int i = 0; i < skill.Count; i++)
+        {
+            des[i] = skill[i].towerCnt;
+            des[i + skill.Count] = skill[i].value;
+        }
+
+        skillDesSplit = string.Format(skillDesSplit, des);
+
+        view.SetSkillDes(skillDesSplit);
     }
 
     public void HideModel()
