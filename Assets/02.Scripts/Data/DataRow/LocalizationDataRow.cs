@@ -4,7 +4,7 @@ using System.Collections.Generic;
 [Serializable]
 public class LocalizationDataRow
 {
-    public string key;
+    public string String_Key;
     public string KR;
     public string EN;
 }

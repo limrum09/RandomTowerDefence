@@ -1,759 +1,910 @@
 {
-    "datas": [
-        {
-            "key": "ITEM_NAME_001",
-            "KR": "낡은 숫돌",
-            "EN": "Worn Sharpening Stone"
-        },
-        {
-            "key": "ITEM_DESC_001",
-            "KR": "모든 타워의 공격력을 <color=#FF4545>[2]</color> 증가시킵니다.\r\n세월의 흔적이 느껴지지만 아직 날카롭습니다.",
-            "EN": "Increases ATK of all towers by <color=#FF4545>[2]</color>.\r\nIt shows its age, but the edge is still razor-sharp."
-        },
-        {
-            "key": "ITEM_NAME_002",
-            "KR": "지휘관의 깃발",
-            "EN": "Commander's Banner"
-        },
-        {
-            "key": "ITEM_DESC_002",
-            "KR": "모든 타워의 공격력을 <color=#FF4545>[3]</color> 증가시킵니다.\r\n전장의 중심에서 아군의 사기를 높입니다.",
-            "EN": "Increases ATK of all towers by <color=#FF4545>[3]</color>.\r\nBoosts the morale of allies from the heart of the battlefield."
-        },
-        {
-            "key": "ITEM_NAME_003",
-            "KR": "황실 칙령",
-            "EN": "Royal Decree"
-        },
-        {
-            "key": "ITEM_DESC_003",
-            "KR": "인간 타워의 공격력을 <color=#FF4545>[4]</color> 증가시킵니다.\r\n황실의 엄격한 규율아래 인간은 하나로 뭉쳐 전장의 흐름을 강화시킵니다.",
-            "EN": "Increases ATK of Human towers by <color=#FF4545>[4]</color>.\r\nUnder the strict imperial discipline, humans unite to strengthen the flow of battle."
-        },
-        {
-            "key": "ITEM_NAME_004",
-            "KR": "세계수의 잎",
-            "EN": "World Tree's Leaf"
-        },
-        {
-            "key": "ITEM_DESC_004",
-            "KR": "엘프 타워의 공격력을 <color=#FF4545>[4]</color> 증가시킵니다.\r\n신비한 자연의 기운이 엘프들에게 깃듭니다.",
-            "EN": "Increases ATK of Elf towers by <color=#FF4545>[4]</color>.\r\nThe mystical energy of nature dwells within the Elves."
-        },
-        {
-            "key": "ITEM_NAME_005",
-            "KR": "전장의 함성",
-            "EN": "WarCry"
-        },
-        {
-            "key": "ITEM_DESC_005",
-            "KR": "오크 타워의 공격력을 <color=#FF4545>[4]</color> 증가시킵니다.\r\n거친 포효가 전사들의 본능을 깨웁니다.",
-            "EN": "Increases ATK of Orc towers by <color=#FF4545>[4]</color>.\r\nA fierce roar awakens the primal instincts of the warriors."
-        },
-        {
-            "key": "ITEM_NAME_006",
-            "KR": "야수의 감각",
-            "EN": "Feral Instinct"
-        },
-        {
-            "key": "ITEM_DESC_006",
-            "KR": "수인 타워의 공격력을 <color=#FF4545>[4]</color> 증가시킵니다.\r\n날카로운 감각으로 적의 허점을 파고듭니다.",
-            "EN": "Increases ATK of Werebeast towers by <color=#FF4545>[4]</color>.\r\nSharp instincts allow them to strike at the enemy's weak points."
-        },
-        {
-            "key": "ITEM_NAME_007",
-            "KR": "드래곤 본",
-            "EN": "Dragon Bone"
-        },
-        {
-            "key": "ITEM_DESC_007",
-            "KR": "용인 타워의 공격력을 <color=#FF4545>[4]</color> 증가시킵니다.\r\n용의 뼈에서 추출한 인자가 용인들을 용에 가깝게 강화합니다.",
-            "EN": "Increases ATK of Dragonian towers by <color=#FF4545>[4]</color>.\r\nEssence extracted from dragon bones empowers Dragonians to become more like true dragons."
-        },
-        {
-            "key": "ITEM_NAME_008",
-            "KR": "강철 코어",
-            "EN": "Steel Core"
-        },
-        {
-            "key": "ITEM_DESC_008",
-            "KR": "드워프 타워의 공격력을 <color=#FF4545>[4]</color> 증가시킵니다.\r\n강철 코어가 땅의 자손인 드워프들을 더욱 단단하게 만듭니다.",
-            "EN": "Increases ATK of Dwarf towers by <color=#FF4545>[4]</color>.\r\nThe steel core hardens the Dwarves, the children of the earth."
-        },
-        {
-            "key": "ITEM_NAME_009",
-            "KR": "룬스톤(공격속도)",
-            "EN": "Haste's Rune Stone"
-        },
-        {
-            "key": "ITEM_DESC_009",
-            "KR": "모든 타워의 공격 속도를 <color=#FF4545>[2]</color> 증가시킵니다.\r\n마력의 흐름이 손끝을 가볍게 합니다.",
-            "EN": "Increases ATK Speed of all towers by <color=#FF4545>[2]</color>.\r\nThe flow of mana makes your fingertips feel light."
-        },
-        {
-            "key": "ITEM_NAME_010",
-            "KR": "룬스톤(공격속도)",
-            "EN": "Haste's Rune Stone"
-        },
-        {
-            "key": "ITEM_DESC_010",
-            "KR": "모든 타워의 공격 속도를 <color=#FF4545>[4]</color> 증가시킵니다.\r\n더욱 강력한 마력의 파동이 전장에 휘몰아칩니다.",
-            "EN": "Increases ATK Speed of all towers by <color=#FF4545>[4]</color>.\r\nA more powerful surge of mana swirls across the battlefield."
-        },
-        {
-            "key": "ITEM_NAME_011",
-            "KR": "장인의 설계도",
-            "EN": "Master's Blueprint"
-        },
-        {
-            "key": "ITEM_DESC_011",
-            "KR": "모든 타워의 스킬 발동 요구치를 <color=#FF4545>[1]</color> 감소시킵니다.\r\n효율적인 설계로 기술 사용이 빨라집니다.",
-            "EN": "Reduces skill trigger requirements for all towers by <color=#FF4545>[1]</color>.\r\nEfficient design allows for faster skill usage."
-        },
-        {
-            "key": "ITEM_NAME_012",
-            "KR": "행운 동전",
-            "EN": "Lucky Coin"
-        },
-        {
-            "key": "ITEM_DESC_012",
-            "KR": "적 처치시 골드 획득량을 <color=#FF4545>[1]</color> 증가시킵니다.\r\n행운의 여신이 당신을 지켜봅니다.",
-            "EN": "Increases Gold gained upon killing an enemy by <color=#FF4545>[1]</color>.\r\nThe Goddess of Luck is watching over you."
-        },
-        {
-            "key": "ITEM_NAME_013",
-            "KR": "행운 동전",
-            "EN": "Lucky Coin"
-        },
-        {
-            "key": "ITEM_DESC_013",
-            "KR": "적 처치시 골드 획득량을 <color=#FF4545>[2]</color> 증가시킵니다.\r\n행운의 여신이 당신의 주머니를 살핍니다.",
-            "EN": "Increases Gold gained upon killing an enemy by <color=#FF4545>[2]</color>.\r\nThe Goddess of Luck looks into your pockets."
-        },
-        {
-            "key": "ITEM_NAME_014",
-            "KR": "회복 포션(소)",
-            "EN": "Small Potion"
-        },
-        {
-            "key": "ITEM_DESC_014",
-            "KR": "즉시 라이프를 <color=#FF4545>[3]</color> 회복합니다.\r\n상처를 가볍게 달래주는 평범한 물약입니다.",
-            "EN": "Immediately restores <color=#FF4545>[3]</color> Life.\r\nA common potion that gently soothes wounds."
-        },
-        {
-            "key": "ITEM_NAME_015",
-            "KR": "회복 포션(중)",
-            "EN": "Middle Potion"
-        },
-        {
-            "key": "ITEM_DESC_015",
-            "KR": "즉시 라이프를 <color=#FF4545>[5]</color> 회복합니다.\r\n전문 연금술사가 정성껏 조제한 물약입니다.",
-            "EN": "Immediately restores <color=#FF4545>[5]</color> Life.\r\nA potion carefully brewed by a professional alchemist."
-        },
-        {
-            "key": "ITEM_NAME_016",
-            "KR": "회복 포션(대)",
-            "EN": "Large Potion"
-        },
-        {
-            "key": "ITEM_DESC_016",
-            "KR": "즉시 라이프를 <color=#FF4545>[10]</color> 회복합니다.\r\n뛰어난 연금술사가 조제한 희귀한 영약입니다.",
-            "EN": "Immediately restores <color=#FF4545>[10]</color> Life.\r\nA rare elixir brewed by a master alchemist."
-        },
-        {
-            "key": "ITEM_NAME_017",
-            "KR": "보물 상자",
-            "EN": "Treasure Pouch"
-        },
-        {
-            "key": "ITEM_DESC_017",
-            "KR": "즉시 무작위 양의 골드(최대 15골드)를 획득합니다.\r\n묵직한 무게만큼 기대해도 좋습니다.",
-            "EN": "Immediately grants a random amount of Gold (Max <color=#FF4545>[15]</color>).\r\nIts heavy weight is a sign of good things to come."
-        },
-        {
-            "key": "ITEM_NAME_018",
-            "KR": "상인의 장부",
-            "EN": "Merchant's Ledger"
-        },
-        {
-            "key": "ITEM_DESC_018",
-            "KR": "웨이브 종료 시 획득하는 보너스 이자의 최대치를 <color=#FF4545>[10]</color>증가시킵니다.\r\n꼼꼼한 기록 덕분에 자산을 효율적으로 운용합니다.",
-            "EN": "Increases the maximum bonus interest at the end of a wave by <color=#FF4545>[10]</color>.\r\nMeticulous records lead to efficient asset management."
-        },
-        {
-            "key": "ITEM_NAME_019",
-            "KR": "상인의 장부",
-            "EN": "Merchant's Ledger"
-        },
-        {
-            "key": "ITEM_DESC_019",
-            "KR": "웨이브 종료 시 획득하는 보너스 이자의 최대치를 <color=#FF4545>[20]</color>증가시킵니다.\r\n시장의 자본이 당신에게 집중됩니다.",
-            "EN": "Increases the maximum bonus interest at the end of a wave by <color=#FF4545>[20]</color>.\r\nThe market's capital flows directly to you."
-        },
-        {
-            "key": "ITEM_NAME_020",
-            "KR": "맴버십 카드",
-            "EN": "Membership Card"
-        },
-        {
-            "key": "ITEM_DESC_020",
-            "KR": "타워 대기열 슬롯을 <color=#FF4545>[1칸]</color> 확장합니다.\r\n더 많은 타워를 전략적으로 예비할 수 있습니다.",
-            "EN": "Expands Tower Queue slots by <color=#FF4545>[1]</color>.\r\nAllows for more strategic tower preparation."
-        },
-        {
-            "key": "ITEM_NAME_021",
-            "KR": "확장 설계도",
-            "EN": "Expansion Blueprint"
-        },
-        {
-            "key": "ITEM_DESC_021",
-            "KR": "상점 판매 슬롯을 <color=#FF4545>[1칸]</color> 확장합니다.\r\n시장에 더 다양한 물품들이 입고됩니다.",
-            "EN": "Expands Market Sales slots by <color=#FF4545>[1]</color>.\r\nA wider variety of items now arrive at the market."
-        },
-        {
-            "key": "TOWER_NAME_001",
-            "KR": "인간",
-            "EN": "Human"
-        },
-        {
-            "key": "TOWER_NAME_002",
-            "KR": "엘프",
-            "EN": "Elf"
-        },
-        {
-            "key": "TOWER_NAME_003",
-            "KR": "드워프",
-            "EN": "Dwarf"
-        },
-        {
-            "key": "TOWER_NAME_004",
-            "KR": "오크",
-            "EN": "Orc"
-        },
-        {
-            "key": "TOWER_NAME_005",
-            "KR": "용인",
-            "EN": "Dragonian"
-        },
-        {
-            "key": "TOWER_NAME_006",
-            "KR": "수인",
-            "EN": "Were Beast"
-        },
-        {
-            "key": "TOWER_SKILL_001",
-            "KR": "황금빛 번영",
-            "EN": "Golden Prosperity"
-        },
-        {
-            "key": "TOWER_SKILL_DES_001",
-            "KR": "세상을 움직이는 황금의 패권이 인간의 손끝에서 더욱 강력하게 요동칩니다.\r\n인간 타워를 <color=#FF4545>[{0} / {1} / {2} / {3}]</color> 개 소유하면\r\n라운드 종료 시 이자율이 <color=#FF4545>[{0} / {1}  / {2} / {3}]%p</color> 증가합니다.",
-            "EN": "The hegemony of gold that moves the world pulses even more powerfully at the humans' fingertips.\r\nOwn Human Towers: <color=#FF4545>[{0} / {1} / {2} / {3}]</color>\r\nIncreases Interest Rate by <color=#FF4545>[{0} / {1} / {2} / {3}]%p</color> at the end of the round."
-        },
-        {
-            "key": "TOWER_SKILL_002",
-            "KR": "정령의 공명",
-            "EN": "Spiritual Resonance"
-        },
-        {
-            "key": "TOWER_SKILL_DES_002",
-            "KR": "신비한 자연의 기운이 정령과 엘프들을 하나로 연결합니다.\r\n엘프 타워 보유: <color=#FF4545>[{0} / {1} / {2} / {3}]</color>\r\n모든 엘프 타워 공격력 <color=#FF4545>[{0} / {1} / {2} / {3}]</color> 증가",
-            "EN": "The mystical energy of nature connects spirits and Elves as one.\r\nOwn Elf Towers: <color=#FF4545>[{0} / {1} / {2} / {3}]</color>\r\nIncreases ATK of all Elf towers by <color=#FF4545>[{0} / {1} / {2} / {3}]</color>."
-        },
-        {
-            "key": "TOWER_SKILL_003",
-            "KR": "방어구 분쇄",
-            "EN": "Armor Breaker"
-        },
-        {
-            "key": "TOWER_SKILL_DES_003",
-            "KR": "드워프의 정밀한 타격이 적의 가장 단단한 부위를 파고듭니다.\r\n드워프 타워 보유: <color=#FF4545>[{0} / {1} / {2}]</color>\r\n적 방어력 <color=#FF4545>[{0} / {1} / {2}]%</color> 감소",
-            "EN": "Dwarven precision strikes pierce through the enemy's toughest parts.\r\nOwn Dwarf Towers: <color=#FF4545>[{0} / {1} / {2}]</color>\r\nReduces enemy Defense by <color=#FF4545>[{0} / {1} / {2}]%</color>."
-        },
-        {
-            "key": "TOWER_SKILL_004",
-            "KR": "호드의 압박",
-            "EN": "Horde's Pressure"
-        },
-        {
-            "key": "TOWER_SKILL_DES_004",
-            "KR": "거친 포효와 함께 오크들의 압도적인 무력이 전장을 짓누릅니다.\r\n오크 타워 보유: <color=#FF4545>[{0} / {1} / {2} / {3}]</color>\r\n공격력 <color=#FF4545>[{0} / {1} / {2} / {3}]</color> 증가 (4단계: 공격 시 <color=#45A2FF>슬로우</color> 부여)",
-            "EN": "With a fierce roar, the Orcs' overwhelming power crushes the battlefield.\r\nOwn Orc Towers: <color=#FF4545>[{0} / {1} / {2} / {3}]</color>\r\nIncreases ATK by <color=#FF4545>[{0} / {1} / {2} / {3}]</color> (Step.4: Applies <color=#45A2FF>Slow</color> on attack)."
-        },
-        {
-            "key": "TOWER_SKILL_005",
-            "KR": "용의 무력",
-            "EN": "Draconic Might"
-        },
-        {
-            "key": "TOWER_SKILL_DES_005",
-            "KR": "고대 용의 갈라진 인자가 용인들의 혈관 속에서 뜨겁게 요동칩니다.\r\n용인 타워 보유: <color=#FF4545>[{0} / {1} / {2} / {3} / {4} / {5}]</color>\r\n모든 용인 타워 공격력 <color=#FF4545>[{0} / {1} / {2} / {3} / {4} / {5}]</color> 증가",
-            "EN": "Ancient split dragon factors pulse hotly within the veins of Dragonians.\r\nOwn Dragonian Towers: <color=#FF4545>[{0} / {1} / {2} / {3} / {4} / {5}]</color>\r\nIncreases ATK of all Dragonian towers by <color=#FF4545>[{0} / {1} / {2} / {3} / {4} / {5}]</color>."
-        },
-        {
-            "key": "TOWER_SKILL_006",
-            "KR": "포식자의 눈",
-            "EN": "Predator's Eye"
-        },
-        {
-            "key": "TOWER_SKILL_DES_006",
-            "KR": "어둠 속에서도 번뜩이는 수인의 눈동자는 결코 먹잇감을 놓치지 않습니다.\r\n수인 타워 보유: <color=#FF4545>[{0} / {1} / {2} / {3}]</color>\r\n치명타 확률 <color=#FF4545>[{0} / {1} / {2} / {3}]%p</color> 증가",
-            "EN": "The Werebeast's eyes, flashing even in the dark, never miss their prey.\r\nOwn Werebeast Towers: <color=#FF4545>[{0} / {1} / {2} / {3}]</color>\r\nIncreases Critical Chance by <color=#FF4545>[{0} / {1} / {2} / {3}]%p</color>."
-        },
-        {
-            "key": "ES_NONE_SELF",
-            "KR": "스킬 없음",
-            "EN": "None Skill"
-        },
-        {
-            "key": "ES_NONE_SELF_DES",
-            "KR": "특수 능력이 없습니다",
-            "EN": "Has no special abilities."
-        },
-        {
-            "key": "ES_HEAL_SELF",
-            "KR": "생기 재생",
-            "EN": "Vital Regen"
-        },
-        {
-            "key": "ES_HEAL_SELF_DES",
-            "KR": "{0}초 마다 자신의 생명력은 {1}만큼 회복합니다. (쿨타임 : {2}초)",
-            "EN": "Recovers {1} HP of self every {0}s. (Cooldown: {2}s)"
-        },
-        {
-            "key": "ES_HEAL_AREA",
-            "KR": "치유의 영역",
-            "EN": "Heal Area"
-        },
-        {
-            "key": "ES_HEAL_AREA_DES",
-            "KR": "주변 {0} 범위 내의 아군의 생명력을 {1}초마다 {2}만큼 회복합니다. (쿨타임 : {3}초)",
-            "EN": "Recovers {2} HP of allies within {0} range every {1}s. (Cooldown: {3}s)"
-        },
-        {
-            "key": "ES_HEAL_AREA",
-            "KR": "치유의 성역",
-            "EN": "Sacred Sanctuary"
-        },
-        {
-            "key": "ES_HEAL_AREA_DES",
-            "KR": "{0}초 동안 성역을 전개하여 범위 내 아군의 생명력을 {1}초다마 {2}만큼 회복합니다. (쿨타임 : {3}초)",
-            "EN": "Deploys a sanctuary for {0}s, recovering {2} HP of allies within range every {1}s. (Cooldown: {3}s)"
-        },
-        {
-            "key": "ES_HASTE_SELF",
-            "KR": "한계 돌파",
-            "EN": "Limit Break"
-        },
-        {
-            "key": "ES_HASTE_SELF_DES",
-            "KR": "자신의 잠재역을 끌어올려 {0}초 동안 이동속도가 {2}% 증가합니다. (쿨타임 : {3}초)",
-            "EN": "Unleashes potential to increase Move Speed by {2}% for {0}s. (Cooldown: {3}s)"
-        },
-        {
-            "key": "ES_HASET_AREA",
-            "KR": "시간 가속",
-            "EN": "Time Warp"
-        },
-        {
-            "key": "ES_HASET_AREA_DES",
-            "KR": "주변 {0}범위 내 아군의 이동속도를 {1}초동안 {2}% 증가시킵니다. (쿨타임 : {3}초)",
-            "EN": "Increases Move Speed of allies within {0} range by {2}% for {1}s. (Cooldown: {3}s)"
-        },
-        {
-            "key": "ES_SHEILD_SELF",
-            "KR": "마력 방벽",
-            "EN": "Mana Barrier"
-        },
-        {
-            "key": "ES_SHEILD_SELF_DES",
-            "KR": "마력으로 된 방패를 생성하여 {0}초동안 {1}만큼 피해를 흡수합니다. (쿨타임 : {2}초)",
-            "EN": "Creates a mana shield to absorb {1} damage for {0}s. (Cooldown: {2}s)"
-        },
-        {
-            "key": "ES_SHEILD_AREA",
-            "KR": "수호의 영역",
-            "EN": "Guardian Field"
-        },
-        {
-            "key": "ES_SHEILD_AREA_DES",
-            "KR": "주변 {0} 범위 내 아군들에게 {1}초 동안 {2}의 피해를 흡수하는 방어막을 부여합니다. (쿨타임 : {3}초)",
-            "EN": "Grants a shield to allies within {0} range that absorbs {2} damage for {1}s. (Cooldown: {3}s)"
-        },
-        {
-            "key": "ES_TOWER_SLOW",
-            "KR": "서리 족쇄",
-            "EN": "Frost Shackles"
-        },
-        {
-            "key": "ES_TOWER_SLOW_DES",
-            "KR": "적을 빙결시켜 {0}초 동안 공격속도를 {1}% 감소시킵니다. (쿨타임 : {2}초)",
-            "EN": "Freezes enemies to reduce their ATK Speed by {1}% for {0}s. (Cooldown: {2}s)"
-        },
-        {
-            "key": "ES_TOWER_ATK_DOWN",
-            "KR": "무력화의 저주",
-            "EN": "Enfeeble Curse"
-        },
-        {
-            "key": "ES_TOWER_ATK_DOWN_DES",
-            "KR": "적에게 저주를 걸어 {0}초동안 대산의 공격력을 {1}% 감소시킵니다. (쿨타임 : {2}초)",
-            "EN": "Curses enemies to reduce their ATK by {1}% for {0}s. (Cooldown: {2}s)"
-        },
-        {
-            "key": "ES_SUMMON_MINION",
-            "KR": "미니언 소환",
-            "EN": "Summon Minion"
-        },
-        {
-            "key": "ES_SUMMON_MINION_DES",
-            "KR": "전방에 미니언을 {0}마리 소환합니다. (쿨타임 : {1}초)",
-            "EN": "Summons {0} minion(s) in front. (Cooldown: {1}s)"
-        },
-        {
-            "key": "ES_SUMMON_MINION",
-            "KR": "미니언 대량 소환",
-            "EN": "Minion Swarm"
-        },
-        {
-            "key": "ES_SUMMON_MINION_DES",
-            "KR": "전방에 미니언 군단을 {0}마리 소환합니다. (쿨타임 : {1}초)",
-            "EN": "Summons a swarm of {0} minions in front. (Cooldown: {1}s)"
-        },
-        {
-            "key": "ES_STEALTH",
-            "KR": "은신",
-            "EN": "Shasdow Hide"
-        },
-        {
-            "key": "ES_STEALTH_DES",
-            "KR": "그림자 속에 몸을 숨깁니다. {0}초 동안 적의 타겟팅에서 제외됩니다. (쿨타임 : {1}초)",
-            "EN": "Hides in shadows, becoming untargetable for {0}s. (Cooldown: {1}s)"
-        },
-        {
-            "key": "ENEMY_NAME_001",
-            "KR": "",
-            "EN": ""
-        },
-        {
-            "key": "ENEMY_NAME_002",
-            "KR": "",
-            "EN": ""
-        },
-        {
-            "key": "ENEMY_NAME_003",
-            "KR": "",
-            "EN": ""
-        },
-        {
-            "key": "ENEMY_NAME_004",
-            "KR": "",
-            "EN": ""
-        },
-        {
-            "key": "ENEMY_NAME_005",
-            "KR": "",
-            "EN": ""
-        },
-        {
-            "key": "ENEMY_NAME_006",
-            "KR": "",
-            "EN": ""
-        },
-        {
-            "key": "ENEMY_NAME_007",
-            "KR": "",
-            "EN": ""
-        },
-        {
-            "key": "ENEMY_NAME_008",
-            "KR": "",
-            "EN": ""
-        },
-        {
-            "key": "ENEMY_NAME_009",
-            "KR": "",
-            "EN": ""
-        },
-        {
-            "key": "ENEMY_NAME_010",
-            "KR": "",
-            "EN": ""
-        },
-        {
-            "key": "ENEMY_NAME_011",
-            "KR": "",
-            "EN": ""
-        },
-        {
-            "key": "ENEMY_NAME_012",
-            "KR": "",
-            "EN": ""
-        },
-        {
-            "key": "ENEMY_NAME_013",
-            "KR": "",
-            "EN": ""
-        },
-        {
-            "key": "ENEMY_NAME_014",
-            "KR": "",
-            "EN": ""
-        },
-        {
-            "key": "ENEMY_NAME_015",
-            "KR": "",
-            "EN": ""
-        },
-        {
-            "key": "ENEMY_NAME_016",
-            "KR": "",
-            "EN": ""
-        },
-        {
-            "key": "ENEMY_NAME_017",
-            "KR": "",
-            "EN": ""
-        },
-        {
-            "key": "ENEMY_NAME_018",
-            "KR": "",
-            "EN": ""
-        },
-        {
-            "key": "ENEMY_NAME_019",
-            "KR": "",
-            "EN": ""
-        },
-        {
-            "key": "ENEMY_NAME_020",
-            "KR": "",
-            "EN": ""
-        },
-        {
-            "key": "ENEMY_NAME_021",
-            "KR": "",
-            "EN": ""
-        },
-        {
-            "key": "ENEMY_NAME_022",
-            "KR": "",
-            "EN": ""
-        },
-        {
-            "key": "ENEMY_NAME_023",
-            "KR": "",
-            "EN": ""
-        },
-        {
-            "key": "ENEMY_NAME_024",
-            "KR": "",
-            "EN": ""
-        },
-        {
-            "key": "ENEMY_NAME_025",
-            "KR": "",
-            "EN": ""
-        },
-        {
-            "key": "ENEMY_NAME_026",
-            "KR": "",
-            "EN": ""
-        },
-        {
-            "key": "SHOP_REFRESH",
-            "KR": "새로고침",
-            "EN": "Refresh"
-        },
-        {
-            "key": "SHOP_EXP",
-            "KR": "경험치 구매",
-            "EN": "Buy EXP"
-        },
-        {
-            "key": "ATK_DAMAGE_UPGRADE",
-            "KR": "공격력 강화",
-            "EN": "Damage Upgrade"
-        },
-        {
-            "key": "ATK_SPEED_UPGRADE",
-            "KR": "공격속도 강화",
-            "EN": "Attack Speed Upgrade"
-        },
-        {
-            "key": "ATK_DAMAGE",
-            "KR": "공격력",
-            "EN": "Damage"
-        },
-        {
-            "key": "ATK_SPEED",
-            "KR": "공격속도",
-            "EN": "Attack Speed"
-        },
-        {
-            "key": "ATK_RANGE",
-            "KR": "사거리",
-            "EN": "Attack Range"
-        },
-        {
-            "key": "HEALTH_TEXT",
-            "KR": "체력",
-            "EN": "Health"
-        },
-        {
-            "key": "DEFENSE_TEXT",
-            "KR": "방어력",
-            "EN": "Defense"
-        },
-        {
-            "key": "MOVE_SPEED_TEXT",
-            "KR": "이동속도",
-            "EN": "Move Speed"
-        },
-        {
-            "key": "TOWER_SESSION_STATE_UPGRADE",
-            "KR": "강화하기",
-            "EN": "Upgrade"
-        },
-        {
-            "key": "TOWER_GRADE_UPGRADE",
-            "KR": "강화하기",
-            "EN": "Upgrade"
-        },
-        {
-            "key": "TOWER_FIXED_UPGRADE",
-            "KR": "고정 강화",
-            "EN": "Fixed Upgrade"
-        },
-        {
-            "key": "TOWER_NORMAL_UPGRADE",
-            "KR": "일반 강화",
-            "EN": "Normal Upgrade"
-        },
-        {
-            "key": "PURCHASE",
-            "KR": "구매하기",
-            "EN": "Buy"
-        },
-        {
-            "key": "SELL",
-            "KR": "판매하기",
-            "EN": "Sell"
-        },
-        {
-            "key": "TOWER_UPGRADE_STEP",
-            "KR": "{0}강",
-            "EN": "+{0}"
-        },
-        {
-            "key": "ITEM_GRADE_NORMAL",
-            "KR": "노말",
-            "EN": "Normal"
-        },
-        {
-            "key": "ITEM_GRADE_RARE",
-            "KR": "레어",
-            "EN": "Rare"
-        },
-        {
-            "key": "ITEM_GRADE_EPIC",
-            "KR": "에픽",
-            "EN": "Epic"
-        },
-        {
-            "key": "SYS_MSG_UPGRADE_MAX",
-            "KR": "더 이상 등급 강화를 할 수 없습니다.",
-            "EN": "This item has reached its maximum grade."
-        },
-        {
-            "key": "ACHIEVEMENT_KILL_ENEMY1",
-            "KR": "적 누적 처치 I",
-            "EN": ""
-        },
-        {
-            "key": "ACHIEVEMENT_STAGE_CLEAR_HARD",
-            "KR": "Hard 난이도 클리어",
-            "EN": ""
-        },
-        {
-            "key": "ACHIEVEMENT_HUMAN_TOWER_GRADE",
-            "KR": "인간 타워 목표 등급 달성",
-            "EN": ""
-        },
-        {
-            "key": "ACHIEVEMENT_TIMEATTACK_NORMAL",
-            "KR": "제한 시간 내 클리어",
-            "EN": ""
-        },
-        {
-            "key": "ACHIEVEMENT_RESEARCH_LEVEL1",
-            "KR": "연구 레벨 달성 I",
-            "EN": ""
-        },
-        {
-            "key": "ACHIEVEMENT_ELF_TOWER_OPERATION",
-            "KR": "엘프 고등급 타워 필드 운용",
-            "EN": ""
-        },
-        {
-            "key": "QUEST_DESC_KILLCOUNT",
-            "KR": "적 {TargetValue}기 이상 처치",
-            "EN": ""
-        },
-        {
-            "key": "QUEST_DESC_REACH_WAVE",
-            "KR": "{TargetValue}웨이브 도달",
-            "EN": ""
-        },
-        {
-            "key": "QUEST_DESC_HOLD_GOLD",
-            "KR": "골드 {TargetValue} 이상 보유",
-            "EN": ""
-        },
-        {
-            "key": "QUEST_DESC_USER_LEVEL",
-            "KR": "유저 레벨 {TargetValue} 달성",
-            "EN": ""
-        },
-        {
-            "key": "QUEST_DESC_INSTALL_RACE",
-            "KR": "{ParamValue} 타워 {TargetValue}기 설치",
-            "EN": ""
-        },
-        {
-            "key": "QUEST_DESC_INSTALL_GRADE",
-            "KR": "{ParamValue}등급 이상 타워 {TargetValue}기 설치",
-            "EN": ""
-        },
-        {
-            "key": "QUEST_DESC_OWN_GRADE",
-            "KR": "{ParamValue}등급 이상 타워 {TargetValue}기 보유",
-            "EN": ""
-        },
-        {
-            "key": "QUEST_LIMIT_STAGE_END",
-            "KR": "스테이지 종료 전까지",
-            "EN": ""
-        },
-        {
-            "key": "QUEST_LIMIT_WAVE_50",
-            "KR": "50웨이브 안에",
-            "EN": ""
-        },
-        {
-            "key": "QUEST_LIMIT_WAVE_40",
-            "KR": "40웨이브 안에",
-            "EN": ""
-        },
-        {
-            "key": "QUEST_LIMIT_WAVE_30",
-            "KR": "30웨이브 안에",
-            "EN": ""
-        },
-        {
-            "key": "QUEST_LIMIT_WAVE_20",
-            "KR": "20웨이브 안에",
-            "EN": ""
-        }
-    ]
+  "datas": [
+    {
+      "String_Key": "ITEM_NAME_001",
+      "KR": "낡은 숫돌",
+      "EN": "Worn Sharpening Stone",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_DESC_001",
+      "KR": "모든 타워의 공격력을 <color=#FF4545>[2]</color> 증가시킵니다.\n세월의 흔적이 느껴지지만 아직 날카롭습니다.",
+      "EN": "Increases ATK of all towers by <color=#FF4545>[2]</color>.\nIt shows its age, but the edge is still razor-sharp.",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_NAME_002",
+      "KR": "지휘관의 깃발",
+      "EN": "Commander's Banner",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_DESC_002",
+      "KR": "모든 타워의 공격력을 <color=#FF4545>[3]</color> 증가시킵니다.\n전장의 중심에서 아군의 사기를 높입니다.",
+      "EN": "Increases ATK of all towers by <color=#FF4545>[3]</color>.\nBoosts the morale of allies from the heart of the battlefield.",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_NAME_003",
+      "KR": "황실 칙령",
+      "EN": "Royal Decree",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_DESC_003",
+      "KR": "인간 타워의 공격력을 <color=#FF4545>[4]</color> 증가시킵니다.\n황실의 엄격한 규율아래 인간은 하나로 뭉쳐 전장의 흐름을 강화시킵니다.",
+      "EN": "Increases ATK of Human towers by <color=#FF4545>[4]</color>.\nUnder the strict imperial discipline, humans unite to strengthen the flow of battle.",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_NAME_004",
+      "KR": "세계수의 잎",
+      "EN": "World Tree's Leaf",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_DESC_004",
+      "KR": "엘프 타워의 공격력을 <color=#FF4545>[4]</color> 증가시킵니다.\n신비한 자연의 기운이 엘프들에게 깃듭니다.",
+      "EN": "Increases ATK of Elf towers by <color=#FF4545>[4]</color>.\nThe mystical energy of nature dwells within the Elves.",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_NAME_005",
+      "KR": "전장의 함성",
+      "EN": "WarCry",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_DESC_005",
+      "KR": "오크 타워의 공격력을 <color=#FF4545>[4]</color> 증가시킵니다.\n거친 포효가 전사들의 본능을 깨웁니다.",
+      "EN": "Increases ATK of Orc towers by <color=#FF4545>[4]</color>.\nA fierce roar awakens the primal instincts of the warriors.",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_NAME_006",
+      "KR": "야수의 감각",
+      "EN": "Feral Instinct",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_DESC_006",
+      "KR": "수인 타워의 공격력을 <color=#FF4545>[4]</color> 증가시킵니다.\n날카로운 감각으로 적의 허점을 파고듭니다.",
+      "EN": "Increases ATK of Werebeast towers by <color=#FF4545>[4]</color>.\nSharp instincts allow them to strike at the enemy's weak points.",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_NAME_007",
+      "KR": "드래곤 본",
+      "EN": "Dragon Bone",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_DESC_007",
+      "KR": "용인 타워의 공격력을 <color=#FF4545>[4]</color> 증가시킵니다.\n용의 뼈에서 추출한 인자가 용인들을 용에 가깝게 강화합니다.",
+      "EN": "Increases ATK of Dragonian towers by <color=#FF4545>[4]</color>.\nEssence extracted from dragon bones empowers Dragonians to become more like true dragons.",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_NAME_008",
+      "KR": "강철 코어",
+      "EN": "Steel Core",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_DESC_008",
+      "KR": "드워프 타워의 공격력을 <color=#FF4545>[4]</color> 증가시킵니다.\n강철 코어가 땅의 자손인 드워프들을 더욱 단단하게 만듭니다.",
+      "EN": "Increases ATK of Dwarf towers by <color=#FF4545>[4]</color>.\nThe steel core hardens the Dwarves, the children of the earth.",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_NAME_009",
+      "KR": "룬스톤(공격속도)",
+      "EN": "Haste's Rune Stone",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_DESC_009",
+      "KR": "모든 타워의 공격 속도를 <color=#FF4545>[2]</color> 증가시킵니다.\n마력의 흐름이 손끝을 가볍게 합니다.",
+      "EN": "Increases ATK Speed of all towers by <color=#FF4545>[2]</color>.\nThe flow of mana makes your fingertips feel light.",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_NAME_010",
+      "KR": "룬스톤(공격속도)",
+      "EN": "Haste's Rune Stone",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_DESC_010",
+      "KR": "모든 타워의 공격 속도를 <color=#FF4545>[4]</color> 증가시킵니다.\n더욱 강력한 마력의 파동이 전장에 휘몰아칩니다.",
+      "EN": "Increases ATK Speed of all towers by <color=#FF4545>[4]</color>.\nA more powerful surge of mana swirls across the battlefield.",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_NAME_011",
+      "KR": "장인의 설계도",
+      "EN": "Master's Blueprint",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_DESC_011",
+      "KR": "모든 타워의 스킬 발동 요구치를 <color=#FF4545>[1]</color> 감소시킵니다.\n효율적인 설계로 기술 사용이 빨라집니다.",
+      "EN": "Reduces skill trigger requirements for all towers by <color=#FF4545>[1]</color>.\nEfficient design allows for faster skill usage.",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_NAME_012",
+      "KR": "행운 동전",
+      "EN": "Lucky Coin",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_DESC_012",
+      "KR": "적 처치시 골드 획득량을 <color=#FF4545>[1]</color> 증가시킵니다.\n행운의 여신이 당신을 지켜봅니다.",
+      "EN": "Increases Gold gained upon killing an enemy by <color=#FF4545>[1]</color>.\nThe Goddess of Luck is watching over you.",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_NAME_013",
+      "KR": "행운 동전",
+      "EN": "Lucky Coin",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_DESC_013",
+      "KR": "적 처치시 골드 획득량을 <color=#FF4545>[2]</color> 증가시킵니다.\n행운의 여신이 당신의 주머니를 살핍니다.",
+      "EN": "Increases Gold gained upon killing an enemy by <color=#FF4545>[2]</color>.\nThe Goddess of Luck looks into your pockets.",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_NAME_014",
+      "KR": "회복 포션(소)",
+      "EN": "Small Potion",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_DESC_014",
+      "KR": "즉시 라이프를 <color=#FF4545>[3]</color> 회복합니다.\n상처를 가볍게 달래주는 평범한 물약입니다.",
+      "EN": "Immediately restores <color=#FF4545>[3]</color> Life.\nA common potion that gently soothes wounds.",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_NAME_015",
+      "KR": "회복 포션(중)",
+      "EN": "Middle Potion",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_DESC_015",
+      "KR": "즉시 라이프를 <color=#FF4545>[5]</color> 회복합니다.\n전문 연금술사가 정성껏 조제한 물약입니다.",
+      "EN": "Immediately restores <color=#FF4545>[5]</color> Life.\nA potion carefully brewed by a professional alchemist.",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_NAME_016",
+      "KR": "회복 포션(대)",
+      "EN": "Large Potion",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_DESC_016",
+      "KR": "즉시 라이프를 <color=#FF4545>[10]</color> 회복합니다.\n뛰어난 연금술사가 조제한 희귀한 영약입니다.",
+      "EN": "Immediately restores <color=#FF4545>[10]</color> Life.\nA rare elixir brewed by a master alchemist.",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_NAME_017",
+      "KR": "보물 상자",
+      "EN": "Treasure Pouch",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_DESC_017",
+      "KR": "즉시 무작위 양의 골드(최대 15골드)를 획득합니다.\n묵직한 무게만큼 기대해도 좋습니다.",
+      "EN": "Immediately grants a random amount of Gold (Max <color=#FF4545>[15]</color>).\nIts heavy weight is a sign of good things to come.",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_NAME_018",
+      "KR": "상인의 장부",
+      "EN": "Merchant's Ledger",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_DESC_018",
+      "KR": "웨이브 종료 시 획득하는 보너스 이자의 최대치를 <color=#FF4545>[10]</color>증가시킵니다.\n꼼꼼한 기록 덕분에 자산을 효율적으로 운용합니다.",
+      "EN": "Increases the maximum bonus interest at the end of a wave by <color=#FF4545>[10]</color>.\nMeticulous records lead to efficient asset management.",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_NAME_019",
+      "KR": "상인의 장부",
+      "EN": "Merchant's Ledger",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_DESC_019",
+      "KR": "웨이브 종료 시 획득하는 보너스 이자의 최대치를 <color=#FF4545>[20]</color>증가시킵니다.\n시장의 자본이 당신에게 집중됩니다.",
+      "EN": "Increases the maximum bonus interest at the end of a wave by <color=#FF4545>[20]</color>.\nThe market's capital flows directly to you.",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_NAME_020",
+      "KR": "맴버십 카드",
+      "EN": "Membership Card",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_DESC_020",
+      "KR": "타워 대기열 슬롯을 <color=#FF4545>[1칸]</color> 확장합니다.\n더 많은 타워를 전략적으로 예비할 수 있습니다.",
+      "EN": "Expands Tower Queue slots by <color=#FF4545>[1]</color>.\nAllows for more strategic tower preparation.",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_NAME_021",
+      "KR": "확장 설계도",
+      "EN": "Expansion Blueprint",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_DESC_021",
+      "KR": "상점 판매 슬롯을 <color=#FF4545>[1칸]</color> 확장합니다.\n시장에 더 다양한 물품들이 입고됩니다.",
+      "EN": "Expands Market Sales slots by <color=#FF4545>[1]</color>.\nA wider variety of items now arrive at the market.",
+      "": ""
+    },
+    {
+      "String_Key": "TOWER_NAME_001",
+      "KR": "인간",
+      "EN": "Human",
+      "": ""
+    },
+    {
+      "String_Key": "TOWER_NAME_002",
+      "KR": "엘프",
+      "EN": "Elf",
+      "": ""
+    },
+    {
+      "String_Key": "TOWER_NAME_003",
+      "KR": "드워프",
+      "EN": "Dwarf",
+      "": ""
+    },
+    {
+      "String_Key": "TOWER_NAME_004",
+      "KR": "오크",
+      "EN": "Orc",
+      "": ""
+    },
+    {
+      "String_Key": "TOWER_NAME_005",
+      "KR": "용인",
+      "EN": "Dragonian",
+      "": ""
+    },
+    {
+      "String_Key": "TOWER_NAME_006",
+      "KR": "수인",
+      "EN": "Were Beast",
+      "": ""
+    },
+    {
+      "String_Key": "TOWER_SKILL_001",
+      "KR": "황금빛 번영",
+      "EN": "Golden Prosperity",
+      "": ""
+    },
+    {
+      "String_Key": "TOWER_SKILL_DES_001",
+      "KR": "세상을 움직이는 황금의 패권이 인간의 손끝에서 더욱 강력하게 요동칩니다.\n인간 타워를 <color=#FF4545>[{0} / {1} / {2} / {3}]</color> 개 소유하면\n라운드 종료 시 이자율이 <color=#FF4545>[{4} / {5}  / {6} / {7}]%p</color> 증가합니다.",
+      "EN": "The hegemony of gold that moves the world pulses even more powerfully at the humans' fingertips.\nOwn Human Towers: <color=#FF4545>[{0} / {1} / {2} / {3}]</color>\nIncreases Interest Rate by <color=#FF4545>[{0} / {1} / {2} / {3}]%p</color> at the end of the round.",
+      "": ""
+    },
+    {
+      "String_Key": "TOWER_SKILL_002",
+      "KR": "정령의 공명",
+      "EN": "Spiritual Resonance",
+      "": ""
+    },
+    {
+      "String_Key": "TOWER_SKILL_DES_002",
+      "KR": "신비한 자연의 기운이 정령과 엘프들을 하나로 연결합니다.\n엘프 타워 보유: <color=#FF4545>[{0} / {1} / {2} / {3}]</color>\n모든 엘프 타워 공격력 <color=#FF4545>[{4} / {5} / {6} / {7}]</color> 증가",
+      "EN": "The mystical energy of nature connects spirits and Elves as one.\nOwn Elf Towers: <color=#FF4545>[{0} / {1} / {2} / {3}]</color>\nIncreases ATK of all Elf towers by <color=#FF4545>[{0} / {1} / {2} / {3}]</color>.",
+      "": ""
+    },
+    {
+      "String_Key": "TOWER_SKILL_003",
+      "KR": "방어구 분쇄",
+      "EN": "Armor Breaker",
+      "": ""
+    },
+    {
+      "String_Key": "TOWER_SKILL_DES_003",
+      "KR": "드워프의 정밀한 타격이 적의 가장 단단한 부위를 파고듭니다.\n드워프 타워 보유: <color=#FF4545>[{0} / {1} / {2}]</color>\n적 방어력 <color=#FF4545>[{3} / {4} / {5}]%</color> 감소",
+      "EN": "Dwarven precision strikes pierce through the enemy's toughest parts.\nOwn Dwarf Towers: <color=#FF4545>[{0} / {1} / {2}]</color>\nReduces enemy Defense by <color=#FF4545>[{0} / {1} / {2}]%</color>.",
+      "": ""
+    },
+    {
+      "String_Key": "TOWER_SKILL_004",
+      "KR": "호드의 압박",
+      "EN": "Horde's Pressure",
+      "": ""
+    },
+    {
+      "String_Key": "TOWER_SKILL_DES_004",
+      "KR": "거친 포효와 함께 오크들의 압도적인 무력이 전장을 짓누릅니다.\n오크 타워 보유: <color=#FF4545>[{0} / {1} / {2} / {3}]</color>\n공격력 <color=#FF4545>[{4} / {5} / {6} / {7}]</color> 증가 (4단계: 공격 시 <color=#45A2FF>슬로우</color> 부여)",
+      "EN": "With a fierce roar, the Orcs' overwhelming power crushes the battlefield.\nOwn Orc Towers: <color=#FF4545>[{0} / {1} / {2} / {3}]</color>\nIncreases ATK by <color=#FF4545>[{0} / {1} / {2} / {3}]</color> (Step.4: Applies <color=#45A2FF>Slow</color> on attack).",
+      "": ""
+    },
+    {
+      "String_Key": "TOWER_SKILL_005",
+      "KR": "용의 무력",
+      "EN": "Draconic Might",
+      "": ""
+    },
+    {
+      "String_Key": "TOWER_SKILL_DES_005",
+      "KR": "고대 용의 갈라진 인자가 용인들의 혈관 속에서 뜨겁게 요동칩니다.\n용인 타워 보유: <color=#FF4545>[{0} / {1} / {2} / {3} / {4} / {5}]</color>\n모든 용인 타워 공격력 <color=#FF4545>[{6} / {7} / {8} / {9} / {10} / {11}]</color> 증가",
+      "EN": "Ancient split dragon factors pulse hotly within the veins of Dragonians.\nOwn Dragonian Towers: <color=#FF4545>[{0} / {1} / {2} / {3} / {4} / {5}]</color>\nIncreases ATK of all Dragonian towers by <color=#FF4545>[{0} / {1} / {2} / {3} / {4} / {5}]</color>.",
+      "": ""
+    },
+    {
+      "String_Key": "TOWER_SKILL_006",
+      "KR": "포식자의 눈",
+      "EN": "Predator's Eye",
+      "": ""
+    },
+    {
+      "String_Key": "TOWER_SKILL_DES_006",
+      "KR": "어둠 속에서도 번뜩이는 수인의 눈동자는 결코 먹잇감을 놓치지 않습니다.\n수인 타워 보유: <color=#FF4545>[{0} / {1} / {2} / {3}]</color>\n치명타 확률 <color=#FF4545>[{4} / {5} / {6} / {7}]%p</color> 증가",
+      "EN": "The Werebeast's eyes, flashing even in the dark, never miss their prey.\nOwn Werebeast Towers: <color=#FF4545>[{0} / {1} / {2} / {3}]</color>\nIncreases Critical Chance by <color=#FF4545>[{0} / {1} / {2} / {3}]%p</color>.",
+      "": ""
+    },
+    {
+      "String_Key": "ES_NONE_SELF",
+      "KR": "스킬 없음",
+      "EN": "None Skill",
+      "": ""
+    },
+    {
+      "String_Key": "ES_NONE_SELF_DES",
+      "KR": "특수 능력이 없습니다",
+      "EN": "Has no special abilities.",
+      "": ""
+    },
+    {
+      "String_Key": "ES_HEAL_SELF",
+      "KR": "생기 재생",
+      "EN": "Vital Regen",
+      "": ""
+    },
+    {
+      "String_Key": "ES_HEAL_SELF_DES",
+      "KR": "{0}초 마다 자신의 생명력은 {1}만큼 회복합니다. (쿨타임 : {2}초)",
+      "EN": "Recovers {1} HP of self every {0}s. (Cooldown: {2}s)",
+      "": ""
+    },
+    {
+      "String_Key": "ES_HEAL_AREA",
+      "KR": "치유의 영역",
+      "EN": "Heal Area",
+      "": ""
+    },
+    {
+      "String_Key": "ES_HEAL_AREA_DES",
+      "KR": "주변 {0} 범위 내의 아군의 생명력을 {1}초마다 {2}만큼 회복합니다. (쿨타임 : {3}초)",
+      "EN": "Recovers {2} HP of allies within {0} range every {1}s. (Cooldown: {3}s)",
+      "": ""
+    },
+    {
+      "String_Key": "ES_HEAL_AREA",
+      "KR": "치유의 성역",
+      "EN": "Sacred Sanctuary",
+      "": ""
+    },
+    {
+      "String_Key": "ES_HEAL_AREA_DES",
+      "KR": "{0}초 동안 성역을 전개하여 범위 내 아군의 생명력을 {1}초다마 {2}만큼 회복합니다. (쿨타임 : {3}초)",
+      "EN": "Deploys a sanctuary for {0}s, recovering {2} HP of allies within range every {1}s. (Cooldown: {3}s)",
+      "": ""
+    },
+    {
+      "String_Key": "ES_HASTE_SELF",
+      "KR": "한계 돌파",
+      "EN": "Limit Break",
+      "": ""
+    },
+    {
+      "String_Key": "ES_HASTE_SELF_DES",
+      "KR": "자신의 잠재역을 끌어올려 {0}초 동안 이동속도가 {2}% 증가합니다. (쿨타임 : {3}초)",
+      "EN": "Unleashes potential to increase Move Speed by {2}% for {0}s. (Cooldown: {3}s)",
+      "": ""
+    },
+    {
+      "String_Key": "ES_HASET_AREA",
+      "KR": "시간 가속",
+      "EN": "Time Warp",
+      "": ""
+    },
+    {
+      "String_Key": "ES_HASET_AREA_DES",
+      "KR": "주변 {0}범위 내 아군의 이동속도를 {1}초동안 {2}% 증가시킵니다. (쿨타임 : {3}초)",
+      "EN": "Increases Move Speed of allies within {0} range by {2}% for {1}s. (Cooldown: {3}s)",
+      "": ""
+    },
+    {
+      "String_Key": "ES_SHEILD_SELF",
+      "KR": "마력 방벽",
+      "EN": "Mana Barrier",
+      "": ""
+    },
+    {
+      "String_Key": "ES_SHEILD_SELF_DES",
+      "KR": "마력으로 된 방패를 생성하여 {0}초동안 {1}만큼 피해를 흡수합니다. (쿨타임 : {2}초)",
+      "EN": "Creates a mana shield to absorb {1} damage for {0}s. (Cooldown: {2}s)",
+      "": ""
+    },
+    {
+      "String_Key": "ES_SHEILD_AREA",
+      "KR": "수호의 영역",
+      "EN": "Guardian Field",
+      "": " "
+    },
+    {
+      "String_Key": "ES_SHEILD_AREA_DES",
+      "KR": "주변 {0} 범위 내 아군들에게 {1}초 동안 {2}의 피해를 흡수하는 방어막을 부여합니다. (쿨타임 : {3}초)",
+      "EN": "Grants a shield to allies within {0} range that absorbs {2} damage for {1}s. (Cooldown: {3}s)",
+      "": ""
+    },
+    {
+      "String_Key": "ES_TOWER_SLOW",
+      "KR": "서리 족쇄",
+      "EN": "Frost Shackles",
+      "": ""
+    },
+    {
+      "String_Key": "ES_TOWER_SLOW_DES",
+      "KR": "적을 빙결시켜 {0}초 동안 공격속도를 {1}% 감소시킵니다. (쿨타임 : {2}초)",
+      "EN": "Freezes enemies to reduce their ATK Speed by {1}% for {0}s. (Cooldown: {2}s)",
+      "": ""
+    },
+    {
+      "String_Key": "ES_TOWER_ATK_DOWN",
+      "KR": "무력화의 저주",
+      "EN": "Enfeeble Curse",
+      "": ""
+    },
+    {
+      "String_Key": "ES_TOWER_ATK_DOWN_DES",
+      "KR": "적에게 저주를 걸어 {0}초동안 대산의 공격력을 {1}% 감소시킵니다. (쿨타임 : {2}초)",
+      "EN": "Curses enemies to reduce their ATK by {1}% for {0}s. (Cooldown: {2}s)",
+      "": ""
+    },
+    {
+      "String_Key": "ES_SUMMON_MINION",
+      "KR": "미니언 소환",
+      "EN": "Summon Minion",
+      "": ""
+    },
+    {
+      "String_Key": "ES_SUMMON_MINION_DES",
+      "KR": "전방에 미니언을 {0}마리 소환합니다. (쿨타임 : {1}초)",
+      "EN": "Summons {0} minion(s) in front. (Cooldown: {1}s)",
+      "": ""
+    },
+    {
+      "String_Key": "ES_SUMMON_MINION",
+      "KR": "미니언 대량 소환",
+      "EN": "Minion Swarm",
+      "": ""
+    },
+    {
+      "String_Key": "ES_SUMMON_MINION_DES",
+      "KR": "전방에 미니언 군단을 {0}마리 소환합니다. (쿨타임 : {1}초)",
+      "EN": "Summons a swarm of {0} minions in front. (Cooldown: {1}s)",
+      "": ""
+    },
+    {
+      "String_Key": "ES_STEALTH",
+      "KR": "은신",
+      "EN": "Shasdow Hide",
+      "": ""
+    },
+    {
+      "String_Key": "ES_STEALTH_DES",
+      "KR": "그림자 속에 몸을 숨깁니다. {0}초 동안 적의 타겟팅에서 제외됩니다. (쿨타임 : {1}초)",
+      "EN": "Hides in shadows, becoming untargetable for {0}s. (Cooldown: {1}s)",
+      "": ""
+    },
+    {
+      "String_Key": "ENEMY_NAME_001",
+      "KR": "",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "ENEMY_NAME_002",
+      "KR": "",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "ENEMY_NAME_003",
+      "KR": "",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "ENEMY_NAME_004",
+      "KR": "",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "ENEMY_NAME_005",
+      "KR": "",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "ENEMY_NAME_006",
+      "KR": "",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "ENEMY_NAME_007",
+      "KR": "",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "ENEMY_NAME_008",
+      "KR": "",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "ENEMY_NAME_009",
+      "KR": "",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "ENEMY_NAME_010",
+      "KR": "",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "ENEMY_NAME_011",
+      "KR": "",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "ENEMY_NAME_012",
+      "KR": "",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "ENEMY_NAME_013",
+      "KR": "",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "ENEMY_NAME_014",
+      "KR": "",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "ENEMY_NAME_015",
+      "KR": "",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "ENEMY_NAME_016",
+      "KR": "",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "ENEMY_NAME_017",
+      "KR": "",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "ENEMY_NAME_018",
+      "KR": "",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "ENEMY_NAME_019",
+      "KR": "",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "ENEMY_NAME_020",
+      "KR": "",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "ENEMY_NAME_021",
+      "KR": "",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "ENEMY_NAME_022",
+      "KR": "",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "ENEMY_NAME_023",
+      "KR": "",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "ENEMY_NAME_024",
+      "KR": "",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "ENEMY_NAME_025",
+      "KR": "",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "ENEMY_NAME_026",
+      "KR": "",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "SHOP_REFRESH",
+      "KR": "새로고침",
+      "EN": "Refresh",
+      "": ""
+    },
+    {
+      "String_Key": "SHOP_EXP",
+      "KR": "경험치 구매",
+      "EN": "Buy EXP",
+      "": ""
+    },
+    {
+      "String_Key": "ATK_DAMAGE_UPGRADE",
+      "KR": "공격력 강화",
+      "EN": "Damage Upgrade",
+      "": ""
+    },
+    {
+      "String_Key": "ATK_SPEED_UPGRADE",
+      "KR": "공격속도 강화",
+      "EN": "Attack Speed Upgrade",
+      "": ""
+    },
+    {
+      "String_Key": "ATK_DAMAGE",
+      "KR": "공격력",
+      "EN": "Damage",
+      "": ""
+    },
+    {
+      "String_Key": "ATK_SPEED",
+      "KR": "공격속도",
+      "EN": "Attack Speed",
+      "": ""
+    },
+    {
+      "String_Key": "ATK_RANGE",
+      "KR": "사거리",
+      "EN": "Attack Range",
+      "": ""
+    },
+    {
+      "String_Key": "HEALTH_TEXT",
+      "KR": "체력",
+      "EN": "Health",
+      "": ""
+    },
+    {
+      "String_Key": "DEFENSE_TEXT",
+      "KR": "방어력",
+      "EN": "Defense",
+      "": ""
+    },
+    {
+      "String_Key": "MOVE_SPEED_TEXT",
+      "KR": "이동속도",
+      "EN": "Move Speed",
+      "": ""
+    },
+    {
+      "String_Key": "TOWER_SESSION_STATE_UPGRADE",
+      "KR": "강화하기",
+      "EN": "Upgrade",
+      "": ""
+    },
+    {
+      "String_Key": "TOWER_GRADE_UPGRADE",
+      "KR": "강화하기",
+      "EN": "Upgrade",
+      "": ""
+    },
+    {
+      "String_Key": "TOWER_FIXED_UPGRADE",
+      "KR": "고정 강화",
+      "EN": "Fixed Upgrade",
+      "": ""
+    },
+    {
+      "String_Key": "TOWER_NORMAL_UPGRADE",
+      "KR": "일반 강화",
+      "EN": "Normal Upgrade",
+      "": ""
+    },
+    {
+      "String_Key": "PURCHASE",
+      "KR": "구매하기",
+      "EN": "Buy",
+      "": ""
+    },
+    {
+      "String_Key": "SELL",
+      "KR": "판매하기",
+      "EN": "Sell",
+      "": ""
+    },
+    {
+      "String_Key": "TOWER_UPGRADE_STEP",
+      "KR": "{0}강",
+      "EN": "+{0}",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_GRADE_NORMAL",
+      "KR": "노말",
+      "EN": "Normal",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_GRADE_RARE",
+      "KR": "레어",
+      "EN": "Rare",
+      "": ""
+    },
+    {
+      "String_Key": "ITEM_GRADE_EPIC",
+      "KR": "에픽",
+      "EN": "Epic",
+      "": ""
+    },
+    {
+      "String_Key": "SYS_MSG_UPGRADE_MAX",
+      "KR": "더 이상 등급 강화를 할 수 없습니다.",
+      "EN": "This item has reached its maximum grade.",
+      "": ""
+    },
+    {
+      "String_Key": "ACHIEVEMENT_KILL_ENEMY1",
+      "KR": "적 누적 처치 I",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "ACHIEVEMENT_STAGE_CLEAR_HARD",
+      "KR": "Hard 난이도 클리어",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "ACHIEVEMENT_HUMAN_TOWER_GRADE",
+      "KR": "인간 타워 목표 등급 달성",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "ACHIEVEMENT_TIMEATTACK_NORMAL",
+      "KR": "제한 시간 내 클리어",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "ACHIEVEMENT_RESEARCH_LEVEL1",
+      "KR": "연구 레벨 달성 I",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "ACHIEVEMENT_ELF_TOWER_OPERATION",
+      "KR": "엘프 고등급 타워 필드 운용",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "QUEST_DESC_KILLCOUNT",
+      "KR": "적 {0}기 이상 처치",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "QUEST_DESC_REACH_WAVE",
+      "KR": "{0}웨이브 도달",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "QUEST_DESC_HOLD_GOLD",
+      "KR": "골드 {0} 이상 보유",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "QUEST_DESC_USER_LEVEL",
+      "KR": "유저 레벨 {0} 달성",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "QUEST_DESC_INSTALL_RACE",
+      "KR": "{0} 타워 {1}기 설치",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "QUEST_DESC_INSTALL_GRADE",
+      "KR": "{0}등급 이상 타워 {1}기 설치",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "QUEST_DESC_OWN_GRADE",
+      "KR": "{0}등급 이상 타워 {1}기 보유",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "QUEST_LIMIT_STAGE_END",
+      "KR": "스테이지 종료 전까지",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "QUEST_LIMIT_WAVE_50",
+      "KR": "50웨이브 안에",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "QUEST_LIMIT_WAVE_40",
+      "KR": "40웨이브 안에",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "QUEST_LIMIT_WAVE_30",
+      "KR": "30웨이브 안에",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "QUEST_LIMIT_WAVE_20",
+      "KR": "20웨이브 안에",
+      "EN": "",
+      "": ""
+    }
+  ]
 }

@@ -167,18 +167,22 @@ public class TowerSkillDataManager
         if (collect == null)
             return null;
 
-        int index = 0;
+        SkillValueCollect target = null; 
+
         for(int i = 0; i < collect.Count; i++)
         {
             if (count >= collect[i].towerCnt)
             {
-                index = i;
+                target = collect[i];
             }
             else
                 break;
         }
 
-        return GetTowerSkillData(collect[index].skillUID);
+        if (target == null)
+            return null;
+
+        return GetTowerSkillData(target.skillUID);
     }
 
     public List<SkillValueCollect> GetTowerCollections(TowerType type)

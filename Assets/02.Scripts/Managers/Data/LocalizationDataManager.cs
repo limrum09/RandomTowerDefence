@@ -1,7 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine;
+using Unity.VisualScripting;
 
 public enum SelectLanguege
 {
@@ -12,11 +11,13 @@ public enum SelectLanguege
 [Serializable]
 public class LocalizationData
 {
+    public string key;
     public string KR;
     public string EN;
 
-    public LocalizationData(string kR, string eN)
+    public LocalizationData(string st, string kR, string eN)
     {
+        key = st;
         KR = kR;
         EN = eN;
     }
@@ -36,9 +37,9 @@ public class LocalizationDataManager
 
         foreach (LocalizationDataRow row in rowList.datas)
         {
-            LocalizationData data = new LocalizationData(row.KR, row.EN);
+            LocalizationData data = new LocalizationData(row.String_Key, row.KR, row.EN);
 
-            datas[row.key] = data;
+            datas[data.key] = data;
         }
     }
 

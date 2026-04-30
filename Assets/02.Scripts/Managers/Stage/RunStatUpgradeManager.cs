@@ -83,28 +83,17 @@ public class RunStatUpgradeManager
             atkSpeedItemTowerStep[type] += value;
     }
 
-    public void AddSkillAtkDamage(ScopeRange scope, int value)
+    public void AddSkillAtkDamage(TowerType type, int value)
     {
-        if (scope == ScopeRange.AllTower)
-        {
-            GlobalAtkDamageStep += value;
-            return;
-        }
+        // 현제는 단계별로 증가 값이 정해져 있음
+        // 공격력이나 속도 같은 값들은 서로의 타워에 영향을 주지 않기에 값만 변경한다.
+        atkDamageSkillStep[type] = value;
 
-        if (TryConvertScopeToTowerType(scope, out TowerType type))
-            atkDamageSkillStep[type] += value;
     }
 
-    public void AddSkillAtkSpeed(ScopeRange scope, int value)
+    public void AddSkillAtkSpeed(TowerType type, int value)
     {
-        if (scope == ScopeRange.AllTower)
-        {
-            GlobalAtkSpeedStep += value;
-            return;
-        }
-
-        if (TryConvertScopeToTowerType(scope, out TowerType type))
-            atkSpeedSkillStep[type] += value;
+        atkSpeedSkillStep[type] = value;
     }
 
     public void AddGoldDropIncrease(int value) => GoldDropValue += value;

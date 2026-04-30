@@ -38,7 +38,6 @@ public class RunEffectDataManager
                 break;
         }
     }
-
     public void RemoveItemEffect(ItemData item)
     {
         if (item == null)
@@ -109,8 +108,6 @@ public class RunEffectDataManager
         int gold = Random.Range(1, item.value + 1);
         session.ChangeGold(gold);
     }
-
-
     private void ApplyGoldDrop(ItemData item) => statUpgrade.AddGoldDropIncrease(item.value);
     private void RemoveGoldDrop(ItemData item) => statUpgrade.AddGoldDropIncrease(-item.value);
     private void ApplyInterestBoost(ItemData item) => statUpgrade.AddInterestBoost(item.value);
