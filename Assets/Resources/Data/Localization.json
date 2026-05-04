@@ -297,7 +297,7 @@
     {
       "String_Key": "TOWER_SKILL_DES_001",
       "KR": "세상을 움직이는 황금의 패권이 인간의 손끝에서 더욱 강력하게 요동칩니다.\n인간 타워를 <color=#FF4545>[{0} / {1} / {2} / {3}]</color> 개 소유하면\n라운드 종료 시 이자율이 <color=#FF4545>[{4} / {5}  / {6} / {7}]%p</color> 증가합니다.",
-      "EN": "The hegemony of gold that moves the world pulses even more powerfully at the humans' fingertips.\nOwn Human Towers: <color=#FF4545>[{0} / {1} / {2} / {3}]</color>\nIncreases Interest Rate by <color=#FF4545>[{0} / {1} / {2} / {3}]%p</color> at the end of the round.",
+      "EN": "The hegemony of gold that moves the world pulses even more powerfully at the humans' fingertips.\nOwn Human Towers: <color=#FF4545>[{0} / {1} / {2} / {3}]</color>\nIncreases Interest Rate by <color=#FF4545>[{4} / {5} / {6} / {7}]%p</color> at the end of the round.",
       "": ""
     },
     {
@@ -309,7 +309,7 @@
     {
       "String_Key": "TOWER_SKILL_DES_002",
       "KR": "신비한 자연의 기운이 정령과 엘프들을 하나로 연결합니다.\n엘프 타워 보유: <color=#FF4545>[{0} / {1} / {2} / {3}]</color>\n모든 엘프 타워 공격력 <color=#FF4545>[{4} / {5} / {6} / {7}]</color> 증가",
-      "EN": "The mystical energy of nature connects spirits and Elves as one.\nOwn Elf Towers: <color=#FF4545>[{0} / {1} / {2} / {3}]</color>\nIncreases ATK of all Elf towers by <color=#FF4545>[{0} / {1} / {2} / {3}]</color>.",
+      "EN": "The mystical energy of nature connects spirits and Elves as one.\nOwn Elf Towers: <color=#FF4545>[{0} / {1} / {2} / {3}]</color>\nIncreases ATK of all Elf towers by <color=#FF4545>[{4} / {5} / {6} / {7}]</color>.",
       "": ""
     },
     {
@@ -321,7 +321,7 @@
     {
       "String_Key": "TOWER_SKILL_DES_003",
       "KR": "드워프의 정밀한 타격이 적의 가장 단단한 부위를 파고듭니다.\n드워프 타워 보유: <color=#FF4545>[{0} / {1} / {2}]</color>\n적 방어력 <color=#FF4545>[{3} / {4} / {5}]%</color> 감소",
-      "EN": "Dwarven precision strikes pierce through the enemy's toughest parts.\nOwn Dwarf Towers: <color=#FF4545>[{0} / {1} / {2}]</color>\nReduces enemy Defense by <color=#FF4545>[{0} / {1} / {2}]%</color>.",
+      "EN": "Dwarven precision strikes pierce through the enemy's toughest parts.\nOwn Dwarf Towers: <color=#FF4545>[{0} / {1} / {2}]</color>\nReduces enemy Defense by <color=#FF4545>[{3} / {4} / {5}]%</color>.",
       "": ""
     },
     {
@@ -333,7 +333,7 @@
     {
       "String_Key": "TOWER_SKILL_DES_004",
       "KR": "거친 포효와 함께 오크들의 압도적인 무력이 전장을 짓누릅니다.\n오크 타워 보유: <color=#FF4545>[{0} / {1} / {2} / {3}]</color>\n공격력 <color=#FF4545>[{4} / {5} / {6} / {7}]</color> 증가 (4단계: 공격 시 <color=#45A2FF>슬로우</color> 부여)",
-      "EN": "With a fierce roar, the Orcs' overwhelming power crushes the battlefield.\nOwn Orc Towers: <color=#FF4545>[{0} / {1} / {2} / {3}]</color>\nIncreases ATK by <color=#FF4545>[{0} / {1} / {2} / {3}]</color> (Step.4: Applies <color=#45A2FF>Slow</color> on attack).",
+      "EN": "With a fierce roar, the Orcs' overwhelming power crushes the battlefield.\nOwn Orc Towers: <color=#FF4545>[{0} / {1} / {2} / {3}]</color>\nIncreases ATK by <color=#FF4545>[{4} / {5} / {6} / {7}]</color> (Step.4: Applies <color=#45A2FF>Slow</color> on attack).",
       "": ""
     },
     {
@@ -345,7 +345,7 @@
     {
       "String_Key": "TOWER_SKILL_DES_005",
       "KR": "고대 용의 갈라진 인자가 용인들의 혈관 속에서 뜨겁게 요동칩니다.\n용인 타워 보유: <color=#FF4545>[{0} / {1} / {2} / {3} / {4} / {5}]</color>\n모든 용인 타워 공격력 <color=#FF4545>[{6} / {7} / {8} / {9} / {10} / {11}]</color> 증가",
-      "EN": "Ancient split dragon factors pulse hotly within the veins of Dragonians.\nOwn Dragonian Towers: <color=#FF4545>[{0} / {1} / {2} / {3} / {4} / {5}]</color>\nIncreases ATK of all Dragonian towers by <color=#FF4545>[{0} / {1} / {2} / {3} / {4} / {5}]</color>.",
+      "EN": "Ancient split dragon factors pulse hotly within the veins of Dragonians.\nOwn Dragonian Towers: <color=#FF4545>[{0} / {1} / {2} / {3} / {4} / {5}]</color>\nIncreases ATK of all Dragonian towers by <color=#FF4545>[{6} / {7} / {8} / {9} / {10} / {11}]</color>.",
       "": ""
     },
     {
@@ -357,7 +357,7 @@
     {
       "String_Key": "TOWER_SKILL_DES_006",
       "KR": "어둠 속에서도 번뜩이는 수인의 눈동자는 결코 먹잇감을 놓치지 않습니다.\n수인 타워 보유: <color=#FF4545>[{0} / {1} / {2} / {3}]</color>\n치명타 확률 <color=#FF4545>[{4} / {5} / {6} / {7}]%p</color> 증가",
-      "EN": "The Werebeast's eyes, flashing even in the dark, never miss their prey.\nOwn Werebeast Towers: <color=#FF4545>[{0} / {1} / {2} / {3}]</color>\nIncreases Critical Chance by <color=#FF4545>[{0} / {1} / {2} / {3}]%p</color>.",
+      "EN": "The Werebeast's eyes, flashing even in the dark, never miss their prey.\nOwn Werebeast Towers: <color=#FF4545>[{0} / {1} / {2} / {3}]</color>\nIncreases Critical Chance by <color=#FF4545>[{4} / {5} / {6} / {7}]%p</color>.",
       "": ""
     },
     {
@@ -518,157 +518,157 @@
     },
     {
       "String_Key": "ENEMY_NAME_001",
-      "KR": "",
+      "KR": "독 슬라임",
       "EN": "",
       "": ""
     },
     {
       "String_Key": "ENEMY_NAME_002",
-      "KR": "",
+      "KR": "일반 고블린",
       "EN": "",
       "": ""
     },
     {
       "String_Key": "ENEMY_NAME_003",
-      "KR": "",
+      "KR": "다크 스텀프",
       "EN": "",
       "": ""
     },
     {
       "String_Key": "ENEMY_NAME_004",
-      "KR": "",
+      "KR": "갈색 늑대",
       "EN": "",
       "": ""
     },
     {
       "String_Key": "ENEMY_NAME_005",
-      "KR": "",
+      "KR": "갈색 영혼",
       "EN": "",
       "": ""
     },
     {
       "String_Key": "ENEMY_NAME_006",
-      "KR": "",
+      "KR": "회색 늑대",
       "EN": "",
       "": ""
     },
     {
       "String_Key": "ENEMY_NAME_007",
-      "KR": "",
+      "KR": "고블린 중갑병",
       "EN": "",
       "": ""
     },
     {
       "String_Key": "ENEMY_NAME_008",
-      "KR": "",
+      "KR": "타락한 작은 앤트",
       "EN": "",
       "": ""
     },
     {
       "String_Key": "ENEMY_NAME_009",
-      "KR": "",
+      "KR": "리자드맨",
       "EN": "",
       "": ""
     },
     {
       "String_Key": "ENEMY_NAME_010",
-      "KR": "",
+      "KR": "하급 악마",
       "EN": "",
       "": ""
     },
     {
       "String_Key": "ENEMY_NAME_011",
-      "KR": "",
+      "KR": "파이어 골램",
       "EN": "",
       "": ""
     },
     {
       "String_Key": "ENEMY_NAME_012",
-      "KR": "",
+      "KR": "앨리트 고블린",
       "EN": "",
       "": ""
     },
     {
       "String_Key": "ENEMY_NAME_013",
-      "KR": "",
+      "KR": "리자드맨 전사",
       "EN": "",
       "": ""
     },
     {
       "String_Key": "ENEMY_NAME_014",
-      "KR": "",
+      "KR": "고블린 제사장",
       "EN": "",
       "": ""
     },
     {
       "String_Key": "ENEMY_NAME_015",
-      "KR": "",
+      "KR": "리자드맨 제사장",
       "EN": "",
       "": ""
     },
     {
       "String_Key": "ENEMY_NAME_016",
-      "KR": "",
+      "KR": "푸른 영혼",
       "EN": "",
       "": ""
     },
     {
       "String_Key": "ENEMY_NAME_017",
-      "KR": "",
+      "KR": "리자드맨 십인장",
       "EN": "",
       "": ""
     },
     {
       "String_Key": "ENEMY_NAME_018",
-      "KR": "",
+      "KR": "중급 악마",
       "EN": "",
       "": ""
     },
     {
       "String_Key": "ENEMY_NAME_019",
-      "KR": "",
+      "KR": "리자드맨 가디언",
       "EN": "",
       "": ""
     },
     {
       "String_Key": "ENEMY_NAME_020",
-      "KR": "",
+      "KR": "녹색 트롤",
       "EN": "",
       "": ""
     },
     {
       "String_Key": "ENEMY_NAME_021",
-      "KR": "",
+      "KR": "고블린 챔피언",
       "EN": "",
       "": ""
     },
     {
       "String_Key": "ENEMY_NAME_022",
-      "KR": "",
+      "KR": "오우거",
       "EN": "",
       "": ""
     },
     {
       "String_Key": "ENEMY_NAME_023",
-      "KR": "",
+      "KR": "그리폰",
       "EN": "",
       "": ""
     },
     {
       "String_Key": "ENEMY_NAME_024",
-      "KR": "",
+      "KR": "호박",
       "EN": "",
       "": ""
     },
     {
       "String_Key": "ENEMY_NAME_025",
-      "KR": "",
+      "KR": "돼지",
       "EN": "",
       "": ""
     },
     {
       "String_Key": "ENEMY_NAME_026",
-      "KR": "",
+      "KR": "황금 고블",
       "EN": "",
       "": ""
     },

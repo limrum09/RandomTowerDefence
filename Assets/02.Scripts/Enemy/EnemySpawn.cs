@@ -90,7 +90,7 @@ public class EnemySpawn : MonoBehaviour
 
         if (enemyMove != null)
         {
-            enemyMove.Initialize(grid, path, grid.SpawnPos, grid.GoalPos, enemyObj.MoveSpeed);
+            enemyMove.Initialize(grid, path, enemyObj, grid.SpawnPos, grid.GoalPos);
         }
 
         OnEnemySpawn?.Invoke();

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
 {
+    [SerializeField]
+    private Enemy enemy;
     private GridManager gridManager;
     private PathFinder path;
-    private float moveSpeed;
 
     [Header("Path Test")]
     [SerializeField]
@@ -29,14 +30,14 @@ public class EnemyMove : MonoBehaviour
         MoveAlongPath();
     }
 
-    public void Initialize(GridManager getGrid, PathFinder getPath, Vector2Int getStartCell, Vector2Int getEndCell, float getMoveSpeed)
+    public void Initialize(GridManager getGrid, PathFinder getPath, Enemy getEnemy, Vector2Int getStartCell, Vector2Int getEndCell)
     {
         gridManager = getGrid;
         path = getPath;
+        enemy = getEnemy;
 
         startCell = getStartCell;
         endCell = getEndCell;
-        moveSpeed = getMoveSpeed;
         isMove = true;
 
         transform.position = gridManager.CellToWorldCenter(startCell.x, startCell.y);
@@ -78,7 +79,7 @@ public class EnemyMove : MonoBehaviour
         GridNode targetNode = currentPath[pathIndex];
         Vector3 targetPos = gridManager.CellToWorldCenter(targetNode.x, targetNode.y);
 
-        transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime * 3.0f);
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, enemy.MoveSpeed * Time.deltaTime * 3.0f);
 
         if (Vector3.Distance(transform.position, targetPos) < 0.05f)
         {
