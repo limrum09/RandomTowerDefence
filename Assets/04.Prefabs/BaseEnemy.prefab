@@ -171,6 +171,7 @@ GameObject:
   - component: {fileID: 6106786007037554495}
   - component: {fileID: 7988261405228855007}
   - component: {fileID: -2253388332138954845}
+  - component: {fileID: 3248635054627456772}
   - component: {fileID: 5710973354883887936}
   m_Layer: 8
   m_Name: BaseEnemy
@@ -207,6 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d972c520dfe9ff5428777b2b14edda74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 0}
   startCell: {x: 0, y: 0}
   endCell: {x: 24, y: 10}
 --- !u!114 &-2253388332138954845
@@ -223,6 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   move: {fileID: 7988261405228855007}
   anim: {fileID: 7998001764980484646}
+  skill: {fileID: 3248635054627456772}
   enemyUID: 
   level: 0
   stringKey: 
@@ -238,6 +241,26 @@ MonoBehaviour:
   currentHP: 0
   maxShield: 0
   currentShield: 0
+  currentSpeed: 0
+--- !u!114 &3248635054627456772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6981411954294146692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5e67440b810edc46b212828fef13e6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  root: {fileID: 0}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  towerLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!58 &5710973354883887936
 CircleCollider2D:
   m_ObjectHideFlags: 0

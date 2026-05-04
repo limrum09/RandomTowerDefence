@@ -1,5 +1,3 @@
-using System.IO;
-using System.Net.NetworkInformation;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -8,6 +6,8 @@ public class Enemy : MonoBehaviour
     private EnemyMove move;
     [SerializeField]
     private EnemyAnim anim;
+    [SerializeField]
+    private EnemySkill skill;
 
 
     [SerializeField]
@@ -41,14 +41,17 @@ public class Enemy : MonoBehaviour
     private int maxShield;
     [SerializeField]
     private int currentShield;
+    [SerializeField]
+    private float currentSpeed;
     private bool isDead;
+    private float increaseSpeed;
 
     public int Level => level;
     public string StringKey => stringKey;
     public string EnemySkillUID => enemySkillUID;
     public int MaxHP => maxHP;
     public int MaxShield => maxShield;
-    public float MoveSpeed => moveSpeed;
+    public float MoveSpeed => currentSpeed + increaseSpeed;
     public float RewardGold => rewardGold;
     public bool IsDead => isDead;
 
@@ -77,13 +80,41 @@ public class Enemy : MonoBehaviour
         isDead = false;
 
         SetState();
+        skill.Init(this, enemySkillUID);
         anim.SetAnim(uid);
+    }
+
+    public void EnemeyHeal(int value)
+    {
+        if (value <= 0)
+            return;
+
+        currentHP = Mathf.Min(MaxHP, currentHP + value);
+    }
+
+    public void ShieldValueChange(int value)
+    {
+        if (value <= 0)
+            return;
+
+        currentShield = Mathf.Min(MaxShield, currentShield + value);
+    }
+
+    public void MoveSpeedChange(float value)
+    {
+        float up = currentSpeed * 100 / Mathf.Abs(value);
+
+        if (value < 0)
+            up *= -1;
+
+        increaseSpeed += up;
     }
 
     private void SetState()
     {
         maxHP = currentHP = basicHp + (increaseHP * level);
         maxShield = currentShield = basicShield + (increaseShield * level);
+        currentSpeed = moveSpeed;
     }
 
     private void Die()
