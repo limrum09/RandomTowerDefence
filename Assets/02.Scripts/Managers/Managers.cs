@@ -1,8 +1,4 @@
-using NUnit.Framework.Interfaces;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class Managers : MonoBehaviour
 {
@@ -32,6 +28,8 @@ public class Managers : MonoBehaviour
     private TowerSessionUpgradeManager sessionUpgrade = new TowerSessionUpgradeManager();
     private WaveDataManager wave = new WaveDataManager();
     private WaveEnemyRosterDataManager waveRoster = new WaveEnemyRosterDataManager();
+    private PoolManager pool = new PoolManager();
+    private GameEffectManager effectManager = new GameEffectManager();
 
     public static GameManager Game { get { return Instance.game; } }
     public static InputManager InputData { get { return Instance.input; } }
@@ -44,6 +42,9 @@ public class Managers : MonoBehaviour
     public static TowerSessionUpgradeManager SessionTowerUpgrade {  get { return Instance.sessionUpgrade; } }
     public static WaveDataManager Wave {  get { return Instance.wave; } }
     public static WaveEnemyRosterDataManager WaveRoster { get { return Instance.waveRoster; } }
+    public static PoolManager Pool { get { return Instance.pool; } }
+    public static GameEffectManager Effect { get { return Instance.effectManager; } }
+
     private void Start()
     {
         // 임시, 나중에 지워야 함
@@ -70,6 +71,8 @@ public class Managers : MonoBehaviour
         SessionTowerUpgrade.Inti();
         Wave.Init();
         WaveRoster.Init();
+        Pool.Init();
+        Effect.Init();
     }
 
     private void OnApplicationQuit()

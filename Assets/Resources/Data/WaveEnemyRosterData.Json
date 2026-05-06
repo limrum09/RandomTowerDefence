@@ -5,7 +5,7 @@
       "SpawnOrder": 1,
       "Enemy_UID": "E001",
       "EnemyLevel": 1,
-      "SpawnCount": 50,
+      "SpawnCount": 5,
       "StartTime": "0",
       "SpawnInterval": 0.86,
       "SpawnType": "Immediate"
@@ -15,7 +15,7 @@
       "SpawnOrder": 1,
       "Enemy_UID": "E003",
       "EnemyLevel": 1,
-      "SpawnCount": 50,
+      "SpawnCount": 5,
       "StartTime": "0",
       "SpawnInterval": 0.85,
       "SpawnType": "Immediate"
@@ -25,7 +25,7 @@
       "SpawnOrder": 1,
       "Enemy_UID": "E004",
       "EnemyLevel": 1,
-      "SpawnCount": 50,
+      "SpawnCount": 5,
       "StartTime": "0",
       "SpawnInterval": 0.85,
       "SpawnType": "Immediate"
@@ -35,7 +35,7 @@
       "SpawnOrder": 1,
       "Enemy_UID": "E001",
       "EnemyLevel": 1,
-      "SpawnCount": 50,
+      "SpawnCount": 5,
       "StartTime": "0",
       "SpawnInterval": 0.84,
       "SpawnType": "Immediate"
@@ -45,7 +45,7 @@
       "SpawnOrder": 1,
       "Enemy_UID": "E001",
       "EnemyLevel": 1,
-      "SpawnCount": 25,
+      "SpawnCount": 2,
       "StartTime": "0",
       "SpawnInterval": 0.86,
       "SpawnType": "Immediate"
@@ -55,7 +55,7 @@
       "SpawnOrder": 2,
       "Enemy_UID": "E004",
       "EnemyLevel": 1,
-      "SpawnCount": 25,
+      "SpawnCount": 2,
       "StartTime": "20.9",
       "SpawnInterval": 0.86,
       "SpawnType": "Sequential"
@@ -65,7 +65,7 @@
       "SpawnOrder": 1,
       "Enemy_UID": "E007",
       "EnemyLevel": 2,
-      "SpawnCount": 50,
+      "SpawnCount": 5,
       "StartTime": "0",
       "SpawnInterval": 0.84,
       "SpawnType": "Immediate"
@@ -75,7 +75,7 @@
       "SpawnOrder": 1,
       "Enemy_UID": "E002",
       "EnemyLevel": 2,
-      "SpawnCount": 50,
+      "SpawnCount": 5,
       "StartTime": "0",
       "SpawnInterval": 0.83,
       "SpawnType": "Immediate"
@@ -85,7 +85,7 @@
       "SpawnOrder": 1,
       "Enemy_UID": "E002",
       "EnemyLevel": 2,
-      "SpawnCount": 33,
+      "SpawnCount": 3,
       "StartTime": "0",
       "SpawnInterval": 0.84,
       "SpawnType": "Immediate"
@@ -95,7 +95,7 @@
       "SpawnOrder": 2,
       "Enemy_UID": "E007",
       "EnemyLevel": 2,
-      "SpawnCount": 17,
+      "SpawnCount": 7,
       "StartTime": "27.1",
       "SpawnInterval": 0.86,
       "SpawnType": "Sequential"
@@ -105,7 +105,7 @@
       "SpawnOrder": 1,
       "Enemy_UID": "E004",
       "EnemyLevel": 2,
-      "SpawnCount": 33,
+      "SpawnCount": 3,
       "StartTime": "0",
       "SpawnInterval": 0.83,
       "SpawnType": "Immediate"
@@ -115,7 +115,7 @@
       "SpawnOrder": 2,
       "Enemy_UID": "E008",
       "EnemyLevel": 2,
-      "SpawnCount": 17,
+      "SpawnCount": 7,
       "StartTime": "27",
       "SpawnInterval": 0.86,
       "SpawnType": "Sequential"

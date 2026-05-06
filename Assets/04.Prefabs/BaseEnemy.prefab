@@ -209,6 +209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
+  spriteRenderer: {fileID: 9026436446442733913}
   startCell: {x: 0, y: 0}
   endCell: {x: 24, y: 10}
 --- !u!114 &-2253388332138954845

@@ -9916,8 +9916,10 @@ GameObject:
   - component: {fileID: 5967205037942614776}
   - component: {fileID: 7202910462482994374}
   - component: {fileID: 393952343227156909}
+  - component: {fileID: 4194760229181121941}
+  - component: {fileID: -2935722356906483450}
   m_Layer: 0
-  m_Name: EnemySpeed
+  m_Name: EnemyHaste
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14813,6 +14815,30 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &4194760229181121941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3278713867404446054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79290e3af218ee7448efb4d5683ed0b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-2935722356906483450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3278713867404446054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5bf5cfd9dd45c846b585891ad2034bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5406985963399454300
 GameObject:
   m_ObjectHideFlags: 0

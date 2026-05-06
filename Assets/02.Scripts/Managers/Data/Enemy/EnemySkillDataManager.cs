@@ -13,7 +13,7 @@ public enum EnemySkillType
     None,
     Heal,
     Haste,
-    Sheild,
+    Shield,
     Debuff,
     Summon,
     Stealth

@@ -181,6 +181,7 @@ public class Tower : MonoBehaviour
             return;
 
         anim.SetBool("IsAttack", isAttack);
+        anim.SetFloat("AttackSpeed", CurrentAtkSpeed);
     }
 
     public void ShowAttackRange(bool show)
