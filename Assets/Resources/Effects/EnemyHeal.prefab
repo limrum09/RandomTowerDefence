@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 6531808925707220139}
   - component: {fileID: 5833675812670358994}
   - component: {fileID: 2485850293254217507}
+  - component: {fileID: 2755868125764122821}
+  - component: {fileID: -8462954739352581858}
   m_Layer: 0
-  m_Name: EnemyHealing
+  m_Name: EnemyHeal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4907,6 +4909,30 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &2755868125764122821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604531328064989117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79290e3af218ee7448efb4d5683ed0b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-8462954739352581858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604531328064989117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5bf5cfd9dd45c846b585891ad2034bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3408479216301843453
 GameObject:
   m_ObjectHideFlags: 0

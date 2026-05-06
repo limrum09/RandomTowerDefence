@@ -9817,6 +9817,8 @@ GameObject:
   - component: {fileID: 4532680473602954231}
   - component: {fileID: 7359925598380636075}
   - component: {fileID: 6101265900940445643}
+  - component: {fileID: 8502221241407256889}
+  - component: {fileID: 7343020197109607857}
   m_Layer: 0
   m_Name: EnemyShield
   m_TagString: Untagged
@@ -14712,6 +14714,30 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &8502221241407256889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5251617973638398826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79290e3af218ee7448efb4d5683ed0b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7343020197109607857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5251617973638398826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5bf5cfd9dd45c846b585891ad2034bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8440511810569316153
 GameObject:
   m_ObjectHideFlags: 0

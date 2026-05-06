@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
 public class EnemySkill : MonoBehaviour
 {
@@ -80,7 +78,7 @@ public class EnemySkill : MonoBehaviour
             case EnemySkillType.Haste:
                 ApplySpeed(value, getDuration);
                 break;
-            case EnemySkillType.Sheild:
+            case EnemySkillType.Shield:
                 ApplyShield((int)value, getDuration, getTick);
                 break;
             case EnemySkillType.Summon:
@@ -106,6 +104,8 @@ public class EnemySkill : MonoBehaviour
 
     private void UsingSkill()
     {
+        Managers.Effect.Play("Enemy" + skillType.ToString(), root.transform, PoolCategory.Stage, true);
+
         if (target == EnemySkillTarget.Self)
             ApplySkillEffect(skillType, skillValue, duration, skillTick);
         else if (target == EnemySkillTarget.Area)

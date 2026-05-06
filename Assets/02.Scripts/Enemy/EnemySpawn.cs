@@ -34,8 +34,6 @@ public class EnemySpawn : MonoBehaviour
     private List<EnemySpawnInfo> spawnEnemeys = new List<EnemySpawnInfo>();
     [SerializeField]
     private int spawnCount;
-    [SerializeField]
-    private float spawnDelay = 1.0f;
 
     private GridManager grid;
     private PathFinder path;
