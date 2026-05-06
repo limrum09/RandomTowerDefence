@@ -22,6 +22,7 @@ public class TowerController : MonoBehaviour
     public event Action<Tower> OnShowGradeUpgrade;
     public event Action<Tower> OnShowStatUpgrade;
     public event Action<int> OnGoldInterection;
+    public event Action OnFieldTowerMoveToQueueSlot;
 
     private readonly List<RaycastResult> raycastResults = new List<RaycastResult>();
 
@@ -122,6 +123,14 @@ public class TowerController : MonoBehaviour
             {
                 // 현제 선택한 타워의 세션 업그레이드 UI 실행
                 OnShowStatUpgrade?.Invoke(selectedTower);
+                return;
+            }
+
+            // 선택된 타워 대기열로 이동 단축키 입력
+            if (Input.GetKeyDown(Managers.InputData.GetKeyCode(InputAction.TowerMoveToQueueSlot)))
+            {
+                // 선택된 타워 대기열로 이동하는 Event 실핼
+                OnFieldTowerMoveToQueueSlot?.Invoke();
                 return;
             }
 
@@ -590,19 +599,31 @@ public class TowerController : MonoBehaviour
     /// <summary>
     /// 현재 선택된 타워 판매
     /// 판매 성공 시 골드 지급
-    /// 선택 상태 초기화
     /// </summary>
-    public void RemoveTower()
+    public void SellTower()
     {
         // 판매 가격 가져오기
         int price = selectedTower.SellPrice;
         // 타워 제거 성공 시
-        if (fieldTowerManager.RemoveTower(selectedTower))
+        if (RemoveTower())
         {
             // 골드지급
             GoldInterction(price);
-            // 선택 초기화
-            ClearSelectedTower();
         }
+    }
+
+    /// <summary>
+    /// 타워 제거
+    /// </summary>
+    /// 선택 상태 초기화
+    /// <returns>타워 제거 성공시 true 반환</returns>
+    public bool RemoveTower()
+    {
+        if (!fieldTowerManager.RemoveTower(selectedTower))
+            return false;
+
+        // 선택 초기화
+        ClearSelectedTower();
+        return true;
     }
 }

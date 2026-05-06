@@ -56,6 +56,7 @@ public class StageUIController : MonoBehaviour
         actionMenuPresenter.OnClickMove += OnClickMove;
         actionMenuPresenter.OnClickGradeUpgrade += OnClickGradeUpgrade;
         actionMenuPresenter.OnClickStatUpgrade += OnClickStatUpgrade;
+        actionMenuPresenter.OnClickTowerMoveToQueueSlot += OnMoveFieldTowerToQueue;
 
         statPresenter.onClickDamageUpgrade += OnTowerStatDamageUpgrade;
         statPresenter.onClickAttackSpeedUpgrade += OnTowerStatAttackSpeedUpgrade;
@@ -65,8 +66,10 @@ public class StageUIController : MonoBehaviour
         towerCtr.OnShowGradeUpgrade += OnClickGradeUpgrade;
         towerCtr.OnShowStatUpgrade += OnClickStatUpgrade;
         towerCtr.OnGoldInterection += OnGoldToTowerIntertion;
+        towerCtr.OnFieldTowerMoveToQueueSlot += OnMoveFieldTowerToQueue;
 
-        queueCtr.BindTowerController(towerCtr);
+        queueCtr.OnRequestBuildTower += towerCtr.BeginBuildTower;
+        queueCtr.OnRemoveTowerFromQueue += RemoveTower;
 
         itemCtr.OnClickItem += OnClickItemInfo;
 
@@ -91,6 +94,7 @@ public class StageUIController : MonoBehaviour
         actionMenuPresenter.OnClickMove -= OnClickMove;
         actionMenuPresenter.OnClickGradeUpgrade -= OnClickGradeUpgrade;
         actionMenuPresenter.OnClickStatUpgrade -= OnClickStatUpgrade;
+        actionMenuPresenter.OnClickTowerMoveToQueueSlot -= OnMoveFieldTowerToQueue;
 
         statPresenter.onClickDamageUpgrade -= OnTowerStatDamageUpgrade;
         statPresenter.onClickAttackSpeedUpgrade -= OnTowerStatAttackSpeedUpgrade;
@@ -103,6 +107,10 @@ public class StageUIController : MonoBehaviour
         towerCtr.OnShowGradeUpgrade -= OnClickGradeUpgrade;
         towerCtr.OnShowStatUpgrade -= OnClickStatUpgrade;
         towerCtr.OnGoldInterection -= OnGoldToTowerIntertion;
+        towerCtr.OnFieldTowerMoveToQueueSlot -= OnMoveFieldTowerToQueue;
+
+        queueCtr.OnRequestBuildTower -= towerCtr.BeginBuildTower;
+        queueCtr.OnRemoveTowerFromQueue -= RemoveTower;
 
         enemyInfoCtr.onClickEnemyInfo -= OnClickWaveEnemyInfo;
 
@@ -154,6 +162,19 @@ public class StageUIController : MonoBehaviour
         enemyInfoPresenter.Hide();
 
         towerCtr.SetTowerMoveMode();
+    }
+
+    public void OnMoveFieldTowerToQueue()
+    {
+        if (selectedTower == null)
+            return;
+
+        queueCtr.MoveFieldTowerToQueue(selectedTower.TowerUID);
+    }
+
+    public void RemoveTower()
+    {
+        towerCtr.RemoveTower();
     }
 
     public void OnClickGradeUpgrade(Tower tower)
@@ -209,7 +230,7 @@ public class StageUIController : MonoBehaviour
         if (towerCtr == null)
             return;
 
-        towerCtr.RemoveTower();
+        towerCtr.SellTower();
     }
     private void OnTowerStatDamageUpgrade(Tower tower)
     {

@@ -53,12 +53,14 @@ public class TowerAttack : MonoBehaviour
     /// </summary>
     private void TryAttack()
     {
+        // 타겟이 없을 경우 공격 상태 해체
         if (currentTarget == null)
         {
             tower.Attack(false);
             return;
         }
 
+        // 타겟이 죽었거나 비활성화기 초기화
         if (!IsTargetValid(currentTarget))
         {
             currentTarget = null;
@@ -68,11 +70,17 @@ public class TowerAttack : MonoBehaviour
 
         attackTimer += Time.deltaTime;
 
+        // 공격 속도를 기준으로 공격 간격 계산
         float attackCoolTime = 1f / tower.CurrentAtkSpeed;
+
+        // 공격 쿨타임 끝나지 않을 시 대기
         if (attackCoolTime > attackTimer)
             return;
 
+        // 공격 타이머 초기화
         attackTimer = 0f;
+
+        // 실제 공격
         AttackEnemy(currentTarget);
     }
 
@@ -89,12 +97,15 @@ public class TowerAttack : MonoBehaviour
         if (currentTarget == null)
             return;
 
+        // 타워 기준 적의 x좌표 위치 차이 계산
         float dirX = currentTarget.transform.position.x - transform.position.x;
 
+        // 오른쪽
         if(dirX > 0.01f)
         {
             spriteRenderer.flipX = false;
         }
+        // 왼쪽
         else if (dirX < 0.01f)
         {
             spriteRenderer.flipX = true;
@@ -120,6 +131,7 @@ public class TowerAttack : MonoBehaviour
     /// <returns></returns>
     private Enemy FindNearEnemyInRange()
     {
+        // 현제 타워 위치를 기준으로 사거리 안의 Enemy Layer 탐색
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, tower.AtkRange, enemyLayer);
 
         Enemy nearEnemy = null;
@@ -127,11 +139,17 @@ public class TowerAttack : MonoBehaviour
 
         foreach (Collider2D hit in hits)
         {
+            // 탐색된 Collider에서 Enemy 컴포넌트 가져오기
             Enemy enemy = hit.GetComponent<Enemy>();
+
+            // 공격 가능한 적 아니면 제외
             if (!IsTargetValid(enemy))
                 continue;
 
+            // 거리 비교
             float distance = (enemy.transform.position - transform.position).sqrMagnitude;
+
+            // 가까운 적이 생기면 갱신
             if(distance < nearDistance)
             {
                 nearDistance = distance;
@@ -155,6 +173,7 @@ public class TowerAttack : MonoBehaviour
         if (!enemy.gameObject.activeInHierarchy)
             return false;
 
+        // dead가 생겨도 필요한지는 모르겠지만 일단 주석으로 추가
         //if(enemy.isdead)
 
         return true;
@@ -163,12 +182,15 @@ public class TowerAttack : MonoBehaviour
     /// <summary>
     /// 지정한 위치가 현재 타워 사거리 안 인지 확인
     /// </summary>
-    /// <param name="targetPosition"></param>
+    /// <param name="targetPosition">거리를 확인할 타겟의 위치</param>
     /// <returns></returns>
     private bool IsInRange(Vector3 targetPosition)
     {
+        // 실제 거리의 제곱
         float sqrDistance = (targetPosition - transform.position).sqrMagnitude;
+        // 사거리 제곱
         float sqrRange = tower.AtkRange * tower.AtkRange;
+        // 실제 거리가 가서리보다 작다면 True
         return sqrRange >= sqrDistance;
     }
 }
