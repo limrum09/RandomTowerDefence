@@ -137,7 +137,6 @@ public class ObstacleBuilder : MonoBehaviour
     private void TryPlaceObstacle()
     {
         Vector2Int cell = Managers.InputData.GetMouseCellPosition(mainCamera, gridManager);
-        Debug.Log("셀 위치 : " + cell);
 
         if (!gridManager.IsInBounds(cell))
             return;

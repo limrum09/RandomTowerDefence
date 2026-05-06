@@ -14,17 +14,22 @@ public class TowerActionMenuView : MonoBehaviour
     [SerializeField]
     private Button statUpgradeBtn;
     [SerializeField]
+    private Button toQueueSlotBtn;
+    [SerializeField]
     private TextMeshProUGUI towerMoveBtnText;
     [SerializeField]
     private TextMeshProUGUI towerGradeupGradeBtnText;
     [SerializeField]
     private TextMeshProUGUI towerStatUpgradeBtnText;
+    [SerializeField]
+    private TextMeshProUGUI toQueueSlotBtnText;
 
     public void Show()
     {
         towerMoveBtnText.text = $"타워이동({Managers.InputData.GetKeyCode(InputAction.MoveTower)})";
         towerGradeupGradeBtnText.text = $"타워 정보 보기({Managers.InputData.GetKeyCode(InputAction.ShowGradeUpgradeTowerView)})";
         towerStatUpgradeBtnText.text = $"타워 스탯 강화({Managers.InputData.GetKeyCode(InputAction.ShowStatUpgradeTowerView)})";
+        toQueueSlotBtnText.text = $"대기열로 이동 ({Managers.InputData.GetKeyCode(InputAction.TowerMoveToQueueSlot)})"; 
 
         root.SetActive(true);
     }
@@ -33,4 +38,5 @@ public class TowerActionMenuView : MonoBehaviour
     public void BindMove(UnityAction action) => moveBtn.onClick.AddListener(action);
     public void BindGradeUpgrade(UnityAction action) => gradeUpgradeBtn.onClick.AddListener(action);
     public void BindStatUpgrade(UnityAction action) => statUpgradeBtn.onClick.AddListener(action);
+    public void BindTowerMoveToQueueSlot(UnityAction action) => toQueueSlotBtn.onClick.AddListener(action); 
 }

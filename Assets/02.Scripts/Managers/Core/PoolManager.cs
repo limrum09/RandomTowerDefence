@@ -40,13 +40,15 @@ public class PoolManager
         for(int i = 0; i < System.Enum.GetValues(typeof(PoolCategory)).Length; i++)
         {
             CreateCategoryPool((PoolCategory)i);
+            // 초기 Pool에 오브젝트를 몇개 생성하도록 필요시 추가
+            // 스킬 이펙트는 여러개 추가 해 놓을까? 많이 필요할 것 같은데 그럼 지우는 의미가 없는데
         }
     }
 
     /// <summary>
     /// 카테고리별로 Root 오브젝트 생성
     /// </summary>
-    /// <param name="category"></param>
+    /// <param name="category">추가할 Pool의 카테고리</param>
     private void CreateCategoryPool(PoolCategory category)
     {
         GameObject categoryObj = new GameObject($"Pool_{category}");
@@ -60,8 +62,8 @@ public class PoolManager
     /// Pool에서 오브젝트를 꺼난다.
     /// 남는 오브젝트가 있으면 재사용하고, 없으면 새로 생성한다.
     /// </summary>
-    /// <param name="prefab"></param>
-    /// <param name="category"></param>
+    /// <param name="prefab">사용할 프리펩</param>
+    /// <param name="category">프리펩이 위치한 카테고리</param>
     /// <returns></returns>
     public GameObject Pop(GameObject prefab, PoolCategory category = PoolCategory.Common)
     {
@@ -159,12 +161,14 @@ public class PoolManager
     /// 특정 카테고리의 Pool만 삭제
     /// 스테이지 종료 시, Stage Pool만 삭제
     /// </summary>
-    /// <param name="category"></param>
+    /// <param name="category">삭제할 카테고리</param>
     public void CategoryClear(PoolCategory category)
     {
+        // 해당 카테고리에서 자식 Pool 가져오기
         if (!pools.TryGetValue(category, out Dictionary<GameObject, Queue<GameObject>> categoryPool))
             return;
 
+        // 삭제시작
         foreach(var pool in categoryPool)
         {
             Queue<GameObject> queue = pool.Value;

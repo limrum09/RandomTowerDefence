@@ -48,7 +48,7 @@ public class Managers : MonoBehaviour
     private void Start()
     {
         // 임시, 나중에 지워야 함
-        InputData.ResetKeyCode();
+        InputData.Init();
     }
 
     private void Awake()

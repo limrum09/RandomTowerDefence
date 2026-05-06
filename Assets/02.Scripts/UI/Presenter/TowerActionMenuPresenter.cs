@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 
 public class TowerActionMenuPresenter
 {
@@ -9,6 +8,7 @@ public class TowerActionMenuPresenter
     public event Action OnClickMove;
     public event Action<Tower> OnClickGradeUpgrade;
     public event Action<Tower> OnClickStatUpgrade;
+    public event Action OnClickTowerMoveToQueueSlot;
 
     public TowerActionMenuPresenter(TowerActionMenuView getView)
     {
@@ -17,6 +17,7 @@ public class TowerActionMenuPresenter
         view.BindMove(OnClickedMove);
         view.BindGradeUpgrade(OnClickedGradeUpgrade);
         view.BindStatUpgrade(OnClickedStatUpgrade);
+        view.BindTowerMoveToQueueSlot(OnClickedTowerMoveToQueueSlot);
     }
 
     public void SetModel(Tower getModel)
@@ -34,4 +35,5 @@ public class TowerActionMenuPresenter
     private void OnClickedMove() => OnClickMove?.Invoke();
     private void OnClickedGradeUpgrade() => OnClickGradeUpgrade?.Invoke(model);
     private void OnClickedStatUpgrade() => OnClickStatUpgrade?.Invoke(model);
+    private void OnClickedTowerMoveToQueueSlot() => OnClickTowerMoveToQueueSlot?.Invoke();
 }
