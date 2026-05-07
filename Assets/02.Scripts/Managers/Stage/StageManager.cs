@@ -48,6 +48,7 @@ public class StageManager : MonoBehaviour
     [SerializeField]
     private int increaseFreeObstacleCnt;
 
+    private bool isResetTerrain;
     private bool isSpawning;
     private bool isStagePlaying;
     private int aliveEnemyCnt;
@@ -62,6 +63,7 @@ public class StageManager : MonoBehaviour
     private RunStatUpgradeManager statUpgradeManager;
     private TowerSkillEffect towerSkillEffect;
 
+
     public Vector2Int SpawnPos => Grid.SpawnPos;
     public Vector2Int GoalPos => Grid.GoalPos;
 
@@ -75,27 +77,33 @@ public class StageManager : MonoBehaviour
     private void Awake()
     {
         Grid = new GridManager();
-        Grid.InitializeGrid(gridWidth, gridHeight, cellSize, mapPlane);
-
+        Path = new PathFinder();
         sessionManager = new RunSessionDataManager();
-        sessionManager.Init(1, life, increaseGold, increaseFreeRollCnt, increaseFreeObstacleCnt);
-
         effectDataManager = new RunEffectDataManager();
         statUpgradeManager = new RunStatUpgradeManager();
-
         fieldTowerManager = new FieldTowerManager();
-        fieldTowerManager.Init(Grid);
-
         towerSkillEffect = new TowerSkillEffect();
-        towerSkillEffect.Init();
 
+        Grid.InitializeGrid(gridWidth, gridHeight, cellSize, mapPlane);
+        fieldTowerManager.Init(Grid);
+        Path.Init(Grid);
+
+        Managers.UserMeta.TempSetDataToStageManager(increaseGold, increaseFreeRollCnt, increaseFreeObstacleCnt, 5);
+        sessionManager.Init(1, life, Managers.UserMeta.stageBonus.increaseGold, Managers.UserMeta.stageBonus.freeStoreRollCnt,
+            Managers.UserMeta.stageBonus.freeObstacleCnt, Managers.UserMeta.stageBonus.terrainRollCnt);
+        
+        towerSkillEffect.Init();
         statUpgradeManager.Init();
         effectDataManager.Init(sessionManager, statUpgradeManager);
-
-        Path = new PathFinder(Grid);
     }
     void Start()
     {
+        if(Grid != null)
+        {
+            Grid.OnSetSpawnAndGoalPoint += SetSpawnAndGoalPointSetting;
+            Grid.OnSetSpawnAndGoalPoint += sessionManager.TerrainRoll;
+        }
+
         if(itemCtr != null)
         {
             itemCtr.OnItemAdd += ItemAddHandler;
@@ -107,6 +115,7 @@ public class StageManager : MonoBehaviour
             StageUICtr.BindSessionDataManager(sessionManager);
             stageUICtr.OnTowerStatUpgrade += TowerStatUpgradeHandler;
             stageUICtr.onGoldToTowerInterection += UsingGold;
+            stageUICtr.OnTerrainRerollClicked += TerrainRefreshHandler;
         }
 
         if(fieldTowerManager != null)
@@ -139,12 +148,19 @@ public class StageManager : MonoBehaviour
         currentWave = 1;
         sessionManager.SetWave(currentWave);
         line.Init(gridWidth, gridHeight, cellSize, mapPlane.transform.position);
-        SetSettings();
+        isResetTerrain = true;
+        AfterSettingsInit();
     }
 
     private void OnDestroy()
     {
-        if(itemCtr != null)
+        if(Grid != null)
+        {
+            Grid.OnSetSpawnAndGoalPoint -= SetSpawnAndGoalPointSetting;
+            Grid.OnSetSpawnAndGoalPoint -= sessionManager.TerrainRoll;
+        }
+
+        if (itemCtr != null)
         {
             itemCtr.OnItemAdd -= ItemAddHandler;
             itemCtr.OnItemSell -= ItemSellHander;
@@ -154,6 +170,7 @@ public class StageManager : MonoBehaviour
         {
             stageUICtr.OnTowerStatUpgrade -= TowerStatUpgradeHandler;
             stageUICtr.onGoldToTowerInterection -= UsingGold;
+            stageUICtr.OnTerrainRerollClicked -= TerrainRefreshHandler;
         }
 
         if(fieldTowerManager != null)
@@ -183,38 +200,47 @@ public class StageManager : MonoBehaviour
         }
     }
 
-    public void StageStart()
+    private void TerrainRefreshHandler()
     {
-        if (isStagePlaying)
+        stageUICtr.SetTerrainRerollCount(ResetTerrain());
+    }
+
+    /// <summary>
+    /// 적 스폰 지점과 적 목표 지점 다시 정하기
+    /// 게임이 시작하지 않고, 새로고침 가능 횟수가 1이상일 경우 동작
+    /// </summary>
+    /// <returns>지형 변환이 가능한 횟수 반환</returns>
+    private int ResetTerrain()
+    {
+        if (!isResetTerrain)
+            return 0;
+
+        if (sessionManager.SessionState.CurrentLife <= 0)
+            return 0;
+
+        Grid.SetRerollPoints();
+
+        if (sessionManager.SessionState.TerrainRollCnt <= 0)
         {
-            CheckWaveEnd();
-            Debug.Log("웨이브 시작 불가능");
-            Debug.Log(isSpawning);
-            Debug.Log(aliveEnemyCnt);
-            Debug.Log(sessionManager.SessionState.CurrentLife <= 0);
-            return;
+            isResetTerrain = false;
         }
 
-        isStagePlaying = true;
-        isSpawning = true;
-        aliveEnemyCnt = 0;
+        return sessionManager.SessionState.TerrainRollCnt;
+    }
 
-        OnWaveStart?.Invoke();
+    private void SetSpawnAndGoalPointSetting()
+    {
+        spawnPoint.position = Grid.CellToWorldCenter(SpawnPos.x, SpawnPos.y);
+        goalPoint.position = Grid.CellToWorldCenter(GoalPos.x, GoalPos.y);
     }
 
     private void AfterSettingsInit()
     {
+        stageUICtr.SetTerrainRerollCount(sessionManager.SessionState.TerrainRollCnt);
+        SetSpawnAndGoalPointSetting();
         enemySpawn.SetInitalized(Grid, Path);
         OnWaveEnd?.Invoke(); 
         OnAfterSettingsInit?.Invoke();
-    }
-
-    public void SetSettings()
-    {
-        spawnPoint.position = Grid.CellToWorldCenter(SpawnPos.x, SpawnPos.y);
-        goalPoint.position = Grid.CellToWorldCenter(GoalPos.x, GoalPos.y);
-
-        AfterSettingsInit();
     }
 
     private void CheckWaveEnd()
@@ -237,17 +263,17 @@ public class StageManager : MonoBehaviour
         RunSession.AddExp(3);
         OnWaveEnd?.Invoke();
     }
-    public void EnemySpawnEnd()
+    private void EnemySpawnEnd()
     {
         isSpawning = false;
     }
 
-    public void RegisterSpawnEnemy()
+    private void RegisterSpawnEnemy()
     {
         aliveEnemyCnt++;
     }
 
-    public void RegisterDeadEnemy(int reward)
+    private void RegisterDeadEnemy(int reward)
     {
         UsingGold(reward);
         sessionManager.AddkillCount(1);
@@ -255,19 +281,14 @@ public class StageManager : MonoBehaviour
         CheckWaveEnd();
     }
 
-    public void RegisterReachedEnemy()
+    private void RegisterReachedEnemy()
     {
         aliveEnemyCnt--;
         sessionManager.ChangeLife(-1);
         CheckWaveEnd();
     }
 
-    public void UserDead()
-    {
-        currentWave = 0;
-    }
-
-    public void TowerStatUpgradeHandler(Tower tower, UpgradeType type)
+    private void TowerStatUpgradeHandler(Tower tower, UpgradeType type)
     {
         TowerSessionUpgradeData upgradeData = Managers.SessionTowerUpgrade.GetUpgradeStepData(tower.TowerUID, type);
 
@@ -280,9 +301,9 @@ public class StageManager : MonoBehaviour
             SpeedStatUpgrade(upgradeData, tower);
     }
 
-    public void TowerSkillStepChangeHandler(TowerType type,int step, float value)
+    private void TowerSkillStepChangeHandler(TowerType type,int step, float value)
     {
-        if(TowerType.Orc == type && step == 4)
+        if (TowerType.Orc == type && step == 4)
         {
             return;
         }
@@ -335,20 +356,51 @@ public class StageManager : MonoBehaviour
         statUpgradeManager.AddStatAtkSpeed(tower.Type, 1);
     }
 
-    public void UsingGold(int value)
-    {
-        sessionManager.ChangeGold(value);
-    }
-
-    public void ItemAddHandler(ItemData item)
+    private void ItemAddHandler(ItemData item)
     {
         effectDataManager.ApplyItemEffect(item);
         UsingGold(item.buyPrice);
     }
 
-    public void ItemSellHander(ItemData item, int index)
+    private void ItemSellHander(ItemData item, int index)
     {
         effectDataManager.RemoveItemEffect(item);
         UsingGold(item.salePrice);
+    }
+
+    public void StageStart()
+    {
+        if (isStagePlaying)
+        {
+            CheckWaveEnd();
+            Debug.Log("웨이브 시작 불가능");
+            Debug.Log(isSpawning);
+            Debug.Log(aliveEnemyCnt);
+            Debug.Log(sessionManager.SessionState.CurrentLife <= 0);
+            return;
+        }
+
+        isResetTerrain = false;
+        isStagePlaying = true;
+        isSpawning = true;
+        aliveEnemyCnt = 0;
+
+        OnWaveStart?.Invoke();
+    }
+
+    public void SuccessBuildTower()
+    {
+        isResetTerrain = false;
+        stageUICtr.SetTerrainRerollCount(ResetTerrain());
+    }
+
+    public void UserDead()
+    {
+        currentWave = 0;
+    }
+
+    public void UsingGold(int value)
+    {
+        sessionManager.ChangeGold(value);
     }
 }

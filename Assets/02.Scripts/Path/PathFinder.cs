@@ -17,7 +17,7 @@ public class PathFinder
         new Vector2Int(1, 0)
     };
 
-    public PathFinder(GridManager getGridManager) => gridManager = getGridManager;
+    public void Init(GridManager getGridManager) => gridManager = getGridManager;
 
     public List<GridNode> FindPath(Vector2Int startCell, Vector2Int goalCell)
     {

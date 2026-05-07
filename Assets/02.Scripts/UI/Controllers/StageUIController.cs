@@ -19,6 +19,8 @@ public class StageUIController : MonoBehaviour
     private ItemInfoView itemView;
     [SerializeField]
     private EnemyInfoView enemyInfoView;
+    [SerializeField]
+    private RerollButtonClick terrainRefreshButton;
 
     [Header("Controllers")]
     [SerializeField]
@@ -39,6 +41,7 @@ public class StageUIController : MonoBehaviour
 
     public event Action<Tower, UpgradeType> OnTowerStatUpgrade;
     public event Action<int> onGoldToTowerInterection;
+    public event Action OnTerrainRerollClicked;
 
     private void Awake()
     {
@@ -78,6 +81,8 @@ public class StageUIController : MonoBehaviour
 
         enemyInfoCtr.onClickEnemyInfo += OnClickWaveEnemyInfo;
 
+        terrainRefreshButton.OnClickReroll += OnClickedTerrainRefreshButton;
+
         gradePresenter.HideModel();
         actionMenuPresenter.Hide();
         statPresenter.Hide();
@@ -116,6 +121,8 @@ public class StageUIController : MonoBehaviour
 
         itemCtr.OnClickItem -= OnClickItemInfo;
 
+        terrainRefreshButton.OnClickReroll -= OnClickedTerrainRefreshButton;
+
         sessionInfoPresenter.UnBindAction();
     }
 
@@ -127,6 +134,16 @@ public class StageUIController : MonoBehaviour
     public void SetWaveEnemyInfo(List<WaveEnemyRosterData> data)
     {
         enemyInfoCtr.GetWaveInfo(data);
+    }
+
+    public void OnClickedTerrainRefreshButton()
+    {
+        OnTerrainRerollClicked?.Invoke();
+    }
+
+    public void SetTerrainRerollCount(int cnt)
+    {
+        terrainRefreshButton.SetRerollCnt(cnt);
     }
 
     public void SetSelectedTower(Tower getTower)
@@ -182,6 +199,7 @@ public class StageUIController : MonoBehaviour
         if(tower == null) 
             return;
 
+        towerCtr.SetTowerGradeUpgradeMode();
         itemInfoPresenter.Hide();
         statPresenter.Hide();
         gradePresenter.SetModel(tower);

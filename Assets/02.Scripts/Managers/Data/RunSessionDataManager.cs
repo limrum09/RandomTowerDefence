@@ -16,6 +16,7 @@ public class RunSessionState
     private int waveKillCount;
     private int freeRollCount;
     private int freeObstacleCount;
+    private int terrainRollCount;
 
     private bool isWaveRunning;
     private bool isStageEnded;
@@ -30,16 +31,18 @@ public class RunSessionState
     public int WaveKillCnt => waveKillCount;
     public int FreeRollCnt => freeRollCount;
     public int FreeObstacleCnt => freeObstacleCount;
+    public int TerrainRollCnt => terrainRollCount;
     public bool IsWaveRunning => isWaveRunning;
     public bool IsStageEnded => isStageEnded;
 
-    public RunSessionState(int id, int life, int startingGold, int rollCnt, int obstacleCnt)
+    public RunSessionState(int id, int life, int startingGold, int rollCnt, int obstacleCnt, int terrainRollCnt)
     {
         stageID = id;
         currentLife = life;
         gold = startingGold;
         freeRollCount = rollCnt;
         freeObstacleCount = obstacleCnt;
+        terrainRollCount = terrainRollCnt;
 
         level = 1;
         currentWave = 1;
@@ -48,6 +51,12 @@ public class RunSessionState
         waveKillCount = 0;
         isWaveRunning = false;
         isStageEnded = false;
+    }
+
+    public void TerrainRoll()
+    {
+        if (terrainRollCount > 0)
+            terrainRollCount--;
     }
 
     public void SetGold(int value) => gold = Math.Max(0, value);
@@ -80,9 +89,14 @@ public class RunSessionDataManager
 
     public RunSessionState SessionState => state;
 
-    public void Init(int stageID, int life, int increaseGold = 0, int freeRoll = 0, int freeObstacle = 0)
+    public void Init(int stageID, int life, int increaseGold = 0, int freeRoll = 0, int freeObstacle = 0, int terrainRoll = 0)
     {
-        state = new RunSessionState(stageID, life, 300 + increaseGold, freeRoll, 10 + freeObstacle);
+        state = new RunSessionState(stageID, life, 300 + increaseGold, freeRoll, 10 + freeObstacle, terrainRoll);
+    }
+
+    public void TerrainRoll()
+    {
+        state.TerrainRoll();
     }
 
     public int GetNeedExp()

@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class TowerController : MonoBehaviour
 {
@@ -23,8 +22,7 @@ public class TowerController : MonoBehaviour
     public event Action<Tower> OnShowStatUpgrade;
     public event Action<int> OnGoldInterection;
     public event Action OnFieldTowerMoveToQueueSlot;
-
-    private readonly List<RaycastResult> raycastResults = new List<RaycastResult>();
+    public event Action OnFirstTowerBuild;
 
     private FieldTowerManager fieldTowerManager;
     // StageManager의 그리드 참조
@@ -45,6 +43,9 @@ public class TowerController : MonoBehaviour
     private bool isBuildMode;
     private bool isGradeUpgradeMode;
 
+    // 타워 최초 설치 여부
+    private bool isFirstBuild;
+
     // 설치 성공 시, 제거할 대기열 정보
     private QueueController tempQueue;
     private int queIndex;
@@ -58,8 +59,16 @@ public class TowerController : MonoBehaviour
 
         isTowerMove = false;
         isGradeUpgradeMode = false;
+        isFirstBuild = true;
 
         needupgradeTowerCnt = 3;
+
+        OnFirstTowerBuild += stage.SuccessBuildTower;
+    }
+
+    private void OnDestroy()
+    {
+        OnFirstTowerBuild -= stage.SuccessBuildTower;
     }
 
     /// <summary>
@@ -111,8 +120,7 @@ public class TowerController : MonoBehaviour
             // 타워 등급 업그레이드 뷰 단축키 입력
             if (Input.GetKeyDown(Managers.InputData.GetKeyCode(InputAction.ShowGradeUpgradeTowerView)))
             {
-                // 등급 업그레이드를 입력 받을 수 있도록 상태 변환
-                isGradeUpgradeMode = true;
+                Debug.Log("타워 등급 업그레이드 모드");
                 // 선택한 타워의 업그레이드 UI 실행
                 OnShowGradeUpgrade?.Invoke(selectedTower);
                 return;
@@ -188,6 +196,12 @@ public class TowerController : MonoBehaviour
             EndBuildMode();
             return;
         }
+
+        if (isFirstBuild)
+        {
+            OnFirstTowerBuild?.Invoke();
+            isFirstBuild = false;
+        }        
 
         // 현제 타워의 정보를 관리하는 Queue에서 타워 index정보 삭제
         tempQueue.RemoveTower(queIndex);
@@ -543,6 +557,14 @@ public class TowerController : MonoBehaviour
     public void SetTowerMoveMode()
     {
         isTowerMove = true;
+    }
+
+    /// <summary>
+    /// 타워 등급 업그레이드 모드 시작
+    /// </summary>
+    public void SetTowerGradeUpgradeMode()
+    {
+        isGradeUpgradeMode = true;
     }
 
     /// <summary>
