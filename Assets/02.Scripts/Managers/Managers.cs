@@ -17,6 +17,7 @@ public class Managers : MonoBehaviour
     }
     public static bool HasInstance => instance != null && isQuitting;
 
+    private UserProgressManager progressManager = new UserProgressManager();
     private GameManager game = new GameManager();
     private InputManager input = new InputManager();
     private TowerDataManager tower = new TowerDataManager();
@@ -31,6 +32,7 @@ public class Managers : MonoBehaviour
     private PoolManager pool = new PoolManager();
     private GameEffectManager effectManager = new GameEffectManager();
 
+    public static UserProgressManager UserMeta { get { return Instance.progressManager; } }
     public static GameManager Game { get { return Instance.game; } }
     public static InputManager InputData { get { return Instance.input; } }
     public static TowerDataManager TowerData { get { return Instance.tower; } }
@@ -65,6 +67,7 @@ public class Managers : MonoBehaviour
         TowerData.Init();
         EnemyData.Init();
         EnemySkillData.Init();
+        UserMeta.Init();
         Local.Init();
         TowerSkill.Init();
         item.Init();

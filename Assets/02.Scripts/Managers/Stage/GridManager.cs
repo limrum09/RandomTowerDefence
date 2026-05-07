@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GridManager
@@ -21,6 +19,27 @@ public class GridManager
     public Vector3 MapOrigin => mapOrigin;
     public Vector2Int SpawnPos => spawnPos;
     public Vector2Int GoalPos => goalPos;
+
+    public event System.Action OnSetSpawnAndGoalPoint;
+
+    private void SetSpawnPointAndGoalPoint()
+    {
+        spawnPos = new Vector2Int(Random.Range(0, gridWidth), Random.Range(0, gridHeight));
+        goalPos = new Vector2Int(Random.Range(0, gridWidth), Random.Range(0, gridHeight));
+
+        int maxLoop = 0;
+        while (maxLoop < 100)
+        {
+            if (Vector2.Distance(spawnPos, goalPos) >= 2)
+                break;
+
+            goalPos = new Vector2Int(Random.Range(0, gridWidth), Random.Range(0, gridHeight));
+
+            maxLoop++;
+        }
+
+        Debug.Log($"Grid Manager, Spawn Cell Pos : {spawnPos}, Goal Cell Pos : {goalPos}");
+    }
 
     public void InitializeGrid(int getGridWidth, int getGridHeight, float getCellSize, Transform getMapPlane)
     {
@@ -89,22 +108,9 @@ public class GridManager
         return true;
     }
 
-    private void SetSpawnPointAndGoalPoint()
+    public void SetRerollPoints()
     {
-        spawnPos = new Vector2Int(Random.Range(0, gridWidth), Random.Range(0, gridHeight));
-        goalPos = new Vector2Int(Random.Range(0, gridWidth), Random.Range(0, gridHeight));
-
-        int maxLoop = 0;
-        while (maxLoop < 100)
-        {
-            if (Vector2.Distance(spawnPos, goalPos) >= 2)
-                break;
-
-            goalPos = new Vector2Int(Random.Range(0, gridWidth), Random.Range(0, gridHeight));
-
-            maxLoop++;
-        }
-
-        Debug.Log($"Grid Manager, Spawn Cell Pos : {spawnPos}, Goal Cell Pos : {goalPos}");
+        SetSpawnPointAndGoalPoint();
+        OnSetSpawnAndGoalPoint?.Invoke();
     }
 }

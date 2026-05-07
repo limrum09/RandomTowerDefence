@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8318058133799631106}
   - component: {fileID: 3696120064043910567}
   - component: {fileID: 5124254107040694575}
-  - component: {fileID: 7998001764980484646}
   m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
@@ -143,23 +142,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7998001764980484646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4647954835055675883}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7669706bfb9074146aa0d9a4e0c2b321, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  run4Ctr: {fileID: 9100000, guid: d101866a41bcf6842abf94a9d37c4292, type: 2}
-  run6Ctr: {fileID: 22100000, guid: 5d4b1a965bed93f408ad85b1b443bdae, type: 2}
-  anim: {fileID: 5124254107040694575}
-  spriteLibrary: {fileID: 8318058133799631106}
-  baseSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &6981411954294146692
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,6 +154,7 @@ GameObject:
   - component: {fileID: 7988261405228855007}
   - component: {fileID: -2253388332138954845}
   - component: {fileID: 3248635054627456772}
+  - component: {fileID: 6410563979414070}
   - component: {fileID: 5710973354883887936}
   m_Layer: 8
   m_Name: BaseEnemy
@@ -225,7 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move: {fileID: 7988261405228855007}
-  anim: {fileID: 7998001764980484646}
+  anim: {fileID: 6410563979414070}
   skill: {fileID: 3248635054627456772}
   enemyUID: 
   level: 0
@@ -255,13 +238,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5e67440b810edc46b212828fef13e6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  root: {fileID: 0}
+  root: {fileID: -2253388332138954845}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256
   towerLayer:
     serializedVersion: 2
     m_Bits: 512
+--- !u!114 &6410563979414070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6981411954294146692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7669706bfb9074146aa0d9a4e0c2b321, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  run4Ctr: {fileID: 9100000, guid: d101866a41bcf6842abf94a9d37c4292, type: 2}
+  run6Ctr: {fileID: 22100000, guid: 5d4b1a965bed93f408ad85b1b443bdae, type: 2}
+  anim: {fileID: 5124254107040694575}
+  spriteLibrary: {fileID: 8318058133799631106}
+  baseSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!58 &5710973354883887936
 CircleCollider2D:
   m_ObjectHideFlags: 0
