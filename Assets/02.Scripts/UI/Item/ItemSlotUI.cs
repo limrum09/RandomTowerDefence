@@ -1,5 +1,4 @@
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +9,7 @@ public class ItemSlotUI : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI itemNameText;
 
-    private ItemSlotController owner;
+    private ItemSlotUIController owner;
     private string itemUID;
     private int index;
 
@@ -41,7 +40,7 @@ public class ItemSlotUI : MonoBehaviour
         return true;
     }
 
-    public void Init(ItemSlotController ctr, int getIndex)
+    public void Init(ItemSlotUIController ctr, int getIndex)
     {
         itemUID = string.Empty;
         owner = ctr;

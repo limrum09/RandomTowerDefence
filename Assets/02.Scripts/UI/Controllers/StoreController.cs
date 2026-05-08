@@ -11,9 +11,9 @@ public class StoreController : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI currentGoldText;
     [SerializeField]
-    private QueueController queueSlots;
+    private QueueUIController queueSlots;
     [SerializeField]
-    private ItemSlotController itemSlots;
+    private ItemSlotUIController itemSlots;
 
     private int len;
 
