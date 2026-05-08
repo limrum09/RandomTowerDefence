@@ -13,10 +13,10 @@ public class WaveEnemyInfo : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI enemyCnt;
     private string enemyUID;
-    private WaveEnemyController owner;
+    private WaveEnemyInfoUIController owner;
     private int index;
 
-    public void Init(WaveEnemyController getOwner, int getIndex)
+    public void Init(WaveEnemyInfoUIController getOwner, int getIndex)
     {
         owner = getOwner;
         index = getIndex;

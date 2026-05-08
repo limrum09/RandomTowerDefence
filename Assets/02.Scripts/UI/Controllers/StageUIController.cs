@@ -24,11 +24,11 @@ public class StageUIController : MonoBehaviour
 
     [Header("Controllers")]
     [SerializeField]
-    private QueueController queueCtr;
+    private QueueUIController queueCtr;
     [SerializeField]
-    private ItemSlotController itemCtr;
+    private ItemSlotUIController itemCtr;
     [SerializeField]
-    private WaveEnemyController enemyInfoCtr;
+    private WaveEnemyInfoUIController enemyInfoCtr;
 
     private TowerGradeUpgradePresenter gradePresenter;
     private TowerActionMenuPresenter actionMenuPresenter;
@@ -39,11 +39,36 @@ public class StageUIController : MonoBehaviour
 
     private Tower selectedTower;
 
+    public event Func<int, bool> OnGoldToTowerInterection;
     public event Action<Tower, UpgradeType> OnTowerStatUpgrade;
-    public event Action<int> onGoldToTowerInterection;
     public event Action OnTerrainRerollClicked;
+    public event Action<ItemData, int> OnRequestItemSell;
 
     private void Awake()
+    {
+        CreatePresenter();
+
+        BindTowerUI();
+        BindQueueUI();
+        BindItemUI();
+        BindEnemyUI();
+        BindRerollUI();
+
+        HideDetailViews();
+    }
+
+    private void OnDestroy()
+    {
+        UnBindTowerUI();
+        UnBindQueueUI();
+        UnBindItemUI();
+        UnBindEnemyUI();
+        UnBindRerollUI();
+
+        sessionInfoPresenter.UnBindAction();
+    }
+
+    private void CreatePresenter()
     {
         gradePresenter = new TowerGradeUpgradePresenter(gradeUpgradeView);
         actionMenuPresenter = new TowerActionMenuPresenter(actionMenuView);
@@ -51,7 +76,11 @@ public class StageUIController : MonoBehaviour
         sessionInfoPresenter = new SessionInfoPresenter(sessionView);
         itemInfoPresenter = new ItemInfoPresenter(itemView);
         enemyInfoPresenter = new EnemyInfoPresenter(enemyInfoView);
+    }
 
+    #region Bind UIs
+    private void BindTowerUI()
+    {
         gradePresenter.onClickNormalUpgrade += OnTowerGradeNormalUpgrade;
         gradePresenter.onClickPremiumUpgrade += OnTowerGradePreminumUpgrade;
         gradePresenter.onClickTowerSell += OnClickTowerSell;
@@ -70,27 +99,37 @@ public class StageUIController : MonoBehaviour
         towerCtr.OnShowStatUpgrade += OnClickStatUpgrade;
         towerCtr.OnGoldInterection += OnGoldToTowerIntertion;
         towerCtr.OnFieldTowerMoveToQueueSlot += OnMoveFieldTowerToQueue;
+    }
+
+    private void BindQueueUI()
+    {
+        towerCtr.OnQueueTowerBuildSuccess += queueCtr.RemoveTower;
 
         queueCtr.OnRequestBuildTower += towerCtr.BeginBuildTower;
         queueCtr.OnRemoveTowerFromQueue += RemoveTower;
-
-        itemCtr.OnClickItem += OnClickItemInfo;
-
-        itemInfoPresenter.OnItemSell += OnClickItemSellButton;
-        itemInfoPresenter.OnItemSell += itemCtr.SellItem;
-
-        enemyInfoCtr.onClickEnemyInfo += OnClickWaveEnemyInfo;
-
-        terrainRefreshButton.OnClickReroll += OnClickedTerrainRefreshButton;
-
-        gradePresenter.HideModel();
-        actionMenuPresenter.Hide();
-        statPresenter.Hide();
-        itemInfoPresenter.Hide();
-        enemyInfoPresenter.Hide();
     }
 
-    private void OnDestroy()
+    private void BindItemUI()
+    {
+        itemCtr.OnClickItem += OnClickItemInfo;
+        itemCtr.OnRequestSellItem += OnRequestSellItem;
+
+        itemInfoPresenter.OnItemSell += itemCtr.RequestSellItem;
+    }
+
+    private void BindEnemyUI()
+    {
+        enemyInfoCtr.onClickEnemyInfo += OnClickWaveEnemyInfo;
+    }
+
+    private void BindRerollUI()
+    {
+        terrainRefreshButton.OnClickReroll += OnClickedTerrainRefreshButton;
+    }
+    #endregion
+
+    #region UnBind UIs
+    private void UnBindTowerUI()
     {
         gradePresenter.onClickNormalUpgrade -= OnTowerGradeNormalUpgrade;
         gradePresenter.onClickPremiumUpgrade -= OnTowerGradePreminumUpgrade;
@@ -104,67 +143,82 @@ public class StageUIController : MonoBehaviour
         statPresenter.onClickDamageUpgrade -= OnTowerStatDamageUpgrade;
         statPresenter.onClickAttackSpeedUpgrade -= OnTowerStatAttackSpeedUpgrade;
 
-        itemInfoPresenter.OnItemSell -= OnClickItemSellButton;
-        itemInfoPresenter.OnItemSell -= itemCtr.SellItem;
-
         towerCtr.OnTowerSelectCleared -= ClearSelection;
         towerCtr.OnTowerSelected -= SetSelectedTower;
         towerCtr.OnShowGradeUpgrade -= OnClickGradeUpgrade;
         towerCtr.OnShowStatUpgrade -= OnClickStatUpgrade;
         towerCtr.OnGoldInterection -= OnGoldToTowerIntertion;
         towerCtr.OnFieldTowerMoveToQueueSlot -= OnMoveFieldTowerToQueue;
+    }
+
+    private void UnBindQueueUI()
+    {
+        towerCtr.OnQueueTowerBuildSuccess -= queueCtr.RemoveTower;
 
         queueCtr.OnRequestBuildTower -= towerCtr.BeginBuildTower;
         queueCtr.OnRemoveTowerFromQueue -= RemoveTower;
-
-        enemyInfoCtr.onClickEnemyInfo -= OnClickWaveEnemyInfo;
-
+    }
+    private void UnBindItemUI()
+    {
         itemCtr.OnClickItem -= OnClickItemInfo;
+        itemCtr.OnRequestSellItem -= OnRequestSellItem;
 
+        itemInfoPresenter.OnItemSell -= itemCtr.RequestSellItem;
+    }
+    private void UnBindEnemyUI()
+    {
+        enemyInfoCtr.onClickEnemyInfo -= OnClickWaveEnemyInfo;
+    }
+
+    private void UnBindRerollUI()
+    {
         terrainRefreshButton.OnClickReroll -= OnClickedTerrainRefreshButton;
-
-        sessionInfoPresenter.UnBindAction();
     }
+    #endregion UnBind UIs
 
-    public void BindSessionDataManager(RunSessionDataManager getRunSession)
+    #region Hide View
+    private void HideDetailViews()
     {
-        sessionInfoPresenter.GetRunSessionDatamanager(getRunSession);
+        HideTowerDetailInfoView();
+        HideItemDetailInfoView();
+        HideEnemyDetailInfoView();
     }
 
-    public void SetWaveEnemyInfo(List<WaveEnemyRosterData> data)
+    private void HideTowerDetailInfoView()
     {
-        enemyInfoCtr.GetWaveInfo(data);
+        gradePresenter.HideModel();
+        actionMenuPresenter.Hide();
+        statPresenter.Hide();
     }
 
-    public void OnClickedTerrainRefreshButton()
+    private void HideItemDetailInfoView()
+    {
+        itemInfoPresenter.Hide();
+    }
+
+    private void HideEnemyDetailInfoView()
+    {
+        enemyInfoPresenter.Hide();
+    }
+    #endregion
+
+    private void OnClickedTerrainRefreshButton()
     {
         OnTerrainRerollClicked?.Invoke();
     }
 
-    public void SetTerrainRerollCount(int cnt)
-    {
-        terrainRefreshButton.SetRerollCnt(cnt);
-    }
-
-    public void SetSelectedTower(Tower getTower)
+    private void SetSelectedTower(Tower getTower)
     {
         selectedTower = getTower;
-        
+
+        HideDetailViews();
         actionMenuPresenter.SetModel(selectedTower);
-        gradePresenter.HideModel();
-        statPresenter.Hide();
-        itemInfoPresenter.Hide();
-        enemyInfoPresenter.Hide();
     }
 
-    public void ClearSelection()
+    private void ClearSelection()
     {
         selectedTower = null;
-        gradePresenter.HideModel();
-        actionMenuPresenter.Hide();
-        statPresenter.Hide();
-        itemInfoPresenter.Hide();
-        enemyInfoPresenter.Hide();
+        HideDetailViews();
     }
 
     private void OnClickMove()
@@ -172,16 +226,12 @@ public class StageUIController : MonoBehaviour
         if (selectedTower == null)
             return;
 
-        gradePresenter.HideModel();
-        actionMenuPresenter.Hide();
-        statPresenter.Hide();
-        itemInfoPresenter.Hide();
-        enemyInfoPresenter.Hide();
+        HideDetailViews();
 
         towerCtr.SetTowerMoveMode();
     }
 
-    public void OnMoveFieldTowerToQueue()
+    private void OnMoveFieldTowerToQueue()
     {
         if (selectedTower == null)
             return;
@@ -189,43 +239,38 @@ public class StageUIController : MonoBehaviour
         queueCtr.MoveFieldTowerToQueue(selectedTower.TowerUID);
     }
 
-    public void RemoveTower()
+    private void RemoveTower()
     {
         towerCtr.RemoveTower();
     }
 
-    public void OnClickGradeUpgrade(Tower tower)
+    private void OnClickGradeUpgrade(Tower tower)
     {
         if(tower == null) 
             return;
 
         towerCtr.SetTowerGradeUpgradeMode();
-        itemInfoPresenter.Hide();
-        statPresenter.Hide();
+
+        HideDetailViews();
         gradePresenter.SetModel(tower);
-        enemyInfoPresenter.Hide();
     }
 
-    public void OnClickStatUpgrade(Tower tower)
+    private void OnClickStatUpgrade(Tower tower)
     {
         if (tower == null)
             return;
 
-        gradePresenter.HideModel();
-        itemInfoPresenter.Hide();
+        HideDetailViews();
         statPresenter.SetModel(tower);
-        enemyInfoPresenter.Hide();
     }
 
-    public void OnClickItemInfo(ItemData item, int index)
+    private void OnClickItemInfo(ItemData item, int index)
     {
         if (item == null)
             return;
 
-        gradePresenter.HideModel();
-        statPresenter.Hide();
+        HideDetailViews();
         itemInfoPresenter.SetModel(item, index);
-        enemyInfoPresenter.Hide();
     }
 
     private void OnTowerGradeNormalUpgrade()
@@ -262,23 +307,40 @@ public class StageUIController : MonoBehaviour
         statPresenter.SetModel(tower);
     }
 
-    private void OnClickItemSellButton(int index)
+    private void OnRequestSellItem(int index)
     {
+        ItemData item = itemCtr.GetItem(index);
+
+        if (item == null)
+            return;
+
         itemInfoPresenter.Hide();
+        OnRequestItemSell?.Invoke(item, index);
     }
 
     private void OnGoldToTowerIntertion(int value)
     {
-        onGoldToTowerInterection?.Invoke(value);
+        OnGoldToTowerInterection?.Invoke(value);
     }
 
     private void OnClickWaveEnemyInfo(WaveEnemyRosterData waveEnemy)
     {
+        HideDetailViews();
         enemyInfoPresenter.GetModel(waveEnemy);
+    }
 
-        gradePresenter.HideModel();
-        actionMenuPresenter.Hide();
-        statPresenter.Hide();
-        itemInfoPresenter.Hide();
+    public void BindSessionDataManager(RunSessionDataManager getRunSession)
+    {
+        sessionInfoPresenter.GetRunSessionDatamanager(getRunSession);
+    }
+
+    public void SetWaveEnemyInfo(List<WaveEnemyRosterData> data)
+    {
+        enemyInfoCtr.GetWaveInfo(data);
+    }
+
+    public void SetTerrainRerollCount(int cnt)
+    {
+        terrainRefreshButton.SetRerollCnt(cnt);
     }
 }

@@ -1,5 +1,6 @@
+using System;
 using UnityEngine;
-using UnityEngine.Rendering;
+
 /// <summary>
 /// 유저 장애물 설치 및 철거
 /// 장애물 설치 / 제거 처리
@@ -10,8 +11,6 @@ using UnityEngine.Rendering;
 /// </summary>
 public class ObstacleBuilder : MonoBehaviour
 {
-    [SerializeField] 
-    private StageManager stage;         // 현재 스테이지 관리자
     [SerializeField] 
     private GridManager gridManager;    // 현재 스테이지의 GridManager
     [SerializeField] 
@@ -36,6 +35,11 @@ public class ObstacleBuilder : MonoBehaviour
     private bool isRemoveObstacle;      // 장애물 제거 모드 여부
     private int obstacleCnt;            // 설치한 장애물 개수
 
+    public event Func<int, bool> OnRequestPayObstacleCost;
+    public event Func<bool> OnRequestUseFreeObstacle;
+    public event Action<int> OnRequestRefundObstacleCost;
+    public event Action OnRequestRestoreFreeObstacle;
+
     /// <summary>
     /// TowerController에서 타워 설치를 위해
     /// 해당 셀에 장애물이 있는지 확인
@@ -56,15 +60,15 @@ public class ObstacleBuilder : MonoBehaviour
     /// 초기화 
     /// StageManager에서 Grid, Path 정보가 준비된 후 호출
     /// </summary>
-    public void Initialized()
+    public void Initialized(GridManager grid, PathFinder path)
     {
         // 카메라 참조가 없으면 Main Camera 사용
         if (mainCamera == null)
             mainCamera = Camera.main;
 
         // StageManager에서 GridManager와 PathFinder 참조 가져오기
-        gridManager = stage.Grid;
-        pathFinder = stage.Path;
+        gridManager = grid;
+        pathFinder = path;
         // Grid 크기에 맞추어서 장애물 맵 생성
         obstacleMap = new GameObject[gridManager.GridWidth, gridManager.GridHeight];
 
@@ -75,10 +79,7 @@ public class ObstacleBuilder : MonoBehaviour
 
     private void Awake()
     {
-        // StageManager의 설정 완료 이후 초기화 되도록 이벤트 구독
-
         // 시작 시 설치 / 제거 모드 비활성화
-        stage.OnAfterSettingsInit += Initialized;
         isObstacleMode = false;
         isRemoveObstacle = false;
     }
@@ -115,7 +116,6 @@ public class ObstacleBuilder : MonoBehaviour
     private void OnDestroy()
     {
         // 오브젝트 파괴시, 구독 취소
-        stage.OnAfterSettingsInit -= Initialized;
         gridManager.OnSetSpawnAndGoalPoint -= GridRefreshHandler;
     }
 
@@ -163,13 +163,13 @@ public class ObstacleBuilder : MonoBehaviour
         // 유료로 설치한 장애물이 있으면 골드 환급
         if(obstacleCnt > 0)
         {
-            stage.RunSession.ChangeGold(tempCost);
+            OnRequestRefundObstacleCost?.Invoke(tempCost);
             obstacleCnt--;
             return;
         }
 
         // 무료 설치 장애물을 제가한 경우 무료 설치 가능 횟수 봔환
-        stage.RunSession.GetFreeObstacle(1);
+        OnRequestRestoreFreeObstacle?.Invoke();
     }
 
     /// <summary>
@@ -218,14 +218,22 @@ public class ObstacleBuilder : MonoBehaviour
         }
 
         // 무료 장애물 설치권이 있는지 확인
-        if (!stage.RunSession.UsingFreeObstable())
+        bool userFreeObstacle = OnRequestUseFreeObstacle?.Invoke() ?? false;
+        
+        if (!userFreeObstacle)
         {
             // 무료 장애물 설치권이 없을 시, 골드가 부족하면 설치 실패
-            if (!stage.RunSession.ChangeGold(-tempCost))
+            bool paid = OnRequestPayObstacleCost?.Invoke(tempCost) ?? false;
+
+            // 설치 실패
+            if (!paid)
+            {
+                gridManager.SetBlocked(cell.x, cell.y, false);
                 return;
-            // 유로 장애물 설치 개수 추가
-            else
-                obstacleCnt++;
+            }
+
+            obstacleCnt++;
+                
         }
 
         // 실제 장애물 샐성 위치 게산

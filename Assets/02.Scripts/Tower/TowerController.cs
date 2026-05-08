@@ -23,6 +23,7 @@ public class TowerController : MonoBehaviour
     public event Action<int> OnGoldInterection;
     public event Action OnFieldTowerMoveToQueueSlot;
     public event Action OnFirstTowerBuild;
+    public event Action<int> OnQueueTowerBuildSuccess;
 
     private FieldTowerManager fieldTowerManager;
     // StageManager의 그리드 참조
@@ -36,19 +37,16 @@ public class TowerController : MonoBehaviour
 
     // 등급 업그레이드 시 필요한 타워 개수
     private int needupgradeTowerCnt;
+    // 선택한 타워의 대기열 번호
+    private int selectedQueueIndex;
 
     // 타워이동 모드 여부
     private bool isTowerMove;
     // 타워 설치 모드 여부
     private bool isBuildMode;
     private bool isGradeUpgradeMode;
-
     // 타워 최초 설치 여부
     private bool isFirstBuild;
-
-    // 설치 성공 시, 제거할 대기열 정보
-    private QueueController tempQueue;
-    private int queIndex;
 
     private void Start()
     {
@@ -168,14 +166,12 @@ public class TowerController : MonoBehaviour
     /// <param name="towerUID">대기열에서 선택된 타워의 UID</param>
     /// <param name="index">대기열에서 타워 위치</param>
     /// <param name="tQueue">대기열 정보</param>
-    public void BeginBuildTower(string towerUID, int index, QueueController tQueue)
+    public void BeginBuildTower(string towerUID, int index)
     {
         selectedTowerUID = towerUID;
         isBuildMode = true;
         selectedTower = null;
-
-        tempQueue = tQueue;
-        queIndex = index;
+        selectedQueueIndex = index;
     }
 
     /// <summary>
@@ -201,10 +197,10 @@ public class TowerController : MonoBehaviour
         {
             OnFirstTowerBuild?.Invoke();
             isFirstBuild = false;
-        }        
+        }
 
         // 현제 타워의 정보를 관리하는 Queue에서 타워 index정보 삭제
-        tempQueue.RemoveTower(queIndex);
+        OnQueueTowerBuildSuccess?.Invoke(selectedQueueIndex);
         // 생성 모드 종료
         EndBuildMode();
     }
@@ -444,8 +440,7 @@ public class TowerController : MonoBehaviour
     {
         isBuildMode = false;
         selectedTowerUID = string.Empty;
-        queIndex = 0;
-        tempQueue = null;
+        selectedQueueIndex = -1;
     }
 
     /// <summary>
@@ -594,6 +589,7 @@ public class TowerController : MonoBehaviour
 
         // 업그레이드 실행
         TowerGradeUpgrade(buildTowerUID, towers);
+        GoldInterction(-300);
     }
 
     /// <summary>
@@ -616,6 +612,7 @@ public class TowerController : MonoBehaviour
 
         // 업그레이드 실행
         TowerGradeUpgrade(buildTowerUID, towers);
+        GoldInterction(-1000);
     }
 
     /// <summary>

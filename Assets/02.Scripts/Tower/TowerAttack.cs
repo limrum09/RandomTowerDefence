@@ -11,6 +11,7 @@ public class TowerAttack : MonoBehaviour
 
     private Enemy currentTarget;            // 현제 타워가 공격랑 타겟
     private float attackTimer;              // 공격 쿨타임 계산용 타이머
+    private bool isFacing;                  // 공격 방향
 
     void Update()
     {
@@ -103,12 +104,27 @@ public class TowerAttack : MonoBehaviour
         // 오른쪽
         if(dirX > 0.01f)
         {
-            spriteRenderer.flipX = false;
+            isFacing = false;
         }
         // 왼쪽
         else if (dirX < 0.01f)
         {
-            spriteRenderer.flipX = true;
+            isFacing = true;
+        }
+
+        spriteRenderer.flipX = isFacing;
+    }
+
+    private string GetHitEffectName()
+    {
+        switch (tower.Type)
+        {
+            case TowerType.Dragonian:
+                return "FireBall";
+            case TowerType.Elf:
+                return tower.Grade >= 3 ? "Arrow" : "Knife";
+            default:
+                return string.Empty;
         }
     }
 
@@ -123,6 +139,13 @@ public class TowerAttack : MonoBehaviour
 
         tower.Attack(true);
         target.EnemyGeTakeDamage(tower.CurrentDamage);
+
+        string effectName = GetHitEffectName() + "AttackEffect";
+
+        if (!string.IsNullOrEmpty(effectName))
+        {
+            Managers.Effect.Play(effectName, target.transform, PoolCategory.Stage, true);
+        }
     }
 
     /// <summary>

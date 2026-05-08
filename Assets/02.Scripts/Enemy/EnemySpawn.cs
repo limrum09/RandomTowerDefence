@@ -35,9 +35,11 @@ public class EnemySpawn : MonoBehaviour
 {
     [SerializeField]
     private Enemy baseEnemy;            // 생성할 기본 Enemy Prefab
+    [SerializeField]
+    private Transform spawnEnemysParent;// 생성할 적의 Hierachy 위치
     // 현재 웨이브에서 스폰할 적 정보
     [SerializeField]
-    private List<EnemySpawnInfo> spawnEnemeys = new List<EnemySpawnInfo>(); 
+    private List<EnemySpawnInfo> waveEnemySpawnsInfo = new List<EnemySpawnInfo>();
 
     private GridManager grid;           // 적 이동 시에 사용할 GridManager
     private PathFinder path;            // 적 이동 경로 탐색에 사용할 PathFinder
@@ -50,7 +52,7 @@ public class EnemySpawn : MonoBehaviour
 
     private void Start()
     {
-        spawnEnemeys.Clear();
+        waveEnemySpawnsInfo.Clear();
     }
 
     /// <summary>
@@ -61,7 +63,7 @@ public class EnemySpawn : MonoBehaviour
     public void SetSpawnEnemyInfo(List<WaveEnemyRosterData> enemyRoster)
     {
         // 이전 정보 제거
-        spawnEnemeys.Clear();
+        waveEnemySpawnsInfo.Clear();
     
         for (int i = 0; i < enemyRoster.Count; i++)
         {
@@ -70,7 +72,7 @@ public class EnemySpawn : MonoBehaviour
                 enemyRoster[i].enemyCount, enemyRoster[i].startTime, enemyRoster[i].spawnInterval);
 
             // 현재 웨이브 스폰 목록에 추가
-            spawnEnemeys.Add(newEnemy);
+            waveEnemySpawnsInfo.Add(newEnemy);
         }
     }
 
@@ -116,6 +118,7 @@ public class EnemySpawn : MonoBehaviour
         Enemy enemyObj = Instantiate(baseEnemy, spawnPoint, Quaternion.identity);
         // 적 데이터 초기화, enemyUID와 level에 따라 스탯/스킬 들이 설정
         enemyObj.Init(spawnInfo.enemyUID, spawnInfo.level);
+        enemyObj.transform.SetParent(spawnEnemysParent);
 
         // 컴포넌트 가져오기
         EnemyMove enemyMove = enemyObj.GetComponent<EnemyMove>();
@@ -147,11 +150,11 @@ public class EnemySpawn : MonoBehaviour
     IEnumerator StartWave()
     {
         // spawnOrder기준으로 정렬
-        spawnEnemeys.Sort((x,y) => x.spawnOrder.CompareTo(y.spawnOrder));
+        waveEnemySpawnsInfo.Sort((x,y) => x.spawnOrder.CompareTo(y.spawnOrder));
         // 웨이브 시작 시간 저장
         float waveStartTime = Time.time;
 
-        foreach(EnemySpawnInfo info in spawnEnemeys)
+        foreach(EnemySpawnInfo info in waveEnemySpawnsInfo)
         {
             // 이 적 그룹이 스폰을 시작해야하는 절대 시간
             float targetStartTime = waveStartTime + info.startTime;

@@ -10,11 +10,11 @@ public class QueueSlotUI : MonoBehaviour
 
     private string towerUID;
     private int slotIndex;
-    private QueueController owner;
+    private QueueUIController owner;
 
     public bool IsQueueEmpty => string.IsNullOrEmpty(towerUID);
 
-    public void Init(QueueController getOwner, int getIndex)
+    public void Init(QueueUIController getOwner, int getIndex)
     {
         towerUID = string.Empty;
         owner = getOwner;

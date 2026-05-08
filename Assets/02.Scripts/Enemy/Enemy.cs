@@ -163,7 +163,8 @@ public class Enemy : MonoBehaviour
             up *= -1;
 
         // 이동속도 보정값 누적
-        increaseSpeed += up;
+        increaseSpeed
+            += up;
     }
 
     /// <summary>
