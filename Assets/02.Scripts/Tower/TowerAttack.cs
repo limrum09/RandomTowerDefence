@@ -144,7 +144,7 @@ public class TowerAttack : MonoBehaviour
 
         if (!string.IsNullOrEmpty(effectName))
         {
-            Managers.Effect.Play(effectName, target.transform, PoolCategory.Stage, true);
+            Managers.Effect.Play2DAnimationEffect(effectName, target.transform, tower.transform, PoolCategory.Stage, 0.3f, 30f, isFacing);
         }
     }
 
