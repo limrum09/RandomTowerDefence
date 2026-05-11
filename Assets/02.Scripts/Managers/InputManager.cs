@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -160,5 +161,15 @@ public class InputManager
 
         component = hit.GetComponent<T>();
         return component != null;
+    }
+
+    public bool IsMouseInsideCameraView(Camera camera)
+    {
+        if(camera == null) 
+            return false;
+
+        Vector3 viewPos = camera.ScreenToViewportPoint(Input.mousePosition);
+
+        return viewPos.x >= 0f && viewPos.x <= 1f && viewPos.y >= 0f && viewPos.y <= 1f && viewPos.z >= 0f && viewPos.z <= 1f;
     }
 }
