@@ -1,6 +1,5 @@
 using UnityEngine;
 using DG.Tweening;
-using System.Net.NetworkInformation;
 
 public class UIMovement : MonoBehaviour
 {
