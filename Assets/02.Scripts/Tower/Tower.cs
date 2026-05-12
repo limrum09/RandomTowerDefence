@@ -23,6 +23,8 @@ public class Tower : MonoBehaviour
     private SpriteLibrary spriteLibrary;                // 타워 외형 교체용 SpriteLibrary
     [SerializeField]
     private RuntimeAnimatorController commonController; // 공통 타워 애니메이터 컨트롤러
+    [SerializeField]
+    private GitSpriteGlowCtr outlineEffectCtr;
 
 
     private int index;                                  // 필드에 배치된 타워 고유 인덱스
@@ -252,5 +254,10 @@ public class Tower : MonoBehaviour
             return;
 
         attackRangeIndicator.gameObject.SetActive(show);
+
+        if (show)
+            outlineEffectCtr.ShowGlowEffect();
+        else
+            outlineEffectCtr.HideGlowEffect();
     }
 }

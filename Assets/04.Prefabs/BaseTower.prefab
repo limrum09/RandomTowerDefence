@@ -101,6 +101,8 @@ GameObject:
   - component: {fileID: 1932966795710432765}
   - component: {fileID: 4613138691751606132}
   - component: {fileID: 3887299799772881127}
+  - component: {fileID: 6572797491620338194}
+  - component: {fileID: 466817157829868180}
   m_Layer: 9
   m_Name: Sprite
   m_TagString: Untagged
@@ -146,7 +148,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -230,6 +232,37 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6572797491620338194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4715060461972882144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f6d3c6e4250e84192f5b34ce9e71bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glowColor: {r: 1, g: 1, b: 0, a: 1}
+  glowBrightness: 2
+  outlineWidth: 1
+  alphaThreshold: 0.01
+  drawOutside: 1
+  enableInstancing: 0
+--- !u!114 &466817157829868180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4715060461972882144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a722079515138f24ab33c39f58f8b585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glow: {fileID: 6572797491620338194}
 --- !u!1 &6464877683156130086
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,6 +319,7 @@ MonoBehaviour:
   attackRangeIndicator: {fileID: 412883367955799033}
   spriteLibrary: {fileID: 1932966795710432765}
   commonController: {fileID: 9100000, guid: e49b22f83cf00c2429e1c751a6d173f9, type: 2}
+  outlineEffectCtr: {fileID: 466817157829868180}
   nextGradeUID: 
 --- !u!114 &5410287563213680058
 MonoBehaviour:

@@ -34,6 +34,9 @@ public class StageManager : MonoBehaviour
     private ObstacleBuilder obstacleBuilder;
     [SerializeField]
     private DrawGridLine line;
+    [SerializeField]
+    private StageWaveManager wave;
+
     
 
     [Header("UIs")]
@@ -115,6 +118,7 @@ public class StageManager : MonoBehaviour
     {
         BindEvents();
 
+        wave.Init(Managers.Game.selectDifficultyLevel + "_W001");
         currentWave = 1;
         sessionManager.SetWave(currentWave);
         line.Init(gridWidth, gridHeight, cellSize, mapPlane.transform.position);

@@ -64,6 +64,7 @@ public class Managers : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(gameObject);
 
+        Game.Init();
         TowerData.Init();
         EnemyData.Init();
         EnemySkillData.Init();

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager
@@ -14,4 +15,16 @@ public class GameManager
         옵션/설정
         전체 게임 상태
       */
+
+    public string selectDifficultyLevel { get; private set; }
+
+    public void Init()
+    {
+        selectDifficultyLevel = string.Empty;
+    }
+
+    public void SelectStageDifficultyLevel(string getDifficulty)
+    {
+        selectDifficultyLevel = getDifficulty;
+    }
 }

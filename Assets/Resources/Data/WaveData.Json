@@ -1,361 +1,1441 @@
 {
   "datas": [
     {
-      "WaveNo": "W001",
-      "NextWave": "W002",
+      "WaveNo": "EASY_W001",
+      "NextWave": "EASY_W002",
       "Wave_Type": "Basic",
       "IsBossWave": "N"
     },
     {
-      "WaveNo": "W002",
-      "NextWave": "W003",
+      "WaveNo": "EASY_W002",
+      "NextWave": "EASY_W003",
       "Wave_Type": "Basic",
       "IsBossWave": "N"
     },
     {
-      "WaveNo": "W003",
-      "NextWave": "W004",
+      "WaveNo": "EASY_W003",
+      "NextWave": "EASY_W004",
       "Wave_Type": "Rush",
       "IsBossWave": "N"
     },
     {
-      "WaveNo": "W004",
-      "NextWave": "W005",
-      "Wave_Type": "Basic",
+      "WaveNo": "EASY_W004",
+      "NextWave": "EASY_W005",
+      "Wave_Type": "Mixed",
       "IsBossWave": "N"
     },
     {
-      "WaveNo": "W005",
-      "NextWave": "W006",
-      "Wave_Type": "MixedBasicRush",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W006",
-      "NextWave": "W007",
-      "Wave_Type": "Heavy",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W007",
-      "NextWave": "W008",
-      "Wave_Type": "Basic",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W008",
-      "NextWave": "W009",
-      "Wave_Type": "MixedBasicHeavy",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W009",
-      "NextWave": "W010",
-      "Wave_Type": "ElitePrep",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W010",
-      "NextWave": "W011",
-      "Wave_Type": "Boss",
-      "IsBossWave": "Y"
-    },
-    {
-      "WaveNo": "W011",
-      "NextWave": "W012",
-      "Wave_Type": "Basic",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W012",
-      "NextWave": "W013",
-      "Wave_Type": "MixedBasicRush",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W013",
-      "NextWave": "W014",
-      "Wave_Type": "Heavy",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W014",
-      "NextWave": "W015",
-      "Wave_Type": "MixedRushHeavy",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W015",
-      "NextWave": "W016",
+      "WaveNo": "EASY_W005",
+      "NextWave": "EASY_W006",
       "Wave_Type": "Elite",
       "IsBossWave": "N"
     },
     {
-      "WaveNo": "W016",
-      "NextWave": "W017",
-      "Wave_Type": "Basic",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W017",
-      "NextWave": "W018",
-      "Wave_Type": "MixedBasicRush",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W018",
-      "NextWave": "W019",
-      "Wave_Type": "Heavy",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W019",
-      "NextWave": "W020",
-      "Wave_Type": "MixedBasicHeavy",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W020",
-      "NextWave": "W021",
-      "Wave_Type": "Boss",
-      "IsBossWave": "Y"
-    },
-    {
-      "WaveNo": "W021",
-      "NextWave": "W022",
+      "WaveNo": "EASY_W006",
+      "NextWave": "EASY_W007",
       "Wave_Type": "Rush",
       "IsBossWave": "N"
     },
     {
-      "WaveNo": "W022",
-      "NextWave": "W023",
-      "Wave_Type": "MixedRushHeavy",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W023",
-      "NextWave": "W024",
+      "WaveNo": "EASY_W007",
+      "NextWave": "EASY_W008",
       "Wave_Type": "Basic",
       "IsBossWave": "N"
     },
     {
-      "WaveNo": "W024",
-      "NextWave": "W025",
-      "Wave_Type": "Elite",
+      "WaveNo": "EASY_W008",
+      "NextWave": "EASY_W009",
+      "Wave_Type": "Mixed",
       "IsBossWave": "N"
     },
     {
-      "WaveNo": "W025",
-      "NextWave": "W026",
-      "Wave_Type": "MixedBasicRush",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W026",
-      "NextWave": "W027",
-      "Wave_Type": "Heavy",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W027",
-      "NextWave": "W028",
-      "Wave_Type": "MixedBasicHeavy",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W028",
-      "NextWave": "W029",
-      "Wave_Type": "Elite",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W029",
-      "NextWave": "W030",
-      "Wave_Type": "MixedRushHeavy",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W030",
-      "NextWave": "W031",
-      "Wave_Type": "Boss",
-      "IsBossWave": "Y"
-    },
-    {
-      "WaveNo": "W031",
-      "NextWave": "W032",
-      "Wave_Type": "MixedBasicRush",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W032",
-      "NextWave": "W033",
-      "Wave_Type": "MixedBasicHeavy",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W033",
-      "NextWave": "W034",
-      "Wave_Type": "Elite",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W034",
-      "NextWave": "W035",
+      "WaveNo": "EASY_W009",
+      "NextWave": "EASY_W010",
       "Wave_Type": "Rush",
       "IsBossWave": "N"
     },
     {
-      "WaveNo": "W035",
-      "NextWave": "W036",
-      "Wave_Type": "Heavy",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W036",
-      "NextWave": "W037",
-      "Wave_Type": "MixedRushHeavy",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W037",
-      "NextWave": "W038",
-      "Wave_Type": "Elite",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W038",
-      "NextWave": "W039",
-      "Wave_Type": "MixedBasicRush",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W039",
-      "NextWave": "W040",
-      "Wave_Type": "MixedBasicHeavy",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W040",
-      "NextWave": "W041",
+      "WaveNo": "EASY_W010",
+      "NextWave": "EASY_W011",
       "Wave_Type": "Boss",
       "IsBossWave": "Y"
     },
     {
-      "WaveNo": "W041",
-      "NextWave": "W042",
-      "Wave_Type": "Elite",
+      "WaveNo": "EASY_W011",
+      "NextWave": "EASY_W012",
+      "Wave_Type": "Basic",
       "IsBossWave": "N"
     },
     {
-      "WaveNo": "W042",
-      "NextWave": "W043",
-      "Wave_Type": "MixedRushHeavy",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W043",
-      "NextWave": "W044",
-      "Wave_Type": "Heavy",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W044",
-      "NextWave": "W045",
-      "Wave_Type": "Elite",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W045",
-      "NextWave": "W046",
-      "Wave_Type": "MixedBasicRush",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W046",
-      "NextWave": "W047",
-      "Wave_Type": "MixedBasicHeavy",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W047",
-      "NextWave": "W048",
-      "Wave_Type": "Elite",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W048",
-      "NextWave": "W049",
-      "Wave_Type": "MixedRushHeavy",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W049",
-      "NextWave": "W050",
-      "Wave_Type": "Elite",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W050",
-      "NextWave": "W051",
-      "Wave_Type": "Boss",
-      "IsBossWave": "Y"
-    },
-    {
-      "WaveNo": "W051",
-      "NextWave": "W052",
-      "Wave_Type": "Elite",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W052",
-      "NextWave": "W053",
-      "Wave_Type": "MixedBasicRush",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W053",
-      "NextWave": "W054",
-      "Wave_Type": "Heavy",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W054",
-      "NextWave": "W055",
-      "Wave_Type": "MixedRushHeavy",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W055",
-      "NextWave": "W056",
-      "Wave_Type": "Elite",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W056",
-      "NextWave": "W057",
-      "Wave_Type": "MixedBasicHeavy",
-      "IsBossWave": "N"
-    },
-    {
-      "WaveNo": "W057",
-      "NextWave": "W058",
+      "WaveNo": "EASY_W012",
+      "NextWave": "EASY_W013",
       "Wave_Type": "Rush",
       "IsBossWave": "N"
     },
     {
-      "WaveNo": "W058",
-      "NextWave": "W059",
+      "WaveNo": "EASY_W013",
+      "NextWave": "EASY_W014",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W014",
+      "NextWave": "EASY_W015",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W015",
+      "NextWave": "EASY_W016",
+      "Wave_Type": "EliteRush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W016",
+      "NextWave": "EASY_W017",
+      "Wave_Type": "Mixed",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W017",
+      "NextWave": "EASY_W018",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W018",
+      "NextWave": "EASY_W019",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W019",
+      "NextWave": "EASY_W020",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W020",
+      "NextWave": "EASY_W021",
+      "Wave_Type": "Boss",
+      "IsBossWave": "Y"
+    },
+    {
+      "WaveNo": "EASY_W021",
+      "NextWave": "EASY_W022",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W022",
+      "NextWave": "EASY_W023",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W023",
+      "NextWave": "EASY_W024",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W024",
+      "NextWave": "EASY_W025",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W025",
+      "NextWave": "EASY_W026",
       "Wave_Type": "Elite",
       "IsBossWave": "N"
     },
     {
-      "WaveNo": "W059",
-      "NextWave": "W060",
-      "Wave_Type": "MixedRushHeavy",
+      "WaveNo": "EASY_W026",
+      "NextWave": "EASY_W027",
+      "Wave_Type": "Basic",
       "IsBossWave": "N"
     },
     {
-      "WaveNo": "W060",
+      "WaveNo": "EASY_W027",
+      "NextWave": "EASY_W028",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W028",
+      "NextWave": "EASY_W029",
+      "Wave_Type": "Mixed",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W029",
+      "NextWave": "EASY_W030",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W030",
+      "NextWave": "EASY_W031",
+      "Wave_Type": "Boss",
+      "IsBossWave": "Y"
+    },
+    {
+      "WaveNo": "EASY_W031",
+      "NextWave": "EASY_W032",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W032",
+      "NextWave": "EASY_W033",
+      "Wave_Type": "Mixed",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W033",
+      "NextWave": "EASY_W034",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W034",
+      "NextWave": "EASY_W035",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W035",
+      "NextWave": "EASY_W036",
+      "Wave_Type": "Elite",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W036",
+      "NextWave": "EASY_W037",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W037",
+      "NextWave": "EASY_W038",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W038",
+      "NextWave": "EASY_W039",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W039",
+      "NextWave": "EASY_W040",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W040",
+      "NextWave": "EASY_W041",
+      "Wave_Type": "Boss",
+      "IsBossWave": "Y"
+    },
+    {
+      "WaveNo": "EASY_W041",
+      "NextWave": "EASY_W042",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W042",
+      "NextWave": "EASY_W043",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W043",
+      "NextWave": "EASY_W044",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W044",
+      "NextWave": "EASY_W045",
+      "Wave_Type": "Mixed",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W045",
+      "NextWave": "EASY_W046",
+      "Wave_Type": "EliteRush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W046",
+      "NextWave": "EASY_W047",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W047",
+      "NextWave": "EASY_W048",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W048",
+      "NextWave": "EASY_W049",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W049",
+      "NextWave": "EASY_W050",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W050",
+      "NextWave": "EASY_W051",
+      "Wave_Type": "Boss",
+      "IsBossWave": "Y"
+    },
+    {
+      "WaveNo": "EASY_W051",
+      "NextWave": "EASY_W052",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W052",
+      "NextWave": "EASY_W053",
+      "Wave_Type": "Mixed",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W053",
+      "NextWave": "EASY_W054",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W054",
+      "NextWave": "EASY_W055",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W055",
+      "NextWave": "EASY_W056",
+      "Wave_Type": "Elite",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W056",
+      "NextWave": "EASY_W057",
+      "Wave_Type": "Mixed",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W057",
+      "NextWave": "EASY_W058",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W058",
+      "NextWave": "EASY_W059",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W059",
+      "NextWave": "EASY_W060",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "EASY_W060",
+      "NextWave": "END",
+      "Wave_Type": "Boss",
+      "IsBossWave": "Y"
+    },
+    {
+      "WaveNo": "NORMAL_W001",
+      "NextWave": "NORMAL_W002",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W002",
+      "NextWave": "NORMAL_W003",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W003",
+      "NextWave": "NORMAL_W004",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W004",
+      "NextWave": "NORMAL_W005",
+      "Wave_Type": "Mixed",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W005",
+      "NextWave": "NORMAL_W006",
+      "Wave_Type": "Elite",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W006",
+      "NextWave": "NORMAL_W007",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W007",
+      "NextWave": "NORMAL_W008",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W008",
+      "NextWave": "NORMAL_W009",
+      "Wave_Type": "Mixed",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W009",
+      "NextWave": "NORMAL_W010",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W010",
+      "NextWave": "NORMAL_W011",
+      "Wave_Type": "Boss",
+      "IsBossWave": "Y"
+    },
+    {
+      "WaveNo": "NORMAL_W011",
+      "NextWave": "NORMAL_W012",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W012",
+      "NextWave": "NORMAL_W013",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W013",
+      "NextWave": "NORMAL_W014",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W014",
+      "NextWave": "NORMAL_W015",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W015",
+      "NextWave": "NORMAL_W016",
+      "Wave_Type": "EliteRush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W016",
+      "NextWave": "NORMAL_W017",
+      "Wave_Type": "Mixed",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W017",
+      "NextWave": "NORMAL_W018",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W018",
+      "NextWave": "NORMAL_W019",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W019",
+      "NextWave": "NORMAL_W020",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W020",
+      "NextWave": "NORMAL_W021",
+      "Wave_Type": "Boss",
+      "IsBossWave": "Y"
+    },
+    {
+      "WaveNo": "NORMAL_W021",
+      "NextWave": "NORMAL_W022",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W022",
+      "NextWave": "NORMAL_W023",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W023",
+      "NextWave": "NORMAL_W024",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W024",
+      "NextWave": "NORMAL_W025",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W025",
+      "NextWave": "NORMAL_W026",
+      "Wave_Type": "Elite",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W026",
+      "NextWave": "NORMAL_W027",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W027",
+      "NextWave": "NORMAL_W028",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W028",
+      "NextWave": "NORMAL_W029",
+      "Wave_Type": "Mixed",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W029",
+      "NextWave": "NORMAL_W030",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W030",
+      "NextWave": "NORMAL_W031",
+      "Wave_Type": "Boss",
+      "IsBossWave": "Y"
+    },
+    {
+      "WaveNo": "NORMAL_W031",
+      "NextWave": "NORMAL_W032",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W032",
+      "NextWave": "NORMAL_W033",
+      "Wave_Type": "Mixed",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W033",
+      "NextWave": "NORMAL_W034",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W034",
+      "NextWave": "NORMAL_W035",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W035",
+      "NextWave": "NORMAL_W036",
+      "Wave_Type": "Elite",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W036",
+      "NextWave": "NORMAL_W037",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W037",
+      "NextWave": "NORMAL_W038",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W038",
+      "NextWave": "NORMAL_W039",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W039",
+      "NextWave": "NORMAL_W040",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W040",
+      "NextWave": "NORMAL_W041",
+      "Wave_Type": "Boss",
+      "IsBossWave": "Y"
+    },
+    {
+      "WaveNo": "NORMAL_W041",
+      "NextWave": "NORMAL_W042",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W042",
+      "NextWave": "NORMAL_W043",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W043",
+      "NextWave": "NORMAL_W044",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W044",
+      "NextWave": "NORMAL_W045",
+      "Wave_Type": "Mixed",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W045",
+      "NextWave": "NORMAL_W046",
+      "Wave_Type": "EliteRush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W046",
+      "NextWave": "NORMAL_W047",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W047",
+      "NextWave": "NORMAL_W048",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W048",
+      "NextWave": "NORMAL_W049",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W049",
+      "NextWave": "NORMAL_W050",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W050",
+      "NextWave": "NORMAL_W051",
+      "Wave_Type": "Boss",
+      "IsBossWave": "Y"
+    },
+    {
+      "WaveNo": "NORMAL_W051",
+      "NextWave": "NORMAL_W052",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W052",
+      "NextWave": "NORMAL_W053",
+      "Wave_Type": "Mixed",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W053",
+      "NextWave": "NORMAL_W054",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W054",
+      "NextWave": "NORMAL_W055",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W055",
+      "NextWave": "NORMAL_W056",
+      "Wave_Type": "Elite",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W056",
+      "NextWave": "NORMAL_W057",
+      "Wave_Type": "Mixed",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W057",
+      "NextWave": "NORMAL_W058",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W058",
+      "NextWave": "NORMAL_W059",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W059",
+      "NextWave": "NORMAL_W060",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "NORMAL_W060",
+      "NextWave": "END",
+      "Wave_Type": "Boss",
+      "IsBossWave": "Y"
+    },
+    {
+      "WaveNo": "HARD_W001",
+      "NextWave": "HARD_W002",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W002",
+      "NextWave": "HARD_W003",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W003",
+      "NextWave": "HARD_W004",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W004",
+      "NextWave": "HARD_W005",
+      "Wave_Type": "Mixed",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W005",
+      "NextWave": "HARD_W006",
+      "Wave_Type": "Elite",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W006",
+      "NextWave": "HARD_W007",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W007",
+      "NextWave": "HARD_W008",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W008",
+      "NextWave": "HARD_W009",
+      "Wave_Type": "Mixed",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W009",
+      "NextWave": "HARD_W010",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W010",
+      "NextWave": "HARD_W011",
+      "Wave_Type": "Boss",
+      "IsBossWave": "Y"
+    },
+    {
+      "WaveNo": "HARD_W011",
+      "NextWave": "HARD_W012",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W012",
+      "NextWave": "HARD_W013",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W013",
+      "NextWave": "HARD_W014",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W014",
+      "NextWave": "HARD_W015",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W015",
+      "NextWave": "HARD_W016",
+      "Wave_Type": "EliteRush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W016",
+      "NextWave": "HARD_W017",
+      "Wave_Type": "Mixed",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W017",
+      "NextWave": "HARD_W018",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W018",
+      "NextWave": "HARD_W019",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W019",
+      "NextWave": "HARD_W020",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W020",
+      "NextWave": "HARD_W021",
+      "Wave_Type": "Boss",
+      "IsBossWave": "Y"
+    },
+    {
+      "WaveNo": "HARD_W021",
+      "NextWave": "HARD_W022",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W022",
+      "NextWave": "HARD_W023",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W023",
+      "NextWave": "HARD_W024",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W024",
+      "NextWave": "HARD_W025",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W025",
+      "NextWave": "HARD_W026",
+      "Wave_Type": "Elite",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W026",
+      "NextWave": "HARD_W027",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W027",
+      "NextWave": "HARD_W028",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W028",
+      "NextWave": "HARD_W029",
+      "Wave_Type": "Mixed",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W029",
+      "NextWave": "HARD_W030",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W030",
+      "NextWave": "HARD_W031",
+      "Wave_Type": "Boss",
+      "IsBossWave": "Y"
+    },
+    {
+      "WaveNo": "HARD_W031",
+      "NextWave": "HARD_W032",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W032",
+      "NextWave": "HARD_W033",
+      "Wave_Type": "Mixed",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W033",
+      "NextWave": "HARD_W034",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W034",
+      "NextWave": "HARD_W035",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W035",
+      "NextWave": "HARD_W036",
+      "Wave_Type": "Elite",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W036",
+      "NextWave": "HARD_W037",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W037",
+      "NextWave": "HARD_W038",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W038",
+      "NextWave": "HARD_W039",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W039",
+      "NextWave": "HARD_W040",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W040",
+      "NextWave": "HARD_W041",
+      "Wave_Type": "Boss",
+      "IsBossWave": "Y"
+    },
+    {
+      "WaveNo": "HARD_W041",
+      "NextWave": "HARD_W042",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W042",
+      "NextWave": "HARD_W043",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W043",
+      "NextWave": "HARD_W044",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W044",
+      "NextWave": "HARD_W045",
+      "Wave_Type": "Mixed",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W045",
+      "NextWave": "HARD_W046",
+      "Wave_Type": "EliteRush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W046",
+      "NextWave": "HARD_W047",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W047",
+      "NextWave": "HARD_W048",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W048",
+      "NextWave": "HARD_W049",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W049",
+      "NextWave": "HARD_W050",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W050",
+      "NextWave": "HARD_W051",
+      "Wave_Type": "Boss",
+      "IsBossWave": "Y"
+    },
+    {
+      "WaveNo": "HARD_W051",
+      "NextWave": "HARD_W052",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W052",
+      "NextWave": "HARD_W053",
+      "Wave_Type": "Mixed",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W053",
+      "NextWave": "HARD_W054",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W054",
+      "NextWave": "HARD_W055",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W055",
+      "NextWave": "HARD_W056",
+      "Wave_Type": "Elite",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W056",
+      "NextWave": "HARD_W057",
+      "Wave_Type": "Mixed",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W057",
+      "NextWave": "HARD_W058",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W058",
+      "NextWave": "HARD_W059",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W059",
+      "NextWave": "HARD_W060",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HARD_W060",
+      "NextWave": "END",
+      "Wave_Type": "Boss",
+      "IsBossWave": "Y"
+    },
+    {
+      "WaveNo": "HELL_W001",
+      "NextWave": "HELL_W002",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W002",
+      "NextWave": "HELL_W003",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W003",
+      "NextWave": "HELL_W004",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W004",
+      "NextWave": "HELL_W005",
+      "Wave_Type": "Mixed",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W005",
+      "NextWave": "HELL_W006",
+      "Wave_Type": "Elite",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W006",
+      "NextWave": "HELL_W007",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W007",
+      "NextWave": "HELL_W008",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W008",
+      "NextWave": "HELL_W009",
+      "Wave_Type": "Mixed",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W009",
+      "NextWave": "HELL_W010",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W010",
+      "NextWave": "HELL_W011",
+      "Wave_Type": "Boss",
+      "IsBossWave": "Y"
+    },
+    {
+      "WaveNo": "HELL_W011",
+      "NextWave": "HELL_W012",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W012",
+      "NextWave": "HELL_W013",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W013",
+      "NextWave": "HELL_W014",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W014",
+      "NextWave": "HELL_W015",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W015",
+      "NextWave": "HELL_W016",
+      "Wave_Type": "EliteRush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W016",
+      "NextWave": "HELL_W017",
+      "Wave_Type": "Mixed",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W017",
+      "NextWave": "HELL_W018",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W018",
+      "NextWave": "HELL_W019",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W019",
+      "NextWave": "HELL_W020",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W020",
+      "NextWave": "HELL_W021",
+      "Wave_Type": "Boss",
+      "IsBossWave": "Y"
+    },
+    {
+      "WaveNo": "HELL_W021",
+      "NextWave": "HELL_W022",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W022",
+      "NextWave": "HELL_W023",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W023",
+      "NextWave": "HELL_W024",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W024",
+      "NextWave": "HELL_W025",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W025",
+      "NextWave": "HELL_W026",
+      "Wave_Type": "Elite",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W026",
+      "NextWave": "HELL_W027",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W027",
+      "NextWave": "HELL_W028",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W028",
+      "NextWave": "HELL_W029",
+      "Wave_Type": "Mixed",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W029",
+      "NextWave": "HELL_W030",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W030",
+      "NextWave": "HELL_W031",
+      "Wave_Type": "Boss",
+      "IsBossWave": "Y"
+    },
+    {
+      "WaveNo": "HELL_W031",
+      "NextWave": "HELL_W032",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W032",
+      "NextWave": "HELL_W033",
+      "Wave_Type": "Mixed",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W033",
+      "NextWave": "HELL_W034",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W034",
+      "NextWave": "HELL_W035",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W035",
+      "NextWave": "HELL_W036",
+      "Wave_Type": "Elite",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W036",
+      "NextWave": "HELL_W037",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W037",
+      "NextWave": "HELL_W038",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W038",
+      "NextWave": "HELL_W039",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W039",
+      "NextWave": "HELL_W040",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W040",
+      "NextWave": "HELL_W041",
+      "Wave_Type": "Boss",
+      "IsBossWave": "Y"
+    },
+    {
+      "WaveNo": "HELL_W041",
+      "NextWave": "HELL_W042",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W042",
+      "NextWave": "HELL_W043",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W043",
+      "NextWave": "HELL_W044",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W044",
+      "NextWave": "HELL_W045",
+      "Wave_Type": "Mixed",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W045",
+      "NextWave": "HELL_W046",
+      "Wave_Type": "EliteRush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W046",
+      "NextWave": "HELL_W047",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W047",
+      "NextWave": "HELL_W048",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W048",
+      "NextWave": "HELL_W049",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W049",
+      "NextWave": "HELL_W050",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W050",
+      "NextWave": "HELL_W051",
+      "Wave_Type": "Boss",
+      "IsBossWave": "Y"
+    },
+    {
+      "WaveNo": "HELL_W051",
+      "NextWave": "HELL_W052",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W052",
+      "NextWave": "HELL_W053",
+      "Wave_Type": "Mixed",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W053",
+      "NextWave": "HELL_W054",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W054",
+      "NextWave": "HELL_W055",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W055",
+      "NextWave": "HELL_W056",
+      "Wave_Type": "Elite",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W056",
+      "NextWave": "HELL_W057",
+      "Wave_Type": "Mixed",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W057",
+      "NextWave": "HELL_W058",
+      "Wave_Type": "Rush",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W058",
+      "NextWave": "HELL_W059",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W059",
+      "NextWave": "HELL_W060",
+      "Wave_Type": "Basic",
+      "IsBossWave": "N"
+    },
+    {
+      "WaveNo": "HELL_W060",
       "NextWave": "END",
       "Wave_Type": "Boss",
       "IsBossWave": "Y"
