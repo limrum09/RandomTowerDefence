@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class StageWaveManager : MonoBehaviour
 {
+    private const string END_WAVE = "END";
+
     private string nextWaveUID;
     private WaveData currentWave;
     private List<WaveEnemyRosterData> currentWaveRosterData;
 
     public event Action<List<WaveEnemyRosterData>> onWaveRosterData;
 
-    private void Awake()
+    public void Init(string startWaveID)
     {
         currentWave = null;
-        nextWaveUID = "W001";
-    }
-    void Start()
-    {
+        currentWaveRosterData = null;
+        nextWaveUID = startWaveID;
+
         SetCurrentWaveData();
     }
 
@@ -46,14 +47,14 @@ public class StageWaveManager : MonoBehaviour
 
     public void WaveEnd()
     {
+        if(nextWaveUID == END_WAVE)
+        {
+            // 웨이브 모두 클리어, 스테이지 종료
+        }
+
         if (SetCurrentWaveData())
         {
             onWaveRosterData?.Invoke(currentWaveRosterData);
-        }
-
-        if(nextWaveUID == "END")
-        {
-            // 웨이브 모두 클리어, 스테이지 종료
         }
     }
 }

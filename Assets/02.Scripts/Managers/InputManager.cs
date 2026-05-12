@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -122,9 +121,11 @@ public class InputManager
             // 결과 오브젝트가 없으면 무시
             if (re.gameObject == null)
                 continue;
+
             // 클릭된 UI오브젝트 중, 부모중에 T 컴포넌트가 있으면 true
             if (re.gameObject.GetComponentInParent<T>() != null)
                 return true;
+
         }
 
         return false;

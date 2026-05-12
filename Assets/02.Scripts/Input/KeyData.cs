@@ -19,6 +19,7 @@ public enum InputAction
     Buy,
     MakeObstacle,
     RemoveObstacle,
+    NPCInteraction,
     Options
 }
 
@@ -49,6 +50,7 @@ public class KeyData
         keys[InputAction.Buy] = KeyCode.B;
         keys[InputAction.MakeObstacle] = KeyCode.R;
         keys[InputAction.RemoveObstacle] = KeyCode.T;
+        keys[InputAction.NPCInteraction] = KeyCode.Space;
         keys[InputAction.Options] = KeyCode.Escape;
     }
 
