@@ -13,7 +13,9 @@ public enum MoveCameraDir
 public class CameraSwitcher : MonoBehaviour
 {
     [SerializeField]
-    private ObjectMovement move;
+    private ObjectMovement camearMove;
+    [SerializeField]
+    private ObjectMovement backgroundMove;
 
     /// <summary>
     /// 카메라 이동 호출
@@ -23,11 +25,13 @@ public class CameraSwitcher : MonoBehaviour
     {
         if(dir == MoveCameraDir.Left)
         {
-            move.MoveToOrigin();
+            camearMove.MoveToWorldOrigin();
+            backgroundMove.MoveToLocalOrigin();
         }
         else if(dir == MoveCameraDir.Right)
         {
-            move.MoveToTarget();
+            camearMove.MoveToWorldTarget();
+            backgroundMove.MoveToLocalTarget();
         }
     }
 }

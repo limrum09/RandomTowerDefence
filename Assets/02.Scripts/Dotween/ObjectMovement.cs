@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ObjectMovement : MonoBehaviour
@@ -12,30 +13,39 @@ public class ObjectMovement : MonoBehaviour
     [SerializeField]
     private Ease easeType = Ease.OutQuad;
 
-    private Vector3 originPosition;
+    private Vector3 originWordlPos;
+    private Vector3 originLocalPos;
 
     private void Awake()
     {
         if (moveObject == null)
             moveObject = transform;
 
-        originPosition = moveObject.position;
+        originWordlPos = moveObject.position;
+        originLocalPos = moveObject.localPosition;
     }
 
-    public void MoveToTarget()
+    public void MoveToWorldTarget()
     {
         moveObject.DOKill();
         moveObject.DOMove(targetPos, duration).SetEase(easeType);
     }
 
-    public void MoveToOrigin()
+    public void MoveToWorldOrigin()
     {
         moveObject.DOKill();
-        moveObject.DOMove(originPosition, duration).SetEase(easeType);
+        moveObject.DOMove(originWordlPos, duration).SetEase(easeType);
     }
 
-    public void SaveCurrentOrigin()
+    public void MoveToLocalTarget()
     {
-        originPosition = moveObject.position;
+        moveObject.DOKill();
+        moveObject.DOLocalMove(originLocalPos + targetPos, duration).SetEase(easeType);
+    }
+
+    public void MoveToLocalOrigin()
+    {
+        moveObject.DOKill();
+        moveObject.DOLocalMove(originLocalPos, duration).SetEase(easeType);
     }
 }

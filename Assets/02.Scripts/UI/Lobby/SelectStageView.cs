@@ -65,11 +65,6 @@ public class SelectStageView : MonoBehaviour
         se?.Kill();
 
         panel.SetActive(true);
-
-        for(int i = 0; i < buttonRects.Length; i++)
-        {
-
-        }
     }
 
     public void Hide()
