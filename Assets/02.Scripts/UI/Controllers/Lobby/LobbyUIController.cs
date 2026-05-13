@@ -8,6 +8,10 @@ public class LobbyUIController : MonoBehaviour
 
     public SelectStagePresenter selectPresenter;
 
+    public event Action<TowerType, int, int> OnTowerMetaAttackSpeedUpgrade;
+    public event Action<TowerType, int, int> OnTowerMetaDamageUpgrade;
+    public event Action<string> OnSelectStage;
+
     private void Start()
     {
         selectPresenter = new SelectStagePresenter(selectView);
@@ -28,8 +32,27 @@ public class LobbyUIController : MonoBehaviour
         HideSelectStageLevelView();
     }
 
-    public event Action<string> OnSelectStage;
+    
 
+    public void TowerMetaDamageUpgrade(TowerType type, int grade, int upvalue)
+    {
+        OnTowerMetaDamageUpgrade?.Invoke(type, grade, upvalue);
+    }
+
+    public void TowerMeraAttackSpeedUpgrade(TowerType type, int grade, int upValue)
+    {
+        OnTowerMetaAttackSpeedUpgrade?.Invoke(type, grade, upValue);
+    }
+
+    public void OnChangeTowerMetaDamageUpgradeLevel(TowerType type, int grade, int level)
+    {
+
+    }
+
+    public void OnChangeTowerMetaAttackSpeedUpgradeLevel(TowerType type, int grade, int level)
+    {
+
+    }
 
     public void ShowSelectStageLevelView()
     {

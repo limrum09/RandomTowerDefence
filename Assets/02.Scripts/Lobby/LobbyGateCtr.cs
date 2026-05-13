@@ -3,6 +3,8 @@ using UnityEngine;
 public class LobbyGateCtr : ObjectCheckPlayer<LobbyGateCtr>
 {
     [SerializeField]
+    private Animator anim;
+    [SerializeField]
     private LobbyUIController lobbyUI;
 
     private bool isPlayerEnter;
@@ -43,6 +45,7 @@ public class LobbyGateCtr : ObjectCheckPlayer<LobbyGateCtr>
     protected override void PlayerEnter()
     {
         isPlayerEnter = true;
+        anim.SetBool("IsOpen", isPlayerEnter);
     }
 
     protected override void PlayerExit()
@@ -52,5 +55,6 @@ public class LobbyGateCtr : ObjectCheckPlayer<LobbyGateCtr>
 
         isPlayerEnter = false;
         lobbyUI.HideSelectStageLevelView();
+        anim.SetBool("IsOpen", isPlayerEnter);
     }
 }
