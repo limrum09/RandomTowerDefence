@@ -52,23 +52,27 @@ public class TowerMetaUpgradeManager
         return data.damageLevel;
     }
 
-    public int GetAttakSpeedLevel(TowerType getType, int getGrade)
+    public int GetAttackSpeedLevel(TowerType getType, int getGrade)
     {
         var data = GetSaveData(getType, getGrade);
 
         return data.attackSpeedLevel;
     }
 
-    public void TowerDamageUpgrade(TowerType getType, int getGrade, int upValue)
+    public bool TowerDamageUpgrade(TowerType getType, int getGrade, int upValue)
     {
         var data = GetSaveData(getType, getGrade);
         data.damageLevel += upValue;
+        
+        return true;
     }
 
-    public void TowerAttackSpeedUpgrade(TowerType getType, int getGrade, int upValue)
+    public bool TowerAttackSpeedUpgrade(TowerType getType, int getGrade, int upValue)
     {
         var data = GetSaveData(getType, getGrade);
         data.attackSpeedLevel += upValue;
+
+        return true;
     }
 
     public TowerMetaUpgradeData GetTowerUpgradeSaveData()

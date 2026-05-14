@@ -5,11 +5,12 @@ public class LobbyUIController : MonoBehaviour
 {
     [SerializeField]
     private SelectStageView selectView;
+    [SerializeField]
+    private MetaUpgradeView metaView;
 
     public SelectStagePresenter selectPresenter;
 
-    public event Action<TowerType, int, int> OnTowerMetaAttackSpeedUpgrade;
-    public event Action<TowerType, int, int> OnTowerMetaDamageUpgrade;
+    public event Func<MetaUpgradeTarget, MetaUpgradeType, string, int, bool> OnMetaUpgrade;
     public event Action<string> OnSelectStage;
 
     private void Start()
@@ -18,6 +19,7 @@ public class LobbyUIController : MonoBehaviour
 
         selectPresenter.onSelectStage += OnSelectStageLevel;
 
+        metaView.OnMetaUpgrade += OnClickMetaUpgrade;
 
         HideAllUI();
     }
@@ -25,6 +27,7 @@ public class LobbyUIController : MonoBehaviour
     private void OnDestroy()
     {
         selectPresenter.onSelectStage -= OnSelectStageLevel;
+        metaView.OnMetaUpgrade -= OnClickMetaUpgrade;
     }
 
     private void HideAllUI()
@@ -32,26 +35,19 @@ public class LobbyUIController : MonoBehaviour
         HideSelectStageLevelView();
     }
 
-    
-
-    public void TowerMetaDamageUpgrade(TowerType type, int grade, int upvalue)
+    private bool OnClickMetaUpgrade(MetaUpgradeTarget metaType, MetaUpgradeType upgradeType, string uid, int upValue)
     {
-        OnTowerMetaDamageUpgrade?.Invoke(type, grade, upvalue);
+        return OnMetaUpgrade?.Invoke(metaType, upgradeType, uid, upValue) ?? false;
     }
 
-    public void TowerMeraAttackSpeedUpgrade(TowerType type, int grade, int upValue)
+    public void ShowMetaUpgradeView()
     {
-        OnTowerMetaAttackSpeedUpgrade?.Invoke(type, grade, upValue);
+        metaView?.Show();
     }
 
-    public void OnChangeTowerMetaDamageUpgradeLevel(TowerType type, int grade, int level)
+    public void HideMetaUpgradeView()
     {
-
-    }
-
-    public void OnChangeTowerMetaAttackSpeedUpgradeLevel(TowerType type, int grade, int level)
-    {
-
+        metaView?.HIde();
     }
 
     public void ShowSelectStageLevelView()

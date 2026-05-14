@@ -66,11 +66,60 @@ public class TowerDataManager
         return null;
     }
 
+    public TowerData GetTowerData(TowerType type, int grade)
+    {
+        foreach(var data in towerDatas)
+        {
+            TowerData dataValue = data.Value;
+
+            if (dataValue.towerType == type && dataValue.grade == grade)
+                return dataValue;
+        }
+
+        return null;
+    }
+
+    public List<TowerData> GetTowerData(TowerType type)
+    {
+        List<TowerData> tempDatas = new List<TowerData>();
+
+        foreach(var data in towerDatas.Values)
+        {
+            if (data.towerType == type)
+                tempDatas.Add(data);
+        }
+
+        tempDatas.Sort((x, y) => x.grade.CompareTo(y.grade));
+
+        return tempDatas;
+    }
+
     public string[] GetTowerGradeUID(int currnetGrade)
     {
         if (tempTowerGradeUID.TryGetValue(currnetGrade, out string[] uids))
             return uids;
 
         return null;
+    }
+
+    public string GetTowerNameType(TowerType type)
+    {
+        switch (type)
+        {
+            case TowerType.Human:
+                return "인간";
+            case TowerType.Elf:
+                return "엘프";
+            case TowerType.Orc:
+                return "오크";
+            case TowerType.Dwarf:
+                return "드워프";
+            case TowerType.Dragonian:
+                return "용인";
+            case TowerType.Werebeast:
+                return "수인";
+            default:
+                return "찾을 수 없음";
+        }
     }
 }
