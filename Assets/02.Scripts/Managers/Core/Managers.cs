@@ -1,4 +1,5 @@
 using System;
+using System.Net.NetworkInformation;
 using UnityEngine;
 
 public class Managers : MonoBehaviour
@@ -32,9 +33,11 @@ public class Managers : MonoBehaviour
     private WaveEnemyRosterDataManager waveRoster = new WaveEnemyRosterDataManager();
     private PoolManager pool = new PoolManager();
     private GameEffectManager effectManager = new GameEffectManager();
+    private MetaResearchDataManager metaResearch = new MetaResearchDataManager();
 
     [Header("SaveDatas")]
     private TowerMetaUpgradeManager towerMetaUpgrade = new TowerMetaUpgradeManager();
+    private PublicMetaUpgradeManager pulbicMeraUpgrade = new PublicMetaUpgradeManager();
 
     public static UserProgressManager UserMeta { get { return Instance.progressManager; } }
     public static GameManager Game { get { return Instance.game; } }
@@ -50,7 +53,11 @@ public class Managers : MonoBehaviour
     public static WaveEnemyRosterDataManager WaveRoster { get { return Instance.waveRoster; } }
     public static PoolManager Pool { get { return Instance.pool; } }
     public static GameEffectManager Effect { get { return Instance.effectManager; } }
+    public static MetaResearchDataManager Research { get { return Instance.metaResearch; } }
+
+
     public static TowerMetaUpgradeManager TowerMetaUpgrade { get { return Instance.towerMetaUpgrade; } }
+    public static PublicMetaUpgradeManager PublicMetaUpgrade { get { return Instance.pulbicMeraUpgrade; } }
 
 
     public event Action OnEndLoadDatas;
@@ -85,6 +92,7 @@ public class Managers : MonoBehaviour
         WaveRoster.Init();
         Pool.Init();
         Effect.Init();
+        Research.Init();
 
         // SaveData에서 데이터들을 다 넣어 줘야할 듯
         OnEndLoadDatas?.Invoke();
