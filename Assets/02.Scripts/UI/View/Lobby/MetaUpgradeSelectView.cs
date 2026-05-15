@@ -33,21 +33,36 @@ public class MetaUpgradeSelectView : MonoBehaviour
     private MetaUpgradeView Owner;
     private TowerData tower;
     private string getUID;
-    private MetaUpgradeTarget upgradeType;
-    private MetaUpgradeType publicType;
+    private MetaUpgradeTarget upgradeTarget;
+    private MetaUpgradeType upgradeType;
     private int index;
 
-    private void Start()
+    private TowerMetaUpgradeManager towerMetaManager;
+    private PublicMetaUpgradeManager publicMetaManager;
+    private MetaResearchDataManager metaData;
+
+    private void ResetDatas()
     {
-        btn.onClick.AddListener(OnClickSelectButton);
+        tower = null;
+        getUID = string.Empty;
+        upgradeTarget = MetaUpgradeTarget.Tower;
+        index = -1;
+        upgradeType = MetaUpgradeType.StartingGold;
     }
 
-    public void SetOwner(MetaUpgradeView getOwner) => Owner = getOwner;
+    public void SetOwner(MetaUpgradeView getOwner)
+    {
+        Owner = getOwner;
+        btn.onClick.AddListener(OnClickSelectButton);
+        metaData = Managers.ResearchData;
+        towerMetaManager = Managers.TowerMetaUpgrade;
+        publicMetaManager = Managers.PublicMetaUpgrade;
+    }
 
     public void TowerUIRefresh()
     {
         upgradeFrame1.SetActive(true);
-        upgradeFrame2.SetActive(true);
+        
         title.text = $"{tower.grade}등급 {Managers.TowerData.GetTowerNameType(tower.towerType)}타워";
         icon.sprite = Resources.Load<Sprite>($"Tower/Images/Icon_Tower_{tower.towerType}_{tower.grade}_Idle");
         info.text = "타워 공격력 및 공격속도 영구강화";
@@ -55,14 +70,14 @@ public class MetaUpgradeSelectView : MonoBehaviour
         upgradeText1.text = "공격 속도";
         upgradeText2.text = "공격력";
 
-        int damageLevel = Managers.TowerMetaUpgrade.GetDamageLevel(tower.towerType, tower.grade);
-        int speedLevel = Managers.TowerMetaUpgrade.GetAttackSpeedLevel(tower.towerType, tower.grade);
+        MetaUpgradeDisplayData displayData = Managers.Game.GetTowerDisplayData(tower);
+        upgradeFrame2.SetActive(displayData.useSecondValue);
 
-        currentValue1.text = (tower.baseAtkSpeed + (2.0f * speedLevel)).ToString();
-        currentValue2.text = (tower.baseAtk + (2.0f * damageLevel)).ToString();
+        currentValue1.text = displayData.currentValue1.ToString("N2");
+        currentValue2.text = displayData.currentValue2.ToString();
 
-        nextValue1.text = (tower.baseAtkSpeed + (2.0f * (speedLevel + 1))).ToString();
-        nextValue2.text = (tower.baseAtk + (2.0f * (damageLevel + 1))).ToString();
+        nextValue1.text = displayData.nextValue1.ToString("N2");
+        nextValue2.text = displayData.nextValue2.ToString();
     }
 
     public void SetTowerDataView(TowerData data, MetaUpgradeTarget getUpgradeType, int getIndex)
@@ -71,7 +86,7 @@ public class MetaUpgradeSelectView : MonoBehaviour
 
         tower = data;
         getUID = tower.TowerUID;
-        upgradeType = getUpgradeType;
+        upgradeTarget = getUpgradeType;
         index = getIndex;
 
         TowerUIRefresh();
@@ -79,25 +94,26 @@ public class MetaUpgradeSelectView : MonoBehaviour
 
     public void PublicUIRefresh()
     {
-        title.text = Managers.PublicMetaUpgrade.GetTypeName(publicType);
-        info.text = Managers.PublicMetaUpgrade.GetTypeInfoStr(publicType);
-        upgradeText1.text = Managers.PublicMetaUpgrade.GetTypeCountStr(publicType);
+        title.text = publicMetaManager.GetTypeName(upgradeType);
+        info.text = publicMetaManager.GetTypeInfoStr(upgradeType);
+        upgradeText1.text = publicMetaManager.GetTypeCountStr(upgradeType);
         icon.sprite = null;
 
-        int level = Managers.PublicMetaUpgrade.GetPublicMetaDataLevel(publicType);
-        currentValue1.text = (600 + (100 * level)).ToString();
-        nextValue1.text = (600 + (100 * (level + 1))).ToString();
+        MetaUpgradeDisplayData displayData = Managers.Game.GetPublicDisplayData(upgradeType);
+        upgradeFrame2.SetActive(displayData.useSecondValue);
+
+        currentValue1.text = displayData.currentValue1.ToString();
+        nextValue1.text = displayData.nextValue1.ToString();
     }
 
     public void SetPublicDataView(MetaUpgradeType type, int getIndex)
     {
         upgradeFrame1.SetActive(true);
-        upgradeFrame2.SetActive(false);
 
         ResetDatas();
 
-        upgradeType = MetaUpgradeTarget.Public;
-        publicType = type;
+        upgradeTarget = MetaUpgradeTarget.Public;
+        upgradeType = type;
         index = getIndex;
 
         PublicUIRefresh();
@@ -106,18 +122,8 @@ public class MetaUpgradeSelectView : MonoBehaviour
     public void OnClickSelectButton()
     {
         if(!string.IsNullOrEmpty(getUID))
-            Owner.OnClickSelectButton(getUID, upgradeType, index);
+            Owner.OnClickSelectButton(getUID, upgradeTarget, index);
         else
-            Owner.OnClickSelectButton(publicType, upgradeType, index);
-
-    }
-
-    private void ResetDatas()
-    {
-        tower = null;
-        getUID = string.Empty;
-        upgradeType = MetaUpgradeTarget.Tower;
-        index = -1;
-        publicType = MetaUpgradeType.StartingGold;
+            Owner.OnClickSelectButton(upgradeType, upgradeTarget, index);
     }
 }

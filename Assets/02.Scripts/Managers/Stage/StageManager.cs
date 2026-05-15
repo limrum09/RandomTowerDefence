@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 /// <summary>
@@ -11,6 +13,7 @@ public class StageManager : MonoBehaviour
     public event Action OnAfterSettingsInit;
     public event Action OnWaveStart;
     public event Action OnWaveEnd;
+    public event Action<int> OnChangedGameSpeed;
 
     [Header("Grid Settings")]
     [SerializeField] private int gridWidth;
@@ -35,9 +38,7 @@ public class StageManager : MonoBehaviour
     [SerializeField]
     private DrawGridLine line;
     [SerializeField]
-    private StageWaveManager wave;
-
-    
+    private StageWaveManager wave;    
 
     [Header("UIs")]
     [SerializeField]
@@ -62,6 +63,8 @@ public class StageManager : MonoBehaviour
     private bool isStagePlaying;
     private int aliveEnemyCnt;
     private int currentWave;
+    private int speedIndex;
+    private int[] speedValue = { 1, 2, 3, 4 };
 
 
     public GridManager Grid { get; private set; }
@@ -100,11 +103,8 @@ public class StageManager : MonoBehaviour
         fieldTowerManager.Init(Grid);
         Path.Init(Grid);
 
-        Managers.UserMeta.TempSetDataToStageManager(increaseGold, increaseFreeRollCnt, increaseFreeObstacleCnt, 5);
-
-        var stageBonus = Managers.UserMeta.stageBonus;
-        sessionManager.Init(1, life, stageBonus.increaseGold, stageBonus.freeStoreRollCnt,
-            stageBonus.freeObstacleCnt, stageBonus.terrainRollCnt);
+        sessionManager.Init(1, life, increaseGold, increaseFreeRollCnt,
+            increaseFreeObstacleCnt, 5);
         
         towerSkillEffect.Init();
         statUpgradeManager.Init();
@@ -123,6 +123,8 @@ public class StageManager : MonoBehaviour
         sessionManager.SetWave(currentWave);
         line.Init(gridWidth, gridHeight, cellSize, mapPlane.transform.position);
         isResetTerrain = true;
+        speedIndex = 0;
+
         AfterSettingsInit();
     }
 
@@ -176,6 +178,11 @@ public class StageManager : MonoBehaviour
             stageUICtr.OnGoldToTowerInterection += UsingGold;
             stageUICtr.OnTerrainRerollClicked += TerrainRefreshHandler;
             stageUICtr.OnRequestItemSell += ItemSellHandler;
+            stageUICtr.OnClickAccelerateButton += OnClickAccelerateButton;
+            stageUICtr.OnStageContinue += StageContinueHideOption;
+            stageUICtr.OnStagePause += ShowOptionPanel;
+            stageUICtr.OnMoveToLobby += MoveToLobby;
+            OnChangedGameSpeed += stageUICtr.ChangeGameSpeed;
         }
     }
 
@@ -272,6 +279,11 @@ public class StageManager : MonoBehaviour
             stageUICtr.OnGoldToTowerInterection -= UsingGold;
             stageUICtr.OnTerrainRerollClicked -= TerrainRefreshHandler;
             stageUICtr.OnRequestItemSell -= ItemSellHandler;
+            stageUICtr.OnClickAccelerateButton -= OnClickAccelerateButton;
+            stageUICtr.OnStageContinue -= StageContinueHideOption;
+            stageUICtr.OnStagePause -= ShowOptionPanel;
+            stageUICtr.OnMoveToLobby -= MoveToLobby;
+            OnChangedGameSpeed -= stageUICtr.ChangeGameSpeed;
         }
     }
 
@@ -327,6 +339,51 @@ public class StageManager : MonoBehaviour
     #endregion
 
     /// <summary>
+    /// 가속 버튼 클릭
+    /// </summary>
+    private void OnClickAccelerateButton()
+    {
+        speedIndex++;
+
+        if (speedIndex >= speedValue.Length)
+            speedIndex = 0;
+
+        Time.timeScale = speedValue[speedIndex];
+
+        OnChangedGameSpeed?.Invoke(speedValue[speedIndex]);
+    }
+
+    /// <summary>
+    /// 옵션 패널이 보여지면서 게임 일시 중지
+    /// </summary>
+    private void ShowOptionPanel()
+    {
+        Time.timeScale = 0.0f;
+    }
+
+    /// <summary>
+    /// 옵션 패널이 숨겨지고, 게임 계속하기
+    /// </summary>
+    private void StageContinueHideOption()
+    {
+        StartCoroutine("RestoreTimeScale");
+    }
+
+    private void MoveToLobby()
+    {
+        StopAllCoroutines();
+
+        Time.timeScale = 1f;
+        speedIndex = 0;
+
+        isStagePlaying = false;
+        isSpawning = false;
+        aliveEnemyCnt = 0;
+
+        LoadSceneManager.Instance.OnLoadStringScene("LobbyScene");
+    }
+
+    /// <summary>
     /// 지형 새로고침을 한다음 UI 상태 변경
     /// </summary>
     private void TerrainRefreshHandler()
@@ -375,6 +432,7 @@ public class StageManager : MonoBehaviour
         SetSpawnAndGoalPointSetting();
         enemySpawn.SetInitalized(Grid, Path);
         OnWaveEnd?.Invoke();
+        OnChangedGameSpeed?.Invoke(speedValue[speedIndex]);
         obstacleBuilder.Initialized(Grid, Path);
         OnAfterSettingsInit?.Invoke();
     }
@@ -593,6 +651,28 @@ public class StageManager : MonoBehaviour
     private void RestoreFreeObstacleHandler()
     {
         sessionManager.GetFreeObstacle(1);
+    }
+
+    /// <summary>
+    /// 일시정지가 풀리고 난 후, 특정 시간동안 속도가 천천히 돌아온다.
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator RestoreTimeScale()
+    {
+        float duration = 3.5f;
+        float elapsed = 0f;
+        float targetSpeed = speedValue[speedIndex];
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+
+            Time.timeScale = Mathf.Lerp(0f, targetSpeed, elapsed / duration);
+
+            yield return null;
+        }
+
+        Time.timeScale = targetSpeed;
     }
 
     /// <summary>

@@ -98,7 +98,7 @@ public class TowerGradeUpgradeView : MonoBehaviour, IPopUpPublicUI
     public void SetTowerName(string name) => towerNameText.text = name;
     public void SetSkillName(string name) => towerSkillText.text = name;
     public void SetSkillDes(string des) => towerSkillDesText.text = des;
-    public void SetDamageCurrentValue(int value) => damageCurrentValueText.text = value.ToString();
+    public void SetDamageCurrentValue(float value) => damageCurrentValueText.text = value.ToString();
     public void SetAttackSpeedCurrentValue(float value) => attackSpeedCurrentValueText.text = value.ToString();
     public void SetRangeCurrentValue(float value) => rangeCurretnValueText.text = value.ToString();
     public void PremiumUpgradePirce(int value) => premiunUpgradePriceText.text = value.ToString();

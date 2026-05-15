@@ -83,7 +83,7 @@ public class TowerStatUpgradeView : MonoBehaviour
     public void SetTowerName(string name) => towerNameText.text = name;
     public void SetSkillName(string name) => towerSkillText.text = name;
     public void SetCurrentDamageStepText(int value) => currentDamageStepText.text = $"{value}강";
-    public void SetCurrentDamageText(int value) => currentDamageValueText.text = value.ToString();
+    public void SetCurrentDamageText(float value) => currentDamageValueText.text = value.ToString();
     public void SetNextDamageStepText(int value) => nextDamageStepText.text = $"{value}강";
     public void SetNextDamageText(string value) => nextDamageValueText.text = value;
     public void SetDamaePriceText(int value) => damagePriceText.text = value.ToString();
