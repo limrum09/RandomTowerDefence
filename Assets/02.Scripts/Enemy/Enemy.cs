@@ -32,9 +32,9 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private float moveSpeed;    // 기본 이동 속도
     [SerializeField]
-    private int basicShield;    // 기본 보호막
+    private float basicShield;    // 기본 보호막
     [SerializeField]
-    private int increaseShield; // 레벨 당 증가 보호막
+    private float increaseShield; // 레벨 당 증가 보호막
     [SerializeField]
     private float rewardGold;   // 처치시 지급 골드
     [SerializeField]
@@ -42,13 +42,13 @@ public class Enemy : MonoBehaviour
 
     [Header("Runitme Stat")]
     [SerializeField]
-    private int maxHP;          // 최대 체력
+    private float maxHP;          // 최대 체력
     [SerializeField]
-    private int currentHP;      // 현재 체력
+    private float currentHP;      // 현재 체력
     [SerializeField]
-    private int maxShield;      // 최대 보호막
+    private float maxShield;      // 최대 보호막
     [SerializeField]
-    private int currentShield;  // 현재 보호막
+    private float currentShield;  // 현재 보호막
     [SerializeField]
     private float currentSpeed; // 현재 이동 속도
     private bool isDead;        // 죽었는지 판단
@@ -57,8 +57,8 @@ public class Enemy : MonoBehaviour
     public int Level => level;
     public string StringKey => stringKey;
     public string EnemySkillUID => enemySkillUID;
-    public int MaxHP => maxHP;
-    public int MaxShield => maxShield;
+    public float MaxHP => maxHP;
+    public float MaxShield => maxShield;
     public float RewardGold => rewardGold;
     public bool IsDead => isDead;
     /// <summary>
@@ -217,7 +217,7 @@ public class Enemy : MonoBehaviour
     /// 보호막이 있으면 보호막 부터 감소, 보호막이 0이하가 되면 남은 데미지를 HP에 적용
     /// </summary>
     /// <param name="damage">받을 데미지</param>
-    public void EnemyGeTakeDamage(int damage)
+    public void EnemyGeTakeDamage(float damage)
     {
         // 이미 죽었으면 피해 무시
         if (isDead)

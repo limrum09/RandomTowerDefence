@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
 
 public enum MetaUpgradeTarget
 {
@@ -73,6 +71,19 @@ public class MetaResearchData
         costGrow = getCostGrow;
         valueLevelPer = getValueLevelPer;
     }
+
+    public float CalculateValue(float baseValue, int level)
+    {
+        switch (costIncreaseType)
+        {
+            case CostIncreaseType.Percent:
+                return baseValue * (1f + (valueLevelPer * level));
+            case CostIncreaseType.Flat:
+                return baseValue + (valueLevelPer * level);
+            default:
+                return baseValue;
+        }
+    }
 }
 
 public class MetaResearchDataManager
@@ -81,9 +92,9 @@ public class MetaResearchDataManager
 
     private void GetDataToJson()
     {
-        MetaResearchDataRowList rowList = JsonLoader.LoadFromResources<MetaResearchDataRowList>("Data/MetaResearchData");
+        MetaResearchDataRowList rowList = JsonLoader.LoadFromResources<MetaResearchDataRowList>("Data/MetaResearchUpgradeData");
 
-        if (rowList == null && rowList.datas == null)
+        if (rowList == null || rowList.datas == null)
             return;
 
         foreach(MetaResearchDataRow row in rowList.datas)
@@ -119,7 +130,7 @@ public class MetaResearchDataManager
         return data;
     }
 
-    public MetaResearchData GetMetaResearhDataTOPublic(MetaUpgradeTarget target, MetaUpgradeType upgrade)
+    public MetaResearchData GetMetaResearchDataToPublic(MetaUpgradeTarget target, MetaUpgradeType upgrade)
     {
         string uid = $"META_PUBLIC_{upgrade.ToString().ToUpper()}";
         if (!metaDatas.TryGetValue(uid, out MetaResearchData data))

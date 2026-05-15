@@ -19,7 +19,6 @@ public class Managers : MonoBehaviour
     }
     public static bool HasInstance => instance != null && isQuitting;
 
-    private UserProgressManager progressManager = new UserProgressManager();
     private GameManager game = new GameManager();
     private InputManager input = new InputManager();
     private TowerDataManager tower = new TowerDataManager();
@@ -33,13 +32,13 @@ public class Managers : MonoBehaviour
     private WaveEnemyRosterDataManager waveRoster = new WaveEnemyRosterDataManager();
     private PoolManager pool = new PoolManager();
     private GameEffectManager effectManager = new GameEffectManager();
+    private StageStartOptionBaseDataManager startOptionDataManager = new StageStartOptionBaseDataManager();
     private MetaResearchDataManager metaResearch = new MetaResearchDataManager();
 
     [Header("SaveDatas")]
     private TowerMetaUpgradeManager towerMetaUpgrade = new TowerMetaUpgradeManager();
     private PublicMetaUpgradeManager pulbicMeraUpgrade = new PublicMetaUpgradeManager();
 
-    public static UserProgressManager UserMeta { get { return Instance.progressManager; } }
     public static GameManager Game { get { return Instance.game; } }
     public static InputManager InputData { get { return Instance.input; } }
     public static TowerDataManager TowerData { get { return Instance.tower; } }
@@ -53,8 +52,8 @@ public class Managers : MonoBehaviour
     public static WaveEnemyRosterDataManager WaveRoster { get { return Instance.waveRoster; } }
     public static PoolManager Pool { get { return Instance.pool; } }
     public static GameEffectManager Effect { get { return Instance.effectManager; } }
-    public static MetaResearchDataManager Research { get { return Instance.metaResearch; } }
-
+    public static MetaResearchDataManager ResearchData { get { return Instance.metaResearch; } }
+    public static StageStartOptionBaseDataManager StartOption { get { return Instance.startOptionDataManager; } }
 
     public static TowerMetaUpgradeManager TowerMetaUpgrade { get { return Instance.towerMetaUpgrade; } }
     public static PublicMetaUpgradeManager PublicMetaUpgrade { get { return Instance.pulbicMeraUpgrade; } }
@@ -83,7 +82,6 @@ public class Managers : MonoBehaviour
         TowerData.Init();
         EnemyData.Init();
         EnemySkillData.Init();
-        UserMeta.Init();
         Local.Init();
         TowerSkill.Init();
         item.Init();
@@ -92,7 +90,9 @@ public class Managers : MonoBehaviour
         WaveRoster.Init();
         Pool.Init();
         Effect.Init();
-        Research.Init();
+        StartOption.Init();
+        ResearchData.Init();
+
 
         // SaveData에서 데이터들을 다 넣어 줘야할 듯
         OnEndLoadDatas?.Invoke();

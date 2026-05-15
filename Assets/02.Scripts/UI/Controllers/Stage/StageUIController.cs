@@ -19,8 +19,12 @@ public class StageUIController : MonoBehaviour
     private ItemInfoView itemView;
     [SerializeField]
     private EnemyInfoView enemyInfoView;
+
+    [Header("Buttons")]
     [SerializeField]
     private RerollButtonClick terrainRefreshButton;
+    [SerializeField]
+    private AccelerateButton accelerateButton;
 
     [Header("Controllers")]
     [SerializeField]
@@ -29,6 +33,8 @@ public class StageUIController : MonoBehaviour
     private ItemSlotUIController itemCtr;
     [SerializeField]
     private WaveEnemyInfoUIController enemyInfoCtr;
+    [SerializeField]
+    private StageOptionUIController stageOptionCtr;
 
     private TowerGradeUpgradePresenter gradePresenter;
     private TowerActionMenuPresenter actionMenuPresenter;
@@ -43,7 +49,10 @@ public class StageUIController : MonoBehaviour
     public event Action<Tower, UpgradeType> OnTowerStatUpgrade;
     public event Action OnTerrainRerollClicked;
     public event Action<ItemData, int> OnRequestItemSell;
-
+    public event Action OnClickAccelerateButton;
+    public event Action OnStagePause;
+    public event Action OnStageContinue;
+    public event Action OnMoveToLobby;
     private void Awake()
     {
         CreatePresenter();
@@ -53,6 +62,8 @@ public class StageUIController : MonoBehaviour
         BindItemUI();
         BindEnemyUI();
         BindRerollUI();
+        BindAccelerateUI();
+        BindOptionButton();
 
         HideDetailViews();
     }
@@ -64,6 +75,7 @@ public class StageUIController : MonoBehaviour
         UnBindItemUI();
         UnBindEnemyUI();
         UnBindRerollUI();
+        UnBindOptionButton();
 
         sessionInfoPresenter.UnBindAction();
     }
@@ -126,6 +138,19 @@ public class StageUIController : MonoBehaviour
     {
         terrainRefreshButton.OnClickReroll += OnClickedTerrainRefreshButton;
     }
+
+    private void BindAccelerateUI()
+    {
+        accelerateButton.BindButton(OnClickAccelerate);
+    }
+
+    private void BindOptionButton()
+    {
+        OnStagePause += stageOptionCtr.ShowOptionPanel;
+        stageOptionCtr.OnStageGameContinue += StageContinue;
+        stageOptionCtr.OnMoveToLobby += MoveToLobby;
+    }
+
     #endregion
 
     #region UnBind UIs
@@ -173,6 +198,13 @@ public class StageUIController : MonoBehaviour
     private void UnBindRerollUI()
     {
         terrainRefreshButton.OnClickReroll -= OnClickedTerrainRefreshButton;
+    }
+
+    private void UnBindOptionButton()
+    {
+        OnStagePause -= stageOptionCtr.ShowOptionPanel;
+        stageOptionCtr.OnStageGameContinue -= StageContinue;
+        stageOptionCtr.OnMoveToLobby -= MoveToLobby;
     }
     #endregion UnBind UIs
 
@@ -329,6 +361,11 @@ public class StageUIController : MonoBehaviour
         enemyInfoPresenter.GetModel(waveEnemy);
     }
 
+    private void OnClickAccelerate()
+    {
+        OnClickAccelerateButton?.Invoke();
+    }
+
     public void BindSessionDataManager(RunSessionDataManager getRunSession)
     {
         sessionInfoPresenter.GetRunSessionDatamanager(getRunSession);
@@ -342,5 +379,23 @@ public class StageUIController : MonoBehaviour
     public void SetTerrainRerollCount(int cnt)
     {
         terrainRefreshButton.SetRerollCnt(cnt);
+    }
+
+    public void ChangeGameSpeed(int speed)
+    {
+        accelerateButton.ChangedGameSpeed(speed);
+    }
+
+    public void ShowOptions()
+    {
+        OnStagePause?.Invoke();
+    }
+    public void StageContinue()
+    {
+        OnStageContinue?.Invoke();
+    }
+    public void MoveToLobby()
+    {
+        OnMoveToLobby.Invoke();
     }
 }

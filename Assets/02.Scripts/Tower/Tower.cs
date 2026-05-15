@@ -34,7 +34,7 @@ public class Tower : MonoBehaviour
     private TowerType towerType;        // 타워 타입            
     private string stringKey;           // 타워 이름 로컬라이징
     private int grade;                  // 타워 등급
-    private int baseAtk;                // 타워 기본 공격력
+    private float baseAtk;                // 타워 기본 공격력
     private float baseAtkSpeed;         // 타워 기본 공격 속도
     private float range;                // 타워 공격 범위
     private CostType costType;          // 구매 비용 타입
@@ -44,6 +44,8 @@ public class Tower : MonoBehaviour
     private string iconPath;            // 아이콘/스프라이트 위치
     public string nextGradeUID;         // 다음 등급 타워 UID
 
+    private int metaDamageLevel;
+    private int metaSpeedLevel;
     private float increaseAtkDamage;    // 1강화당 공격력 증가량
     private float increaseAtkSpeed;     // 1강화당 공격 속도 증가량
     private string skillName;           // 타워 스킬이름 캐시용
@@ -54,7 +56,7 @@ public class Tower : MonoBehaviour
     public TowerType Type => towerType;
     public string StringKey => stringKey;
     public int Grade => grade;
-    public int BaseAtk => baseAtk;
+    public float BaseAtk => baseAtk;
     public float BaseAtkSpeed => baseAtkSpeed;
     public float AtkRange => range;
     public CostType CostTY => costType;
@@ -69,7 +71,7 @@ public class Tower : MonoBehaviour
     /// 현제 공격력
     /// 기본 공격력 + (공격력 증가 값 * 현제 런 강화 단계)
     /// </summary>
-    public int CurrentDamage => baseAtk + (int)(increaseAtkDamage * (statUpgrade.GetAtkDamageStep(towerType) 
+    public float CurrentDamage => baseAtk + (int)(increaseAtkDamage * (statUpgrade.GetAtkDamageStep(towerType) 
         + statUpgrade.GetItemAtkDamageStep(towerType) + statUpgrade.GetSkillAtkDamageStep(towerType)));
     /// <summary>
     /// 현제 공격 속도
@@ -207,8 +209,8 @@ public class Tower : MonoBehaviour
         towerType = data.towerType;
         stringKey = data.stringKey;
         grade = data.grade;
-        baseAtk = data.baseAtk;
-        baseAtkSpeed = data.baseAtkSpeed;
+        baseAtk = Managers.Game.GetTowerDisplayData(data).currentValue2;
+        baseAtkSpeed = Managers.Game.GetTowerDisplayData(data).currentValue1;
         range = data.range;
         costType = data.costType;
         buyPrice = data.buyPrice;

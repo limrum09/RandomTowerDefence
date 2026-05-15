@@ -1,0 +1,24 @@
+{
+  "datas": [
+    {
+      "UID": "StartingGold",
+      "String_Key": "SSO_StartingGold",
+      "Base_Value": 500
+    },
+    {
+      "UID": "DropGold",
+      "String_Key": "SSO_DropGold",
+      "Base_Value": 10
+    },
+    {
+      "UID": "FreeObstacle",
+      "String_Key": "SSO_FreeObstacle",
+      "Base_Value": 15
+    },
+    {
+      "UID": "FreeTerrainReroll",
+      "String_Key": "SSO_FreeTerrainReroll",
+      "Base_Value": 5
+    }
+  ]
+}

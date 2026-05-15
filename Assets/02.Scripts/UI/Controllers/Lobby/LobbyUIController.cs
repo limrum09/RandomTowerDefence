@@ -1,4 +1,5 @@
 using System;
+using System.Net.NetworkInformation;
 using UnityEngine;
 
 public class LobbyUIController : MonoBehaviour
@@ -13,8 +14,8 @@ public class LobbyUIController : MonoBehaviour
     public event Func<MetaUpgradeTarget, MetaUpgradeType, string, int, bool> OnMetaUpgrade;
     public event Action<string> OnSelectStage;
 
-    private void Start()
-    {
+    private void Awake()
+    { 
         selectPresenter = new SelectStagePresenter(selectView);
 
         selectPresenter.onSelectStage += OnSelectStageLevel;
@@ -30,9 +31,16 @@ public class LobbyUIController : MonoBehaviour
         metaView.OnMetaUpgrade -= OnClickMetaUpgrade;
     }
 
+    private void ShowAllUI()
+    {
+        ShowSelectStageLevelView();
+        ShowMetaUpgradeView();
+    }
+
     private void HideAllUI()
     {
         HideSelectStageLevelView();
+        HideMetaUpgradeView();
     }
 
     private bool OnClickMetaUpgrade(MetaUpgradeTarget metaType, MetaUpgradeType upgradeType, string uid, int upValue)

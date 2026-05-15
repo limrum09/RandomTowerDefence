@@ -50,6 +50,7 @@ public class MetaUpgradeView : MonoBehaviour
 
     public event Func<MetaUpgradeTarget, MetaUpgradeType, string, int, bool> OnMetaUpgrade;
 
+    private bool isShow = true;
     private void Awake()
     {
         BindTowerToggle(humanToggle, TowerType.Human);
@@ -83,14 +84,19 @@ public class MetaUpgradeView : MonoBehaviour
             OnClickPublicToggle();
         });
 
+        isShow = true;
         HIde();
     }
 
     private void OnEnable()
     {
-        publicTypeToggle.isOn = true;
-        OnClickPublicToggle();
-        towersToggleGroup.SetActive(false);
+        if (!isShow)
+        {
+            publicTypeToggle.isOn = true;
+            OnClickPublicToggle();
+            towersToggleGroup.SetActive(false);
+            isShow = true;
+        }        
     }
     private void BindTowerToggle(Toggle toggle, TowerType type)
     {
@@ -109,25 +115,26 @@ public class MetaUpgradeView : MonoBehaviour
     }
     public void HIde()
     {
+        isShow = false;
         frame.gameObject.SetActive(false);
     }
 
     public void OnClickPublicToggle()
     {
-        for(int i = 0; i < selectViews.Count; i++)
+        for(int i = 2; i < selectViews.Count + 2; i++)
         {
             if(Enum.IsDefined(typeof(MetaUpgradeType), i))
             {
-                selectViews[i].gameObject.SetActive(true);
-                selectViews[i].SetPublicDataView((MetaUpgradeType)i, i);
+                selectViews[i - 2].gameObject.SetActive(true);
+                selectViews[i - 2].SetPublicDataView((MetaUpgradeType)i, i - 2);
             }
             else
             {
-                selectViews[i].gameObject.SetActive(false);
+                selectViews[i - 2].gameObject.SetActive(false);
             }
         }
 
-        infoView.SetPublicInfo((MetaUpgradeType)0, MetaUpgradeTarget.Public, 0);
+        infoView.SetPublicInfo((MetaUpgradeType)2, MetaUpgradeTarget.Public, 2);
     }
     public void OnClickTowerToggle(TowerType type)
     {

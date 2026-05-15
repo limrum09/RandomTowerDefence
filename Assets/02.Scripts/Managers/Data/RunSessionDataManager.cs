@@ -91,7 +91,7 @@ public class RunSessionDataManager
 
     public void Init(int stageID, int life, int increaseGold = 0, int freeRoll = 0, int freeObstacle = 0, int terrainRoll = 0)
     {
-        state = new RunSessionState(stageID, life, 300 + increaseGold, freeRoll, 10 + freeObstacle, terrainRoll);
+        state = new RunSessionState(stageID, life, increaseGold, freeRoll, freeObstacle, terrainRoll);
     }
 
     public void TerrainRoll()
