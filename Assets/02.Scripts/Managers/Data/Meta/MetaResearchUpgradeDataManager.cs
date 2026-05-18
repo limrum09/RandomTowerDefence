@@ -24,7 +24,7 @@ public enum CostIncreaseType
 }
 
 [Serializable]
-public class MetaResearchDataRow
+public class MetaResearchUpgradeDataRow
 {
     public string UID;
     public string Target_Type;
@@ -39,12 +39,12 @@ public class MetaResearchDataRow
 }
 
 [Serializable]
-public class MetaResearchDataRowList
+public class MetaResearchUpgradeDataRowList
 {
-    public List<MetaResearchDataRow> datas = new List<MetaResearchDataRow>();
+    public List<MetaResearchUpgradeDataRow> datas = new List<MetaResearchUpgradeDataRow>();
 }
 
-public class MetaResearchData
+public class MetaResearchUpgradeData
 {
     public string uid;
     public MetaUpgradeTarget targetType;
@@ -57,7 +57,7 @@ public class MetaResearchData
     public float costGrow;
     public float valueLevelPer;
 
-    public MetaResearchData(string getUID, MetaUpgradeTarget getTargetType, string getTargetUID, MetaUpgradeType getUpgradeType,
+    public MetaResearchUpgradeData(string getUID, MetaUpgradeTarget getTargetType, string getTargetUID, MetaUpgradeType getUpgradeType,
         string getStringKey, CostIncreaseType getCostIncreastType, int getmaxLevel, int getCostBase, float getCostGrow, float getValueLevelPer)
     {
         uid = getUID;
@@ -86,18 +86,18 @@ public class MetaResearchData
     }
 }
 
-public class MetaResearchDataManager
+public class MetaResearchUpgradeDataManager
 {
-    Dictionary<string, MetaResearchData> metaDatas = new Dictionary<string, MetaResearchData>();
+    Dictionary<string, MetaResearchUpgradeData> metaDatas = new Dictionary<string, MetaResearchUpgradeData>();
 
     private void GetDataToJson()
     {
-        MetaResearchDataRowList rowList = JsonLoader.LoadFromResources<MetaResearchDataRowList>("Data/MetaResearchUpgradeData");
+        MetaResearchUpgradeDataRowList rowList = JsonLoader.LoadFromResources<MetaResearchUpgradeDataRowList>("Data/MetaResearchUpgradeData");
 
         if (rowList == null || rowList.datas == null)
             return;
 
-        foreach(MetaResearchDataRow row in rowList.datas)
+        foreach(MetaResearchUpgradeDataRow row in rowList.datas)
         {
             if (!Enum.TryParse(row.Target_Type, true, out MetaUpgradeTarget metaUpgradeTarget))
                 continue;
@@ -108,7 +108,7 @@ public class MetaResearchDataManager
             if (!Enum.TryParse(row.Type, true, out CostIncreaseType costIncreaseType))
                 continue;
 
-            MetaResearchData data = new MetaResearchData(row.UID, metaUpgradeTarget, row.Target_UID, metaUpgradeType, row.String_Key, costIncreaseType, row.Max, row.Cost_Base, row.Cost_Grow, row.Value_Level_Per);
+            MetaResearchUpgradeData data = new MetaResearchUpgradeData(row.UID, metaUpgradeTarget, row.Target_UID, metaUpgradeType, row.String_Key, costIncreaseType, row.Max, row.Cost_Base, row.Cost_Grow, row.Value_Level_Per);
 
             metaDatas[data.uid] = data;
         }
@@ -120,20 +120,20 @@ public class MetaResearchDataManager
     }
 
 
-    public MetaResearchData GetMetaResearchDataToTower(string getUID, MetaUpgradeTarget target, MetaUpgradeType upgrade)
+    public MetaResearchUpgradeData GetMetaResearchDataToTower(string getUID, MetaUpgradeTarget target, MetaUpgradeType upgrade)
     {
         string type = upgrade == MetaUpgradeType.AttackSpeed ? "ASPD" : "DMG";
         string uid = $"META_TOWER_{getUID}_{type}";
-        if (!metaDatas.TryGetValue(uid, out MetaResearchData data))
+        if (!metaDatas.TryGetValue(uid, out MetaResearchUpgradeData data))
             return null;
 
         return data;
     }
 
-    public MetaResearchData GetMetaResearchDataToPublic(MetaUpgradeTarget target, MetaUpgradeType upgrade)
+    public MetaResearchUpgradeData GetMetaResearchDataToPublic(MetaUpgradeTarget target, MetaUpgradeType upgrade)
     {
         string uid = $"META_PUBLIC_{upgrade.ToString().ToUpper()}";
-        if (!metaDatas.TryGetValue(uid, out MetaResearchData data))
+        if (!metaDatas.TryGetValue(uid, out MetaResearchUpgradeData data))
             return null;
 
         return data;

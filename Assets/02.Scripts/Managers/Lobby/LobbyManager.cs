@@ -8,8 +8,8 @@ public class LobbyManager : MonoBehaviour
     [SerializeField]
     private LobbyUIController lobbyUICtr;
 
-    
 
+    public event Action onChangedResearchLevel;
     private void Awake()
     {
         // SetTowerMetaUpgradeSaveManager(null);
@@ -18,6 +18,8 @@ public class LobbyManager : MonoBehaviour
         {
             lobbyUICtr.OnSelectStage += OnSelectStageLevel;
             lobbyUICtr.OnMetaUpgrade += OnMetaUpgrade;
+
+            onChangedResearchLevel += lobbyUICtr.OnChangedResearchLevel;
         }        
     }
 
@@ -27,27 +29,46 @@ public class LobbyManager : MonoBehaviour
         {
             lobbyUICtr.OnSelectStage -= OnSelectStageLevel;
             lobbyUICtr.OnMetaUpgrade -= OnMetaUpgrade;
+
+            onChangedResearchLevel -= lobbyUICtr.OnChangedResearchLevel;
         }
     }
 
-    public bool OnMetaUpgrade(MetaUpgradeTarget metaType, MetaUpgradeType upgradeType, string uid, int upValue)
+    public bool OnMetaUpgrade(MetaUpgradeTarget metaType, MetaUpgradeType upgradeType, string uid, int upgradeCost, int upValue)
     {
-        if(metaType == MetaUpgradeTarget.Tower)
+        bool isSuccess = false;
+
+        if (metaType == MetaUpgradeTarget.Tower)
         {
             TowerData data = Managers.TowerData.GetTowerData(uid);
 
+            if (!Managers.Player.UseCurrency(upgradeCost))
+                return false;
+
             if (upgradeType == MetaUpgradeType.Damage)
-                return Managers.TowerMetaUpgrade.TowerDamageUpgrade(data.towerType, data.grade, upValue);
+                isSuccess = Managers.TowerMetaUpgrade.TowerDamageUpgrade(data.towerType, data.grade, upValue);
             else if (upgradeType == MetaUpgradeType.AttackSpeed)
-                return Managers.TowerMetaUpgrade.TowerAttackSpeedUpgrade(data.towerType, data.grade, upValue);
+                isSuccess = Managers.TowerMetaUpgrade.TowerAttackSpeedUpgrade(data.towerType, data.grade, upValue);
         }
         else if(metaType == MetaUpgradeTarget.Public)
         {
-            if(Managers.PublicMetaUpgrade.GetPublicMetaType(uid, out MetaUpgradeType publicType))
-                return Managers.PublicMetaUpgrade.PublicMetaUpgrade(publicType, upValue);
+            if (!Managers.Player.UseCurrency(upgradeCost))
+                return false;
+
+            if (Managers.PublicMetaUpgrade.GetPublicMetaType(uid, out MetaUpgradeType publicType))
+                isSuccess = Managers.PublicMetaUpgrade.PublicMetaUpgrade(publicType, upValue);
         }
 
-        return false;
+        if (isSuccess)
+        {
+            if(Managers.Player.AddExp(upgradeCost / 100))
+            {
+                onChangedResearchLevel?.Invoke();
+            }
+        }
+            
+
+        return isSuccess;
     }
 
     private void OnSelectStageLevel(string level)

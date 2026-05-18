@@ -8,7 +8,7 @@ public class MetaUpgradeView : MonoBehaviour
 {
     [Header("Frame")]
     [SerializeField]
-    private GameObject frame;
+    private CanvasGroup canvasGroup;
 
     [Header("User Info")]
     [SerializeField]
@@ -40,6 +40,12 @@ public class MetaUpgradeView : MonoBehaviour
     [SerializeField]
     private GameObject towersToggleGroup;
 
+    [Header("Player Data")]
+    [SerializeField]
+    private TextMeshProUGUI playerLevelText;
+    [SerializeField]
+    private TextMeshProUGUI metaCurrencyText;
+
     [Header("Select Option")]
     [SerializeField]
     private List<MetaUpgradeSelectView> selectViews;
@@ -48,9 +54,10 @@ public class MetaUpgradeView : MonoBehaviour
     [SerializeField]
     private MetaUpgradeInfoView infoView;
 
-    public event Func<MetaUpgradeTarget, MetaUpgradeType, string, int, bool> OnMetaUpgrade;
+    public event Func<MetaUpgradeTarget, MetaUpgradeType, string, int, int, bool> OnMetaUpgrade;
 
     private bool isShow = true;
+    private bool isAwake = false;
     private void Awake()
     {
         BindTowerToggle(humanToggle, TowerType.Human);
@@ -85,19 +92,8 @@ public class MetaUpgradeView : MonoBehaviour
         });
 
         isShow = true;
-        HIde();
     }
 
-    private void OnEnable()
-    {
-        if (!isShow)
-        {
-            publicTypeToggle.isOn = true;
-            OnClickPublicToggle();
-            towersToggleGroup.SetActive(false);
-            isShow = true;
-        }        
-    }
     private void BindTowerToggle(Toggle toggle, TowerType type)
     {
         toggle.onValueChanged.AddListener(isOn =>
@@ -109,14 +105,46 @@ public class MetaUpgradeView : MonoBehaviour
         });
     }
 
+    private void ShowPlayerProgressData()
+    {
+        playerLevelText.text = "Lv. " + Managers.Player.GetPlayerLevel().ToString();
+        metaCurrencyText.text = Managers.Player.GetCurreny().ToString();
+    }
+
     public void Show()
     {
-        frame.gameObject.SetActive(true);
+        canvasGroup.alpha = 1.0f;
+        canvasGroup.interactable = true;
+        canvasGroup.blocksRaycasts = true;
+
+        publicTypeToggle.isOn = true;
+        OnClickPublicToggle();
+
+        towersToggleGroup.SetActive(false);
+        
+        ShowPlayerProgressData();
+        isShow = true;
     }
-    public void HIde()
+
+    public void Hide()
     {
+        if (!isShow)
+            return;
+
         isShow = false;
-        frame.gameObject.SetActive(false);
+
+        canvasGroup.alpha = 0.0f;
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
+
+        if (Managers.isQuitting)
+            return;
+
+        if (Managers.Save == null)
+            return;
+
+        Managers.Save.SavePlayerProgressData();
+        Managers.Save.SaveMetaUpgradeData();
     }
 
     public void OnClickPublicToggle()
@@ -165,9 +193,9 @@ public class MetaUpgradeView : MonoBehaviour
             infoView.SetPublicInfo(getMetaType, type, getIndex);
         }
     }
-    public void MetaUpgrade(MetaUpgradeTarget getType, MetaUpgradeType upgradeType, string uid, int value, int getIndex)
+    public void MetaUpgrade(MetaUpgradeTarget getType, MetaUpgradeType upgradeType, string uid, int upgradeCost, int value, int getIndex)
     {
-        bool complete = OnMetaUpgrade?.Invoke(getType, upgradeType, uid, value) ?? false;
+        bool complete = OnMetaUpgrade?.Invoke(getType, upgradeType, uid, upgradeCost, value) ?? false;
 
         if (complete)
         {
@@ -182,6 +210,18 @@ public class MetaUpgradeView : MonoBehaviour
                 selectViews[getIndex].PublicUIRefresh();
                 infoView.RefreshPublicInfo();
             }
+
+            ShowPlayerProgressData();
+            Managers.Save.MarkMetaUpgradeDirty();
+            Managers.Save.MarkPlayerDirty();
+        }
+    }
+
+    public void ChangedResearchLevel()
+    {
+        for(int i = 0; i < selectViews.Count; i++)
+        {
+            selectViews[i].TowerUIRefresh();
         }
     }
 }

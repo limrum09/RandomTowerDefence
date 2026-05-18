@@ -7,7 +7,7 @@ public class SelectStageView : MonoBehaviour
 {
     [Header("Root")]
     [SerializeField]
-    private GameObject panel;
+    private CanvasGroup canvasGroup;
     [SerializeField]
     private RectTransform panelRect;
 
@@ -64,12 +64,16 @@ public class SelectStageView : MonoBehaviour
     {
         se?.Kill();
 
-        panel.SetActive(true);
+        canvasGroup.alpha = 1.0f;
+        canvasGroup.interactable = true;
+        canvasGroup.blocksRaycasts = true;
     }
 
     public void Hide()
     {
-        panel.SetActive(false);
+        canvasGroup.alpha = 0.0f;
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
     }
 
     public void BindEasyStageButton(UnityAction<string> action) => easyStageButton.onClick.AddListener(() => action?.Invoke("EASY"));

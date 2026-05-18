@@ -1,5 +1,4 @@
 using System;
-using System.Net.NetworkInformation;
 using UnityEngine;
 
 public class LobbyUIController : MonoBehaviour
@@ -11,11 +10,11 @@ public class LobbyUIController : MonoBehaviour
 
     public SelectStagePresenter selectPresenter;
 
-    public event Func<MetaUpgradeTarget, MetaUpgradeType, string, int, bool> OnMetaUpgrade;
+    public event Func<MetaUpgradeTarget, MetaUpgradeType, string, int, int, bool> OnMetaUpgrade;
     public event Action<string> OnSelectStage;
 
     private void Awake()
-    { 
+    {
         selectPresenter = new SelectStagePresenter(selectView);
 
         selectPresenter.onSelectStage += OnSelectStageLevel;
@@ -43,9 +42,15 @@ public class LobbyUIController : MonoBehaviour
         HideMetaUpgradeView();
     }
 
-    private bool OnClickMetaUpgrade(MetaUpgradeTarget metaType, MetaUpgradeType upgradeType, string uid, int upValue)
+    private bool OnClickMetaUpgrade(MetaUpgradeTarget metaType, MetaUpgradeType upgradeType, string uid, int upgradeCost, int upValue)
     {
-        return OnMetaUpgrade?.Invoke(metaType, upgradeType, uid, upValue) ?? false;
+        return OnMetaUpgrade?.Invoke(metaType, upgradeType, uid, upgradeCost, upValue) ?? false;
+    }
+
+    private void OnSelectStageLevel(string level)
+    {
+        HideAllUI();
+        OnSelectStage?.Invoke(level);
     }
 
     public void ShowMetaUpgradeView()
@@ -55,7 +60,7 @@ public class LobbyUIController : MonoBehaviour
 
     public void HideMetaUpgradeView()
     {
-        metaView?.HIde();
+        metaView?.Hide();
     }
 
     public void ShowSelectStageLevelView()
@@ -68,9 +73,8 @@ public class LobbyUIController : MonoBehaviour
         selectPresenter?.Hide();
     }
 
-    public void OnSelectStageLevel(string level)
+    public void OnChangedResearchLevel()
     {
-        HideAllUI();
-        OnSelectStage?.Invoke(level);
+        metaView?.ChangedResearchLevel();
     }
 }

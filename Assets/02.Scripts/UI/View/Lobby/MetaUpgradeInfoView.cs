@@ -42,14 +42,16 @@ public class MetaUpgradeInfoView : MonoBehaviour
     private string uid;
     private int upValue = 1;
     private int index;
+    private int upgradeCostValue1;
+    private int upgradeCostValue2;
 
-    private MetaResearchDataManager metaData;
+    private MetaResearchUpgradeDataManager metaData;
 
     public void SetOwner(MetaUpgradeView getOwner)
     {
         owner = getOwner;
 
-        metaData = Managers.ResearchData;
+        metaData = Managers.ResearchUpgrade;
 
 
         upgradeButton1.onClick.AddListener(OnButton1Click);
@@ -76,7 +78,7 @@ public class MetaUpgradeInfoView : MonoBehaviour
         icon.sprite = Resources.Load<Sprite>($"Tower/Images/Icon_Tower_{towerData.towerType}_{towerData.grade}_Idle");
         optionInfoText.text = "타워 공격력 및 공격속도 영구강화";
 
-        MetaUpgradeDisplayData displayData = Managers.Game.GetTowerDisplayData(towerData);
+        MetaUpgradeCal displayData = Managers.Game.GetTowerDisplayData(towerData);
         upgradeButtonFrame2.SetActive(displayData.useSecondValue);
 
         upgradeTypeText1.text = $"공격 속도 강화 (+{displayData.level1})";
@@ -88,8 +90,11 @@ public class MetaUpgradeInfoView : MonoBehaviour
         nextValueText1.text = displayData.nextValue1.ToString("N2");
         nextValueText2.text = displayData.nextValue2.ToString();
 
-        upgradeValueText1.text = displayData.costValue1.ToString();
-        upgradeValueText2.text = displayData.costValue2.ToString();
+        upgradeCostValue1 = displayData.costValue1;
+        upgradeCostValue2 = displayData.costValue2;
+
+        upgradeValueText1.text = upgradeCostValue1.ToString();
+        upgradeValueText2.text = upgradeCostValue2.ToString();
     }
 
     public void SetPublicInfo(MetaUpgradeType getPubicType, MetaUpgradeTarget getType, int getIndex)
@@ -111,7 +116,7 @@ public class MetaUpgradeInfoView : MonoBehaviour
         nameText.text = Managers.PublicMetaUpgrade.GetTypeName(upgradeType);
         optionInfoText.text = Managers.PublicMetaUpgrade.GetTypeInfoStr(upgradeType);
 
-        MetaUpgradeDisplayData displayData = Managers.Game.GetPublicDisplayData(upgradeType);
+        MetaUpgradeCal displayData = Managers.Game.GetPublicDisplayData(upgradeType);
         
         upgradeButtonFrame2.SetActive(displayData.useSecondValue);
         upgradeTypeText1.text = Managers.PublicMetaUpgrade.GetTypeCountStr(upgradeType) + $" 강화 (+{displayData.level1})";
@@ -124,12 +129,12 @@ public class MetaUpgradeInfoView : MonoBehaviour
 
     private void OnButton1Click()
     {
-        owner.MetaUpgrade(upgradeTarget, MetaUpgradeType.AttackSpeed, uid, upValue, index);
+        owner.MetaUpgrade(upgradeTarget, MetaUpgradeType.AttackSpeed, uid, upgradeCostValue1, upValue, index);
     }
 
     private void OnButton2Click()
     {
-        owner.MetaUpgrade(upgradeTarget, MetaUpgradeType.Damage, uid, upValue, index);
+        owner.MetaUpgrade(upgradeTarget, MetaUpgradeType.Damage, uid, upgradeCostValue2, upValue, index);
     }
 
     private void ResetDatas()

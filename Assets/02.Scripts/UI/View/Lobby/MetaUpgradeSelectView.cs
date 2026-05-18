@@ -1,10 +1,11 @@
-using System.Net.NetworkInformation;
+using System.Drawing;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MetaUpgradeSelectView : MonoBehaviour
 {
+    [Header("Basic")]
     [SerializeField]
     private Image icon;
     [SerializeField]
@@ -30,6 +31,12 @@ public class MetaUpgradeSelectView : MonoBehaviour
     [SerializeField]
     private Button btn;
 
+    [Header("Limit")]
+    [SerializeField]
+    private GameObject limitPanel;
+    [SerializeField]
+    private TextMeshProUGUI limitText;
+
     private MetaUpgradeView Owner;
     private TowerData tower;
     private string getUID;
@@ -39,7 +46,7 @@ public class MetaUpgradeSelectView : MonoBehaviour
 
     private TowerMetaUpgradeManager towerMetaManager;
     private PublicMetaUpgradeManager publicMetaManager;
-    private MetaResearchDataManager metaData;
+    private MetaResearchUpgradeDataManager metaData;
 
     private void ResetDatas()
     {
@@ -54,7 +61,7 @@ public class MetaUpgradeSelectView : MonoBehaviour
     {
         Owner = getOwner;
         btn.onClick.AddListener(OnClickSelectButton);
-        metaData = Managers.ResearchData;
+        metaData = Managers.ResearchUpgrade;
         towerMetaManager = Managers.TowerMetaUpgrade;
         publicMetaManager = Managers.PublicMetaUpgrade;
     }
@@ -70,7 +77,7 @@ public class MetaUpgradeSelectView : MonoBehaviour
         upgradeText1.text = "공격 속도";
         upgradeText2.text = "공격력";
 
-        MetaUpgradeDisplayData displayData = Managers.Game.GetTowerDisplayData(tower);
+        MetaUpgradeCal displayData = Managers.Game.GetTowerDisplayData(tower);
         upgradeFrame2.SetActive(displayData.useSecondValue);
 
         currentValue1.text = displayData.currentValue1.ToString("N2");
@@ -78,6 +85,11 @@ public class MetaUpgradeSelectView : MonoBehaviour
 
         nextValue1.text = displayData.nextValue1.ToString("N2");
         nextValue2.text = displayData.nextValue2.ToString();
+
+        limitPanel.SetActive(displayData.isUnlocked);
+        btn.interactable = !displayData.isUnlocked;
+        if(displayData.isUnlocked)
+            limitText.text = $"연구레벨 <color={"red"}> [{displayData.needResearchLevel}] </color>충족 시 해금";
     }
 
     public void SetTowerDataView(TowerData data, MetaUpgradeTarget getUpgradeType, int getIndex)
@@ -99,11 +111,14 @@ public class MetaUpgradeSelectView : MonoBehaviour
         upgradeText1.text = publicMetaManager.GetTypeCountStr(upgradeType);
         icon.sprite = null;
 
-        MetaUpgradeDisplayData displayData = Managers.Game.GetPublicDisplayData(upgradeType);
+        MetaUpgradeCal displayData = Managers.Game.GetPublicDisplayData(upgradeType);
         upgradeFrame2.SetActive(displayData.useSecondValue);
 
         currentValue1.text = displayData.currentValue1.ToString();
         nextValue1.text = displayData.nextValue1.ToString();
+
+        limitPanel.SetActive(false);
+        btn.interactable = true;
     }
 
     public void SetPublicDataView(MetaUpgradeType type, int getIndex)
