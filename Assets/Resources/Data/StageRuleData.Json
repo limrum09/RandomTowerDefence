@@ -1,0 +1,64 @@
+{
+  "datas": [
+    {
+      "UID": "WaveClearInterestRate",
+      "String_Key": "STAGE_RULE_WAVE_INTEREST",
+      "Value": 10,
+      "Description": "웨이브 클리어 시 현재 보유 골드 기준 이자 비율"
+    },
+    {
+      "UID": "MaxInterestGold",
+      "String_Key": "STAGE_RULE_MAX_INTEREST_GOLD",
+      "Value": 999999,
+      "Description": "이자 계산 시 적용 가능한 최대 골드"
+    },
+    {
+      "UID": "EnemyReachLifeDamage",
+      "String_Key": "STAGE_RULE_ENEMY_LIFE_DAMAGE",
+      "Value": 1,
+      "Description": "적이 목표 지점 도달 시 감소하는 라이프"
+    },
+    {
+      "UID": "ObstacleInstallBaseCost",
+      "String_Key": "STAGE_RULE_OBSTACLE_COST",
+      "Value": 300,
+      "Description": "장애물 설치 기본 비용"
+    },
+    {
+      "UID": "WaveClearRewardGold",
+      "String_Key": "STAGE_RULE_WAVE_CLEAR_GOLD",
+      "Value": 100,
+      "Description": "웨이브 클리어 기본 골드 보상"
+    },
+    {
+      "UID": "WaveClearRewardExp",
+      "String_Key": "STAGE_RULE_WAVE_CLEAR_EXP",
+      "Value": 3,
+      "Description": "웨이브 클리어 기본 경험치 보상"
+    },
+    {
+      "UID": "StageClearMetaCurrency",
+      "String_Key": "STAGE_RULE_STAGE_META_REWARD",
+      "Value": 50,
+      "Description": "스테이지 클리어 시 지급 메타 재화"
+    },
+    {
+      "UID": "BossWaveRewardMultiplier",
+      "String_Key": "STAGE_RULE_BOSS_REWARD_MULTIPLIER",
+      "Value": 2,
+      "Description": "보스 웨이브 보상 배율"
+    },
+    {
+      "UID": "MaxWaveInterestCount",
+      "String_Key": "STAGE_RULE_MAX_INTEREST_COUNT",
+      "Value": 999,
+      "Description": "이자 지급 최대 적용 웨이브 수"
+    },
+    {
+      "UID": "FreeTowerMoveCount",
+      "String_Key": "STAGE_RULE_FREE_MOVE_COUNT",
+      "Value": 1,
+      "Description": "무료 타워 이동 가능 횟수"
+    }
+  ]
+}

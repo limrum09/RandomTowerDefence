@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class MetaUpgradeDisplayData
+public class MetaUpgradeCal
 {
     public int level1;
     public int level2;
@@ -15,6 +15,8 @@ public class MetaUpgradeDisplayData
     public int costValue1;
     public int costValue2;
     public bool useSecondValue;
+    public bool isUnlocked;
+    public int needResearchLevel;
 }
 
 public class GameManager
@@ -31,7 +33,7 @@ public class GameManager
 
     private TowerMetaUpgradeManager towerMetaManager;
     private PublicMetaUpgradeManager publicMetaManager;
-    private MetaResearchDataManager metaData;
+    private MetaResearchUpgradeDataManager metaData;
     private StageStartOptionBaseDataManager startOption;
 
     public string selectDifficultyLevel { get; private set; }
@@ -41,7 +43,7 @@ public class GameManager
         selectDifficultyLevel = string.Empty;
         towerMetaManager = Managers.TowerMetaUpgrade;
         publicMetaManager = Managers.PublicMetaUpgrade;
-        metaData = Managers.ResearchData;
+        metaData = Managers.ResearchUpgrade;
         startOption = Managers.StartOption;
     }
 
@@ -50,46 +52,64 @@ public class GameManager
         selectDifficultyLevel = getDifficulty;
     }
 
-    public MetaUpgradeDisplayData GetTowerDisplayData(TowerData tower)
+    public MetaUpgradeCal GetTowerDisplayData(TowerData tower)
     {
         int damageLevel = towerMetaManager.GetDamageLevel(tower.towerType, tower.grade);
         int speedLevel = towerMetaManager.GetAttackSpeedLevel(tower.towerType, tower.grade);
 
-        MetaResearchData damageData = metaData.GetMetaResearchDataToTower(tower.towerUID, MetaUpgradeTarget.Tower, MetaUpgradeType.Damage);
-        MetaResearchData speedData = metaData.GetMetaResearchDataToTower(tower.towerUID, MetaUpgradeTarget.Tower, MetaUpgradeType.AttackSpeed);
+        MetaResearchUpgradeData damageData = metaData.GetMetaResearchDataToTower(tower.towerUID, MetaUpgradeTarget.Tower, MetaUpgradeType.Damage);
+        MetaResearchUpgradeData speedData = metaData.GetMetaResearchDataToTower(tower.towerUID, MetaUpgradeTarget.Tower, MetaUpgradeType.AttackSpeed);
 
-        return new MetaUpgradeDisplayData()
+        int playerLevel = Managers.Player.GetPlayerLevel();
+        int unlockGrade = Managers.ResearchLevel.GetNeedUnlockLevel(playerLevel);
+        bool isUnlock = tower.grade > unlockGrade;
+
+        return new MetaUpgradeCal()
         {
             level1 = speedLevel,
             level2 = damageLevel,
+
             currentValue1 = speedData.CalculateValue(tower.baseAtkSpeed, speedLevel),
             currentValue2 = damageData.CalculateValue(tower.baseAtk, damageLevel),
+
             nextValue1 = speedData.CalculateValue(tower.baseAtkSpeed, speedLevel + 1),
             nextValue2 = damageData.CalculateValue(tower.baseAtk, damageLevel + 1),
+
             costValue1 = Mathf.CeilToInt(speedData.costBase * Mathf.Pow(speedData.costGrow, speedLevel)),
             costValue2 = Mathf.CeilToInt(damageData.costBase * Mathf.Pow(damageData.costGrow, damageLevel)),
-            useSecondValue = true
+
+            useSecondValue = true,
+
+            isUnlocked = isUnlock,
+            needResearchLevel = isUnlock ? Managers.ResearchLevel.GetNeedUnlockLevel(tower.grade) : 0
         };
     }
 
-    public MetaUpgradeDisplayData GetPublicDisplayData(MetaUpgradeType type)
+    public MetaUpgradeCal GetPublicDisplayData(MetaUpgradeType type)
     {
         int level = publicMetaManager.GetPublicMetaDataLevel(type);
 
-        MetaResearchData publicData = metaData.GetMetaResearchDataToPublic(MetaUpgradeTarget.Public, type);
+        MetaResearchUpgradeData publicData = metaData.GetMetaResearchDataToPublic(MetaUpgradeTarget.Public, type);
         StageStartOptionBaseData baseData = startOption.GetStartOptionData(type);
 
-        return new MetaUpgradeDisplayData()
+        return new MetaUpgradeCal()
         {
             level1 = level,
             level2 = -9999,
+
             currentValue1 = publicData.CalculateValue(baseData.baseValue, level),
             currentValue2 = 0.0f,
+
             nextValue1 = publicData.CalculateValue(baseData.baseValue, level + 1),
             nextValue2 = 0.0f,
+
             costValue1 = Mathf.CeilToInt(publicData.costBase * Mathf.Pow(publicData.costGrow, level)),
             costValue2 = 99999,
-            useSecondValue = false
+
+            useSecondValue = false,
+
+            isUnlocked = false,
+            needResearchLevel = 1
         };
     }
 }

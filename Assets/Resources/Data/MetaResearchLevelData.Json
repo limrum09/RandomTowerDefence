@@ -1,0 +1,70 @@
+{
+  "datas": [
+    {
+      "Research_Level": 1,
+      "Required_EXP": 0,
+      "Unlock_Research_Grade": 1,
+      "Note": "시작 레벨"
+    },
+    {
+      "Research_Level": 2,
+      "Required_EXP": 600,
+      "Unlock_Research_Grade": 2,
+      "Note": "일부 시작 보조 강화 해금"
+    },
+    {
+      "Research_Level": 3,
+      "Required_EXP": 1500,
+      "Unlock_Research_Grade": 3,
+      "Note": "공격력 강화 상한 확장"
+    },
+    {
+      "Research_Level": 4,
+      "Required_EXP": 3000,
+      "Unlock_Research_Grade": 3,
+      "Note": ""
+    },
+    {
+      "Research_Level": 5,
+      "Required_EXP": 5000,
+      "Unlock_Research_Grade": 4,
+      "Note": "상위 메타 강화 해금"
+    },
+    {
+      "Research_Level": 6,
+      "Required_EXP": 8000,
+      "Unlock_Research_Grade": 4,
+      "Note": ""
+    },
+    {
+      "Research_Level": 7,
+      "Required_EXP": 12000,
+      "Unlock_Research_Grade": 5,
+      "Note": ""
+    },
+    {
+      "Research_Level": 8,
+      "Required_EXP": 17000,
+      "Unlock_Research_Grade": 5,
+      "Note": ""
+    },
+    {
+      "Research_Level": 9,
+      "Required_EXP": 23000,
+      "Unlock_Research_Grade": 6,
+      "Note": "무한 모드 이후 심화 연구 진입 조건"
+    },
+    {
+      "Research_Level": 10,
+      "Required_EXP": 30000,
+      "Unlock_Research_Grade": 6,
+      "Note": ""
+    },
+    {
+      "Research_Level": 11,
+      "Required_EXP": 40000,
+      "Unlock_Research_Grade": 6,
+      "Note": ""
+    }
+  ]
+}

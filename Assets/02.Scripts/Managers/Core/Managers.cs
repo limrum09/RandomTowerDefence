@@ -1,5 +1,5 @@
 using System;
-using System.Net.NetworkInformation;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Managers : MonoBehaviour
@@ -20,6 +20,8 @@ public class Managers : MonoBehaviour
     public static bool HasInstance => instance != null && isQuitting;
 
     private GameManager game = new GameManager();
+    private SaveDataManager saveDataManager = new SaveDataManager();
+    private PlayerProgressManager playerProgressData = new PlayerProgressManager();
     private InputManager input = new InputManager();
     private TowerDataManager tower = new TowerDataManager();
     private EnemyDataManager enemy = new EnemyDataManager();
@@ -28,18 +30,22 @@ public class Managers : MonoBehaviour
     private TowerSkillDataManager towerSkill = new TowerSkillDataManager();
     private ItemDataManager item = new ItemDataManager();
     private TowerSessionUpgradeManager sessionUpgrade = new TowerSessionUpgradeManager();
+    private StageRuleDataManager stageRuleData = new StageRuleDataManager();
     private WaveDataManager wave = new WaveDataManager();
     private WaveEnemyRosterDataManager waveRoster = new WaveEnemyRosterDataManager();
     private PoolManager pool = new PoolManager();
     private GameEffectManager effectManager = new GameEffectManager();
     private StageStartOptionBaseDataManager startOptionDataManager = new StageStartOptionBaseDataManager();
-    private MetaResearchDataManager metaResearch = new MetaResearchDataManager();
+    private MetaResearchUpgradeDataManager metaResearchUpgrade = new MetaResearchUpgradeDataManager();
+    private MetaResearchLevelDataManager metaResearchLevel = new MetaResearchLevelDataManager();
 
     [Header("SaveDatas")]
     private TowerMetaUpgradeManager towerMetaUpgrade = new TowerMetaUpgradeManager();
     private PublicMetaUpgradeManager pulbicMeraUpgrade = new PublicMetaUpgradeManager();
 
     public static GameManager Game { get { return Instance.game; } }
+    public static SaveDataManager Save { get { return Instance.saveDataManager; } }
+    public static PlayerProgressManager Player {  get { return Instance.playerProgressData; } }
     public static InputManager InputData { get { return Instance.input; } }
     public static TowerDataManager TowerData { get { return Instance.tower; } }
     public static EnemyDataManager EnemyData { get { return Instance.enemy; } }
@@ -48,12 +54,14 @@ public class Managers : MonoBehaviour
     public static TowerSkillDataManager TowerSkill { get { return Instance.towerSkill; } } 
     public static ItemDataManager Item {  get { return Instance.item; } }
     public static TowerSessionUpgradeManager SessionTowerUpgrade {  get { return Instance.sessionUpgrade; } }
+    public static StageRuleDataManager StageRules { get { return Instance.stageRuleData; } }
     public static WaveDataManager Wave {  get { return Instance.wave; } }
     public static WaveEnemyRosterDataManager WaveRoster { get { return Instance.waveRoster; } }
     public static PoolManager Pool { get { return Instance.pool; } }
     public static GameEffectManager Effect { get { return Instance.effectManager; } }
-    public static MetaResearchDataManager ResearchData { get { return Instance.metaResearch; } }
+    public static MetaResearchUpgradeDataManager ResearchUpgrade { get { return Instance.metaResearchUpgrade; } }
     public static StageStartOptionBaseDataManager StartOption { get { return Instance.startOptionDataManager; } }
+    public static MetaResearchLevelDataManager ResearchLevel { get { return Instance.metaResearchLevel; } }
 
     public static TowerMetaUpgradeManager TowerMetaUpgrade { get { return Instance.towerMetaUpgrade; } }
     public static PublicMetaUpgradeManager PublicMetaUpgrade { get { return Instance.pulbicMeraUpgrade; } }
@@ -86,20 +94,24 @@ public class Managers : MonoBehaviour
         TowerSkill.Init();
         item.Init();
         SessionTowerUpgrade.Inti();
+        StageRules.Init();
         Wave.Init();
         WaveRoster.Init();
         Pool.Init();
         Effect.Init();
         StartOption.Init();
-        ResearchData.Init();
-
+        ResearchUpgrade.Init();
+        ResearchLevel.Init();
 
         // SaveData에서 데이터들을 다 넣어 줘야할 듯
+        Save.LoadAllData();
+
         OnEndLoadDatas?.Invoke();
     }
 
     private void OnApplicationQuit()
     {
+        Save.SaveAllData();
         isQuitting = true;
     }
 

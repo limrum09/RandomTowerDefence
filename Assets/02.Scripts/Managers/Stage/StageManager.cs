@@ -459,6 +459,10 @@ public class StageManager : MonoBehaviour
         currentWave++;
         sessionManager.SetWave(currentWave);
         RunSession.AddExp(3);
+
+        // 이자 주기 추가
+        int interest = (sessionManager.SessionState.Gold) / Managers.StageRules.GetRuleData(StageRules.WaveClearInterestRate);
+        UsingGold(interest);
         OnWaveEnd?.Invoke();
     }
 

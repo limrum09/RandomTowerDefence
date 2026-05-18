@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 19644846}
   - component: {fileID: 19644847}
+  - component: {fileID: 19644848}
   m_Layer: 5
   m_Name: LobbyUI
   m_TagString: Untagged
@@ -172,6 +173,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectView: {fileID: 1584895920}
   metaView: {fileID: 1960422434}
+--- !u!225 &19644848
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19644845}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &21289127
 GameObject:
   m_ObjectHideFlags: 0
@@ -6405,10 +6418,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1738309558}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1960422434}
+        m_TargetAssemblyTypeName: MetaUpgradeView, Assembly-CSharp
+        m_MethodName: Hide
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -10577,6 +10590,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1584895919}
   - component: {fileID: 1584895920}
+  - component: {fileID: 1584895921}
   m_Layer: 5
   m_Name: SelectStage
   m_TagString: Untagged
@@ -10616,7 +10630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f89769e31572ef048b2a62dfa6d94fc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel: {fileID: 406137231}
+  canvasGroup: {fileID: 1584895921}
   panelRect: {fileID: 0}
   background: {fileID: 872022815}
   easyStageButton: {fileID: 822701925}
@@ -10628,6 +10642,18 @@ MonoBehaviour:
   buttonMoveDuration: 0.25
   buttonDelay: 0.06
   buttonStartYOffset: -40
+--- !u!225 &1584895921
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584895918}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &1604192945
 GameObject:
   m_ObjectHideFlags: 0
@@ -13610,6 +13636,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1960422433}
   - component: {fileID: 1960422434}
+  - component: {fileID: 1960422435}
   m_Layer: 5
   m_Name: MetaUpgrades
   m_TagString: Untagged
@@ -13649,7 +13676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1782f979c56b12f44815164ef4ac9006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frame: {fileID: 1738309558}
+  canvasGroup: {fileID: 1960422435}
   levelText: {fileID: 1643006771}
   metaCurrenyText: {fileID: 1031030108}
   publicTypeToggle: {fileID: 1209681960}
@@ -13661,6 +13688,8 @@ MonoBehaviour:
   dragonianToggle: {fileID: 1289361658}
   wereBeastToggle: {fileID: 488285539}
   towersToggleGroup: {fileID: 1394118848}
+  playerLevelText: {fileID: 1643006771}
+  metaCurrencyText: {fileID: 1031030108}
   selectViews:
   - {fileID: 5846997167505190221}
   - {fileID: 777917684}
@@ -13669,6 +13698,18 @@ MonoBehaviour:
   - {fileID: 1866037517}
   - {fileID: 3010001117287236025}
   infoView: {fileID: 982103925}
+--- !u!225 &1960422435
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960422432}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &1963236623
 GameObject:
   m_ObjectHideFlags: 0
