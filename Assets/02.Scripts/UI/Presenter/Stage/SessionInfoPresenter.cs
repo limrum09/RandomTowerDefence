@@ -24,6 +24,7 @@ public class SessionInfoPresenter
         model.OnExpChanged += view.SetCurrentExpBar;
         model.OnLifeChanged += view.SetCurrentLife;
         model.OnWaveChanged += view.SetCurrentWave;
+        model.OnWaveRemainEnemyCount += view.SetEnemyRemainCount;
     }
     public void UnBindAction()
     {
@@ -31,5 +32,6 @@ public class SessionInfoPresenter
         model.OnExpChanged -= view.SetCurrentExpBar;
         model.OnLifeChanged -= view.SetCurrentLife;
         model.OnWaveChanged -= view.SetCurrentWave;
+        model.OnWaveRemainEnemyCount -= view.SetEnemyRemainCount;
     }
 }

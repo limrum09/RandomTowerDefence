@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-using UnityEditor.ShaderGraph.Internal;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -62,6 +62,8 @@ public class StageManager : MonoBehaviour
     private bool isSpawning;
     private bool isStagePlaying;
     private int aliveEnemyCnt;
+    private int waveTotalEnemyCount;
+    private int waveRemoveEnemyCount;
     private int currentWave;
     private int speedIndex;
     private int[] speedValue = { 1, 2, 3, 4 };
@@ -118,12 +120,15 @@ public class StageManager : MonoBehaviour
     {
         BindEvents();
 
-        wave.Init(Managers.Game.selectDifficultyLevel + "_W001");
         currentWave = 1;
-        sessionManager.SetWave(currentWave);
-        line.Init(gridWidth, gridHeight, cellSize, mapPlane.transform.position);
         isResetTerrain = true;
         speedIndex = 0;
+        waveTotalEnemyCount = 0;
+        waveRemoveEnemyCount = 0;
+
+        wave.Init(Managers.Game.selectDifficultyLevel + "_W001");
+        sessionManager.SetWave(currentWave);
+        line.Init(gridWidth, gridHeight, cellSize, mapPlane.transform.position);
 
         AfterSettingsInit();
     }
@@ -201,6 +206,8 @@ public class StageManager : MonoBehaviour
         {
             OnWaveEnd += waveManager.WaveEnd;
             waveManager.onWaveRosterData += StageUICtr.SetWaveEnemyInfo;
+            waveManager.onWaveRosterData += enemySpawn.SetSpawnEnemyInfo;
+            waveManager.onWaveRosterData += SetWaveRosterData;
         }
     }
 
@@ -213,7 +220,6 @@ public class StageManager : MonoBehaviour
             enemySpawn.OnSpawnEnd += EnemySpawnEnd;
             enemySpawn.OnEnemyReached += RegisterReachedEnemy;
             enemySpawn.OnEnemyDead += RegisterDeadEnemy;
-            waveManager.onWaveRosterData += enemySpawn.SetSpawnEnemyInfo;
         }
     }
 
@@ -302,6 +308,8 @@ public class StageManager : MonoBehaviour
         {
             OnWaveEnd -= waveManager.WaveEnd;
             waveManager.onWaveRosterData -= StageUICtr.SetWaveEnemyInfo;
+            waveManager.onWaveRosterData -= enemySpawn.SetSpawnEnemyInfo;
+            waveManager.onWaveRosterData += SetWaveRosterData;
         }
     }
 
@@ -314,7 +322,6 @@ public class StageManager : MonoBehaviour
             enemySpawn.OnSpawnEnd -= EnemySpawnEnd;
             enemySpawn.OnEnemyReached -= RegisterReachedEnemy;
             enemySpawn.OnEnemyDead -= RegisterDeadEnemy;
-            waveManager.onWaveRosterData -= enemySpawn.SetSpawnEnemyInfo;
         }
     }
 
@@ -457,12 +464,15 @@ public class StageManager : MonoBehaviour
 
         isStagePlaying = false;
         currentWave++;
-        sessionManager.SetWave(currentWave);
-        RunSession.AddExp(3);
+        waveRemoveEnemyCount = 0;
+        waveTotalEnemyCount = 0;
 
-        // 이자 주기 추가
-        int interest = (sessionManager.SessionState.Gold) / Managers.StageRules.GetRuleData(StageRules.WaveClearInterestRate);
+        sessionManager.SetWave(currentWave);
+        RunSession.AddExp(Managers.StageRules.GetRuleData(StageRules.WaveClearRewardExp));
+
+        int interest = sessionManager.SessionState.Gold / Managers.StageRules.GetRuleData(StageRules.WaveClearInterestRate);
         UsingGold(interest);
+
         OnWaveEnd?.Invoke();
     }
 
@@ -492,6 +502,8 @@ public class StageManager : MonoBehaviour
         UsingGold(reward);
         sessionManager.AddkillCount(1);
         aliveEnemyCnt--;
+
+        WaveRemoveEnemy();
         CheckWaveEnd();
     }
 
@@ -502,7 +514,34 @@ public class StageManager : MonoBehaviour
     {
         aliveEnemyCnt--;
         sessionManager.ChangeLife(-1);
+
+        WaveRemoveEnemy();
         CheckWaveEnd();
+    }
+
+    private void SetWaveRosterData(List<WaveEnemyRosterData> datas)
+    {
+        waveTotalEnemyCount = 0;
+        waveRemoveEnemyCount = 0;
+
+        for(int i = 0; i < datas.Count; i++)
+        {
+            waveTotalEnemyCount += datas[i].enemyCount;
+        }
+
+        sessionManager.RemainEnemyCount(waveTotalEnemyCount - waveRemoveEnemyCount, waveTotalEnemyCount);
+    }
+
+    private void WaveRemoveEnemy()
+    {
+        waveRemoveEnemyCount++;
+        sessionManager.RemainEnemyCount(waveTotalEnemyCount - waveRemoveEnemyCount, waveTotalEnemyCount);
+    }
+
+    private void SummonEnemy(int spwanCnt)
+    {
+        waveTotalEnemyCount += spwanCnt;
+        sessionManager.RemainEnemyCount(waveTotalEnemyCount - waveRemoveEnemyCount, waveTotalEnemyCount);
     }
 
     /// <summary>
@@ -684,7 +723,7 @@ public class StageManager : MonoBehaviour
     /// 이미 웨이브가 진행 중이면 시작하지 않음
     /// 웨이브 시작이 가능하면 적 스폰을 시작
     /// </summary>
-    public void StageStart()
+    public void WaveStart()
     {
         if (isStagePlaying)
         {

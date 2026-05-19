@@ -1,7 +1,5 @@
 using System;
-using System.Net.NetworkInformation;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
 public class RunSessionState
 {
@@ -14,6 +12,7 @@ public class RunSessionState
     private int currentExp;
     private int totalKillCount;
     private int waveKillCount;
+    private int arriveEnemyCount;
     private int freeRollCount;
     private int freeObstacleCount;
     private int terrainRollCount;
@@ -29,6 +28,7 @@ public class RunSessionState
     public int CurrentExp => currentExp;
     public int TotalKillCnt => totalKillCount;
     public int WaveKillCnt => waveKillCount;
+    public int ArriveEnemyCnt => arriveEnemyCount;
     public int FreeRollCnt => freeRollCount;
     public int FreeObstacleCnt => freeObstacleCount;
     public int TerrainRollCnt => terrainRollCount;
@@ -49,6 +49,7 @@ public class RunSessionState
         currentExp = 0;
         totalKillCount = 0;
         waveKillCount = 0;
+        arriveEnemyCount = 0;
         isWaveRunning = false;
         isStageEnded = false;
     }
@@ -66,6 +67,7 @@ public class RunSessionState
     public void SetWave(int value)=> currentWave = Math.Max(1, value);
     public void SetTotalSkillCount(int value) => totalKillCount = Math.Max(0, value);
     public void SetWaveSkillCount(int value) => waveKillCount = Math.Max(0, value);
+    public void SetArriveEnemyCount(int value) => arriveEnemyCount = Math.Max(0, value);
     public void SetFreeRollCount(int value) => freeRollCount = Math.Max(0, value);
     public void SetFreeObstacleCount(int value) => freeObstacleCount = Math.Max(0, value);
     public void SetWaveRunning(bool value) => isWaveRunning = value;
@@ -83,6 +85,7 @@ public class RunSessionDataManager
     public event Action<int> OnObstacleCntChanged;
     public event Action<int> OnRollCntChanged;
     public event Action<int, int> OnKillCntChanged;
+    public event Action<int, int> OnWaveRemainEnemyCount;
 
     private RunSessionState state;
     private SessionRule rule = new SessionRule();
@@ -147,6 +150,7 @@ public class RunSessionDataManager
             return;
 
         state.SetLife(state.CurrentLife + value);
+        state.SetArriveEnemyCount(state.ArriveEnemyCnt + 1);
 
         OnLifeChanged?.Invoke(state.CurrentLife);
     }
@@ -160,6 +164,11 @@ public class RunSessionDataManager
         state.SetWaveSkillCount(state.WaveKillCnt + amount);
 
         OnKillCntChanged?.Invoke(state.TotalKillCnt, state.WaveKillCnt);
+    }
+
+    public void RemainEnemyCount(int remain, int totalCnt)
+    {
+        OnWaveRemainEnemyCount?.Invoke(remain, totalCnt);
     }
 
     public void SetWave(int wave)

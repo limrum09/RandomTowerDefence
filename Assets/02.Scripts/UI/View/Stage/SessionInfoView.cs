@@ -1,9 +1,11 @@
 using TMPro;
+using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SessionInfoView : MonoBehaviour
 {
+    [Header("Level")]
     [SerializeField]
     private TextMeshProUGUI currentLevelText;
     [SerializeField]
@@ -11,11 +13,18 @@ public class SessionInfoView : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI needExpText;
     [SerializeField]
+    private Image expBar;
+
+    [Header("Wave")]
+    [SerializeField]
     private TextMeshProUGUI currentWaveText;
     [SerializeField]
-    private TextMeshProUGUI currentLifeText;
+    private TextMeshProUGUI currentSpawnEnemyCountText;
+
+    [Header("Life")]
     [SerializeField]
-    private Image expBar;
+    private TextMeshProUGUI currentLifeText;
+    
 
     public void SetCurrentLevel(int value)
     {
@@ -34,6 +43,8 @@ public class SessionInfoView : MonoBehaviour
         float expPer = (float)currentExp / needExp;
         expBar.fillAmount = expPer;
     }
-    public void SetCurrentWave(int value) => currentWaveText.text = value.ToString();
+
+    public void SetEnemyRemainCount(int remain, int total) => currentSpawnEnemyCountText.text = $"{remain} / {total}";
+    public void SetCurrentWave(int value) => currentWaveText.text = $"{value.ToString()} / 60";
     public void SetCurrentLife(int value) => currentLifeText.text = value.ToString();
 }
