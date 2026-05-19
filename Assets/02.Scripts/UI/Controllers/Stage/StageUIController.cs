@@ -390,10 +390,12 @@ public class StageUIController : MonoBehaviour
     {
         OnStagePause?.Invoke();
     }
+
     public void StageContinue()
     {
         OnStageContinue?.Invoke();
     }
+
     public void MoveToLobby()
     {
         OnMoveToLobby.Invoke();

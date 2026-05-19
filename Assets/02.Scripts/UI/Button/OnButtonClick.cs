@@ -8,6 +8,6 @@ public class OnButtonClick : MonoBehaviour
     private StageManager stage;
     public void OnClickGameStartButton()
     {
-        stage.StageStart();
+        stage.WaveStart();
     }
 }

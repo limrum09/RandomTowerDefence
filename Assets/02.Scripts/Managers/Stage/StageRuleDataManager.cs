@@ -20,7 +20,7 @@ public class StageRuleRow
 {
     public string UID;
     public string String_Key;
-    public int value;
+    public int Value;
     public string Description;
 }
 
@@ -59,7 +59,7 @@ public class StageRuleDataManager
             if (!Enum.TryParse(row.UID, true, out StageRules uid))
                 continue;
 
-            StageRuleData data = new StageRuleData(uid, row.String_Key, row.value);
+            StageRuleData data = new StageRuleData(uid, row.String_Key, row.Value);
 
             stageRules[data.uid] = data;
         }
