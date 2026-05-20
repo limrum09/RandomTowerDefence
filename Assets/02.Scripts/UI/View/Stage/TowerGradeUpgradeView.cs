@@ -6,36 +6,43 @@ using UnityEngine.UI;
 
 public class TowerGradeUpgradeView : MonoBehaviour, IPopUpPublicUI
 {
+    [Header("Info")]
     [SerializeField]
     private Image iconImage;
     [SerializeField]
     private TextMeshProUGUI towerNameText;
     [SerializeField]
     private TextMeshProUGUI towerGradeText;
+
+    [Header("Skill Texts")]
     [SerializeField]
     private TextMeshProUGUI towerSkillText;
     [SerializeField]
     private TextMeshProUGUI towerSkillDesText;
+
+    [Header("Stat Value Texts")]
     [SerializeField]
     private TextMeshProUGUI damageCurrentValueText;
     [SerializeField]
     private TextMeshProUGUI attackSpeedCurrentValueText;
     [SerializeField]
     private TextMeshProUGUI rangeCurretnValueText;
+
+    [Header("Price Texts")]
     [SerializeField]
     private TextMeshProUGUI premiunUpgradePriceText;
     [SerializeField]
     private TextMeshProUGUI normalUpgradePriceText;
     [SerializeField]
     private TextMeshProUGUI towerSellPriceText;
-    [SerializeField]
-    private TextMeshProUGUI normalBtnText;
-    [SerializeField]
-    private TextMeshProUGUI premiumBtnText;
+
+    [Header("Images")]
     [SerializeField]
     private Image upgradeMaster1;
     [SerializeField]
     private Image upgradeMaster2;
+
+    [Header("Buttons")]
     [SerializeField]
     private Button normalUpgradeBtn;
     [SerializeField]
@@ -43,6 +50,19 @@ public class TowerGradeUpgradeView : MonoBehaviour, IPopUpPublicUI
     [SerializeField]
     private Button sellBtn;
 
+    [Header("Local Texts")]
+    [SerializeField]
+    private TextMeshProUGUI damageText;
+    [SerializeField]
+    private TextMeshProUGUI attackSpeedText;
+    [SerializeField]
+    private TextMeshProUGUI rangeText;
+    [SerializeField]
+    private TextMeshProUGUI normalBtnText;
+    [SerializeField]
+    private TextMeshProUGUI premiumBtnText;
+    [SerializeField]
+    private TextMeshProUGUI towerSellBtnText;
     public void Clear()
     {
         towerNameText.text = "";
@@ -56,8 +76,13 @@ public class TowerGradeUpgradeView : MonoBehaviour, IPopUpPublicUI
         towerSellPriceText.text = "";
         towerGradeText.text = "";
 
-        normalBtnText.text = $"일반 강화 ({Managers.InputData.GetKeyCode(InputAction.TowerGradeNormalUpgrade)})";
-        premiumBtnText.text = $"고정 강화 ({Managers.InputData.GetKeyCode(InputAction.TowerGradePremiunUpgrade)})";
+        normalBtnText.text = $"{Managers.Local.GetString("TOWER_NORMAL_UPGRADE")} ({Managers.InputData.GetKeyCode(InputAction.TowerGradeNormalUpgrade)})";
+        premiumBtnText.text = $"{Managers.Local.GetString("TOWER_FIXED_UPGRADE")} ({Managers.InputData.GetKeyCode(InputAction.TowerGradePremiumUpgrade)})";
+        towerSellBtnText.text = $"{Managers.Local.GetString("TEXT_SELL")}";
+        damageText.text = Managers.Local.GetString("TEXT_ATK_DAMAGE");
+        attackSpeedText.text = Managers.Local.GetString("TEXT_ATK_SPEED");
+        rangeText.text = Managers.Local.GetString("TEXT_ATK_RANGE");
+
         normalUpgradeBtn.interactable = true;
         premiumUpgradeBtn.interactable = true;
 
@@ -90,7 +115,7 @@ public class TowerGradeUpgradeView : MonoBehaviour, IPopUpPublicUI
             return;
         }
 
-        towerGradeText.text = grade.ToString() + "등급";
+        towerGradeText.text = string.Format(Managers.Local.GetString("TEXT_GRADE"), grade);
         upgradeMaster1.gameObject.SetActive(false);
         upgradeMaster2.gameObject.SetActive(false);
     }

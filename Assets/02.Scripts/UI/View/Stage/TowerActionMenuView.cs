@@ -26,10 +26,10 @@ public class TowerActionMenuView : MonoBehaviour
 
     public void Show()
     {
-        towerMoveBtnText.text = $"타워이동({Managers.InputData.GetKeyCode(InputAction.MoveTower)})";
-        towerGradeupGradeBtnText.text = $"타워 정보 보기({Managers.InputData.GetKeyCode(InputAction.ShowGradeUpgradeTowerView)})";
-        towerStatUpgradeBtnText.text = $"타워 스탯 강화({Managers.InputData.GetKeyCode(InputAction.ShowStatUpgradeTowerView)})";
-        toQueueSlotBtnText.text = $"대기열로 이동 ({Managers.InputData.GetKeyCode(InputAction.TowerMoveToQueueSlot)})"; 
+        towerMoveBtnText.text = $"{Managers.Local.GetString("INPUT_ACTION_" + InputAction.MoveTower.ToString().ToUpper())}({Managers.InputData.GetKeyCode(InputAction.MoveTower)})";
+        towerGradeupGradeBtnText.text = $"{Managers.Local.GetString("INPUT_ACTION_" + InputAction.ShowGradeUpgradeTowerView.ToString().ToUpper())}({Managers.InputData.GetKeyCode(InputAction.ShowGradeUpgradeTowerView)})";
+        towerStatUpgradeBtnText.text = $"{Managers.Local.GetString("INPUT_ACTION_" + InputAction.ShowStatUpgradeTowerView.ToString().ToUpper())}({Managers.InputData.GetKeyCode(InputAction.ShowStatUpgradeTowerView)})";
+        toQueueSlotBtnText.text = $"{Managers.Local.GetString("INPUT_ACTION_" + InputAction.TowerMoveToQueueSlot.ToString().ToUpper())} ({Managers.InputData.GetKeyCode(InputAction.TowerMoveToQueueSlot)})"; 
 
         root.SetActive(true);
     }

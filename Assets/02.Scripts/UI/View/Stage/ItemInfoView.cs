@@ -22,6 +22,10 @@ public class ItemInfoView : MonoBehaviour
     [SerializeField]
     private Button itemSellBtn;
 
+    [Header("Local Texts")]
+    [SerializeField]
+    private TextMeshProUGUI sellBtnText;
+
     private void Clear()
     {
         itemNameText.text = string.Empty;
@@ -30,6 +34,8 @@ public class ItemInfoView : MonoBehaviour
         itemScopeText.text = string.Empty; 
         itemDescriptionText.text = string.Empty;
         itemPriceText.text = string.Empty;
+
+        sellBtnText.text = Managers.Local.GetString("TEXT_SELL");
     }
 
     public void Hide()

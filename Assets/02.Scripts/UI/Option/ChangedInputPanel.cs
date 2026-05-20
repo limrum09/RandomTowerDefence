@@ -14,22 +14,6 @@ public class ChangedInputPanel : MonoBehaviour
     private string currentChar;
     private string lastChar;
 
-    public void SetInputPanel(InputAction input)
-    {
-        isChanging = false;
-        action = input;
-        lastChar = string.Empty;
-
-        inputField.onValueChanged.RemoveListener(OnChangeInputAction);
-        inputField.onSubmit.RemoveListener(OnSubmit);
-
-        inputField.onValueChanged.AddListener(OnChangeInputAction);
-        inputField.onSubmit.AddListener(OnSubmit);
-
-        currentChar = Managers.InputData.GetKeyCode(action).ToString();
-        inputField.SetTextWithoutNotify(currentChar);
-    }
-
     private void OnChangeInputAction(string s)
     {
         if (isChanging)
@@ -46,7 +30,7 @@ public class ChangedInputPanel : MonoBehaviour
         isChanging = false;
     }
 
-    private void OnSubmit(string s)
+    private void TryApplyInput(string s)
     {
         if (string.IsNullOrEmpty(s))
             return;
@@ -55,9 +39,34 @@ public class ChangedInputPanel : MonoBehaviour
             return;
 
         if (!Managers.InputData.KeyChange(action, key))
+        {
+            inputField.SetTextWithoutNotify(currentChar);
             return;
+        }            
 
+        SetInputActionText();
+        Managers.Save.MarkInputDirty();
+    }
+
+    public void SetInputPanel(InputAction input)
+    {
+        isChanging = false;
+        action = input;
+        lastChar = string.Empty;
+
+        inputField.onValueChanged.RemoveListener(OnChangeInputAction);
+        inputField.onEndEdit.RemoveListener(TryApplyInput);
+
+        inputField.onValueChanged.AddListener(OnChangeInputAction);
+        inputField.onEndEdit.AddListener(TryApplyInput);
+
+        SetInputActionText();
+    }
+
+    public void SetInputActionText()
+    {
         currentChar = Managers.InputData.GetKeyCode(action).ToString();
+        inputNameText.text = Managers.Local.GetString("INPUT_ACTION_" + action.ToString().ToUpper());
         inputField.SetTextWithoutNotify(currentChar);
     }
 }

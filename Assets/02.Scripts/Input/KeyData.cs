@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using Unity.VisualScripting.InputSystem;
 using UnityEngine;
 
 /// <summary>
@@ -13,14 +15,28 @@ public enum InputAction
     ShowGradeUpgradeTowerView,
     ShowStatUpgradeTowerView,
     TowerGradeNormalUpgrade,
-    TowerGradePremiunUpgrade,
-    TowerStatDamgeUpgrade,
+    TowerGradePremiumUpgrade,
+    TowerStatDamageUpgrade,
     TowerStatAttackSpeedUpgrade,
     Buy,
     MakeObstacle,
     RemoveObstacle,
     NPCInteraction,
     Options
+}
+
+
+[Serializable]
+public class InputKeyData
+{
+    public string action;
+    public string keyCode;
+}
+
+[Serializable]
+public class InputKeySaveData
+{
+    public List<InputKeyData> datas = new List<InputKeyData>();
 }
 
 /// <summary>
@@ -44,8 +60,8 @@ public class KeyData
         keys[InputAction.ShowGradeUpgradeTowerView] = KeyCode.Z;
         keys[InputAction.ShowStatUpgradeTowerView] = KeyCode.X;
         keys[InputAction.TowerGradeNormalUpgrade] = KeyCode.E;
-        keys[InputAction.TowerGradePremiunUpgrade] = KeyCode.D;
-        keys[InputAction.TowerStatDamgeUpgrade] = KeyCode.W;
+        keys[InputAction.TowerGradePremiumUpgrade] = KeyCode.D;
+        keys[InputAction.TowerStatDamageUpgrade] = KeyCode.W;
         keys[InputAction.TowerStatAttackSpeedUpgrade] = KeyCode.S;
         keys[InputAction.Buy] = KeyCode.B;
         keys[InputAction.MakeObstacle] = KeyCode.R;
@@ -105,5 +121,43 @@ public class KeyData
         }
 
         return false;
+    }
+
+    public void LoadInputKeySaveData(InputKeySaveData saveData)
+    {
+        ResetKeyCodes();
+
+        if (saveData == null)
+            return;
+
+        foreach(InputKeyData data in saveData.datas)
+        {
+            if (!Enum.TryParse(data.action, true, out InputAction action))
+                continue;
+
+            if (!Enum.TryParse(data.keyCode, true, out KeyCode keyCode))
+                continue;
+
+            keys[action] = keyCode;
+        }        
+    }
+
+    public InputKeySaveData GetSaveData()
+    {
+        InputKeySaveData saveData = new InputKeySaveData();
+        saveData.datas.Clear();
+
+        foreach(InputAction inputAction in Enum.GetValues(typeof(InputAction)))
+        {
+            InputKeyData data = new InputKeyData
+            {
+                action = inputAction.ToString(),
+                keyCode = keys[inputAction].ToString()
+            };
+
+            saveData.datas.Add(data);
+        }
+
+        return saveData;
     }
 }

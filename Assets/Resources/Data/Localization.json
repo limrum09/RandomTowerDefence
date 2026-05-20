@@ -673,66 +673,6 @@
       "": ""
     },
     {
-      "String_Key": "SHOP_REFRESH",
-      "KR": "새로고침",
-      "EN": "Refresh",
-      "": ""
-    },
-    {
-      "String_Key": "SHOP_EXP",
-      "KR": "경험치 구매",
-      "EN": "Buy EXP",
-      "": ""
-    },
-    {
-      "String_Key": "ATK_DAMAGE_UPGRADE",
-      "KR": "공격력 강화",
-      "EN": "Damage Upgrade",
-      "": ""
-    },
-    {
-      "String_Key": "ATK_SPEED_UPGRADE",
-      "KR": "공격속도 강화",
-      "EN": "Attack Speed Upgrade",
-      "": ""
-    },
-    {
-      "String_Key": "ATK_DAMAGE",
-      "KR": "공격력",
-      "EN": "Damage",
-      "": ""
-    },
-    {
-      "String_Key": "ATK_SPEED",
-      "KR": "공격속도",
-      "EN": "Attack Speed",
-      "": ""
-    },
-    {
-      "String_Key": "ATK_RANGE",
-      "KR": "사거리",
-      "EN": "Attack Range",
-      "": ""
-    },
-    {
-      "String_Key": "HEALTH_TEXT",
-      "KR": "체력",
-      "EN": "Health",
-      "": ""
-    },
-    {
-      "String_Key": "DEFENSE_TEXT",
-      "KR": "방어력",
-      "EN": "Defense",
-      "": ""
-    },
-    {
-      "String_Key": "MOVE_SPEED_TEXT",
-      "KR": "이동속도",
-      "EN": "Move Speed",
-      "": ""
-    },
-    {
       "String_Key": "TOWER_SESSION_STATE_UPGRADE",
       "KR": "강화하기",
       "EN": "Upgrade",
@@ -754,24 +694,6 @@
       "String_Key": "TOWER_NORMAL_UPGRADE",
       "KR": "일반 강화",
       "EN": "Normal Upgrade",
-      "": ""
-    },
-    {
-      "String_Key": "PURCHASE",
-      "KR": "구매하기",
-      "EN": "Buy",
-      "": ""
-    },
-    {
-      "String_Key": "SELL",
-      "KR": "판매하기",
-      "EN": "Sell",
-      "": ""
-    },
-    {
-      "String_Key": "TOWER_UPGRADE_STEP",
-      "KR": "{0}강",
-      "EN": "+{0}",
       "": ""
     },
     {
@@ -903,6 +825,354 @@
     {
       "String_Key": "QUEST_LIMIT_WAVE_20",
       "KR": "20웨이브 안에",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "INPUT_ACTION_MOVETOWER",
+      "KR": "타워 이동",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "INPUT_ACTION_MAKETOWER",
+      "KR": "타워 생성",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "INPUT_ACTION_TOWERMOVETOQUEUESLOT",
+      "KR": "대기열로 이동",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "INPUT_ACTION_SHOWGRADEUPGRADETOWERVIEW",
+      "KR": "타워 정보 보기",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "INPUT_ACTION_SHOWSTATUPGRADETOWERVIEW",
+      "KR": "타워 스탯 강화",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "INPUT_ACTION_TOWERGRADENORMALUPGRADE",
+      "KR": "일반 강화",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "INPUT_ACTION_TOWERGRADEPREMIUMUPGRADE",
+      "KR": "고정 강화",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "INPUT_ACTION_TOWERSTATDAMAGEUPGRADE",
+      "KR": "공격력 강화",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "INPUT_ACTION_TOWERSTATATTACKSPEEDUPGRADE",
+      "KR": "공격 속도 강화",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "INPUT_ACTION_BUY",
+      "KR": "구매",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "INPUT_ACTION_MAKEOBSTACLE",
+      "KR": "장애물 생성",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "INPUT_ACTION_REMOVEOBSTACLE",
+      "KR": "장애물 제거",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "INPUT_ACTION_NPCINTERACTION",
+      "KR": "NPC 대화",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "INPUT_ACTION_OPTIONS",
+      "KR": "옵션 보기",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "SETTING_GRAPHIC",
+      "KR": "그래픽",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "SETTING_SOUND",
+      "KR": "사운드",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "SETTING_SHORTCUTKEY",
+      "KR": "단축키",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "SETTING_BGM_SELECT",
+      "KR": "배경음악 선택",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "SETTING_MASTER_VOLUME",
+      "KR": "마스터 볼륨",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "SETTING_BGM_VOLUME",
+      "KR": "배경음악 볼륨",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "SETTING_SFX_VOLUME",
+      "KR": "일반 효과음",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "SETTING_UI_VOLUME",
+      "KR": "UI 효과음",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "TEXT_SETTING_GRAPHIC",
+      "KR": "그래픽 설정",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "TEXT_SETTING_SOUND",
+      "KR": "사운드 설정",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "TEXT_SETTING_SHORTCUTKEY",
+      "KR": "단축키 설정",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "TEXT_UPGRADE_STEP",
+      "KR": "{0}강",
+      "EN": "+{0}",
+      "": ""
+    },
+    {
+      "String_Key": "TEXT_GRADE",
+      "KR": "{0}등급",
+      "EN": "Grade",
+      "": ""
+    },
+    {
+      "String_Key": "TEXT_ATK_DAMAGE_UPGRADE",
+      "KR": "공격력 강화",
+      "EN": "Damage Upgrade",
+      "": ""
+    },
+    {
+      "String_Key": "TEXT_ATK_SPEED_UPGRADE",
+      "KR": "공격속도 강화",
+      "EN": "Attack Speed Upgrade",
+      "": ""
+    },
+    {
+      "String_Key": "TEXT_ATK_DAMAGE",
+      "KR": "공격력",
+      "EN": "Damage",
+      "": ""
+    },
+    {
+      "String_Key": "TEXT_ATK_SPEED",
+      "KR": "공격속도",
+      "EN": "Attack Speed",
+      "": ""
+    },
+    {
+      "String_Key": "TEXT_ATK_RANGE",
+      "KR": "사거리",
+      "EN": "Attack Range",
+      "": ""
+    },
+    {
+      "String_Key": "TEXT_UPGRADE",
+      "KR": "강화하기",
+      "EN": "Upgrade",
+      "": ""
+    },
+    {
+      "String_Key": "TEXT_SKILL_NAME",
+      "KR": "스킬 이름",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "TEXT_HEALTH",
+      "KR": "체력",
+      "EN": "Health",
+      "": ""
+    },
+    {
+      "String_Key": "TEXT_DEFENSE",
+      "KR": "방어력",
+      "EN": "Defense",
+      "": ""
+    },
+    {
+      "String_Key": "TEXT_MOVE_SPEED",
+      "KR": "이동속도",
+      "EN": "Move Speed",
+      "": ""
+    },
+    {
+      "String_Key": "TEXT_PURCHASE",
+      "KR": "구매하기",
+      "EN": "Buy",
+      "": ""
+    },
+    {
+      "String_Key": "TEXT_SELL",
+      "KR": "판매하기",
+      "EN": "Sell",
+      "": ""
+    },
+    {
+      "String_Key": "TEXT_REMAIN_ENEMY",
+      "KR": "남은 수",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "TEXT_MOVE_LOBBY_CHECK",
+      "KR": "정말로 로비로 이동하시겠습니까?\n\n중단된 게임은 저장되지 않으며,\n보상은 획득할 수 없습니다.",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "TEXT_RESET_CHECK",
+      "KR": "정말 초기화 \n하시겠습니까?",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "BUTTON_RESET",
+      "KR": "기본값 복원",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "BUTTON_APPLY",
+      "KR": "적용",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "BUTTON_OK",
+      "KR": "확인",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "BUTTON_CANCEL",
+      "KR": "취소",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "BUTTON_CANCEL_LONG",
+      "KR": "취소하기",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "BUTTON_MOVE",
+      "KR": "이동하기",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "BUTTON_MOVE_LOBBY",
+      "KR": "로비로 나가기",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "BUTTON_CONTINUE",
+      "KR": "계속하기",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "BUTTON_EXIT",
+      "KR": "나가기",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "BUTTON_INPUT_OPTION",
+      "KR": "옵션 설정",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "BUTTON_REFRESH",
+      "KR": "새로고침",
+      "EN": "Refresh",
+      "": ""
+    },
+    {
+      "String_Key": "BUTTON_SHOP_EXP",
+      "KR": "경험치 구매",
+      "EN": "Buy EXP",
+      "": ""
+    },
+    {
+      "String_Key": "BUTTON_SHOP_DOWN",
+      "KR": "상점 내리기",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "BUTTON_SHOP_UP",
+      "KR": "상점 올리기",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "BUTTON_TERRAIN_REFRESH",
+      "KR": "스테이지\n새로고침",
+      "EN": "",
+      "": ""
+    },
+    {
+      "String_Key": "BUTTON_WAVE_START",
+      "KR": "웨이브\n시작",
       "EN": "",
       "": ""
     }

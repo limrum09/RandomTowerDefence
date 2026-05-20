@@ -675,7 +675,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6185925057820633105}
   - component: {fileID: 152362327763733505}
-  - component: {fileID: 4961080799352857241}
+  - component: {fileID: 2643416202667934837}
   m_Layer: 5
   m_Name: ChangeInputPanel
   m_TagString: Untagged
@@ -712,7 +712,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7301780042741177010}
   m_CullTransparentMesh: 1
---- !u!114 &4961080799352857241
+--- !u!114 &2643416202667934837
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -721,7 +721,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7301780042741177010}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7072f06f8bb87524cabca5b964c610c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 142d02fa84a52904580f54aa18946fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   inputNameText: {fileID: 7704050834684671191}

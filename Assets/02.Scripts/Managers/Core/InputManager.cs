@@ -25,6 +25,11 @@ public class InputManager
         keyData.ResetKeyCodes();
     }
 
+    public void LoadInputKeyData(InputKeySaveData saveData)
+    {
+        keyData.LoadInputKeySaveData(saveData);
+    }
+
     /// <summary>
     /// 지정한 입력 액션에 연결된 keycode 반환
     /// </summary>
@@ -55,6 +60,9 @@ public class InputManager
     /// <returns>변경 성공 여부 </returns>
     public bool KeyChange(InputAction key, KeyCode newCode)
     {
+        if (newCode == KeyCode.None)
+            return false;
+
         // 이미 사용중인 키라면 중복 방지를 위해 실패
         if (keyData.ContainsValue(key, newCode))
             return false;
@@ -164,6 +172,11 @@ public class InputManager
         return component != null;
     }
 
+    /// <summary>
+    /// 마우스가 카메라 안에서 클릭한 것인지 확인
+    /// </summary>
+    /// <param name="camera"></param>
+    /// <returns></returns>
     public bool IsMouseInsideCameraView(Camera camera)
     {
         if(camera == null) 
@@ -172,5 +185,10 @@ public class InputManager
         Vector3 viewPos = camera.ScreenToViewportPoint(Input.mousePosition);
 
         return viewPos.x >= 0f && viewPos.x <= 1f && viewPos.y >= 0f && viewPos.y <= 1f && viewPos.z >= 0f && viewPos.z <= 1f;
+    }
+
+    public InputKeySaveData GetSaveData()
+    {
+        return keyData.GetSaveData();
     }
 }

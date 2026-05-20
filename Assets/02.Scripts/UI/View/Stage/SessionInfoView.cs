@@ -1,5 +1,4 @@
 using TMPro;
-using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,7 +23,10 @@ public class SessionInfoView : MonoBehaviour
     [Header("Life")]
     [SerializeField]
     private TextMeshProUGUI currentLifeText;
-    
+
+    [Header("Local Texts")]
+    [SerializeField]
+    private TextMeshProUGUI remainText;
 
     public void SetCurrentLevel(int value)
     {
@@ -34,6 +36,7 @@ public class SessionInfoView : MonoBehaviour
             frontText += "0";
 
         currentLevelText.text = frontText + value.ToString();
+        remainText.text = Managers.Local.GetString("TEXT_REMAIN_ENEMY");
     }
     public void SetCurrentExpBar(int currentExp, int needExp)
     {

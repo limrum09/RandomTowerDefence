@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class TowerStatUpgradeView : MonoBehaviour
 {
+    [Header("Info")]
     [SerializeField]
     private Image iconImage;
     [SerializeField]
@@ -13,6 +14,8 @@ public class TowerStatUpgradeView : MonoBehaviour
     private TextMeshProUGUI towerGradeText;
     [SerializeField]
     private TextMeshProUGUI towerSkillText;
+
+    [Header("Stat Value Text")]
     [SerializeField]
     private TextMeshProUGUI currentDamageStepText;
     [SerializeField]
@@ -22,8 +25,6 @@ public class TowerStatUpgradeView : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI nextDamageValueText;
     [SerializeField]
-    private TextMeshProUGUI damagePriceText;
-    [SerializeField]
     private TextMeshProUGUI currentAttackSpeedStepText;
     [SerializeField]
     private TextMeshProUGUI currentAttackSpeedValueText;
@@ -31,13 +32,41 @@ public class TowerStatUpgradeView : MonoBehaviour
     private TextMeshProUGUI nextAttackSpeedStepText;
     [SerializeField]
     private TextMeshProUGUI nextAttackSpeedValueText;
+
+    [Header("Upgrade Value Text")]
+    [SerializeField]
+    private TextMeshProUGUI damagePriceText;
     [SerializeField]
     private TextMeshProUGUI attackSpeedPriceText;
 
+    [Header("UpGrade Button")]
     [SerializeField]
     private Button damageStatUpgradeBtn;
     [SerializeField]
     private Button attackSpeedStatUpgradeBtn;
+
+    [Header("Local Texts")]
+    [SerializeField]
+    private TextMeshProUGUI damageUpgradeText;
+    [SerializeField]
+    private TextMeshProUGUI attackSpeedUpgradeText;
+    [SerializeField]
+    private TextMeshProUGUI damageUpgradeButtonText;
+    [SerializeField]
+    private TextMeshProUGUI attackSpeedUpgradeButtonText;
+
+    private string upgradeText;
+    private string gradeText;
+    public void Init()
+    {
+        damageUpgradeText.text = Managers.Local.GetString("TEXT_ATK_DAMAGE_UPGRADE");
+        attackSpeedUpgradeText.text = Managers.Local.GetString("TEXT_ATK_SPEED_UPGRADE");
+        damageUpgradeButtonText.text = Managers.Local.GetString("TEXT_UPGRADE");
+        attackSpeedUpgradeButtonText.text = Managers.Local.GetString("TEXT_UPGRADE");
+
+        upgradeText = Managers.Local.GetString("TEXT_UPGRADE_STEP");
+        gradeText = Managers.Local.GetString("TEXT_GRADE");
+    }
 
     public void Clear()
     {
@@ -77,19 +106,19 @@ public class TowerStatUpgradeView : MonoBehaviour
             return;
         }
 
-        towerGradeText.text = grade.ToString() + "등급";
+        towerGradeText.text = string.Format(gradeText, grade);
     }
 
     public void SetTowerName(string name) => towerNameText.text = name;
     public void SetSkillName(string name) => towerSkillText.text = name;
-    public void SetCurrentDamageStepText(int value) => currentDamageStepText.text = $"{value}강";
+    public void SetCurrentDamageStepText(int value) => currentDamageStepText.text = string.Format(upgradeText, value);
     public void SetCurrentDamageText(float value) => currentDamageValueText.text = value.ToString();
-    public void SetNextDamageStepText(int value) => nextDamageStepText.text = $"{value}강";
+    public void SetNextDamageStepText(int value) => nextDamageStepText.text = string.Format(upgradeText, value);
     public void SetNextDamageText(string value) => nextDamageValueText.text = value;
     public void SetDamaePriceText(int value) => damagePriceText.text = value.ToString();
-    public void SetCurrentAttakSpeedStepText(int value) => currentAttackSpeedStepText.text = $"{value}강";
+    public void SetCurrentAttakSpeedStepText(int value) => currentAttackSpeedStepText.text = string.Format(upgradeText, value);
     public void SetCurrentAttakSpeedText(float value) => currentAttackSpeedValueText.text = value.ToString();
-    public void SetNextAttakSpeedStepText(int value) => nextAttackSpeedStepText.text = $"{value}강";
+    public void SetNextAttakSpeedStepText(int value) => nextAttackSpeedStepText.text = string.Format(upgradeText, value);
     public void SetNextAttakSpeedText(string value) => nextAttackSpeedValueText.text = value;
     public void SetAttakSpeedPriceText(int value) => attackSpeedPriceText.text = value.ToString();
 

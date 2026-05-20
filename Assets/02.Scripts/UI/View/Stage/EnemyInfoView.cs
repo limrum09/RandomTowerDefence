@@ -4,23 +4,35 @@ using UnityEngine.UI;
 
 public class EnemyInfoView : MonoBehaviour
 {
+    [Header("Info")]
     [SerializeField]
     private Image iconImage;
     [SerializeField]
     private TextMeshProUGUI enemyNameText;
     [SerializeField]
     private TextMeshProUGUI enemyLevelText;
+
+    [Header("Stat Value Texts")]
     [SerializeField]
     private TextMeshProUGUI enemyHealthValueText;
     [SerializeField]
     private TextMeshProUGUI enemySheildValueText;
     [SerializeField]
     private TextMeshProUGUI enemySpeedValueText;
+
+    [Header("Skill Texts")]
     [SerializeField]
     private TextMeshProUGUI skillNameText;
     [SerializeField]
     private TextMeshProUGUI skillDesText;
 
+    [Header("Local Text")]
+    [SerializeField]
+    private TextMeshProUGUI healthText;
+    [SerializeField]
+    private TextMeshProUGUI shieldText;
+    [SerializeField]
+    private TextMeshProUGUI speedText;
     private void Clear()
     {
         iconImage.sprite = null;
@@ -31,6 +43,10 @@ public class EnemyInfoView : MonoBehaviour
         enemySpeedValueText.text = string.Empty;
         skillNameText.text = string.Empty;
         skillDesText.text = string.Empty;
+
+        healthText.text = Managers.Local.GetString("TEXT_HEALTH");
+        shieldText.text = Managers.Local.GetString("TEXT_DEFENSE");
+        speedText.text = Managers.Local.GetString("TEXT_MOVE_SPEED");
     }
 
     public void Hide()

@@ -23,7 +23,7 @@ public class RerollButtonClick : MonoBehaviour
 
     public void SetRerollCnt(int cnt)
     {
-        text.text = $"스테이지\n새로고침({cnt})";
+        text.text = $"{Managers.Local.GetString("BUTTON_TERRAIN_REFRESH")}({cnt})";
         if (cnt <= 0)
         {
             OffRerollButton();
