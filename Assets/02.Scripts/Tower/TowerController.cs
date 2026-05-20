@@ -150,7 +150,7 @@ public class TowerController : MonoBehaviour
             }
 
             // 등급 업그레이드 모드이고, 프리미엄 업그레이드 단축키 실행
-            if (isGradeUpgradeMode && Input.GetKeyDown(Managers.InputData.GetKeyCode(InputAction.TowerGradePremiunUpgrade)))
+            if (isGradeUpgradeMode && Input.GetKeyDown(Managers.InputData.GetKeyCode(InputAction.TowerGradePremiumUpgrade)))
             {
                 // 등급 입력 처리 후, 모드 해체
                 isGradeUpgradeMode = false;

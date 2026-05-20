@@ -12,6 +12,7 @@ public class TowerStatUpgradePresernter
     {
         view = getView;
 
+        view.Init();
         view.BindDamageUpgrade(OnClickDamageStatUpgrade);
         view.BindAttakSpeedUpgrade(OnClickAttakSpeedUpgrade);
     }

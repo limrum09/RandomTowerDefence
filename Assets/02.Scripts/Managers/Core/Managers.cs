@@ -21,6 +21,7 @@ public class Managers : MonoBehaviour
 
     private GameManager game = new GameManager();
     private SaveDataManager saveDataManager = new SaveDataManager();
+    private SoundManager sound = new SoundManager();
     private PlayerProgressManager playerProgressData = new PlayerProgressManager();
     private InputManager input = new InputManager();
     private TowerDataManager tower = new TowerDataManager();
@@ -45,6 +46,7 @@ public class Managers : MonoBehaviour
 
     public static GameManager Game { get { return Instance.game; } }
     public static SaveDataManager Save { get { return Instance.saveDataManager; } }
+    public static SoundManager Sound {  get { return Instance.sound; } }
     public static PlayerProgressManager Player {  get { return Instance.playerProgressData; } }
     public static InputManager InputData { get { return Instance.input; } }
     public static TowerDataManager TowerData { get { return Instance.tower; } }
@@ -71,8 +73,7 @@ public class Managers : MonoBehaviour
 
     private void Start()
     {
-        // 임시, 나중에 지워야 함
-        InputData.Init();
+        
     }
 
     private void Awake()
@@ -102,6 +103,10 @@ public class Managers : MonoBehaviour
         StartOption.Init();
         ResearchUpgrade.Init();
         ResearchLevel.Init();
+        
+        Sound.Init();
+        // 임시, 나중에 지워야 함
+        InputData.Init();
 
         // SaveData에서 데이터들을 다 넣어 줘야할 듯
         Save.LoadAllData();
