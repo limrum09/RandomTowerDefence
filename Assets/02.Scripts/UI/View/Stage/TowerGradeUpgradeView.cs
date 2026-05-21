@@ -50,19 +50,11 @@ public class TowerGradeUpgradeView : MonoBehaviour, IPopUpPublicUI
     [SerializeField]
     private Button sellBtn;
 
-    [Header("Local Texts")]
-    [SerializeField]
-    private TextMeshProUGUI damageText;
-    [SerializeField]
-    private TextMeshProUGUI attackSpeedText;
-    [SerializeField]
-    private TextMeshProUGUI rangeText;
+    [Header("ButtonTexts")]
     [SerializeField]
     private TextMeshProUGUI normalBtnText;
     [SerializeField]
     private TextMeshProUGUI premiumBtnText;
-    [SerializeField]
-    private TextMeshProUGUI towerSellBtnText;
     public void Clear()
     {
         towerNameText.text = "";
@@ -76,12 +68,8 @@ public class TowerGradeUpgradeView : MonoBehaviour, IPopUpPublicUI
         towerSellPriceText.text = "";
         towerGradeText.text = "";
 
-        normalBtnText.text = $"{Managers.Local.GetString("TOWER_NORMAL_UPGRADE")} ({Managers.InputData.GetKeyCode(InputAction.TowerGradeNormalUpgrade)})";
-        premiumBtnText.text = $"{Managers.Local.GetString("TOWER_FIXED_UPGRADE")} ({Managers.InputData.GetKeyCode(InputAction.TowerGradePremiumUpgrade)})";
-        towerSellBtnText.text = $"{Managers.Local.GetString("TEXT_SELL")}";
-        damageText.text = Managers.Local.GetString("TEXT_ATK_DAMAGE");
-        attackSpeedText.text = Managers.Local.GetString("TEXT_ATK_SPEED");
-        rangeText.text = Managers.Local.GetString("TEXT_ATK_RANGE");
+        normalBtnText.text = $"{Managers.Local.GetString("Sheets", "TOWER_NORMAL_UPGRADE")} ({Managers.InputData.GetKeyCode(InputAction.TowerGradeNormalUpgrade)})";
+        premiumBtnText.text = $"{Managers.Local.GetString("Sheets", "TOWER_FIXED_UPGRADE")} ({Managers.InputData.GetKeyCode(InputAction.TowerGradePremiumUpgrade)})";
 
         normalUpgradeBtn.interactable = true;
         premiumUpgradeBtn.interactable = true;
@@ -115,7 +103,7 @@ public class TowerGradeUpgradeView : MonoBehaviour, IPopUpPublicUI
             return;
         }
 
-        towerGradeText.text = string.Format(Managers.Local.GetString("TEXT_GRADE"), grade);
+        towerGradeText.text = string.Format(Managers.Local.GetString("Sheets", "TEXT_GRADE"), grade);
         upgradeMaster1.gameObject.SetActive(false);
         upgradeMaster2.gameObject.SetActive(false);
     }

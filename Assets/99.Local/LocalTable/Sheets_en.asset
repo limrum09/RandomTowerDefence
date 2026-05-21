@@ -1,0 +1,842 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Sheets_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 945091da205a7454694823968473e24c, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 22988075008
+    m_Localized: Worn Sharpening Stone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046528
+    m_Localized: Increases ATK of all towers by <color=#FF4545>[2]</color>.\nIt shows
+      its age, but the edge is still razor-sharp.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046529
+    m_Localized: Commander's Banner
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046530
+    m_Localized: Increases ATK of all towers by <color=#FF4545>[3]</color>.\nBoosts
+      the morale of allies from the heart of the battlefield.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046531
+    m_Localized: Royal Decree
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046532
+    m_Localized: Increases ATK of Human towers by <color=#FF4545>[4]</color>.\nUnder
+      the strict imperial discipline, humans unite to strengthen the flow of battle.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046533
+    m_Localized: World Tree's Leaf
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046534
+    m_Localized: Increases ATK of Elf towers by <color=#FF4545>[4]</color>.\nThe
+      mystical energy of nature dwells within the Elves.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046535
+    m_Localized: WarCry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046536
+    m_Localized: Increases ATK of Orc towers by <color=#FF4545>[4]</color>.\nA fierce
+      roar awakens the primal instincts of the warriors.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046537
+    m_Localized: Feral Instinct
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046538
+    m_Localized: Increases ATK of Werebeast towers by <color=#FF4545>[4]</color>.\nSharp
+      instincts allow them to strike at the enemy's weak points.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046539
+    m_Localized: Dragon Bone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046540
+    m_Localized: Increases ATK of Dragonian towers by <color=#FF4545>[4]</color>.\nEssence
+      extracted from dragon bones empowers Dragonians to become more like true dragons.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046541
+    m_Localized: Steel Core
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046542
+    m_Localized: Increases ATK of Dwarf towers by <color=#FF4545>[4]</color>.\nThe
+      steel core hardens the Dwarves, the children of the earth.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046543
+    m_Localized: Haste's Rune Stone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046544
+    m_Localized: Increases ATK Speed of all towers by <color=#FF4545>[2]</color>.\nThe
+      flow of mana makes your fingertips feel light.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046545
+    m_Localized: Haste's Rune Stone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046546
+    m_Localized: Increases ATK Speed of all towers by <color=#FF4545>[4]</color>.\nA
+      more powerful surge of mana swirls across the battlefield.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046547
+    m_Localized: Master's Blueprint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046548
+    m_Localized: Reduces skill trigger requirements for all towers by <color=#FF4545>[1]</color>.\nEfficient
+      design allows for faster skill usage.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046549
+    m_Localized: Lucky Coin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046550
+    m_Localized: Increases Gold gained upon killing an enemy by <color=#FF4545>[1]</color>.\nThe
+      Goddess of Luck is watching over you.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046551
+    m_Localized: Lucky Coin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046552
+    m_Localized: Increases Gold gained upon killing an enemy by <color=#FF4545>[2]</color>.\nThe
+      Goddess of Luck looks into your pockets.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046553
+    m_Localized: Small Potion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046554
+    m_Localized: Immediately restores <color=#FF4545>[3]</color> Life.\nA common
+      potion that gently soothes wounds.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046555
+    m_Localized: Middle Potion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046556
+    m_Localized: Immediately restores <color=#FF4545>[5]</color> Life.\nA potion
+      carefully brewed by a professional alchemist.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046557
+    m_Localized: Large Potion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046558
+    m_Localized: Immediately restores <color=#FF4545>[10]</color> Life.\nA rare elixir
+      brewed by a master alchemist.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046559
+    m_Localized: Treasure Pouch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046560
+    m_Localized: Immediately grants a random amount of Gold (Max <color=#FF4545>[15]</color>).\nIts
+      heavy weight is a sign of good things to come.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046561
+    m_Localized: Merchant's Ledger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046562
+    m_Localized: Increases the maximum bonus interest at the end of a wave by <color=#FF4545>[10]</color>.\nMeticulous
+      records lead to efficient asset management.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046563
+    m_Localized: Merchant's Ledger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046564
+    m_Localized: Increases the maximum bonus interest at the end of a wave by <color=#FF4545>[20]</color>.\nThe
+      market's capital flows directly to you.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046565
+    m_Localized: Membership Card
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046566
+    m_Localized: Expands Tower Queue slots by <color=#FF4545>[1]</color>.\nAllows
+      for more strategic tower preparation.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046567
+    m_Localized: Expansion Blueprint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046568
+    m_Localized: Expands Market Sales slots by <color=#FF4545>[1]</color>.\nA wider
+      variety of items now arrive at the market.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046569
+    m_Localized: Human
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046570
+    m_Localized: Elf
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046571
+    m_Localized: Dwarf
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046572
+    m_Localized: Orc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046573
+    m_Localized: Dragonian
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046574
+    m_Localized: Were Beast
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046575
+    m_Localized: Golden Prosperity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046576
+    m_Localized: 'The hegemony of gold that moves the world pulses even more powerfully
+      at the humans'' fingertips.\nOwn Human Towers: <color=#FF4545>[{0} / {1} /
+      {2} / {3}]</color>\nIncreases Interest Rate by <color=#FF4545>[{4} / {5} /
+      {6} / {7}]%p</color> at the end of the round.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046577
+    m_Localized: Spiritual Resonance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046578
+    m_Localized: 'The mystical energy of nature connects spirits and Elves as one.\nOwn
+      Elf Towers: <color=#FF4545>[{0} / {1} / {2} / {3}]</color>\nIncreases ATK of
+      all Elf towers by <color=#FF4545>[{4} / {5} / {6} / {7}]</color>.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046579
+    m_Localized: Armor Breaker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046580
+    m_Localized: 'Dwarven precision strikes pierce through the enemy''s toughest
+      parts.\nOwn Dwarf Towers: <color=#FF4545>[{0} / {1} / {2}]</color>\nReduces
+      enemy Defense by <color=#FF4545>[{3} / {4} / {5}]%</color>.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046581
+    m_Localized: Horde's Pressure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046582
+    m_Localized: 'With a fierce roar, the Orcs'' overwhelming power crushes the battlefield.\nOwn
+      Orc Towers: <color=#FF4545>[{0} / {1} / {2} / {3}]</color>\nIncreases ATK by
+      <color=#FF4545>[{4} / {5} / {6} / {7}]</color> (Step.4: Applies <color=#45A2FF>Slow</color>
+      on attack).'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046583
+    m_Localized: Draconic Might
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046584
+    m_Localized: 'Ancient split dragon factors pulse hotly within the veins of Dragonians.\nOwn
+      Dragonian Towers: <color=#FF4545>[{0} / {1} / {2} / {3} / {4} / {5}]</color>\nIncreases
+      ATK of all Dragonian towers by <color=#FF4545>[{6} / {7} / {8} / {9} / {10}
+      / {11}]</color>.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046585
+    m_Localized: Predator's Eye
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046586
+    m_Localized: 'The Werebeast''s eyes, flashing even in the dark, never miss their
+      prey.\nOwn Werebeast Towers: <color=#FF4545>[{0} / {1} / {2} / {3}]</color>\nIncreases
+      Critical Chance by <color=#FF4545>[{4} / {5} / {6} / {7}]%p</color>.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046587
+    m_Localized: None Skill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046588
+    m_Localized: Has no special abilities.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046589
+    m_Localized: Vital Regen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046590
+    m_Localized: 'Recovers {1} HP of self every {0}s. (Cooldown: {2}s)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046591
+    m_Localized: Sacred Sanctuary
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046592
+    m_Localized: 'Deploys a sanctuary for {0}s, recovering {2} HP of allies within
+      range every {1}s. (Cooldown: {3}s)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046593
+    m_Localized: Limit Break
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046594
+    m_Localized: 'Unleashes potential to increase Move Speed by {2}% for {0}s. (Cooldown:
+      {3}s)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046595
+    m_Localized: Time Warp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046596
+    m_Localized: 'Increases Move Speed of allies within {0} range by {2}% for {1}s.
+      (Cooldown: {3}s)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046597
+    m_Localized: Mana Barrier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046598
+    m_Localized: 'Creates a mana shield to absorb {1} damage for {0}s. (Cooldown:
+      {2}s)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046599
+    m_Localized: Guardian Field
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046600
+    m_Localized: 'Grants a shield to allies within {0} range that absorbs {2} damage
+      for {1}s. (Cooldown: {3}s)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046601
+    m_Localized: Frost Shackles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046602
+    m_Localized: 'Freezes enemies to reduce their ATK Speed by {1}% for {0}s. (Cooldown:
+      {2}s)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046603
+    m_Localized: Enfeeble Curse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046604
+    m_Localized: 'Curses enemies to reduce their ATK by {1}% for {0}s. (Cooldown:
+      {2}s)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046605
+    m_Localized: Minion Swarm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046606
+    m_Localized: 'Summons a swarm of {0} minions in front. (Cooldown: {1}s)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046607
+    m_Localized: Shasdow Hide
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046608
+    m_Localized: 'Hides in shadows, becoming untargetable for {0}s. (Cooldown: {1}s)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046609
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046610
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046611
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046612
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046613
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046614
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046615
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046616
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046617
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046618
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046619
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046620
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046621
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046622
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046623
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046624
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046625
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046626
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046627
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046628
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046629
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046630
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046631
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046632
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046633
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046634
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046635
+    m_Localized: Upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046636
+    m_Localized: Upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046637
+    m_Localized: Fixed Upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046638
+    m_Localized: Normal Upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046639
+    m_Localized: Normal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046640
+    m_Localized: Rare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046641
+    m_Localized: Epic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046642
+    m_Localized: This item has reached its maximum grade.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046643
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046644
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046645
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046646
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046647
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046648
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046649
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046650
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046651
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046652
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046653
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046654
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046655
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046656
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046657
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046658
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046659
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046660
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046661
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046662
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046663
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046664
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046665
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046666
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046667
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046668
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046669
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046670
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046671
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046672
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046673
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046674
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046675
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046676
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046677
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046678
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046679
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046680
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046681
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046682
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046683
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046684
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046685
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046686
+    m_Localized: 0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046687
+    m_Localized: '{0}Grade'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046688
+    m_Localized: Damage Upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046689
+    m_Localized: Attack Speed Upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046690
+    m_Localized: Damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046691
+    m_Localized: Attack Speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046692
+    m_Localized: Attack Range
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046693
+    m_Localized: Upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046694
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046695
+    m_Localized: Health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046696
+    m_Localized: Defense
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046697
+    m_Localized: Move Speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046698
+    m_Localized: Buy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046699
+    m_Localized: Sell
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046700
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046701
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046702
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046703
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046704
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046705
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046706
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046707
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046708
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046709
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046710
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046711
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046712
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046713
+    m_Localized: Refresh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046714
+    m_Localized: Buy EXP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046715
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046716
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046717
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046718
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 40954915598336
+    m_Localized: Wave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 117086843187200
+    m_Localized: Game Exit
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

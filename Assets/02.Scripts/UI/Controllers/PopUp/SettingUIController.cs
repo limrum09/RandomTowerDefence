@@ -1,6 +1,11 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
+/// <summary>
+/// 설정 UI 전체를 관리하는 컨트롤러
+/// 그래픽/사운드/단축키 패널 전환, 설정창 표시/숨김, 설정 전체 저장을 담당
+/// </summary>
 public class SettingUIController : MonoBehaviour
 {
     [Header("Canvas Group")]
@@ -29,6 +34,18 @@ public class SettingUIController : MonoBehaviour
 
     private void Awake()
     {
+        BindToggles();
+    }
+    private void Start()
+    {
+        inputKeyOption.Init();
+    }
+
+    /// <summary>
+    /// 토글 선택시 해당하는 패널만 보이도록 이벤트를 바인드함
+    /// </summary>
+    private void BindToggles()
+    {
         graphicToggle.onValueChanged.AddListener(isOn =>
         {
             if (isOn)
@@ -54,6 +71,10 @@ public class SettingUIController : MonoBehaviour
         });
     }
 
+    /// <summary>
+    /// 전당받은 패널만 활성화하고 나머지 패널은 비활설화
+    /// </summary>
+    /// <param name="target"></param>
     private void ShowPanel(GameObject target)
     {
         graphicPanel.SetActive(target == graphicPanel);
@@ -61,7 +82,11 @@ public class SettingUIController : MonoBehaviour
         inputPanel.SetActive(target == inputPanel);
     }
 
-    public void ShowSettinsPanel()
+    /// <summary>
+    /// 설정찰 열기
+    /// 기본으로 그래픽 탭을 선택
+    /// </summary>
+    public void ShowSettingsPanel()
     {
         graphicToggle.isOn = true;
         ShowPanel(graphicPanel);
@@ -69,8 +94,14 @@ public class SettingUIController : MonoBehaviour
         canvas.alpha = 1.0f;
         canvas.interactable = true;
         canvas.blocksRaycasts = true;
+
+        Debug.Log($"Show Setting Panel {canvas.alpha}");
     }
 
+    /// <summary>
+    /// 설정창 닫기
+    /// CanvasGroup을 사용하기에 오브젝트는 활성화 상태를 유지
+    /// </summary>
     public void HideSettingsPanel()
     {
         canvas.alpha = 0.0f;
@@ -78,12 +109,13 @@ public class SettingUIController : MonoBehaviour
         canvas.blocksRaycasts = false;
     }
 
-
-
-    private void Start()
+    /// <summary>
+    /// 설정 전체 저장
+    /// </summary>
+    public void SaveSettings()
     {
-        inputKeyOption.Init();
-
-        HideSettingsPanel();
+        Managers.Save.SaveGraphicData();
+        Managers.Save.SaveSoundData();
+        Managers.Save.SaveInputKeyData();
     }
 }

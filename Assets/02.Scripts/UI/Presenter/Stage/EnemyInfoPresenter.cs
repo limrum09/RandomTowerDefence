@@ -24,7 +24,7 @@ public class EnemyInfoPresenter
         Sprite icon = Resources.Load<Sprite>($"Enemy/SpriteLibrary/{temp.enemyUID}");
         view.SetIcon(icon);
 
-        string enemyName = Managers.Local.GetString(temp.stringKey);
+        string enemyName = Managers.Local.GetString("Sheets", temp.stringKey);
         view.SetName(enemyName);
 
         view.SetLevel($"Lv. {level}");
@@ -33,8 +33,8 @@ public class EnemyInfoPresenter
         view.SetSpeedText(temp.moveSpeed);
 
         EnemySkillData skill = Managers.EnemySkillData.GetEnemySkillData(temp.enemySkillUID);
-        view.SetSkillName(Managers.Local.GetString(skill.stringKey));
-        view.SetSkillDesText(Managers.Local.GetString(skill.desStringKey));
+        view.SetSkillName(Managers.Local.GetString("Sheets", skill.stringKey));
+        view.SetSkillDesText(Managers.Local.GetString("Sheets", skill.desStringKey));
     }
 
     public void Hide()

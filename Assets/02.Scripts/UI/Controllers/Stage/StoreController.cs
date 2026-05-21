@@ -15,16 +15,6 @@ public class StoreController : MonoBehaviour
     [SerializeField]
     private ItemSlotUIController itemSlots;
 
-    [Header("Local Texts")]
-    [SerializeField]
-    private TextMeshProUGUI rerollText;
-    [SerializeField]
-    private TextMeshProUGUI buyExpText;
-    [SerializeField]
-    private TextMeshProUGUI shopUpText;
-    [SerializeField]
-    private TextMeshProUGUI shopDownText;
-
     private int len;
 
     private void OnDestroy()
@@ -43,11 +33,6 @@ public class StoreController : MonoBehaviour
 
         stage.RunSession.OnGoldAmountChanged += ChangedGold;
         ChangedGold(stage.RunSession.SessionState.Gold);
-
-        rerollText.text = Managers.Local.GetString("BUTTON_REFRESH");
-        buyExpText.text = Managers.Local.GetString("BUTTON_SHOP_EXP");
-        shopUpText.text = Managers.Local.GetString("BUTTON_SHOP_UP");
-        shopDownText.text = Managers.Local.GetString("BUTTON_SHOP_DOWN");
     }
 
     private void SetStoreUI()

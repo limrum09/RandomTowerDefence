@@ -66,7 +66,7 @@ public class Tower : MonoBehaviour
     public string IconPath => iconPath;
     public string NextGradeUID => nextGradeUID;
     public RunStatUpgradeManager StatUpgrade => statUpgrade;
-    public string TowerName() => Managers.Local.GetString(stringKey);
+    public string TowerName() => Managers.Local.GetString("Sheets", stringKey);
     /// <summary>
     /// 현제 공격력
     /// 기본 공격력 + (공격력 증가 값 * 현제 런 강화 단계)
@@ -91,7 +91,7 @@ public class Tower : MonoBehaviour
         TowerSkillData tempData = Managers.TowerSkill.GetTowerSkillData(skillID);
 
         string skillUID = tempData.Stringkey;
-        skillName = Managers.Local.GetString(skillUID);
+        skillName = Managers.Local.GetString("Sheets", skillUID);
 
         return skillName;
     }
@@ -107,7 +107,7 @@ public class Tower : MonoBehaviour
         TowerSkillData tempData = Managers.TowerSkill.GetTowerSkillData(skillID);
         
         string skillDesUID = tempData.DesStringKey;
-        skillDes = Managers.Local.GetString(skillDesUID);
+        skillDes = Managers.Local.GetString("Sheets", skillDesUID);
 
         return skillDes;
     }

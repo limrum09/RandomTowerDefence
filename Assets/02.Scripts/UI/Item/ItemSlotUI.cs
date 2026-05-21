@@ -29,7 +29,7 @@ public class ItemSlotUI : MonoBehaviour
             if (icon != null)
                 itemIcon.sprite = icon;
 
-            itemNameText.text = Managers.Local.GetString(data.stringKey);
+            itemNameText.text = Managers.Local.GetString("Sheets", data.stringKey);
         }
         else
         {

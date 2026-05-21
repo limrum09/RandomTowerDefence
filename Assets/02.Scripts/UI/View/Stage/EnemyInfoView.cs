@@ -26,13 +26,6 @@ public class EnemyInfoView : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI skillDesText;
 
-    [Header("Local Text")]
-    [SerializeField]
-    private TextMeshProUGUI healthText;
-    [SerializeField]
-    private TextMeshProUGUI shieldText;
-    [SerializeField]
-    private TextMeshProUGUI speedText;
     private void Clear()
     {
         iconImage.sprite = null;
@@ -43,10 +36,6 @@ public class EnemyInfoView : MonoBehaviour
         enemySpeedValueText.text = string.Empty;
         skillNameText.text = string.Empty;
         skillDesText.text = string.Empty;
-
-        healthText.text = Managers.Local.GetString("TEXT_HEALTH");
-        shieldText.text = Managers.Local.GetString("TEXT_DEFENSE");
-        speedText.text = Managers.Local.GetString("TEXT_MOVE_SPEED");
     }
 
     public void Hide()

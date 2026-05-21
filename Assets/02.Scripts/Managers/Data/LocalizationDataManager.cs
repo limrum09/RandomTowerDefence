@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using UnityEngine.Localization.Components;
+using UnityEngine.Localization.Settings;
 
 public enum SelectLanguege
 {
@@ -69,5 +70,19 @@ public class LocalizationDataManager
         }
 
         return $"{key}를 찾을 수 없음";
+    }
+
+    public void SetKey(LocalizeStringEvent strLocal, string tableName, string key)
+    {
+        strLocal.StringReference.TableReference = tableName;
+        strLocal.StringReference.TableEntryReference = key;
+        strLocal.RefreshString();
+    }
+
+    public string GetString(string tableName, string key)
+    {
+        string str = LocalizationSettings.StringDatabase.GetLocalizedString(tableName, key);
+
+        return str;
     }
 }

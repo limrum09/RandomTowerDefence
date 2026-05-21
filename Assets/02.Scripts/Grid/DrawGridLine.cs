@@ -9,7 +9,7 @@ public class DrawGridLine : MonoBehaviour
     private Material lineMaterial;
 
     private float lineWidth = 0.15f;
-    private Color lineColor = Color.black;
+    private Color lineColor = Color.white;
 
     private int width;
     private int height;
@@ -51,6 +51,7 @@ public class DrawGridLine : MonoBehaviour
         line.SetPosition(0, from);
         line.SetPosition(1, to);
 
+        lineColor.a = 0.35f;
         line.startWidth = lineWidth;
         line.endWidth = lineWidth;
         line.material = lineMaterial;
