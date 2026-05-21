@@ -45,27 +45,12 @@ public class TowerStatUpgradeView : MonoBehaviour
     [SerializeField]
     private Button attackSpeedStatUpgradeBtn;
 
-    [Header("Local Texts")]
-    [SerializeField]
-    private TextMeshProUGUI damageUpgradeText;
-    [SerializeField]
-    private TextMeshProUGUI attackSpeedUpgradeText;
-    [SerializeField]
-    private TextMeshProUGUI damageUpgradeButtonText;
-    [SerializeField]
-    private TextMeshProUGUI attackSpeedUpgradeButtonText;
-
     private string upgradeText;
     private string gradeText;
     public void Init()
     {
-        damageUpgradeText.text = Managers.Local.GetString("TEXT_ATK_DAMAGE_UPGRADE");
-        attackSpeedUpgradeText.text = Managers.Local.GetString("TEXT_ATK_SPEED_UPGRADE");
-        damageUpgradeButtonText.text = Managers.Local.GetString("TEXT_UPGRADE");
-        attackSpeedUpgradeButtonText.text = Managers.Local.GetString("TEXT_UPGRADE");
-
-        upgradeText = Managers.Local.GetString("TEXT_UPGRADE_STEP");
-        gradeText = Managers.Local.GetString("TEXT_GRADE");
+        upgradeText = Managers.Local.GetString("Sheets", "TEXT_UPGRADE_STEP");
+        gradeText = Managers.Local.GetString("Sheets","TEXT_GRADE");
     }
 
     public void Clear()

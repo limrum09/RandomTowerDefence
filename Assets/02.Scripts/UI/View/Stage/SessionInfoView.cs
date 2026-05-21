@@ -24,10 +24,6 @@ public class SessionInfoView : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI currentLifeText;
 
-    [Header("Local Texts")]
-    [SerializeField]
-    private TextMeshProUGUI remainText;
-
     public void SetCurrentLevel(int value)
     {
         string frontText = "Lv .";
@@ -36,7 +32,6 @@ public class SessionInfoView : MonoBehaviour
             frontText += "0";
 
         currentLevelText.text = frontText + value.ToString();
-        remainText.text = Managers.Local.GetString("TEXT_REMAIN_ENEMY");
     }
     public void SetCurrentExpBar(int currentExp, int needExp)
     {

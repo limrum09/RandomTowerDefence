@@ -188,6 +188,16 @@ public class SaveDataManager
         Managers.Sound.LoadSoundSaveData(saveData);
     }
 
+    private void LoadGraphicData()
+    {
+        GraphicSaveData saveData = LoadLocalSaveData<GraphicSaveData>(SavePath(GRAPHIC_SAVE_FILE));
+
+        if (saveData == null)
+            return;
+
+        Managers.Graphic.LoadOptionSaveData(saveData);
+    }
+
     private T LoadLocalSaveData<T>(string path) where T : class
     {
         if (!File.Exists(path))
@@ -215,6 +225,7 @@ public class SaveDataManager
         SavePlayerProgressData();
         SaveSoundData();
         SaveInputKeyData();
+        SaveGraphicData();
     }
 
     public void LoadAllData()
@@ -223,6 +234,7 @@ public class SaveDataManager
         LoadPlayerProgressData();
         LoadInputKeyData();
         LoadSoundData();
+        LoadGraphicData();
     }
 
     public void SaveMetaUpgradeData()
@@ -265,6 +277,16 @@ public class SaveDataManager
         InputKeySaveData saveData = Managers.InputData.GetSaveData();
 
         SaveLocalDataToJson<InputKeySaveData>(SavePath(INPUTKEY_SAVE_FILE), saveData, ref isInputDirty);
+    }
+
+    public void SaveGraphicData()
+    {
+        if (!isGraphicDirty)
+            return;
+
+        GraphicSaveData saveData = Managers.Graphic.GetSaveData();
+
+        SaveLocalDataToJson<GraphicSaveData>(SavePath(GRAPHIC_SAVE_FILE), saveData, ref isGraphicDirty);
     }
 
     public void MarkMetaUpgradeDirty()

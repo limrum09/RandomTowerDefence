@@ -22,6 +22,7 @@ public class Managers : MonoBehaviour
     private GameManager game = new GameManager();
     private SaveDataManager saveDataManager = new SaveDataManager();
     private SoundManager sound = new SoundManager();
+    private GraphicManager graphic = new GraphicManager();
     private PlayerProgressManager playerProgressData = new PlayerProgressManager();
     private InputManager input = new InputManager();
     private TowerDataManager tower = new TowerDataManager();
@@ -47,6 +48,7 @@ public class Managers : MonoBehaviour
     public static GameManager Game { get { return Instance.game; } }
     public static SaveDataManager Save { get { return Instance.saveDataManager; } }
     public static SoundManager Sound {  get { return Instance.sound; } }
+    public static GraphicManager Graphic {  get { return Instance.graphic; } }
     public static PlayerProgressManager Player {  get { return Instance.playerProgressData; } }
     public static InputManager InputData { get { return Instance.input; } }
     public static TowerDataManager TowerData { get { return Instance.tower; } }
@@ -105,6 +107,7 @@ public class Managers : MonoBehaviour
         ResearchLevel.Init();
         
         Sound.Init();
+        Graphic.Init();
         // 임시, 나중에 지워야 함
         InputData.Init();
 

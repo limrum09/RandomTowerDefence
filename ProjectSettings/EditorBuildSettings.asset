@@ -11,5 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00.Scenes/StageScene.unity
     guid: 992bba22f7fdf9342bb53ace329432e8
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 879847fb7539b3742be0933c7412c4d6,
+      type: 2}
+    com.unity.localization.settings: {fileID: 11400000, guid: 06abc03893da33f40b75299d7adeae35,
+      type: 2}
   m_UseUCBPForAssetBundles: 0
