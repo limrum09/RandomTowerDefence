@@ -54,6 +54,7 @@ public class Enemy : MonoBehaviour
     private bool isDead;        // 죽었는지 판단
     private float increaseSpeed;// 스킬 등으로 증가 / 감소하는 이동속도 보정값
 
+    public string EnemyUID => enemyUID;
     public int Level => level;
     public string StringKey => stringKey;
     public string EnemySkillUID => enemySkillUID;

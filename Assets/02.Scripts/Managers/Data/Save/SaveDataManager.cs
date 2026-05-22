@@ -9,11 +9,13 @@ public class SaveDataManager
     private const string INPUTKEY_SAVE_FILE = "inputkey_save.json";
     private const string SOUND_SAVE_FILE = "sound_save.json";
     private const string GRAPHIC_SAVE_FILE = "graphic_save.json";
+    private const string QUEST_SAVE_FILE = "quest_save.json";
     public bool isMetaUpgradeDirty;
     public bool isGraphicDirty;
     public bool isSoundDirty;
     public bool isInputDirty;
     public bool isPlayerDirty;
+    public bool isQuestDirty;
     public string SavePath(string fileName) => Path.Combine(Application.persistentDataPath, fileName);
 
 
@@ -69,9 +71,9 @@ public class SaveDataManager
         }
     }
 
-    private void SaveInputKeyData(InputKeySaveData saveData)
+    private void SaveAchievementData(QuestSaveDataList saveData)
     {
-        string path = SavePath(INPUTKEY_SAVE_FILE);
+        string path = SavePath(QUEST_SAVE_FILE);
         string tempPath = path + ".temp";
         string backupPath = path + ".bak";
 
@@ -87,11 +89,11 @@ public class SaveDataManager
             File.Copy(tempPath, path, true);
             File.Delete(tempPath);
 
-            isInputDirty = false;
+            isQuestDirty = false;
         }
         catch (Exception e)
         {
-            Debug.LogError($"False Save Input Key Data {e.Message}");
+            Debug.LogError($"False Save Achievement Data {e.Message}");
         }
     }
 
@@ -198,6 +200,28 @@ public class SaveDataManager
         Managers.Graphic.LoadOptionSaveData(saveData);
     }
 
+    private void LoadAchievementData()
+    {
+        string path = SavePath(QUEST_SAVE_FILE);
+
+        if (!File.Exists(path))
+        {
+            Managers.QuestMgr.LoadSaveData(null);
+            return;
+        }
+
+        try
+        {
+            string json = File.ReadAllText(path);
+            QuestSaveDataList saveData = JsonUtility.FromJson<QuestSaveDataList>(json);
+
+            Managers.QuestMgr.LoadSaveData(saveData);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"False Load Qeust Data {e.Message}");
+        }
+    }
     private T LoadLocalSaveData<T>(string path) where T : class
     {
         if (!File.Exists(path))
@@ -226,6 +250,7 @@ public class SaveDataManager
         SaveSoundData();
         SaveInputKeyData();
         SaveGraphicData();
+        SaveAchievementData();
     }
 
     public void LoadAllData()
@@ -235,6 +260,7 @@ public class SaveDataManager
         LoadInputKeyData();
         LoadSoundData();
         LoadGraphicData();
+        LoadAchievementData();
     }
 
     public void SaveMetaUpgradeData()
@@ -289,6 +315,16 @@ public class SaveDataManager
         SaveLocalDataToJson<GraphicSaveData>(SavePath(GRAPHIC_SAVE_FILE), saveData, ref isGraphicDirty);
     }
 
+    public void SaveAchievementData()
+    {
+        if (!isQuestDirty)
+            return;
+
+        QuestSaveDataList saveData = Managers.QuestMgr.GetSaveData();
+
+        SaveAchievementData(saveData);
+    }
+
     public void MarkMetaUpgradeDirty()
     {
         isMetaUpgradeDirty = true;
@@ -314,6 +350,10 @@ public class SaveDataManager
         isPlayerDirty = true;
     }
 
+    public void MarkQuestDirty()
+    {
+        isQuestDirty = true;
+    }
     public void SaveAllDirty()
     {
         MarkMetaUpgradeDirty();
@@ -321,6 +361,7 @@ public class SaveDataManager
         MarkInputDirty();
         MarkPlayerDirty();
         MarkGraphicDirty();
+        MarkQuestDirty();
 
         SaveAllData();
     }
