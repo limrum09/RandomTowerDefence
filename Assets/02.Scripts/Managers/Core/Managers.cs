@@ -36,6 +36,7 @@ public class Managers : MonoBehaviour
     private WaveDataManager wave = new WaveDataManager();
     private WaveEnemyRosterDataManager waveRoster = new WaveEnemyRosterDataManager();
     private PoolManager pool = new PoolManager();
+    private QuestManager quest = new QuestManager();
     private GameEffectManager effectManager = new GameEffectManager();
     private StageStartOptionBaseDataManager startOptionDataManager = new StageStartOptionBaseDataManager();
     private MetaResearchUpgradeDataManager metaResearchUpgrade = new MetaResearchUpgradeDataManager();
@@ -62,6 +63,7 @@ public class Managers : MonoBehaviour
     public static WaveDataManager Wave {  get { return Instance.wave; } }
     public static WaveEnemyRosterDataManager WaveRoster { get { return Instance.waveRoster; } }
     public static PoolManager Pool { get { return Instance.pool; } }
+    public static QuestManager QuestMgr { get { return Instance.quest; } }
     public static GameEffectManager Effect { get { return Instance.effectManager; } }
     public static MetaResearchUpgradeDataManager ResearchUpgrade { get { return Instance.metaResearchUpgrade; } }
     public static StageStartOptionBaseDataManager StartOption { get { return Instance.startOptionDataManager; } }
@@ -105,7 +107,9 @@ public class Managers : MonoBehaviour
         StartOption.Init();
         ResearchUpgrade.Init();
         ResearchLevel.Init();
-        
+        QuestMgr.Init();
+
+
         Sound.Init();
         Graphic.Init();
         // 임시, 나중에 지워야 함
