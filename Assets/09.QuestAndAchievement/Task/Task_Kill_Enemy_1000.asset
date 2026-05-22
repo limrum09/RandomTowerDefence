@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   category: {fileID: 11400000, guid: 07647fd42be43e546bbcc26ed46f8428, type: 2}
   taskUID: 
-  targets: []
-  actionType: 0
-  needSuccessCount: 0
+  targets:
+  - {fileID: 11400000, guid: 3d9736c4b53bafa48a38182904b348fb, type: 2}
+  actionType: 1
+  needSuccessCount: 20
   countingAfterComplete: 0
