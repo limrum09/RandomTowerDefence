@@ -32,7 +32,6 @@ public class Quest : ScriptableObject
     public Category QuestCategory => questCategory;
     public string QuestUID => questUID;
     public Task Task => task;
-    public QuestReward[] Rewards => rewards;
     public QuestStat Stat { get; set; }
     public IReadOnlyList<QuestReward> QuestRewards => rewards;
     public bool IsQuestComplete => Stat == QuestStat.Comoplete;
