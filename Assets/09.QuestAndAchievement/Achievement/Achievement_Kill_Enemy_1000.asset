@@ -17,4 +17,4 @@ MonoBehaviour:
   task: {fileID: 11400000, guid: 0d69aaefbe0f1f646842e14604e4792f, type: 2}
   rewards:
   - {fileID: 11400000, guid: fdbb9fafb8ba6414cbadde7bff47426b, type: 2}
-  isSaveable: 0
+  isSaveable: 1

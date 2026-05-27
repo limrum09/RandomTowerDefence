@@ -3,7 +3,7 @@
     {
       "WaveID": "EASY_W001",
       "SpawnOrder": 1,
-      "Enemy_UID": "E002",
+      "Enemy_UID": "E005",
       "EnemyLevel": 1,
       "SpawnCount": 50,
       "StartTime": "0",
@@ -2133,7 +2133,7 @@
     {
       "WaveID": "HARD_W002",
       "SpawnOrder": 1,
-      "Enemy_UID": "E003",
+      "Enemy_UID": "E004",
       "EnemyLevel": 5,
       "SpawnCount": 50,
       "StartTime": "0",

@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Localization-Assets-Shared
   m_GUID: fffb628e3a2cc0a449d223676d8e9f97
   m_SerializeEntries:
+  - m_GUID: 4b354fe8ef8484240aa3ce5d846368b3
+    m_Address: Assets/99.Local/Quest/Quest Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 945091da205a7454694823968473e24c
     m_Address: Assets/99.Local/LocalTable/Sheets Shared Data.asset
     m_ReadOnly: 1

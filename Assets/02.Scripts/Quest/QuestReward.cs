@@ -5,13 +5,13 @@ using UnityEngine.UI;
 public class QuestReward : ScriptableObject
 {
     [SerializeField]
-    private Image icon;
+    private Sprite icon;
     [SerializeField]
     private string rewardUID;
     [SerializeField]
     private int cnt;
 
-    public Sprite Icon => icon.sprite;
+    public Sprite Icon => icon;
     public int RewardCount => cnt;
     public void Give()
     {

@@ -1,4 +1,3 @@
-using DG.Tweening.Plugins;
 using System.Linq;
 using UnityEngine;
 
@@ -32,6 +31,6 @@ public class QuestReporter : MonoBehaviour
 
     public void Report()
     {
-
+        Managers.QuestMgr.QuestRecieveReport(category, target, successCount);
     }
 }

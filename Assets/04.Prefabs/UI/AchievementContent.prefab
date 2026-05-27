@@ -329,7 +329,7 @@ GameObject:
   - component: {fileID: 5277676386054409072}
   - component: {fileID: 2260577327238913438}
   m_Layer: 5
-  m_Name: AchievementContent
+  m_Name: AchievementDescription
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -480,7 +480,7 @@ MonoBehaviour:
   m_UpdateString:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7168584401631077579}
+      - m_Target: {fileID: 5277676386054409072}
         m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
         m_MethodName: set_text
         m_Mode: 0
@@ -579,8 +579,9 @@ GameObject:
   - component: {fileID: 3666954855423729004}
   - component: {fileID: 496892607208738313}
   - component: {fileID: 4565985575227629194}
+  - component: {fileID: 2865108269971514417}
   m_Layer: 5
-  m_Name: Reward1 (1)
+  m_Name: Reward2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -644,6 +645,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2865108269971514417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4174969314835371321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90dd45012a4159141b259e09ee5e2fb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 4565985575227629194}
+  countText: {fileID: 7905605224570331756}
 --- !u!1 &5278403216405391717
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,10 +1182,9 @@ MonoBehaviour:
   description: {fileID: 2260577327238913438}
   currentProgressBar: {fileID: 2046674725809212758}
   currentProgressText: {fileID: 1351066388943578968}
-  reward1Icon: {fileID: 3062347667466526265}
-  reward1Count: {fileID: 6076767924573898461}
-  reward2Icon: {fileID: 4565985575227629194}
-  reward2Count: {fileID: 7905605224570331756}
+  rewardSlots:
+  - {fileID: 5018476413828388362}
+  - {fileID: 2865108269971514417}
 --- !u!1 &7870915234672895111
 GameObject:
   m_ObjectHideFlags: 0
@@ -1182,6 +1196,7 @@ GameObject:
   - component: {fileID: 8595808683944214242}
   - component: {fileID: 3379160537924546204}
   - component: {fileID: 3062347667466526265}
+  - component: {fileID: 5018476413828388362}
   m_Layer: 5
   m_Name: Reward1
   m_TagString: Untagged
@@ -1247,3 +1262,17 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5018476413828388362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7870915234672895111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90dd45012a4159141b259e09ee5e2fb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 3062347667466526265}
+  countText: {fileID: 6076767924573898461}
