@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "523308489566",
+    "project_id": "d-random-tower-defense",
+    "storage_bucket": "d-random-tower-defense.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:523308489566:android:28db5ed7c8bd0a2babcdcf",
+        "android_client_info": {
+          "package_name": "com.JSY.RandomTowerDefence"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmvs4jL5BvdMlMvfpW0UYZkXa_m9EO4QU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

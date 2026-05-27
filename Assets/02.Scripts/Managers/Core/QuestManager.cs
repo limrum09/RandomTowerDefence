@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class QuestManager
@@ -101,6 +102,9 @@ public class QuestManager
         QuestRecieveReport(activeQuest, category, target, successCount);
         QuestRecieveReport(activeAchievement, category, target, successCount);
     }
+
+    public bool ContainsActiveAchievement(Achievement achievement) => activeAchievement.Any(x => x.QuestUID == achievement.QuestUID);
+    public bool ContainsCompletedAchievement(Achievement achievement) => completeAchievement.Any(x => x.QuestUID == achievement.QuestUID);
 
     public QuestSaveDataList GetSaveData()
     {

@@ -15,6 +15,12 @@ MonoBehaviour:
   m_GroupName: Localization-String-Tables-Korean (ko)
   m_GUID: b97392b866a7f494b8b83ac6d3ada208
   m_SerializeEntries:
+  - m_GUID: 83ff9422613dad54aa6b7d2258c94d0c
+    m_Address: Quest_ko
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ko
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: aba27fd92d2d8b54bbcf5991cde38e43
     m_Address: Sheets_ko
     m_ReadOnly: 1

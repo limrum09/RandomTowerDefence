@@ -20,6 +20,8 @@ public class Quest : ScriptableObject
     private string questUID;
     [SerializeField]
     private Task task;
+    [SerializeField]
+    private QuestCondition condition;
 
     [Header("Reward")]
     [SerializeField]
@@ -35,6 +37,7 @@ public class Quest : ScriptableObject
     public QuestStat Stat { get; set; }
     public IReadOnlyList<QuestReward> QuestRewards => rewards;
     public bool IsQuestComplete => Stat == QuestStat.Comoplete;
+    public bool IsConditionComplete => condition != null ? condition.IsPass() : true;
     public virtual bool IsSaveable => isSaveable;
     
     public void QuestOnRegister()
@@ -52,13 +55,17 @@ public class Quest : ScriptableObject
         if (IsQuestComplete)
             return;
 
+        if (!IsConditionComplete)
+            return;
+
         if (task.IsCompleted)
         {
             Stat = QuestStat.Comoplete;
             return;
         }
-            
+
         task.TaskRecieveReport(category, target, getSucessCount);
+        Managers.Save.MarkQuestDirty();
     }
 
     public void QuestComplete()
