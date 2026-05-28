@@ -1,9 +1,7 @@
-using DG.Tweening.Core.Easing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class ItemSlotUIController : MonoBehaviour
 {

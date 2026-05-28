@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -75,11 +76,6 @@ public class Managers : MonoBehaviour
 
     public event Action OnEndLoadDatas;
 
-    private void Start()
-    {
-        
-    }
-
     private void Awake()
     {
         if(instance != null && instance != this)
@@ -113,17 +109,12 @@ public class Managers : MonoBehaviour
         Sound.Init();
         Graphic.Init();
         // 임시, 나중에 지워야 함
-        InputData.Init();
-
-        // SaveData에서 데이터들을 다 넣어 줘야할 듯
-        Save.LoadAllData();
-
-        OnEndLoadDatas?.Invoke();
+        InputData.Init();;
     }
 
-    private void OnApplicationQuit()
+    private async void OnApplicationQuit()
     {
-        Save.SaveAllData();
+        await Save.SaveAllData();
         isQuitting = true;
     }
 
@@ -132,6 +123,7 @@ public class Managers : MonoBehaviour
         if (instance == this)
             instance = null;
     }
+
     static void Init()
     {
         if (isQuitting)
@@ -152,5 +144,32 @@ public class Managers : MonoBehaviour
 
             instance = manager.GetComponent<Managers>();
         }
+    }
+
+    private async void Start()
+    {
+        if (!Save.HasSignInUser())
+        {
+            Player.LoadSaveData(null);
+            pulbicMeraUpgrade.LoadSaveData(null);
+            towerMetaUpgrade.LoadSaveData(null);
+            QuestMgr.LoadSaveData(null);
+
+            return;
+        }
+
+        string uid = FirebaseInitializer.Instance.Auth.CurrentUser.UserId;
+
+        bool exists = await Save.HasFirebaseSaveData(uid);
+
+        if (!exists)
+            await Save.CreateNewUserFirebaseSaveData(uid);
+
+        bool loadSuccess = await Save.LoadAllData();
+
+        if (!loadSuccess)
+            return;
+
+        OnEndLoadDatas?.Invoke();
     }
 }

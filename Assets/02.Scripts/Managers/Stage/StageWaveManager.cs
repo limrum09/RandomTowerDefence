@@ -17,8 +17,6 @@ public class StageWaveManager : MonoBehaviour
         currentWave = null;
         currentWaveRosterData = null;
         nextWaveUID = startWaveID;
-
-        SetCurrentWaveData();
     }
 
     private bool SetCurrentWaveData()
@@ -37,6 +35,7 @@ public class StageWaveManager : MonoBehaviour
             return false;
 
         nextWaveUID = currentWave.nextWave;
+
         return true;
     }
 

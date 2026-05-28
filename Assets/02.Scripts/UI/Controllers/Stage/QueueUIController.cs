@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -17,7 +15,7 @@ public class QueueUIController : MonoBehaviour
     private string[] towerUID;                  // 슬롯별 저장된 타워 UID
     private int length;                         // 대기열 슬롯 개수
 
-    public event Action<string, int> OnRequestBuildTower;
+    public event Action<string, int, Sprite> OnRequestBuildTower;
     public event Action OnRemoveTowerFromQueue;
 
     private void Awake()
@@ -99,7 +97,7 @@ public class QueueUIController : MonoBehaviour
     /// </summary>
     /// <param name="index">해당 슬롯의 위치</param>
     /// <param name="uid">클릭한 타워의 UID</param>
-    public void OnClickQueueSlot(int index, string uid)
+    public void OnClickQueueSlot(int index, string uid, Sprite towerSprite)
     {
         if (index < 0 || index >= length)
             return;
@@ -110,6 +108,6 @@ public class QueueUIController : MonoBehaviour
         if (towerUID[index] != uid)
             return;
 
-        OnRequestBuildTower?.Invoke(uid, index);
+        OnRequestBuildTower?.Invoke(uid, index, towerSprite);
     }
 }

@@ -280,11 +280,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 23009046591
-    m_Key: ES_HEAL_AREA
+    m_Key: ES_HEAL_SANCTUARY
     m_Metadata:
       m_Items: []
   - m_Id: 23009046592
-    m_Key: ES_HEAL_AREA_DES
+    m_Key: ES_HEAL_SANCTUARY_DES
     m_Metadata:
       m_Items: []
   - m_Id: 23009046593
@@ -344,11 +344,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 23009046605
-    m_Key: ES_SUMMON_MINION
+    m_Key: ES_SUMMON_MINION_LEGION
     m_Metadata:
       m_Items: []
   - m_Id: 23009046606
-    m_Key: ES_SUMMON_MINION_DES
+    m_Key: ES_SUMMON_MINION_LEGION_DES
     m_Metadata:
       m_Items: []
   - m_Id: 23009046607

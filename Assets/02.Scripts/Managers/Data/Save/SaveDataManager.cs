@@ -1,175 +1,134 @@
+using Firebase.Firestore;
 using System;
 using System.IO;
 using UnityEngine;
 
 public class SaveDataManager
 {
-    private const string META_UPGRADE_SAVE_FILE = "meta_upgrade_save.json";
-    private const string PLAYER_PROGRESS_FILE = "meta_player_progress_save.json";
+    private string CurrentUserUid
+    {
+        get
+        {
+            return FirebaseInitializer.Instance.Auth.CurrentUser.UserId;
+        }
+    }
+
+    private DocumentReference GetSaveDoc(string docName) => GetSaveDoc(CurrentUserUid, docName);
+    private DocumentReference GetSaveDoc(string uid, string docName)
+    {
+        return FirebaseInitializer.Instance.Firestore.Collection("users").
+            Document(uid).Collection("save").Document(docName);
+    }
+
     private const string INPUTKEY_SAVE_FILE = "inputkey_save.json";
     private const string SOUND_SAVE_FILE = "sound_save.json";
     private const string GRAPHIC_SAVE_FILE = "graphic_save.json";
-    private const string QUEST_SAVE_FILE = "quest_save.json";
+    private const string META_UPGRADE_SAVE_FILE = "meta_upgrade";
+    private const string PLAYER_PROGRESS_FILE = "meta_player_progress";
+    private const string QUEST_SAVE_FILE = "quest";
     public bool isMetaUpgradeDirty;
     public bool isGraphicDirty;
     public bool isSoundDirty;
     public bool isInputDirty;
     public bool isPlayerDirty;
     public bool isQuestDirty;
+
     public string SavePath(string fileName) => Path.Combine(Application.persistentDataPath, fileName);
-
-
-    private void SaveMetaUpgradeData(MetaUpgradeSaveData saveData)
+    public bool IsFirebaseLoadCompleted { get; private set; }
+    public bool IsFirebaseLoadFail { get; private set; }
+    public async System.Threading.Tasks.Task<bool> HasFirebaseSaveData(string uid)
     {
-        string path = SavePath(META_UPGRADE_SAVE_FILE);
-        string tempPath = path + ".temp";
-        string backupPath = path + ".bak";
-
-        try
-        {
-            string json = JsonUtility.ToJson(saveData);
-
-            File.WriteAllText(tempPath, json);
-
-            if (File.Exists(path))
-                File.Copy(path, backupPath, true);
-
-            File.Copy(tempPath, path, true);
-            File.Delete(tempPath);
-
-            isMetaUpgradeDirty = false;
-        }
-        catch(Exception e)
-        {
-            Debug.LogError($"False Save Meta Upgrade Data {e.Message}");
-        }
-    }
-
-    private void SavePlayerProgressData(PlayerProgressData saveData)
-    {
-        string path = SavePath(PLAYER_PROGRESS_FILE);
-        string tempPath = path + ".temp";
-        string backupPath = path + ".bak";
-
-        try
-        {
-            string json = JsonUtility.ToJson(saveData);
-
-            File.WriteAllText(tempPath, json);
-
-            if (File.Exists(path))
-                File.Copy(path, backupPath, true);
-
-            File.Copy(tempPath, path, true);
-            File.Delete(tempPath);
-
-            isPlayerDirty = false;
-        }
-        catch (Exception e)
-        {
-            Debug.LogError($"False Save Player Progresses Data {e.Message}");
-        }
-    }
-
-    private void SaveAchievementData(QuestSaveDataList saveData)
-    {
-        string path = SavePath(QUEST_SAVE_FILE);
-        string tempPath = path + ".temp";
-        string backupPath = path + ".bak";
-
-        try
-        {
-            string json = JsonUtility.ToJson(saveData);
-
-            File.WriteAllText(tempPath, json);
-
-            if (File.Exists(path))
-                File.Copy(path, backupPath, true);
-
-            File.Copy(tempPath, path, true);
-            File.Delete(tempPath);
-
-            isQuestDirty = false;
-        }
-        catch (Exception e)
-        {
-            Debug.LogError($"False Save Achievement Data {e.Message}");
-        }
-    }
-
-    private void SaveLocalDataToJson<T>(string path, T saveData, ref bool dirtyFlag)
-    {
-        string tempPath = path + ".temp";
-        string backupPath = path + ".bak";
-
-        try
-        {
-            string json = JsonUtility.ToJson(saveData);
-
-            File.WriteAllText(tempPath, json);
-
-            if (File.Exists(path))
-                File.Copy(path, backupPath, true);
-
-            File.Copy(tempPath, path, true);
-            File.Delete(tempPath);
-
-            dirtyFlag = false;
-        }
-        catch (Exception e)
-        {
-            Debug.LogError($"False Save {saveData} {e.Message}");
-        }
+        DocumentSnapshot snapshot = await GetSaveDoc(uid, PLAYER_PROGRESS_FILE).GetSnapshotAsync();
+        return snapshot.Exists;
     }
     
-    private void LoadMetaUpgradeData()
+    public bool HasSignInUser()
     {
-        string path = SavePath(META_UPGRADE_SAVE_FILE);
-
-        if (!File.Exists(path))
-        {
-            Managers.PublicMetaUpgrade.Init(null);
-            Managers.TowerMetaUpgrade.Init(null);
-            Debug.Log(path + "에 파일이 없음");
-            return;
-        }
-
-        try
-        {
-            string json = File.ReadAllText(path);
-            MetaUpgradeSaveData saveData = JsonUtility.FromJson<MetaUpgradeSaveData>(json);
-
-            Managers.PublicMetaUpgrade.Init(saveData.publicMetaSaveData);
-            Managers.TowerMetaUpgrade.Init(saveData.towerMetaSaveData);
-        }
-        catch (Exception e)
-        {
-            Debug.LogError($"False Load Meta Upgrade Data {e.Message}");
-        }
+        return FirebaseInitializer.Instance != null &&
+            FirebaseInitializer.Instance.Auth != null &&
+            FirebaseInitializer.Instance.Auth.CurrentUser != null;
     }
 
-    private void LoadPlayerProgressData()
+    private bool CanSaveFirebaseData()
     {
-        string path = SavePath(PLAYER_PROGRESS_FILE);
+        if (IsFirebaseLoadFail)
+            return false;
+        if (!IsFirebaseLoadCompleted)
+            return false;
+        if (!HasSignInUser())
+            return false;
 
-        if (!File.Exists(path))
-        {
-            Managers.Player.Init(null);
-            return;
-        }
+        return true;
+    }
 
+    private async System.Threading.Tasks.Task LoadMetaUpgradeData()
+    {
         try
         {
-            string json = File.ReadAllText(path);
-            PlayerProgressData saveData = JsonUtility.FromJson<PlayerProgressData>(json);
+            DocumentSnapshot snapshot = await GetSaveDoc(META_UPGRADE_SAVE_FILE).GetSnapshotAsync();
 
-            Managers.Player.Init(saveData);
+            if (!snapshot.Exists)
+            {
+                Managers.PublicMetaUpgrade.LoadSaveData(null);
+                Managers.TowerMetaUpgrade.LoadSaveData(null);
+                return;
+            }
+
+            MetaUpgradeSaveData saveData = snapshot.ConvertTo<MetaUpgradeSaveData>();
+
+            Managers.PublicMetaUpgrade.LoadSaveData(saveData.publicMetaSaveData);
+            Managers.TowerMetaUpgrade.LoadSaveData(saveData.towerMetaSaveData);
         }
         catch(Exception e)
         {
-            Debug.LogError($"False Load Player Progress Data {e.Message}");
+            Debug.LogError("Load Fail : Meta Upgrade Data - " + e.Message);
         }
     }
+
+    private async System.Threading.Tasks.Task LoadPlayerProgressData()
+    {
+        try
+        {
+            DocumentSnapshot snapshot = await GetSaveDoc(PLAYER_PROGRESS_FILE).GetSnapshotAsync();
+
+            if (!snapshot.Exists)
+            {
+                Managers.Player.LoadSaveData(null);
+                return;
+            }
+
+            PlayerProgressData saveData = snapshot.ConvertTo<PlayerProgressData>();
+
+            Managers.Player.LoadSaveData(saveData);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Load Fail : Player Progress - " + e.Message);
+        }
+    }
+
+    private async System.Threading.Tasks.Task LoadAchievementData()
+    {
+        try
+        {
+            DocumentSnapshot snapshot = await GetSaveDoc(QUEST_SAVE_FILE).GetSnapshotAsync();
+
+            if (!snapshot.Exists)
+            {
+                Managers.QuestMgr.LoadSaveData(null);
+                return;
+            }
+
+            QuestSaveDataList saveData = snapshot.ConvertTo<QuestSaveDataList>();
+
+            Managers.QuestMgr.LoadSaveData(saveData);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Load Fail : Achievement Data - " + e.Message);
+        }
+    }
+
     private void LoadInputKeyData()
     {
         InputKeySaveData saveData = LoadLocalSaveData<InputKeySaveData>(SavePath(INPUTKEY_SAVE_FILE));
@@ -200,28 +159,6 @@ public class SaveDataManager
         Managers.Graphic.LoadOptionSaveData(saveData);
     }
 
-    private void LoadAchievementData()
-    {
-        string path = SavePath(QUEST_SAVE_FILE);
-
-        if (!File.Exists(path))
-        {
-            Managers.QuestMgr.LoadSaveData(null);
-            return;
-        }
-
-        try
-        {
-            string json = File.ReadAllText(path);
-            QuestSaveDataList saveData = JsonUtility.FromJson<QuestSaveDataList>(json);
-
-            Managers.QuestMgr.LoadSaveData(saveData);
-        }
-        catch (Exception e)
-        {
-            Debug.LogError($"False Load Qeust Data {e.Message}");
-        }
-    }
     private T LoadLocalSaveData<T>(string path) where T : class
     {
         if (!File.Exists(path))
@@ -243,28 +180,79 @@ public class SaveDataManager
         }
     }
 
-    public void SaveAllData()
+    private void SaveLocalDataToJson<T>(string path, T saveData, ref bool dirtyFlag)
     {
-        SaveMetaUpgradeData();
-        SavePlayerProgressData();
-        SaveSoundData();
-        SaveInputKeyData();
-        SaveGraphicData();
-        SaveAchievementData();
+        string tempPath = path + ".temp";
+        string backupPath = path + ".bak";
+
+        try
+        {
+            string json = JsonUtility.ToJson(saveData);
+
+            File.WriteAllText(tempPath, json);
+
+            if (File.Exists(path))
+                File.Copy(path, backupPath, true);
+
+            File.Copy(tempPath, path, true);
+            File.Delete(tempPath);
+
+            dirtyFlag = false;
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"False Save {saveData} {e.Message}");
+        }
     }
 
-    public void LoadAllData()
+    public async System.Threading.Tasks.Task<bool> LoadAllData()
     {
-        LoadMetaUpgradeData();
-        LoadPlayerProgressData();
+        IsFirebaseLoadCompleted = false;
+        IsFirebaseLoadFail = false;
+
+        if (!HasSignInUser())
+        {
+            IsFirebaseLoadFail = true;
+            return false;
+        }
+        try
+        {
+            await LoadMetaUpgradeData();
+            await LoadPlayerProgressData();
+            await LoadAchievementData();
+
+            IsFirebaseLoadCompleted = true;
+        }
+        catch (Exception e)
+        {
+            IsFirebaseLoadFail = true;
+            return false;
+        }
+        
+
         LoadInputKeyData();
         LoadSoundData();
         LoadGraphicData();
-        LoadAchievementData();
+
+        return true;
     }
 
-    public void SaveMetaUpgradeData()
+    public async System.Threading.Tasks.Task SaveAllData()
     {
+        SaveInputKeyData();
+        SaveSoundData();
+        SaveGraphicData();
+
+        await SaveMetaUpgradeData();
+        await SavePlayerProgressData();
+        await SaveAchievementData();
+    }
+
+    public async System.Threading.Tasks.Task SaveMetaUpgradeData()
+    {
+        if (!CanSaveFirebaseData())
+            return;
+
         if (!isMetaUpgradeDirty)
             return;
 
@@ -273,17 +261,48 @@ public class SaveDataManager
             publicMetaSaveData = Managers.PublicMetaUpgrade.GetPublicMetaSaveData(),
             towerMetaSaveData = Managers.TowerMetaUpgrade.GetTowerUpgradeSaveData()
         };
+
+        await GetSaveDoc(META_UPGRADE_SAVE_FILE).SetAsync(saveData, SetOptions.MergeAll);
+
+        isMetaUpgradeDirty = false;
+
+        Debug.Log("Meta Upgrade Firestore Save Completed");
     }
 
-    public void SavePlayerProgressData()
+    public async System.Threading.Tasks.Task SavePlayerProgressData()
     {
+        if (!CanSaveFirebaseData())
+            return;
+
         if (!isPlayerDirty)
             return;
 
         PlayerProgressData saveData = Managers.Player.GetSaveData();
 
-        SavePlayerProgressData(saveData);
+        await GetSaveDoc(PLAYER_PROGRESS_FILE).SetAsync(saveData, SetOptions.MergeAll);
+
+        isPlayerDirty = false;
+
+        Debug.Log("Player Progress Firestore Save Completed");
     }
+
+    public async System.Threading.Tasks.Task SaveAchievementData()
+    {
+        if (!CanSaveFirebaseData())
+            return;
+
+        if (!isQuestDirty)
+            return;
+
+        QuestSaveDataList saveData = Managers.QuestMgr.GetSaveData();
+
+        await GetSaveDoc(QUEST_SAVE_FILE).SetAsync(saveData, SetOptions.MergeAll);
+
+        isQuestDirty = false;
+
+        Debug.Log("Achievement Firestore Save Completed");
+    }
+
 
     public void SaveSoundData()
     {
@@ -315,46 +334,7 @@ public class SaveDataManager
         SaveLocalDataToJson<GraphicSaveData>(SavePath(GRAPHIC_SAVE_FILE), saveData, ref isGraphicDirty);
     }
 
-    public void SaveAchievementData()
-    {
-        if (!isQuestDirty)
-            return;
-
-        QuestSaveDataList saveData = Managers.QuestMgr.GetSaveData();
-
-        SaveAchievementData(saveData);
-    }
-
-    public void MarkMetaUpgradeDirty()
-    {
-        isMetaUpgradeDirty = true;
-    }
-
-    public void MarkGraphicDirty()
-    {
-        isGraphicDirty = true;
-    }
-
-    public void MarkSoundDirty()
-    {
-        isSoundDirty = true;
-    }
-
-    public void MarkInputDirty()
-    {
-        isInputDirty = true;
-    }
-
-    public void MarkPlayerDirty()
-    {
-        isPlayerDirty = true;
-    }
-
-    public void MarkQuestDirty()
-    {
-        isQuestDirty = true;
-    }
-    public void SaveAllDirty()
+    public async System.Threading.Tasks.Task SaveAllDirty()
     {
         MarkMetaUpgradeDirty();
         MarkSoundDirty();
@@ -363,11 +343,33 @@ public class SaveDataManager
         MarkGraphicDirty();
         MarkQuestDirty();
 
-        SaveAllData();
+        await SaveAllData();
     }
+
+    public async System.Threading.Tasks.Task CreateNewUserFirebaseSaveData(string uid)
+    {
+        PlayerProgressData playerData = new PlayerProgressData()
+        {
+            level = 1,
+            exp = 0,
+            metaCurrency = 0
+        };
+
+        await GetSaveDoc(uid, PLAYER_PROGRESS_FILE).SetAsync(playerData, SetOptions.Overwrite);
+        await GetSaveDoc(uid, META_UPGRADE_SAVE_FILE).SetAsync(new MetaUpgradeSaveData(), SetOptions.Overwrite);
+        await GetSaveDoc(uid, QUEST_SAVE_FILE).SetAsync(new QuestSaveDataList(), SetOptions.Overwrite);
+    }
+
+
+    public void MarkMetaUpgradeDirty() => isMetaUpgradeDirty = true;
+    public void MarkGraphicDirty() => isGraphicDirty = true;
+    public void MarkSoundDirty() => isSoundDirty = true;
+    public void MarkInputDirty() => isInputDirty = true;
+    public void MarkPlayerDirty() => isPlayerDirty = true;
+    public void MarkQuestDirty() => isQuestDirty = true;
 
     public void ResetSave()
     {
-        SaveMetaUpgradeData(new MetaUpgradeSaveData());
+        
     }
 }

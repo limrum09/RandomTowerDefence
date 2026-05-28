@@ -1,3 +1,4 @@
+using Firebase.Firestore;
 using System;
 using System.Collections.Generic;
 
@@ -6,15 +7,17 @@ using System.Collections.Generic;
 /// UID로 업적을 찾고, stat에 상태를 넣고, currentSuccess에 진행도를 넣는다.
 /// </summary>
 [Serializable]
+[FirestoreData]
 public class QuestSaveData
 {
-    public string UID;
-    public QuestStat stat;
-    public int currentSuccess;
+    [FirestoreProperty] public string UID { get; set; }
+    [FirestoreProperty] public int stat { get; set; }
+    [FirestoreProperty] public int currentSuccess { get; set; }
 }
 
 [Serializable]
+[FirestoreData]
 public class QuestSaveDataList
 {
-    public List<QuestSaveData> datas = new List<QuestSaveData>();
+    [FirestoreProperty] public List<QuestSaveData> datas { get; set; } = new List<QuestSaveData>();
 }

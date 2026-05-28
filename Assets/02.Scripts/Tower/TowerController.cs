@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class TowerController : MonoBehaviour
@@ -15,6 +16,8 @@ public class TowerController : MonoBehaviour
     private GameObject towerPre;
     [SerializeField]
     private GameObject towers;
+    [SerializeField]
+    private TowerBuildPreview preview;
 
     public event Action<Tower> OnTowerSelected;
     public event Action OnTowerSelectCleared;
@@ -61,6 +64,8 @@ public class TowerController : MonoBehaviour
 
         needupgradeTowerCnt = 3;
 
+        preview.Hide();
+
         OnFirstTowerBuild += stage.SuccessBuildTower;
     }
 
@@ -88,9 +93,28 @@ public class TowerController : MonoBehaviour
         // 타워 생성 모드 일 시
         if (isBuildMode)
         {
+            // 마우스가 클릭한 셀의 좌표
+            Vector2Int cell = GetMouseCellPosition();
+
+            bool inBound = grid.IsInBounds(cell);
+            bool canPlace = inBound && CanPlaceTower(cell);
+
+            Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            mouseWorldPos.z = 0.0f;
+
+            Vector3 cellCenter = inBound ? grid.CellToWorldCenter(cell.x, cell.y) : mouseWorldPos;
+
+            preview.UpdatePreview(mouseWorldPos, cellCenter, canPlace);
+
             // 마우스 왼쪽 버튼을 클릭하여 타워 생성 시작
             if (Input.GetMouseButtonDown(0))
-                TryBuildPendingTower();
+            {
+                if (Managers.InputData.IsPointerOverUI<QueueUIController>())
+                    return;
+
+                // 마우스가 클릭한 셀의 좌표를 받고 넘겨주기
+                TryBuildPendingTower(cell);
+            }   
 
             // 다른 모드와 겹치지 않도록 return으로 끝내기
             return;
@@ -162,26 +186,56 @@ public class TowerController : MonoBehaviour
 
     /// <summary>
     /// 대기열의 타워를 설치할 수 있도록 설치 모드를 시작
+    /// 더블클릭을 하면 랜덤한 위치에 타워를 생성
     /// </summary>
     /// <param name="towerUID">대기열에서 선택된 타워의 UID</param>
     /// <param name="index">대기열에서 타워 위치</param>
     /// <param name="tQueue">대기열 정보</param>
-    public void BeginBuildTower(string towerUID, int index)
+    public void BeginBuildTower(string towerUID, int index, Sprite towerSprite)
     {
+        if(isBuildMode && selectedTowerUID == towerUID && selectedQueueIndex == index)
+        {
+            GetRandomObstacleCell();
+            return;
+        }
+
         selectedTowerUID = towerUID;
         isBuildMode = true;
         selectedTower = null;
         selectedQueueIndex = index;
+
+        preview.Show(towerSprite);
+    }
+    
+    /// <summary>
+    /// 타워가 설치 안된 랜덤한 장애물들에 타워를 설치
+    /// </summary>
+    private void GetRandomObstacleCell()
+    {
+        List<Vector2Int> temp = new List<Vector2Int>();
+        List<Vector2Int> obstacleCells = obstacle.GetObstacleCells();
+
+        foreach(Vector2Int cell in obstacleCells)
+        {
+            if (!HasTower(cell))
+                temp.Add(cell);
+        }
+
+        if(temp.Count <= 0)
+        {
+            return;
+        }
+
+        Vector2Int randomCell = temp[UnityEngine.Random.Range(0, temp.Count)];
+        TryBuildPendingTower(randomCell);
     }
 
     /// <summary>
-    /// 클릭한 셀에 설치 대기 중인 타워를 배치 시도
+    /// 넘겨받은 셀에 설치 대기 중인 타워를 배치 시도
     /// 설치 성공 시 대기열에서 해당 타워를 제거
     /// </summary>
-    private void TryBuildPendingTower()
+    private void TryBuildPendingTower(Vector2Int cell)
     {
-        // 클릭한 마우스의 셀 값 가져오기
-        Vector2Int cell = GetMouseCellPosition();
         // 타워를 생성하고 결과를 bool값으로 가져오기
         bool success = BuildTower(selectedTowerUID, cell);
 
@@ -441,6 +495,7 @@ public class TowerController : MonoBehaviour
         isBuildMode = false;
         selectedTowerUID = string.Empty;
         selectedQueueIndex = -1;
+        preview.Hide();
     }
 
     /// <summary>

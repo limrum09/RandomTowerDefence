@@ -1,4 +1,7 @@
+using NUnit.Framework;
 using System;
+using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 /// <summary>
@@ -287,5 +290,25 @@ public class ObstacleBuilder : MonoBehaviour
         obstacleCnt = 0;
         isObstacleMode = false;
         isRemoveObstacle = false;
+    }
+
+    /// <summary>
+    /// 장애물이 설치된 좌표를 넘긴다
+    /// </summary>
+    /// <returns>장애물 좌표</returns>
+    public List<Vector2Int> GetObstacleCells()
+    {
+        List<Vector2Int> result = new List<Vector2Int>();
+
+        for(int i = 0; i < obstacleMap.GetLength(1); i++)
+        {
+            for(int j = 0; j < obstacleMap.GetLength(0); j++)
+            {
+                if (obstacleMap[j, i] != null)
+                    result.Add(new Vector2Int(j, i));
+            }
+        }
+
+        return result;
     }
 }

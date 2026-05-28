@@ -75,9 +75,4 @@ public class LobbyManager : MonoBehaviour
 
         LoadSceneManager.Instance.OnLoadStageScene();
     }
-
-    public void SetTowerMetaUpgradeSaveManager(TowerMetaUpgradeData data)
-    {
-        Managers.TowerMetaUpgrade.Init(data);
-    }
 }

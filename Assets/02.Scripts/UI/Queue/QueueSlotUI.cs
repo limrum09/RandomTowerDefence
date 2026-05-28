@@ -38,6 +38,6 @@ public class QueueSlotUI : MonoBehaviour
 
     private void OnClickSlot()
     {
-        owner.OnClickQueueSlot(slotIndex, towerUID);
+        owner.OnClickQueueSlot(slotIndex, towerUID, tpc.TowerSprite);
     }
 }

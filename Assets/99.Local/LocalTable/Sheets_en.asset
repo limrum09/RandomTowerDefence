@@ -307,16 +307,16 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 23009046590
-    m_Localized: 'Recovers {1} HP of self every {0}s. (Cooldown: {2}s)'
+    m_Localized: 'Recovers {4} HP of self. (Cooldown: {1}s)'
     m_Metadata:
       m_Items: []
   - m_Id: 23009046591
-    m_Localized: Sacred Sanctuary
+    m_Localized: Heal Area
     m_Metadata:
       m_Items: []
   - m_Id: 23009046592
-    m_Localized: 'Deploys a sanctuary for {0}s, recovering {2} HP of allies within
-      range every {1}s. (Cooldown: {3}s)'
+    m_Localized: 'Deploys a sanctuary for {0}s, recovering {4} HP of allies within
+      {3} range every {2}s. (Cooldown: {1}s)'
     m_Metadata:
       m_Items: []
   - m_Id: 23009046593
@@ -324,8 +324,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 23009046594
-    m_Localized: 'Unleashes potential to increase Move Speed by {2}% for {0}s. (Cooldown:
-      {3}s)'
+    m_Localized: 'Unleashes potential to increase Move Speed by {4}% for {0}s. (Cooldown:
+      {1}s)'
     m_Metadata:
       m_Items: []
   - m_Id: 23009046595
@@ -333,8 +333,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 23009046596
-    m_Localized: 'Increases Move Speed of allies within {0} range by {2}% for {1}s.
-      (Cooldown: {3}s)'
+    m_Localized: 'Increases Move Speed of allies within {3} range by {4}% for {0}s.
+      (Cooldown: {1}s)'
     m_Metadata:
       m_Items: []
   - m_Id: 23009046597
@@ -342,8 +342,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 23009046598
-    m_Localized: 'Creates a mana shield to absorb {1} damage for {0}s. (Cooldown:
-      {2}s)'
+    m_Localized: 'Creates a mana shield that absorbs {4} damage. (Cooldown: {1}s)'
     m_Metadata:
       m_Items: []
   - m_Id: 23009046599
@@ -351,8 +350,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 23009046600
-    m_Localized: 'Grants a shield to allies within {0} range that absorbs {2} damage
-      for {1}s. (Cooldown: {3}s)'
+    m_Localized: 'Grants allies within {3} range a shield that absorbs {4} damage
+      for {0}s. (Cooldown: {1}s)'
     m_Metadata:
       m_Items: []
   - m_Id: 23009046601
@@ -360,8 +359,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 23009046602
-    m_Localized: 'Freezes enemies to reduce their ATK Speed by {1}% for {0}s. (Cooldown:
-      {2}s)'
+    m_Localized: 'Freezes enemies to reduce their ATK Speed by {4}% for {0}s. (Cooldown:
+      {1}s)'
     m_Metadata:
       m_Items: []
   - m_Id: 23009046603
@@ -369,16 +368,16 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 23009046604
-    m_Localized: 'Curses enemies to reduce their ATK by {1}% for {0}s. (Cooldown:
-      {2}s)'
+    m_Localized: 'Curses enemies to reduce their ATK by {4}% for {0}s. (Cooldown:
+      {1}s)'
     m_Metadata:
       m_Items: []
   - m_Id: 23009046605
-    m_Localized: Minion Swarm
+    m_Localized: Summon Minion
     m_Metadata:
       m_Items: []
   - m_Id: 23009046606
-    m_Localized: 'Summons a swarm of {0} minions in front. (Cooldown: {1}s)'
+    m_Localized: 'Summons a swarm of {4} minions in front. (Cooldown: {1}s)'
     m_Metadata:
       m_Items: []
   - m_Id: 23009046607
