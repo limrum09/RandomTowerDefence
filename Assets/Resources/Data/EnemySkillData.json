@@ -68,8 +68,8 @@
       "Scale_Type": "Level",
       "Scale_Interval": 5,
       "Scale_Max": 30,
-      "String_Key": "ES_HEAL_AREA",
-      "Des_String_Key": "ES_HEAL_AREA_DES",
+      "String_Key": "ES_HEAL_SANCTUARY",
+      "Des_String_Key": "ES_HEAL_SANCTUARY_DES",
       "Icon_UID": "ICON_ENEMY_SKILL_HEAL_AREA2"
     },
     {
@@ -81,7 +81,7 @@
       "Tick_Interval": 0,
       "Range": 0,
       "Value_type": "Percent",
-      "Basic_Value": 100,
+      "Basic_Value": 10,
       "Increasee_Value": 5,
       "Scale_Type": "Level",
       "Scale_Interval": 5,
@@ -99,7 +99,7 @@
       "Tick_Interval": 0,
       "Range": 5,
       "Value_type": "Percent",
-      "Basic_Value": 100,
+      "Basic_Value": 10,
       "Increasee_Value": 5,
       "Scale_Type": "Level",
       "Scale_Interval": 5,
@@ -212,8 +212,8 @@
       "Scale_Type": "Level",
       "Scale_Interval": 5,
       "Scale_Max": 10,
-      "String_Key": "ES_SUMMON_MINION",
-      "Des_String_Key": "ES_SUMMON_MINION_DES",
+      "String_Key": "ES_SUMMON_MINION_LEGION",
+      "Des_String_Key": "ES_SUMMON_MINION_LEGION_DES",
       "Icon_UID": "ICON_ENEMY_SKILL_SUMMON_MINION2"
     },
     {

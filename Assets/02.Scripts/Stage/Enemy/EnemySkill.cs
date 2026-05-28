@@ -316,7 +316,7 @@ public class EnemySkill : MonoBehaviour
             {
                 tickAction?.Invoke();
                 // 다음 반복 시간 갱신
-                skillInterval += timer;
+                skillInterval += getInterval;
             }
 
             yield return null;

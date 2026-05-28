@@ -131,7 +131,7 @@ public class QuestManager
         activeAchievement.Clear();
         completeAchievement.Clear();
 
-        if(saveDataList == null)
+        if(saveDataList == null || saveDataList.datas.Count == 0 || saveDataList.datas == null)
         {
             List<Achievement> lists = achievementDatas.GetAllAchievement();
 

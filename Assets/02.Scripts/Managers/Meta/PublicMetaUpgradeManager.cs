@@ -1,20 +1,23 @@
+using Firebase.Firestore;
 using System;
 using System.Collections.Generic;
 
 [Serializable]
+[FirestoreData]
 public class PublicMetaSaveData
 {
-    public MetaUpgradeType type;
-    public int level;
+    [FirestoreProperty] public int type { get; set; }
+    [FirestoreProperty] public int level { get; set; }
 }
 
 /// <summary>
 /// 저장에 사용되는 데이터
 /// </summary>
 [Serializable]
+[FirestoreData]
 public class PublicMetaUpgradeData
 {
-    public List<PublicMetaSaveData> upgrades = new List<PublicMetaSaveData>();
+    [FirestoreProperty] public List<PublicMetaSaveData> upgrades { get; set; } = new List<PublicMetaSaveData>();
 }
 
 /// <summary>
@@ -33,13 +36,13 @@ public class PublicMetaUpgradeManager
     /// <returns>찾거나 새로 만든 데이터</returns>
     private PublicMetaSaveData GetMetaSaveData(MetaUpgradeType getType)
     {
-        PublicMetaSaveData data = upgradeData.upgrades.Find(x => x.type == getType);
+        PublicMetaSaveData data = upgradeData.upgrades.Find(x => (MetaUpgradeType)x.type == getType);
 
         if(data == null)
         {
             data = new PublicMetaSaveData
             {
-                type = getType,
+                type = (int)getType,
                 level = 0
             };
 
@@ -47,16 +50,6 @@ public class PublicMetaUpgradeManager
         }
 
         return data;
-    }
-
-    /// <summary>
-    /// 저장 데이터를 기반으로 공용 메타 강화 데이터를 초기화
-    /// 저장 데이터가 없다면 새 데이터를 생성
-    /// </summary>
-    /// <param name="getUpgradeData"></param>
-    public void Init(PublicMetaUpgradeData getUpgradeData)
-    {
-        upgradeData = getUpgradeData != null ? getUpgradeData : new PublicMetaUpgradeData();
     }
 
     /// <summary>
@@ -159,6 +152,16 @@ public class PublicMetaUpgradeManager
             default:
                 return "찾을 수 없음";
         }
+    }
+
+    /// <summary>
+    /// 저장 데이터를 기반으로 공용 메타 강화 데이터를 초기화
+    /// 저장 데이터가 없다면 새 데이터를 생성
+    /// </summary>
+    /// <param name="getUpgradeData"></param>
+    public void LoadSaveData(PublicMetaUpgradeData getUpgradeData)
+    {
+        upgradeData = getUpgradeData != null ? getUpgradeData : new PublicMetaUpgradeData();
     }
 
     /// <summary>

@@ -101,14 +101,14 @@ public class Quest : ScriptableObject
         return new QuestSaveData
         {
             UID = questUID,
-            stat = Stat,
+            stat = (int)Stat,
             currentSuccess = task.CurrentSuccess
         };
     }
 
     public void LoadQuestSaveData(QuestSaveData saveData)
     {
-        Stat = saveData.stat;
+        Stat = (QuestStat)saveData.stat;
 
         task.LoadTaskSuccess(saveData.currentSuccess);
     }

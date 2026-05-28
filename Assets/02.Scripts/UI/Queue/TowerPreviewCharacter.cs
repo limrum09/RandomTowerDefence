@@ -8,6 +8,8 @@ public class TowerPreviewCharacter : MonoBehaviour
     [SerializeField]
     private SpriteLibrary spriteLibrary;
 
+    public Sprite TowerSprite => spriteLibrary.GetSprite("Block", "0");
+
     public void SetTower(string uid)
     {
         TowerData temp = Managers.TowerData.GetTowerData(uid);

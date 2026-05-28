@@ -1,12 +1,13 @@
+using Firebase.Firestore;
 using System;
-using TMPro;
 
 [Serializable]
+[FirestoreData]
 public class PlayerProgressData
 {
-    public int level;
-    public int exp;
-    public int metaCurrency;
+    [FirestoreProperty] public int level { get; set; }
+    [FirestoreProperty] public int exp { get; set; }
+    [FirestoreProperty] public int metaCurrency { get; set; }
 }
 
 /// <summary>
@@ -27,16 +28,6 @@ public class PlayerProgressManager
 #if UNITY_EDITOR
         AddCurrency(50000);
 #endif
-    }
-
-    /// <summary>
-    /// 저장 데이터를 기반으로 유저 진행 데이터를 초기화
-    /// 저장 데이터가 없다면 기본 값으로 새 데이터를 생성
-    /// </summary>
-    /// <param name="getData"></param>
-    public void Init(PlayerProgressData getData)
-    {
-        playerData = getData != null ? getData : new PlayerProgressData() { level = 1, exp = 0, metaCurrency = 0 };
     }
 
     /// <summary>
@@ -106,6 +97,16 @@ public class PlayerProgressManager
     /// </summary>
     /// <returns>현제 유저의 레벨</returns>
     public int GetPlayerLevel() => playerData.level;
+
+    /// <summary>
+    /// 저장 데이터를 기반으로 유저 진행 데이터를 초기화
+    /// 저장 데이터가 없다면 기본 값으로 새 데이터를 생성
+    /// </summary>
+    /// <param name="getData"></param>
+    public void LoadSaveData(PlayerProgressData getData)
+    {
+        playerData = getData != null ? getData : new PlayerProgressData() { level = 1, exp = 0, metaCurrency = 0 };
+    }
 
     /// <summary>
     /// 데이터를 저장하기 위해 SaveDataManager에서 호출 시, 해당 데이터들을 넘겨준다.

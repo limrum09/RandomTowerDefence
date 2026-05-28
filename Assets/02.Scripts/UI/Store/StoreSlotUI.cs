@@ -1,16 +1,15 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class StoreSlotUI : MonoBehaviour
+/// <summary>
+/// 상점 슬롯 UI
+/// StoreProduct 정보를 화면에 표시,
+/// 클릭, 마우스 Enter, Exit 정보를 StoreController에게 전달
+/// </summary>
+public class StoreSlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    private enum SlotType
-    {
-        None,
-        Tower,
-        Item
-    }
-
     [SerializeField]
     private string uid;
     [SerializeField]
@@ -26,9 +25,18 @@ public class StoreSlotUI : MonoBehaviour
 
     private StoreController owner;
     private Button btn;
-    private SlotType type;
+    private StoreProductType type;
     private int price;
     public string UID => uid;
+
+    /// <summary>
+    /// 현제 슬롯에 표시 중인 상점 상품 정보
+    /// </summary>
+    public StoreProduct Product;
+
+    /// <summary>
+    /// 초기화
+    /// </summary>
     private void Start()
     {
         btn = GetComponent<Button>();
@@ -36,129 +44,84 @@ public class StoreSlotUI : MonoBehaviour
         price = 0;
     }
 
+    /// <summary>
+    /// 슬롯 클릭 시 구매 요청을 StoreController에게 전달
+    /// 실제 구매 가능 여부, 골드 차감, 아이템 지급은 StoreController가 처리
+    /// </summary>
     private void OnClickUI()
     {
-        if (!owner.UsingGold(-price))
+        if (type == StoreProductType.None || string.IsNullOrEmpty(uid) || price <= -1)
             return;
 
-        if (type == SlotType.Tower)
-        {
-            if (owner.OnClickTowerSlotUI(uid))
-                price = 0;
-            else
-                owner.UsingGold(price);
-        }            
-        else if (type == SlotType.Item)
-        {
-            if(owner.OnClickItemSlotUI(uid))
-                price = 0;
-            else
-                owner.UsingGold(price);
-        }
+        owner.RequestBuy(this);
     }
 
-    private void GetTowerData(TowerData data)
-    {
-        int grade = data.grade;
-        gradeText.text = grade.ToString();
-        priceText.text = data.buyPrice.ToString();
-
-        string path = data.iconPath;
-
-        Sprite icon = Resources.Load<Sprite>($"Tower/Images/Icon_Tower_{data.towerType}_{data.grade}_Idle");
-
-        if (icon != null)
-        {
-            tempText.text = "";
-            iconImage.gameObject.SetActive(true);
-            iconImage.sprite = icon;
-        }
-        else
-        {
-            tempText.text = data.towerType.ToString();
-            iconImage.gameObject.SetActive(false);
-        }
-    }
-
-    private void GetItemData(ItemData data)
-    {
-        string grade = "N";
-
-        switch(data.grade)
-        {
-            case ItemGrade.Normal : 
-                grade = "N"; 
-                break;
-            case ItemGrade.Rare:
-                grade = "R";
-                break;
-            case ItemGrade.Epic:
-                grade = "E";
-                break;
-            case ItemGrade.Legend:
-                grade = "L";
-                break;
-            case ItemGrade.Mythic:
-                grade = "M";
-                break;
-            default:
-                grade = string.Empty;
-                break;
-        }
-
-        gradeText.text = grade;
-        priceText.text = data.salePrice.ToString();
-
-        Sprite icon = Resources.Load<Sprite>($"Item/Images/{data.iconUID}");
-
-        if (icon != null)
-        {
-            tempText.text = "";
-            iconImage.gameObject.SetActive(true);
-            iconImage.sprite = icon;
-        }
-        else
-        {
-            tempText.text = data.grade.ToString();
-            iconImage.gameObject.SetActive(false);
-        }
-    }
-
+    /// <summary>
+    /// 해당 슬롯을 관리하는 StoreContrller를 등록
+    /// </summary>
+    /// <param name="store"></param>
     public void SetStoreCTR(StoreController store) => owner = store;
 
-    public void SetStoreSlot(string getUID)
+    /// <summary>
+    /// StoreProduct 정보를 기반으로 슬롯 UI를 갱신
+    /// </summary>
+    /// <param name="getProduct"></param>
+    public void SetStoreSlot(StoreProduct getProduct)
     {
-        uid = getUID;
+        Product = getProduct;
 
-        TowerData tower = Managers.TowerData.GetTowerData(getUID);
-        if (tower != null)
+        uid = Product.uid;
+        price = Product.price;
+        type = Product.type;
+
+        gradeText.text = Product.gradeText;
+        priceText.text = Product.price.ToString();
+
+        if(Product.Icon != null)
         {
-            type = SlotType.Tower;
-            GetTowerData(tower);
-            price = tower.buyPrice;
-            return;
+            tempText.text = "";
+            iconImage.gameObject.SetActive(true);
+            iconImage.sprite = Product.Icon;
         }
-
-        ItemData item = Managers.Item.GetItemData(getUID);
-        if (item != null)
+        else
         {
-            type = SlotType.Item;
-            GetItemData(item);
-            price = item.buyPrice;
-            return;
+            tempText.text = Product.type == StoreProductType.None ? "비어있음" : Product.uid;
+            iconImage.gameObject.SetActive(false);
         }
-
-        type = SlotType.None;
-        layoutGroup.CalculateLayoutInputHorizontal();
-        layoutGroup.SetLayoutHorizontal();
-        SetStoreSlot();
     }
 
+    /// <summary>
+    /// 슬롯을 빈 상태로 초기화
+    /// </summary>
     public void SetStoreSlot()
     {
+        uid = string.Empty;
+        type = StoreProductType.None;
+        price = 0;
+
         tempText.text = "타워를 넣지 못함";
         gradeText.text = "0";
-        price = 0;
+        priceText.text = "0";
         iconImage.gameObject.SetActive(false);
+    }
+
+    /// <summary>
+    /// 마우스가 슬롯 위에 올라왔을 때, StoreController에게 알린다
+    /// Tooltip 표시 여부는 StoreController가 판단
+    /// </summary>
+    /// <param name="eventData"></param>
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        owner.OnPointerEnterSlot(this);
+    }
+
+    /// <summary>
+    /// 마우스가 슬롯을 벗어 났을 때, StoreController에게 알린다
+    /// Tooltip 숨김 여부는 StoreController가 판단
+    /// </summary>
+    /// <param name="eventData"></param>
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        owner.OnPointerExitSlot(this);
     }
 }

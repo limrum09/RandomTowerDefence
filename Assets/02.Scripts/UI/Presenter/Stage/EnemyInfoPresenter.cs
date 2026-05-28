@@ -34,7 +34,10 @@ public class EnemyInfoPresenter
 
         EnemySkillData skill = Managers.EnemySkillData.GetEnemySkillData(temp.enemySkillUID);
         view.SetSkillName(Managers.Local.GetString("Sheets", skill.stringKey));
-        view.SetSkillDesText(Managers.Local.GetString("Sheets", skill.desStringKey));
+
+        string des = Managers.Local.GetString("Sheets", skill.desStringKey);
+        string formatStr = string.Format(des, skill.duration, skill.coolDown, skill.tickInterval, skill.range, skill.basicValue);
+        view.SetSkillDesText(formatStr);
     }
 
     public void Hide()

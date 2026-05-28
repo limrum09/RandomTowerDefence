@@ -1,13 +1,15 @@
+using Firebase.Firestore;
 using System;
 using System.Collections.Generic;
 
 [Serializable]
+[FirestoreData]
 public class TowerUpgradeSaveData
 {
-    public TowerType type;
-    public int grade;
-    public int damageLevel;
-    public int attackSpeedLevel;
+    [FirestoreProperty] public int type { get; set; }
+    [FirestoreProperty] public int grade { get; set; }
+    [FirestoreProperty] public int damageLevel { get; set; }
+    [FirestoreProperty] public int attackSpeedLevel { get; set; }
 }
 
 /// <summary>
@@ -15,9 +17,10 @@ public class TowerUpgradeSaveData
 /// SaveDataManager가 Json을 저장/로드할 때 사용
 /// </summary>
 [Serializable]
+[FirestoreData]
 public class TowerMetaUpgradeData
 {
-    public List<TowerUpgradeSaveData> upgrades = new List<TowerUpgradeSaveData>();
+    [FirestoreProperty] public List<TowerUpgradeSaveData> upgrades { get; set; } = new List<TowerUpgradeSaveData>();
 }
 
 /// <summary>
@@ -38,13 +41,13 @@ public class TowerMetaUpgradeManager
     /// <returns>찾은 데이터 또는 새로 만든 데이터</returns>
     private TowerUpgradeSaveData GetSaveData(TowerType getType, int getGrade)
     {
-        TowerUpgradeSaveData data = upgradeData.upgrades.Find(x => x.type == getType && x.grade == getGrade);
+        TowerUpgradeSaveData data = upgradeData.upgrades.Find(x => (TowerType)x.type == getType && x.grade == getGrade);
 
         if(data == null)
         {
             data = new TowerUpgradeSaveData
             {
-                type = getType,
+                type = (int)getType,
                 grade = getGrade,
                 attackSpeedLevel = 0,
                 damageLevel = 0
@@ -54,16 +57,6 @@ public class TowerMetaUpgradeManager
         }
 
         return data;
-    }
-
-    /// <summary>
-    /// 저장 데이터를 기반으로 타워 메타 강화 데이터를 초기화
-    /// 저장 데이터가 없다면 새 데이터를 생성
-    /// </summary>
-    /// <param name="getUpgradeData">저장한 데이터</param>
-    public void Init(TowerMetaUpgradeData getUpgradeData)
-    {
-        upgradeData = getUpgradeData != null ? getUpgradeData : new TowerMetaUpgradeData();
     }
 
     /// <summary>
@@ -120,6 +113,16 @@ public class TowerMetaUpgradeManager
         data.attackSpeedLevel += upValue;
 
         return true;
+    }
+
+    /// <summary>
+    /// 저장 데이터를 기반으로 타워 메타 강화 데이터를 초기화
+    /// 저장 데이터가 없다면 새 데이터를 생성
+    /// </summary>
+    /// <param name="getUpgradeData">저장한 데이터</param>
+    public void LoadSaveData(TowerMetaUpgradeData getUpgradeData)
+    {
+        upgradeData = getUpgradeData != null ? getUpgradeData : new TowerMetaUpgradeData();
     }
 
     /// <summary>
