@@ -26,7 +26,7 @@ public class TowerGradeUpgradePresenter
         Sprite icon = Resources.Load<Sprite>($"Tower/Images/Icon_Tower_{model.IconPath}_{model.Grade}_Idle");
 
         view.Show();
-        view.SetTowerName(model.TowerName());
+        view.SetTowerName(Managers.Local.GetString("Sheets", model.StringKey));
         view.SetIconImage(icon);
         view.TowerGrade(model.Grade, model.nextGradeUID);
         view.SetSkillName(model.SkillName());
@@ -42,12 +42,26 @@ public class TowerGradeUpgradePresenter
 
         List<SkillValueCollect> skill = Managers.TowerSkill.GetTowerCollections(model.Type);
 
-        object[] des = new object[skill.Count * 2];
+        TowerSkillData skillData = null;
+        int isOrc = 0;
+
+        if(model.Type == TowerType.Orc)
+        {
+            isOrc = 1;
+            skillData = Managers.TowerSkill.GetTowerSkillDataByTypeAndCount(model.Type, skill[skill.Count - 1].towerCnt);
+        }
+        
+        object[] des = new object[skill.Count * 2 + isOrc];
 
         for(int i = 0; i < skill.Count; i++)
         {
             des[i] = skill[i].towerCnt;
             des[i + skill.Count] = skill[i].value;
+        }
+
+        if(skillData != null && model.Type == TowerType.Orc)
+        {
+            des[skill.Count * 2] = skillData.duration;
         }
 
         skillDesSplit = string.Format(skillDesSplit, des);

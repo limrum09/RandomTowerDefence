@@ -1,5 +1,6 @@
+using System;
 using System.Collections.Generic;
-using UnityEngine;
+using Unity.VisualScripting;
 
 public class RunStatUpgradeManager
 {
@@ -10,13 +11,18 @@ public class RunStatUpgradeManager
     private readonly Dictionary<TowerType, int> atkDamageSkillStep = new Dictionary<TowerType, int>();
     private readonly Dictionary<TowerType, int> atkSpeedSkillStep = new Dictionary<TowerType, int>();
 
-    public int GlobalAtkDamageStep;
-    public int GlobalAtkSpeedStep;
+    private readonly Dictionary<TowerType, float> criticalPerSkill = new Dictionary<TowerType, float>();
+    private readonly Dictionary<TowerType, float> enemySlowSkill = new Dictionary<TowerType, float>();
 
-    public int GoldDropValue;
-    public float InterestPer;
-    public int AbilityTriggerRequest;
+    private int GlobalAtkDamageStep;
+    private int GlobalAtkSpeedStep;
 
+    public int GoldDropValue { get; private set; }
+    public int AbilityTriggerRequest { get; private set; }
+    public float InterestPer { get; private set; }
+    public float EnemySlowDownPer { get; private set; }
+
+    public event Action OnChangedTowerStat;
     public void Init()
     {
         Reset();
@@ -30,15 +36,18 @@ public class RunStatUpgradeManager
         atkSpeedItemTowerStep.Clear();
         atkDamageSkillStep.Clear();
         atkSpeedSkillStep.Clear();
+        criticalPerSkill.Clear();
+        enemySlowSkill.Clear();
 
         GlobalAtkDamageStep = 0;
         GlobalAtkSpeedStep = 0;
 
         GoldDropValue = 0;
-        InterestPer = 0;
         AbilityTriggerRequest = 0;
+        InterestPer = 0;
+        EnemySlowDownPer = 0;
 
-        foreach(TowerType towerType in System.Enum.GetValues(typeof(TowerType)))
+        foreach (TowerType towerType in System.Enum.GetValues(typeof(TowerType)))
         {
             atkDamageTowerStep[towerType] = 0;
             atkSpeedTowerStep[towerType] = 0;
@@ -46,17 +55,21 @@ public class RunStatUpgradeManager
             atkSpeedItemTowerStep[towerType] = 0;
             atkDamageSkillStep[towerType] = 0;
             atkSpeedSkillStep[towerType] = 0;
+            criticalPerSkill[towerType] = 0;
+            enemySlowSkill[towerType] = 0;
         }
     }
 
     public void AddStatAtkDamage(TowerType type, int value)
     {
         atkDamageTowerStep[type] += value;
+        OnChangedTowerStat?.Invoke();
     }
 
     public void AddStatAtkSpeed(TowerType type, int value)
     {
         atkSpeedTowerStep[type] += value;
+        OnChangedTowerStat?.Invoke();
     }
 
     public void AddItemAtkDamage(ScopeRange scope, int value)
@@ -64,11 +77,13 @@ public class RunStatUpgradeManager
         if(scope == ScopeRange.AllTower)
         {
             GlobalAtkDamageStep += value;
+            OnChangedTowerStat?.Invoke();
             return;
         }
 
         if(TryConvertScopeToTowerType(scope, out TowerType type))
             atkDamageItemTowerStep[type] += value;
+        OnChangedTowerStat?.Invoke();
     }
 
     public void AddItemAtkSpeed(ScopeRange scope, int value)
@@ -76,11 +91,13 @@ public class RunStatUpgradeManager
         if(scope == ScopeRange.AllTower)
         {
             GlobalAtkSpeedStep += value;
+            OnChangedTowerStat?.Invoke();
             return;
         }
 
         if (TryConvertScopeToTowerType(scope, out TowerType type))
             atkSpeedItemTowerStep[type] += value;
+        OnChangedTowerStat?.Invoke();
     }
 
     public void AddSkillAtkDamage(TowerType type, int value)
@@ -88,15 +105,35 @@ public class RunStatUpgradeManager
         // 현제는 단계별로 증가 값이 정해져 있음
         // 공격력이나 속도 같은 값들은 서로의 타워에 영향을 주지 않기에 값만 변경한다.
         atkDamageSkillStep[type] = value;
-
+        OnChangedTowerStat?.Invoke();
     }
 
     public void AddSkillAtkSpeed(TowerType type, int value)
     {
         atkSpeedSkillStep[type] = value;
+        OnChangedTowerStat?.Invoke();
+    }
+
+    public void AddSkillCriticalPer(TowerType type, float value)
+    {
+        if (type != TowerType.Werebeast)
+            return;
+
+        criticalPerSkill[type] = value;
+        OnChangedTowerStat?.Invoke();
+    }
+
+    public void AddSkillEnemySlowPer(TowerType type, float value)
+    {
+        if (type != TowerType.Orc)
+            return;
+
+        enemySlowSkill[type] = value;
+        OnChangedTowerStat?.Invoke();
     }
 
     public void AddGoldDropIncrease(int value) => GoldDropValue += value;
+
     public void AddInterestBoost(float value) => InterestPer += value;
 
     public int GetAtkDamageStep(TowerType tower)
@@ -131,6 +168,22 @@ public class RunStatUpgradeManager
     public int GetSkillAtkSpeedStep(TowerType tower)
     {
         return atkSpeedSkillStep.TryGetValue(tower, out int value) ? value : 0;
+    }
+
+    public float GetCriticalPer(TowerType tower)
+    {
+        if (tower != TowerType.Werebeast)
+            return 0.0f;
+
+        return criticalPerSkill.TryGetValue(tower, out float value) ? value : 0.0f;
+    }
+
+    public float GetEnemySlowPer(TowerType tower)
+    {
+        if(tower != TowerType.Orc)
+            return 0.0f;
+
+        return criticalPerSkill.TryGetValue(tower, out float value) ? value : 0.0f;
     }
 
     private bool TryConvertScopeToTowerType(ScopeRange scope, out TowerType towerType)

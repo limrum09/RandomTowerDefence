@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
 
@@ -26,15 +27,13 @@ public class Tower : MonoBehaviour
     [SerializeField]
     private GitSpriteGlowCtr outlineEffectCtr;
 
-
+    private TowerData data;
     private int index;                                  // 필드에 배치된 타워 고유 인덱스
-    private RunStatUpgradeManager statUpgrade;          // 현재 런 강화 상태 관리자
-
     private string towerUID;            // 타워 UID
     private TowerType towerType;        // 타워 타입            
     private string stringKey;           // 타워 이름 로컬라이징
     private int grade;                  // 타워 등급
-    private float baseAtk;                // 타워 기본 공격력
+    private float baseAtk;              // 타워 기본 공격력
     private float baseAtkSpeed;         // 타워 기본 공격 속도
     private float range;                // 타워 공격 범위
     private CostType costType;          // 구매 비용 타입
@@ -44,12 +43,13 @@ public class Tower : MonoBehaviour
     private string iconPath;            // 아이콘/스프라이트 위치
     public string nextGradeUID;         // 다음 등급 타워 UID
 
-    private int metaDamageLevel;
-    private int metaSpeedLevel;
-    private float increaseAtkDamage;    // 1강화당 공격력 증가량
-    private float increaseAtkSpeed;     // 1강화당 공격 속도 증가량
+    private float currentDamage;        // 현제 공격력
+    private float currentSpeed;         // 현제 공격 속도
+    private float criticalPer;          // 크리티컬 확율
+    private float enemySlowPer;         // 적 타격시 해당 적 이동속도 감소
     private string skillName;           // 타워 스킬이름 캐시용
     private string skillDes;            // 타워 설명 캐시용
+
 
     public string TowerUID => towerUID;
     public int Index => index;
@@ -65,20 +65,19 @@ public class Tower : MonoBehaviour
     public string SkillID => skillID;
     public string IconPath => iconPath;
     public string NextGradeUID => nextGradeUID;
-    public RunStatUpgradeManager StatUpgrade => statUpgrade;
-    public string TowerName() => Managers.Local.GetString("Sheets", stringKey);
+    public Sprite TowerBlockSprite => spriteLibrary.GetSprite("Block", "0");
+    public float CriticalPer => criticalPer;
+    public float EnemySlowPer => enemySlowPer;
     /// <summary>
     /// 현제 공격력
     /// 기본 공격력 + (공격력 증가 값 * 현제 런 강화 단계)
     /// </summary>
-    public float CurrentDamage => baseAtk + (int)(increaseAtkDamage * (statUpgrade.GetAtkDamageStep(towerType) 
-        + statUpgrade.GetItemAtkDamageStep(towerType) + statUpgrade.GetSkillAtkDamageStep(towerType)));
+    public float CurrentDamage => currentDamage;
     /// <summary>
     /// 현제 공격 속도
     /// 기본 공겨 속도 + (공격 속도 증가 값 * 현제 런 강화 단계)
     /// </summary>
-    public float CurrentAtkSpeed => baseAtkSpeed + (increaseAtkSpeed * (statUpgrade.GetAtkSpeedStep(towerType) 
-        + statUpgrade.GetItemAtkSpeedStep(towerType) + statUpgrade.GetSkillAtkSpeedStep(towerType)));
+    public float CurrentAtkSpeed => currentSpeed;
     /// <summary>
     /// 스킬 이름 반환
     /// TowerSkillData의 StringKey를 로컬라이징 키로 사용하여 반환
@@ -194,16 +193,14 @@ public class Tower : MonoBehaviour
     /// <param name="getTowerUID"></param>
     /// <param name="getIndex"></param>
     /// <param name="getStatManager"></param>
-    public void Init(string getTowerUID, int getIndex, RunStatUpgradeManager getStatManager)
+    public void Init(string getTowerUID, int getIndex)
     {
-        // 현재 새션(런)의 강화 정보 참조 저장
-        statUpgrade = getStatManager;
         // 타워 UID와 고유 인덱스 저장
         towerUID = getTowerUID;
         index = getIndex;
 
         // 타워 정적 데이터 조회
-        TowerData data = Managers.TowerData.GetTowerData(towerUID);
+        data = Managers.TowerData.GetTowerData(towerUID);
 
         // TowerData값 복사
         towerType = data.towerType;
@@ -219,16 +216,29 @@ public class Tower : MonoBehaviour
         iconPath = data.iconPath;
         nextGradeUID = data.nextGradeUID;
 
-        // 강화 단계당 증가값 조회
-        increaseAtkDamage = Managers.SessionTowerUpgrade.GetUpgradeStepData(towerUID, UpgradeType.Damge).increaseValue;
-        increaseAtkSpeed = Managers.SessionTowerUpgrade.GetUpgradeStepData(towerUID, UpgradeType.Speed).increaseValue;
+        criticalPer = 0.0f;
 
+        // 공격력 및 공격속도 가져오기
+        RefreshStats();
         // 외형 / 애니메이션 설정
         SetAnimation();
         // 사거리 표시 크기 설정
         SetRangeVisiual();
         // 기본 상태에서는 사거리 표시 숨김
         ShowAttackRange(false);
+    }
+
+    /// <summary>
+    /// 타워의 공격력 및 공격속도 새로고침
+    /// </summary>
+    public void RefreshStats()
+    {
+        TowerStatPreview stat = TowerStatCalculator.Calculate(data);
+
+        currentDamage = stat.damage;
+        currentSpeed = stat.attackSpeed;
+        criticalPer = stat.criticalPer;
+        enemySlowPer = stat.enemySlow;
     }
 
     /// <summary>
