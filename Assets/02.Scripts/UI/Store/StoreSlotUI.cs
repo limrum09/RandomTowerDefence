@@ -25,6 +25,7 @@ public class StoreSlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     private StoreController owner;
     private Button btn;
+    private RectTransform rect;
     private StoreProductType type;
     private int price;
     public string UID => uid;
@@ -41,6 +42,7 @@ public class StoreSlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         btn = GetComponent<Button>();
         btn.onClick.AddListener(OnClickUI);
+        rect = GetComponent<RectTransform>();
         price = 0;
     }
 
@@ -112,7 +114,7 @@ public class StoreSlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     /// <param name="eventData"></param>
     public void OnPointerEnter(PointerEventData eventData)
     {
-        owner.OnPointerEnterSlot(this);
+        owner.OnPointerEnterSlot(this, rect);
     }
 
     /// <summary>

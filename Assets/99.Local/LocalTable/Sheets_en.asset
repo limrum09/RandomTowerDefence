@@ -267,10 +267,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 23009046582
-    m_Localized: 'With a fierce roar, the Orcs'' overwhelming power crushes the battlefield.\nOwn
-      Orc Towers: <color=#FF4545>[{0} / {1} / {2} / {3}]</color>\nIncreases ATK by
-      <color=#FF4545>[{4} / {5} / {6} / {7}]</color> (Step.4: Applies <color=#45A2FF>Slow</color>
-      on attack).'
+    m_Localized: 'With a fierce roar, the overwhelming might of the Orcs crushes
+      the battlefield.\nOrc Towers Owned: <color=#FF4545>[{0} / {1} / {2} / {3}]\nATK
+      increased by <color=#FF4545>[{4} / {5} / {6}]\nTier 4: Inflicts <color=#45A2FF>Slow
+      on attack (Reduces enemy Move Speed by <color=#FF4545>{7}% for <color=#45A2FF>{8}
+      sec)'
     m_Metadata:
       m_Items: []
   - m_Id: 23009046583

@@ -102,7 +102,7 @@ public class TowerStatUpgradeView : MonoBehaviour
     public void SetNextDamageText(string value) => nextDamageValueText.text = value;
     public void SetDamaePriceText(int value) => damagePriceText.text = value.ToString();
     public void SetCurrentAttakSpeedStepText(int value) => currentAttackSpeedStepText.text = string.Format(upgradeText, value);
-    public void SetCurrentAttakSpeedText(float value) => currentAttackSpeedValueText.text = value.ToString();
+    public void SetCurrentAttakSpeedText(float value) => currentAttackSpeedValueText.text = value.ToString("N2");
     public void SetNextAttakSpeedStepText(int value) => nextAttackSpeedStepText.text = string.Format(upgradeText, value);
     public void SetNextAttakSpeedText(string value) => nextAttackSpeedValueText.text = value;
     public void SetAttakSpeedPriceText(int value) => attackSpeedPriceText.text = value.ToString();

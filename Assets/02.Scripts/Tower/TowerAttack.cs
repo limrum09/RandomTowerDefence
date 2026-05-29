@@ -138,7 +138,23 @@ public class TowerAttack : MonoBehaviour
             return;
 
         tower.Attack(true);
-        target.EnemyGeTakeDamage(tower.CurrentDamage);
+        float damage = tower.CurrentDamage;
+
+        if (tower.Type == TowerType.Werebeast)
+        {
+            int randomInt = Random.Range(0, 100);
+
+            if (randomInt <= tower.CriticalPer)
+                damage *= 3;
+        }
+
+        target.EnemyGeTakeDamage(damage);
+
+        if(tower.Type == TowerType.Orc)
+        {
+            float slow = tower.EnemySlowPer;
+            target.MoveSpeedChange(-slow);
+        }
 
         string effectName = GetHitEffectName() + "AttackEffect";
 

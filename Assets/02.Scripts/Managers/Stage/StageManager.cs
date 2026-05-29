@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 /// <summary>
 /// 스테이지 진행을 총괄하는 루트 관리자
@@ -77,7 +78,6 @@ public class StageManager : MonoBehaviour
     private RunStatUpgradeManager statUpgradeManager;
     private TowerSkillEffect towerSkillEffect;
 
-
     public Vector2Int SpawnPos => Grid.SpawnPos;
     public Vector2Int GoalPos => Grid.GoalPos;
 
@@ -100,6 +100,8 @@ public class StageManager : MonoBehaviour
         statUpgradeManager = new RunStatUpgradeManager();
         fieldTowerManager = new FieldTowerManager();
         towerSkillEffect = new TowerSkillEffect();
+
+        TowerStatCalculator.Init(statUpgradeManager);
 
         Grid.InitializeGrid(gridWidth, gridHeight, cellSize, mapPlane);
         fieldTowerManager.Init(Grid);
@@ -147,6 +149,7 @@ public class StageManager : MonoBehaviour
     #region Bind Events
     private void BindEvents()
     {
+        BindStatUpgradeEvents();
         BindGridEvents();
         BindItemEvents();
         BindUIEvents();
@@ -155,6 +158,11 @@ public class StageManager : MonoBehaviour
         BindEnemySpawnEvents();
         BindTowerSkillEvents();
         BindObstacleEvents();
+    }
+
+    private void BindStatUpgradeEvents()
+    {
+        statUpgradeManager.OnChangedTowerStat += fieldTowerManager.RefreshAllTowerDamageStats;
     }
 
     private void BindGridEvents()
@@ -249,6 +257,7 @@ public class StageManager : MonoBehaviour
     #region UnBind Events
     private void UnBindEvents()
     {
+        UnBindStatUpgradeEvents();
         UnBindGridEvents();
         UnBindItemEvents();
         UnBindUIEvents();
@@ -257,6 +266,11 @@ public class StageManager : MonoBehaviour
         UnBindEnemySpawnEvents();
         UnBindTowerSkillEvents();
         UnBindObstacleEvents();
+    }
+
+    private void UnBindStatUpgradeEvents()
+    {
+        statUpgradeManager.OnChangedTowerStat -= fieldTowerManager.RefreshAllTowerDamageStats;
     }
 
     private void UnBindGridEvents()
@@ -573,23 +587,29 @@ public class StageManager : MonoBehaviour
     {
         if (TowerType.Orc == type && step == 4)
         {
+            statUpgradeManager.AddSkillEnemySlowPer(type, value);
             return;
         }
-
-        switch (type)
+        else if(TowerType.Orc == type && step != 4)
         {
-            case TowerType.Elf:
-            case TowerType.Orc:
-            case TowerType.Dragonian:
-                statUpgradeManager.AddSkillAtkDamage(type, (int)value);
-                break;
-            case TowerType.Human:
-                HumanTowerSkill();
-                break;
-            case TowerType.Werebeast:
-                WerebeastTowerSkill();
-                break;
+            statUpgradeManager.AddSkillEnemySlowPer(type, 0f);
         }
+
+            switch (type)
+            {
+                case TowerType.Elf:
+                case TowerType.Orc:
+                case TowerType.Dragonian:
+                    statUpgradeManager.AddSkillAtkDamage(type, (int)value);
+                    break;
+                case TowerType.Human:
+                    HumanTowerSkill();
+                    break;
+                case TowerType.Werebeast:
+                    statUpgradeManager.AddSkillCriticalPer(type, value);
+                    WerebeastTowerSkill();
+                    break;
+            }
     }
 
     private void HumanTowerSkill()
@@ -598,7 +618,7 @@ public class StageManager : MonoBehaviour
     }
 
     private void WerebeastTowerSkill()
-    {
+    { 
 
     }
 

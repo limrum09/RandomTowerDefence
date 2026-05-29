@@ -82,9 +82,14 @@ public class TowerController : MonoBehaviour
         // 타워 이동 모드일 시
         if (isTowerMove)
         {
-            // 마수르 왼쪽 버튼을 클릭하여 타워 이동 시작
+            Vector2Int cell = GetMouseCellPosition();
+            TowerPreview(cell, true);
+
+            // 마우스 왼쪽 버튼을 클릭하여 타워 이동 시작
             if (Input.GetMouseButtonDown(0))
+            {
                 TryMoveTower();
+            }
 
             // 다른 모드와 겹치지 않도록 return으로 끝내기
             return;
@@ -95,16 +100,7 @@ public class TowerController : MonoBehaviour
         {
             // 마우스가 클릭한 셀의 좌표
             Vector2Int cell = GetMouseCellPosition();
-
-            bool inBound = grid.IsInBounds(cell);
-            bool canPlace = inBound && CanPlaceTower(cell);
-
-            Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            mouseWorldPos.z = 0.0f;
-
-            Vector3 cellCenter = inBound ? grid.CellToWorldCenter(cell.x, cell.y) : mouseWorldPos;
-
-            preview.UpdatePreview(mouseWorldPos, cellCenter, canPlace);
+            TowerPreview(cell, false);
 
             // 마우스 왼쪽 버튼을 클릭하여 타워 생성 시작
             if (Input.GetMouseButtonDown(0))
@@ -142,7 +138,6 @@ public class TowerController : MonoBehaviour
             // 타워 등급 업그레이드 뷰 단축키 입력
             if (Input.GetKeyDown(Managers.InputData.GetKeyCode(InputAction.ShowGradeUpgradeTowerView)))
             {
-                Debug.Log("타워 등급 업그레이드 모드");
                 // 선택한 타워의 업그레이드 UI 실행
                 OnShowGradeUpgrade?.Invoke(selectedTower);
                 return;
@@ -231,6 +226,27 @@ public class TowerController : MonoBehaviour
     }
 
     /// <summary>
+    /// 현재 마우스가 위치한 셀의 타워 설치 가능 려부를 미리보기로 표시
+    /// 대기열에서의 설치모드 : 장애물이 존재, 타워가 없어야함
+    /// 타워 이동 모드 : 장애물이 존재, 타워가 있어도 위치교체 가능하기에 허용
+    /// 설치 가능 여부에 따라 Preview 색상을 갱신
+    /// </summary>
+    /// <param name="cell"></param>
+    /// <param name="allowTowrCell">true : 타워 이동 모드, false : 일반 설치 모드</param>
+    private void TowerPreview(Vector2Int cell, bool allowTowrCell)
+    {
+        bool canPlace = ((!HasTower(cell) || allowTowrCell) && CanUseTowerCell(cell));
+
+        Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldPos.z = 0.0f;
+
+        bool inBound = grid.IsInBounds(cell);
+        Vector3 cellCenter = inBound ? grid.CellToWorldCenter(cell.x, cell.y) : mouseWorldPos;
+
+        preview.UpdatePreview(mouseWorldPos, cellCenter, canPlace);
+    }
+
+    /// <summary>
     /// 넘겨받은 셀에 설치 대기 중인 타워를 배치 시도
     /// 설치 성공 시 대기열에서 해당 타워를 제거
     /// </summary>
@@ -290,7 +306,7 @@ public class TowerController : MonoBehaviour
 
         // 타워 데이터 초기화
         // 타워 데이터, 현제 타워에 지급된 Index값, 세션 스텟 manager 넘겨주기
-        tower.Init(towerUID, fieldTowerManager.GetTotalTowerCount(), stage.StatUpgradeManager);
+        tower.Init(towerUID, fieldTowerManager.GetTotalTowerCount());
 
         TowerMove towerMove = towerObj.GetComponent<TowerMove>();
         // TowerMove가 없을 시 컴포넌트 추가
@@ -482,6 +498,7 @@ public class TowerController : MonoBehaviour
     {
         isTowerMove = false;
         isGradeUpgradeMode = false;
+        preview.Hide();
 
         if (clearSelection)
             ClearSelectedTower(false);
@@ -607,6 +624,8 @@ public class TowerController : MonoBehaviour
     public void SetTowerMoveMode()
     {
         isTowerMove = true;
+
+        preview.Show(selectedTower.TowerBlockSprite);
     }
 
     /// <summary>

@@ -301,8 +301,10 @@ MonoBehaviour:
     m_Localized: "\uAC70\uCE5C \uD3EC\uD6A8\uC640 \uD568\uAED8 \uC624\uD06C\uB4E4\uC758
       \uC555\uB3C4\uC801\uC778 \uBB34\uB825\uC774 \uC804\uC7A5\uC744 \uC9D3\uB204\uB985\uB2C8\uB2E4.\\n\uC624\uD06C
       \uD0C0\uC6CC \uBCF4\uC720: <color=#FF4545>[{0} / {1} / {2} / {3}]</color>\\n\uACF5\uACA9\uB825
-      <color=#FF4545>[{4} / {5} / {6} / {7}]</color> \uC99D\uAC00 (4\uB2E8\uACC4:
-      \uACF5\uACA9 \uC2DC <color=#45A2FF>\uC2AC\uB85C\uC6B0</color> \uBD80\uC5EC)"
+      <color=#FF4545>[{4} / {5} / {6}]</color> \uC99D\uAC00\\n4\uB2E8\uACC4: \uACF5\uACA9
+      \uC2DC <color=#45A2FF>\uC2AC\uB85C\uC6B0</color>(<color=#45A2FF>{8}</color>\uCD08
+      \uB3D9\uC548, \uC801 \uC774\uB3D9\uC18D\uB3C4 <color=#FF4545>{7}%</color>\uAC10\uC18C)
+      \uBD80\uC5EC"
     m_Metadata:
       m_Items: []
   - m_Id: 23009046583

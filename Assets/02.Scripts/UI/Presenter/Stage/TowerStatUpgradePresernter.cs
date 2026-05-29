@@ -25,40 +25,36 @@ public class TowerStatUpgradePresernter
         Sprite icon = Resources.Load<Sprite>($"Tower/Images/Icon_Tower_{model.IconPath}_{model.Grade}_Idle");
 
         view.SetIconImage(icon);
-        view.SetTowerName(model.TowerName());
+        view.SetTowerName(Managers.Local.GetString("Sheets", model.StringKey));
         view.TowerGrade(model.Grade, model.nextGradeUID);
         view.SetSkillName(model.SkillName());
 
-        RunStatUpgradeManager tempRunUpgradeManager = model.StatUpgrade;
-        TowerSessionUpgradeData tempSessionDamageData = 
+        TowerData data = Managers.TowerData.GetTowerData(modelUid);
+        TowerStatPreview currentStat = TowerStatCalculator.Calculate(data);
+
+        TowerSessionUpgradeData tempSessionDamageData =
             Managers.SessionTowerUpgrade.GetUpgradeStepData(model.TowerUID, UpgradeType.Damge);
 
-        int currentStatDamageStep = tempRunUpgradeManager.GetAtkDamageStep(model.Type);
-        int currentItemDamageStep = tempRunUpgradeManager.GetItemAtkDamageStep(model.Type);
-        int currentSkillDamageStep = tempRunUpgradeManager.GetSkillAtkDamageStep(model.Type);
-        string nextDamageText = $"{model.CurrentDamage + tempSessionDamageData.increaseValue} " +
-            $"+ ({tempSessionDamageData.increaseValue})";
+        int currentDamageStep = TowerStatCalculator.GetAttackStep(model.Type);
+        string nextDamageText = $"{(model.CurrentDamage + tempSessionDamageData.increaseValue)} (+{tempSessionDamageData.increaseValue})";
 
-        view.SetCurrentDamageStepText(currentStatDamageStep + currentItemDamageStep + currentSkillDamageStep);
+        view.SetCurrentDamageStepText(currentDamageStep);
         view.SetCurrentDamageText(model.CurrentDamage);
-        view.SetNextDamageStepText(currentStatDamageStep + currentItemDamageStep + currentSkillDamageStep + 1);
+        view.SetNextDamageStepText(currentDamageStep + 1);
         view.SetNextDamageText(nextDamageText);
-        view.SetDamaePriceText(tempSessionDamageData.baseCost + (tempSessionDamageData.increaseCost * currentStatDamageStep));
+        view.SetDamaePriceText(tempSessionDamageData.baseCost + (tempSessionDamageData.increaseCost * currentDamageStep));
 
         TowerSessionUpgradeData tempSessionSpeedData = 
             Managers.SessionTowerUpgrade.GetUpgradeStepData(model.TowerUID, UpgradeType.Speed);
 
-        int currentStatSpeedStep = tempRunUpgradeManager.GetAtkSpeedStep(model.Type);
-        int currentItemSpeedStep = tempRunUpgradeManager.GetItemAtkSpeedStep(model.Type);
-        int currentSkillSpeedStep = tempRunUpgradeManager.GetSkillAtkSpeedStep(model.Type);
-        string nextSpeedText = $"{model.CurrentAtkSpeed + tempSessionSpeedData.increaseValue} " +
-            $"+ ({tempSessionSpeedData.increaseValue})";
+        int currentSpeedStep = TowerStatCalculator.GetSpeedStep(model.Type);
+        string nextSpeedText = $"{(model.CurrentAtkSpeed + tempSessionSpeedData.increaseValue).ToString("N2")} (+{tempSessionSpeedData.increaseValue.ToString("N2")})";
 
-        view.SetCurrentAttakSpeedStepText(currentStatSpeedStep + currentItemSpeedStep + currentSkillSpeedStep);
+        view.SetCurrentAttakSpeedStepText(currentSpeedStep);
         view.SetCurrentAttakSpeedText(model.CurrentAtkSpeed);
-        view.SetNextAttakSpeedStepText(currentStatSpeedStep + currentItemSpeedStep + currentSkillSpeedStep + 1);
+        view.SetNextAttakSpeedStepText(currentSpeedStep + 1);
         view.SetNextAttakSpeedText(nextSpeedText);
-        view.SetAttakSpeedPriceText(tempSessionSpeedData.baseCost + (tempSessionSpeedData.increaseCost * currentStatSpeedStep));
+        view.SetAttakSpeedPriceText(tempSessionSpeedData.baseCost + (tempSessionSpeedData.increaseCost * currentSpeedStep));
 
         view.Show();
     }

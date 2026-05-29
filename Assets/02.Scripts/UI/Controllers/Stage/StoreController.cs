@@ -233,7 +233,7 @@ public class StoreController : MonoBehaviour
             stage.RunSession.AddExp(2);
     }
 
-    public void OnPointerEnterSlot(StoreSlotUI slot)
+    public void OnPointerEnterSlot(StoreSlotUI slot, RectTransform slotRect)
     {
         if(slot == null) 
             return;
@@ -243,7 +243,7 @@ public class StoreController : MonoBehaviour
         if (product == null || product.type == StoreProductType.None)
             return;
 
-        tooltip.Show(product);
+        tooltip.Show(product, slotRect);
     }
 
     public void OnPointerExitSlot(StoreSlotUI slot)

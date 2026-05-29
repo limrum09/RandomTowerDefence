@@ -231,4 +231,15 @@ public class FieldTowerManager
 
         return true;
     }
+
+    public void RefreshAllTowerDamageStats()
+    {
+        foreach(Tower tower in fieldTowers)
+        {
+            if (tower == null)
+                continue;
+
+            tower.RefreshStats();
+        }
+    }
 }
