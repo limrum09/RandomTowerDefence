@@ -1,7 +1,6 @@
-using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using UnityEditor;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 /// <summary>
@@ -18,6 +17,8 @@ public class ObstacleBuilder : MonoBehaviour
     private GridManager gridManager;    // 현재 스테이지의 GridManager
     [SerializeField] 
     private PathFinder pathFinder;      // 경로 차단 여부 확인용 PathFinder
+    [SerializeField]
+    private FieldTowerManager fieldTowerManager;
     [SerializeField] 
     private Camera mainCamera;          // 마우스 위치 계산에 사용할 카메라
     [SerializeField] 
@@ -63,7 +64,7 @@ public class ObstacleBuilder : MonoBehaviour
     /// 초기화 
     /// StageManager에서 Grid, Path 정보가 준비된 후 호출
     /// </summary>
-    public void Initialized(GridManager grid, PathFinder path)
+    public void Initialized(GridManager grid, PathFinder path, FieldTowerManager field)
     {
         // 카메라 참조가 없으면 Main Camera 사용
         if (mainCamera == null)
@@ -72,6 +73,7 @@ public class ObstacleBuilder : MonoBehaviour
         // StageManager에서 GridManager와 PathFinder 참조 가져오기
         gridManager = grid;
         pathFinder = path;
+        fieldTowerManager = field;
         // Grid 크기에 맞추어서 장애물 맵 생성
         obstacleMap = new GameObject[gridManager.GridWidth, gridManager.GridHeight];
 
@@ -148,6 +150,11 @@ public class ObstacleBuilder : MonoBehaviour
         }
         // 해당 셀에 장애물이 없으면 종료
         if (obstacleMap[cell.x, cell.y] == null)
+        {
+            isRemoveObstacle = false;
+            return;
+        }
+        if (fieldTowerManager.HasTower(cell))
         {
             isRemoveObstacle = false;
             return;

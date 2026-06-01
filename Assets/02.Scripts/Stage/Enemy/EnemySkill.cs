@@ -17,6 +17,8 @@ public class EnemySkill : MonoBehaviour
     private LayerMask enemyLayer;   // Area 스킬 대상 탐색용 Enemy Layer
     [SerializeField]
     private LayerMask towerLayer;   // Tower 대상 스킬 탕색용 Tower Layer
+
+    private EnemyFactory enemyFactory;
     private EnemySkillData data;    // 현재 스킬 데이터
 
     private string skillUID;        // 현재 적이 사용하는 스킬 UID
@@ -33,6 +35,8 @@ public class EnemySkill : MonoBehaviour
     private EnemySkillValueType valueType;  // 스킬 값 타입
     private EnemySkillType skillType;       // Heal, Haste, Shield 등 스킬 타입
     private EnemySkillTarget target;        // 스킬 적용되는 Self, Area, Tower 대상 타입
+
+    public void SetEenmyFactory(EnemyFactory getFactory) => enemyFactory = getFactory;
 
     /// <summary>
     /// 적 스킬 초기화
@@ -123,10 +127,15 @@ public class EnemySkill : MonoBehaviour
             case EnemySkillType.Shield:
                 ApplyShield((int)value, getDuration, getTick);
                 break;
+            case EnemySkillType.AttackDebuff:
+            case EnemySkillType.SpeedDebuff:
+                break;
             case EnemySkillType.Summon:
+                SummonEnemy();
                 // 추후 소환 로직 추가 예정
                 break;
             case EnemySkillType.Stealth:
+                EnemyStealth();
                 // 추후 은신 로직 추가 예정
                 break;
         }
@@ -155,6 +164,11 @@ public class EnemySkill : MonoBehaviour
     /// </summary>
     private void UsingSkill()
     {
+        if(skillType != EnemySkillType.Haste && skillType != EnemySkillType.Stealth)
+        {
+            StartCoroutine(SkillGetPause());
+        }
+
         // 스킬 타입에 따른 이펙트 재생
         Managers.Effect.Play("Enemy" + skillType.ToString(), root.transform, PoolCategory.Stage, true);
 
@@ -194,7 +208,7 @@ public class EnemySkill : MonoBehaviour
     private void CheckEnemyAreaFindTower()
     {
         // 디버프만 가능
-        if (skillType != EnemySkillType.Debuff)
+        if (skillType != EnemySkillType.AttackDebuff && skillType != EnemySkillType.SpeedDebuff)
             return;
 
         // 현재 위치 기준 skillRange 안의 Tower Layer 탐색
@@ -203,11 +217,12 @@ public class EnemySkill : MonoBehaviour
         foreach(Collider2D col in cols)
         {
             // Tower 컴포넌트 가져오기
-            Tower enemy = col.GetComponent<Tower>();
-            if (enemy == null)
+            Tower tower = col.GetComponent<Tower>();
+            if (tower == null)
                 continue;
 
             // 타워 적용 로직 추가
+            tower.GetDubuff(skillType, skillValue, duration);
         }
     }
 
@@ -284,6 +299,30 @@ public class EnemySkill : MonoBehaviour
             }));
         }
     }
+
+    private void EnemyStealth()
+    {
+        StartCoroutine(Stealth(duration));
+    }
+    
+    /// <summary>
+    /// 소환수 소환
+    /// radius 만큰 offset을 만들 소환할 위치를 지정
+    /// </summary>
+    private void SummonEnemy()
+    {
+        int count = Mathf.RoundToInt(skillValue);
+        float radius = 1.0f;
+
+        for(int i = 0; i < count; i++)
+        {
+            Vector2 dir = UnityEngine.Random.insideUnitCircle.normalized;
+            Vector3 offset = new Vector3(dir.x, dir.y, 0f) * radius;
+
+            Vector3 spawnPos = root.transform.position + offset;
+            enemyFactory.SpawnEnemy("E001", 5, spawnPos);
+        }
+    }
     
     /// <summary>
     /// duration동안 tickAction을 주기적으로 실행
@@ -323,6 +362,13 @@ public class EnemySkill : MonoBehaviour
         }
     }
 
+    private IEnumerator Stealth(float duration)
+    {
+        root.SetStealth(true);
+        yield return new WaitForSeconds(duration);
+        root.SetStealth(false);
+    }
+
     /// <summary>
     /// 속도 증가 효과 적용
     /// duration시간이 지나면 다시 속도 감소
@@ -332,11 +378,20 @@ public class EnemySkill : MonoBehaviour
     /// <returns></returns>
     IEnumerator SpeedDuration(float value, float duration)
     {
-        root.MoveSpeedChange(value);
+        root.SetMoveSpeedModify(SpeedModityType.SkillSpeed, value);
         isSpeedSkill = true;
         yield return new WaitForSeconds(duration);
 
         isSpeedSkill = false;
-        root.MoveSpeedChange(-value);
+        root.RemoveMoveSpeedModify(SpeedModityType.SkillSpeed);
+    }
+
+    private IEnumerator SkillGetPause()
+    {
+        root.SetMove(false);
+
+        yield return new WaitForSeconds(1.5f);
+
+        root.SetMove(true);
     }
 }

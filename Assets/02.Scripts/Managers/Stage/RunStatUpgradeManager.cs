@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 
 public class RunStatUpgradeManager
 {
@@ -19,8 +18,8 @@ public class RunStatUpgradeManager
 
     public int GoldDropValue { get; private set; }
     public int AbilityTriggerRequest { get; private set; }
-    public float InterestPer { get; private set; }
-    public float EnemySlowDownPer { get; private set; }
+    public float MaxInterestValue { get; private set; }
+    public float IncreaseInterserPer { get; private set; }
 
     public event Action OnChangedTowerStat;
     public void Init()
@@ -44,8 +43,7 @@ public class RunStatUpgradeManager
 
         GoldDropValue = 0;
         AbilityTriggerRequest = 0;
-        InterestPer = 0;
-        EnemySlowDownPer = 0;
+        MaxInterestValue = 0;
 
         foreach (TowerType towerType in System.Enum.GetValues(typeof(TowerType)))
         {
@@ -134,7 +132,9 @@ public class RunStatUpgradeManager
 
     public void AddGoldDropIncrease(int value) => GoldDropValue += value;
 
-    public void AddInterestBoost(float value) => InterestPer += value;
+    public void ChangeMaxInterest(float value) => MaxInterestValue += value;
+
+    public void SetIncreseInterest(float value) => IncreaseInterserPer = value;
 
     public int GetAtkDamageStep(TowerType tower)
     {
@@ -183,7 +183,7 @@ public class RunStatUpgradeManager
         if(tower != TowerType.Orc)
             return 0.0f;
 
-        return criticalPerSkill.TryGetValue(tower, out float value) ? value : 0.0f;
+        return enemySlowSkill.TryGetValue(tower, out float value) ? value : 0.0f;
     }
 
     private bool TryConvertScopeToTowerType(ScopeRange scope, out TowerType towerType)

@@ -32,7 +32,7 @@ public class EnemyInfoPresenter
         view.SetSheildText(temp.basicShield + (temp.increaseShield * level));
         view.SetSpeedText(temp.moveSpeed);
 
-        EnemySkillData skill = Managers.EnemySkillData.GetEnemySkillData(temp.enemySkillUID);
+        EnemySkillData skill = Managers.EnemySkillData.GetEnemySkillData(temp.enemySkillUID);       
         view.SetSkillName(Managers.Local.GetString("Sheets", skill.stringKey));
 
         string des = Managers.Local.GetString("Sheets", skill.desStringKey);
