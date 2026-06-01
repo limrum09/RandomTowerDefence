@@ -150,10 +150,10 @@ public class TowerAttack : MonoBehaviour
 
         target.EnemyGeTakeDamage(damage);
 
-        if(tower.Type == TowerType.Orc)
+        if (tower.Type == TowerType.Orc)
         {
             float slow = tower.EnemySlowPer;
-            target.MoveSpeedChange(-slow);
+            target.SetMoveSpeedModify(SpeedModityType.TowerAttackSpeed, -slow);
         }
 
         string effectName = GetHitEffectName() + "AttackEffect";
@@ -212,6 +212,8 @@ public class TowerAttack : MonoBehaviour
         if (!enemy.gameObject.activeInHierarchy)
             return false;
 
+        if (enemy.IsTargetable)
+            return false;
         // dead가 생겨도 필요한지는 모르겠지만 일단 주석으로 추가
         //if(enemy.isdead)
 

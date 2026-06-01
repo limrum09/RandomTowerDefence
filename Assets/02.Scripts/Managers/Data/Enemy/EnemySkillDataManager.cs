@@ -14,7 +14,8 @@ public enum EnemySkillType
     Heal,
     Haste,
     Shield,
-    Debuff,
+    AttackDebuff,
+    SpeedDebuff,
     Summon,
     Stealth
 }
@@ -85,6 +86,7 @@ public class EnemySkillData
         basicValue = getBasicValue;
         increaseValue = getIncreaseValue;
         scaleType = getScaleType;
+        scaleInterval = getScaleIngervael;
         scaleMax = getScaleMax;
         stringKey = getStringKey;
         desStringKey = getDesStringKey;

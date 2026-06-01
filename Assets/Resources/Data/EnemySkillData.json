@@ -146,7 +146,7 @@
     },
     {
       "Enemy_Skill_UID": "ES0041",
-      "Type": "Debuff",
+      "Type": "SpeedDebuff",
       "Target_type": "Tower",
       "Duration": 10,
       "CoolDown": 20,
@@ -157,14 +157,14 @@
       "Increasee_Value": 1,
       "Scale_Type": "Level",
       "Scale_Interval": 5,
-      "Scale_Max": 15,
+      "Scale_Max": 50,
       "String_Key": "ES_TOWER_SLOW",
       "Des_String_Key": "ES_TOWER_SLOW_DES",
       "Icon_UID": "ICON_ENEMY_SKILL_TOWER_SLOW"
     },
     {
       "Enemy_Skill_UID": "ES0042",
-      "Type": "Debuff",
+      "Type": "AttackDebuff",
       "Target_type": "Tower",
       "Duration": 10,
       "CoolDown": 20,
@@ -175,7 +175,7 @@
       "Increasee_Value": 1,
       "Scale_Type": "Level",
       "Scale_Interval": 5,
-      "Scale_Max": 10,
+      "Scale_Max": 50,
       "String_Key": "ES_TOWER_ATK_DOWN",
       "Des_String_Key": "ES_TOWER_ATK_DOWN_DES",
       "Icon_UID": "ICON_ENEMY_SKILL_TOWER_ATK_DOWN"

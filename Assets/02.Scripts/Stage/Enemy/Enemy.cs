@@ -1,6 +1,13 @@
-using Unity.VisualScripting;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+
+public enum SpeedModityType
+{
+    SkillSpeed,
+    TowerAttackSpeed
+}
 
 /// <summary>
 /// 적의 기본 데이터를 관리하는 클래스
@@ -53,8 +60,10 @@ public class Enemy : MonoBehaviour
     private float currentShield;  // 현재 보호막
     [SerializeField]
     private float currentSpeed; // 현재 이동 속도
+    private bool isStealth;
     private bool isDead;        // 죽었는지 판단
-    private float increaseSpeed;// 스킬 등으로 증가 / 감소하는 이동속도 보정값
+
+    private readonly Dictionary<SpeedModityType, float> speedModify = new Dictionary<SpeedModityType, float>();
 
     public UnityEvent onDead;
 
@@ -65,12 +74,24 @@ public class Enemy : MonoBehaviour
     public float MaxHP => maxHP;
     public float MaxShield => maxShield;
     public float RewardGold => rewardGold;
+    public bool IsTargetable => !isDead && !isStealth;
     public bool IsDead => isDead;
     /// <summary>
     /// 실제 이동속도
     /// 시본 속도 + 스킬 / 버프 보정값
     /// </summary>
-    public float MoveSpeed => currentSpeed + increaseSpeed;
+    public float MoveSpeed
+    {
+        get
+        {
+            float totalSpeedModify = 0.0f;
+
+            foreach(float speed in speedModify.Values)
+                totalSpeedModify += speed;
+
+            return currentSpeed + totalSpeedModify;
+        }
+    }
 
     /// <summary>
     /// 적 초기화
@@ -108,12 +129,21 @@ public class Enemy : MonoBehaviour
         // 생성 후에는 살아있는 상태
         isDead = false;
 
+        foreach(SpeedModityType type in Enum.GetValues(typeof(SpeedModityType))){
+            speedModify[type] = 0;
+        }
+
         // 레벨을 반영한 스탯 정라기
         SetState();
         // 적 스킬 초기화
         skill.Init(this, enemySkillUID);
         // 적 애니메이션 초기화
         anim.SetAnim(uid);
+    }
+
+    public void SetMove(bool pause)
+    {
+        move.SetMove(pause);
     }
 
     /// <summary>
@@ -149,26 +179,30 @@ public class Enemy : MonoBehaviour
     }
 
     /// <summary>
-    /// 이동속도 보정값 증가
-    /// 스킬로 인한 이동속도 증가가 있다면 지속시간 이후 감소가 필요함
-    /// 양수는 속도증가, 음수는 속도 감소 또는 기존 증가 값을 제거로 사용
+    /// 이동속도 보정 값 증가
+    /// 스킬로 인한 이동속도 변경
+    /// 양수는 속도증가, 음수는 속도 감소
     /// </summary>
-    /// <param name="value"></param>
-    public void MoveSpeedChange(float value)
+    /// <param name="type"></param>
+    /// <param name="perValue"></param>
+    public void SetMoveSpeedModify(SpeedModityType type, float perValue)
     {
-        // value값이 0이면 나눗셈에 문제가 되기에 방어 필요
-        if (value == 0f)
-            return;
+        float modify = currentSpeed * (Mathf.Abs(perValue) / 100f);
 
-        // 배율을 비율처럼 사용하여 증가 속도로 계산
-        float up = currentSpeed * (Mathf.Abs(value) / 100f);
+        if (perValue < 0)
+            modify *= -1f;
 
-        // value값이 음수면 감소 방향으로 변환
-        if (value < 0)
-            up *= -1;
+        speedModify[type] = modify;
+    }
 
-        // 이동속도 보정값 누적
-        increaseSpeed += up;
+    /// <summary>
+    /// 이동 속도 증가 지속시간 이후, 이동속도 감소
+    /// 해당 타입의 값을 0으로 만듬
+    /// </summary>
+    /// <param name="type"></param>
+    public void RemoveMoveSpeedModify(SpeedModityType type)
+    {
+        speedModify[type] = 0;
     }
 
     /// <summary>
@@ -181,8 +215,6 @@ public class Enemy : MonoBehaviour
         maxShield = currentShield = basicShield + (increaseShield * level);
         // 이동속도는 오로지 스킬로만 변경
         currentSpeed = moveSpeed;
-        // 이동속도 보정치 초기화
-        increaseSpeed = 0.0f;
     }
 
     /// <summary>
@@ -261,5 +293,13 @@ public class Enemy : MonoBehaviour
             Die();
             return;
         }
+    }
+
+    public void SetStealth(bool val)
+    {
+        Color color = Color.white;
+        color.a = val ? 0.3f : 1f;
+        GetComponentInChildren<SpriteRenderer>().color = color;
+        isStealth = val;
     }
 }

@@ -41,14 +41,15 @@ public class EnemySpawn : MonoBehaviour
     [SerializeField]
     private List<EnemySpawnInfo> waveEnemySpawnsInfo = new List<EnemySpawnInfo>();
 
+    private EnemyFactory enemyFactory;
     private GridManager grid;           // 적 이동 시에 사용할 GridManager
     private PathFinder path;            // 적 이동 경로 탐색에 사용할 PathFinder
     private Vector3 spawnPoint;         // 적이 생성될 월드 좌표
 
-    public event Action OnEnemySpawn;   // 적 1마리가 생성될 때 호출
+
+    public EnemyFactory EnemyFactory => enemyFactory;
     public event Action OnSpawnEnd;     // 스폰이 종료되면 호출
-    public event Action OnEnemyReached; // 적이 목표지점에 도달하면 호출
-    public event Action<int> OnEnemyDead;// 적이 사망시 호출, int = 보상 골드
+    
 
     private void Start()
     {
@@ -86,7 +87,8 @@ public class EnemySpawn : MonoBehaviour
     {
         grid = getGrid;
         path = getPath;
-        spawnPoint = grid.CellToWorldCenter(grid.SpawnPos.x, grid.SpawnPos.y);
+
+        enemyFactory = new EnemyFactory(baseEnemy, spawnEnemysParent, getGrid, getPath);
     }
 
     /// <summary>
@@ -94,19 +96,11 @@ public class EnemySpawn : MonoBehaviour
     /// </summary>
     public void EnemySpawnStart()
     {
+
+        spawnPoint = grid.CellToWorldCenter(grid.SpawnPos.x, grid.SpawnPos.y);
         StartCoroutine(StartWave());
     }
 
-    /// <summary>
-    /// 적이 목표지점에 도착했을 때, 이벤트 전달
-    /// </summary>
-    private void EnemyReachGoal() => OnEnemyReached?.Invoke();
-    /// <summary>
-    /// 적이 사망했을 때, 이벤트 전달
-    /// 단, 적의 체력이 모두 감소하여 사망했을 때만 함
-    /// </summary>
-    /// <param name="rewardGold">적 사망시 획득할 골드</param>
-    private void EnemyDead(int rewardGold) => OnEnemyDead?.Invoke(rewardGold);
 
     /// <summary>
     /// 오로지 적 1마리를 생성하고 입력 경로 초기화
@@ -114,33 +108,7 @@ public class EnemySpawn : MonoBehaviour
     /// <param name="spawnInfo">생성할 적 정보</param>
     private void SpawnOneEnemy(EnemySpawnInfo spawnInfo)
     {
-        // 기본 Enemy Prefab을 스폰 위치에 생성
-        Enemy enemyObj = Instantiate(baseEnemy, spawnPoint, Quaternion.identity);
-        // 적 데이터 초기화, enemyUID와 level에 따라 스탯/스킬 들이 설정
-        enemyObj.Init(spawnInfo.enemyUID, spawnInfo.level);
-        enemyObj.transform.SetParent(spawnEnemysParent);
-
-        // 컴포넌트 가져오기
-        EnemyMove enemyMove = enemyObj.GetComponent<EnemyMove>();
-        // enemyMove가 없으면 정상 적인 적이 아니기에 방어처리
-        if(enemyMove == null)
-        {
-            Destroy(enemyObj.gameObject);
-            return;
-        }
-         
-        // 이벤트 추가
-        enemyMove.onReachGoal += EnemyReachGoal;
-        enemyMove.onDead += EnemyDead;
-
-        // 적 이동 초기화
-        if (enemyMove != null)
-        {
-            enemyMove.Initialize(grid, path, enemyObj, grid.SpawnPos, grid.GoalPos);
-        }
-
-        // 스폰 이벤트 호출
-        OnEnemySpawn?.Invoke();
+        enemyFactory.SpawnEnemy(spawnInfo.enemyUID, spawnInfo.level, spawnPoint);
     }
 
     /// <summary>

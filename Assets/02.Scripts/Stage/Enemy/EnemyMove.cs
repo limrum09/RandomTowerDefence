@@ -31,7 +31,7 @@ public class EnemyMove : MonoBehaviour
 
     // 적 사망 이벤트
     // 사망시 골드 지급 등
-    public event Action<int> onDead;
+    public event Action<float> onDead;
     // 목표지점 도착 이벤트
     // 도착시 삭제되고, 플레이어 목숨 감소 등
     public event Action onReachGoal;
@@ -68,6 +68,15 @@ public class EnemyMove : MonoBehaviour
         transform.position = gridManager.CellToWorldCenter(startCell.x, startCell.y);
         // 이동 경로 계산
         RecalculatePath();
+    }
+
+    /// <summary>
+    /// 일시정지
+    /// </summary>
+    /// <param name="pause"></param>
+    public void SetMove(bool pause)
+    {
+        isMove = pause;
     }
 
     /// <summary>

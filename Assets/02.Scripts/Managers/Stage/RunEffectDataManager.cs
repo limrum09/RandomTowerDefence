@@ -110,6 +110,6 @@ public class RunEffectDataManager
     }
     private void ApplyGoldDrop(ItemData item) => statUpgrade.AddGoldDropIncrease(item.value);
     private void RemoveGoldDrop(ItemData item) => statUpgrade.AddGoldDropIncrease(-item.value);
-    private void ApplyInterestBoost(ItemData item) => statUpgrade.AddInterestBoost(item.value);
-    private void RemoveInterestBoost(ItemData item) => statUpgrade.AddInterestBoost(-item.value);
+    private void ApplyInterestBoost(ItemData item) => statUpgrade.ChangeMaxInterest(item.value);
+    private void RemoveInterestBoost(ItemData item) => statUpgrade.ChangeMaxInterest(-item.value);
 }

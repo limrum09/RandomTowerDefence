@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
 /// <summary>
 /// 스테이지 진행을 총괄하는 루트 관리자
@@ -77,6 +76,7 @@ public class StageManager : MonoBehaviour
     private RunEffectDataManager effectDataManager;
     private RunStatUpgradeManager statUpgradeManager;
     private TowerSkillEffect towerSkillEffect;
+    private EnemyFactory factory;
 
     public Vector2Int SpawnPos => Grid.SpawnPos;
     public Vector2Int GoalPos => Grid.GoalPos;
@@ -120,6 +120,8 @@ public class StageManager : MonoBehaviour
     /// </summary>
     void Start()
     {
+        enemySpawn.SetInitalized(Grid, Path);
+
         BindEvents();
 
         currentWave = 1;
@@ -224,10 +226,13 @@ public class StageManager : MonoBehaviour
         if (enemySpawn != null)
         {
             OnWaveStart += enemySpawn.EnemySpawnStart;
-            enemySpawn.OnEnemySpawn += RegisterSpawnEnemy;
             enemySpawn.OnSpawnEnd += EnemySpawnEnd;
-            enemySpawn.OnEnemyReached += RegisterReachedEnemy;
-            enemySpawn.OnEnemyDead += RegisterDeadEnemy;
+
+            factory = enemySpawn.EnemyFactory;
+
+            factory.OnEnemySpawn += RegisterSpawnEnemy;
+            factory.OnEnemyReached += RegisterReachedEnemy;
+            factory.OnEnemyDead += RegisterDeadEnemy;
         }
     }
 
@@ -332,10 +337,12 @@ public class StageManager : MonoBehaviour
         if (enemySpawn != null)
         {
             OnWaveStart -= enemySpawn.EnemySpawnStart;
-            enemySpawn.OnEnemySpawn -= RegisterSpawnEnemy;
             enemySpawn.OnSpawnEnd -= EnemySpawnEnd;
-            enemySpawn.OnEnemyReached -= RegisterReachedEnemy;
-            enemySpawn.OnEnemyDead -= RegisterDeadEnemy;
+
+            
+            factory.OnEnemySpawn -= RegisterSpawnEnemy;
+            factory.OnEnemyReached -= RegisterReachedEnemy;
+            factory.OnEnemyDead -= RegisterDeadEnemy;
         }
     }
 
@@ -451,10 +458,9 @@ public class StageManager : MonoBehaviour
     {
         stageUICtr.SetTerrainRerollCount(sessionManager.SessionState.TerrainRollCnt);
         SetSpawnAndGoalPointSetting();
-        enemySpawn.SetInitalized(Grid, Path);
         OnWaveEnd?.Invoke();
         OnChangedGameSpeed?.Invoke(speedValue[speedIndex]);
-        obstacleBuilder.Initialized(Grid, Path);
+        obstacleBuilder.Initialized(Grid, Path, fieldTowerManager);
         OnAfterSettingsInit?.Invoke();
     }
 
@@ -484,10 +490,23 @@ public class StageManager : MonoBehaviour
         sessionManager.SetWave(currentWave);
         RunSession.AddExp(Managers.StageRules.GetRuleData(StageRules.WaveClearRewardExp));
 
-        int interest = sessionManager.SessionState.Gold / Managers.StageRules.GetRuleData(StageRules.WaveClearInterestRate);
-        UsingGold(interest);
-
+        GetInterestGold();
         OnWaveEnd?.Invoke();
+    }
+
+    /// <summary>
+    /// 웨이브 종료 시, 획득하는 이자율 계산
+    /// </summary>
+    private void GetInterestGold()
+    {
+        float baseInterest = Managers.StageRules.GetRuleData(StageRules.WaveClearInterestRate);
+        float increaseInterest = statUpgradeManager.IncreaseInterserPer;
+        float totalInterestRate = baseInterest + increaseInterest;
+
+        int currentGold = sessionManager.SessionState.Gold;
+        int interest = Mathf.FloorToInt(currentGold * (totalInterestRate / 100f));
+
+        UsingGold(interest);
     }
 
     /// <summary>
@@ -511,9 +530,9 @@ public class StageManager : MonoBehaviour
     /// 적이 사망 했을 때, 보상 골드와 킬 카운트를 지급하고 생존 적 수를 감소
     /// </summary>
     /// <param name="reward">처치 보상 골드</param>
-    private void RegisterDeadEnemy(int reward)
+    private void RegisterDeadEnemy(float reward)
     {
-        UsingGold(reward);
+        UsingGold((int)reward);
         sessionManager.AddkillCount(1);
         aliveEnemyCnt--;
 
@@ -546,6 +565,9 @@ public class StageManager : MonoBehaviour
         sessionManager.RemainEnemyCount(waveTotalEnemyCount - waveRemoveEnemyCount, waveTotalEnemyCount);
     }
 
+    /// <summary>
+    /// 적이 죽거나, 도착지점에 도달했을 때 동작
+    /// </summary>
     private void WaveRemoveEnemy()
     {
         waveRemoveEnemyCount++;
@@ -603,23 +625,12 @@ public class StageManager : MonoBehaviour
                     statUpgradeManager.AddSkillAtkDamage(type, (int)value);
                     break;
                 case TowerType.Human:
-                    HumanTowerSkill();
+                    statUpgradeManager.SetIncreseInterest((int)value);
                     break;
                 case TowerType.Werebeast:
                     statUpgradeManager.AddSkillCriticalPer(type, value);
-                    WerebeastTowerSkill();
                     break;
             }
-    }
-
-    private void HumanTowerSkill()
-    {
-
-    }
-
-    private void WerebeastTowerSkill()
-    { 
-
     }
 
     /// <summary>

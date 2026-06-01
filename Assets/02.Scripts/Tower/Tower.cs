@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
 
@@ -47,9 +49,10 @@ public class Tower : MonoBehaviour
     private float currentSpeed;         // 현제 공격 속도
     private float criticalPer;          // 크리티컬 확율
     private float enemySlowPer;         // 적 타격시 해당 적 이동속도 감소
+    private float damageDebuffPer;
+    private float attackSpeedDebuffPer;
     private string skillName;           // 타워 스킬이름 캐시용
     private string skillDes;            // 타워 설명 캐시용
-
 
     public string TowerUID => towerUID;
     public int Index => index;
@@ -72,12 +75,12 @@ public class Tower : MonoBehaviour
     /// 현제 공격력
     /// 기본 공격력 + (공격력 증가 값 * 현제 런 강화 단계)
     /// </summary>
-    public float CurrentDamage => currentDamage;
+    public float CurrentDamage => currentDamage * (1f - damageDebuffPer / 100f);
     /// <summary>
     /// 현제 공격 속도
     /// 기본 공겨 속도 + (공격 속도 증가 값 * 현제 런 강화 단계)
     /// </summary>
-    public float CurrentAtkSpeed => currentSpeed;
+    public float CurrentAtkSpeed => currentSpeed * (1f - attackSpeedDebuffPer / 100f);
     /// <summary>
     /// 스킬 이름 반환
     /// TowerSkillData의 StringKey를 로컬라이징 키로 사용하여 반환
@@ -186,6 +189,32 @@ public class Tower : MonoBehaviour
         attackRangeIndicator.localScale = new Vector3(d, d, 1f);
     }
 
+    private void GetDamageDebuff(float debuffPer, float duration)
+    {
+        StopCoroutine(nameof(DamageDebuff));
+        StartCoroutine(DamageDebuff(debuffPer, duration));
+    }
+
+    private void GetAttackSpeedDebuff(float debuffPer, float duration)
+    {
+        StopCoroutine(nameof(AttakSpeedDebuff));
+        StartCoroutine(AttakSpeedDebuff(debuffPer, duration));
+    }
+
+    IEnumerator DamageDebuff(float debuffPer, float duration)
+    {
+        damageDebuffPer = Mathf.Clamp(debuffPer, 0f, 100f);
+        yield return new WaitForSeconds(duration);
+        damageDebuffPer = 0.0f;
+    }
+
+    IEnumerator AttakSpeedDebuff(float debuffPer, float duration)
+    {
+        attackSpeedDebuffPer = Mathf.Clamp(debuffPer, 0f, 100f);
+        yield return new WaitForSeconds(duration);
+        attackSpeedDebuffPer = 0.0f;
+    }
+
     /// <summary>
     /// 타워 초기화
     /// TowerDataManager에서 towerUID에 해당하는 데이터를 가져와 타워의 기본 정보와 강화 증가값을 설정
@@ -272,4 +301,17 @@ public class Tower : MonoBehaviour
         else
             outlineEffectCtr.HideGlowEffect();
     }
+
+    public void GetDubuff(EnemySkillType skillType, float debuffPer, float duration)
+    {
+        if(skillType == EnemySkillType.AttackDebuff)
+        {
+            GetDamageDebuff(debuffPer, duration);
+        }
+        else if(skillType == EnemySkillType.SpeedDebuff)
+        {
+            GetAttackSpeedDebuff(debuffPer, duration);
+        }
+    }
+    
 }
