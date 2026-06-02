@@ -16,11 +16,11 @@ public enum TaskStat
 }
 
 [CreateAssetMenu(fileName = "Task_", menuName = "Quest/Task/Task")]
-public class Task : ScriptableObject
+public class QuestTask : ScriptableObject
 {
     public event Action OnTaskCompleted;
-    public event Action<Task, TaskStat, TaskStat> OnChangedStat;
-    public event Action<Task, int, int> OnChangedSuccessCount;
+    public event Action<QuestTask, TaskStat, TaskStat> OnChangedStat;
+    public event Action<QuestTask, int, int> OnChangedSuccessCount;
 
     [SerializeField]
     private Category category;

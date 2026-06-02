@@ -110,7 +110,7 @@
     },
     {
       "Enemy_Skill_UID": "ES0031",
-      "Type": "Sheild",
+      "Type": "Shield",
       "Target_type": "Self",
       "Duration": 0,
       "CoolDown": 10,
@@ -128,7 +128,7 @@
     },
     {
       "Enemy_Skill_UID": "ES0032",
-      "Type": "Sheild",
+      "Type": "Shield",
       "Target_type": "Area",
       "Duration": 5,
       "CoolDown": 15,

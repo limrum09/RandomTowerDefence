@@ -4,10 +4,18 @@ using System.Collections.Generic;
 
 [Serializable]
 [FirestoreData]
-public class PublicMetaSaveData
+public class PublicMetaSaveData : IValidSaveData
 {
     [FirestoreProperty] public int type { get; set; }
     [FirestoreProperty] public int level { get; set; }
+
+    public bool IsValid()
+    {
+        bool isType = Enum.IsDefined(typeof(MetaUpgradeType), type);
+        bool isLevel = level >= 0;
+
+        return isType && isLevel;
+    }
 }
 
 /// <summary>
@@ -15,9 +23,23 @@ public class PublicMetaSaveData
 /// </summary>
 [Serializable]
 [FirestoreData]
-public class PublicMetaUpgradeData
+public class PublicMetaUpgradeData : IValidSaveData
 {
     [FirestoreProperty] public List<PublicMetaSaveData> upgrades { get; set; } = new List<PublicMetaSaveData>();
+
+    public bool IsValid()
+    {
+        if (upgrades == null)
+            return false;
+
+        foreach(var upgrade in upgrades)
+        {
+            if(!upgrade.IsValid())
+                return false;
+        }
+
+        return true;
+    }
 }
 
 /// <summary>

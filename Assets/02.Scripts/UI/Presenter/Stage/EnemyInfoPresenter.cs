@@ -3,13 +3,13 @@ using UnityEngine;
 public class EnemyInfoPresenter
 {
     private EnemyInfoView view;
-    private WaveEnemyRosterData model;
+    private EnemyResolveInfo model;
     public EnemyInfoPresenter(EnemyInfoView getView)
     {
         view = getView;
     }
 
-    public void GetModel(WaveEnemyRosterData getModel)
+    public void GetModel(EnemyResolveInfo getModel)
     {
         if (getModel == null)
             return;
@@ -17,26 +17,21 @@ public class EnemyInfoPresenter
         Show();
 
         model = getModel;
-        int level = model.enemyLevel;
 
-        EnemyData temp = Managers.EnemyData.GetEnemyData(model.enemyUID);
-
-        Sprite icon = Resources.Load<Sprite>($"Enemy/SpriteLibrary/{temp.enemyUID}");
+        Sprite icon = Resources.Load<Sprite>($"Enemy/SpriteLibrary/{model.enemyUID}");
         view.SetIcon(icon);
 
-        string enemyName = Managers.Local.GetString("Sheets", temp.stringKey);
+        string enemyName = Managers.Local.GetString("Sheets", model.stringKey);
         view.SetName(enemyName);
 
-        view.SetLevel($"Lv. {level}");
-        view.SetHealthText(temp.basicHp + (temp.increaseHP * level));
-        view.SetSheildText(temp.basicShield + (temp.increaseShield * level));
-        view.SetSpeedText(temp.moveSpeed);
+        view.SetLevel($"Lv. {model.level}");
+        view.SetHealthText(model.maxHP);
+        view.SetSheildText(model.maxShield);
+        view.SetSpeedText(model.moveSpeed);
+        view.SetSkillName(Managers.Local.GetString("Sheets", model.skillStringKey));
 
-        EnemySkillData skill = Managers.EnemySkillData.GetEnemySkillData(temp.enemySkillUID);       
-        view.SetSkillName(Managers.Local.GetString("Sheets", skill.stringKey));
-
-        string des = Managers.Local.GetString("Sheets", skill.desStringKey);
-        string formatStr = string.Format(des, skill.duration, skill.coolDown, skill.tickInterval, skill.range, skill.basicValue);
+        string des = Managers.Local.GetString("Sheets", model.skillDesStringKey);
+        string formatStr = string.Format(des, model.duration, model.cooldown, model.tickInterval, model.range, $"{model.skillValue}(+{model.skillValue - model.basicSkillValue})");
         view.SetSkillDesText(formatStr);
     }
 

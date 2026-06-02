@@ -66,6 +66,7 @@ public class StageUIController : MonoBehaviour
         BindOptionButton();
 
         HideDetailViews();
+        LoadSceneManager.Instance.NotifySceneUIReady();
     }
 
     private void OnDestroy()
@@ -355,7 +356,7 @@ public class StageUIController : MonoBehaviour
         OnGoldToTowerInterection?.Invoke(value);
     }
 
-    private void OnClickWaveEnemyInfo(WaveEnemyRosterData waveEnemy)
+    private void OnClickWaveEnemyInfo(EnemyResolveInfo waveEnemy)
     {
         HideDetailViews();
         enemyInfoPresenter.GetModel(waveEnemy);

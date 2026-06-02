@@ -3183,7 +3183,7 @@
     {
       "WaveID": "HELL_W001",
       "SpawnOrder": 1,
-      "Enemy_UID": "E017",
+      "Enemy_UID": "E013",
       "EnemyLevel": 25,
       "SpawnCount": 50,
       "StartTime": "0",

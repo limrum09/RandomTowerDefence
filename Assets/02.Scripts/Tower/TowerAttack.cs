@@ -57,7 +57,6 @@ public class TowerAttack : MonoBehaviour
         // 타겟이 없을 경우 공격 상태 해체
         if (currentTarget == null)
         {
-            tower.Attack(false);
             return;
         }
 
@@ -65,7 +64,6 @@ public class TowerAttack : MonoBehaviour
         if (!IsTargetValid(currentTarget))
         {
             currentTarget = null;
-            tower.Attack(false);
             return;
         }
 
@@ -137,7 +135,7 @@ public class TowerAttack : MonoBehaviour
         if (target == null)
             return;
 
-        tower.Attack(true);
+        tower.Attack();
         float damage = tower.CurrentDamage;
 
         if (tower.Type == TowerType.Werebeast)
@@ -212,7 +210,7 @@ public class TowerAttack : MonoBehaviour
         if (!enemy.gameObject.activeInHierarchy)
             return false;
 
-        if (enemy.IsTargetable)
+        if (!enemy.IsTargetable)
             return false;
         // dead가 생겨도 필요한지는 모르겠지만 일단 주석으로 추가
         //if(enemy.isdead)

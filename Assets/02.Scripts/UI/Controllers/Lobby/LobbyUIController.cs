@@ -22,6 +22,8 @@ public class LobbyUIController : MonoBehaviour
         metaView.OnMetaUpgrade += OnClickMetaUpgrade;
 
         HideAllUI();
+
+        LoadSceneManager.Instance.NotifySceneUIReady();
     }
 
     private void OnDestroy()

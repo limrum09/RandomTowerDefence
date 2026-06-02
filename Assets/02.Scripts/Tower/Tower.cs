@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
 
@@ -159,19 +157,17 @@ public class Tower : MonoBehaviour
         if (anim == null)
             return;
 
-        // 기본값 초기화
-        anim.SetBool("IsBow", false);
-        anim.SetBool("IsMagic", false);
+        anim.SetFloat("AttackType", 0.0f);
 
         // 타입에 따른 특수 공격
         switch (towerType)
         {
             case TowerType.Elf:
-                bool isbow = grade >= 3 ? true : false;
-                anim.SetBool("IsBow", isbow);
+                float isBow = grade >= 3 ? 1.0f : 0.0f;
+                anim.SetFloat("AttackType", isBow);
                 break;
             case TowerType.Dragonian:
-                anim.SetBool("IsMagic", true);
+                anim.SetFloat("AttackType", 2.0f);
                 break;
         }
     }
@@ -275,12 +271,12 @@ public class Tower : MonoBehaviour
     /// IsAttack이 true이면 공격 애니메이션 상태로 전환, 현재 공격속도를 Animator 파라미터에 저장
     /// </summary>
     /// <param name="isAttack"></param>
-    public void Attack(bool isAttack)
+    public void Attack()
     {
         if (anim == null)
             return;
 
-        anim.SetBool("IsAttack", isAttack);
+        anim.SetTrigger("IsAttack");
         // 공격 속도에 맞춰 공격 애니메이션 속도 조정
         anim.SetFloat("AttackSpeed", CurrentAtkSpeed);
     }
