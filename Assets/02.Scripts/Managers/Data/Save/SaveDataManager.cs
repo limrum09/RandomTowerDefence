@@ -1,7 +1,13 @@
 using Firebase.Firestore;
 using System;
 using System.IO;
+using System.Threading.Tasks;
 using UnityEngine;
+
+public interface IValidSaveData
+{
+    bool IsValid();
+}
 
 public class SaveDataManager
 {
@@ -20,6 +26,7 @@ public class SaveDataManager
             Document(uid).Collection("save").Document(docName);
     }
 
+    private FirestoreSaveRepository reposity;
     private const string INPUTKEY_SAVE_FILE = "inputkey_save.json";
     private const string SOUND_SAVE_FILE = "sound_save.json";
     private const string GRAPHIC_SAVE_FILE = "graphic_save.json";
@@ -33,10 +40,15 @@ public class SaveDataManager
     public bool isPlayerDirty;
     public bool isQuestDirty;
 
+    public SaveDataManager()
+    {
+        reposity = new FirestoreSaveRepository();
+    }
+
     public string SavePath(string fileName) => Path.Combine(Application.persistentDataPath, fileName);
     public bool IsFirebaseLoadCompleted { get; private set; }
     public bool IsFirebaseLoadFail { get; private set; }
-    public async System.Threading.Tasks.Task<bool> HasFirebaseSaveData(string uid)
+    public async Task<bool> HasFirebaseSaveData(string uid)
     {
         DocumentSnapshot snapshot = await GetSaveDoc(uid, PLAYER_PROGRESS_FILE).GetSnapshotAsync();
         return snapshot.Exists;
@@ -61,71 +73,55 @@ public class SaveDataManager
         return true;
     }
 
-    private async System.Threading.Tasks.Task LoadMetaUpgradeData()
+    private async Task<bool> LoadMetaUpgradeData()
     {
-        try
+        var result = await reposity.LoadAsync<MetaUpgradeSaveData>(GetSaveDoc(META_UPGRADE_SAVE_FILE));
+
+        switch (result.Stat)
         {
-            DocumentSnapshot snapshot = await GetSaveDoc(META_UPGRADE_SAVE_FILE).GetSnapshotAsync();
-
-            if (!snapshot.Exists)
-            {
-                Managers.PublicMetaUpgrade.LoadSaveData(null);
-                Managers.TowerMetaUpgrade.LoadSaveData(null);
-                return;
-            }
-
-            MetaUpgradeSaveData saveData = snapshot.ConvertTo<MetaUpgradeSaveData>();
-
-            Managers.PublicMetaUpgrade.LoadSaveData(saveData.publicMetaSaveData);
-            Managers.TowerMetaUpgrade.LoadSaveData(saveData.towerMetaSaveData);
-        }
-        catch(Exception e)
-        {
-            Debug.LogError("Load Fail : Meta Upgrade Data - " + e.Message);
+            case FirestoreLoadStat.Success:
+                Managers.PublicMetaUpgrade.LoadSaveData(result.Data.publicMetaSaveData);
+                Managers.TowerMetaUpgrade.LoadSaveData(result.Data.towerMetaSaveData);
+                return true;
+            case FirestoreLoadStat.DocumentMissing:
+                return false;
+            default:
+                Debug.LogError($"Meta Upgrade Load Fail : {result.Stat} / {result.ErrorMessage}");
+                return false;
         }
     }
 
-    private async System.Threading.Tasks.Task LoadPlayerProgressData()
+    private async Task<bool> LoadPlayerProgressData()
     {
-        try
+        var result = await reposity.LoadAsync<PlayerProgressData>(GetSaveDoc(PLAYER_PROGRESS_FILE));
+
+        switch (result.Stat)
         {
-            DocumentSnapshot snapshot = await GetSaveDoc(PLAYER_PROGRESS_FILE).GetSnapshotAsync();
-
-            if (!snapshot.Exists)
-            {
-                Managers.Player.LoadSaveData(null);
-                return;
-            }
-
-            PlayerProgressData saveData = snapshot.ConvertTo<PlayerProgressData>();
-
-            Managers.Player.LoadSaveData(saveData);
-        }
-        catch (Exception e)
-        {
-            Debug.LogError("Load Fail : Player Progress - " + e.Message);
+            case FirestoreLoadStat.Success:
+                Managers.Player.LoadSaveData(result.Data);
+                return true;
+            case FirestoreLoadStat.DocumentMissing:
+                return false;
+            default:
+                Debug.LogError($"Progress Load Fail : {result.Stat} / {result.ErrorMessage}");
+                return false;
         }
     }
 
-    private async System.Threading.Tasks.Task LoadAchievementData()
+    private async Task<bool> LoadAchievementData()
     {
-        try
+        var result = await reposity.LoadAsync<QuestSaveDataList>(GetSaveDoc(QUEST_SAVE_FILE));
+
+        switch (result.Stat)
         {
-            DocumentSnapshot snapshot = await GetSaveDoc(QUEST_SAVE_FILE).GetSnapshotAsync();
-
-            if (!snapshot.Exists)
-            {
-                Managers.QuestMgr.LoadSaveData(null);
-                return;
-            }
-
-            QuestSaveDataList saveData = snapshot.ConvertTo<QuestSaveDataList>();
-
-            Managers.QuestMgr.LoadSaveData(saveData);
-        }
-        catch (Exception e)
-        {
-            Debug.LogError("Load Fail : Achievement Data - " + e.Message);
+            case FirestoreLoadStat.Success:
+                Managers.QuestMgr.LoadSaveData(result.Data);
+                return true;
+            case FirestoreLoadStat.DocumentMissing:
+                return false;
+            default:
+                Debug.LogError($"Quest Load Fail : {result.Stat} / {result.ErrorMessage}");
+                return false;
         }
     }
 
@@ -205,7 +201,7 @@ public class SaveDataManager
         }
     }
 
-    public async System.Threading.Tasks.Task<bool> LoadAllData()
+    public async Task<bool> LoadAllData()
     {
         IsFirebaseLoadCompleted = false;
         IsFirebaseLoadFail = false;
@@ -217,11 +213,11 @@ public class SaveDataManager
         }
         try
         {
-            await LoadMetaUpgradeData();
-            await LoadPlayerProgressData();
-            await LoadAchievementData();
+            bool isMetaUpgrade = await LoadMetaUpgradeData();
+            bool isPlayerProgress =  await LoadPlayerProgressData();
+            bool isAchievement = await LoadAchievementData();
 
-            IsFirebaseLoadCompleted = true;
+            IsFirebaseLoadCompleted = isMetaUpgrade && isPlayerProgress && isAchievement;
         }
         catch (Exception e)
         {
@@ -234,10 +230,10 @@ public class SaveDataManager
         LoadSoundData();
         LoadGraphicData();
 
-        return true;
+        return IsFirebaseLoadCompleted;
     }
 
-    public async System.Threading.Tasks.Task SaveAllData()
+    public async Task SaveAllData()
     {
         SaveInputKeyData();
         SaveSoundData();
@@ -248,7 +244,7 @@ public class SaveDataManager
         await SaveAchievementData();
     }
 
-    public async System.Threading.Tasks.Task SaveMetaUpgradeData()
+    public async Task SaveMetaUpgradeData()
     {
         if (!CanSaveFirebaseData())
             return;
@@ -269,7 +265,7 @@ public class SaveDataManager
         Debug.Log("Meta Upgrade Firestore Save Completed");
     }
 
-    public async System.Threading.Tasks.Task SavePlayerProgressData()
+    public async Task SavePlayerProgressData()
     {
         if (!CanSaveFirebaseData())
             return;
@@ -286,7 +282,7 @@ public class SaveDataManager
         Debug.Log("Player Progress Firestore Save Completed");
     }
 
-    public async System.Threading.Tasks.Task SaveAchievementData()
+    public async Task SaveAchievementData()
     {
         if (!CanSaveFirebaseData())
             return;
@@ -334,7 +330,7 @@ public class SaveDataManager
         SaveLocalDataToJson<GraphicSaveData>(SavePath(GRAPHIC_SAVE_FILE), saveData, ref isGraphicDirty);
     }
 
-    public async System.Threading.Tasks.Task SaveAllDirty()
+    public async Task SaveAllDirty()
     {
         MarkMetaUpgradeDirty();
         MarkSoundDirty();
@@ -346,7 +342,7 @@ public class SaveDataManager
         await SaveAllData();
     }
 
-    public async System.Threading.Tasks.Task CreateNewUserFirebaseSaveData(string uid)
+    public async Task CreateNewUserFirebaseSaveData(string uid)
     {
         PlayerProgressData playerData = new PlayerProgressData()
         {

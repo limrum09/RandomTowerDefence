@@ -4,12 +4,22 @@ using System.Collections.Generic;
 
 [Serializable]
 [FirestoreData]
-public class TowerUpgradeSaveData
+public class TowerUpgradeSaveData : IValidSaveData
 {
     [FirestoreProperty] public int type { get; set; }
     [FirestoreProperty] public int grade { get; set; }
     [FirestoreProperty] public int damageLevel { get; set; }
     [FirestoreProperty] public int attackSpeedLevel { get; set; }
+
+    public bool IsValid()
+    {
+        bool isType = Enum.IsDefined(typeof(TowerType), type);
+        bool isGrade = grade >= 1 && grade <= 6;
+        bool isDamageLevel = damageLevel >= 0;
+        bool isSpeedLevel = attackSpeedLevel >= 0;
+
+        return isType && isGrade && isDamageLevel && isSpeedLevel;
+    }
 }
 
 /// <summary>
@@ -18,9 +28,23 @@ public class TowerUpgradeSaveData
 /// </summary>
 [Serializable]
 [FirestoreData]
-public class TowerMetaUpgradeData
+public class TowerMetaUpgradeData : IValidSaveData
 {
     [FirestoreProperty] public List<TowerUpgradeSaveData> upgrades { get; set; } = new List<TowerUpgradeSaveData>();
+
+    public bool IsValid()
+    {
+        if (upgrades == null)
+            return false;
+
+        foreach(var upgrade in upgrades)
+        {
+            if (!upgrade.IsValid())
+                return false;
+        }
+
+        return true;
+    }
 }
 
 /// <summary>

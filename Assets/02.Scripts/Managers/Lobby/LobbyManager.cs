@@ -18,7 +18,9 @@ public class LobbyManager : MonoBehaviour
             lobbyUICtr.OnMetaUpgrade += OnMetaUpgrade;
 
             onChangedResearchLevel += lobbyUICtr.OnChangedResearchLevel;
-        }        
+        }
+
+        LoadSceneManager.Instance.NotifySceneManagerReady();
     }
 
     private void OnDestroy()
@@ -65,7 +67,6 @@ public class LobbyManager : MonoBehaviour
             }
         }
             
-
         return isSuccess;
     }
 

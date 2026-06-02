@@ -19,7 +19,7 @@ public class Quest : ScriptableObject
     [SerializeField]
     private string questUID;
     [SerializeField]
-    private Task task;
+    private QuestTask task;
     [SerializeField]
     private QuestCondition condition;
 
@@ -33,7 +33,7 @@ public class Quest : ScriptableObject
 
     public Category QuestCategory => questCategory;
     public string QuestUID => questUID;
-    public Task Task => task;
+    public QuestTask Task => task;
     public QuestStat Stat { get; set; }
     public IReadOnlyList<QuestReward> QuestRewards => rewards;
     public bool IsQuestComplete => Stat == QuestStat.Comoplete;

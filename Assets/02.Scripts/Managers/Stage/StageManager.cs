@@ -135,6 +135,7 @@ public class StageManager : MonoBehaviour
         line.Init(gridWidth, gridHeight, cellSize, mapPlane.transform.position);
 
         AfterSettingsInit();
+        LoadSceneManager.Instance.NotifySceneManagerReady();
     }
 
     /// <summary>

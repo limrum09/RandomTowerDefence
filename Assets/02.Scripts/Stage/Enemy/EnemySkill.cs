@@ -164,20 +164,21 @@ public class EnemySkill : MonoBehaviour
     /// </summary>
     private void UsingSkill()
     {
-        if(skillType != EnemySkillType.Haste && skillType != EnemySkillType.Stealth)
-        {
-            StartCoroutine(SkillGetPause());
-        }
-
         // 스킬 타입에 따른 이펙트 재생
         Managers.Effect.Play("Enemy" + skillType.ToString(), root.transform, PoolCategory.Stage, true);
 
         if (target == EnemySkillTarget.Self)
             ApplySkillEffect(skillType, skillValue, duration, skillTick);
         else if (target == EnemySkillTarget.Area)
+        {
+            StartCoroutine(SkillGetPause());
             CheckEnemyAreaFindEnemy();
+        }
         else if (target == EnemySkillTarget.Tower)
+        {
+            StartCoroutine(SkillGetPause());
             CheckEnemyAreaFindTower();
+        }
     }
 
     /// <summary>

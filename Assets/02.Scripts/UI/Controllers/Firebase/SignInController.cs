@@ -36,7 +36,7 @@ public class SignInController : MonoBehaviour
 
         if(result == "Success")
         {
-            LoadSceneManager.Instance.OnLoadStringScene("LobbyScene");
+            LoadSceneManager.Instance.OnCompletedSignIn();
         }
         else
         {

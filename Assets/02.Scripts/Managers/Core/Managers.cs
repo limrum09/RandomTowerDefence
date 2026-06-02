@@ -1,6 +1,4 @@
 using System;
-using System.Threading.Tasks;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Managers : MonoBehaviour
@@ -155,6 +153,7 @@ public class Managers : MonoBehaviour
             towerMetaUpgrade.LoadSaveData(null);
             QuestMgr.LoadSaveData(null);
 
+            OnEndLoadDatas?.Invoke();
             return;
         }
 
@@ -168,8 +167,12 @@ public class Managers : MonoBehaviour
         bool loadSuccess = await Save.LoadAllData();
 
         if (!loadSuccess)
+        {
+            // 실패 시, 여기서 팝업듸우든 뭐든해서 종료해야하나
             return;
+        }
 
+        LoadSceneManager.Instance.NotifyDataLoaded();
         OnEndLoadDatas?.Invoke();
     }
 }

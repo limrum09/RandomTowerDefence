@@ -8,7 +8,7 @@ public class WaveEnemyInfoUIController : MonoBehaviour
     private List<WaveEnemyInfo> infos = new List<WaveEnemyInfo>();
     private List<WaveEnemyRosterData> waveRoster;
 
-    public event Action<WaveEnemyRosterData> onClickEnemyInfo;
+    public event Action<EnemyResolveInfo> onClickEnemyInfo;
 
     private int len;
     void Start()
@@ -52,7 +52,8 @@ public class WaveEnemyInfoUIController : MonoBehaviour
     public void OnClickEnemyInfo(int infoIndex)
     {
         WaveEnemyRosterData newData = waveRoster[infoIndex];
-        Debug.Log("적 정보 보기");
-        onClickEnemyInfo?.Invoke(newData);
+        EnemyResolveInfo newEnemy = EnemyInfoCal.Create(newData.enemyUID, newData.enemyLevel);
+
+        onClickEnemyInfo?.Invoke(newEnemy);
     }
 }

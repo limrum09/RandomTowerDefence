@@ -3,11 +3,20 @@ using System;
 
 [Serializable]
 [FirestoreData]
-public class PlayerProgressData
+public class PlayerProgressData : IValidSaveData
 {
     [FirestoreProperty] public int level { get; set; }
     [FirestoreProperty] public int exp { get; set; }
     [FirestoreProperty] public int metaCurrency { get; set; }
+
+    public bool IsValid()
+    {
+        bool islevel = level >= 0;
+        bool isexp = exp >= 0;
+        bool ismetaCyurrency = metaCurrency >= 0;
+
+        return islevel && isexp && ismetaCyurrency;
+    }
 }
 
 /// <summary>
