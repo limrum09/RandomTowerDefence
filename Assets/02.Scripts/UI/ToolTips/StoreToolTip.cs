@@ -1,7 +1,5 @@
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class StoreToolTip : MonoBehaviour
 {
@@ -42,9 +40,9 @@ public class StoreToolTip : MonoBehaviour
 
     private void SetTexts(ItemData data)
     {
-        nameText.text = Managers.Local.GetString(data.stringKey);
-        gradeText.text = Managers.Local.GetString("ITEM_GRADE_" + data.grade.ToString().ToUpper());
-        infoText.text = Managers.Local.GetString(data.itemDesc);
+        nameText.text = Managers.Local.GetString("Item", data.stringKey);
+        gradeText.text = Managers.Local.GetString("Item", "ITEM_GRADE_" + data.grade.ToString().ToUpper());
+        infoText.text = Managers.Local.GetString("Item", data.itemDesc);
 
         tooltipRect.sizeDelta = new Vector2(tooltipRect.sizeDelta.x, 140f);
         infoTextRect.sizeDelta = new Vector2(infoTextRect.sizeDelta.x, 85f);
@@ -54,13 +52,13 @@ public class StoreToolTip : MonoBehaviour
     {
         nameText.text = Managers.Local.GetString(data.stringKey);
 
-        string gradeStr = string.Format(Managers.Local.GetString("TEXT_GRADE"), data.grade);
+        string gradeStr = string.Format(Managers.Local.GetString("UI","UI_GRADE"), data.grade);
         gradeText.text = gradeStr;
 
         TowerStatPreview stat = TowerStatCalculator.Calculate(data);
 
-        string info = $"{Managers.Local.GetString("TEXT_ATK_DAMAGE")} - {stat.damage}" +
-            $"\n{Managers.Local.GetString("TEXT_ATK_SPEED")} - {stat.attackSpeed.ToString("N2")}";
+        string info = $"{Managers.Local.GetString("UI", "UI_ATK_DAMAGE")} - {stat.damage}" +
+            $"\n{Managers.Local.GetString("UI", "UI_ATK_SPEED")} - {stat.attackSpeed.ToString("N2")}";
 
         infoText.text = info;
 

@@ -1,0 +1,224 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Item_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 8957747bd3b1df94f9b303df8b6b5579, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 23009046528
+    m_Localized: Increases ATK of all towers by <color=#FF4545>[2]</color>.\nIt shows
+      its age, but the edge is still razor-sharp.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046530
+    m_Localized: Increases ATK of all towers by <color=#FF4545>[3]</color>.\nBoosts
+      the morale of allies from the heart of the battlefield.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046532
+    m_Localized: Increases ATK of Human towers by <color=#FF4545>[4]</color>.\nUnder
+      the strict imperial discipline, humans unite to strengthen the flow of battle.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046534
+    m_Localized: Increases ATK of Elf towers by <color=#FF4545>[4]</color>.\nThe
+      mystical energy of nature dwells within the Elves.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046536
+    m_Localized: Increases ATK of Orc towers by <color=#FF4545>[4]</color>.\nA fierce
+      roar awakens the primal instincts of the warriors.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046538
+    m_Localized: Increases ATK of Werebeast towers by <color=#FF4545>[4]</color>.\nSharp
+      instincts allow them to strike at the enemy's weak points.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046540
+    m_Localized: Increases ATK of Dragonian towers by <color=#FF4545>[4]</color>.\nEssence
+      extracted from dragon bones empowers Dragonians to become more like true dragons.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046542
+    m_Localized: Increases ATK of Dwarf towers by <color=#FF4545>[4]</color>.\nThe
+      steel core hardens the Dwarves, the children of the earth.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046544
+    m_Localized: Increases ATK Speed of all towers by <color=#FF4545>[2]</color>.\nThe
+      flow of mana makes your fingertips feel light.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046546
+    m_Localized: Increases ATK Speed of all towers by <color=#FF4545>[4]</color>.\nA
+      more powerful surge of mana swirls across the battlefield.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046548
+    m_Localized: Reduces skill trigger requirements for all towers by <color=#FF4545>[1]</color>.\nEfficient
+      design allows for faster skill usage.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046550
+    m_Localized: Increases Gold gained upon killing an enemy by <color=#FF4545>[1]</color>.\nThe
+      Goddess of Luck is watching over you.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046552
+    m_Localized: Increases Gold gained upon killing an enemy by <color=#FF4545>[2]</color>.\nThe
+      Goddess of Luck looks into your pockets.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046554
+    m_Localized: Immediately restores <color=#FF4545>[3]</color> Life.\nA common
+      potion that gently soothes wounds.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046556
+    m_Localized: Immediately restores <color=#FF4545>[5]</color> Life.\nA potion
+      carefully brewed by a professional alchemist.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046558
+    m_Localized: Immediately restores <color=#FF4545>[10]</color> Life.\nA rare elixir
+      brewed by a master alchemist.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046560
+    m_Localized: Immediately grants a random amount of Gold (Max <color=#FF4545>[15]</color>).\nIts
+      heavy weight is a sign of good things to come.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046562
+    m_Localized: Increases the maximum bonus interest at the end of a wave by <color=#FF4545>[10]</color>.\nMeticulous
+      records lead to efficient asset management.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046564
+    m_Localized: Increases the maximum bonus interest at the end of a wave by <color=#FF4545>[20]</color>.\nThe
+      market's capital flows directly to you.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046566
+    m_Localized: Expands Tower Queue slots by <color=#FF4545>[1]</color>.\nAllows
+      for more strategic tower preparation.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046568
+    m_Localized: Expands Market Sales slots by <color=#FF4545>[1]</color>.\nA wider
+      variety of items now arrive at the market.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046641
+    m_Localized: Epic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046639
+    m_Localized: Normal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046640
+    m_Localized: Rare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22988075008
+    m_Localized: Worn Sharpening Stone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046529
+    m_Localized: Commander's Banner
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046531
+    m_Localized: Royal Decree
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046533
+    m_Localized: World Tree's Leaf
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046535
+    m_Localized: WarCry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046537
+    m_Localized: Feral Instinct
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046539
+    m_Localized: Dragon Bone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046541
+    m_Localized: Steel Core
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046543
+    m_Localized: Haste's Rune Stone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046545
+    m_Localized: Haste's Rune Stone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046547
+    m_Localized: Master's Blueprint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046549
+    m_Localized: Lucky Coin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046551
+    m_Localized: Lucky Coin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046553
+    m_Localized: Small Potion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046555
+    m_Localized: Middle Potion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046557
+    m_Localized: Large Potion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046559
+    m_Localized: Treasure Pouch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046561
+    m_Localized: Merchant's Ledger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046563
+    m_Localized: Merchant's Ledger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046565
+    m_Localized: Membership Card
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046567
+    m_Localized: Expansion Blueprint
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

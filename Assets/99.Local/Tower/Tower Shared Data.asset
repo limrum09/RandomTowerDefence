@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Tower Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Tower
+  m_TableCollectionNameGuidString: b766636eec714514d9b3758a89c39ed1
+  m_Entries:
+  - m_Id: 23009046569
+    m_Key: TOWER_NAME_001
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046570
+    m_Key: TOWER_NAME_002
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046571
+    m_Key: TOWER_NAME_003
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046572
+    m_Key: TOWER_NAME_004
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046573
+    m_Key: TOWER_NAME_005
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046574
+    m_Key: TOWER_NAME_006
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046575
+    m_Key: TOWER_SKILL_001
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046577
+    m_Key: TOWER_SKILL_002
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046579
+    m_Key: TOWER_SKILL_003
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046581
+    m_Key: TOWER_SKILL_004
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046583
+    m_Key: TOWER_SKILL_005
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046585
+    m_Key: TOWER_SKILL_006
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046576
+    m_Key: TOWER_SKILL_DES_001
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046578
+    m_Key: TOWER_SKILL_DES_002
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046580
+    m_Key: TOWER_SKILL_DES_003
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046582
+    m_Key: TOWER_SKILL_DES_004
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046584
+    m_Key: TOWER_SKILL_DES_005
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046586
+    m_Key: TOWER_SKILL_DES_006
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5656563004157722714
+  references:
+    version: 2
+    RefIds:
+    - rid: 5656563004157722714
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
+        asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1780533228228

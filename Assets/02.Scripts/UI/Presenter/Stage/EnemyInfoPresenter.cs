@@ -21,16 +21,16 @@ public class EnemyInfoPresenter
         Sprite icon = Resources.Load<Sprite>($"Enemy/SpriteLibrary/{model.enemyUID}");
         view.SetIcon(icon);
 
-        string enemyName = Managers.Local.GetString("Sheets", model.stringKey);
+        string enemyName = Managers.Local.GetString("Enemy", model.stringKey);
         view.SetName(enemyName);
 
         view.SetLevel($"Lv. {model.level}");
         view.SetHealthText(model.maxHP);
         view.SetSheildText(model.maxShield);
         view.SetSpeedText(model.moveSpeed);
-        view.SetSkillName(Managers.Local.GetString("Sheets", model.skillStringKey));
+        view.SetSkillName(Managers.Local.GetString("Enemy", model.skillStringKey));
 
-        string des = Managers.Local.GetString("Sheets", model.skillDesStringKey);
+        string des = Managers.Local.GetString("Enemy", model.skillDesStringKey);
         string formatStr = string.Format(des, model.duration, model.cooldown, model.tickInterval, model.range, $"{model.skillValue}(+{model.skillValue - model.basicSkillValue})");
         view.SetSkillDesText(formatStr);
     }

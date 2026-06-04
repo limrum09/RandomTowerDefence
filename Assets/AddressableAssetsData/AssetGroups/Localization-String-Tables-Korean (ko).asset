@@ -15,6 +15,36 @@ MonoBehaviour:
   m_GroupName: Localization-String-Tables-Korean (ko)
   m_GUID: b97392b866a7f494b8b83ac6d3ada208
   m_SerializeEntries:
+  - m_GUID: 0ca7d523c6c99d04a840c916d17adf87
+    m_Address: Tower_ko
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ko
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1e94565ad142c9244b4c10bae9f25de0
+    m_Address: Stage_ko
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ko
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 60b4912b86f620d48af721a0c93444dd
+    m_Address: Enemy_ko
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ko
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 699fbf62004abbb49be2b49700032ea3
+    m_Address: UI_ko
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ko
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 751227591e54a6e46b1c28d951c20022
+    m_Address: OptionUI_ko
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ko
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 83ff9422613dad54aa6b7d2258c94d0c
     m_Address: Quest_ko
     m_ReadOnly: 1
@@ -23,6 +53,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: aba27fd92d2d8b54bbcf5991cde38e43
     m_Address: Sheets_ko
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ko
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: adc6efa7cab59884db657fb7f224296e
+    m_Address: Item_ko
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-ko

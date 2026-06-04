@@ -24,13 +24,13 @@ public class ItemInfoPresenter
         Sprite icon = Resources.Load<Sprite>($"Item/Images/{model.iconUID}");
         view.SetIcon(icon);
 
-        string name = Managers.Local.GetString("Sheets", model.stringKey);
+        string name = Managers.Local.GetString("Item", model.stringKey);
         view.SetItemName(name);
         view.SetItemGrade(model.grade);
         view.SetItemScope(model.scopeRange);
         view.SetItemTarget(model.target);
 
-        string des = Managers.Local.GetString("Sheets", model.itemDesc);
+        string des = Managers.Local.GetString("Item", model.itemDesc);
         view.SetItemDes(des);
         view.SetItemPrice(model.salePrice);
 

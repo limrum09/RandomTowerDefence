@@ -15,348 +15,100 @@ MonoBehaviour:
   m_TableCollectionName: Sheets
   m_TableCollectionNameGuidString: 945091da205a7454694823968473e24c
   m_Entries:
-  - m_Id: 22988075008
-    m_Key: ITEM_NAME_001
+  - m_Id: 23009046648
+    m_Key: ACHIEVEMENT_ELF_TOWER_OPERATION
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046528
-    m_Key: ITEM_DESC_001
+  - m_Id: 23009046645
+    m_Key: ACHIEVEMENT_HUMAN_TOWER_GRADE
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046529
-    m_Key: ITEM_NAME_002
+  - m_Id: 23009046643
+    m_Key: ACHIEVEMENT_KILL_ENEMY1
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046530
-    m_Key: ITEM_DESC_002
+  - m_Id: 23009046647
+    m_Key: ACHIEVEMENT_RESEARCH_LEVEL1
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046531
-    m_Key: ITEM_NAME_003
+  - m_Id: 23009046644
+    m_Key: ACHIEVEMENT_STAGE_CLEAR_HARD
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046532
-    m_Key: ITEM_DESC_003
+  - m_Id: 23009046646
+    m_Key: ACHIEVEMENT_TIMEATTACK_NORMAL
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046533
-    m_Key: ITEM_NAME_004
+  - m_Id: 23009046704
+    m_Key: BUTTON_APPLY
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046534
-    m_Key: ITEM_DESC_004
+  - m_Id: 23009046706
+    m_Key: BUTTON_CANCEL
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046535
-    m_Key: ITEM_NAME_005
+  - m_Id: 23009046707
+    m_Key: BUTTON_CANCEL_LONG
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046536
-    m_Key: ITEM_DESC_005
+  - m_Id: 23009046710
+    m_Key: BUTTON_CONTINUE
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046537
-    m_Key: ITEM_NAME_006
+  - m_Id: 23009046711
+    m_Key: BUTTON_EXIT
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046538
-    m_Key: ITEM_DESC_006
+  - m_Id: 117086843187200
+    m_Key: BUTTON_GAME_EXIT
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046539
-    m_Key: ITEM_NAME_007
+  - m_Id: 23009046712
+    m_Key: BUTTON_INPUT_OPTION
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046540
-    m_Key: ITEM_DESC_007
+  - m_Id: 23009046708
+    m_Key: BUTTON_MOVE
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046541
-    m_Key: ITEM_NAME_008
+  - m_Id: 23009046709
+    m_Key: BUTTON_MOVE_LOBBY
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046542
-    m_Key: ITEM_DESC_008
+  - m_Id: 23009046705
+    m_Key: BUTTON_OK
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046543
-    m_Key: ITEM_NAME_009
+  - m_Id: 117791268155392
+    m_Key: BUTTON_OPTION_EXIT
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046544
-    m_Key: ITEM_DESC_009
+  - m_Id: 23009046713
+    m_Key: BUTTON_REFRESH
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046545
-    m_Key: ITEM_NAME_010
+  - m_Id: 23009046703
+    m_Key: BUTTON_RESET
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046546
-    m_Key: ITEM_DESC_010
+  - m_Id: 23009046715
+    m_Key: BUTTON_SHOP_DOWN
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046547
-    m_Key: ITEM_NAME_011
+  - m_Id: 23009046714
+    m_Key: BUTTON_SHOP_EXP
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046548
-    m_Key: ITEM_DESC_011
+  - m_Id: 23009046716
+    m_Key: BUTTON_SHOP_UP
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046549
-    m_Key: ITEM_NAME_012
+  - m_Id: 23009046717
+    m_Key: BUTTON_TERRAIN_REFRESH
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046550
-    m_Key: ITEM_DESC_012
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046551
-    m_Key: ITEM_NAME_013
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046552
-    m_Key: ITEM_DESC_013
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046553
-    m_Key: ITEM_NAME_014
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046554
-    m_Key: ITEM_DESC_014
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046555
-    m_Key: ITEM_NAME_015
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046556
-    m_Key: ITEM_DESC_015
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046557
-    m_Key: ITEM_NAME_016
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046558
-    m_Key: ITEM_DESC_016
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046559
-    m_Key: ITEM_NAME_017
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046560
-    m_Key: ITEM_DESC_017
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046561
-    m_Key: ITEM_NAME_018
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046562
-    m_Key: ITEM_DESC_018
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046563
-    m_Key: ITEM_NAME_019
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046564
-    m_Key: ITEM_DESC_019
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046565
-    m_Key: ITEM_NAME_020
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046566
-    m_Key: ITEM_DESC_020
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046567
-    m_Key: ITEM_NAME_021
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046568
-    m_Key: ITEM_DESC_021
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046569
-    m_Key: TOWER_NAME_001
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046570
-    m_Key: TOWER_NAME_002
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046571
-    m_Key: TOWER_NAME_003
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046572
-    m_Key: TOWER_NAME_004
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046573
-    m_Key: TOWER_NAME_005
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046574
-    m_Key: TOWER_NAME_006
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046575
-    m_Key: TOWER_SKILL_001
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046576
-    m_Key: TOWER_SKILL_DES_001
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046577
-    m_Key: TOWER_SKILL_002
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046578
-    m_Key: TOWER_SKILL_DES_002
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046579
-    m_Key: TOWER_SKILL_003
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046580
-    m_Key: TOWER_SKILL_DES_003
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046581
-    m_Key: TOWER_SKILL_004
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046582
-    m_Key: TOWER_SKILL_DES_004
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046583
-    m_Key: TOWER_SKILL_005
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046584
-    m_Key: TOWER_SKILL_DES_005
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046585
-    m_Key: TOWER_SKILL_006
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046586
-    m_Key: TOWER_SKILL_DES_006
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046587
-    m_Key: ES_NONE_SELF
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046588
-    m_Key: ES_NONE_SELF_DES
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046589
-    m_Key: ES_HEAL_SELF
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046590
-    m_Key: ES_HEAL_SELF_DES
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046591
-    m_Key: ES_HEAL_AREA
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046592
-    m_Key: ES_HEAL_AREA_DES
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046591
-    m_Key: ES_HEAL_SANCTUARY
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046592
-    m_Key: ES_HEAL_SANCTUARY_DES
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046593
-    m_Key: ES_HASTE_SELF
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046594
-    m_Key: ES_HASTE_SELF_DES
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046595
-    m_Key: ES_HASET_AREA
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046596
-    m_Key: ES_HASET_AREA_DES
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046597
-    m_Key: ES_SHIELD_SELF
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046598
-    m_Key: ES_SHIELD_SELF_DES
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046599
-    m_Key: ES_SHIELD_AREA
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046600
-    m_Key: ES_SHIELD_AREA_DES
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046601
-    m_Key: ES_TOWER_SLOW
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046602
-    m_Key: ES_TOWER_SLOW_DES
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046603
-    m_Key: ES_TOWER_ATK_DOWN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046604
-    m_Key: ES_TOWER_ATK_DOWN_DES
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046605
-    m_Key: ES_SUMMON_MINION
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046606
-    m_Key: ES_SUMMON_MINION_DES
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046605
-    m_Key: ES_SUMMON_MINION_LEGION
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046606
-    m_Key: ES_SUMMON_MINION_LEGION_DES
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046607
-    m_Key: ES_STEALTH
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046608
-    m_Key: ES_STEALTH_DES
+  - m_Id: 23009046718
+    m_Key: BUTTON_WAVE_START
     m_Metadata:
       m_Items: []
   - m_Id: 23009046609
@@ -463,120 +215,136 @@ MonoBehaviour:
     m_Key: ENEMY_NAME_026
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046635
-    m_Key: TOWER_SESSION_STATE_UPGRADE
+  - m_Id: 23009046595
+    m_Key: ES_HASET_AREA
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046636
-    m_Key: TOWER_GRADE_UPGRADE
+  - m_Id: 23009046596
+    m_Key: ES_HASET_AREA_DES
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046637
-    m_Key: TOWER_FIXED_UPGRADE
+  - m_Id: 23009046593
+    m_Key: ES_HASTE_SELF
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046638
-    m_Key: TOWER_NORMAL_UPGRADE
+  - m_Id: 23009046594
+    m_Key: ES_HASTE_SELF_DES
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046639
-    m_Key: ITEM_GRADE_NORMAL
+  - m_Id: 23009046591
+    m_Key: ES_HEAL_AREA
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046640
-    m_Key: ITEM_GRADE_RARE
+  - m_Id: 23009046592
+    m_Key: ES_HEAL_AREA_DES
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046641
-    m_Key: ITEM_GRADE_EPIC
+  - m_Id: 23009046591
+    m_Key: ES_HEAL_SANCTUARY
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046642
-    m_Key: SYS_MSG_UPGRADE_MAX
+  - m_Id: 23009046592
+    m_Key: ES_HEAL_SANCTUARY_DES
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046643
-    m_Key: ACHIEVEMENT_KILL_ENEMY1
+  - m_Id: 23009046589
+    m_Key: ES_HEAL_SELF
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046644
-    m_Key: ACHIEVEMENT_STAGE_CLEAR_HARD
+  - m_Id: 23009046590
+    m_Key: ES_HEAL_SELF_DES
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046645
-    m_Key: ACHIEVEMENT_HUMAN_TOWER_GRADE
+  - m_Id: 23009046587
+    m_Key: ES_NONE_SELF
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046646
-    m_Key: ACHIEVEMENT_TIMEATTACK_NORMAL
+  - m_Id: 23009046588
+    m_Key: ES_NONE_SELF_DES
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046647
-    m_Key: ACHIEVEMENT_RESEARCH_LEVEL1
+  - m_Id: 23009046599
+    m_Key: ES_SHIELD_AREA
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046648
-    m_Key: ACHIEVEMENT_ELF_TOWER_OPERATION
+  - m_Id: 23009046600
+    m_Key: ES_SHIELD_AREA_DES
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046649
-    m_Key: QUEST_DESC_KILLCOUNT
+  - m_Id: 23009046597
+    m_Key: ES_SHIELD_SELF
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046650
-    m_Key: QUEST_DESC_REACH_WAVE
+  - m_Id: 23009046598
+    m_Key: ES_SHIELD_SELF_DES
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046651
-    m_Key: QUEST_DESC_HOLD_GOLD
+  - m_Id: 23009046607
+    m_Key: ES_STEALTH
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046652
-    m_Key: QUEST_DESC_USER_LEVEL
+  - m_Id: 23009046608
+    m_Key: ES_STEALTH_DES
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046653
-    m_Key: QUEST_DESC_INSTALL_RACE
+  - m_Id: 23009046605
+    m_Key: ES_SUMMON_MINION
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046654
-    m_Key: QUEST_DESC_INSTALL_GRADE
+  - m_Id: 23009046606
+    m_Key: ES_SUMMON_MINION_DES
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046655
-    m_Key: QUEST_DESC_OWN_GRADE
+  - m_Id: 23009046605
+    m_Key: ES_SUMMON_MINION_LEGION
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046656
-    m_Key: QUEST_LIMIT_STAGE_END
+  - m_Id: 23009046606
+    m_Key: ES_SUMMON_MINION_LEGION_DES
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046657
-    m_Key: QUEST_LIMIT_WAVE_50
+  - m_Id: 23009046603
+    m_Key: ES_TOWER_ATK_DOWN
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046658
-    m_Key: QUEST_LIMIT_WAVE_40
+  - m_Id: 23009046604
+    m_Key: ES_TOWER_ATK_DOWN_DES
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046659
-    m_Key: QUEST_LIMIT_WAVE_30
+  - m_Id: 23009046601
+    m_Key: ES_TOWER_SLOW
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046660
-    m_Key: QUEST_LIMIT_WAVE_20
+  - m_Id: 23009046602
+    m_Key: ES_TOWER_SLOW_DES
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046661
-    m_Key: INPUT_ACTION_MOVETOWER
+  - m_Id: 23009046670
+    m_Key: INPUT_ACTION_BUY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046671
+    m_Key: INPUT_ACTION_MAKEOBSTACLE
     m_Metadata:
       m_Items: []
   - m_Id: 23009046662
     m_Key: INPUT_ACTION_MAKETOWER
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046663
-    m_Key: INPUT_ACTION_TOWERMOVETOQUEUESLOT
+  - m_Id: 23009046661
+    m_Key: INPUT_ACTION_MOVETOWER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046673
+    m_Key: INPUT_ACTION_NPCINTERACTION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046674
+    m_Key: INPUT_ACTION_OPTIONS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046672
+    m_Key: INPUT_ACTION_REMOVEOBSTACLE
     m_Metadata:
       m_Items: []
   - m_Id: 23009046664
@@ -595,212 +363,264 @@ MonoBehaviour:
     m_Key: INPUT_ACTION_TOWERGRADEPREMIUMUPGRADE
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046668
-    m_Key: INPUT_ACTION_TOWERSTATDAMAGEUPGRADE
+  - m_Id: 23009046663
+    m_Key: INPUT_ACTION_TOWERMOVETOQUEUESLOT
     m_Metadata:
       m_Items: []
   - m_Id: 23009046669
     m_Key: INPUT_ACTION_TOWERSTATATTACKSPEEDUPGRADE
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046670
-    m_Key: INPUT_ACTION_BUY
+  - m_Id: 23009046668
+    m_Key: INPUT_ACTION_TOWERSTATDAMAGEUPGRADE
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046671
-    m_Key: INPUT_ACTION_MAKEOBSTACLE
+  - m_Id: 23009046528
+    m_Key: ITEM_DESC_001
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046672
-    m_Key: INPUT_ACTION_REMOVEOBSTACLE
+  - m_Id: 23009046530
+    m_Key: ITEM_DESC_002
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046673
-    m_Key: INPUT_ACTION_NPCINTERACTION
+  - m_Id: 23009046532
+    m_Key: ITEM_DESC_003
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046674
-    m_Key: INPUT_ACTION_OPTIONS
+  - m_Id: 23009046534
+    m_Key: ITEM_DESC_004
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046675
-    m_Key: SETTING_GRAPHIC
+  - m_Id: 23009046536
+    m_Key: ITEM_DESC_005
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046676
-    m_Key: SETTING_SOUND
+  - m_Id: 23009046538
+    m_Key: ITEM_DESC_006
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046677
-    m_Key: SETTING_SHORTCUTKEY
+  - m_Id: 23009046540
+    m_Key: ITEM_DESC_007
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046542
+    m_Key: ITEM_DESC_008
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046544
+    m_Key: ITEM_DESC_009
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046546
+    m_Key: ITEM_DESC_010
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046548
+    m_Key: ITEM_DESC_011
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046550
+    m_Key: ITEM_DESC_012
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046552
+    m_Key: ITEM_DESC_013
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046554
+    m_Key: ITEM_DESC_014
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046556
+    m_Key: ITEM_DESC_015
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046558
+    m_Key: ITEM_DESC_016
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046560
+    m_Key: ITEM_DESC_017
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046562
+    m_Key: ITEM_DESC_018
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046564
+    m_Key: ITEM_DESC_019
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046566
+    m_Key: ITEM_DESC_020
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046568
+    m_Key: ITEM_DESC_021
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046641
+    m_Key: ITEM_GRADE_EPIC
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046639
+    m_Key: ITEM_GRADE_NORMAL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046640
+    m_Key: ITEM_GRADE_RARE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22988075008
+    m_Key: ITEM_NAME_001
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046529
+    m_Key: ITEM_NAME_002
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046531
+    m_Key: ITEM_NAME_003
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046533
+    m_Key: ITEM_NAME_004
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046535
+    m_Key: ITEM_NAME_005
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046537
+    m_Key: ITEM_NAME_006
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046539
+    m_Key: ITEM_NAME_007
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046541
+    m_Key: ITEM_NAME_008
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046543
+    m_Key: ITEM_NAME_009
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046545
+    m_Key: ITEM_NAME_010
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046547
+    m_Key: ITEM_NAME_011
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046549
+    m_Key: ITEM_NAME_012
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046551
+    m_Key: ITEM_NAME_013
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046553
+    m_Key: ITEM_NAME_014
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046555
+    m_Key: ITEM_NAME_015
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046557
+    m_Key: ITEM_NAME_016
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046559
+    m_Key: ITEM_NAME_017
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046561
+    m_Key: ITEM_NAME_018
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046563
+    m_Key: ITEM_NAME_019
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046565
+    m_Key: ITEM_NAME_020
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046567
+    m_Key: ITEM_NAME_021
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046651
+    m_Key: QUEST_DESC_HOLD_GOLD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046654
+    m_Key: QUEST_DESC_INSTALL_GRADE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046653
+    m_Key: QUEST_DESC_INSTALL_RACE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046649
+    m_Key: QUEST_DESC_KILLCOUNT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046655
+    m_Key: QUEST_DESC_OWN_GRADE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046650
+    m_Key: QUEST_DESC_REACH_WAVE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046652
+    m_Key: QUEST_DESC_USER_LEVEL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046656
+    m_Key: QUEST_LIMIT_STAGE_END
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046660
+    m_Key: QUEST_LIMIT_WAVE_20
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046659
+    m_Key: QUEST_LIMIT_WAVE_30
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046658
+    m_Key: QUEST_LIMIT_WAVE_40
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046657
+    m_Key: QUEST_LIMIT_WAVE_50
     m_Metadata:
       m_Items: []
   - m_Id: 23009046678
     m_Key: SETTING_BGM_SELECT
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046679
-    m_Key: SETTING_MASTER_VOLUME
-    m_Metadata:
-      m_Items: []
   - m_Id: 23009046680
     m_Key: SETTING_BGM_VOLUME
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046681
-    m_Key: SETTING_SFX_VOLUME
+  - m_Id: 23009046675
+    m_Key: SETTING_GRAPHIC
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046682
-    m_Key: SETTING_UI_VOLUME
+  - m_Id: 10009806254080
+    m_Key: SETTING_GRAPIC_DAMAGEVIEW
     m_Metadata:
       m_Items: []
-  - m_Id: 23009046683
-    m_Key: TEXT_SETTING_GRAPHIC
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046684
-    m_Key: TEXT_SETTING_SOUND
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046685
-    m_Key: TEXT_SETTING_SHORTCUTKEY
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046686
-    m_Key: TEXT_UPGRADE_STEP
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046687
-    m_Key: TEXT_GRADE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046688
-    m_Key: TEXT_ATK_DAMAGE_UPGRADE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046689
-    m_Key: TEXT_ATK_SPEED_UPGRADE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046690
-    m_Key: TEXT_ATK_DAMAGE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046691
-    m_Key: TEXT_ATK_SPEED
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046692
-    m_Key: TEXT_ATK_RANGE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046693
-    m_Key: TEXT_UPGRADE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046694
-    m_Key: TEXT_SKILL_NAME
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046695
-    m_Key: TEXT_HEALTH
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046696
-    m_Key: TEXT_DEFENSE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046697
-    m_Key: TEXT_MOVE_SPEED
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046698
-    m_Key: TEXT_PURCHASE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046699
-    m_Key: TEXT_SELL
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046700
-    m_Key: TEXT_REMAIN_ENEMY
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046701
-    m_Key: TEXT_MOVE_LOBBY_CHECK
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046702
-    m_Key: TEXT_RESET_CHECK
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046703
-    m_Key: BUTTON_RESET
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046704
-    m_Key: BUTTON_APPLY
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046705
-    m_Key: BUTTON_OK
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046706
-    m_Key: BUTTON_CANCEL
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046707
-    m_Key: BUTTON_CANCEL_LONG
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046708
-    m_Key: BUTTON_MOVE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046709
-    m_Key: BUTTON_MOVE_LOBBY
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046710
-    m_Key: BUTTON_CONTINUE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046711
-    m_Key: BUTTON_EXIT
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046712
-    m_Key: BUTTON_INPUT_OPTION
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046713
-    m_Key: BUTTON_REFRESH
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046714
-    m_Key: BUTTON_SHOP_EXP
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046715
-    m_Key: BUTTON_SHOP_DOWN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046716
-    m_Key: BUTTON_SHOP_UP
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046717
-    m_Key: BUTTON_TERRAIN_REFRESH
-    m_Metadata:
-      m_Items: []
-  - m_Id: 23009046718
-    m_Key: BUTTON_WAVE_START
-    m_Metadata:
-      m_Items: []
-  - m_Id: 9653282025472
-    m_Key: SETTING_GRAPIC_TITLE
+  - m_Id: 9962632916992
+    m_Key: SETTING_GRAPIC_FPS_LIMIT
     m_Metadata:
       m_Items: []
   - m_Id: 9824086667264
@@ -811,24 +631,212 @@ MonoBehaviour:
     m_Key: SETTING_GRAPIC_SCREENMODE
     m_Metadata:
       m_Items: []
-  - m_Id: 9962632916992
-    m_Key: SETTING_GRAPIC_FPS_LIMIT
+  - m_Id: 9653282025472
+    m_Key: SETTING_GRAPIC_TITLE
     m_Metadata:
       m_Items: []
-  - m_Id: 10009806254080
-    m_Key: SETTING_GRAPIC_DAMAGEVIEW
+  - m_Id: 23009046679
+    m_Key: SETTING_MASTER_VOLUME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046681
+    m_Key: SETTING_SFX_VOLUME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046677
+    m_Key: SETTING_SHORTCUTKEY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046676
+    m_Key: SETTING_SOUND
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046682
+    m_Key: SETTING_UI_VOLUME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046642
+    m_Key: SYS_MSG_UPGRADE_MAX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046690
+    m_Key: TEXT_ATK_DAMAGE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046688
+    m_Key: TEXT_ATK_DAMAGE_UPGRADE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046692
+    m_Key: TEXT_ATK_RANGE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046691
+    m_Key: TEXT_ATK_SPEED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046689
+    m_Key: TEXT_ATK_SPEED_UPGRADE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046696
+    m_Key: TEXT_DEFENSE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046687
+    m_Key: TEXT_GRADE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046695
+    m_Key: TEXT_HEALTH
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046701
+    m_Key: TEXT_MOVE_LOBBY_CHECK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046697
+    m_Key: TEXT_MOVE_SPEED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5057363018133504
+    m_Key: TEXT_PUBLIC
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046698
+    m_Key: TEXT_PURCHASE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046700
+    m_Key: TEXT_REMAIN_ENEMY
     m_Metadata:
       m_Items: []
   - m_Id: 40954915598336
     m_Key: TEXT_REMAIN_WAVE
     m_Metadata:
       m_Items: []
-  - m_Id: 117086843187200
-    m_Key: BUTTON_GAME_EXIT
+  - m_Id: 23009046702
+    m_Key: TEXT_RESET_CHECK
     m_Metadata:
       m_Items: []
-  - m_Id: 117791268155392
-    m_Key: BUTTON_OPTION_EXIT
+  - m_Id: 23009046699
+    m_Key: TEXT_SELL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046683
+    m_Key: TEXT_SETTING_GRAPHIC
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046685
+    m_Key: TEXT_SETTING_SHORTCUTKEY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046684
+    m_Key: TEXT_SETTING_SOUND
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046694
+    m_Key: TEXT_SKILL_NAME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5057476843155456
+    m_Key: TEXT_TOWER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046693
+    m_Key: TEXT_UPGRADE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046686
+    m_Key: TEXT_UPGRADE_STEP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046637
+    m_Key: TOWER_FIXED_UPGRADE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046636
+    m_Key: TOWER_GRADE_UPGRADE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046569
+    m_Key: TOWER_NAME_001
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046570
+    m_Key: TOWER_NAME_002
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046571
+    m_Key: TOWER_NAME_003
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046572
+    m_Key: TOWER_NAME_004
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046573
+    m_Key: TOWER_NAME_005
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046574
+    m_Key: TOWER_NAME_006
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046638
+    m_Key: TOWER_NORMAL_UPGRADE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046635
+    m_Key: TOWER_SESSION_STATE_UPGRADE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046575
+    m_Key: TOWER_SKILL_001
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046577
+    m_Key: TOWER_SKILL_002
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046579
+    m_Key: TOWER_SKILL_003
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046581
+    m_Key: TOWER_SKILL_004
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046583
+    m_Key: TOWER_SKILL_005
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046585
+    m_Key: TOWER_SKILL_006
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046576
+    m_Key: TOWER_SKILL_DES_001
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046578
+    m_Key: TOWER_SKILL_DES_002
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046580
+    m_Key: TOWER_SKILL_DES_003
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046582
+    m_Key: TOWER_SKILL_DES_004
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046584
+    m_Key: TOWER_SKILL_DES_005
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046586
+    m_Key: TOWER_SKILL_DES_006
     m_Metadata:
       m_Items: []
   m_Metadata:

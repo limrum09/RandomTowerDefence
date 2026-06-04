@@ -11,9 +11,10 @@ public enum SceneStageStat
 }
 public class LoadSceneManager : SingletonMono<LoadSceneManager>
 {
-    private bool isDataLoaded;
-    private bool isSceneManagerReady;
-    private bool isSceneUIReady;
+    public bool isDataLoaded { get; private set; }
+    public bool isSceneManagerReady { get; private set; }
+    public bool isSceneUIReady { get; private set; }
+    public bool isLoadingSceneReady {  get; private set; }
     private bool isLoading;
 
     private string targetSceneName;
@@ -54,6 +55,9 @@ public class LoadSceneManager : SingletonMono<LoadSceneManager>
         if (!isSceneUIReady)
             return;
 
+        if (!isLoadingSceneReady)
+            return;
+
         isLoading = false;
         SceneManager.UnloadSceneAsync("LoadingScene");
     }
@@ -62,6 +66,7 @@ public class LoadSceneManager : SingletonMono<LoadSceneManager>
     {
         isSceneManagerReady = false;
         isSceneUIReady = false;
+        isLoadingSceneReady = false;
         isLoading = true;
     }
 
@@ -83,6 +88,12 @@ public class LoadSceneManager : SingletonMono<LoadSceneManager>
         TryCompletedLoading();
     }
 
+    public void NotifyLoadingScene()
+    {
+        isLoadingSceneReady = true;
+        TryCompletedLoading();
+    }
+
     public void OnCompletedSignIn()
     {
         isDataLoaded = false;
@@ -91,7 +102,7 @@ public class LoadSceneManager : SingletonMono<LoadSceneManager>
 
     public void OnLoadStageScene() 
     {
-        SceneManager.LoadScene("StageScene", LoadSceneMode.Single);
+        OnLoadStringScene("StageScene");
     }
 
     public void OnLoadStringScene(string sceneName) 

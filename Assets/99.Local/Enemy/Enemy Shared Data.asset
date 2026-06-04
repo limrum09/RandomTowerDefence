@@ -1,0 +1,237 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Enemy Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Enemy
+  m_TableCollectionNameGuidString: 2f913336b38808b49a59464d21660c28
+  m_Entries:
+  - m_Id: 23009046609
+    m_Key: ENEMY_NAME_001
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046610
+    m_Key: ENEMY_NAME_002
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046611
+    m_Key: ENEMY_NAME_003
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046612
+    m_Key: ENEMY_NAME_004
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046613
+    m_Key: ENEMY_NAME_005
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046614
+    m_Key: ENEMY_NAME_006
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046615
+    m_Key: ENEMY_NAME_007
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046616
+    m_Key: ENEMY_NAME_008
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046617
+    m_Key: ENEMY_NAME_009
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046618
+    m_Key: ENEMY_NAME_010
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046619
+    m_Key: ENEMY_NAME_011
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046620
+    m_Key: ENEMY_NAME_012
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046621
+    m_Key: ENEMY_NAME_013
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046622
+    m_Key: ENEMY_NAME_014
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046623
+    m_Key: ENEMY_NAME_015
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046624
+    m_Key: ENEMY_NAME_016
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046625
+    m_Key: ENEMY_NAME_017
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046626
+    m_Key: ENEMY_NAME_018
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046627
+    m_Key: ENEMY_NAME_019
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046628
+    m_Key: ENEMY_NAME_020
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046629
+    m_Key: ENEMY_NAME_021
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046630
+    m_Key: ENEMY_NAME_022
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046631
+    m_Key: ENEMY_NAME_023
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046632
+    m_Key: ENEMY_NAME_024
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046633
+    m_Key: ENEMY_NAME_025
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046634
+    m_Key: ENEMY_NAME_026
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046595
+    m_Key: ES_HASET_AREA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046596
+    m_Key: ES_HASET_AREA_DES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046593
+    m_Key: ES_HASTE_SELF
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046594
+    m_Key: ES_HASTE_SELF_DES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046591
+    m_Key: ES_HEAL_SANCTUARY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046592
+    m_Key: ES_HEAL_SANCTUARY_DES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046591
+    m_Key: ES_HEAL_SANCTUARY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046592
+    m_Key: ES_HEAL_SANCTUARY_DES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046589
+    m_Key: ES_HEAL_SELF
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046590
+    m_Key: ES_HEAL_SELF_DES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046587
+    m_Key: ES_NONE_SELF
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046588
+    m_Key: ES_NONE_SELF_DES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046599
+    m_Key: ES_SHIELD_AREA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046600
+    m_Key: ES_SHIELD_AREA_DES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046597
+    m_Key: ES_SHIELD_SELF
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046598
+    m_Key: ES_SHIELD_SELF_DES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046607
+    m_Key: ES_STEALTH
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046608
+    m_Key: ES_STEALTH_DES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046605
+    m_Key: ES_SUMMON_MINION_LEGION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046606
+    m_Key: ES_SUMMON_MINION_LEGION_DES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046605
+    m_Key: ES_SUMMON_MINION_LEGION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046606
+    m_Key: ES_SUMMON_MINION_LEGION_DES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046603
+    m_Key: ES_TOWER_ATK_DOWN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046604
+    m_Key: ES_TOWER_ATK_DOWN_DES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046601
+    m_Key: ES_TOWER_SLOW
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046602
+    m_Key: ES_TOWER_SLOW_DES
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5656563004157722781
+  references:
+    version: 2
+    RefIds:
+    - rid: 5656563004157722781
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
+        asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1780539975126

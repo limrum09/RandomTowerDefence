@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Enemy_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 2f913336b38808b49a59464d21660c28, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 23009046595
+    m_Localized: Time Warp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046596
+    m_Localized: 'Increases Move Speed of allies within {3} range by {4}% for {0}s.
+      (Cooldown: {1}s)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046593
+    m_Localized: Limit Break
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046594
+    m_Localized: 'Unleashes potential to increase Move Speed by {4}% for {0}s. (Cooldown:
+      {1}s)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046591
+    m_Localized: Heal Area
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046592
+    m_Localized: 'Deploys a sanctuary for {0}s, recovering {4} HP of allies within
+      {3} range every {2}s. (Cooldown: {1}s)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046589
+    m_Localized: Vital Regen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046590
+    m_Localized: 'Recovers {4} HP of self. (Cooldown: {1}s)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046587
+    m_Localized: None Skill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046588
+    m_Localized: Has no special abilities.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046599
+    m_Localized: Guardian Field
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046600
+    m_Localized: 'Grants allies within {3} range a shield that absorbs {4} damage
+      for {0}s. (Cooldown: {1}s)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046597
+    m_Localized: Mana Barrier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046598
+    m_Localized: 'Creates a mana shield that absorbs {4} damage. (Cooldown: {1}s)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046607
+    m_Localized: Shasdow Hide
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046608
+    m_Localized: 'Hides in shadows, becoming untargetable for {0}s. (Cooldown: {1}s)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046605
+    m_Localized: Summon Minion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046606
+    m_Localized: 'Summons a swarm of {4} minions in front. (Cooldown: {1}s)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046603
+    m_Localized: Enfeeble Curse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046604
+    m_Localized: 'Curses enemies to reduce their ATK by {4}% for {0}s. (Cooldown:
+      {1}s)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046601
+    m_Localized: Frost Shackles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046602
+    m_Localized: 'Freezes enemies to reduce their ATK Speed by {4}% for {0}s. (Cooldown:
+      {1}s)'
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

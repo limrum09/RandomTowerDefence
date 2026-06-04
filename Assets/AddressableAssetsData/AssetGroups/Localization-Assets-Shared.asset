@@ -15,13 +15,43 @@ MonoBehaviour:
   m_GroupName: Localization-Assets-Shared
   m_GUID: fffb628e3a2cc0a449d223676d8e9f97
   m_SerializeEntries:
+  - m_GUID: 2f913336b38808b49a59464d21660c28
+    m_Address: Assets/99.Local/Enemy/Enemy Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 35bf388540bf936438e442fe484f221a
+    m_Address: Assets/99.Local/InputAction/InputAction Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4128bc1ffa229ed4a910487df86cafec
+    m_Address: Assets/99.Local/Stage/Stage Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4b354fe8ef8484240aa3ce5d846368b3
     m_Address: Assets/99.Local/Quest/Quest Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8957747bd3b1df94f9b303df8b6b5579
+    m_Address: Assets/99.Local/Item/Item Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 945091da205a7454694823968473e24c
     m_Address: Assets/99.Local/LocalTable/Sheets Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b766636eec714514d9b3758a89c39ed1
+    m_Address: Assets/99.Local/Tower/Tower Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: db1241788f96cf44698ac8c8bb50c6b7
+    m_Address: Assets/99.Local/UI/UI Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

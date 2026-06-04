@@ -49,8 +49,8 @@ public class TowerStatUpgradeView : MonoBehaviour
     private string gradeText;
     public void Init()
     {
-        upgradeText = Managers.Local.GetString("Sheets", "TEXT_UPGRADE_STEP");
-        gradeText = Managers.Local.GetString("Sheets","TEXT_GRADE");
+        upgradeText = Managers.Local.GetString("UI", "UI_UPGRADE_STEP");
+        gradeText = Managers.Local.GetString("UI", "UI_GRADE");
     }
 
     public void Clear()

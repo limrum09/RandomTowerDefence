@@ -1,5 +1,4 @@
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -68,8 +67,8 @@ public class TowerGradeUpgradeView : MonoBehaviour, IPopUpPublicUI
         towerSellPriceText.text = "";
         towerGradeText.text = "";
 
-        normalBtnText.text = $"{Managers.Local.GetString("Sheets", "TOWER_NORMAL_UPGRADE")} ({Managers.InputData.GetKeyCode(InputAction.TowerGradeNormalUpgrade)})";
-        premiumBtnText.text = $"{Managers.Local.GetString("Sheets", "TOWER_FIXED_UPGRADE")} ({Managers.InputData.GetKeyCode(InputAction.TowerGradePremiumUpgrade)})";
+        normalBtnText.text = $"{Managers.Local.GetString("Stage", "STAGE_TOWER_NORMAL_UPGRADE")} ({Managers.InputData.GetKeyCode(InputAction.TowerGradeNormalUpgrade)})";
+        premiumBtnText.text = $"{Managers.Local.GetString("Stage", "STAGE_TOWER_FIXED_UPGRADE")} ({Managers.InputData.GetKeyCode(InputAction.TowerGradePremiumUpgrade)})";
 
         normalUpgradeBtn.interactable = true;
         premiumUpgradeBtn.interactable = true;
@@ -103,7 +102,7 @@ public class TowerGradeUpgradeView : MonoBehaviour, IPopUpPublicUI
             return;
         }
 
-        towerGradeText.text = string.Format(Managers.Local.GetString("Sheets", "TEXT_GRADE"), grade);
+        towerGradeText.text = string.Format(Managers.Local.GetString("UI", "UI_GRADE"), grade);
         upgradeMaster1.gameObject.SetActive(false);
         upgradeMaster2.gameObject.SetActive(false);
     }

@@ -14,7 +14,7 @@ public enum MetaUpgradeType
     StartingGold,
     DropGold,
     FreeObstacle,
-    FreeTerrainReroll
+    FreeTerrainRefresh
 }
 
 public enum CostIncreaseType

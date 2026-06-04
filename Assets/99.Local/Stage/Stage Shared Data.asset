@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Stage Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Stage
+  m_TableCollectionNameGuidString: 4128bc1ffa229ed4a910487df86cafec
+  m_Entries:
+  - m_Id: 23009046715
+    m_Key: STAGE_SHOP_DOWN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046714
+    m_Key: STAGE_SHOP_EXP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046716
+    m_Key: STAGE_SHOP_UP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046717
+    m_Key: STAGE_TERRAIN_REFRESH
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046718
+    m_Key: STAGE_WAVE_START
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046642
+    m_Key: SYS_MSG_UPGRADE_MAX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046698
+    m_Key: STAGE_PURCHASE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046700
+    m_Key: STAGE_REMAIN_ENEMY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 32442036224
+    m_Key: STAGE_REMAIN_WAVE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046699
+    m_Key: STAGE_SELL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046694
+    m_Key: STAGE_SKILL_NAME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046637
+    m_Key: STAGE_TOWER_FIXED_UPGRADE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046636
+    m_Key: STAGE_TOWER_GRADE_UPGRADE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046638
+    m_Key: STAGE_TOWER_NORMAL_UPGRADE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046635
+    m_Key: STAGE_TOWER_SESSION_STATE_UPGRADE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1328058347520
+    m_Key: STAGE_REFRESH
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5656563004157722757
+  references:
+    version: 2
+    RefIds:
+    - rid: 5656563004157722757
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
+        asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1780537826157

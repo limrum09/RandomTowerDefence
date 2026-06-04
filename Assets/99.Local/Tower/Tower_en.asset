@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Tower_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: b766636eec714514d9b3758a89c39ed1, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 23009046569
+    m_Localized: Human
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046570
+    m_Localized: Elf
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046571
+    m_Localized: Dwarf
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046572
+    m_Localized: Orc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046573
+    m_Localized: Dragonian
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046574
+    m_Localized: Were Beast
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046575
+    m_Localized: Golden Prosperity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046577
+    m_Localized: Spiritual Resonance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046579
+    m_Localized: Armor Breaker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046581
+    m_Localized: Horde's Pressure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046583
+    m_Localized: Draconic Might
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046585
+    m_Localized: Predator's Eye
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046576
+    m_Localized: 'The hegemony of gold that moves the world pulses even more powerfully
+      at the humans'' fingertips.\nOwn Human Towers: <color=#FF4545>[{0} / {1} /
+      {2} / {3}]</color>\nIncreases Interest Rate by <color=#FF4545>[{4} / {5} /
+      {6} / {7}]%p</color> at the end of the round.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046578
+    m_Localized: 'The mystical energy of nature connects spirits and Elves as one.\nOwn
+      Elf Towers: <color=#FF4545>[{0} / {1} / {2} / {3}]</color>\nIncreases ATK of
+      all Elf towers by <color=#FF4545>[{4} / {5} / {6} / {7}]</color>.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046580
+    m_Localized: 'Dwarven precision strikes pierce through the enemy''s toughest
+      parts.\nOwn Dwarf Towers: <color=#FF4545>[{0} / {1} / {2}]</color>\nReduces
+      enemy Defense by <color=#FF4545>[{3} / {4} / {5}]%</color>.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046582
+    m_Localized: 'With a fierce roar, the overwhelming might of the Orcs crushes
+      the battlefield.\nOrc Towers Owned: <color=#FF4545>[{0} / {1} / {2} / {3}]\nATK
+      increased by <color=#FF4545>[{4} / {5} / {6}]\nTier 4: Inflicts <color=#45A2FF>Slow
+      on attack (Reduces enemy Move Speed by <color=#FF4545>{7}% for <color=#45A2FF>{8}
+      sec)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046584
+    m_Localized: 'Ancient split dragon factors pulse hotly within the veins of Dragonians.\nOwn
+      Dragonian Towers: <color=#FF4545>[{0} / {1} / {2} / {3} / {4} / {5}]</color>\nIncreases
+      ATK of all Dragonian towers by <color=#FF4545>[{6} / {7} / {8} / {9} / {10}
+      / {11}]</color>.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046586
+    m_Localized: 'The Werebeast''s eyes, flashing even in the dark, never miss their
+      prey.\nOwn Werebeast Towers: <color=#FF4545>[{0} / {1} / {2} / {3}]</color>\nIncreases
+      Critical Chance by <color=#FF4545>[{4} / {5} / {6} / {7}]%p</color>.'
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

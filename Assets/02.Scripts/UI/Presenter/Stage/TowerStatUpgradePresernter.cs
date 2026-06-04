@@ -25,7 +25,7 @@ public class TowerStatUpgradePresernter
         Sprite icon = Resources.Load<Sprite>($"Tower/Images/Icon_Tower_{model.IconPath}_{model.Grade}_Idle");
 
         view.SetIconImage(icon);
-        view.SetTowerName(Managers.Local.GetString("Sheets", model.StringKey));
+        view.SetTowerName(Managers.Local.GetString("Tower", model.StringKey));
         view.TowerGrade(model.Grade, model.nextGradeUID);
         view.SetSkillName(model.SkillName());
 

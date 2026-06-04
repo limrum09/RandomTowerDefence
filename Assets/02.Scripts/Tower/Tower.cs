@@ -91,7 +91,7 @@ public class Tower : MonoBehaviour
         TowerSkillData tempData = Managers.TowerSkill.GetTowerSkillData(skillID);
 
         string skillUID = tempData.Stringkey;
-        skillName = Managers.Local.GetString("Sheets", skillUID);
+        skillName = Managers.Local.GetString("Tower", skillUID);
 
         return skillName;
     }
@@ -107,7 +107,7 @@ public class Tower : MonoBehaviour
         TowerSkillData tempData = Managers.TowerSkill.GetTowerSkillData(skillID);
         
         string skillDesUID = tempData.DesStringKey;
-        skillDes = Managers.Local.GetString("Sheets", skillDesUID);
+        skillDes = Managers.Local.GetString("Tower", skillDesUID);
 
         return skillDes;
     }

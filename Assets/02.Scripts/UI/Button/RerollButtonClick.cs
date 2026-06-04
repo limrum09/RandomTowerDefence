@@ -23,7 +23,7 @@ public class RerollButtonClick : MonoBehaviour
 
     public void SetRerollCnt(int cnt)
     {
-        text.text = $"{Managers.Local.GetString("Sheets", "BUTTON_TERRAIN_REFRESH")}({cnt})";
+        text.text = $"{Managers.Local.GetString("Stage", "STAGE_TERRAIN_REFRESH")}({cnt})";
         if (cnt <= 0)
         {
             OffRerollButton();

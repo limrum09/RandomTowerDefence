@@ -26,10 +26,10 @@ public class TowerActionMenuView : MonoBehaviour
 
     public void Show()
     {
-        towerMoveBtnText.text = $"{Managers.Local.GetString("Sheets", "INPUT_ACTION_" + InputAction.MoveTower.ToString().ToUpper())}({Managers.InputData.GetKeyCode(InputAction.MoveTower)})";
-        towerGradeupGradeBtnText.text = $"{Managers.Local.GetString("Sheets", "INPUT_ACTION_" + InputAction.ShowGradeUpgradeTowerView.ToString().ToUpper())}({Managers.InputData.GetKeyCode(InputAction.ShowGradeUpgradeTowerView)})";
-        towerStatUpgradeBtnText.text = $"{Managers.Local.GetString("Sheets", "INPUT_ACTION_" + InputAction.ShowStatUpgradeTowerView.ToString().ToUpper())}({Managers.InputData.GetKeyCode(InputAction.ShowStatUpgradeTowerView)})";
-        toQueueSlotBtnText.text = $"{Managers.Local.GetString("Sheets", "INPUT_ACTION_" + InputAction.TowerMoveToQueueSlot.ToString().ToUpper())} ({Managers.InputData.GetKeyCode(InputAction.TowerMoveToQueueSlot)})"; 
+        towerMoveBtnText.text = $"{Managers.Local.GetString("OptionUI", "INPUT_ACTION_" + InputAction.MoveTower.ToString().ToUpper())}({Managers.InputData.GetKeyCode(InputAction.MoveTower)})";
+        towerGradeupGradeBtnText.text = $"{Managers.Local.GetString("OptionUI", "INPUT_ACTION_" + InputAction.ShowGradeUpgradeTowerView.ToString().ToUpper())}({Managers.InputData.GetKeyCode(InputAction.ShowGradeUpgradeTowerView)})";
+        towerStatUpgradeBtnText.text = $"{Managers.Local.GetString("OptionUI", "INPUT_ACTION_" + InputAction.ShowStatUpgradeTowerView.ToString().ToUpper())}({Managers.InputData.GetKeyCode(InputAction.ShowStatUpgradeTowerView)})";
+        toQueueSlotBtnText.text = $"{Managers.Local.GetString("OptionUI", "INPUT_ACTION_" + InputAction.TowerMoveToQueueSlot.ToString().ToUpper())} ({Managers.InputData.GetKeyCode(InputAction.TowerMoveToQueueSlot)})"; 
 
         root.SetActive(true);
     }

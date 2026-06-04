@@ -1,3 +1,4 @@
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,6 +25,8 @@ public class SessionInfoView : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI currentLifeText;
 
+    private Tween expTween;
+
     public void SetCurrentLevel(int value)
     {
         string frontText = "Lv .";
@@ -38,8 +41,10 @@ public class SessionInfoView : MonoBehaviour
         currentExpText.text = currentExp.ToString();
         needExpText.text = needExp.ToString();
 
+        expTween?.Kill();
+
         float expPer = (float)currentExp / needExp;
-        expBar.fillAmount = expPer;
+        expTween = expBar.DOFillAmount(expPer, 0.8f).SetEase(Ease.OutQuad);
     }
 
     public void SetEnemyRemainCount(int remain, int total) => currentSpawnEnemyCountText.text = $"{remain} / {total}";
