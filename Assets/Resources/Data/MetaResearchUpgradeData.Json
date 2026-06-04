@@ -901,10 +901,10 @@
       "Value_Level_Per": 1
     },
     {
-      "UID": "META_PUBLIC_FREETERRAINREROLL",
+      "UID": "META_PUBLIC_FREETERRAINREFRESH",
       "Target_Type": "Public",
-      "Target_UID": "FreeTerrainReroll",
-      "Upgrade": "FreeTerrainReroll",
+      "Target_UID": "FreeTerrainRefresh",
+      "Upgrade": "FreeTerrainRefresh",
       "String_Key": "",
       "Type": "Flat",
       "Max": 20,

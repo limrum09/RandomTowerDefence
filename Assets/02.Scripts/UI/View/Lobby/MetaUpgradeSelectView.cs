@@ -1,4 +1,3 @@
-using System.Drawing;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -69,13 +68,15 @@ public class MetaUpgradeSelectView : MonoBehaviour
     public void TowerUIRefresh()
     {
         upgradeFrame1.SetActive(true);
-        
-        title.text = $"{tower.grade}등급 {Managers.TowerData.GetTowerNameType(tower.towerType)}타워";
-        icon.sprite = Resources.Load<Sprite>($"Tower/Images/Icon_Tower_{tower.towerType}_{tower.grade}_Idle");
-        info.text = "타워 공격력 및 공격속도 영구강화";
 
-        upgradeText1.text = "공격 속도";
-        upgradeText2.text = "공격력";
+        string gradeStr = string.Format(Managers.Local.GetString("UI", "UI_GRADE"), tower.grade);
+        string towerStr = Managers.Local.GetString("Tower", tower.stringKey) + Managers.Local.GetString("UI", "UI_TOWER");
+        title.text = $"{gradeStr} {towerStr}";
+        icon.sprite = Resources.Load<Sprite>($"Tower/Images/Icon_Tower_{tower.towerType}_{tower.grade}_Idle");
+        info.text = Managers.Local.GetString("UI", "UI_META_TOWER_INFO");
+
+        upgradeText1.text = Managers.Local.GetString("UI", "UI_ATK_SPEED");
+        upgradeText2.text = Managers.Local.GetString("UI", "UI_ATK_DAMAGE");
 
         MetaUpgradeCal displayData = Managers.Game.GetTowerDisplayData(tower);
         upgradeFrame2.SetActive(displayData.useSecondValue);
@@ -88,8 +89,9 @@ public class MetaUpgradeSelectView : MonoBehaviour
 
         limitPanel.SetActive(displayData.isUnlocked);
         btn.interactable = !displayData.isUnlocked;
+        
         if(displayData.isUnlocked)
-            limitText.text = $"연구레벨 <color={"red"}> [{displayData.needResearchLevel}] </color>충족 시 해금";
+            limitText.text = string.Format(Managers.Local.GetString("UI", "UI_META_LIMIT"), displayData.needResearchLevel);
     }
 
     public void SetTowerDataView(TowerData data, MetaUpgradeTarget getUpgradeType, int getIndex)
@@ -106,9 +108,9 @@ public class MetaUpgradeSelectView : MonoBehaviour
 
     public void PublicUIRefresh()
     {
-        title.text = publicMetaManager.GetTypeName(upgradeType);
-        info.text = publicMetaManager.GetTypeInfoStr(upgradeType);
-        upgradeText1.text = publicMetaManager.GetTypeCountStr(upgradeType);
+        title.text = Managers.Local.GetString("UI", publicMetaManager.GetTypeName(upgradeType));
+        info.text = Managers.Local.GetString("UI", publicMetaManager.GetTypeInfoStr(upgradeType));
+        upgradeText1.text = Managers.Local.GetString("UI", publicMetaManager.GetTypeCountStr(upgradeType));
         icon.sprite = null;
 
         MetaUpgradeCal displayData = Managers.Game.GetPublicDisplayData(upgradeType);

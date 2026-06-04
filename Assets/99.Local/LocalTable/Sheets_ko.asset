@@ -913,6 +913,14 @@ MonoBehaviour:
     m_Localized: "\uB3CC\uC544\uAC00\uAE30"
     m_Metadata:
       m_Items: []
+  - m_Id: 5057363018133504
+    m_Localized: "\uACF5\uC6A9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5057476843155456
+    m_Localized: "\uD0C0\uC6CC"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

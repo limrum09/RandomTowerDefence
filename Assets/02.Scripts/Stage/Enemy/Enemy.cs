@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -60,6 +61,8 @@ public class Enemy : MonoBehaviour
     private bool isStealth;     // 은신상태 체크
     private bool isDead;        // 죽었는지 판단
     private float rewardGold;   // 처치시 지급 골드
+    private Tween hpTween;
+    private Tween shieldTween;
 
     private readonly Dictionary<SpeedModityType, float> speedModify = new Dictionary<SpeedModityType, float>();
 
@@ -122,16 +125,34 @@ public class Enemy : MonoBehaviour
     /// </summary>
     private void Dead()
     {
+        hpTween?.Kill();
+        shieldTween?.Kill();
         Destroy(this.gameObject);
     }
 
     /// <summary>
     /// HPBar, Shieldbar 새로고침
     /// </summary>
-    private void RefreshBars()
+    private void SetHP()
     {
-        currentHPBar.fillAmount = MaxHP > 0f ? Mathf.Clamp01(currentHP / MaxHP) : 0f;
-        currentShieldBar.fillAmount = MaxShield > 0f ? Mathf.Clamp01(currentShield / MaxShield) : 0f;
+        hpTween = RefreshBar(hpTween, currentHPBar, currentHP, MaxHP);
+    }
+
+    private void SetShield()
+    {
+        shieldTween = RefreshBar(shieldTween, currentShieldBar, currentShield, MaxShield);
+    }
+
+    private Tween RefreshBar(Tween tween, Image bar, float current, float max)
+    {
+        if (bar == null)
+            return null;
+
+        float targetFill = current <= 0f ? 0f : Mathf.Clamp01(current / max);
+
+        tween?.Kill();
+
+        return bar.DOFillAmount(targetFill, 0.2f).SetEase(Ease.OutQuad);
     }
 
     /// <summary>
@@ -168,8 +189,6 @@ public class Enemy : MonoBehaviour
         // 생성 후에는 살아있는 상태
         isDead = false;
 
-        RefreshBars();
-
         foreach (SpeedModityType type in Enum.GetValues(typeof(SpeedModityType))){
             speedModify[type] = 0;
         }
@@ -199,7 +218,7 @@ public class Enemy : MonoBehaviour
 
         // 현제 체력이 최대 체력이 되지 않도록 조치
         currentHP = Mathf.Min(MaxHP, currentHP + value);
-        RefreshBars();
+        SetHP();
     }
 
     /// <summary>
@@ -216,7 +235,7 @@ public class Enemy : MonoBehaviour
 
         // 최대 보호막을 넘지 않도록 증가
         currentShield = Mathf.Min(MaxShield, currentShield + value);
-        RefreshBars();
+        SetShield();
     }
 
     /// <summary>
@@ -265,19 +284,20 @@ public class Enemy : MonoBehaviour
         if(currentShield > 0)
         {
             currentShield -= damage;
-            
+            SetShield();
+
             // 보호막이 남아 있으면 종료 
             if (currentShield > 0)
             {
-                RefreshBars();
                 return;
             }
 
             // 보호막이 음수면 초과분을 HP에 반영
             currentHP += currentShield;
-
+            
             // 이후에 보호막 회복 중 음수이면 회복이 안되기에, 보호막은 0으로 정리
             currentShield = 0;
+            
         }
         else
         {
@@ -285,7 +305,7 @@ public class Enemy : MonoBehaviour
             currentHP -= damage;
         }
 
-        RefreshBars();
+        SetHP();
 
         // HP가 0 이하면 사망 처리
         if (currentHP <= 0)

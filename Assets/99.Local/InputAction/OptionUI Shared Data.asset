@@ -1,0 +1,149 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: OptionUI Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: OptionUI
+  m_TableCollectionNameGuidString: 35bf388540bf936438e442fe484f221a
+  m_Entries:
+  - m_Id: 23009046670
+    m_Key: INPUT_ACTION_BUY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046671
+    m_Key: INPUT_ACTION_MAKEOBSTACLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046662
+    m_Key: INPUT_ACTION_MAKETOWER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046661
+    m_Key: INPUT_ACTION_MOVETOWER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046673
+    m_Key: INPUT_ACTION_NPCINTERACTION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046674
+    m_Key: INPUT_ACTION_OPTIONS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046672
+    m_Key: INPUT_ACTION_REMOVEOBSTACLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046664
+    m_Key: INPUT_ACTION_SHOWGRADEUPGRADETOWERVIEW
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046665
+    m_Key: INPUT_ACTION_SHOWSTATUPGRADETOWERVIEW
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046666
+    m_Key: INPUT_ACTION_TOWERGRADENORMALUPGRADE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046667
+    m_Key: INPUT_ACTION_TOWERGRADEPREMIUMUPGRADE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046663
+    m_Key: INPUT_ACTION_TOWERMOVETOQUEUESLOT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046669
+    m_Key: INPUT_ACTION_TOWERSTATATTACKSPEEDUPGRADE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046668
+    m_Key: INPUT_ACTION_TOWERSTATDAMAGEUPGRADE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046678
+    m_Key: SETTING_BGM_SELECT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046680
+    m_Key: SETTING_BGM_VOLUME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046675
+    m_Key: SETTING_GRAPHIC
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1628349542400
+    m_Key: SETTING_GRAPHIC_DAMAGEVIEW
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1628370513920
+    m_Key: SETTING_GRAPHIC_FPS_LIMIT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1628370513921
+    m_Key: SETTING_GRAPHIC_RESOLUTION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1628370513922
+    m_Key: SETTING_GRAPHIC_SCREENMODE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1628370513923
+    m_Key: SETTING_GRAPHIC_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046679
+    m_Key: SETTING_MASTER_VOLUME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046681
+    m_Key: SETTING_SFX_VOLUME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046677
+    m_Key: SETTING_SHORTCUTKEY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046676
+    m_Key: SETTING_SOUND
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046682
+    m_Key: SETTING_UI_VOLUME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046683
+    m_Key: SETTING_SET_GRAPHIC
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046685
+    m_Key: SETTING_SET_SHORTCUTKEY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046684
+    m_Key: SETTING_SET_SOUND
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5656563004157722765
+  references:
+    version: 2
+    RefIds:
+    - rid: 5656563004157722765
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
+        asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1780538592972

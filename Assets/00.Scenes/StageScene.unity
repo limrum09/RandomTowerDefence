@@ -2109,7 +2109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:945091da205a7454694823968473e24c
+      m_TableCollectionName: GUID:db1241788f96cf44698ac8c8bb50c6b7
     m_TableEntryReference:
       m_KeyId: 23009046708
       m_Key: 
@@ -2773,7 +2773,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:945091da205a7454694823968473e24c
+      m_TableCollectionName: GUID:db1241788f96cf44698ac8c8bb50c6b7
     m_TableEntryReference:
       m_KeyId: 23009046688
       m_Key: 
@@ -3371,7 +3371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:945091da205a7454694823968473e24c
+      m_TableCollectionName: GUID:db1241788f96cf44698ac8c8bb50c6b7
     m_TableEntryReference:
       m_KeyId: 23009046691
       m_Key: 
@@ -4281,13 +4281,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 320545380}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 688891889}
-  m_Father: {fileID: 1843294117}
+  m_Father: {fileID: 1450938603}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4526,8 +4526,9 @@ GameObject:
   - component: {fileID: 358465789}
   - component: {fileID: 358465791}
   - component: {fileID: 358465790}
+  - component: {fileID: 358465792}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: UpgradeMaterText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4653,6 +4654,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 358465788}
   m_CullTransparentMesh: 1
+--- !u!114 &358465792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358465788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:4128bc1ffa229ed4a910487df86cafec
+    m_TableEntryReference:
+      m_KeyId: 23009046642
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 358465790}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &358560497
 GameObject:
   m_ObjectHideFlags: 0
@@ -5631,7 +5672,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:945091da205a7454694823968473e24c
+      m_TableCollectionName: GUID:4128bc1ffa229ed4a910487df86cafec
     m_TableEntryReference:
       m_KeyId: 23009046714
       m_Key: 
@@ -7799,7 +7840,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:945091da205a7454694823968473e24c
+      m_TableCollectionName: GUID:db1241788f96cf44698ac8c8bb50c6b7
     m_TableEntryReference:
       m_KeyId: 23009046709
       m_Key: 
@@ -9938,7 +9979,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:945091da205a7454694823968473e24c
+      m_TableCollectionName: GUID:4128bc1ffa229ed4a910487df86cafec
     m_TableEntryReference:
       m_KeyId: 23009046700
       m_Key: 
@@ -12541,7 +12582,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:945091da205a7454694823968473e24c
+      m_TableCollectionName: GUID:4128bc1ffa229ed4a910487df86cafec
     m_TableEntryReference:
       m_KeyId: 23009046715
       m_Key: 
@@ -13428,7 +13469,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:945091da205a7454694823968473e24c
+      m_TableCollectionName: GUID:4128bc1ffa229ed4a910487df86cafec
     m_TableEntryReference:
       m_KeyId: 23009046699
       m_Key: 
@@ -226871,7 +226912,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:945091da205a7454694823968473e24c
+      m_TableCollectionName: GUID:db1241788f96cf44698ac8c8bb50c6b7
     m_TableEntryReference:
       m_KeyId: 23009046701
       m_Key: 
@@ -227588,7 +227629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:945091da205a7454694823968473e24c
+      m_TableCollectionName: GUID:db1241788f96cf44698ac8c8bb50c6b7
     m_TableEntryReference:
       m_KeyId: 23009046689
       m_Key: 
@@ -228895,7 +228936,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:945091da205a7454694823968473e24c
+      m_TableCollectionName: GUID:db1241788f96cf44698ac8c8bb50c6b7
     m_TableEntryReference:
       m_KeyId: 23009046693
       m_Key: 
@@ -229694,7 +229735,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:945091da205a7454694823968473e24c
+      m_TableCollectionName: GUID:db1241788f96cf44698ac8c8bb50c6b7
     m_TableEntryReference:
       m_KeyId: 23009046690
       m_Key: 
@@ -230259,6 +230300,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 632668604}
+  - {fileID: 320545381}
   m_Father: {fileID: 1843294117}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -231636,9 +231678,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:945091da205a7454694823968473e24c
+      m_TableCollectionName: GUID:4128bc1ffa229ed4a910487df86cafec
     m_TableEntryReference:
-      m_KeyId: 40954915598336
+      m_KeyId: 32442036224
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -232526,7 +232568,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:945091da205a7454694823968473e24c
+      m_TableCollectionName: GUID:db1241788f96cf44698ac8c8bb50c6b7
     m_TableEntryReference:
       m_KeyId: 23009046693
       m_Key: 
@@ -232705,7 +232747,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:945091da205a7454694823968473e24c
+      m_TableCollectionName: GUID:4128bc1ffa229ed4a910487df86cafec
     m_TableEntryReference:
       m_KeyId: 23009046716
       m_Key: 
@@ -232902,9 +232944,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:945091da205a7454694823968473e24c
+      m_TableCollectionName: GUID:4128bc1ffa229ed4a910487df86cafec
     m_TableEntryReference:
-      m_KeyId: 23009046713
+      m_KeyId: 1328058347520
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -232939,8 +232981,9 @@ GameObject:
   - component: {fileID: 1593816361}
   - component: {fileID: 1593816363}
   - component: {fileID: 1593816362}
+  - component: {fileID: 1593816364}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: UpgradeMaterText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -233066,6 +233109,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1593816360}
   m_CullTransparentMesh: 1
+--- !u!114 &1593816364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593816360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:4128bc1ffa229ed4a910487df86cafec
+    m_TableEntryReference:
+      m_KeyId: 23009046642
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1593816362}
+        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1594382236
 GameObject:
   m_ObjectHideFlags: 0
@@ -236497,7 +236580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:945091da205a7454694823968473e24c
+      m_TableCollectionName: GUID:4128bc1ffa229ed4a910487df86cafec
     m_TableEntryReference:
       m_KeyId: 23009046699
       m_Key: 
@@ -236880,7 +236963,6 @@ RectTransform:
   - {fileID: 1048761758}
   - {fileID: 590518239}
   - {fileID: 790502474}
-  - {fileID: 320545381}
   - {fileID: 1450938603}
   m_Father: {fileID: 617925658}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -237042,7 +237124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:945091da205a7454694823968473e24c
+      m_TableCollectionName: GUID:db1241788f96cf44698ac8c8bb50c6b7
     m_TableEntryReference:
       m_KeyId: 23009046712
       m_Key: 
@@ -238502,7 +238584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:945091da205a7454694823968473e24c
+      m_TableCollectionName: GUID:db1241788f96cf44698ac8c8bb50c6b7
     m_TableEntryReference:
       m_KeyId: 23009046692
       m_Key: 
@@ -238757,7 +238839,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:945091da205a7454694823968473e24c
+      m_TableCollectionName: GUID:db1241788f96cf44698ac8c8bb50c6b7
     m_TableEntryReference:
       m_KeyId: 23009046707
       m_Key: 
@@ -239375,7 +239457,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:945091da205a7454694823968473e24c
+      m_TableCollectionName: GUID:db1241788f96cf44698ac8c8bb50c6b7
     m_TableEntryReference:
       m_KeyId: 23009046710
       m_Key: 
@@ -241037,7 +241119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StringReference:
     m_TableReference:
-      m_TableCollectionName: GUID:945091da205a7454694823968473e24c
+      m_TableCollectionName: GUID:4128bc1ffa229ed4a910487df86cafec
     m_TableEntryReference:
       m_KeyId: 23009046718
       m_Key: 

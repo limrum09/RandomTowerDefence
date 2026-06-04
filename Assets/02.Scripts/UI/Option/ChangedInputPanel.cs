@@ -93,7 +93,7 @@ public class ChangedInputPanel : MonoBehaviour
     public void SetInputActionText()
     {
         currentChar = Managers.InputData.GetKeyCode(action).ToString();
-        inputNameText.text = Managers.Local.GetString("Sheets", "INPUT_ACTION_" + action.ToString().ToUpper());
+        inputNameText.text = Managers.Local.GetString("OptionUI", "INPUT_ACTION_" + action.ToString().ToUpper());
         inputField.SetTextWithoutNotify(currentChar);
     }
 }

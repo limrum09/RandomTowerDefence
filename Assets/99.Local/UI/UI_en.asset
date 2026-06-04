@@ -1,0 +1,131 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: UI_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: db1241788f96cf44698ac8c8bb50c6b7, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 23009046688
+    m_Localized: Damage Upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046690
+    m_Localized: Damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046713
+    m_Localized: Refresh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2522143141888
+    m_Localized: Game Exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046692
+    m_Localized: Attack Range
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046691
+    m_Localized: Attack Speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046689
+    m_Localized: Attack Speed Upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046696
+    m_Localized: Defense
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046687
+    m_Localized: '{0}Grade'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046695
+    m_Localized: Health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046697
+    m_Localized: Move Speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2522147336192
+    m_Localized: Pulbic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046698
+    m_Localized: Buy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2522147336193
+    m_Localized: Tower
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046693
+    m_Localized: Upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046686
+    m_Localized: '{0}'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046704
+    m_Localized: Apply
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046706
+    m_Localized: Cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046707
+    m_Localized: Cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046710
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046711
+    m_Localized: Exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046712
+    m_Localized: Option
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046708
+    m_Localized: Move
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046709
+    m_Localized: Lobby
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046705
+    m_Localized: Ok
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2522143141889
+    m_Localized: 
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046703
+    m_Localized: Reset
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

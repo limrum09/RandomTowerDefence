@@ -74,15 +74,17 @@ public class MetaUpgradeInfoView : MonoBehaviour
     {
         upgradeButtonFrame1.SetActive(true);
 
-        nameText.text = $"{towerData.grade}등급 {Managers.TowerData.GetTowerNameType(towerData.towerType)}타워";
+        string gradeStr = string.Format(Managers.Local.GetString("UI", "UI_GRADE"), towerData.grade);
+        string towerStr = Managers.Local.GetString("Tower", towerData.stringKey) + Managers.Local.GetString("UI", "UI_TOWER");
+        nameText.text = $"{gradeStr} {towerStr}";
         icon.sprite = Resources.Load<Sprite>($"Tower/Images/Icon_Tower_{towerData.towerType}_{towerData.grade}_Idle");
-        optionInfoText.text = "타워 공격력 및 공격속도 영구강화";
+        optionInfoText.text = Managers.Local.GetString("UI", "UI_META_TOWER_INFO");
 
         MetaUpgradeCal displayData = Managers.Game.GetTowerDisplayData(towerData);
         upgradeButtonFrame2.SetActive(displayData.useSecondValue);
 
-        upgradeTypeText1.text = $"공격 속도 강화 (+{displayData.level1})";
-        upgradeTypeText2.text = $"공격력 강화 (+{displayData.level2})";
+        upgradeTypeText1.text = $"{Managers.Local.GetString("UI", "UI_ATK_SPEED_UPGRADE")} (+{displayData.level1})";
+        upgradeTypeText2.text = $"{Managers.Local.GetString("UI", "UI_ATK_DAMAGE_UPGRADE")} (+{displayData.level2})";
 
         currentValueText1.text = displayData.currentValue1.ToString("N2");
         currentValueText2.text = displayData.currentValue2.ToString();
@@ -113,14 +115,15 @@ public class MetaUpgradeInfoView : MonoBehaviour
     {
         upgradeButtonFrame1.SetActive(true);
 
-        nameText.text = Managers.PublicMetaUpgrade.GetTypeName(upgradeType);
-        optionInfoText.text = Managers.PublicMetaUpgrade.GetTypeInfoStr(upgradeType);
+        nameText.text = Managers.Local.GetString("UI", Managers.PublicMetaUpgrade.GetTypeName(upgradeType));
+        optionInfoText.text = Managers.Local.GetString("UI", Managers.PublicMetaUpgrade.GetTypeInfoStr(upgradeType));
 
         MetaUpgradeCal displayData = Managers.Game.GetPublicDisplayData(upgradeType);
         
         upgradeButtonFrame2.SetActive(displayData.useSecondValue);
-        upgradeTypeText1.text = Managers.PublicMetaUpgrade.GetTypeCountStr(upgradeType) + $" 강화 (+{displayData.level1})";
-
+        upgradeTypeText1.text = Managers.Local.GetString("UI", Managers.PublicMetaUpgrade.GetTypeCountStr(upgradeType))
+            + $" (+{displayData.level1})";
+        
         currentValueText1.text = displayData.currentValue1.ToString();
         nextValueText1.text = displayData.nextValue1.ToString();
 

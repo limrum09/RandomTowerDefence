@@ -10,7 +10,7 @@ public class OnButtonClick : MonoBehaviour
 
     private void Start()
     {
-        text.text = Managers.Local.GetString("Sheets", "BUTTON_WAVE_START");
+        text.text = Managers.Local.GetString("Stage", "BUTTON_WAVE_START");
     }
 
     public void OnClickGameStartButton()

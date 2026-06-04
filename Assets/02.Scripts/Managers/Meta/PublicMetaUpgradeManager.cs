@@ -120,15 +120,15 @@ public class PublicMetaUpgradeManager
         switch (getType)
         {
             case MetaUpgradeType.StartingGold:
-                return "시작 시 골드 획득량";
+                return "UI_STARTING_GOLD_NAME";
             case MetaUpgradeType.FreeObstacle:
-                return "무료 장애물 설치";
-            case MetaUpgradeType.FreeTerrainReroll:
-                return "지형 재설정";
+                return "UI_FREE_OBSTACLE_NAME";
+            case MetaUpgradeType.FreeTerrainRefresh:
+                return "UI_FREE_TERRAIN_REFRESH_NAME";
             case MetaUpgradeType.DropGold:
-                return "몬스터 드랍 골드";
+                return "UI_ENEMY_DROP_GOLD_NAME";
             default:
-                return "찾을 수 없음";
+                return "UI_FIND_FAIL";
         }
     }
 
@@ -142,15 +142,15 @@ public class PublicMetaUpgradeManager
         switch (getType)
         {
             case MetaUpgradeType.StartingGold:
-                return "스테이지 시작 시 획득하는 골드 증가";
+                return "UI_STARTING_GOLD_INFO";
             case MetaUpgradeType.FreeObstacle:
-                return "무료 장애물 설치권 개수 증가";
-            case MetaUpgradeType.FreeTerrainReroll:
-                return "지형 재설정 횟수 증가";
+                return "UI_FREE_OBSTACLE_INFO";
+            case MetaUpgradeType.FreeTerrainRefresh:
+                return "UI_FREE_TERRAIN_REFRESH_INFO";
             case MetaUpgradeType.DropGold:
-                return "몬스터가 드랍하는 골드의 개수 증가";
+                return "UI_ENEMY_DROP_GOLD_INFO";
             default:
-                return "찾을 수 없음";
+                return "UI_FIND_FAIL";
         }
     }
 
@@ -164,15 +164,15 @@ public class PublicMetaUpgradeManager
         switch (getType)
         {
             case MetaUpgradeType.StartingGold:
-                return "획득 골드";
+                return "UI_STARTING_GOLD_COUNT";
             case MetaUpgradeType.FreeObstacle:
-                return "무료 개수";
-            case MetaUpgradeType.FreeTerrainReroll:
-                return "재설정횟수";
+                return "UI_FREE_OBSTACLE_COUNT";
+            case MetaUpgradeType.FreeTerrainRefresh:
+                return "UI_FREE_TERRAIN_REFRESH_COUNT";
             case MetaUpgradeType.DropGold:
-                return "드랍 골드";
+                return "UI_ENEMY_DROP_GOLD_COUNT";
             default:
-                return "찾을 수 없음";
+                return "UI_FIND_FAIL";
         }
     }
 

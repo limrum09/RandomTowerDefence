@@ -16,8 +16,8 @@
       "Base_Value": 15
     },
     {
-      "UID": "FreeTerrainReroll",
-      "String_Key": "SSO_FreeTerrainReroll",
+      "UID": "FreeTerrainRefresh",
+      "String_Key": "SSO_FreeTerrainRefresh",
       "Base_Value": 5
     }
   ]

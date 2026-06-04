@@ -31,10 +31,6 @@ public class TowerPreviewCharacter : MonoBehaviour
         }
 
         spriteLibrary.spriteLibraryAsset = library;
-
-        anim.SetBool("IsAttack", false);
-        anim.SetBool("IsBow", false);
-        anim.SetBool("IsMagic", false);
     }
 
     public void SetShow()
