@@ -221,6 +221,7 @@ public class SaveDataManager
         }
         catch (Exception e)
         {
+            Debug.Log("Load Errer : " + e.Message);
             IsFirebaseLoadFail = true;
             return false;
         }

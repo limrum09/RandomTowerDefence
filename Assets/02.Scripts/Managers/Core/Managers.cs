@@ -153,6 +153,7 @@ public class Managers : MonoBehaviour
             towerMetaUpgrade.LoadSaveData(null);
             QuestMgr.LoadSaveData(null);
 
+            LoadSceneManager.Instance.NotifyDataLoaded();
             OnEndLoadDatas?.Invoke();
             return;
         }

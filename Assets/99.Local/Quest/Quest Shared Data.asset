@@ -35,6 +35,38 @@ MonoBehaviour:
     m_Key: ACHIEVEMENT_UI_TITLE
     m_Metadata:
       m_Items: []
+  - m_Id: 3343387611770880
+    m_Key: ACHIEVEMENT_EASY_STAGE_CLEAR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3343394192633856
+    m_Key: TASK_CLEAR_EASY_STAGE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3344484606816256
+    m_Key: ACHIEVEMENT_NORMAL_STAGE_CLEAR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3344508019421184
+    m_Key: TASK_CLEAR_NORMAL_STAGE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3344556572684288
+    m_Key: ACHIEVEMENT_HARD_STAGE_CLEAR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3344583357509632
+    m_Key: TASK_CLEAR_HARD_STAGE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3344615976611840
+    m_Key: ACHIEVEMENT_HELL_STAGE_CLEAR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3344637824741376
+    m_Key: TASK_CLEAR_HELL_STAGE
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

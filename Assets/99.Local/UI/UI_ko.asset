@@ -221,6 +221,11 @@ MonoBehaviour:
     m_Localized: "UI  \uC900\uBE44 \uC644\uB8CC..."
     m_Metadata:
       m_Items: []
+  - m_Id: 455231677804544
+    m_Localized: "\uC5C5\uC801 - <color=\"red\">{0}</color> \uC644\uB8CC \uD6C4,
+      \uD574\uAE08"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
