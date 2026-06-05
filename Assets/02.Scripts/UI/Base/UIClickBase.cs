@@ -1,12 +1,24 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public abstract class UIClickBase : MonoBehaviour, IPointerClickHandler
+public abstract class UIClickBase : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public void OnPointerClick(PointerEventData eventData)
     {
         OnClick(eventData);
     }
 
-    protected abstract void OnClick(PointerEventData eventData);
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        OnEnter(eventData);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        OnExit(eventData);
+    }
+
+    protected virtual void OnClick(PointerEventData eventData) { }
+    protected virtual void OnEnter(PointerEventData eventData) { }
+    protected virtual void OnExit(PointerEventData eventData) { }
 }

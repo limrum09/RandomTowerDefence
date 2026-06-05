@@ -1,15 +1,12 @@
-using DG.Tweening;
+using Firebase.Auth;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 public class SelectStageView : MonoBehaviour
 {
-    [Header("Root")]
+    [Header("Animation")]
     [SerializeField]
-    private CanvasGroup canvasGroup;
-    [SerializeField]
-    private RectTransform panelRect;
+    private SelectStageViewAnim viewAnim;
 
     [Header("Background")]
     [SerializeField]
@@ -17,67 +14,58 @@ public class SelectStageView : MonoBehaviour
 
     [Header("Buttons")]
     [SerializeField]
-    private Button easyStageButton;
+    private SelectStageButton easyStageButton;
     [SerializeField]
-    private Button normalStageButton;
+    private SelectStageButton normalStageButton;
     [SerializeField]
-    private Button hardStageButton;
+    private SelectStageButton hardStageButton;
     [SerializeField]
-    private Button hellStageButton;
+    private SelectStageButton hellStageButton;
 
-    [Header("Animtion")]
-    [SerializeField]
-    private float fadeDuration = 0.2f;
-    [SerializeField]
-    private float panelScaleDuration = 0.25f;
-    [SerializeField]
-    private float buttonMoveDuration = 0.25f;
-    [SerializeField]
-    private float buttonDelay = 0.06f;
-    [SerializeField]
-    private float buttonStartYOffset = -40f;
+    private bool isShowing;
+    private bool isHiding;
+    private bool isOpened;
 
-    private Sequence se;
-    private RectTransform[] buttonRects;
-    private Vector2[] buttonOriginPos;
     private void Awake()
     {
-        buttonRects = new RectTransform[]
-        {
-            easyStageButton.GetComponent<RectTransform>(),
-            normalStageButton.GetComponent<RectTransform>(),
-            hardStageButton.GetComponent<RectTransform>(),
-            hellStageButton.GetComponent<RectTransform>()
-        };
-
-        buttonOriginPos = new Vector2[buttonRects.Length];
-
-        for(int i = 0; i <  buttonRects.Length; i++)
-        {
-            buttonOriginPos[i] = buttonRects[i].anchoredPosition;
-        }
-
         background.Bind(Hide);
+
+        viewAnim.ShowEnd += ShowEnd;
+        viewAnim.HideEnd += HideEnd;
+    }
+
+    private void ShowEnd()
+    {
+        isShowing = false;
+        isOpened = true;
+    }
+
+    private void HideEnd()
+    {
+        isHiding = false;
+        isOpened = false;
     }
 
     public void Show()
     {
-        se?.Kill();
+        if (isShowing || isHiding || isOpened)
+            return;
 
-        canvasGroup.alpha = 1.0f;
-        canvasGroup.interactable = true;
-        canvasGroup.blocksRaycasts = true;
+        isShowing = true;
+        viewAnim.Show();
     }
 
     public void Hide()
     {
-        canvasGroup.alpha = 0.0f;
-        canvasGroup.interactable = false;
-        canvasGroup.blocksRaycasts = false;
+        if (isShowing || isHiding || !isOpened)
+            return;
+
+        isHiding = true;
+        viewAnim.Hide();
     }
 
-    public void BindEasyStageButton(UnityAction<string> action) => easyStageButton.onClick.AddListener(() => action?.Invoke("EASY"));
-    public void BindNormalStageButton(UnityAction<string> action) => normalStageButton.onClick.AddListener(() => action?.Invoke("NORMAL"));
-    public void BindHardStageButton(UnityAction<string> action) => hardStageButton.onClick.AddListener(() => action?.Invoke("HARD"));
-    public void BindHellStageButton(UnityAction<string> action) => hellStageButton.onClick.AddListener(() => action?.Invoke("HELL"));
+    public void BindEasyStageButton(UnityAction<string> action) => easyStageButton.OnStageMove += () => action?.Invoke("EASY");
+    public void BindNormalStageButton(UnityAction<string> action) => normalStageButton.OnStageMove += () => action?.Invoke("NORMAL");
+    public void BindHardStageButton(UnityAction<string> action) => hardStageButton.OnStageMove += () => action?.Invoke("HARD");
+    public void BindHellStageButton(UnityAction<string> action) => hellStageButton.OnStageMove += () => action?.Invoke("HELL");
 }

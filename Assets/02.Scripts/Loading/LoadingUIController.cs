@@ -28,6 +28,7 @@ public class LoadingUIController : MonoBehaviour
         isSceneUI = false;
         loadingValue = 0;
         currentLoadingBar.fillAmount = 0f;
+
         StartCoroutine(LoadingBar());
     }
     

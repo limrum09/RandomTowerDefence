@@ -19,6 +19,11 @@ public class LoadSceneManager : SingletonMono<LoadSceneManager>
 
     private string targetSceneName;
 
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+    }
+
     private async void LoadSceneWithLoading(string sceneName)
     {
         if (isLoading)
@@ -96,6 +101,7 @@ public class LoadSceneManager : SingletonMono<LoadSceneManager>
 
     public void OnCompletedSignIn()
     {
+        Debug.Log("로그인 완료");
         isDataLoaded = false;
         OnLoadStringScene("LobbyScene");
     }

@@ -32,12 +32,20 @@ public abstract class SingletonMono<T> : MonoBehaviour where T : MonoBehaviour
         if(instance == null)
         {
             instance = this as T;
-            DontDestroyOnLoad(gameObject);
         }
         else if(instance != this)
         {
             Destroy(gameObject);
+            return;
         }
+
+        DontDestroyOnLoad(gameObject);
+    }
+
+    protected virtual void OnDestroy()
+    {
+        if (instance == this)
+            instance = null;
     }
 
     protected virtual void OnApplicationQuit()
