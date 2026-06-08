@@ -28,7 +28,7 @@ public class MetaUpgradeSelectView : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI nextValue2;
     [SerializeField]
-    private Button btn;
+    private MetaUpgradeSelectViewButton selectButton;
 
     [Header("Limit")]
     [SerializeField]
@@ -36,6 +36,8 @@ public class MetaUpgradeSelectView : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI limitText;
 
+    private RectTransform[] textRects;
+    private TextMeshProUGUI[] texts;
     private MetaUpgradeView Owner;
     private TowerData tower;
     private string getUID;
@@ -43,9 +45,10 @@ public class MetaUpgradeSelectView : MonoBehaviour
     private MetaUpgradeType upgradeType;
     private int index;
 
-    private TowerMetaUpgradeManager towerMetaManager;
     private PublicMetaUpgradeManager publicMetaManager;
-    private MetaResearchUpgradeDataManager metaData;
+
+    public RectTransform[] TextRects => textRects;
+    public TextMeshProUGUI[] Texts => texts;
 
     private void ResetDatas()
     {
@@ -59,10 +62,44 @@ public class MetaUpgradeSelectView : MonoBehaviour
     public void SetOwner(MetaUpgradeView getOwner)
     {
         Owner = getOwner;
-        btn.onClick.AddListener(OnClickSelectButton);
-        metaData = Managers.ResearchUpgrade;
-        towerMetaManager = Managers.TowerMetaUpgrade;
+
+        selectButton.OnSelect += OnClickSelectButton;
+
         publicMetaManager = Managers.PublicMetaUpgrade;
+
+        textRects = new RectTransform[]
+        {
+            title.rectTransform,
+            info.rectTransform,
+            upgradeText1.rectTransform,
+            currentValue1.rectTransform,
+            nextValue1.rectTransform,
+            upgradeText2.rectTransform,
+            currentValue2.rectTransform,
+            nextValue2.rectTransform,
+            limitText.rectTransform
+        };
+
+        texts = new TextMeshProUGUI[]
+        {
+            title,
+            info,
+            upgradeText1,
+            currentValue1,
+            nextValue1,
+            upgradeText2,
+            currentValue2,
+            nextValue2,
+            limitText
+        };
+    }
+
+    public void ChangedReserchLevel()
+    {
+        if (upgradeTarget == MetaUpgradeTarget.Public)
+            return;
+
+        TowerUIRefresh();
     }
 
     public void TowerUIRefresh()
@@ -88,7 +125,7 @@ public class MetaUpgradeSelectView : MonoBehaviour
         nextValue2.text = displayData.nextValue2.ToString();
 
         limitPanel.SetActive(displayData.isUnlocked);
-        btn.interactable = !displayData.isUnlocked;
+        selectButton.IsInputLocked = displayData.isUnlocked;
         
         if(displayData.isUnlocked)
             limitText.text = string.Format(Managers.Local.GetString("UI", "UI_META_LIMIT"), displayData.needResearchLevel);
@@ -119,8 +156,11 @@ public class MetaUpgradeSelectView : MonoBehaviour
         currentValue1.text = displayData.currentValue1.ToString();
         nextValue1.text = displayData.nextValue1.ToString();
 
+        currentValue1.FadeIn();
+        nextValue1.FadeIn();
+
         limitPanel.SetActive(false);
-        btn.interactable = true;
+        selectButton.IsInputLocked = false;
     }
 
     public void SetPublicDataView(MetaUpgradeType type, int getIndex)

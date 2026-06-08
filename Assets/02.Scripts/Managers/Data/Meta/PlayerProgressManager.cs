@@ -1,5 +1,6 @@
 using Firebase.Firestore;
 using System;
+using System.Diagnostics;
 
 [Serializable]
 [FirestoreData]
@@ -84,7 +85,11 @@ public class PlayerProgressManager
     public bool UseCurrency(int value)
     {
         if (value <= 0)
+        {
+            UnityEngine.Debug.Log("소모 값이 0이하 : " + value);
             return false;
+        }
+            
 
         if (value > playerData.metaCurrency)
         {

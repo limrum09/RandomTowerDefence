@@ -123,11 +123,12 @@ public class MetaUpgradeInfoView : MonoBehaviour
         upgradeButtonFrame2.SetActive(displayData.useSecondValue);
         upgradeTypeText1.text = Managers.Local.GetString("UI", Managers.PublicMetaUpgrade.GetTypeCountStr(upgradeType))
             + $" (+{displayData.level1})";
-        
+
         currentValueText1.text = displayData.currentValue1.ToString();
         nextValueText1.text = displayData.nextValue1.ToString();
 
-        upgradeValueText1.text = displayData.costValue1.ToString();
+        upgradeCostValue1 = displayData.costValue1;
+        upgradeValueText1.text = upgradeCostValue1.ToString();
     }
 
     private void OnButton1Click()

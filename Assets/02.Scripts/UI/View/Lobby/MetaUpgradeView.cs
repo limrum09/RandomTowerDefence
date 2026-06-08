@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -48,6 +49,8 @@ public class MetaUpgradeView : MonoBehaviour
 
     [Header("Select Option")]
     [SerializeField]
+    private MetaUpgradeSelectViewAnim viewAnim;
+    [SerializeField]
     private List<MetaUpgradeSelectView> selectViews;
 
     [Header("Upgrade View")]
@@ -57,7 +60,6 @@ public class MetaUpgradeView : MonoBehaviour
     public event Func<MetaUpgradeTarget, MetaUpgradeType, string, int, int, bool> OnMetaUpgrade;
 
     private bool isShow = true;
-    private bool isAwake = false;
     private void Awake()
     {
         BindTowerToggle(humanToggle, TowerType.Human);
@@ -73,6 +75,8 @@ public class MetaUpgradeView : MonoBehaviour
         }
 
         infoView.SetOwner(this);
+
+        viewAnim.Init();
         towerTypeToggle.onValueChanged.AddListener(isOn =>
         {
             towersToggleGroup.SetActive(isOn);
@@ -88,6 +92,7 @@ public class MetaUpgradeView : MonoBehaviour
         {
             if (!isOn)
                 return;
+
             OnClickPublicToggle();
         });
 
@@ -111,17 +116,38 @@ public class MetaUpgradeView : MonoBehaviour
         metaCurrencyText.text = Managers.Player.GetCurreny().ToString();
     }
 
+    private async Task SaveOnHideAsync()
+    {
+        if (Managers.isQuitting)
+            return;
+
+        if (Managers.Save == null)
+            return;
+
+        try
+        {
+            await Managers.Save.SavePlayerProgressData();
+            await Managers.Save.SaveMetaUpgradeData();
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Hide Save Failed : {e.Message}");
+        }
+    }
+
     public void Show()
     {
         canvasGroup.alpha = 1.0f;
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
 
-        publicTypeToggle.isOn = true;
+        towersToggleGroup.SetActive(false);
+
+        publicTypeToggle.SetIsOnWithoutNotify(true);
+        towerTypeToggle.SetIsOnWithoutNotify(false);
+
         OnClickPublicToggle();
 
-        towersToggleGroup.SetActive(false);
-        
         ShowPlayerProgressData();
         isShow = true;
     }
@@ -143,8 +169,7 @@ public class MetaUpgradeView : MonoBehaviour
         if (Managers.Save == null)
             return;
 
-        Managers.Save.SavePlayerProgressData();
-        Managers.Save.SaveMetaUpgradeData();
+        _ = SaveOnHideAsync();
     }
 
     public void OnClickPublicToggle()
@@ -163,6 +188,7 @@ public class MetaUpgradeView : MonoBehaviour
         }
 
         infoView.SetPublicInfo((MetaUpgradeType)2, MetaUpgradeTarget.Public, 2);
+        viewAnim.ChangedToggle();
     }
     public void OnClickTowerToggle(TowerType type)
     {
@@ -177,6 +203,7 @@ public class MetaUpgradeView : MonoBehaviour
         }
 
         infoView.SetTowerInfo(datas[0], MetaUpgradeTarget.Tower, 0);
+        viewAnim.ChangedToggle();
     }
     public void OnClickSelectButton(string getUid, MetaUpgradeTarget type, int getIndex)
     {
@@ -195,18 +222,24 @@ public class MetaUpgradeView : MonoBehaviour
     }
     public void MetaUpgrade(MetaUpgradeTarget getType, MetaUpgradeType upgradeType, string uid, int upgradeCost, int value, int getIndex)
     {
+        Debug.Log($"업그레이드 시작 - 타입 : {getType}, 종류 : {upgradeType}, UID : {uid}, 비용 : {upgradeCost}, 값 : {value}");
         bool complete = OnMetaUpgrade?.Invoke(getType, upgradeType, uid, upgradeCost, value) ?? false;
+
+        Debug.Log("업그레이드 결과 : " + complete);
 
         if (complete)
         {
+            Debug.Log("업그레이드 완료 : " + getType);
             if (getType == MetaUpgradeTarget.Tower)
             {
+                Debug.Log("타워 업그레이드 완료 : " + upgradeType);
                 selectViews[getIndex].TowerUIRefresh();
                 infoView.RefreshTowerInfo();
             }
                 
             else if (getType == MetaUpgradeTarget.Public)
             {
+                Debug.Log("공용 업그레이드 완료 : " + upgradeType);
                 selectViews[getIndex].PublicUIRefresh();
                 infoView.RefreshPublicInfo();
             }
@@ -221,7 +254,7 @@ public class MetaUpgradeView : MonoBehaviour
     {
         for(int i = 0; i < selectViews.Count; i++)
         {
-            selectViews[i].TowerUIRefresh();
+            selectViews[i].ChangedReserchLevel();
         }
     }
 }

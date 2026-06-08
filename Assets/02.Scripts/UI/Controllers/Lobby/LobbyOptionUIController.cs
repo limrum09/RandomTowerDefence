@@ -17,11 +17,20 @@ public class LobbyOptionUIController : MonoBehaviour
     /// 게임 종료 버튼에 호출
     /// 현재 데이터들을 저장한 뒤, 종료
     /// </summary>
-    public void OnGameEnd()
+    public async void OnGameEnd()
     {
-        Managers.Save.SaveAllData();
+        try
+        {
+            await Managers.Save.SaveAllData();
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Save Failed : " + e.Message);
+        }
+        
         Application.Quit();
     }
+
     /// <summary>
     /// 로비 옵션 패널을 화면에 표시하고 입력 받도록 상태 전환
     /// </summary>

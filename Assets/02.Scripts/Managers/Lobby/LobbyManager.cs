@@ -52,11 +52,17 @@ public class LobbyManager : MonoBehaviour
         }
         else if(metaType == MetaUpgradeTarget.Public)
         {
+            Debug.Log("공용 업그레이드 시작");
             if (!Managers.Player.UseCurrency(upgradeCost))
+            {
+                Debug.Log("비용 부족");
                 return false;
+            }
 
             if (Managers.PublicMetaUpgrade.GetPublicMetaType(uid, out MetaUpgradeType publicType))
                 isSuccess = Managers.PublicMetaUpgrade.PublicMetaUpgrade(publicType, upValue);
+            else
+                Debug.Log("찾지 못함");
         }
 
         if (isSuccess)
