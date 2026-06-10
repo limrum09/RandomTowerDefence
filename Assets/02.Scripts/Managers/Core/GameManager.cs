@@ -61,7 +61,7 @@ public class GameManager
         MetaResearchUpgradeData speedData = metaData.GetMetaResearchDataToTower(tower.towerUID, MetaUpgradeTarget.Tower, MetaUpgradeType.AttackSpeed);
 
         int playerLevel = Managers.Player.GetPlayerLevel();
-        int unlockGrade = Managers.ResearchLevel.GetNeedUnlockLevel(playerLevel);
+        int unlockGrade = Managers.ResearchLevel.GetCurrentUnlockGrade(playerLevel);
         bool isUnlock = tower.grade > unlockGrade;
 
         return new MetaUpgradeCal()

@@ -187,7 +187,7 @@ public class MetaUpgradeView : MonoBehaviour
             }
         }
 
-        infoView.SetPublicInfo((MetaUpgradeType)2, MetaUpgradeTarget.Public, 2);
+        infoView.SetPublicInfo((MetaUpgradeType)2, MetaUpgradeTarget.Public, 0);
         viewAnim.ChangedToggle();
     }
     public void OnClickTowerToggle(TowerType type)
@@ -222,24 +222,18 @@ public class MetaUpgradeView : MonoBehaviour
     }
     public void MetaUpgrade(MetaUpgradeTarget getType, MetaUpgradeType upgradeType, string uid, int upgradeCost, int value, int getIndex)
     {
-        Debug.Log($"업그레이드 시작 - 타입 : {getType}, 종류 : {upgradeType}, UID : {uid}, 비용 : {upgradeCost}, 값 : {value}");
         bool complete = OnMetaUpgrade?.Invoke(getType, upgradeType, uid, upgradeCost, value) ?? false;
-
-        Debug.Log("업그레이드 결과 : " + complete);
 
         if (complete)
         {
-            Debug.Log("업그레이드 완료 : " + getType);
             if (getType == MetaUpgradeTarget.Tower)
             {
-                Debug.Log("타워 업그레이드 완료 : " + upgradeType);
                 selectViews[getIndex].TowerUIRefresh();
                 infoView.RefreshTowerInfo();
             }
                 
             else if (getType == MetaUpgradeTarget.Public)
             {
-                Debug.Log("공용 업그레이드 완료 : " + upgradeType);
                 selectViews[getIndex].PublicUIRefresh();
                 infoView.RefreshPublicInfo();
             }

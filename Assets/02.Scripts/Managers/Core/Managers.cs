@@ -19,6 +19,7 @@ public class Managers : MonoBehaviour
     public static bool HasInstance => instance != null && isQuitting;
 
     private GameManager game = new GameManager();
+    private StageScoreCalculator stageScoreCalculator = new StageScoreCalculator();
     private SaveDataManager saveDataManager = new SaveDataManager();
     private SoundManager sound = new SoundManager();
     private GraphicManager graphic = new GraphicManager();
@@ -46,6 +47,7 @@ public class Managers : MonoBehaviour
     private PublicMetaUpgradeManager pulbicMeraUpgrade = new PublicMetaUpgradeManager();
 
     public static GameManager Game { get { return Instance.game; } }
+    public static StageScoreCalculator ScoreCal { get { return Instance.stageScoreCalculator; } }
     public static SaveDataManager Save { get { return Instance.saveDataManager; } }
     public static SoundManager Sound {  get { return Instance.sound; } }
     public static GraphicManager Graphic {  get { return Instance.graphic; } }

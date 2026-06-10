@@ -27,15 +27,11 @@ public class MetaUpgradeSelectViewAnim : UIPopAnimationBase
     private Tween[] hoverTween;
     private Vector3[] originScale;
 
-    private void Start()
-    {
-        
-    }
-
     private void HoverSelect(int index)
     {
         if (panels[index].button.IsInputLocked)
             return;
+
 
         HideSelectImage();
         panels[index].selectImage.gameObject.SetActive(true);
@@ -86,6 +82,10 @@ public class MetaUpgradeSelectViewAnim : UIPopAnimationBase
         }
 
         swapSequence = UISwapFromRightToLeft(targets.ToArray(), texts.ToArray(), originPosMap, changeContent, 200f, 0.12f);
+        swapSequence.AppendCallback(() =>
+        {
+            changeContent?.Invoke();
+        });
     }
 
     public void Init()

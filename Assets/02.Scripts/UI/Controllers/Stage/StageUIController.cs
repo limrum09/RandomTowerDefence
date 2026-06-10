@@ -35,6 +35,8 @@ public class StageUIController : MonoBehaviour
     private WaveEnemyInfoUIController enemyInfoCtr;
     [SerializeField]
     private StageOptionUIController stageOptionCtr;
+    [SerializeField]
+    private GameOverUIController gameOver;
 
     private TowerGradeUpgradePresenter gradePresenter;
     private TowerActionMenuPresenter actionMenuPresenter;
@@ -395,6 +397,11 @@ public class StageUIController : MonoBehaviour
     public void StageContinue()
     {
         OnStageContinue?.Invoke();
+    }
+
+    public void ShowGameOver(StageResultData data)
+    {
+        gameOver.SetGameOverUI(data);
     }
 
     public void MoveToLobby()

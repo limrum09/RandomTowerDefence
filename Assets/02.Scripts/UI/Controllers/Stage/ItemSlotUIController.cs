@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor.Build.Pipeline.Injector;
 using UnityEngine;
 
 public class ItemSlotUIController : MonoBehaviour
@@ -114,5 +115,34 @@ public class ItemSlotUIController : MonoBehaviour
             return;
 
         OnRequestSellItem?.Invoke(index);
+    }
+
+    public List<ItemResultData> GetItemResultData()
+    {
+        int itemlength = 0;
+        foreach(var item in itemUId)
+        {
+            if (item == null)
+                continue;
+
+            itemlength++;
+        }
+        ItemResultData[] result = new ItemResultData[itemlength];
+
+        for(int i = 0; i <  itemUId.Length; i++)
+        {
+            if (itemUId[i] == null)
+                continue;
+
+            Sprite itemIon = Resources.Load<Sprite>($"Item/Images/{itemUId[i].iconUID}");
+            int itemSellValue = itemUId[i].salePrice;
+            result[i] = new ItemResultData
+            {
+                icon = itemIon,
+                sellValue = itemSellValue
+            };
+        }
+
+        return result.ToList();
     }
 }

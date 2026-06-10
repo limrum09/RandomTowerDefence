@@ -34,6 +34,8 @@ public class MetaUpgradeInfoView : MonoBehaviour
     private TextMeshProUGUI nextValueText2;
     [SerializeField]
     private TextMeshProUGUI upgradeValueText2;
+    [SerializeField]
+    private float fadeInDuration = 0.3f;
 
     private TowerData towerData;
     private MetaUpgradeView owner;
@@ -45,14 +47,11 @@ public class MetaUpgradeInfoView : MonoBehaviour
     private int upgradeCostValue1;
     private int upgradeCostValue2;
 
-    private MetaResearchUpgradeDataManager metaData;
-
+    private int prevLevel1;
+    private int prevLevel2;
     public void SetOwner(MetaUpgradeView getOwner)
     {
         owner = getOwner;
-
-        metaData = Managers.ResearchUpgrade;
-
 
         upgradeButton1.onClick.AddListener(OnButton1Click);
         upgradeButton2.onClick.AddListener(OnButton2Click);
@@ -97,6 +96,23 @@ public class MetaUpgradeInfoView : MonoBehaviour
 
         upgradeValueText1.text = upgradeCostValue1.ToString();
         upgradeValueText2.text = upgradeCostValue2.ToString();
+
+        if(prevLevel1 != -1 && prevLevel1 != displayData.level1)
+        {
+            currentValueText1.FadeIn(fadeInDuration);
+            nextValueText1.FadeIn(fadeInDuration);
+            upgradeValueText1.FadeIn(fadeInDuration);
+        }
+
+        if(prevLevel2 != -1 && prevLevel2 != displayData.level2)
+        {
+            currentValueText2.FadeIn(fadeInDuration);
+            nextValueText2.FadeIn(fadeInDuration);
+            upgradeValueText2.FadeIn(fadeInDuration);
+        }
+
+        prevLevel1 = displayData.level1;
+        prevLevel2 = displayData.level2;
     }
 
     public void SetPublicInfo(MetaUpgradeType getPubicType, MetaUpgradeTarget getType, int getIndex)
@@ -129,6 +145,15 @@ public class MetaUpgradeInfoView : MonoBehaviour
 
         upgradeCostValue1 = displayData.costValue1;
         upgradeValueText1.text = upgradeCostValue1.ToString();
+
+        if (prevLevel1 != -1)
+        {
+            currentValueText1.FadeIn(fadeInDuration);
+            nextValueText1.FadeIn(fadeInDuration);
+            upgradeValueText1.FadeIn(fadeInDuration);
+        }
+
+        prevLevel1 = displayData.level1;
     }
 
     private void OnButton1Click()
@@ -148,5 +173,8 @@ public class MetaUpgradeInfoView : MonoBehaviour
         uid = string.Empty;
         index = -1;
         upgradeType = MetaUpgradeType.StartingGold;
+
+        prevLevel1 = -1;
+        prevLevel2 = -1;
     }
 }
