@@ -64,6 +64,30 @@ public class UIPopAnimationBase : MonoBehaviour
         return fillRect.DOScaleX(0f, duration).SetEase(Ease.Linear);
     }
 
+    protected Tween CountText(TextMeshProUGUI text, int target, string prefix = "", float duration = 0.5f)
+    {
+        int value = 0;
+
+        return DOTween.To(() => value, x =>
+        {
+            value = x;
+            text.text = $"{prefix}{value}";
+        }, target, duration);
+    }
+
+    protected Tween TypeText(TextMeshProUGUI text, string target, float duration)
+    {
+        text.text = string.Empty;
+
+        int length = 0;
+
+        return DOTween.To(() => length, x =>
+        {
+            length = x;
+            text.text = target.Substring(0, length);
+        }, target.Length, duration); 
+    }
+
     protected Sequence UISwapFromRightToLeft(RectTransform[] targets, TextMeshProUGUI[] texts, Dictionary<RectTransform, Vector2> originPosMap, System.Action changeContent, float distance = 150f, float duration = 0.18f, float delay = 0.03f)
     {
         Sequence se = DOTween.Sequence();

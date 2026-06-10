@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class FieldTowerManager
@@ -241,5 +242,36 @@ public class FieldTowerManager
 
             tower.RefreshStats();
         }
+    }
+
+    public List<TowerResultData> GetTowerResultData()
+    {
+        Dictionary<TowerType, TowerResultData> result = new Dictionary<TowerType, TowerResultData>();
+
+        foreach(Tower tower in fieldTowers)
+        {
+            if (tower == null)
+                continue;
+
+            TowerType towerType = tower.Type;
+
+            if(!result.TryGetValue(towerType, out TowerResultData data))
+            {
+                data = new TowerResultData
+                {
+                    icon = Resources.Load<Sprite>($"Tower/Images/Icon_Tower_{towerType}_{1}_Idle"),
+                    type = towerType,
+                    count = 0,
+                    sellValueTotal = 0
+                };
+
+                result.Add(towerType, data);
+            }
+
+            data.count++;
+            data.sellValueTotal += tower.SellPrice;
+        }
+
+        return result.Values.ToList();
     }
 }

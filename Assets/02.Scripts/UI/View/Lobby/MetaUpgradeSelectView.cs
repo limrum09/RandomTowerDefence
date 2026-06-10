@@ -29,6 +29,8 @@ public class MetaUpgradeSelectView : MonoBehaviour
     private TextMeshProUGUI nextValue2;
     [SerializeField]
     private MetaUpgradeSelectViewButton selectButton;
+    [SerializeField]
+    private float fadeInDuration = 0.3f;
 
     [Header("Limit")]
     [SerializeField]
@@ -44,6 +46,8 @@ public class MetaUpgradeSelectView : MonoBehaviour
     private MetaUpgradeTarget upgradeTarget;
     private MetaUpgradeType upgradeType;
     private int index;
+    private int prevLevel1;
+    private int prevLevel2;
 
     private PublicMetaUpgradeManager publicMetaManager;
 
@@ -57,6 +61,9 @@ public class MetaUpgradeSelectView : MonoBehaviour
         upgradeTarget = MetaUpgradeTarget.Tower;
         index = -1;
         upgradeType = MetaUpgradeType.StartingGold;
+
+        prevLevel1 = -1;
+        prevLevel2 = -1;
     }
 
     public void SetOwner(MetaUpgradeView getOwner)
@@ -99,6 +106,9 @@ public class MetaUpgradeSelectView : MonoBehaviour
         if (upgradeTarget == MetaUpgradeTarget.Public)
             return;
 
+        if (!gameObject.activeSelf)
+            return;
+
         TowerUIRefresh();
     }
 
@@ -129,6 +139,21 @@ public class MetaUpgradeSelectView : MonoBehaviour
         
         if(displayData.isUnlocked)
             limitText.text = string.Format(Managers.Local.GetString("UI", "UI_META_LIMIT"), displayData.needResearchLevel);
+
+        if(prevLevel1 != -1 &&  prevLevel1 != displayData.level1)
+        {
+            currentValue1.FadeIn(fadeInDuration);
+            nextValue1.FadeIn(fadeInDuration);
+        }
+
+        if (prevLevel2 != -1 && prevLevel2 != displayData.level2)
+        {
+            currentValue2.FadeIn(fadeInDuration);
+            nextValue2.FadeIn(fadeInDuration);
+        }
+
+        prevLevel1 = displayData.level1;
+        prevLevel2 = displayData.level2;
     }
 
     public void SetTowerDataView(TowerData data, MetaUpgradeTarget getUpgradeType, int getIndex)
@@ -161,6 +186,14 @@ public class MetaUpgradeSelectView : MonoBehaviour
 
         limitPanel.SetActive(false);
         selectButton.IsInputLocked = false;
+
+        if(prevLevel1 != -1)
+        {
+            currentValue1.FadeIn(fadeInDuration);
+            nextValue1.FadeIn(fadeInDuration);
+        }
+
+        prevLevel1 = displayData.level1;
     }
 
     public void SetPublicDataView(MetaUpgradeType type, int getIndex)

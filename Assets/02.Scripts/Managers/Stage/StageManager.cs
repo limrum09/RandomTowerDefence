@@ -14,6 +14,7 @@ public class StageManager : MonoBehaviour
     public event Action OnWaveStart;
     public event Action OnWaveEnd;
     public event Action<int> OnChangedGameSpeed;
+    public event Action<StageResultData> OnGameOver;
 
     [Header("Grid Settings")]
     [SerializeField] private int gridWidth;
@@ -199,6 +200,7 @@ public class StageManager : MonoBehaviour
             stageUICtr.OnStagePause += ShowOptionPanel;
             stageUICtr.OnMoveToLobby += MoveToLobby;
             OnChangedGameSpeed += stageUICtr.ChangeGameSpeed;
+            OnGameOver += stageUICtr.ShowGameOver;
         }
     }
 
@@ -310,6 +312,7 @@ public class StageManager : MonoBehaviour
             stageUICtr.OnStagePause -= ShowOptionPanel;
             stageUICtr.OnMoveToLobby -= MoveToLobby;
             OnChangedGameSpeed -= stageUICtr.ChangeGameSpeed;
+            OnGameOver -= stageUICtr.ShowGameOver;
         }
     }
 
@@ -485,6 +488,14 @@ public class StageManager : MonoBehaviour
 
         isStagePlaying = false;
         currentWave++;
+
+        if(currentWave >= 61)
+        {
+            GameEnd();
+            Debug.Log("웨이브 종료");
+            return;
+        }
+
         waveRemoveEnemyCount = 0;
         waveTotalEnemyCount = 0;
 
@@ -548,6 +559,12 @@ public class StageManager : MonoBehaviour
     {
         aliveEnemyCnt--;
         sessionManager.ChangeLife(-1);
+
+        if(sessionManager.SessionState.CurrentLife <= 0)
+        {
+            /*GameEnd();
+            return;*/
+        }
 
         WaveRemoveEnemy();
         CheckWaveEnd();
@@ -728,6 +745,23 @@ public class StageManager : MonoBehaviour
         sessionManager.GetFreeObstacle(1);
     }
 
+    private void SetScoreCalculate()
+    {
+        StageResultData stageResult = new StageResultData();
+
+        stageResult.stageLevel = Managers.Game.selectDifficultyLevel;
+        stageResult.clearWave = RunSession.SessionState.CurrentWave;
+        stageResult.currentLife = RunSession.SessionState.CurrentLife;
+        stageResult.remainGold = RunSession.SessionState.Gold;
+
+        stageResult.towers = fieldTowerManager.GetTowerResultData();
+        stageResult.items = itemCtr.GetItemResultData();
+
+        stageResult = Managers.ScoreCal.ScoreCalculator(stageResult);
+
+        OnGameOver?.Invoke(stageResult);
+    }
+
     /// <summary>
     /// 일시정지가 풀리고 난 후, 특정 시간동안 속도가 천천히 돌아온다.
     /// </summary>
@@ -791,6 +825,12 @@ public class StageManager : MonoBehaviour
     public void UserDead()
     {
         currentWave = 0;
+        GameEnd();
+    }
+
+    public void GameEnd()
+    {
+        SetScoreCalculate();
     }
 
     /// <summary>

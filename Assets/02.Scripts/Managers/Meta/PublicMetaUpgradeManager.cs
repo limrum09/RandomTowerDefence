@@ -84,9 +84,7 @@ public class PublicMetaUpgradeManager
     public bool PublicMetaUpgrade(MetaUpgradeType getType, int upValue)
     {
         PublicMetaSaveData data = GetMetaSaveData(getType);
-        UnityEngine.Debug.Log($"현제 레벨 : {data.level}");
         data.level += upValue;
-        UnityEngine.Debug.Log($"업그레이드 레벨 : {data.level}");
 
         return true;
     }
