@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using UnityEngine.EventSystems;
 
-public class MetaUpgradeSelectViewButton : UIClickBase
+public class MetaUpgradeSelectViewButton : UIHoverBase
 {
     public bool IsInputLocked { get; set; }
 

@@ -41,7 +41,7 @@ public class EnemyAnim : MonoBehaviour
         }
 
         // SpriteLibrary 가져오기
-         SpriteLibraryAsset loadLibrary = Resources.Load<SpriteLibraryAsset>($"Enemy/SpriteLibrary/{data.enemyUID}");
+         SpriteLibraryAsset loadLibrary = ResourceCache.Load<SpriteLibraryAsset>($"Enemy/SpriteLibrary/{data.enemyUID}");
 
         if (spriteLibrary == null)
             Debug.LogWarning("Enemy의 Sprite Library를 가져오지 못함");

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -13,9 +14,12 @@ public class MetaUpgradeView : MonoBehaviour
 
     [Header("User Info")]
     [SerializeField]
+    private TextMeshProUGUI metaCurrenyText;
+    [SerializeField]
     private TextMeshProUGUI levelText;
     [SerializeField]
-    private TextMeshProUGUI metaCurrenyText;
+    private Image currentEXPBar;
+    
 
     [Header("Option Toggles")]
     [SerializeField]
@@ -116,6 +120,25 @@ public class MetaUpgradeView : MonoBehaviour
         metaCurrencyText.text = Managers.Player.GetCurreny().ToString();
     }
 
+    private void ChangedEXPBar()
+    {
+        int level = Managers.Player.GetPlayerLevel();
+        int needEXP = Managers.ResearchLevel.GetNeedExp(level);
+        int currentEXP = Managers.Player.GetCurrentEXP();
+
+        float fill = Mathf.Clamp01((float)currentEXP / needEXP);
+
+        if(fill <= 0)
+        {
+            currentEXPBar.DOKill();
+            currentEXPBar.fillAmount = 0;
+            return;
+        }
+
+        currentEXPBar.DOKill();
+        currentEXPBar.DOFillAmount(fill, 0.2f);
+    }
+
     private async Task SaveOnHideAsync()
     {
         if (Managers.isQuitting)
@@ -149,6 +172,7 @@ public class MetaUpgradeView : MonoBehaviour
         OnClickPublicToggle();
 
         ShowPlayerProgressData();
+        ChangedEXPBar();
         isShow = true;
     }
 
@@ -239,6 +263,7 @@ public class MetaUpgradeView : MonoBehaviour
             }
 
             ShowPlayerProgressData();
+            ChangedEXPBar();
             Managers.Save.MarkMetaUpgradeDirty();
             Managers.Save.MarkPlayerDirty();
         }

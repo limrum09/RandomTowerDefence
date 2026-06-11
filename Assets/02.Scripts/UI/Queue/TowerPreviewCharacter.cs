@@ -16,7 +16,7 @@ public class TowerPreviewCharacter : MonoBehaviour
 
         string iconPath = temp.iconPath;
         int grade = temp.grade;
-        SpriteLibraryAsset library = Resources.Load<SpriteLibraryAsset>($"Tower/SpriteLibrary/{iconPath}/{iconPath}_{grade}");
+        SpriteLibraryAsset library = ResourceCache.Load<SpriteLibraryAsset>($"Tower/SpriteLibrary/{iconPath}/{iconPath}_{grade}");
 
         if (spriteLibrary == null)
         {

@@ -1,10 +1,10 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public static class JsonLoader
 {
     public static T LoadFromResources<T>(string resourcePath) where T : class
     {
-        TextAsset textAsset = Resources.Load<TextAsset>(resourcePath);
+        TextAsset textAsset = ResourceCache.Load<TextAsset>(resourcePath);
         if(textAsset == null)
         {
             Debug.LogWarning("Json 파일을 찾을 수 없음 : " +  resourcePath);

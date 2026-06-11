@@ -4,7 +4,7 @@ using UnityEngine;
 public class QuestReporter : MonoBehaviour
 {
     [SerializeField]
-    private Category category;
+    private QuestCategory category;
     [SerializeField]
     private TaskTarget target;
     [SerializeField]

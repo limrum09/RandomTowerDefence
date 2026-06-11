@@ -10,7 +10,7 @@ public class AchievementUIRewardSlot : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI countText;
 
-    public void SetReward(QuestReward reward)
+    public void SetReward(QuestRewardData reward)
     {
         if(reward == null)
         {

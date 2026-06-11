@@ -1,6 +1,6 @@
-public class TaskAction
+public static class TaskAction
 {
-    public int Run(TaskActionType actionType, int current, int prev)
+    public static int Run(TaskActionType actionType, int current, int prev)
     {
         switch (actionType)
         {

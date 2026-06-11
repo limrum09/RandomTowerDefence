@@ -121,7 +121,7 @@ public class StoreController : MonoBehaviour
         if (data == null)
             return StoreProduct.Empty;
 
-        Sprite icon = Resources.Load<Sprite>($"Tower/Images/Icon_Tower_{data.towerType}_{data.grade}_Idle");
+        Sprite icon = ResourceCache.Load<Sprite>($"Tower/Images/Icon_Tower_{data.towerType}_{data.grade}_Idle");
 
         return new StoreProduct(
             uid,
@@ -139,7 +139,7 @@ public class StoreController : MonoBehaviour
         if (data == null)
             return StoreProduct.Empty;
 
-        Sprite icon = Resources.Load<Sprite>($"Item/Images/{data.iconUID}");
+        Sprite icon = ResourceCache.Load<Sprite>($"Item/Images/{data.iconUID}");
 
         return new StoreProduct(
             uid,

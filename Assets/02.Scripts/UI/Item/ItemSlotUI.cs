@@ -24,7 +24,7 @@ public class ItemSlotUI : MonoBehaviour
             if(data == null)
                 return false;
 
-            Sprite icon = Resources.Load<Sprite>($"Item/Images/{data.iconUID}");
+            Sprite icon = ResourceCache.Load<Sprite>($"Item/Images/{data.iconUID}");
 
             if (icon != null)
                 itemIcon.sprite = icon;

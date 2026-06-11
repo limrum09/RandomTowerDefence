@@ -125,7 +125,7 @@ public class Tower : MonoBehaviour
         anim.runtimeAnimatorController = commonController;
 
         // 타워 외형 SpriteLibrary 로드
-        SpriteLibraryAsset library = Resources.Load<SpriteLibraryAsset>($"Tower/SpriteLibrary/{iconPath}/{iconPath}_{grade}");
+        SpriteLibraryAsset library = ResourceCache.Load<SpriteLibraryAsset>($"Tower/SpriteLibrary/{iconPath}/{iconPath}_{grade}");
 
         if(spriteLibrary == null)
         {

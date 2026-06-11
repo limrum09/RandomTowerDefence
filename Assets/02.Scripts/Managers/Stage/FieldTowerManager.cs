@@ -259,7 +259,7 @@ public class FieldTowerManager
             {
                 data = new TowerResultData
                 {
-                    icon = Resources.Load<Sprite>($"Tower/Images/Icon_Tower_{towerType}_{1}_Idle"),
+                    icon = ResourceCache.Load<Sprite>($"Tower/Images/Icon_Tower_{towerType}_{1}_Idle"),
                     type = towerType,
                     count = 0,
                     sellValueTotal = 0

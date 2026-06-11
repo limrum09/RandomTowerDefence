@@ -8,6 +8,16 @@ public enum QuestStat
     Comoplete
 }
 
+public enum QuestCategory
+{
+    KillEnemy,
+    ClearStage,
+    CollectItem,
+    UpgradeTower,
+    BuildTower,
+    Achievement
+}
+
 [CreateAssetMenu(fileName = "Quest_", menuName = "Quest/Quest")]
 public class Quest : ScriptableObject
 {
@@ -15,31 +25,46 @@ public class Quest : ScriptableObject
 
     [Header("Quest Info")]
     [SerializeField]
-    private Category questCategory;
+    private QuestCategory questCategory;
     [SerializeField]
     private string questUID;
     [SerializeField]
-    private QuestTask task;
+    private QuestTaskData task;
     [SerializeField]
     private QuestCondition condition;
 
     [Header("Reward")]
     [SerializeField]
-    private QuestReward[] rewards;
+    private QuestRewardData[] rewards;
 
     [Header("Option")]
     [SerializeField]
     private bool isSaveable;    // 업적에서만 사용
 
-    public Category QuestCategory => questCategory;
+    public QuestCategory Category => questCategory;
     public string QuestUID => questUID;
-    public QuestTask Task => task;
+    public QuestTaskData Task => task;
     public QuestStat Stat { get; set; }
-    public IReadOnlyList<QuestReward> QuestRewards => rewards;
+    public IReadOnlyList<QuestRewardData> QuestRewards => rewards;
     public bool IsQuestComplete => Stat == QuestStat.Comoplete;
     public bool IsConditionComplete => condition != null ? condition.IsPass() : true;
     public virtual bool IsSaveable => isSaveable;
-    
+
+#if UNITY_EDITOR
+    public void EditorSetUID(string uid)
+    {
+        questUID = uid;
+    }
+
+    public void EditorSetTaskUID(string uid)
+    {
+        if (task == null)
+            task = new QuestTaskData();
+
+        task.EditorSetUID(uid);
+    }
+#endif
+
     public void QuestOnRegister()
     {
         if (Stat == QuestStat.Comoplete)
@@ -50,7 +75,7 @@ public class Quest : ScriptableObject
         Stat = QuestStat.Running;
     }
 
-    public void QuestRecieveReport(string category, object target, int getSucessCount)
+    public void QuestRecieveReport(QuestCategory category, object target, int getSucessCount)
     {
         if (IsQuestComplete)
             return;
@@ -92,7 +117,7 @@ public class Quest : ScriptableObject
     public Quest Clone()
     {
         Quest clone = Instantiate(this);
-        clone.task = Instantiate(task);
+        clone.task = task.Clone();
         return clone;
     }
 
