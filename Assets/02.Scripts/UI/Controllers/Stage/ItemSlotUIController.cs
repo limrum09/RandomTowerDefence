@@ -134,7 +134,7 @@ public class ItemSlotUIController : MonoBehaviour
             if (itemUId[i] == null)
                 continue;
 
-            Sprite itemIon = Resources.Load<Sprite>($"Item/Images/{itemUId[i].iconUID}");
+            Sprite itemIon = ResourceCache.Load<Sprite>($"Item/Images/{itemUId[i].iconUID}");
             int itemSellValue = itemUId[i].salePrice;
             result[i] = new ItemResultData
             {

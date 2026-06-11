@@ -20,10 +20,10 @@ public class QuestManager
 
     public void Init()
     {
-        achievementDatas = Resources.Load<AchievementDatas>("Achievement/AchievementDatabase");
+        achievementDatas = ResourceCache.Load<AchievementDatas>("Achievement/AchievementDatabase");
     }
 
-    private void QuestRecieveReport(List<Quest> quests, string category, object target, int successCount)
+    private void QuestRecieveReport(List<Quest> quests, QuestCategory category, object target, int successCount)
     {
         foreach(var quest in quests)
         {
@@ -95,9 +95,9 @@ public class QuestManager
         return newQuest;
     }
 
-    public void QuestRecieveReport(Category category, TaskTarget target, int successCount)
-        => QuestRecieveReport(category.CategoryUID, target.Value, successCount);
-    public void QuestRecieveReport(string category, object target, int successCount)
+    public void QuestRecieveReport(QuestCategory category, TaskTarget target, int successCount)
+        => QuestRecieveReport(category, target.Value, successCount);
+    public void QuestRecieveReport(QuestCategory category, object target, int successCount)
     {
         QuestRecieveReport(activeQuest, category, target, successCount);
         QuestRecieveReport(activeAchievement, category, target, successCount);

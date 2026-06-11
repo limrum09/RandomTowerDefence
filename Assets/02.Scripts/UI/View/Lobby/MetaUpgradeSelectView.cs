@@ -119,7 +119,7 @@ public class MetaUpgradeSelectView : MonoBehaviour
         string gradeStr = string.Format(Managers.Local.GetString("UI", "UI_GRADE"), tower.grade);
         string towerStr = Managers.Local.GetString("Tower", tower.stringKey) + Managers.Local.GetString("UI", "UI_TOWER");
         title.text = $"{gradeStr} {towerStr}";
-        icon.sprite = Resources.Load<Sprite>($"Tower/Images/Icon_Tower_{tower.towerType}_{tower.grade}_Idle");
+        icon.sprite = ResourceCache.Load<Sprite>($"Tower/Images/Icon_Tower_{tower.towerType}_{tower.grade}_Idle");
         info.text = Managers.Local.GetString("UI", "UI_META_TOWER_INFO");
 
         upgradeText1.text = Managers.Local.GetString("UI", "UI_ATK_SPEED");

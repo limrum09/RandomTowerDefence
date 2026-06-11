@@ -104,6 +104,8 @@ public class PlayerProgressManager
         return true;
     }
 
+    public int GetCurrentEXP() => playerData.exp;
+
     public int GetCurreny() => playerData.metaCurrency;
 
     /// <summary>

@@ -18,7 +18,7 @@ public class EnemyInfoPresenter
 
         model = getModel;
 
-        Sprite icon = Resources.Load<Sprite>($"Enemy/SpriteLibrary/{model.enemyUID}");
+        Sprite icon = ResourceCache.Load<Sprite>($"Enemy/SpriteLibrary/{model.enemyUID}");
         view.SetIcon(icon);
 
         string enemyName = Managers.Local.GetString("Enemy", model.stringKey);

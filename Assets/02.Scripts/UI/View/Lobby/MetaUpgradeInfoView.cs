@@ -76,7 +76,7 @@ public class MetaUpgradeInfoView : MonoBehaviour
         string gradeStr = string.Format(Managers.Local.GetString("UI", "UI_GRADE"), towerData.grade);
         string towerStr = Managers.Local.GetString("Tower", towerData.stringKey) + Managers.Local.GetString("UI", "UI_TOWER");
         nameText.text = $"{gradeStr} {towerStr}";
-        icon.sprite = Resources.Load<Sprite>($"Tower/Images/Icon_Tower_{towerData.towerType}_{towerData.grade}_Idle");
+        icon.sprite = ResourceCache.Load<Sprite>($"Tower/Images/Icon_Tower_{towerData.towerType}_{towerData.grade}_Idle");
         optionInfoText.text = Managers.Local.GetString("UI", "UI_META_TOWER_INFO");
 
         MetaUpgradeCal displayData = Managers.Game.GetTowerDisplayData(towerData);

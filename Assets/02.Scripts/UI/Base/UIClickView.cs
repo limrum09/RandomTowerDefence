@@ -1,7 +1,7 @@
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
 
-public class UIClickView : UIClickBase
+public class UIClickView : UIHoverBase
 {
     public UnityEvent onClick;
     protected override void OnClick(PointerEventData eventData)

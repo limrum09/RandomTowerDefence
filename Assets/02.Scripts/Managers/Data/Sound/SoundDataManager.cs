@@ -28,7 +28,7 @@ public class SoundDataManager
     /// </summary>
     public void Init()
     {
-        SoundDatabaseSO soundList = Resources.Load<SoundDatabaseSO>("Sound/SoundDatabase");
+        SoundDatabaseSO soundList = ResourceCache.Load<SoundDatabaseSO>("Sound/SoundDatabase");
 
         sounds.Clear();
 

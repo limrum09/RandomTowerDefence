@@ -2,7 +2,7 @@
   "datas": [
     {
       "Research_Level": 1,
-      "Required_EXP": 0,
+      "Required_EXP": 100,
       "Unlock_Research_Grade": 1,
       "Note": "시작 레벨"
     },

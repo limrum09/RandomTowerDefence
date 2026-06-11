@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SelectStageButton : UIClickBase
+public class SelectStageButton : UIHoverBase
 {
     [SerializeField]
     private RectTransform fillRect;

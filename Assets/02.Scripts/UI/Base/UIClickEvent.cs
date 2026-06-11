@@ -1,7 +1,7 @@
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public class UIClickEvent : UIClickBase
+public class UIClickEvent : UIHoverBase
 {
     public UnityAction onClick;
 

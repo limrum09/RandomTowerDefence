@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public class SignInTexts : UIClickBase
+public class SignInTexts : UIHoverBase
 {
     [Header("DoTween")]
     [SerializeField]

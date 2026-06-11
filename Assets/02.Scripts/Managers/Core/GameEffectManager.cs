@@ -7,7 +7,7 @@ public class GameEffectManager
     public void Init()
     {
         // Resources의 Effects폴더에 있는 모든 GameObject가져오기
-        GameObject[] prefabs = Resources.LoadAll<GameObject>("Effects");
+        GameObject[] prefabs = ResourceCache.LoadAll<GameObject>("Effects");
 
         foreach (GameObject pref in prefabs)
         {

@@ -12,9 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d273925ee3135e42a650376983637eb, type: 3}
   m_Name: Achievement_Clear_Easy_Stage
   m_EditorClassIdentifier: 
-  questCategory: {fileID: 11400000, guid: f1efc283707a9af418e875d5c9a2fc37, type: 2}
+  questCategory: 0
   questUID: ACHIEVEMENT_EASY_STAGE_CLEAR
-  task: {fileID: 11400000, guid: 2aba2566b4d9b1c468da7fcfc698ac45, type: 2}
+  task:
+    category: 1
+    taskUID: TASK_CLEAR_EASY_STAGE
+    targets: []
+    actionType: 1
+    needSuccessCount: 1
+    countingAfterComplete: 0
   condition: {fileID: 0}
-  rewards: []
-  isSaveable: 0
+  rewards:
+  - rewardType: 0
+    icon: {fileID: 21300000, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
+    rewardUID: 
+    cnt: 0
+  isSaveable: 1

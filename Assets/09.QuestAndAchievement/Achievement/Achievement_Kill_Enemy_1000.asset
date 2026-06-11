@@ -12,9 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d273925ee3135e42a650376983637eb, type: 3}
   m_Name: Achievement_Kill_Enemy_1000
   m_EditorClassIdentifier: 
-  questCategory: {fileID: 11400000, guid: 07647fd42be43e546bbcc26ed46f8428, type: 2}
+  questCategory: 0
   questUID: ACHIEVEMENT_KILL_1000
-  task: {fileID: 11400000, guid: 0d69aaefbe0f1f646842e14604e4792f, type: 2}
+  task:
+    category: 0
+    taskUID: 
+    targets: []
+    actionType: 1
+    needSuccessCount: 1000
+    countingAfterComplete: 0
+  condition: {fileID: 0}
   rewards:
-  - {fileID: 11400000, guid: fdbb9fafb8ba6414cbadde7bff47426b, type: 2}
+  - rewardType: 2
+    icon: {fileID: 0}
+    rewardUID: 
+    cnt: 0
   isSaveable: 1

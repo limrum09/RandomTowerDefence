@@ -22,7 +22,7 @@ public class TowerStatUpgradePresernter
         model = getModel;
         string modelUid = model.TowerUID;
 
-        Sprite icon = Resources.Load<Sprite>($"Tower/Images/Icon_Tower_{model.IconPath}_{model.Grade}_Idle");
+        Sprite icon = ResourceCache.Load<Sprite>($"Tower/Images/Icon_Tower_{model.IconPath}_{model.Grade}_Idle");
 
         view.SetIconImage(icon);
         view.SetTowerName(Managers.Local.GetString("Tower", model.StringKey));

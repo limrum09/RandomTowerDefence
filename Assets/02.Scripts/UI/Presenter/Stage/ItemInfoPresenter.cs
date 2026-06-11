@@ -21,7 +21,7 @@ public class ItemInfoPresenter
         model = getModel;
         index = getIndex;
 
-        Sprite icon = Resources.Load<Sprite>($"Item/Images/{model.iconUID}");
+        Sprite icon = ResourceCache.Load<Sprite>($"Item/Images/{model.iconUID}");
         view.SetIcon(icon);
 
         string name = Managers.Local.GetString("Item", model.stringKey);

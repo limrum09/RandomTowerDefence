@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -18,7 +18,7 @@ namespace Assets.PixelFantasy.Common.Scripts
         [RuntimeInitializeOnLoadMethod]
         static void Initialize()
         {
-            Instance = Resources.Load<EffectManager>("EffectManager");
+            Instance = ResourceCache.Load<EffectManager>("EffectManager");
         }
 
         public void Blink(Creature creature)

@@ -23,7 +23,7 @@ public class TowerGradeUpgradePresenter
     {
         this.model = getModel;
 
-        Sprite icon = Resources.Load<Sprite>($"Tower/Images/Icon_Tower_{model.IconPath}_{model.Grade}_Idle");
+        Sprite icon = ResourceCache.Load<Sprite>($"Tower/Images/Icon_Tower_{model.IconPath}_{model.Grade}_Idle");
 
         view.Show();
         view.SetTowerName(Managers.Local.GetString("Tower", model.StringKey));
