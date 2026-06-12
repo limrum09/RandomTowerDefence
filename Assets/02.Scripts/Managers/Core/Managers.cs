@@ -32,6 +32,7 @@ public class Managers : MonoBehaviour
     private TowerSkillDataManager towerSkill = new TowerSkillDataManager();
     private ItemDataManager item = new ItemDataManager();
     private TowerSessionUpgradeManager sessionUpgrade = new TowerSessionUpgradeManager();
+    private StageLevelRule stageLevel = new StageLevelRule();
     private StageRuleDataManager stageRuleData = new StageRuleDataManager();
     private WaveDataManager wave = new WaveDataManager();
     private WaveEnemyRosterDataManager waveRoster = new WaveEnemyRosterDataManager();
@@ -60,6 +61,7 @@ public class Managers : MonoBehaviour
     public static TowerSkillDataManager TowerSkill { get { return Instance.towerSkill; } } 
     public static ItemDataManager Item {  get { return Instance.item; } }
     public static TowerSessionUpgradeManager SessionTowerUpgrade {  get { return Instance.sessionUpgrade; } }
+    public static StageLevelRule StageLevelRules { get { return Instance.stageLevel; } }
     public static StageRuleDataManager StageRules { get { return Instance.stageRuleData; } }
     public static WaveDataManager Wave {  get { return Instance.wave; } }
     public static WaveEnemyRosterDataManager WaveRoster { get { return Instance.waveRoster; } }
@@ -95,6 +97,7 @@ public class Managers : MonoBehaviour
         TowerSkill.Init();
         item.Init();
         SessionTowerUpgrade.Inti();
+        StageLevelRules.Init();
         StageRules.Init();
         Wave.Init();
         WaveRoster.Init();
@@ -104,7 +107,6 @@ public class Managers : MonoBehaviour
         ResearchUpgrade.Init();
         ResearchLevel.Init();
         QuestMgr.Init();
-
 
         Sound.Init();
         Graphic.Init();

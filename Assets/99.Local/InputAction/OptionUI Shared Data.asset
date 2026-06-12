@@ -135,6 +135,10 @@ MonoBehaviour:
     m_Key: SETTING_SET_SOUND
     m_Metadata:
       m_Items: []
+  - m_Id: 2944699198484480
+    m_Key: New Entry
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

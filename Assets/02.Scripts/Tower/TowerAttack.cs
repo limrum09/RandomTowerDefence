@@ -1,3 +1,4 @@
+using UnityEditor.Build.Pipeline.Utilities;
 using UnityEngine;
 
 public class TowerAttack : MonoBehaviour
@@ -121,6 +122,14 @@ public class TowerAttack : MonoBehaviour
                 return "FireBall";
             case TowerType.Elf:
                 return tower.Grade >= 3 ? "Arrow" : "Knife";
+            case TowerType.Human:
+                return "Human";
+            case TowerType.Dwarf:
+                return "Dwarf";
+            case TowerType.Orc:
+                return "Orc";
+            case TowerType.Werebeast:
+                return "Werebeast";
             default:
                 return string.Empty;
         }

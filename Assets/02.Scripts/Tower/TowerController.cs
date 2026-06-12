@@ -29,6 +29,7 @@ public class TowerController : MonoBehaviour
     public event Action<int> OnQueueTowerBuildSuccess;
 
     private FieldTowerManager fieldTowerManager;
+    private RunSessionDataManager runSession;
     // StageManager의 그리드 참조
     private GridManager grid;
     // 현재 선택된 타워
@@ -54,6 +55,7 @@ public class TowerController : MonoBehaviour
     private void Start()
     {
         fieldTowerManager = stage.FieldTowerManager;
+        runSession = stage.RunSession;
         grid = stage.Grid;
         selectedTowerUID = string.Empty;
         isBuildMode = false;
@@ -571,6 +573,9 @@ public class TowerController : MonoBehaviour
 
         // 이미 타워가 있다면 설치 불가
         if (HasTower(cell))
+            return false;
+
+        if (fieldTowerManager.GetTotalTowerCount() >= runSession.GetMaxBuildTowerCount())
             return false;
 
         return true;

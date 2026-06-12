@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D.Animation;
 
 /// <summary>
 /// 적의 이동을 담당하는 클래스
@@ -142,7 +143,7 @@ public class EnemyMove : MonoBehaviour
             spriteRenderer = gameObject.GetComponentInChildren<SpriteRenderer>();
 
             if (spriteRenderer == null)
-                Debug.Log("Sprite Renderer를 찾을 수 없음.");
+                gameObject.AddComponent<SpriteRenderer>();
         }
 
         // 방향에 따라 바라보는 위치 지정

@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class RunSessionState
@@ -88,18 +89,25 @@ public class RunSessionDataManager
     public event Action<int, int> OnWaveRemainEnemyCount;
 
     private RunSessionState state;
-    private SessionRule rule = new SessionRule();
+    private StageLevelRule rule;
 
     public RunSessionState SessionState => state;
 
     public void Init(int stageID, int life, int increaseGold = 0, int freeRoll = 0, int freeObstacle = 0, int terrainRoll = 0)
     {
         state = new RunSessionState(stageID, life, increaseGold, freeRoll, freeObstacle, terrainRoll);
+        rule = Managers.StageLevelRules;
     }
 
     public void TerrainRoll()
     {
         state.TerrainRoll();
+    }
+
+    public int GetMaxBuildTowerCount()
+    {
+        Debug.Log("Level " + state.Level);
+        return rule.limitTowerCnt(state.Level);
     }
 
     public int GetNeedExp()
