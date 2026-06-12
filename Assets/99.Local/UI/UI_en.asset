@@ -39,11 +39,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 23009046691
-    m_Localized: Attack Speed
+    m_Localized: ATK Speed
     m_Metadata:
       m_Items: []
   - m_Id: 23009046689
-    m_Localized: Attack Speed Upgrade
+    m_Localized: ATK Speed Upgrade
     m_Metadata:
       m_Items: []
   - m_Id: 23009046696
@@ -119,11 +119,104 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2522143141889
-    m_Localized: 
+    m_Localized: Exit
     m_Metadata:
       m_Items: []
   - m_Id: 23009046703
     m_Localized: Reset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046701
+    m_Localized: Are you sure you want to return to the Lobby?\n\nAny unsaved progress
+      will be lost, and rewards cannot be claimed.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046694
+    m_Localized: Skill Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5902139797504
+    m_Localized: Tower ATK & Attack Speed Upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046702
+    m_Localized: Are you sure\nyou want to reset?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6350871605248
+    m_Localized: Research Level <color="red">{0}</color>
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6806532403200
+    m_Localized: Starting Gold Bonus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6914791583744
+    m_Localized: Free Obstacle Placement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7102281166848
+    m_Localized: Terrain Reroll
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7430581923840
+    m_Localized: Monster Gold Drops
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7552141242368
+    m_Localized: Not Found
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8042824478720
+    m_Localized: Stage Start Gold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8104631742464
+    m_Localized: Free Obstacle Tickets Increased
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8173804204032
+    m_Localized: Max Terrain Rerolls Increased
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8222902726656
+    m_Localized: Increases gold dropped by monsters.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8401068371968
+    m_Localized: Gold Earned
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8464012292096
+    m_Localized: Free Count
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8561844432896
+    m_Localized: Reroll Count
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8614407450624
+    m_Localized: Gold Dropped
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10132321873920
+    m_Localized: Upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77165659041792
+    m_Localized: Data Loading Complete...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77356575371264
+    m_Localized: Asset Preparation Complete...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 77415069134848
+    m_Localized: UI System Initialized...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 455231677804544
+    m_Localized: 'Unlock after completing the achievement: <color="red">{0'
     m_Metadata:
       m_Items: []
   references:

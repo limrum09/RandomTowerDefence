@@ -17,7 +17,127 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 35bf388540bf936438e442fe484f221a, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 23009046670
+    m_Localized: Purchase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046671
+    m_Localized: Build Obstacle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046662
+    m_Localized: Build Tower
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046661
+    m_Localized: Move Tower
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046673
+    m_Localized: NPC Dialogue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046674
+    m_Localized: View Options
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046672
+    m_Localized: Remove Obstacle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046664
+    m_Localized: Tower Info
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046665
+    m_Localized: Tower Stats
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046666
+    m_Localized: Normal Upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046667
+    m_Localized: Fixed Upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046663
+    m_Localized: Move to Queue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046669
+    m_Localized: Attack Speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046668
+    m_Localized: Attack Power Upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046678
+    m_Localized: BGM Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046680
+    m_Localized: BGM Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046675
+    m_Localized: Graphics
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1628349542400
+    m_Localized: Display Damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1628370513920
+    m_Localized: FPS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1628370513921
+    m_Localized: Resolution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1628370513922
+    m_Localized: Windowed Mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1628370513923
+    m_Localized: Screen Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046679
+    m_Localized: Master Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046681
+    m_Localized: SFX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046677
+    m_Localized: Shortcut Key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046676
+    m_Localized: Sound
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046682
+    m_Localized: UI SFX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046683
+    m_Localized: Graphics Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046685
+    m_Localized: Shortcut Key Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046684
+    m_Localized: Sound Settings
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

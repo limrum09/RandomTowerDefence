@@ -17,7 +17,8 @@ MonoBehaviour:
   task:
     category: 0
     taskUID: 
-    targets: []
+    targets:
+    - {fileID: 0}
     actionType: 1
     needSuccessCount: 1000
     countingAfterComplete: 0

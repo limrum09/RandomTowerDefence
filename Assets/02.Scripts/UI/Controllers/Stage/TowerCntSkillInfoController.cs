@@ -1,10 +1,16 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class TowerCntSkillInfoController : MonoBehaviour
 {
     [SerializeField]
     private List<TowerCntSkillInfo> info = new List<TowerCntSkillInfo>();
+    [SerializeField]
+    private TextMeshProUGUI fieldTowerCntText;
+
+    private RunSessionDataManager runSessionDataManager;
+    private FieldTowerManager fieldTowerManager;
 
     int len;
     private void Start()
@@ -17,8 +23,44 @@ public class TowerCntSkillInfoController : MonoBehaviour
         }
     }
 
+    private void SetFieldTowerText()
+    {
+        if (runSessionDataManager == null || fieldTowerManager == null)
+            return;
+
+        int currentFiledTowerCnt = fieldTowerManager.GetTotalTowerCount();
+        int canBuildTowerMaxCnt = runSessionDataManager.GetMaxBuildTowerCount();
+
+        float ratio = Mathf.Clamp01((float)currentFiledTowerCnt / canBuildTowerMaxCnt);
+
+        Color textColor = Color.white;
+
+        if (ratio == 1.0f)
+            textColor = Color.red;
+        else if (ratio >= 0.7f)
+            textColor = Color.yellow;
+
+        fieldTowerCntText.color = textColor;
+        fieldTowerCntText.text = $"{currentFiledTowerCnt} / {canBuildTowerMaxCnt}";
+    }
+
+    public void Init(RunSessionDataManager getRunManager, FieldTowerManager getFiledtowerManager)
+    {
+        runSessionDataManager = getRunManager;
+        fieldTowerManager = getFiledtowerManager;
+
+        SetFieldTowerText();
+    }
+
+    public void ChangeUserLevel(int level)
+    {
+        SetFieldTowerText();
+    }
+
     public void ChangeFiledTower(TowerType type, int towerCnt)
     {
         info.Find(x => x.Type == type).SetTowerCnt(towerCnt);
+
+        SetFieldTowerText();
     }
 }

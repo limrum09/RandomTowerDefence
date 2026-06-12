@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class TowerStatUpgradeView : MonoBehaviour
 {
+    [Header("Option")]
+    [SerializeField]
+    private CanvasGroup canvas;
+
     [Header("Info")]
     [SerializeField]
     private Image iconImage;
@@ -73,12 +77,16 @@ public class TowerStatUpgradeView : MonoBehaviour
     public void Hide()
     {
         Clear();
-        this.gameObject.SetActive(false);
+        canvas.alpha = 0.0f;
+        canvas.interactable = false;
+        canvas.blocksRaycasts = false;
     }
 
     public void Show()
     {
-        this.gameObject.SetActive(true);
+        canvas.alpha = 1.0f;
+        canvas.interactable = true;
+        canvas.blocksRaycasts = true;
     }
 
     public void SetIconImage(Sprite icon) => iconImage.sprite = icon;

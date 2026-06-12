@@ -62,6 +62,26 @@ MonoBehaviour:
     m_Localized: Refresh
     m_Metadata:
       m_Items: []
+  - m_Id: 23009046700
+    m_Localized: Enemy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046718
+    m_Localized: Wave\nStart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046717
+    m_Localized: Stage\nRefresh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046716
+    m_Localized: Shop Up
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046715
+    m_Localized: Shop Down
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

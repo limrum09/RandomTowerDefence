@@ -38,8 +38,6 @@ public class StageManager : MonoBehaviour
     private ObstacleBuilder obstacleBuilder;
     [SerializeField]
     private DrawGridLine line;
-    [SerializeField]
-    private StageWaveManager wave;    
 
     [Header("UIs")]
     [SerializeField]
@@ -68,6 +66,7 @@ public class StageManager : MonoBehaviour
     private int currentWave;
     private int speedIndex;
     private int[] speedValue = { 1, 2, 3, 4 };
+    private int maxBuildTowerCount;
 
 
     public GridManager Grid { get; private set; }
@@ -131,9 +130,10 @@ public class StageManager : MonoBehaviour
         waveTotalEnemyCount = 0;
         waveRemoveEnemyCount = 0;
 
-        wave.Init(Managers.Game.selectDifficultyLevel + "_W001");
+        waveManager.Init(Managers.Game.selectDifficultyLevel + "_W001");
         sessionManager.SetWave(currentWave);
         line.Init(gridWidth, gridHeight, cellSize, mapPlane.transform.position);
+        towerCntSkill.Init(sessionManager, FieldTowerManager);
 
         AfterSettingsInit();
         LoadSceneManager.Instance.NotifySceneManagerReady();
@@ -159,9 +159,18 @@ public class StageManager : MonoBehaviour
         BindUIEvents();
         BindFieldEvents();
         BindWaveEvents();
+        BindSessionEvents();
         BindEnemySpawnEvents();
         BindTowerSkillEvents();
         BindObstacleEvents();
+    }
+
+    private void BindSessionEvents()
+    {
+        if(sessionManager != null)
+        {
+            sessionManager.OnLevelChanged += towerCntSkill.ChangeUserLevel;
+        }
     }
 
     private void BindStatUpgradeEvents()
@@ -270,12 +279,20 @@ public class StageManager : MonoBehaviour
         UnBindItemEvents();
         UnBindUIEvents();
         UnBindFieldEvents();
+        UnBindSessionEvents();
         UnBindWaveEvents();
         UnBindEnemySpawnEvents();
         UnBindTowerSkillEvents();
         UnBindObstacleEvents();
     }
 
+    private void UnBindSessionEvents()
+    {
+        if (sessionManager != null)
+        {
+            sessionManager.OnLevelChanged -= towerCntSkill.ChangeUserLevel;
+        }
+    }
     private void UnBindStatUpgradeEvents()
     {
         statUpgradeManager.OnChangedTowerStat -= fieldTowerManager.RefreshAllTowerDamageStats;

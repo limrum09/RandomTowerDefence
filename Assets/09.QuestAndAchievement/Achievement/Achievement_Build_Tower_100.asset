@@ -17,7 +17,8 @@ MonoBehaviour:
   task:
     category: 4
     taskUID: TASK_BUILD_TOWER_100
-    targets: []
+    targets:
+    - {fileID: 0}
     actionType: 1
     needSuccessCount: 100
     countingAfterComplete: 0

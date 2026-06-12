@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: ef92b5508f4720147b72a06c39b66a27
+guid: 9d542c93d80495749ba2318e9f67c7ce
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8363554167063037018
-    second: KnifeAttackEffect_0
+      213: -2089516636888000224
+    second: Smear 02 Vertical 1_0
+  - first:
+      213: 6607151853475024592
+    second: Smear 02 Vertical 1_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,67 +103,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: KnifeAttackEffect_0
+      name: VerticalSlash02_0
       rect:
         serializedVersion: 2
-        x: 451
-        y: 47
-        width: 27
-        height: 5
-      alignment: 9
-      pivot: {x: 0.9, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a54c783f330511470800000000000000
-      internalID: 8363554167063037018
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: KnifeAttackEffect_1
-      rect:
-        serializedVersion: 2
-        x: 558
-        y: 47
-        width: 22
-        height: 5
-      alignment: 9
-      pivot: {x: 0.9, y: 0.5}
+        x: 0
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3295d3d98e0350a49ac8b4fba42401f6
-      internalID: -1474109176
+      spriteID: 639d3a924c8f01944b7859b5c46141ec
+      internalID: -1256261758
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: KnifeAttackEffect_2
+      name: VerticalSlash02_1
       rect:
         serializedVersion: 2
-        x: 665
-        y: 47
-        width: 15
-        height: 5
-      alignment: 9
-      pivot: {x: 0.9, y: 0.5}
+        x: 48
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 590727e480a8ed14480e977f83ffb704
-      internalID: -1736562443
+      spriteID: 8b18f123d0e47ea4fb18866ef0ec03a7
+      internalID: 1759250073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VerticalSlash02_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd83ad5a852d30546a262fcf4bffd365
+      internalID: -1383910367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: VerticalSlash02_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5951fb8544c83954d9ef0947b72c4257
+      internalID: 1615657127
       vertices: []
       indices: 
       edges: []
@@ -169,7 +194,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 8871d2ad768273844a0f5b07c11b336b
+    spriteID: a8dab24ac6b09604486fad1c4d2a572f
     internalID: 0
     vertices: []
     indices: 
@@ -179,9 +204,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      KnifeAttackEffect_0: 8363554167063037018
-      KnifeAttackEffect_1: -1474109176
-      KnifeAttackEffect_2: -1736562443
+      VerticalSlash02_0: -1256261758
+      VerticalSlash02_1: 1759250073
+      VerticalSlash02_2: -1383910367
+      VerticalSlash02_3: 1615657127
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

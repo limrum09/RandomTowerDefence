@@ -1,6 +1,4 @@
-using NUnit.Framework;
 using System.Collections.Generic;
-using System.Xml.Serialization;
 using TMPro;
 using UnityEngine;
 
@@ -30,7 +28,6 @@ public class StoreProduct
 
     public static StoreProduct Empty => new StoreProduct(string.Empty, StoreProductType.None, 0, "0", null);
 }
-
 
 public class StoreController : MonoBehaviour
 {

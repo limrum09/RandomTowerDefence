@@ -1,5 +1,7 @@
+using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.U2D.Animation;
 using UnityEngine.UI;
 
 public class WaveEnemyInfo : MonoBehaviour
@@ -30,7 +32,10 @@ public class WaveEnemyInfo : MonoBehaviour
         enemyUID = uid;
 
         if (!string.IsNullOrEmpty(enemyUID))
-            icon.sprite = ResourceCache.Load<Sprite>($"Enemy/SpriteLibrary/{enemyUID}");
+        {
+            icon.sprite = ResourceCache.Load<Sprite>($"Enemy/SpriteLibrary/{enemyUID}"); ;
+        }
+            
 
         enemyLevel.text = $"Lv. {level}";
         enemyCnt.text = cnt.ToString();

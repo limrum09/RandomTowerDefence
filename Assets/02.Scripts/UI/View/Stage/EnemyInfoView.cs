@@ -4,6 +4,10 @@ using UnityEngine.UI;
 
 public class EnemyInfoView : MonoBehaviour
 {
+    [Header("Option")]
+    [SerializeField]
+    private CanvasGroup canvas;
+
     [Header("Info")]
     [SerializeField]
     private Image iconImage;
@@ -40,13 +44,18 @@ public class EnemyInfoView : MonoBehaviour
 
     public void Hide()
     {
-        this.gameObject.SetActive(false);
         Clear();
+
+        canvas.alpha = 0.0f;
+        canvas.interactable = false;
+        canvas.blocksRaycasts = false;
     }
 
     public void Show()
     {
-        this.gameObject.SetActive(true);
+        canvas.alpha = 1.0f;
+        canvas.interactable = true;
+        canvas.blocksRaycasts = true;
     }
 
     public void SetIcon(Sprite icon) => iconImage.sprite = icon;

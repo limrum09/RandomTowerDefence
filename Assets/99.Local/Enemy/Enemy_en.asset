@@ -112,6 +112,110 @@ MonoBehaviour:
       {1}s)'
     m_Metadata:
       m_Items: []
+  - m_Id: 23009046609
+    m_Localized: Poison Slime
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046610
+    m_Localized: Normal Goblin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046611
+    m_Localized: Dark Stump
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046612
+    m_Localized: Brown Wolf
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046613
+    m_Localized: Brown Spirit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046614
+    m_Localized: Grey Wolf
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046615
+    m_Localized: Goblin Heavy Armor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046616
+    m_Localized: Corrupted Small Ant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046617
+    m_Localized: Lizard Man
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046618
+    m_Localized: Lesser Demon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046619
+    m_Localized: Fire Golem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046620
+    m_Localized: Elite Goblin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046621
+    m_Localized: Lizardman Warrior
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046622
+    m_Localized: Goblin Shaman
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046623
+    m_Localized: Lizardman Shaman
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046624
+    m_Localized: Blue Spirit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046625
+    m_Localized: Lizardman Decurion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046626
+    m_Localized: Intermediate Demon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046627
+    m_Localized: Lizardman Guardian
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046628
+    m_Localized: Green Troll
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046629
+    m_Localized: Goblin Champion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046630
+    m_Localized: Ogre
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046631
+    m_Localized: Gryphon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046632
+    m_Localized: Pumpkin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046633
+    m_Localized: Pig
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23009046634
+    m_Localized: Golden Goblin
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -7478,6 +7478,144 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 453240149}
   m_CullTransparentMesh: 1
+--- !u!1 &460685080
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 460685083}
+  - component: {fileID: 460685082}
+  - component: {fileID: 460685081}
+  m_Layer: 5
+  m_Name: TowerCnt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &460685081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 460685080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 99 / 99
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: f1807beb9b1369a48826315623384e6c, type: 2}
+  m_sharedMaterial: {fileID: 1978062938476995478, guid: f1807beb9b1369a48826315623384e6c,
+    type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 32
+  m_fontSizeBase: 32
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &460685082
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 460685080}
+  m_CullTransparentMesh: 1
+--- !u!224 &460685083
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 460685080}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 828018023}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &471085349
 GameObject:
   m_ObjectHideFlags: 0
@@ -8992,6 +9130,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 828018023}
   - {fileID: 1210313195}
   m_Father: {fileID: 1843294117}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9027,6 +9166,7 @@ MonoBehaviour:
   - {fileID: 710710609}
   - {fileID: 1364403169}
   - {fileID: 862269633}
+  fieldTowerCntText: {fileID: 460685081}
 --- !u!1 &604921198
 GameObject:
   m_ObjectHideFlags: 0
@@ -13399,6 +13539,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 821720527}
   m_CullTransparentMesh: 1
+--- !u!1 &828018022
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 828018023}
+  - component: {fileID: 828018024}
+  m_Layer: 5
+  m_Name: FieldTowerCount
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &828018023
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828018022}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 460685083}
+  m_Father: {fileID: 590518239}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 19.5, y: -150}
+  m_SizeDelta: {x: 320, y: 40}
+  m_Pivot: {x: 0, y: 1}
+--- !u!222 &828018024
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828018022}
+  m_CullTransparentMesh: 1
 --- !u!1 &828854122
 GameObject:
   m_ObjectHideFlags: 0
@@ -17551,6 +17736,7 @@ GameObject:
   - component: {fileID: 1091819656}
   - component: {fileID: 1091819657}
   - component: {fileID: 1091819658}
+  - component: {fileID: 1091819659}
   m_Layer: 5
   m_Name: EnemyInfoPanel
   m_TagString: Untagged
@@ -17605,6 +17791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb0596dde8c8374b82651019bb01cf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 1091819659}
   iconImage: {fileID: 1377777648}
   enemyNameText: {fileID: 731431632}
   enemyLevelText: {fileID: 1202107054}
@@ -17613,6 +17800,18 @@ MonoBehaviour:
   enemySpeedValueText: {fileID: 1550098046}
   skillNameText: {fileID: 1625328742}
   skillDesText: {fileID: 99407110}
+--- !u!225 &1091819659
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091819655}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1106020669
 GameObject:
   m_ObjectHideFlags: 0
@@ -19875,8 +20074,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 15, y: 390}
-  m_SizeDelta: {x: 160, y: 445}
+  m_AnchoredPosition: {x: 15, y: 340}
+  m_SizeDelta: {x: 160, y: 385}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &1210313197
 CanvasRenderer:
@@ -19906,7 +20105,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 2
   m_StartAxis: 0
-  m_CellSize: {x: 120, y: 70}
+  m_CellSize: {x: 135, y: 60}
   m_Spacing: {x: 0, y: 5}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -232340,6 +232539,7 @@ GameObject:
   - component: {fileID: 1387225808}
   - component: {fileID: 1387225810}
   - component: {fileID: 1387225809}
+  - component: {fileID: 1387225811}
   m_Layer: 5
   m_Name: TowerStatUpgrade
   m_TagString: Untagged
@@ -232394,6 +232594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5e939d33463d934e86924f2b54c8081, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 1387225811}
   iconImage: {fileID: 618172193}
   towerNameText: {fileID: 1332279386}
   towerGradeText: {fileID: 375554164}
@@ -232410,6 +232611,18 @@ MonoBehaviour:
   attackSpeedPriceText: {fileID: 363796948}
   damageStatUpgradeBtn: {fileID: 1566731739}
   attackSpeedStatUpgradeBtn: {fileID: 1365578063}
+--- !u!225 &1387225811
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387225807}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &1391149762
 GameObject:
   m_ObjectHideFlags: 0
@@ -232921,6 +233134,7 @@ GameObject:
   - component: {fileID: 1406925850}
   - component: {fileID: 1406925852}
   - component: {fileID: 1406925851}
+  - component: {fileID: 1406925853}
   m_Layer: 5
   m_Name: ItemInfoPanel
   m_TagString: Untagged
@@ -232963,6 +233177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c11316ecf13bca048bd81667fd8aa0b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 1406925853}
   icon: {fileID: 1356632365}
   itemNameText: {fileID: 1877491580}
   itemGradeText: {fileID: 246721116}
@@ -232983,6 +233198,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 576c63d3c4303874baa3e9dbd301b386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &1406925853
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406925849}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1411503389
 GameObject:
   m_ObjectHideFlags: 0
@@ -237626,6 +237853,7 @@ GameObject:
   - component: {fileID: 1663539375}
   - component: {fileID: 1663539376}
   - component: {fileID: 1663539377}
+  - component: {fileID: 1663539378}
   m_Layer: 5
   m_Name: TowerActionBtns
   m_TagString: Untagged
@@ -237665,7 +237893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1cedf4ef5121a945bb7510f40ce803a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  root: {fileID: 1560208732}
+  canvas: {fileID: 1663539378}
   moveBtn: {fileID: 1490545209}
   gradeUpgradeBtn: {fileID: 755332438}
   statUpgradeBtn: {fileID: 1331543128}
@@ -237702,6 +237930,18 @@ MonoBehaviour:
   targetPosition: {x: 0, y: 190}
   duration: 0.5
   easeType: 6
+--- !u!225 &1663539378
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663539373}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1673901101
 GameObject:
   m_ObjectHideFlags: 0
@@ -242234,7 +242474,6 @@ MonoBehaviour:
   waveManager: {fileID: 1990373476}
   obstacleBuilder: {fileID: 1370644224}
   line: {fileID: 1885026447}
-  wave: {fileID: 1990373476}
   stageUICtr: {fileID: 1843294116}
   itemCtr: {fileID: 1048761760}
   towerCntSkill: {fileID: 590518241}
@@ -245222,6 +245461,7 @@ GameObject:
   - component: {fileID: 2082533359}
   - component: {fileID: 2082533360}
   - component: {fileID: 2082533361}
+  - component: {fileID: 2082533362}
   m_Layer: 5
   m_Name: TowerGradeUpgrade
   m_TagString: Untagged
@@ -245264,6 +245504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf6e34b19c528df44aff254c1af59e6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 2082533362}
   iconImage: {fileID: 318724692}
   towerNameText: {fileID: 86596412}
   towerGradeText: {fileID: 762191970}
@@ -245294,6 +245535,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 576c63d3c4303874baa3e9dbd301b386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &2082533362
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082533358}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &2086386848
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class ItemInfoView : MonoBehaviour
 {
     [SerializeField]
+    private CanvasGroup canvas;
+
+    [SerializeField]
     private Image icon;
     [SerializeField]
     private TextMeshProUGUI itemNameText;
@@ -35,12 +38,16 @@ public class ItemInfoView : MonoBehaviour
     public void Hide()
     {
         Clear();
-        this.gameObject.SetActive(false);
+        canvas.alpha = 0.0f;
+        canvas.interactable = false;
+        canvas.blocksRaycasts = false;
     }
 
     public void Show()
     {
-        this.gameObject.SetActive(true);
+        canvas.alpha = 1.0f;
+        canvas.interactable = true;
+        canvas.blocksRaycasts = true;
     }
 
     public void SetIcon(Sprite getIcon) => icon.sprite = getIcon;

@@ -1,19 +1,13 @@
 fileFormatVersion: 2
-guid: 1a8f61dce060f1f42b1c12437550a1b2
+guid: 7edce92c007bf0e45ab641a96687dea7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -641011588704367078
-    second: AxeAttackEffect_0
+      213: 3351020205612478546
+    second: Smear 02 Horizontal 1_0
   - first:
-      213: 3619915052848206218
-    second: AxeAttackEffect_1
-  - first:
-      213: 8006115282667394833
-    second: AxeAttackEffect_2
-  - first:
-      213: -5266092946599228950
-    second: AxeAttackEffect_3
+      213: -3261720319694605649
+    second: Smear 02 Horizontal 1_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,67 +103,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AxeAttackEffect_0
+      name: Smear 02 Horizontal 1_0
       rect:
         serializedVersion: 2
-        x: 460
-        y: 40
-        width: 25
-        height: 46
-      alignment: 9
-      pivot: {x: 0.9, y: 0.5}
+        x: 0
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a1e0e563b5baa17f0800000000000000
-      internalID: -641011588704367078
+      spriteID: 25030be5f17318e20800000000000000
+      internalID: 3351020205612478546
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AxeAttackEffect_2
+      name: Smear 02 Horizontal 1_1
       rect:
         serializedVersion: 2
-        x: 566
-        y: 39
-        width: 19
-        height: 44
-      alignment: 9
-      pivot: {x: 0.9, y: 0.5}
+        x: 48
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 117573e6e6f6b1f60800000000000000
-      internalID: 8006115282667394833
+      spriteID: fa2fdeb86aa0cb2d0800000000000000
+      internalID: -3261720319694605649
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AxeAttackEffect_3
+      name: Smear 02 Horizontal 1_2
       rect:
         serializedVersion: 2
-        x: 665
-        y: 39
-        width: 20
-        height: 21
-      alignment: 9
-      pivot: {x: 0.9, y: 0.5}
+        x: 96
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ae943c3bd541be6b0800000000000000
-      internalID: -5266092946599228950
+      spriteID: d2a10e095a5a4214594df67aeb20d9ee
+      internalID: -1902606101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smear 02 Horizontal 1_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cef92b1ef848e04c8b6aa37092a15fb
+      internalID: 365373175
       vertices: []
       indices: 
       edges: []
@@ -178,7 +194,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 7ec93466ff1003d4cbacf86006200b80
+    spriteID: b35e3d6f965796b4fbeff9160a71b7a6
     internalID: 0
     vertices: []
     indices: 
@@ -188,10 +204,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      AxeAttackEffect_0: -641011588704367078
-      AxeAttackEffect_1: 3619915052848206218
-      AxeAttackEffect_2: 8006115282667394833
-      AxeAttackEffect_3: -5266092946599228950
+      Smear 02 Horizontal 1_0: 3351020205612478546
+      Smear 02 Horizontal 1_1: -3261720319694605649
+      Smear 02 Horizontal 1_2: -1902606101
+      Smear 02 Horizontal 1_3: 365373175
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

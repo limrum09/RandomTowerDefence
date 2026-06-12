@@ -1,0 +1,69 @@
+{
+  "datas": [
+    {
+      "User_Level": 1,
+      "Need_EXP": 3,
+      "Max_Tower_Count": 3
+    },
+    {
+      "User_Level": 2,
+      "Need_EXP": 6,
+      "Max_Tower_Count": 5
+    },
+    {
+      "User_Level": 3,
+      "Need_EXP": 9,
+      "Max_Tower_Count": 7
+    },
+    {
+      "User_Level": 4,
+      "Need_EXP": 12,
+      "Max_Tower_Count": 9
+    },
+    {
+      "User_Level": 5,
+      "Need_EXP": 15,
+      "Max_Tower_Count": 11
+    },
+    {
+      "User_Level": 6,
+      "Need_EXP": 18,
+      "Max_Tower_Count": 13
+    },
+    {
+      "User_Level": 7,
+      "Need_EXP": 21,
+      "Max_Tower_Count": 15
+    },
+    {
+      "User_Level": 8,
+      "Need_EXP": 24,
+      "Max_Tower_Count": 17
+    },
+    {
+      "User_Level": 9,
+      "Need_EXP": 27,
+      "Max_Tower_Count": 20
+    },
+    {
+      "User_Level": 10,
+      "Need_EXP": 30,
+      "Max_Tower_Count": 22
+    },
+    {
+      "User_Level": 11,
+      "Need_EXP": 33,
+      "Max_Tower_Count": 24
+    },
+    {
+      "User_Level": 12,
+      "Need_EXP": 36,
+      "Max_Tower_Count": 26
+    },
+    {
+      "User_Level": 13,
+      "Need_EXP": 999999,
+      "Max_Tower_Count": 30
+    }
+  ]
+}
