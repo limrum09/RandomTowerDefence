@@ -36,6 +36,8 @@ public class StageUIController : MonoBehaviour
     [SerializeField]
     private StageOptionUIController stageOptionCtr;
     [SerializeField]
+    private StageCombatTextController stageCombatTextCtr;
+    [SerializeField]
     private GameOverUIController gameOver;
 
     private TowerGradeUpgradePresenter gradePresenter;
@@ -47,7 +49,7 @@ public class StageUIController : MonoBehaviour
 
     private Tower selectedTower;
 
-    public event Func<int, bool> OnGoldToTowerInterection;
+    public event Func<GoldChangedReason, int, bool> OnGoldToTowerInterection;
     public event Action<Tower, UpgradeType> OnTowerStatUpgrade;
     public event Action OnTerrainRerollClicked;
     public event Action<ItemData, int> OnRequestItemSell;
@@ -353,9 +355,9 @@ public class StageUIController : MonoBehaviour
         OnRequestItemSell?.Invoke(item, index);
     }
 
-    private void OnGoldToTowerIntertion(int value)
+    private void OnGoldToTowerIntertion(GoldChangedReason reason, int value)
     {
-        OnGoldToTowerInterection?.Invoke(value);
+        OnGoldToTowerInterection?.Invoke(reason, value);
     }
 
     private void OnClickWaveEnemyInfo(EnemyResolveInfo waveEnemy)
@@ -397,6 +399,11 @@ public class StageUIController : MonoBehaviour
     public void StageContinue()
     {
         OnStageContinue?.Invoke();
+    }
+
+    public void SetCombatText(string text)
+    {
+        stageCombatTextCtr.SetText(text);
     }
 
     public void ShowGameOver(StageResultData data)

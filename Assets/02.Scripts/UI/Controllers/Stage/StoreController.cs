@@ -173,7 +173,7 @@ public class StoreController : MonoBehaviour
 
     public void RerollStoreUI(int amount)
     {
-        UsingGold(-amount);
+        stage.UsingGold(GoldChangedReason.BUY, -amount);
         SetStoreUI();
     }
 
@@ -184,7 +184,7 @@ public class StoreController : MonoBehaviour
         if(product == null || product.type == StoreProductType.None) 
             return;
 
-        if (!UsingGold(-product.price))
+        if (!UsingGold(GoldChangedReason.BUY, -product.price))
             return;
 
         bool success = false;
@@ -201,7 +201,7 @@ public class StoreController : MonoBehaviour
 
         if (!success)
         {
-            UsingGold(product.price);
+            stage.UsingGold(GoldChangedReason.GAIN, product.price);
             return;
         }
 
@@ -209,9 +209,9 @@ public class StoreController : MonoBehaviour
         // slot.SetStoreSlot(StoreProduct.Empty);
     }
 
-    public bool UsingGold(int amount)
+    public bool UsingGold(GoldChangedReason reason, int amount)
     {
-        return stage.RunSession.ChangeGold(amount);
+        return stage.UsingGold(reason, amount);
     }
 
     public bool OnClickTowerSlotUI(string uid)
@@ -226,7 +226,7 @@ public class StoreController : MonoBehaviour
 
     public void BuyEXP(int amount)
     {
-        if(UsingGold(-amount))
+        if(UsingGold(GoldChangedReason.BUY, -amount))
             stage.RunSession.AddExp(2);
     }
 

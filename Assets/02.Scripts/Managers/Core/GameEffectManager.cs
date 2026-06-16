@@ -42,14 +42,13 @@ public class GameEffectManager
         if (target == null)
             return;
 
-        Vector3 randomOffest = new Vector3(0f, UnityEngine.Random.Range(-randomPositionRange, randomPositionRange), 0f);
         Quaternion randomQuaternion = Quaternion.Euler(0f, 0f, UnityEngine.Random.Range(-randomRoationRange, randomRoationRange));
-
-        GameObject effect = SpawnEffect(name, target.position + randomOffest, category, randomQuaternion);
+        GameObject effect = SpawnEffect(name, target.position, category, randomQuaternion);
 
         if (effect == null)
             return;
 
+        Vector3 randomOffest = new Vector3(0f, UnityEngine.Random.Range(-randomPositionRange, randomPositionRange), 0f);
         SetFollow(effect, target, randomOffest);
 
         if (tower != null)
@@ -85,6 +84,6 @@ public class GameEffectManager
             follow = effect.AddComponent<GameEffectFollow>();
 
         // tf로 타겟 설정하며 offset은 일단 Vector3.zero로 설정
-        follow.SetTartget(tf, Vector3.zero);
+        follow.SetTartget(tf, offset);
     }
 }

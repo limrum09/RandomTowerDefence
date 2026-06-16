@@ -17,8 +17,7 @@ MonoBehaviour:
   task:
     category: 0
     taskUID: TASK_BUILD_HUMAN_TOWER_150
-    targets:
-    - {fileID: 0}
+    targets: []
     actionType: 1
     needSuccessCount: 150
     countingAfterComplete: 0

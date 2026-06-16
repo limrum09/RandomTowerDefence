@@ -33,7 +33,7 @@ public class WaveEnemyInfo : MonoBehaviour
 
         if (!string.IsNullOrEmpty(enemyUID))
         {
-            icon.sprite = ResourceCache.Load<Sprite>($"Enemy/SpriteLibrary/{enemyUID}"); ;
+            icon.sprite = ResourceCache.Load<Sprite>($"Enemy/Images/{enemyUID}"); ;
         }
             
 

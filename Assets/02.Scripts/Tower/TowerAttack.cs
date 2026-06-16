@@ -167,7 +167,8 @@ public class TowerAttack : MonoBehaviour
 
         if (!string.IsNullOrEmpty(effectName))
         {
-            Managers.Effect.Play2DAnimationEffect(effectName, target.transform, tower.transform, PoolCategory.Stage, 0.3f, 30f, isFacing);
+            float quaterion = tower.Type == TowerType.Elf ? 40f : 0;
+            Managers.Effect.Play2DAnimationEffect(effectName, target.transform, tower.transform, PoolCategory.Stage, 0.5f, quaterion, isFacing);
         }
     }
 

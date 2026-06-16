@@ -23,7 +23,7 @@ public class TowerController : MonoBehaviour
     public event Action OnTowerSelectCleared;
     public event Action<Tower> OnShowGradeUpgrade;
     public event Action<Tower> OnShowStatUpgrade;
-    public event Action<int> OnGoldInterection;
+    public event Action<GoldChangedReason, int> OnGoldInterection;
     public event Action OnFieldTowerMoveToQueueSlot;
     public event Action OnFirstTowerBuild;
     public event Action<int> OnQueueTowerBuildSuccess;
@@ -607,9 +607,9 @@ public class TowerController : MonoBehaviour
     /// 양수는 골드 획득, 음수는 골드 소비
     /// </summary>
     /// <param name="value"></param>
-    private void GoldInterction(int value)
+    private void GoldInterction(GoldChangedReason reason, int value)
     {
-        OnGoldInterection?.Invoke(value);
+        OnGoldInterection?.Invoke(reason, value);
     }
 
     /// <summary>
@@ -668,7 +668,7 @@ public class TowerController : MonoBehaviour
 
         // 업그레이드 실행
         TowerGradeUpgrade(buildTowerUID, towers);
-        GoldInterction(-300);
+        GoldInterction(GoldChangedReason.BUILD , - 300);
     }
 
     /// <summary>
@@ -691,7 +691,7 @@ public class TowerController : MonoBehaviour
 
         // 업그레이드 실행
         TowerGradeUpgrade(buildTowerUID, towers);
-        GoldInterction(-1000);
+        GoldInterction(GoldChangedReason.UPGRADE, -1000);
     }
 
     /// <summary>
@@ -706,7 +706,7 @@ public class TowerController : MonoBehaviour
         if (RemoveTower())
         {
             // 골드지급
-            GoldInterction(price);
+            GoldInterction(GoldChangedReason.SELL, price);
         }
     }
 

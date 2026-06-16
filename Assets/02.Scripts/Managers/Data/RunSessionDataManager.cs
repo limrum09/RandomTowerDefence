@@ -1,6 +1,16 @@
 using System;
-using UnityEditor.Tilemaps;
 using UnityEngine;
+
+public enum GoldChangedReason
+{
+    GAIN,
+    KILL,
+    UPGRADE,
+    SELL,
+    BUY,
+    BUILD,
+    REMOVE
+}
 
 public class RunSessionState
 {

@@ -219,6 +219,34 @@ MonoBehaviour:
     m_Localized: 'Unlock after completing the achievement: <color="red">{0'
     m_Metadata:
       m_Items: []
+  - m_Id: 4366298493628416
+    m_Localized: Remove
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4366293842145280
+    m_Localized: Build
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4366290411204608
+    m_Localized: Buy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4366286426615808
+    m_Localized: Sell
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4366206256689152
+    m_Localized: Gain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4367392602992640
+    m_Localized: Kill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4367430255259648
+    m_Localized: Upgrade
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
