@@ -15,6 +15,7 @@ public class StageManager : MonoBehaviour
     public event Action OnWaveEnd;
     public event Action<int> OnChangedGameSpeed;
     public event Action<StageResultData> OnGameOver;
+    public event Action<string> OnCombatText;
 
     [Header("Grid Settings")]
     [SerializeField] private int gridWidth;
@@ -112,7 +113,7 @@ public class StageManager : MonoBehaviour
         
         towerSkillEffect.Init();
         statUpgradeManager.Init();
-        effectDataManager.Init(sessionManager, statUpgradeManager);
+        effectDataManager.Init(this, sessionManager, statUpgradeManager);
     }
 
     /// <summary>
@@ -208,6 +209,7 @@ public class StageManager : MonoBehaviour
             stageUICtr.OnStageContinue += StageContinueHideOption;
             stageUICtr.OnStagePause += ShowOptionPanel;
             stageUICtr.OnMoveToLobby += MoveToLobby;
+            OnCombatText += stageUICtr.SetCombatText;
             OnChangedGameSpeed += stageUICtr.ChangeGameSpeed;
             OnGameOver += stageUICtr.ShowGameOver;
         }
@@ -328,6 +330,7 @@ public class StageManager : MonoBehaviour
             stageUICtr.OnStageContinue -= StageContinueHideOption;
             stageUICtr.OnStagePause -= ShowOptionPanel;
             stageUICtr.OnMoveToLobby -= MoveToLobby;
+            OnCombatText -= stageUICtr.SetCombatText;
             OnChangedGameSpeed -= stageUICtr.ChangeGameSpeed;
             OnGameOver -= stageUICtr.ShowGameOver;
         }
@@ -535,7 +538,7 @@ public class StageManager : MonoBehaviour
         int currentGold = sessionManager.SessionState.Gold;
         int interest = Mathf.FloorToInt(currentGold * (totalInterestRate / 100f));
 
-        UsingGold(interest);
+        UsingGold(GoldChangedReason.GAIN, interest);
     }
 
     /// <summary>
@@ -561,7 +564,7 @@ public class StageManager : MonoBehaviour
     /// <param name="reward">처치 보상 골드</param>
     private void RegisterDeadEnemy(float reward)
     {
-        UsingGold((int)reward);
+        UsingGold(GoldChangedReason.KILL, (int)reward);
         sessionManager.AddkillCount(1);
         aliveEnemyCnt--;
 
@@ -679,7 +682,7 @@ public class StageManager : MonoBehaviour
         if (sessionManager.SessionState.Gold < cost)
             return;
 
-        UsingGold(-cost);
+        UsingGold(GoldChangedReason.UPGRADE, -cost);
 
         statUpgradeManager.AddStatAtkDamage(tower.Type, 1);
     }
@@ -695,7 +698,7 @@ public class StageManager : MonoBehaviour
         if (sessionManager.SessionState.Gold < cost)
             return;
 
-        UsingGold(-cost);
+        UsingGold(GoldChangedReason.UPGRADE, - cost);
 
         statUpgradeManager.AddStatAtkSpeed(tower.Type, 1);
     }
@@ -707,7 +710,7 @@ public class StageManager : MonoBehaviour
     private void ItemAddHandler(ItemData item)
     {
         effectDataManager.ApplyItemEffect(item);
-        UsingGold(item.buyPrice);
+        UsingGold(GoldChangedReason.BUY, item.buyPrice);
     }
 
     /// <summary>
@@ -722,7 +725,8 @@ public class StageManager : MonoBehaviour
             return;
 
         effectDataManager.RemoveItemEffect(item);
-        UsingGold(item.salePrice);
+        UsingGold(GoldChangedReason.SELL, item.salePrice);
+
         itemCtr.RemoveItem(index);
     }
 
@@ -742,7 +746,7 @@ public class StageManager : MonoBehaviour
     /// <returns>비용이 부족하다면 실패하고 false를 리턴한다</returns>
     private bool PayObstacleCostHandler(int cost)
     {
-        return UsingGold(-cost);
+        return UsingGold(GoldChangedReason.BUILD, - cost);
     }
 
     /// <summary>
@@ -751,7 +755,7 @@ public class StageManager : MonoBehaviour
     /// <param name="cost">환급받을 비용</param>
     private void RefundObstacleCostHandler(int cost)
     {
-        UsingGold(cost);
+        UsingGold(GoldChangedReason.REMOVE, cost);
     }
 
     /// <summary>
@@ -856,8 +860,17 @@ public class StageManager : MonoBehaviour
     /// </summary>
     /// <param name="value">변경될 골드 값</param>
     /// <returns></returns>
-    public bool UsingGold(int value)
+    public bool UsingGold(GoldChangedReason reason, int value)
     {
-        return sessionManager.ChangeGold(value);
+        bool isCompleted = sessionManager.ChangeGold(value);
+
+        if (isCompleted)
+        {
+            string reasonText = Managers.Local.GetString("UI", $"UI_GOLD_CHANGED_REASON_{reason.ToString()}");
+            string setText = $"{reasonText} {value.ToString("+0;-0")}";
+            OnCombatText?.Invoke(setText);
+        }
+
+        return isCompleted;
     }
 }

@@ -1,12 +1,15 @@
+using System;
 using UnityEngine;
 
 public class RunEffectDataManager
 {
+    private StageManager stage;
     private RunSessionDataManager session;
     private RunStatUpgradeManager statUpgrade;
 
-    public void Init(RunSessionDataManager getSession, RunStatUpgradeManager getStat)
+    public void Init(StageManager getStage, RunSessionDataManager getSession, RunStatUpgradeManager getStat)
     {
+        stage = getStage;
         session = getSession;
         statUpgrade = getStat;
     }
@@ -105,9 +108,10 @@ public class RunEffectDataManager
         if (session == null)
             return;
 
-        int gold = Random.Range(1, item.value + 1);
-        session.ChangeGold(gold);
+        int gold = UnityEngine.Random.Range(1, item.value + 1);
+        stage.UsingGold(GoldChangedReason.GAIN, gold);
     }
+
     private void ApplyGoldDrop(ItemData item) => statUpgrade.AddGoldDropIncrease(item.value);
     private void RemoveGoldDrop(ItemData item) => statUpgrade.AddGoldDropIncrease(-item.value);
     private void ApplyInterestBoost(ItemData item) => statUpgrade.ChangeMaxInterest(item.value);

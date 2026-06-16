@@ -215,6 +215,34 @@ MonoBehaviour:
     m_Key: UI_LIMIT_TEXT
     m_Metadata:
       m_Items: []
+  - m_Id: 4366206256689152
+    m_Key: UI_GOLD_CHANGED_REASON_GAIN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4366286426615808
+    m_Key: UI_GOLD_CHANGED_REASON_SELL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4366290411204608
+    m_Key: UI_GOLD_CHANGED_REASON_BUY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4366293842145280
+    m_Key: UI_GOLD_CHANGED_REASON_BUILD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4366298493628416
+    m_Key: UI_GOLD_CHANGED_REASON_REMOVE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4367392602992640
+    m_Key: UI_GOLD_CHANGED_REASON_KILL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4367430255259648
+    m_Key: UI_GOLD_CHANGED_REASON_UPGRADE
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

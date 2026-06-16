@@ -216,6 +216,9 @@ public class Enemy : MonoBehaviour
         if (value <= 0)
             return;
 
+        if (currentHP <= 0)
+            return;
+
         // 현제 체력이 최대 체력이 되지 않도록 조치
         currentHP = Mathf.Min(MaxHP, currentHP + value);
         SetHP();
@@ -231,6 +234,9 @@ public class Enemy : MonoBehaviour
     {
         // 증가값이 0보다 작다면 종료
         if (value <= 0)
+            return;
+
+        if (currentHP <= 0)
             return;
 
         // 최대 보호막을 넘지 않도록 증가

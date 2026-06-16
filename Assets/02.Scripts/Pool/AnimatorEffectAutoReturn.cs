@@ -13,6 +13,7 @@ public class AnimatorEffectAutoReturn : MonoBehaviour
 
     public void AnimationEnd()
     {
+        Debug.Log("호출");
         Managers.Pool.Push(gameObject);
     }
 }

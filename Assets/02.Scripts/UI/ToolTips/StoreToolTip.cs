@@ -3,6 +3,10 @@ using UnityEngine;
 
 public class StoreToolTip : MonoBehaviour
 {
+    [Header("Component")]
+    [SerializeField]
+    private CanvasGroup canvas;
+
     [Header("Rects")]
     [SerializeField]
     private RectTransform tooltipLayer;
@@ -68,9 +72,11 @@ public class StoreToolTip : MonoBehaviour
 
     public void Show(StoreProduct product, RectTransform slotRect)
     {
-        gameObject.SetActive(true);
+        canvas.alpha = 1.0f;
+        canvas.interactable = false;
+        canvas.blocksRaycasts = false;
 
-        if(product.type == StoreProductType.Tower)
+        if (product.type == StoreProductType.Tower)
         {
             TowerData data = Managers.TowerData.GetTowerData(product.uid);
             SetTexts(data);
@@ -86,6 +92,8 @@ public class StoreToolTip : MonoBehaviour
 
     public void Hide()
     {
-        gameObject.SetActive(false);
+        canvas.alpha = 0.0f;
+        canvas.interactable = false;
+        canvas.blocksRaycasts = false;
     }
 }

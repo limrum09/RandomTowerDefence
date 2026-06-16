@@ -142,5 +142,17 @@ public class QuestTaskData
     }
 #endif
 
-    public bool TaskContainsTarget(object target) => targets.Any(x => x.IsEqual(target));
+    /// <summary>
+    /// targets에 값이 없다면 true반환
+    /// targets에 값이 있다면 일치한 target이 있을 경우에만 true바환
+    /// </summary>
+    /// <param name="target"></param>
+    /// <returns></returns>
+    public bool TaskContainsTarget(object target)
+    {
+        if (targets == null || targets.Length == 0)
+            return true;
+
+        return targets.Any(x => x.IsEqual(target));
+    }
 }
