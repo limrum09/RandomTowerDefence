@@ -40,7 +40,9 @@ public class GameOverUIController : UIPopAnimationBase
     [SerializeField]
     private TextMeshProUGUI itemBonusText;
     [SerializeField]
-    private TextMeshProUGUI goldBonusText;
+    private TextMeshProUGUI remainGoldBonusText;
+    [SerializeField]
+    private TextMeshProUGUI queueGoldBonusText;
 
     [Header("Score Texts")]
     [SerializeField]
@@ -68,7 +70,8 @@ public class GameOverUIController : UIPopAnimationBase
         waveBonusText.text = string.Empty;
         towerBonusText.text = string.Empty;
         itemBonusText.text = string.Empty;
-        goldBonusText.text = string.Empty;
+        remainGoldBonusText.text = string.Empty;
+        queueGoldBonusText.text = string.Empty;
         TotalScoreText.text = string.Empty;
         gemCntText.text = string.Empty;
         gameEndText.text = string.Empty;
@@ -133,7 +136,10 @@ public class GameOverUIController : UIPopAnimationBase
         se.Append(CountText(itemBonusText, data.itemSellGold, $"+ "));
         se.AppendInterval(0.5f);
 
-        se.Append(CountText(goldBonusText, data.remainGold, $"Gold  + "));
+        se.Append(CountText(remainGoldBonusText, data.remainGold, $"Remain Gold  + "));
+        se.AppendInterval(0.5f);
+
+        se.Append(CountText(queueGoldBonusText, data.queueGold, $"Queue Gold  + "));
         se.AppendInterval(0.5f);
 
         se.Append(CountText(TotalScoreText, data.finalScore, $"Score : "));

@@ -61,6 +61,7 @@ public class StageManager : MonoBehaviour
     private bool isResetTerrain;
     private bool isSpawning;
     private bool isStagePlaying;
+    private bool isGameOver;
     private int aliveEnemyCnt;
     private int waveTotalEnemyCount;
     private int waveRemoveEnemyCount;
@@ -127,6 +128,7 @@ public class StageManager : MonoBehaviour
 
         currentWave = 1;
         isResetTerrain = true;
+        isGameOver = false;
         speedIndex = 0;
         waveTotalEnemyCount = 0;
         waveRemoveEnemyCount = 0;
@@ -244,6 +246,7 @@ public class StageManager : MonoBehaviour
 
             factory = enemySpawn.EnemyFactory;
 
+            factory.OnEnemySummon += RegisterSummonEnemy;
             factory.OnEnemySpawn += RegisterSpawnEnemy;
             factory.OnEnemyReached += RegisterReachedEnemy;
             factory.OnEnemyDead += RegisterDeadEnemy;
@@ -365,6 +368,7 @@ public class StageManager : MonoBehaviour
 
             
             factory.OnEnemySpawn -= RegisterSpawnEnemy;
+            factory.OnEnemySummon -= RegisterSummonEnemy;
             factory.OnEnemyReached -= RegisterReachedEnemy;
             factory.OnEnemyDead -= RegisterDeadEnemy;
         }
@@ -509,7 +513,10 @@ public class StageManager : MonoBehaviour
         isStagePlaying = false;
         currentWave++;
 
-        if(currentWave >= 61)
+        if (isGameOver)
+            return;
+
+        if (currentWave >= 61)
         {
             GameEnd();
             Debug.Log("웨이브 종료");
@@ -582,8 +589,8 @@ public class StageManager : MonoBehaviour
 
         if(sessionManager.SessionState.CurrentLife <= 0)
         {
-            /*GameEnd();
-            return;*/
+            UserDead();
+            return;
         }
 
         WaveRemoveEnemy();
@@ -612,7 +619,7 @@ public class StageManager : MonoBehaviour
         sessionManager.RemainEnemyCount(waveTotalEnemyCount - waveRemoveEnemyCount, waveTotalEnemyCount);
     }
 
-    private void SummonEnemy(int spwanCnt)
+    private void RegisterSummonEnemy(int spwanCnt)
     {
         waveTotalEnemyCount += spwanCnt;
         sessionManager.RemainEnemyCount(waveTotalEnemyCount - waveRemoveEnemyCount, waveTotalEnemyCount);
@@ -774,6 +781,7 @@ public class StageManager : MonoBehaviour
         stageResult.clearWave = RunSession.SessionState.CurrentWave;
         stageResult.currentLife = RunSession.SessionState.CurrentLife;
         stageResult.remainGold = RunSession.SessionState.Gold;
+        stageResult.queueGold = stageUICtr.GetConvertQueueTowerToGold();
 
         stageResult.towers = fieldTowerManager.GetTowerResultData();
         stageResult.items = itemCtr.GetItemResultData();
@@ -845,13 +853,18 @@ public class StageManager : MonoBehaviour
     /// </summary>
     public void UserDead()
     {
+        isGameOver = true;
         currentWave = 0;
+
+        enemySpawn.GameOver();
+
         GameEnd();
     }
 
     public void GameEnd()
     {
-        SetScoreCalculate();
+        isGameOver = true;
+        Invoke("SetScoreCalculate", 1f);
     }
 
     /// <summary>

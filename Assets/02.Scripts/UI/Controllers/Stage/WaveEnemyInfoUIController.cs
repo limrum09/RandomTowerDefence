@@ -33,8 +33,6 @@ public class WaveEnemyInfoUIController : MonoBehaviour
 
         int cnt = Mathf.Min(waveRoster.Count, len);
 
-        Debug.Log($"Cnt : {cnt}, Waveroster.Count : {waveRoster.Count}, Len : {len}");
-
         for(int i = 0; i < cnt; i++)
         {
             infos[i].gameObject.SetActive(true);
