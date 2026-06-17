@@ -1,12 +1,10 @@
 using System;
-using System.Diagnostics;
 using UnityEngine.EventSystems;
 
 public class MetaUpgradeSelectViewButton : UIHoverBase
 {
     public bool IsInputLocked { get; set; }
 
-    public event Action OnViewSelect;
     public event Action OnSelect;
     public event Action OnHover;
     public event Action OnExitHover;

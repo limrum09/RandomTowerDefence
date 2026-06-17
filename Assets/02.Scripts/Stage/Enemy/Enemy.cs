@@ -193,6 +193,9 @@ public class Enemy : MonoBehaviour
             speedModify[type] = 0;
         }
 
+        SetHP();
+        SetShield();
+
         // 적 스킬 초기화
         skill.Init(this, enemySkillUID);
         // 적 애니메이션 초기화

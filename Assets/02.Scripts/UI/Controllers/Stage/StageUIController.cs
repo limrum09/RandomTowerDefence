@@ -411,6 +411,11 @@ public class StageUIController : MonoBehaviour
         gameOver.SetGameOverUI(data);
     }
 
+    public int GetConvertQueueTowerToGold()
+    {
+        return queueCtr.GameOverCovertTowerToGold();
+    }
+
     public void MoveToLobby()
     {
         OnMoveToLobby.Invoke();

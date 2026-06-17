@@ -313,16 +313,11 @@ public class EnemySkill : MonoBehaviour
     private void SummonEnemy()
     {
         int count = Mathf.RoundToInt(skillValue);
-        float radius = 1.0f;
 
-        for(int i = 0; i < count; i++)
-        {
-            Vector2 dir = UnityEngine.Random.insideUnitCircle.normalized;
-            Vector3 offset = new Vector3(dir.x, dir.y, 0f) * radius;
+        if (count <= 0)
+            return;
 
-            Vector3 spawnPos = root.transform.position + offset;
-            enemyFactory.SpawnEnemy("E001", 5, spawnPos);
-        }
+        enemyFactory.SpawnSummonedEnemies("E001", 5, root.transform.position, count);
     }
     
     /// <summary>

@@ -116,7 +116,6 @@ public class RunSessionDataManager
 
     public int GetMaxBuildTowerCount()
     {
-        Debug.Log("Level " + state.Level);
         return rule.limitTowerCnt(state.Level);
     }
 

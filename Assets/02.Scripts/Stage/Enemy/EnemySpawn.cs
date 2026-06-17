@@ -45,7 +45,7 @@ public class EnemySpawn : MonoBehaviour
     private GridManager grid;           // 적 이동 시에 사용할 GridManager
     private PathFinder path;            // 적 이동 경로 탐색에 사용할 PathFinder
     private Vector3 spawnPoint;         // 적이 생성될 월드 좌표
-
+    private Coroutine waveCoroutine;
 
     public EnemyFactory EnemyFactory => enemyFactory;
     public event Action OnSpawnEnd;     // 스폰이 종료되면 호출
@@ -96,9 +96,15 @@ public class EnemySpawn : MonoBehaviour
     /// </summary>
     public void EnemySpawnStart()
     {
+        enemyFactory.SetCanSpawn(true);
 
         spawnPoint = grid.CellToWorldCenter(grid.SpawnPos.x, grid.SpawnPos.y);
-        StartCoroutine(StartWave());
+
+        if (waveCoroutine != null)
+            StopCoroutine(waveCoroutine);
+
+
+        waveCoroutine = StartCoroutine(StartWave());
     }
 
 
@@ -137,6 +143,7 @@ public class EnemySpawn : MonoBehaviour
             yield return StartCoroutine(StartEnemySpawn(info));
         }
 
+        waveCoroutine = null;
         // 스폰 종료 이벤트 호출
         OnSpawnEnd?.Invoke();
         yield return null;
@@ -157,5 +164,26 @@ public class EnemySpawn : MonoBehaviour
             // 스폰 시간동안 대기
             yield return new WaitForSeconds(info.spawnInterval);
         }
+    }
+
+    private void RemoveAllEnemies()
+    {
+        for(int i = spawnEnemysParent.childCount - 1; i >= 0 ; i--)
+        {
+            Destroy(spawnEnemysParent.GetChild(i).gameObject);
+        }
+    }
+
+    public void GameOver()
+    {
+        enemyFactory.SetCanSpawn(false);
+
+        if (waveCoroutine != null)
+        {
+            StopCoroutine(waveCoroutine);
+            waveCoroutine = null;
+        }
+            
+        RemoveAllEnemies();
     }
 }

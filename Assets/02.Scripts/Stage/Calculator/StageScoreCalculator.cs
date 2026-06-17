@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEditor.Build.Pipeline.Injector;
 using UnityEngine;
 
 
@@ -18,6 +17,7 @@ public class StageResultData
     public int towerSellGold;
     public int itemSellGold;
     public int remainGold;
+    public int queueGold;
 
     public List<TowerResultData> towers = new List<TowerResultData>();
     public List<ItemResultData> items = new List<ItemResultData>();
@@ -52,7 +52,7 @@ public class StageScoreCalculator
     {
         StageResultData data = getData;
 
-        int totalGold = data.remainGold;
+        int totalGold = data.remainGold + data.queueGold;
         int towerGold = 0;
         int itemGold = 0;
 

@@ -17,6 +17,7 @@ public class QueueUIController : MonoBehaviour
 
     public event Action<string, int, Sprite> OnRequestBuildTower;
     public event Action OnRemoveTowerFromQueue;
+    public event Action<int> OnGameOverConvertToGold;
 
     private void Awake()
     {
@@ -109,5 +110,22 @@ public class QueueUIController : MonoBehaviour
             return;
 
         OnRequestBuildTower?.Invoke(uid, index, towerSprite);
+    }
+
+    public int GameOverCovertTowerToGold()
+    {
+        int queueGold = 0;
+
+        for(int i = 0; i < towerUID.Length; i++)
+        {
+            if (string.IsNullOrEmpty(towerUID[i]))
+                continue;
+
+            TowerData tower = Managers.TowerData.GetTowerData(towerUID[i]);
+            queueGold += tower.sellPrice;
+        }
+
+        OnGameOverConvertToGold?.Invoke(queueGold);
+        return queueGold;
     }
 }
