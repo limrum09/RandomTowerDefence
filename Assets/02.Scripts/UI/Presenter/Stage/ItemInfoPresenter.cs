@@ -33,19 +33,12 @@ public class ItemInfoPresenter
         string des = Managers.Local.GetString("Item", model.itemDesc);
         view.SetItemDes(des);
         view.SetItemPrice(model.salePrice);
-
-        Show();
     }
 
     public void Hide()
     {
         view.Hide();
         index = 0;
-    }
-
-    public void Show()
-    {
-        view.Show();
     }
 
     private void OnClickItemSellButton() => OnItemSell?.Invoke(index);

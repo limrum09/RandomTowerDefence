@@ -1684,8 +1684,9 @@ GameObject:
   - component: {fileID: 1556844503025297488}
   - component: {fileID: 5224122790302641454}
   - component: {fileID: 502956203360907687}
-  - component: {fileID: 4094290701740029466}
   - component: {fileID: 3759657185952881057}
+  - component: {fileID: 3529524450465547937}
+  - component: {fileID: 4094290701740029466}
   - component: {fileID: 3723749993957182570}
   m_Layer: 5
   m_Name: ItemInfoPanel
@@ -1754,6 +1755,50 @@ MonoBehaviour:
   m_FillOrigin: 1
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3759657185952881057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6643983873066835355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c11316ecf13bca048bd81667fd8aa0b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 3723749993957182570}
+  icon: {fileID: 769670714572437649}
+  itemNameText: {fileID: 7396895063331638681}
+  itemGradeText: {fileID: 5440394120654728259}
+  itemTargetText: {fileID: 1136935088526562571}
+  itemScopeText: {fileID: 1106549047593623683}
+  itemDescriptionText: {fileID: 5929984534579603230}
+  itemPriceText: {fileID: 3897563677615623220}
+  itemSellBtn: {fileID: 7453240080502106966}
+--- !u!114 &3529524450465547937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6643983873066835355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88e43f0c0490a9c45ad7a0f2ae70698e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 4094290701740029466}
+  nextPageTrigger: NextPage
+  noNextPageTrigger: NoNextPage
+  prevPageTrigger: PrevPage
+  duration: 0.65
+  moveOffeset: {x: 250, y: -180}
+  startRotationZ: -8
+  exitRotationZ: 8
+  ease: 9
+  rect: {fileID: 1556844503025297488}
+  canvas: {fileID: 3723749993957182570}
 --- !u!95 &4094290701740029466
 Animator:
   serializedVersion: 7
@@ -1776,27 +1821,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3759657185952881057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6643983873066835355}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c11316ecf13bca048bd81667fd8aa0b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvas: {fileID: 3723749993957182570}
-  icon: {fileID: 769670714572437649}
-  itemNameText: {fileID: 7396895063331638681}
-  itemGradeText: {fileID: 5440394120654728259}
-  itemTargetText: {fileID: 1136935088526562571}
-  itemScopeText: {fileID: 1106549047593623683}
-  itemDescriptionText: {fileID: 5929984534579603230}
-  itemPriceText: {fileID: 3897563677615623220}
-  itemSellBtn: {fileID: 7453240080502106966}
 --- !u!225 &3723749993957182570
 CanvasGroup:
   m_ObjectHideFlags: 0

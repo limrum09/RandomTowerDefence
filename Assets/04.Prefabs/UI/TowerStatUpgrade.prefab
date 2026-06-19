@@ -3855,9 +3855,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -6470460504253458178, guid: b7feb6ff35cbfe3449ec2a4ee8d4ae01,
-    type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 7639449ddae81a54d8619bd0e5ffeafe, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4290,6 +4289,7 @@ GameObject:
   - component: {fileID: 7187357974469143285}
   - component: {fileID: 4899949667632315978}
   - component: {fileID: 7733321860451570335}
+  - component: {fileID: 5035366058860545176}
   - component: {fileID: 2147203187749498417}
   - component: {fileID: 4320105877929921251}
   m_Layer: 5
@@ -4388,6 +4388,29 @@ MonoBehaviour:
   attackSpeedPriceText: {fileID: 81933259231047208}
   damageStatUpgradeBtn: {fileID: 3054203314720619619}
   attackSpeedStatUpgradeBtn: {fileID: 6416891595223476734}
+--- !u!114 &5035366058860545176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8136822192050502729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88e43f0c0490a9c45ad7a0f2ae70698e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 2147203187749498417}
+  nextPageTrigger: NextPage
+  noNextPageTrigger: NoNextPage
+  prevPageTrigger: PrevPage
+  duration: 0.65
+  moveOffeset: {x: 250, y: -180}
+  startRotationZ: -8
+  exitRotationZ: 8
+  ease: 9
+  rect: {fileID: 6145587914666320972}
+  canvas: {fileID: 4320105877929921251}
 --- !u!95 &2147203187749498417
 Animator:
   serializedVersion: 7

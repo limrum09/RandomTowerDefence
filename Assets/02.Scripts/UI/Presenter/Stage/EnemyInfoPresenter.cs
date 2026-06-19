@@ -14,8 +14,6 @@ public class EnemyInfoPresenter
         if (getModel == null)
             return;
 
-        Show();
-
         model = getModel;
 
         Sprite icon = ResourceCache.Load<Sprite>($"Enemy/Images/{model.enemyUID}");
@@ -38,10 +36,5 @@ public class EnemyInfoPresenter
     public void Hide()
     {
         view.Hide();
-    }
-
-    public void Show()
-    {
-        view.Show();
     }
 }

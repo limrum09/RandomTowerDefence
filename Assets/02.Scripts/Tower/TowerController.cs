@@ -481,15 +481,16 @@ public class TowerController : MonoBehaviour
         if (selectedTower != null)
             selectedTower.ShowAttackRange(false);
 
-        selectedTower = null;
-        selectedTowerCell = Vector2Int.zero;
-        isGradeUpgradeMode = false;
-
         // 필요 시 간세 UI도 함께 닫음
         if (hideView)
         {
+            //selectedTower.ShowAttackRange(false); 
             OnTowerSelectCleared?.Invoke();
-        }            
+        }
+
+        selectedTower = null;
+        selectedTowerCell = Vector2Int.zero;
+        isGradeUpgradeMode = false;
     }
 
     /// <summary>
