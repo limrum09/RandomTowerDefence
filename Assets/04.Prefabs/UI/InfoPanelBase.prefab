@@ -142,7 +142,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -855298285791758126, guid: 3317b24d752da2844bd915f1b7f0edfb,
+  m_Sprite: {fileID: 6671800401536802813, guid: 6c87c0fb5de1cc342af10682bcd74b8c,
     type: 3}
   m_Type: 3
   m_PreserveAspect: 0
@@ -179,6 +179,8 @@ GameObject:
   - component: {fileID: 948510132547979972}
   - component: {fileID: 7640399028359013443}
   - component: {fileID: 5204212327438518240}
+  - component: {fileID: 5978859174554704668}
+  - component: {fileID: 7739555711202913404}
   m_Layer: 5
   m_Name: InfoPanelBase
   m_TagString: Untagged
@@ -268,3 +270,38 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5978859174554704668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7807446447908741803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88e43f0c0490a9c45ad7a0f2ae70698e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 5204212327438518240}
+  nextPageTrigger: NextPage
+  noNextPageTrigger: NoNextPage
+  prevPageTrigger: PrevPage
+  duration: 0.65
+  moveOffeset: {x: 250, y: -180}
+  startRotationZ: -8
+  exitRotationZ: 8
+  ease: 9
+  rect: {fileID: 1646662360073083535}
+  canvas: {fileID: 7739555711202913404}
+--- !u!225 &7739555711202913404
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7807446447908741803}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0

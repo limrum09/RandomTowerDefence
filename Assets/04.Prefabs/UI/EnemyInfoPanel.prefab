@@ -576,9 +576,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3820073430053050377}
-  - component: {fileID: 606336659071148642}
   - component: {fileID: 3608595336843014157}
   - component: {fileID: 3387877699554621409}
+  - component: {fileID: 606336659071148642}
+  - component: {fileID: 4626418601340406122}
   - component: {fileID: 8655111737743695250}
   - component: {fileID: 5028874350743999860}
   m_Layer: 5
@@ -609,27 +610,6 @@ RectTransform:
   m_AnchoredPosition: {x: 735, y: 110}
   m_SizeDelta: {x: 450, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &606336659071148642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3396891712589259590}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdb0596dde8c8374b82651019bb01cf4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvas: {fileID: 5028874350743999860}
-  iconImage: {fileID: 3280477079527289066}
-  enemyNameText: {fileID: 16387969009735052}
-  enemyLevelText: {fileID: 1271969788817874100}
-  enemyHealthValueText: {fileID: 4353806241007596998}
-  enemySheildValueText: {fileID: 7682277947747069258}
-  enemySpeedValueText: {fileID: 6320330782583406551}
-  skillNameText: {fileID: 2100780181945291214}
-  skillDesText: {fileID: 3108264042687835225}
 --- !u!222 &3608595336843014157
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -669,6 +649,50 @@ MonoBehaviour:
   m_FillOrigin: 1
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &606336659071148642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3396891712589259590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdb0596dde8c8374b82651019bb01cf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 5028874350743999860}
+  iconImage: {fileID: 3280477079527289066}
+  enemyNameText: {fileID: 16387969009735052}
+  enemyLevelText: {fileID: 1271969788817874100}
+  enemyHealthValueText: {fileID: 4353806241007596998}
+  enemySheildValueText: {fileID: 7682277947747069258}
+  enemySpeedValueText: {fileID: 6320330782583406551}
+  skillNameText: {fileID: 2100780181945291214}
+  skillDesText: {fileID: 3108264042687835225}
+--- !u!114 &4626418601340406122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3396891712589259590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88e43f0c0490a9c45ad7a0f2ae70698e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 8655111737743695250}
+  nextPageTrigger: NextPage
+  noNextPageTrigger: NoNextPage
+  prevPageTrigger: PrevPage
+  duration: 0.65
+  moveOffeset: {x: 250, y: -180}
+  startRotationZ: -8
+  exitRotationZ: 8
+  ease: 9
+  rect: {fileID: 3820073430053050377}
+  canvas: {fileID: 5028874350743999860}
 --- !u!95 &8655111737743695250
 Animator:
   serializedVersion: 7

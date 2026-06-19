@@ -25,7 +25,6 @@ public class TowerGradeUpgradePresenter
 
         Sprite icon = ResourceCache.Load<Sprite>($"Tower/Images/Icon_Tower_{model.IconPath}_{model.Grade}_Idle");
 
-        view.Show();
         view.SetTowerName(Managers.Local.GetString("Tower", model.StringKey));
         view.SetIconImage(icon);
         view.TowerGrade(model.Grade, model.nextGradeUID);

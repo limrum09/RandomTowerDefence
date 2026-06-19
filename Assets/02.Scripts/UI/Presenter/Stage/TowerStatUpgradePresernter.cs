@@ -55,8 +55,6 @@ public class TowerStatUpgradePresernter
         view.SetNextAttakSpeedStepText(currentSpeedStep + 1);
         view.SetNextAttakSpeedText(nextSpeedText);
         view.SetAttakSpeedPriceText(tempSessionSpeedData.baseCost + (tempSessionSpeedData.increaseCost * currentSpeedStep));
-
-        view.Show();
     }
 
     public void Clear()

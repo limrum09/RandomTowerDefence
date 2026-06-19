@@ -1,6 +1,10 @@
+using Mono.Cecil;
+using NUnit.Framework.Internal;
 using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class StageUIController : MonoBehaviour
 {
@@ -40,14 +44,29 @@ public class StageUIController : MonoBehaviour
     [SerializeField]
     private GameOverUIController gameOver;
 
+    [Header("Info Panel Animtors")]
+    [SerializeField]
+    private InfoPanelController coverPanelAnimator;
+    [SerializeField]
+    private InfoPanelController itemPanelAnimator;
+    [SerializeField]
+    private InfoPanelController enemyPanelAnimtor;
+    [SerializeField]
+    private InfoPanelController towerStatPanelAnimator;
+    [SerializeField]
+    private InfoPanelController towerGradePanelAnimator;
+
     private TowerGradeUpgradePresenter gradePresenter;
-    private TowerActionMenuPresenter actionMenuPresenter;
-    private TowerStatUpgradePresernter statPresenter;
-    private SessionInfoPresenter sessionInfoPresenter;
+    private TowerStatUpgradePresernter statPresenter;    
     private ItemInfoPresenter itemInfoPresenter;
     private EnemyInfoPresenter enemyInfoPresenter;
+    private TowerActionMenuPresenter actionMenuPresenter;
+    private SessionInfoPresenter sessionInfoPresenter;
 
     private Tower selectedTower;
+    private InfoPanelController currentInfoPanel;
+    private bool isInfoPanelTransitioning;
+    private StageInfoPanelType currentInfoPanelType = StageInfoPanelType.None;
 
     public event Func<GoldChangedReason, int, bool> OnGoldToTowerInterection;
     public event Action<Tower, UpgradeType> OnTowerStatUpgrade;
@@ -69,7 +88,7 @@ public class StageUIController : MonoBehaviour
         BindAccelerateUI();
         BindOptionButton();
 
-        HideDetailViews();
+        HideDetailViewsImmediate();
         LoadSceneManager.Instance.NotifySceneUIReady();
     }
 
@@ -214,34 +233,175 @@ public class StageUIController : MonoBehaviour
     #endregion UnBind UIs
 
     #region Hide View
-    private void HideDetailViews()
-    {
-        HideTowerDetailInfoView();
-        HideItemDetailInfoView();
-        HideEnemyDetailInfoView();
-    }
-
-    private void HideTowerDetailInfoView()
+    private void HideDetailViewsImmediate()
     {
         gradePresenter.HideModel();
-        actionMenuPresenter.Hide();
         statPresenter.Hide();
-    }
-
-    private void HideItemDetailInfoView()
-    {
         itemInfoPresenter.Hide();
+        enemyInfoPresenter.Hide();
+        actionMenuPresenter.Hide();
+
+        HideAllInfoPanels();
     }
 
-    private void HideEnemyDetailInfoView()
+    private void HideDetailViews()
     {
-        enemyInfoPresenter.Hide();
+        actionMenuPresenter.Hide();
+        HideCurrentInfoPanel();
+    }
+
+    private void HideAllInfoPanels()
+    {
+        itemPanelAnimator.Hide();
+        enemyPanelAnimtor.Hide();
+        towerStatPanelAnimator.Hide();
+        towerGradePanelAnimator.Hide();
+        coverPanelAnimator.Hide();
+
+        currentInfoPanel = null;
+        currentInfoPanelType = StageInfoPanelType.None;
+    }
+
+    private void HideCurrentInfoPanel()
+    {
+        if (isInfoPanelTransitioning)
+            return;
+
+        if (currentInfoPanel == null)
+            return;
+
+        isInfoPanelTransitioning = true;
+
+        InfoPanelController prev = currentInfoPanel;
+
+        currentInfoPanel = null;
+        currentInfoPanelType = StageInfoPanelType.None;
+
+        coverPanelAnimator.PlayCoverClose(() =>
+        {
+            prev.Hide();
+            isInfoPanelTransitioning = false;
+        });
     }
     #endregion
 
-    private void OnClickedTerrainRefreshButton()
+    private InfoPanelController GetInfoPanelAnimator(StageInfoPanelType type)
     {
-        OnTerrainRerollClicked?.Invoke();
+        switch (type)
+        {
+            case StageInfoPanelType.Item:
+                return itemPanelAnimator;
+            case StageInfoPanelType.Enemy:
+                return enemyPanelAnimtor;
+            case StageInfoPanelType.TowerStatUpgrade:
+                return towerStatPanelAnimator;
+            case StageInfoPanelType.TowerGradeUpgrade:
+                return towerGradePanelAnimator;
+            case StageInfoPanelType.Cover:
+                return coverPanelAnimator;
+            default:
+                return null;
+        }
+    }
+
+    private void ShowInfoPanel(StageInfoPanelType type, Action setModel, bool forceRefresh = false)
+    {
+        InfoPanelController target = GetInfoPanelAnimator(type);
+         
+
+        if (target == null)
+            return;
+
+        if (currentInfoPanel == target && !forceRefresh)
+            return;
+
+        bool isFirstOpen = currentInfoPanel == null;
+
+        isInfoPanelTransitioning = true;
+
+        if (isFirstOpen)
+        {
+            currentInfoPanel = target;
+            currentInfoPanelType = type;
+
+            setModel?.Invoke();
+
+            coverPanelAnimator.PlayCoverOpen(
+                onArrived: () =>
+                {
+                    target.Show();
+                },
+                onCompleted: () =>
+                {
+                    isInfoPanelTransitioning = false;
+                }
+            );
+
+            return;
+        }
+
+        InfoPanelController prev = currentInfoPanel;
+
+        currentInfoPanel = target;
+        currentInfoPanelType = type;
+
+        if(prev == target)
+        {
+            target.PlayNextPageNoFillout(() =>
+            {
+                target.Show();
+                setModel?.Invoke();
+                isInfoPanelTransitioning = false;
+            });
+
+            return;
+        }
+
+        target.Show();
+        setModel?.Invoke();
+
+        prev.PlayNextPage(() =>
+        {
+            isInfoPanelTransitioning = false;
+        });
+    }
+
+    private void OnClickGradeUpgrade(Tower tower)
+    {
+        if (tower == null)
+            return;
+
+        towerCtr.SetTowerGradeUpgradeMode();
+
+        ShowInfoPanel(StageInfoPanelType.TowerGradeUpgrade, () => gradePresenter.SetModel(tower));
+    }
+
+    private void OnClickStatUpgrade(Tower tower)
+    {
+        if (tower == null)
+            return;
+
+        ShowInfoPanel(StageInfoPanelType.TowerStatUpgrade, () => statPresenter.SetModel(tower));
+    }
+
+    private void OnClickItemInfo(ItemData item, int index)
+    {
+        if (item == null)
+            return;
+
+        actionMenuPresenter.Hide();
+
+        ShowInfoPanel(StageInfoPanelType.Item, () => itemInfoPresenter.SetModel(item, index), true);
+    }
+
+    private void OnClickWaveEnemyInfo(EnemyResolveInfo waveEnemy)
+    {
+        if (waveEnemy == null)
+            return;
+
+        actionMenuPresenter.Hide();
+
+        ShowInfoPanel(StageInfoPanelType.Enemy, () => enemyInfoPresenter.GetModel(waveEnemy), true);
     }
 
     private void SetSelectedTower(Tower getTower)
@@ -255,6 +415,11 @@ public class StageUIController : MonoBehaviour
     private void ClearSelection()
     {
         selectedTower = null;
+        actionMenuPresenter.Hide();
+
+        if (Managers.InputData.IsPointerOverUI<TowerUIRaycastTarget>())
+            return;
+
         HideDetailViews();
     }
 
@@ -279,35 +444,6 @@ public class StageUIController : MonoBehaviour
     private void RemoveTower()
     {
         towerCtr.RemoveTower();
-    }
-
-    private void OnClickGradeUpgrade(Tower tower)
-    {
-        if(tower == null) 
-            return;
-
-        towerCtr.SetTowerGradeUpgradeMode();
-
-        HideDetailViews();
-        gradePresenter.SetModel(tower);
-    }
-
-    private void OnClickStatUpgrade(Tower tower)
-    {
-        if (tower == null)
-            return;
-
-        HideDetailViews();
-        statPresenter.SetModel(tower);
-    }
-
-    private void OnClickItemInfo(ItemData item, int index)
-    {
-        if (item == null)
-            return;
-
-        HideDetailViews();
-        itemInfoPresenter.SetModel(item, index);
     }
 
     private void OnTowerGradeNormalUpgrade()
@@ -344,6 +480,11 @@ public class StageUIController : MonoBehaviour
         statPresenter.SetModel(tower);
     }
 
+    private void OnClickedTerrainRefreshButton()
+    {
+        OnTerrainRerollClicked?.Invoke();
+    }
+
     private void OnRequestSellItem(int index)
     {
         ItemData item = itemCtr.GetItem(index);
@@ -358,12 +499,6 @@ public class StageUIController : MonoBehaviour
     private void OnGoldToTowerIntertion(GoldChangedReason reason, int value)
     {
         OnGoldToTowerInterection?.Invoke(reason, value);
-    }
-
-    private void OnClickWaveEnemyInfo(EnemyResolveInfo waveEnemy)
-    {
-        HideDetailViews();
-        enemyInfoPresenter.GetModel(waveEnemy);
     }
 
     private void OnClickAccelerate()
