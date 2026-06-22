@@ -28,10 +28,10 @@ public class TowerCntSkillInfoController : MonoBehaviour
         if (runSessionDataManager == null || fieldTowerManager == null)
             return;
 
-        int currentFiledTowerCnt = fieldTowerManager.GetTotalTowerCount();
+        int currentFieldTowerCnt = fieldTowerManager.GetTotalTowerCount();
         int canBuildTowerMaxCnt = runSessionDataManager.GetMaxBuildTowerCount();
 
-        float ratio = Mathf.Clamp01((float)currentFiledTowerCnt / canBuildTowerMaxCnt);
+        float ratio = Mathf.Clamp01((float)currentFieldTowerCnt / canBuildTowerMaxCnt);
 
         Color textColor = Color.white;
 
@@ -41,7 +41,7 @@ public class TowerCntSkillInfoController : MonoBehaviour
             textColor = Color.yellow;
 
         fieldTowerCntText.color = textColor;
-        fieldTowerCntText.text = $"{currentFiledTowerCnt} / {canBuildTowerMaxCnt}";
+        fieldTowerCntText.text = $"{currentFieldTowerCnt} / {canBuildTowerMaxCnt}";
     }
 
     public void Init(RunSessionDataManager getRunManager, FieldTowerManager getFiledtowerManager)
@@ -57,7 +57,7 @@ public class TowerCntSkillInfoController : MonoBehaviour
         SetFieldTowerText();
     }
 
-    public void ChangeFiledTower(TowerType type, int towerCnt)
+    public void ChangeFieldTower(TowerType type, int towerCnt)
     {
         info.Find(x => x.Type == type).SetTowerCnt(towerCnt);
 

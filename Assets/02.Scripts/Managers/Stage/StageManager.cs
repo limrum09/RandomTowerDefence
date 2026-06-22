@@ -122,7 +122,7 @@ public class StageManager : MonoBehaviour
     /// </summary>
     void Start()
     {
-        enemySpawn.SetInitalized(Grid, Path);
+        enemySpawn.SetInitialized(Grid, Path);
 
         BindEvents();
 
@@ -221,7 +221,7 @@ public class StageManager : MonoBehaviour
     {
         if (fieldTowerManager != null)
         {
-            fieldTowerManager.OnFieldTowerChanged += towerCntSkill.ChangeFiledTower;
+            fieldTowerManager.OnFieldTowerChanged += towerCntSkill.ChangeFieldTower;
             fieldTowerManager.OnFieldTowerChanged += towerSkillEffect.ChangeTowerCount;
         }
     }
@@ -343,7 +343,7 @@ public class StageManager : MonoBehaviour
     {
         if (fieldTowerManager != null)
         {
-            fieldTowerManager.OnFieldTowerChanged -= towerCntSkill.ChangeFiledTower;
+            fieldTowerManager.OnFieldTowerChanged -= towerCntSkill.ChangeFieldTower;
             fieldTowerManager.OnFieldTowerChanged -= towerSkillEffect.ChangeTowerCount;
         }
     }
@@ -355,7 +355,7 @@ public class StageManager : MonoBehaviour
             OnWaveEnd -= waveManager.WaveEnd;
             waveManager.onWaveRosterData -= StageUICtr.SetWaveEnemyInfo;
             waveManager.onWaveRosterData -= enemySpawn.SetSpawnEnemyInfo;
-            waveManager.onWaveRosterData += SetWaveRosterData;
+            waveManager.onWaveRosterData -= SetWaveRosterData;
         }
     }
 
@@ -743,7 +743,7 @@ public class StageManager : MonoBehaviour
     /// <returns></returns>
     private bool UseFreeObstacleHandler()
     {
-        return sessionManager.UsingFreeObstable();
+        return sessionManager.UsingFreeObstacle();
     }
 
     /// <summary>

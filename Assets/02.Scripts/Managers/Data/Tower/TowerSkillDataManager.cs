@@ -1,9 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
-using UnityEngine;
-using UnityEngine.Windows.Speech;
+
 public enum SkillEffectType
 {
     Gold,
@@ -34,9 +31,10 @@ public class TowerSkillDataRow
     public int EffectValue;
     public string EffectValueUnit;
     public float Duration;
-    public bool BossApply;
-    public float BossModifier;
+    public string BossApply;
+    public string BossModifier;
     public string Icon_UID;
+    public string Note;
 }
 
 [Serializable]
@@ -120,10 +118,16 @@ public class TowerSkillDataManager
             if (!Enum.TryParse(row.EffectValueUnit, true, out EffectValueUnit EffectUnit))
                 continue;
 
+            bool bossApply = string.Equals(row.BossApply, "Y", StringComparison.OrdinalIgnoreCase);
+            float bossModifier = 0f;
+
+            if (!string.Equals(row.BossModifier, "None", StringComparison.OrdinalIgnoreCase))
+                float.TryParse(row.BossModifier, out bossModifier);
+
             TowerSkillData data = new TowerSkillData(
                 row.Tower_Skill_UID, row.String_Key, row.Des_String_Key, towerType, row.Step,
                 row.RequiredCount, row.RequiredTowerGrade, effectType, row.EffectValue,
-                EffectUnit, row.Duration, row.BossApply, row.BossModifier, row.Icon_UID
+                EffectUnit, row.Duration, bossApply, bossModifier, row.Icon_UID
             );
 
             skillDatas[data.towerSkillUID] = data;

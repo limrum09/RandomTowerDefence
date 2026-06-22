@@ -57,7 +57,7 @@ public class StageUIController : MonoBehaviour
     private InfoPanelController towerGradePanelAnimator;
 
     private TowerGradeUpgradePresenter gradePresenter;
-    private TowerStatUpgradePresernter statPresenter;    
+    private TowerStatUpgradePresenter statPresenter;    
     private ItemInfoPresenter itemInfoPresenter;
     private EnemyInfoPresenter enemyInfoPresenter;
     private TowerActionMenuPresenter actionMenuPresenter;
@@ -108,7 +108,7 @@ public class StageUIController : MonoBehaviour
     {
         gradePresenter = new TowerGradeUpgradePresenter(gradeUpgradeView);
         actionMenuPresenter = new TowerActionMenuPresenter(actionMenuView);
-        statPresenter = new TowerStatUpgradePresernter(statUpgradeView);
+        statPresenter = new TowerStatUpgradePresenter(statUpgradeView);
         sessionInfoPresenter = new SessionInfoPresenter(sessionView);
         itemInfoPresenter = new ItemInfoPresenter(itemView);
         enemyInfoPresenter = new EnemyInfoPresenter(enemyInfoView);
@@ -118,7 +118,7 @@ public class StageUIController : MonoBehaviour
     private void BindTowerUI()
     {
         gradePresenter.onClickNormalUpgrade += OnTowerGradeNormalUpgrade;
-        gradePresenter.onClickPremiumUpgrade += OnTowerGradePreminumUpgrade;
+        gradePresenter.onClickPremiumUpgrade += OnTowerGradePremiumUpgrade;
         gradePresenter.onClickTowerSell += OnClickTowerSell;
 
         actionMenuPresenter.OnClickMove += OnClickMove;
@@ -133,7 +133,7 @@ public class StageUIController : MonoBehaviour
         towerCtr.OnTowerSelected += SetSelectedTower;
         towerCtr.OnShowGradeUpgrade += OnClickGradeUpgrade;
         towerCtr.OnShowStatUpgrade += OnClickStatUpgrade;
-        towerCtr.OnGoldInterection += OnGoldToTowerIntertion;
+        towerCtr.OnGoldInteraction += OnGoldToTowerIntertion;
         towerCtr.OnFieldTowerMoveToQueueSlot += OnMoveFieldTowerToQueue;
     }
 
@@ -181,7 +181,7 @@ public class StageUIController : MonoBehaviour
     private void UnBindTowerUI()
     {
         gradePresenter.onClickNormalUpgrade -= OnTowerGradeNormalUpgrade;
-        gradePresenter.onClickPremiumUpgrade -= OnTowerGradePreminumUpgrade;
+        gradePresenter.onClickPremiumUpgrade -= OnTowerGradePremiumUpgrade;
         gradePresenter.onClickTowerSell -= OnClickTowerSell;
 
         actionMenuPresenter.OnClickMove -= OnClickMove;
@@ -196,7 +196,7 @@ public class StageUIController : MonoBehaviour
         towerCtr.OnTowerSelected -= SetSelectedTower;
         towerCtr.OnShowGradeUpgrade -= OnClickGradeUpgrade;
         towerCtr.OnShowStatUpgrade -= OnClickStatUpgrade;
-        towerCtr.OnGoldInterection -= OnGoldToTowerIntertion;
+        towerCtr.OnGoldInteraction -= OnGoldToTowerIntertion;
         towerCtr.OnFieldTowerMoveToQueueSlot -= OnMoveFieldTowerToQueue;
     }
 
@@ -454,12 +454,12 @@ public class StageUIController : MonoBehaviour
         towerCtr.TowerGradeNormalUpgrade();
     }
 
-    private void OnTowerGradePreminumUpgrade()
+    private void OnTowerGradePremiumUpgrade()
     {
         if (towerCtr == null)
             return;
 
-        towerCtr.TowerGradePreminumUpgrade();
+        towerCtr.TowerGradePremiumUpgrade();
     }
     private void OnClickTowerSell()
     {

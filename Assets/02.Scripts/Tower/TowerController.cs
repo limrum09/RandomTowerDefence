@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class TowerController : MonoBehaviour
@@ -23,7 +22,7 @@ public class TowerController : MonoBehaviour
     public event Action OnTowerSelectCleared;
     public event Action<Tower> OnShowGradeUpgrade;
     public event Action<Tower> OnShowStatUpgrade;
-    public event Action<GoldChangedReason, int> OnGoldInterection;
+    public event Action<GoldChangedReason, int> OnGoldInteraction;
     public event Action OnFieldTowerMoveToQueueSlot;
     public event Action OnFirstTowerBuild;
     public event Action<int> OnQueueTowerBuildSuccess;
@@ -176,7 +175,7 @@ public class TowerController : MonoBehaviour
                 // 등급 입력 처리 후, 모드 해체
                 isGradeUpgradeMode = false;
                 // 프리미엄 등급 업그레이드
-                TowerGradePreminumUpgrade();
+                TowerGradePremiumUpgrade();
             }
         }
     }
@@ -234,10 +233,10 @@ public class TowerController : MonoBehaviour
     /// 설치 가능 여부에 따라 Preview 색상을 갱신
     /// </summary>
     /// <param name="cell"></param>
-    /// <param name="allowTowrCell">true : 타워 이동 모드, false : 일반 설치 모드</param>
-    private void TowerPreview(Vector2Int cell, bool allowTowrCell)
+    /// <param name="allowTowerCell">true : 타워 이동 모드, false : 일반 설치 모드</param>
+    private void TowerPreview(Vector2Int cell, bool allowTowerCell)
     {
-        bool canPlace = ((!HasTower(cell) || allowTowrCell) && CanUseTowerCell(cell));
+        bool canPlace = ((!HasTower(cell) || allowTowerCell) && CanUseTowerCell(cell));
 
         Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPos.z = 0.0f;
@@ -610,7 +609,7 @@ public class TowerController : MonoBehaviour
     /// <param name="value"></param>
     private void GoldInterction(GoldChangedReason reason, int value)
     {
-        OnGoldInterection?.Invoke(reason, value);
+        OnGoldInteraction?.Invoke(reason, value);
     }
 
     /// <summary>
@@ -675,7 +674,7 @@ public class TowerController : MonoBehaviour
     /// <summary>
     /// 프리미엄 등급 업그레이드
     /// </summary>
-    public void TowerGradePreminumUpgrade()
+    public void TowerGradePremiumUpgrade()
     {
         int upgradeCnt = needupgradeTowerCnt;
 

@@ -193,8 +193,8 @@ public class Tower : MonoBehaviour
 
     private void GetAttackSpeedDebuff(float debuffPer, float duration)
     {
-        StopCoroutine(nameof(AttakSpeedDebuff));
-        StartCoroutine(AttakSpeedDebuff(debuffPer, duration));
+        StopCoroutine(nameof(AttackSpeedDebuff));
+        StartCoroutine(AttackSpeedDebuff(debuffPer, duration));
     }
 
     IEnumerator DamageDebuff(float debuffPer, float duration)
@@ -204,7 +204,7 @@ public class Tower : MonoBehaviour
         damageDebuffPer = 0.0f;
     }
 
-    IEnumerator AttakSpeedDebuff(float debuffPer, float duration)
+    IEnumerator AttackSpeedDebuff(float debuffPer, float duration)
     {
         attackSpeedDebuffPer = Mathf.Clamp(debuffPer, 0f, 100f);
         yield return new WaitForSeconds(duration);

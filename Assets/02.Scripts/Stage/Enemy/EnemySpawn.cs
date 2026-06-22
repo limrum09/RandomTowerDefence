@@ -83,7 +83,7 @@ public class EnemySpawn : MonoBehaviour
     /// </summary>
     /// <param name="getGrid"></param>
     /// <param name="getPath"></param>
-    public void SetInitalized(GridManager getGrid, PathFinder getPath)
+    public void SetInitialized(GridManager getGrid, PathFinder getPath)
     {
         grid = getGrid;
         path = getPath;

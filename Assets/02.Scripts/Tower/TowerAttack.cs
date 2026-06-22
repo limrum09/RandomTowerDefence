@@ -160,7 +160,7 @@ public class TowerAttack : MonoBehaviour
         if (tower.Type == TowerType.Orc)
         {
             float slow = tower.EnemySlowPer;
-            target.SetMoveSpeedModify(SpeedModityType.TowerAttackSpeed, -slow);
+            target.SetMoveSpeedModify(SpeedModifyType.TowerAttackSpeed, -slow);
         }
 
         string effectName = GetHitEffectName() + "AttackEffect";

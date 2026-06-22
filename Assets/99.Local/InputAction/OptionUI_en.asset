@@ -138,6 +138,10 @@ MonoBehaviour:
     m_Localized: Sound Settings
     m_Metadata:
       m_Items: []
+  - m_Id: 2944699198484480
+    m_Localized: Language Setting
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -1,20 +1,20 @@
 using System;
 using UnityEngine;
 
-public class TowerStatUpgradePresernter
+public class TowerStatUpgradePresenter
 {
     private Tower model;
     private TowerStatUpgradeView view;
 
     public event Action<Tower> onClickDamageUpgrade;
     public event Action<Tower> onClickAttackSpeedUpgrade;
-    public TowerStatUpgradePresernter(TowerStatUpgradeView getView)
+    public TowerStatUpgradePresenter(TowerStatUpgradeView getView)
     {
         view = getView;
 
         view.Init();
         view.BindDamageUpgrade(OnClickDamageStatUpgrade);
-        view.BindAttakSpeedUpgrade(OnClickAttakSpeedUpgrade);
+        view.BindAttackSpeedUpgrade(OnClickAttakSpeedUpgrade);
     }
 
     public void SetModel(Tower getModel)

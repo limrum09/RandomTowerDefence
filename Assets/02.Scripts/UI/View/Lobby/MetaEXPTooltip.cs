@@ -7,8 +7,6 @@ public class MetaEXPTooltip : MonoBehaviour
     private CanvasGroup canvas;
     [SerializeField]
     private TextMeshProUGUI currentEXPText;
-    [SerializeField]
-    private TextMeshProUGUI needEXPText;
 
     public void ShowEXPText()
     {
@@ -18,8 +16,7 @@ public class MetaEXPTooltip : MonoBehaviour
         int currentExp = Managers.Player.GetCurrentEXP();
         int needEXP = Managers.ResearchLevel.GetNeedExp(level);
 
-        currentEXPText.text = currentExp.ToString();
-        needEXPText.text = $"/ {needEXP.ToString()}";
+        currentEXPText.text = $"{currentExp.ToString()} / {needEXP.ToString()}";
     }
 
     public void HideEXPText()

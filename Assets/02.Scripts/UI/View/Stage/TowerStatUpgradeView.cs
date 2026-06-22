@@ -116,5 +116,5 @@ public class TowerStatUpgradeView : MonoBehaviour
     public void SetAttakSpeedPriceText(int value) => attackSpeedPriceText.text = value.ToString();
 
     public void BindDamageUpgrade(UnityAction action) => damageStatUpgradeBtn.onClick.AddListener(action);
-    public void BindAttakSpeedUpgrade(UnityAction action) => attackSpeedStatUpgradeBtn.onClick.AddListener(action);
+    public void BindAttackSpeedUpgrade(UnityAction action) => attackSpeedStatUpgradeBtn.onClick.AddListener(action);
 }

@@ -227,7 +227,7 @@ public class RunSessionDataManager
         return true;
     }
 
-    public bool UsingFreeObstable()
+    public bool UsingFreeObstacle()
     {
         if (state.FreeObstacleCnt <= 0 || state == null)
             return false;
