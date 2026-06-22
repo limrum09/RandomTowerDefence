@@ -239,7 +239,7 @@ public class EnemySkill : MonoBehaviour
         // 즉시 회복
         if (getDuration <= 0.0f)
         {
-            root.EnemeyHeal(value);
+            root.EnemyHeal(value);
             return;
         }
             
@@ -248,7 +248,7 @@ public class EnemySkill : MonoBehaviour
         {
             StartCoroutine(TickSkill(getDuration, tick, () =>
             {
-                root.EnemeyHeal(value);
+                root.EnemyHeal(value);
             }));
         }
     }
@@ -374,12 +374,12 @@ public class EnemySkill : MonoBehaviour
     /// <returns></returns>
     IEnumerator SpeedDuration(float value, float duration)
     {
-        root.SetMoveSpeedModify(SpeedModityType.SkillSpeed, value);
+        root.SetMoveSpeedModify(SpeedModifyType.SkillSpeed, value);
         isSpeedSkill = true;
         yield return new WaitForSeconds(duration);
 
         isSpeedSkill = false;
-        root.RemoveMoveSpeedModify(SpeedModityType.SkillSpeed);
+        root.RemoveMoveSpeedModify(SpeedModifyType.SkillSpeed);
     }
 
     private IEnumerator SkillGetPause()

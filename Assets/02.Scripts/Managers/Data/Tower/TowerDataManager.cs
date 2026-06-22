@@ -94,9 +94,9 @@ public class TowerDataManager
         return tempDatas;
     }
 
-    public string[] GetTowerGradeUID(int currnetGrade)
+    public string[] GetTowerGradeUID(int currentGrade)
     {
-        if (tempTowerGradeUID.TryGetValue(currnetGrade, out string[] uids))
+        if (tempTowerGradeUID.TryGetValue(currentGrade, out string[] uids))
             return uids;
 
         return null;

@@ -126,6 +126,6 @@ public class TowerGradeUpgradeView : MonoBehaviour, IPopUpPublicUI
     public void TowerSellPrice(float value) => towerSellPriceText.text = value.ToString();
 
     public void BindNormalUpgrade(UnityAction action) => normalUpgradeBtn.onClick.AddListener(action);
-    public void BindPreminumUpgrade(UnityAction action) => premiumUpgradeBtn.onClick.AddListener(action);
+    public void BindPremiumUpgrade(UnityAction action) => premiumUpgradeBtn.onClick.AddListener(action);
     public void BindTowerSell(UnityAction action) => sellBtn.onClick.AddListener(action);
 }

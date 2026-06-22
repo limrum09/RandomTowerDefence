@@ -37,7 +37,7 @@ public class WaveDataManager
     {
         WaveDataRowList rowList = JsonLoader.LoadFromResources<WaveDataRowList>("Data/WaveData");
 
-        if (rowList == null && rowList.datas == null)
+        if (rowList == null || rowList.datas == null)
             return;
 
         foreach(WaveDataRow row in rowList.datas)

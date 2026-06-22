@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -31,6 +32,7 @@ public class GraphicSaveData
     public bool isWindowMode;
     public int fps;
     public bool isShowDamageText;
+    public string languageLocaleCode;
 }
 
 /// <summary>
@@ -48,6 +50,7 @@ public class GraphicManager
     private bool isShowDamageText;
     private ResolutionSize currentSize;
     private int currentFPS;
+    private string languageLocaleCode = string.Empty;
 
     public bool IsWindowMode => isWindowMode;
     public bool IsShowDamageText => isShowDamageText;
@@ -55,6 +58,7 @@ public class GraphicManager
     public int CurrentFPS => currentFPS;
     public IReadOnlyList<int> FPS => fpsList;
     public IReadOnlyList<ResolutionSize> ResolutionSizes => resolutionSizes;
+    public string LanguageLocaleCode => languageLocaleCode;
 
     /// <summary>
     /// resolutioList에서 width/height가 일치하는 해상도 찾기
@@ -200,6 +204,15 @@ public class GraphicManager
     public void SetShowDamageText(bool value) => isShowDamageText = value;
 
     /// <summary>
+    /// 언어 변경
+    /// </summary>
+    /// <param name="localeCode"></param>
+    public void SetLanguageLocaleCode(string localeCode)
+    {
+        languageLocaleCode = localeCode;
+    }
+
+    /// <summary>
     /// 저장된 데이터 로드
     /// </summary>
     /// <param name="saveData"></param>
@@ -214,6 +227,7 @@ public class GraphicManager
         SetScreenMode(saveData.isWindowMode);
         SetShowDamageText(saveData.isShowDamageText);
         SetFPS(saveData.fps);
+        SetLanguageLocaleCode(saveData.languageLocaleCode);
 
         if (FindResolution(saveData.width, saveData.height, out ResolutionSize result))
             SetResolutionByUID(result.uid);
@@ -233,7 +247,8 @@ public class GraphicManager
             height = currentSize.size.y,
             isWindowMode = isWindowMode,
             fps = currentFPS,
-            isShowDamageText = isShowDamageText
+            isShowDamageText = isShowDamageText,
+            languageLocaleCode = languageLocaleCode,
         };
     }
 }

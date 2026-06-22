@@ -15,7 +15,7 @@ public class TowerGradeUpgradePresenter
         view = getView;
 
         view.BindNormalUpgrade(OnClickNormalUpgrade);
-        view.BindPreminumUpgrade(OnClickPremiunUpgrade);
+        view.BindPremiumUpgrade(OnClickPremiunUpgrade);
         view.BindTowerSell(OnClickTowerSell);
     }
 

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public enum SpeedModityType
+public enum SpeedModifyType
 {
     SkillSpeed,
     TowerAttackSpeed
@@ -20,7 +20,7 @@ public enum SpeedModityType
 /// </summary>
 public class Enemy : MonoBehaviour
 {
-    [Header("Compoenents")]
+    [Header("Components")]
     [SerializeField]
     private EnemyMove move;     // 적 이동 담당 컴포넌트
     [SerializeField]
@@ -46,7 +46,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private Image currentShieldBar;
 
-    [Header("Runitme Stat")]
+    [Header("Runtime Stat")]
     [SerializeField]
     private float maxHP;          // 최대 체력
     [SerializeField]
@@ -64,7 +64,7 @@ public class Enemy : MonoBehaviour
     private Tween hpTween;
     private Tween shieldTween;
 
-    private readonly Dictionary<SpeedModityType, float> speedModify = new Dictionary<SpeedModityType, float>();
+    private readonly Dictionary<SpeedModifyType, float> speedModify = new Dictionary<SpeedModifyType, float>();
 
     public UnityEvent onDead;
 
@@ -189,7 +189,7 @@ public class Enemy : MonoBehaviour
         // 생성 후에는 살아있는 상태
         isDead = false;
 
-        foreach (SpeedModityType type in Enum.GetValues(typeof(SpeedModityType))){
+        foreach (SpeedModifyType type in Enum.GetValues(typeof(SpeedModifyType))){
             speedModify[type] = 0;
         }
 
@@ -213,7 +213,7 @@ public class Enemy : MonoBehaviour
     /// 최대 체력을 넘지 않도록 제한
     /// </summary>
     /// <param name="value">회복 값</param>
-    public void EnemeyHeal(int value)
+    public void EnemyHeal(int value)
     {
         // 회복이기에 0보다 작다면 중지
         if (value <= 0)
@@ -254,7 +254,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     /// <param name="type"></param>
     /// <param name="perValue"></param>
-    public void SetMoveSpeedModify(SpeedModityType type, float perValue)
+    public void SetMoveSpeedModify(SpeedModifyType type, float perValue)
     {
         float modify = currentSpeed * (Mathf.Abs(perValue) / 100f);
 
@@ -269,7 +269,7 @@ public class Enemy : MonoBehaviour
     /// 해당 타입의 값을 0으로 만듬
     /// </summary>
     /// <param name="type"></param>
-    public void RemoveMoveSpeedModify(SpeedModityType type)
+    public void RemoveMoveSpeedModify(SpeedModifyType type)
     {
         speedModify[type] = 0;
     }

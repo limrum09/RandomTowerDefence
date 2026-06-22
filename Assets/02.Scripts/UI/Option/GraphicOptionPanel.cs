@@ -1,6 +1,10 @@
+using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
 
 /// <summary>
@@ -20,6 +24,11 @@ public class GraphicOptionPanel : MonoBehaviour
     private Toggle screenModeToggle;
     [SerializeField]
     private Toggle damageViewToggle;
+    [SerializeField]
+    private TMP_Dropdown languageDropDown;
+
+    private readonly List<Locale> availableLocales = new List<Locale>();
+    private bool isSettingLanguageDropdown;
 
     private void Start()
     {
@@ -27,6 +36,7 @@ public class GraphicOptionPanel : MonoBehaviour
         SetFPSDropdown();
         SetIsScreenToggle();
         SetIsDamageViewToggle();
+        StartCoroutine(InitLanguageDropdown());
 
         resolutionDropdown.onValueChanged.AddListener(SetResolution);
         fpsLimitDropdown.onValueChanged.AddListener(SetFPS);
@@ -91,6 +101,119 @@ public class GraphicOptionPanel : MonoBehaviour
     private void SetIsDamageViewToggle()
     {
         damageViewToggle.SetIsOnWithoutNotify(Managers.Graphic.IsShowDamageText);
+    }
+
+    private void ApplyLanguage(Locale locale, bool save)
+    {
+        if (locale == null)
+            return;
+
+        LocalizationSettings.SelectedLocale = locale;
+        Managers.Local.SetLanguage(GetSelectLanguage(locale));
+        Managers.Graphic.SetLanguageLocaleCode(locale.Identifier.Code);
+
+        if (save)
+            Managers.Save.MarkGraphicDirty();
+
+    }
+
+    private void OnChangedLanguageDropdow(int index)
+    {
+        if (isSettingLanguageDropdown)
+            return;
+
+        if (index < 0 || index >= availableLocales.Count)
+            return;
+
+        ApplyLanguage(availableLocales[index], true);
+    }
+
+    private void ApplySaveLanguage()
+    {
+        string saveLocaleCode = Managers.Graphic.LanguageLocaleCode;
+
+        if (string.IsNullOrEmpty(saveLocaleCode))
+            return;
+
+        Locale saveLocale = FindLocaleByCode(saveLocaleCode);
+
+        if (saveLocale == null)
+            return;
+
+        ApplyLanguage(saveLocale, false);
+    }
+
+    private void SetLanguageDropdownValue()
+    {
+        Locale selectedLocale = LocalizationSettings.SelectedLocale;
+        int index = availableLocales.IndexOf(selectedLocale);
+
+        if (index < 0)
+            index = 0;
+
+        isSettingLanguageDropdown = true;
+        languageDropDown.SetValueWithoutNotify(index);
+        languageDropDown.RefreshShownValue();
+        isSettingLanguageDropdown = false;
+    }
+
+    private SelectLanguege GetSelectLanguage(Locale locale)
+    {
+        string code = locale.Identifier.Code.ToLower();
+
+        if (code.StartsWith("en"))
+            return SelectLanguege.EN;
+
+        return SelectLanguege.KR;
+    }
+
+    private Locale FindLocaleByCode(string code)
+    {
+        for (int i = 0; i < availableLocales.Count; i++)
+        {
+            if (availableLocales[i].Identifier.Code == code)
+                return availableLocales[i];
+        }
+
+        return null;
+    }
+
+    private string GetLocalDisplayName(Locale locale)
+    {
+        if (locale == null)
+            return string.Empty;
+
+        if (!string.IsNullOrEmpty(locale.LocaleName))
+            return locale.LocaleName;
+
+        return locale.Identifier.Code;
+    }
+
+    private IEnumerator InitLanguageDropdown()
+    {
+        yield return LocalizationSettings.InitializationOperation;
+
+        if (languageDropDown == null)
+            yield break;
+
+        availableLocales.Clear();
+        availableLocales.AddRange(LocalizationSettings.AvailableLocales.Locales);
+
+        languageDropDown.ClearOptions();
+
+        List<string> options = new List<string>();
+        for (int i = 0; i < availableLocales.Count; i++)
+        {
+            options.Add(GetLocalDisplayName(availableLocales[i]));
+        }
+
+        languageDropDown.AddOptions(options);
+
+        ApplySaveLanguage();
+        SetLanguageDropdownValue();
+
+        languageDropDown.onValueChanged.RemoveListener(OnChangedLanguageDropdow);
+        languageDropDown.onValueChanged.AddListener(OnChangedLanguageDropdow);
     }
 
     /// <summary>

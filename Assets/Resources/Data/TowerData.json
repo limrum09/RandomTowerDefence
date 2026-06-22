@@ -442,7 +442,7 @@
             "Grade": 6,
             "BaseAtk": 380,
             "BaseAtkSpeed": 2.0,
-            "Range": 4.0,
+            "Range": 7.0,
             "CostType": "Gold",
             "BuyPrice": 19000,
             "SellPrice": 9500,
