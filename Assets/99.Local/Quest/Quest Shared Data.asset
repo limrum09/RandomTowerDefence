@@ -67,6 +67,54 @@ MonoBehaviour:
     m_Key: TASK_CLEAR_HELL_STAGE
     m_Metadata:
       m_Items: []
+  - m_Id: 9853090034495488
+    m_Key: ACHIEVEMENT_BUILD_HUMAN_TOWER_150
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9853313452486656
+    m_Key: TASK_BUILD_HUMAN_TOWER_150
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9868672515584000
+    m_Key: ACHIEVEMENT_BUILD_ELF_TOWER_150
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9868748679950336
+    m_Key: TASK_BUILD_ELF_TOWER_150
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9868784738381824
+    m_Key: ACHIEVEMENT_BUILD_ORC_TOWER_150
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9868848407916544
+    m_Key: TASK_BUILD_ORC_TOWER_150
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9868879177330688
+    m_Key: ACHIEVEMENT_BUILD_DWARF_TOWER_150
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9868927684456448
+    m_Key: TASK_BUILD_DWARF_TOWER_150
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9868959703773184
+    m_Key: ACHIEVEMENT_BUILD_DRAGNIAN_TOWER_150
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9869002045272064
+    m_Key: TASK_BUILD_DRAGNIAN_TOWER_150
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9869034261721088
+    m_Key: ACHIEVEMENT_BUILD_WEREBEAST_TOWER_150
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9869075542061056
+    m_Key: TASK_BUILD_WEREBEAST_TOWER_150
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -423,16 +423,16 @@ public class QuestEditorWindow : EditorWindow
 
         GUILayout.FlexibleSpace();
 
-        if (GUILayout.Button("Create String Target", EditorStyles.toolbarButton, GUILayout.Width(200)))
+        if (GUILayout.Button("Create Enemy Target", EditorStyles.toolbarButton, GUILayout.Width(170)))
         {
-            CreateStringTargetAsset();
+            CreateEnemyTargetAsset();
         }
 
         GUILayout.Space(10);
 
-        if (GUILayout.Button("Create Object Target", EditorStyles.toolbarButton, GUILayout.Width(150)))
+        if (GUILayout.Button("Create UID Target", EditorStyles.toolbarButton, GUILayout.Width(150)))
         {
-            // CreateTargetAsset<TaskTarget>();
+            CreateUIDTargetAsset();
         }
 
         EditorGUILayout.EndHorizontal();
@@ -549,11 +549,19 @@ public class QuestEditorWindow : EditorWindow
         Repaint();
     }
 
-    private void CreateStringTargetAsset()
+    private void CreateEnemyTargetAsset()
     {
-        QuestCreatePopupWindow.Open("String Target", createPath, inputName =>
+        QuestCreatePopupWindow.Open("Enemy Target", createPath, inputName =>
         {
-            CreateTargetAsset<EnemyTarget>("StringTarget_", createPath + "Target", inputName);
+            CreateTargetAsset<EnemyTarget>("EnemyTarget", createPath + "Target", inputName);
+        });
+    }
+
+    private void CreateUIDTargetAsset()
+    {
+        QuestCreatePopupWindow.Open("UID Target", createPath, inputName =>
+        {
+            CreateTargetAsset<UIDTarget>("UIDTarget", createPath + "Target", inputName);
         });
     }
 

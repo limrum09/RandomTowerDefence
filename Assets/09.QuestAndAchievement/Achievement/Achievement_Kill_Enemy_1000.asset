@@ -16,7 +16,7 @@ MonoBehaviour:
   questUID: ACHIEVEMENT_KILL_1000
   task:
     category: 0
-    taskUID: 
+    taskUID: TASK_KILL_1000
     targets: []
     actionType: 1
     needSuccessCount: 1000
@@ -24,7 +24,11 @@ MonoBehaviour:
   condition: {fileID: 0}
   rewards:
   - rewardType: 2
-    icon: {fileID: 0}
+    icon: {fileID: -1650603336257507633, guid: cb91f42884c7db3478f78df2b7a9d717, type: 3}
     rewardUID: 
-    cnt: 0
+    cnt: 1000
+  - rewardType: 0
+    icon: {fileID: 821336858916225130, guid: c506a112531ff6f40af41b69598cdfc4, type: 3}
+    rewardUID: 
+    cnt: 1000
   isSaveable: 1

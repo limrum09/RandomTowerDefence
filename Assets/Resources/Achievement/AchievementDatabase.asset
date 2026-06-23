@@ -13,6 +13,13 @@ MonoBehaviour:
   m_Name: AchievementDatabase
   m_EditorClassIdentifier: 
   quests:
+  - {fileID: 11400000, guid: 4f6cf337ade0a39438450756a90991b4, type: 2}
+  - {fileID: 11400000, guid: be0ce4d6d685f1b47899fd49fdf007cd, type: 2}
+  - {fileID: 11400000, guid: 56463aafed5694844afaff0ab0cf1488, type: 2}
+  - {fileID: 11400000, guid: 2d030405f9ecd554f98e809f8288c45b, type: 2}
+  - {fileID: 11400000, guid: 5dd9b14454ce27e418aec60a97120196, type: 2}
+  - {fileID: 11400000, guid: 655dd1d7681e0b841baf49bb0f4562ba, type: 2}
+  - {fileID: 11400000, guid: c02fda79398c4b34491e77054c0ee574, type: 2}
   - {fileID: 11400000, guid: f0edd11d087828b47901d05c3d7f9519, type: 2}
   - {fileID: 11400000, guid: 6b7188934bbaef1438ce5bf10730265a, type: 2}
   - {fileID: 11400000, guid: 3d9773a01d7f73b4ebb99cd4daad806c, type: 2}

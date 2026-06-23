@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 /// <summary>
 /// 단축키 설정 옵션 UI
@@ -18,6 +19,7 @@ public class InputKeyOptionPanel : MonoBehaviour
     [SerializeField]
     private GameObject resetCheckPanel;
 
+    private LocalizationDataManager local;
     private List<ChangedInputPanel> panels = new List<ChangedInputPanel>();
 
     /// <summary>
@@ -36,6 +38,23 @@ public class InputKeyOptionPanel : MonoBehaviour
         content.sizeDelta = new Vector2(content.anchoredPosition.x, 80.0f + (panels.Count * 80.0f));
 
         resetCheckPanel.SetActive(false);
+
+        local = Managers.Local;
+        local.OnLanguageChanged += ChangedLanguage;
+    }
+
+    private void OnDestroy()
+    {
+        if(local != null)
+            local.OnLanguageChanged -= ChangedLanguage;
+    }
+
+    public void ChangedLanguage()
+    {
+        foreach(var panel in panels)
+        {
+            panel.SetInputActionText();
+        }
     }
 
     /// <summary>

@@ -14,6 +14,8 @@ public class SelectStageButton : UIHoverBase
     private TextMeshProUGUI limitText;
     [SerializeField]
     private IsAchievementCompleteCondition condition;
+
+    private LocalizationDataManager local;
     private float fillWidth;
     private bool isConditionPass;
 
@@ -35,6 +37,15 @@ public class SelectStageButton : UIHoverBase
     private void Start()
     {
         SetLimitImage();
+
+        local = Managers.Local;
+        local.OnLanguageChanged += SetLimitImage;
+    }
+
+    private void OnDestroy()
+    {
+        if (local != null)
+            local.OnLanguageChanged -= SetLimitImage;
     }
 
     private void SetLimitImage()

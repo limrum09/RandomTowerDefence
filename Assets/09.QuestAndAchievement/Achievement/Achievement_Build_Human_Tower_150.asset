@@ -12,15 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d273925ee3135e42a650376983637eb, type: 3}
   m_Name: Achievement_Build_Human_Tower_150
   m_EditorClassIdentifier: 
-  questCategory: 0
+  questCategory: 4
   questUID: ACHIEVEMENT_BUILD_HUMAN_TOWER_150
   task:
-    category: 0
+    category: 4
     taskUID: TASK_BUILD_HUMAN_TOWER_150
-    targets: []
+    targets:
+    - {fileID: 11400000, guid: 0391fcc839554414797f9217764b4113, type: 2}
     actionType: 1
     needSuccessCount: 150
     countingAfterComplete: 0
   condition: {fileID: 0}
-  rewards: []
+  rewards:
+  - rewardType: 0
+    icon: {fileID: 821336858916225130, guid: c506a112531ff6f40af41b69598cdfc4, type: 3}
+    rewardUID: 
+    cnt: 3000
   isSaveable: 0

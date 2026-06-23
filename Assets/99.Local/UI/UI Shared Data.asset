@@ -243,6 +243,26 @@ MonoBehaviour:
     m_Key: UI_GOLD_CHANGED_REASON_UPGRADE
     m_Metadata:
       m_Items: []
+  - m_Id: 6907548514004992
+    m_Key: UI_SELECT_STAGE_DIFFICULTY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6907999917584384
+    m_Key: UI_EASY_STAGE_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6908057778008064
+    m_Key: UI_NORMAL_STAGE_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6908062492405760
+    m_Key: UI_HARD_STAGE_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6908100996116480
+    m_Key: UI_HELL_STAGE_TITLE
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

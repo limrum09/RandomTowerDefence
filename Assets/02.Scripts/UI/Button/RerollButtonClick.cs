@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 /// <summary>
@@ -14,7 +15,21 @@ public class RerollButtonClick : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI text;
 
+    private LocalizationDataManager local;
+    private int rerollCnt;
+
     public event Action OnClickReroll;
+
+    private void SetText()
+    {
+        text.text = $"{Managers.Local.GetString("Stage", "STAGE_TERRAIN_REFRESH")}({rerollCnt})";
+    }
+
+    private void OnDestroy()
+    {
+        if (local != null)
+            local.OnLanguageChanged -= SetText;
+    }
 
     public void OnClickedButton()
     {
@@ -23,7 +38,15 @@ public class RerollButtonClick : MonoBehaviour
 
     public void SetRerollCnt(int cnt)
     {
-        text.text = $"{Managers.Local.GetString("Stage", "STAGE_TERRAIN_REFRESH")}({cnt})";
+        if(local == null)
+        {
+            local = Managers.Local;
+            local.OnLanguageChanged += SetText;
+        }   
+
+        rerollCnt = cnt;
+        SetText();
+
         if (cnt <= 0)
         {
             OffRerollButton();

@@ -17,14 +17,15 @@ MonoBehaviour:
   task:
     category: 1
     taskUID: TASK_CLEAR_NORMAL_STAGE
-    targets: []
+    targets:
+    - {fileID: 11400000, guid: 5dba76acdbd4be14f99055721c817fa9, type: 2}
     actionType: 1
     needSuccessCount: 1
     countingAfterComplete: 0
   condition: {fileID: 11400000, guid: 74b740dec2b562f499f91a33b59d25b9, type: 2}
   rewards:
   - rewardType: 0
-    icon: {fileID: 21300000, guid: 7ab74e659e1f0a34d9cfec21c478fc12, type: 3}
+    icon: {fileID: 821336858916225130, guid: c506a112531ff6f40af41b69598cdfc4, type: 3}
     rewardUID: 
-    cnt: 0
+    cnt: 20000
   isSaveable: 1

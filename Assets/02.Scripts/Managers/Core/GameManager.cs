@@ -37,6 +37,7 @@ public class GameManager
     private StageStartOptionBaseDataManager startOption;
 
     public string selectDifficultyLevel { get; private set; }
+    public string clearStageTargetUID { get; private set; }
 
     public void Init()
     {
@@ -50,6 +51,7 @@ public class GameManager
     public void SelectStageDifficultyLevel(string getDifficulty)
     {
         selectDifficultyLevel = getDifficulty;
+        clearStageTargetUID = $"CLEAR_STAGE_{getDifficulty.ToUpper()}";
     }
 
     public MetaUpgradeCal GetTowerDisplayData(TowerData tower)

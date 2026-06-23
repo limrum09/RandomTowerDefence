@@ -51,7 +51,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 23009046687
-    m_Localized: '{0}Grade'
+    m_Localized: '{0} Grade'
     m_Metadata:
       m_Items: []
   - m_Id: 23009046695
@@ -144,7 +144,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6350871605248
-    m_Localized: Research Level <color="red">{0}</color>
+    m_Localized: Research Level <color="red">[{0}]</color>
     m_Metadata:
       m_Items: []
   - m_Id: 6806532403200
@@ -216,7 +216,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 455231677804544
-    m_Localized: 'Unlock after completing the achievement: <color="red">{0'
+    m_Localized: 'Unlock after completing the achievement: <color="red">{0}</color>'
     m_Metadata:
       m_Items: []
   - m_Id: 4366298493628416
@@ -245,6 +245,26 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 4367430255259648
     m_Localized: Upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6907548514004992
+    m_Localized: Choose Your Difficulty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6908100996116480
+    m_Localized: HELL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6908062492405760
+    m_Localized: HARD
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6908057778008064
+    m_Localized: NORMAL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6907999917584384
+    m_Localized: EASY
     m_Metadata:
       m_Items: []
   references:
