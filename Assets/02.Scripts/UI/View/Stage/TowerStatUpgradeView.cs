@@ -51,10 +51,27 @@ public class TowerStatUpgradeView : MonoBehaviour
 
     private string upgradeText;
     private string gradeText;
+    private LocalizationDataManager local;
+
+
+    private void ChangedLanguage()
+    {
+        gradeText = Managers.Local.GetString("UI", "UI_GRADE");
+        upgradeText = Managers.Local.GetString("UI", "UI_UPGRADE_STEP");
+    }
+
+    private void OnDestroy()
+    {
+        local.OnLanguageChanged -= ChangedLanguage;
+    }
+
     public void Init()
     {
-        upgradeText = Managers.Local.GetString("UI", "UI_UPGRADE_STEP");
+        local = Managers.Local;
+        local.OnLanguageChanged += ChangedLanguage;
+
         gradeText = Managers.Local.GetString("UI", "UI_GRADE");
+        upgradeText = Managers.Local.GetString("UI", "UI_UPGRADE_STEP");
     }
 
     public void Clear()

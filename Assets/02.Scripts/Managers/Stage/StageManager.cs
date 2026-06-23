@@ -62,6 +62,7 @@ public class StageManager : MonoBehaviour
     private bool isSpawning;
     private bool isStagePlaying;
     private bool isGameOver;
+    private bool isReportedStageEndAchievement;
     private int aliveEnemyCnt;
     private int waveTotalEnemyCount;
     private int waveRemoveEnemyCount;
@@ -129,6 +130,7 @@ public class StageManager : MonoBehaviour
         currentWave = 1;
         isResetTerrain = true;
         isGameOver = false;
+        isReportedStageEndAchievement = false;
         speedIndex = 0;
         waveTotalEnemyCount = 0;
         waveRemoveEnemyCount = 0;
@@ -518,6 +520,7 @@ public class StageManager : MonoBehaviour
 
         if (currentWave >= 61)
         {
+            Managers.QuestMgr.QuestRecieveReport(QuestCategory.ClearStage, Managers.Game.clearStageTargetUID, 1);
             GameEnd();
             Debug.Log("웨이브 종료");
             return;
@@ -791,6 +794,30 @@ public class StageManager : MonoBehaviour
         OnGameOver?.Invoke(stageResult);
     }
 
+
+    private void ReportStageEndAchievement()
+    {
+        if (isReportedStageEndAchievement)
+            return;
+
+        isReportedStageEndAchievement = true;
+
+        foreach(TowerType type in Enum.GetValues(typeof(TowerType)))
+        {
+            ReportBuildTowerAchievement(type);
+        }
+    }
+
+    private void ReportBuildTowerAchievement(TowerType type)
+    {
+        int cnt = fieldTowerManager.GetTowerCount(type);
+
+        if (cnt <= 0)
+            return;
+
+        Managers.QuestMgr.QuestRecieveReport(QuestCategory.BuildTower, $"BUILD_TOWER_{type.ToString().ToUpper()}", cnt);
+    }
+
     /// <summary>
     /// 일시정지가 풀리고 난 후, 특정 시간동안 속도가 천천히 돌아온다.
     /// </summary>
@@ -863,6 +890,8 @@ public class StageManager : MonoBehaviour
 
     public void GameEnd()
     {
+        ReportStageEndAchievement();
+
         isGameOver = true;
         Invoke("SetScoreCalculate", 1f);
     }

@@ -155,6 +155,7 @@ public class SelectStageViewAnim : UIPopAnimationBase
             RectTransform rect = buttons[i].rect;
 
             rect.localScale = Vector3.one;
+            rect.localRotation = Quaternion.identity;
 
             Vector2 outPos = GetOutPosition(originPos[i], buttons[i].enterDirection, flyDistance);
 
@@ -168,6 +169,8 @@ public class SelectStageViewAnim : UIPopAnimationBase
         for(int i = 0; i < buttons.Length; i++)
         {
             sequence.Insert(fillStartTime, UIStrechEmptyHoriziontal(buttons[i].button.FillRect, 0.15f));
+
+            sequence.Insert(fillStartTime, buttons[i].rect.DOLocalRotate(new Vector3(0f, 360f, 0f), 0.4f, RotateMode.FastBeyond360).SetEase(Ease.OutCubic));
         }
 
         sequence.OnComplete(() =>

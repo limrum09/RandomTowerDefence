@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 /// <summary>
@@ -11,6 +10,10 @@ public class SettingUIController : MonoBehaviour
     [Header("Canvas Group")]
     [SerializeField]
     private CanvasGroup canvas;
+
+    [Header("Animation")]
+    [SerializeField]
+    private UIPopInAnimation anim;
 
     [Header("Toggles")]
     [SerializeField]
@@ -95,6 +98,7 @@ public class SettingUIController : MonoBehaviour
         canvas.interactable = true;
         canvas.blocksRaycasts = true;
 
+        anim.Play();
         Debug.Log($"Show Setting Panel {canvas.alpha}");
     }
 
@@ -107,6 +111,7 @@ public class SettingUIController : MonoBehaviour
         canvas.alpha = 0.0f;
         canvas.interactable = false;
         canvas.blocksRaycasts = false;
+        anim.ResetScale();
     }
 
     /// <summary>

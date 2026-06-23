@@ -52,6 +52,7 @@ public class QuestManager
         OnAchievementComplete?.Invoke(quest);
         completeAchievement.Add(quest);
         activeAchievement.Remove(quest);
+        Managers.Save.MarkQuestDirty();
     }
 
     private void OnQuestCompleted(Quest quest)
@@ -131,7 +132,7 @@ public class QuestManager
         activeAchievement.Clear();
         completeAchievement.Clear();
 
-        if(saveDataList == null || saveDataList.datas.Count == 0 || saveDataList.datas == null)
+        if(saveDataList == null || saveDataList.datas == null || saveDataList.datas.Count == 0)
         {
             List<Achievement> lists = achievementDatas.GetAllAchievement();
 

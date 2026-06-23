@@ -24,7 +24,7 @@ MonoBehaviour:
   condition: {fileID: 11400000, guid: e4763d0ba68f30b45aea0506bf8e6390, type: 2}
   rewards:
   - rewardType: 0
-    icon: {fileID: 0}
+    icon: {fileID: 821336858916225130, guid: c506a112531ff6f40af41b69598cdfc4, type: 3}
     rewardUID: 
-    cnt: 0
+    cnt: 4000
   isSaveable: 1

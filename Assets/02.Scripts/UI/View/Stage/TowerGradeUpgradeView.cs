@@ -58,6 +58,26 @@ public class TowerGradeUpgradeView : MonoBehaviour, IPopUpPublicUI
     private TextMeshProUGUI normalBtnText;
     [SerializeField]
     private TextMeshProUGUI premiumBtnText;
+
+    private LocalizationDataManager local;
+
+    private void Start()
+    {
+        local = Managers.Local;
+        local.OnLanguageChanged += SetButtonText;
+    }
+
+    private void OnDestroy()
+    {
+        local.OnLanguageChanged -= SetButtonText;
+    }
+
+    private void SetButtonText()
+    {
+        normalBtnText.text = $"{Managers.Local.GetString("Stage", "STAGE_TOWER_NORMAL_UPGRADE")} ({Managers.InputData.GetKeyCode(InputAction.TowerGradeNormalUpgrade)})";
+        premiumBtnText.text = $"{Managers.Local.GetString("Stage", "STAGE_TOWER_FIXED_UPGRADE")} ({Managers.InputData.GetKeyCode(InputAction.TowerGradePremiumUpgrade)})";
+    }
+
     public void Clear()
     {
         towerNameText.text = "";
@@ -97,6 +117,7 @@ public class TowerGradeUpgradeView : MonoBehaviour, IPopUpPublicUI
     }
 
     public void SetIconImage(Sprite icon) => iconImage.sprite = icon;
+
     public void TowerGrade(int grade, string nextUGUI)
     {
         if (nextUGUI == "Master" || nextUGUI == "MASTER")

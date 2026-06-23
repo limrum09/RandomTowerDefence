@@ -6,8 +6,6 @@ public class AchievementUIController : MonoBehaviour
 {
     [Header("Info")]
     [SerializeField]
-    private TextMeshProUGUI titleText;
-    [SerializeField]
     private TextMeshProUGUI progressText;
     [SerializeField]
     private TextMeshProUGUI progressPerText;
@@ -24,7 +22,6 @@ public class AchievementUIController : MonoBehaviour
 
     private void Start()
     {
-        titleText.text = Managers.Local.GetString("Quest", "ACHIEVEMENT_UI_TITLE");
         Hide();
     }
 
@@ -49,10 +46,11 @@ public class AchievementUIController : MonoBehaviour
 
         int completeCnt = Managers.QuestMgr.CompleteAchievement.Count;
         int totalCnt = Managers.QuestMgr.ActiveAchievement.Count + completeCnt;
+        int percent = totalCnt <= 0 ? 0 : Mathf.RoundToInt((float)completeCnt / totalCnt * 100);
 
         progressText.text = $"{completeCnt} / {totalCnt}";
-        progressPerText.text = $"{(int)completeCnt / totalCnt}%";
-        progressBar.fillAmount = (float)completeCnt / totalCnt;
+        progressPerText.text = $"{percent}%";
+        progressBar.fillAmount = totalCnt <= 0 ? 0f : (float)completeCnt / totalCnt;
     }
 
     public void Hide()

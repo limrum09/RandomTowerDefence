@@ -22,5 +22,9 @@ MonoBehaviour:
     needSuccessCount: 100
     countingAfterComplete: 0
   condition: {fileID: 0}
-  rewards: []
+  rewards:
+  - rewardType: 2
+    icon: {fileID: -1650603336257507633, guid: cb91f42884c7db3478f78df2b7a9d717, type: 3}
+    rewardUID: 
+    cnt: 1000
   isSaveable: 0

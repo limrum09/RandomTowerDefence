@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine.Localization.Components;
 using UnityEngine.Localization.Settings;
 
@@ -29,6 +30,8 @@ public class LocalizationDataManager
     Dictionary<string, LocalizationData> datas = new Dictionary<string, LocalizationData>();
     private SelectLanguege language = SelectLanguege.KR;
 
+    public event Action OnLanguageChanged;
+
     private void LoadDataToJson()
     { 
         LocalizationRowList rowList = JsonLoader.LoadFromResources<LocalizationRowList>("Data/Localization");
@@ -46,7 +49,6 @@ public class LocalizationDataManager
 
     public void Init()
     {
-        
         datas.Clear();
         SetLanguage(SelectLanguege.KR);
         LoadDataToJson();
@@ -55,6 +57,8 @@ public class LocalizationDataManager
     public void SetLanguage(SelectLanguege la)
     {
         language = la;
+
+        OnLanguageChanged?.Invoke();
     }
 
     public string GetString(string key)

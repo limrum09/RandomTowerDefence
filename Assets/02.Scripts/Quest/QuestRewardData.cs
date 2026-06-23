@@ -28,6 +28,19 @@ public class QuestRewardData
     public int RewardCount => cnt;
     public void Give()
     {
-
+        switch (rewardType)
+        {
+            case QuestRewardType.Gold:
+                Managers.Player.AddCurrency(cnt);
+                Managers.Save.MarkPlayerDirty();
+                break;
+            case QuestRewardType.Exp:
+                Managers.Player.AddExp(cnt);
+                Managers.Save.MarkPlayerDirty();
+                break;
+            case QuestRewardType.Item:
+                Managers.Save.MarkPlayerDirty();
+                break;
+        }
     }
 }

@@ -17,7 +17,107 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: 4b354fe8ef8484240aa3ce5d846368b3, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 66789191680
+    m_Localized: '[Normal} Enemy Defeat 1'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3991491719168
+    m_Localized: '[Normal} Enemy Defeat 2'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3343387611770880
+    m_Localized: '[Easy] Easy Mode Stage Clear'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3344484606816256
+    m_Localized: '[Normal] Normal Mode Stage Clear'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3344556572684288
+    m_Localized: '[Hard] Hard Mode Stage Clear'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3344615976611840
+    m_Localized: '[Hell] Hell Mode Stage Clear'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3344583357509632
+    m_Localized: Hard Mode Stage Cleared
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3343394192633856
+    m_Localized: Easy Mode Stage Cleared
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3344508019421184
+    m_Localized: ' Normal Mode Stage Cleared'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3344637824741376
+    m_Localized: Hell Mode Stage Cleared
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6071518375936
+    m_Localized: Achievement Progress
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4040971923456
+    m_Localized: Defeat 10k Enemies
+    m_Metadata:
+      m_Items: []
+  - m_Id: 137576460288
+    m_Localized: Defeat 1k Enemies
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9853090034495488
+    m_Localized: '[Normal] Human Builder'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9869034261721088
+    m_Localized: '[Normal] Werebeast Builder'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9868959703773184
+    m_Localized: '[Normal] Dragonian Builder'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9868879177330688
+    m_Localized: '[Normal] Dwarf Builder'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9868784738381824
+    m_Localized: '[Normal] Orc Builder'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9868672515584000
+    m_Localized: '[Normal] Elf Builder'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9869075542061056
+    m_Localized: Build 150 Werebeast Towers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9869002045272064
+    m_Localized: Build 150 Dragonian Towers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9868927684456448
+    m_Localized: Build 150 Dwarf Towers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9868848407916544
+    m_Localized: Build 150 Orc Towers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9868748679950336
+    m_Localized: Build 150 Elf Towers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9853313452486656
+    m_Localized: Build 150 Human Towers
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
