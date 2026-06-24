@@ -263,6 +263,30 @@ MonoBehaviour:
     m_Key: UI_HELL_STAGE_TITLE
     m_Metadata:
       m_Items: []
+  - m_Id: 7253500294737920
+    m_Key: UI_ALL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7253520767135744
+    m_Key: UI_ACTIVE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7253545802936320
+    m_Key: UI_COMPLETED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7276838937309184
+    m_Key: UI_PRODUCT_EMPTY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7285548900298752
+    m_Key: UI_GOLD_LACK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7325013748363264
+    m_Key: UI_MAX_LEVEL
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

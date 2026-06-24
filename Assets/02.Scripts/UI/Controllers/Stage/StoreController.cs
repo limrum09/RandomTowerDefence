@@ -96,6 +96,7 @@ public class StoreController : MonoBehaviour
             slots[i].SetStoreSlot();
         }
     }
+
     private void SlotGetItemUID(int i)
     {
         int uidIndex = Random.Range(0, 18);
@@ -173,7 +174,9 @@ public class StoreController : MonoBehaviour
 
     public void RerollStoreUI(int amount)
     {
-        stage.UsingGold(GoldChangedReason.BUY, -amount);
+        if (!stage.UsingGold(GoldChangedReason.BUY, -amount))
+            return;
+
         SetStoreUI();
     }
 
@@ -204,9 +207,9 @@ public class StoreController : MonoBehaviour
             stage.UsingGold(GoldChangedReason.GAIN, product.price);
             return;
         }
-
-        // 나중에 추가
-        // slot.SetStoreSlot(StoreProduct.Empty);
+        
+        slot.SetStoreSlot(StoreProduct.Empty);
+        tooltip.Hide();
     }
 
     public bool UsingGold(GoldChangedReason reason, int amount)

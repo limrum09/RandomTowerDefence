@@ -267,6 +267,30 @@ MonoBehaviour:
     m_Localized: EASY
     m_Metadata:
       m_Items: []
+  - m_Id: 7253545802936320
+    m_Localized: Completed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7253520767135744
+    m_Localized: Active
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7253500294737920
+    m_Localized: All
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7276838937309184
+    m_Localized: Empty
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7285548900298752
+    m_Localized: Not enough gold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7325013748363264
+    m_Localized: Max Level
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

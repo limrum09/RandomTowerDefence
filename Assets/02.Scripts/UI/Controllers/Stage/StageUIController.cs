@@ -1,10 +1,6 @@
-using Mono.Cecil;
-using NUnit.Framework.Internal;
 using System;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class StageUIController : MonoBehaviour
 {
@@ -130,6 +126,7 @@ public class StageUIController : MonoBehaviour
         statPresenter.onClickAttackSpeedUpgrade += OnTowerStatAttackSpeedUpgrade;
 
         towerCtr.OnTowerSelectCleared += ClearSelection;
+        towerCtr.OnSelectTowerRemove += ClearRemoveTowerSelection;
         towerCtr.OnTowerSelected += SetSelectedTower;
         towerCtr.OnShowGradeUpgrade += OnClickGradeUpgrade;
         towerCtr.OnShowStatUpgrade += OnClickStatUpgrade;
@@ -142,7 +139,6 @@ public class StageUIController : MonoBehaviour
         towerCtr.OnQueueTowerBuildSuccess += queueCtr.RemoveTower;
 
         queueCtr.OnRequestBuildTower += towerCtr.BeginBuildTower;
-        queueCtr.OnRemoveTowerFromQueue += RemoveTower;
     }
 
     private void BindItemUI()
@@ -193,6 +189,7 @@ public class StageUIController : MonoBehaviour
         statPresenter.onClickAttackSpeedUpgrade -= OnTowerStatAttackSpeedUpgrade;
 
         towerCtr.OnTowerSelectCleared -= ClearSelection;
+        towerCtr.OnSelectTowerRemove -= ClearRemoveTowerSelection;
         towerCtr.OnTowerSelected -= SetSelectedTower;
         towerCtr.OnShowGradeUpgrade -= OnClickGradeUpgrade;
         towerCtr.OnShowStatUpgrade -= OnClickStatUpgrade;
@@ -205,7 +202,6 @@ public class StageUIController : MonoBehaviour
         towerCtr.OnQueueTowerBuildSuccess -= queueCtr.RemoveTower;
 
         queueCtr.OnRequestBuildTower -= towerCtr.BeginBuildTower;
-        queueCtr.OnRemoveTowerFromQueue -= RemoveTower;
     }
     private void UnBindItemUI()
     {
@@ -412,6 +408,13 @@ public class StageUIController : MonoBehaviour
         actionMenuPresenter.SetModel(selectedTower);
     }
 
+    private void ClearRemoveTowerSelection()
+    {
+        selectedTower = null;
+        actionMenuPresenter.Hide();
+        HideDetailViews();
+    }
+
     private void ClearSelection()
     {
         selectedTower = null;
@@ -438,12 +441,18 @@ public class StageUIController : MonoBehaviour
         if (selectedTower == null)
             return;
 
-        queueCtr.MoveFieldTowerToQueue(selectedTower.TowerUID);
-    }
+        if (!queueCtr.HasEmptySlot())
+            return;
 
-    private void RemoveTower()
-    {
-        towerCtr.RemoveTower();
+        string uid = selectedTower.TowerUID;
+
+        if (!towerCtr.RemoveTower())
+            return;
+
+        if (!queueCtr.AddTower(uid))
+        {
+            Debug.LogError($"대기열로 타워 이동 실패");
+        }
     }
 
     private void OnTowerGradeNormalUpgrade()
@@ -496,9 +505,9 @@ public class StageUIController : MonoBehaviour
         OnRequestItemSell?.Invoke(item, index);
     }
 
-    private void OnGoldToTowerIntertion(GoldChangedReason reason, int value)
+    private bool OnGoldToTowerIntertion(GoldChangedReason reason, int value)
     {
-        OnGoldToTowerInterection?.Invoke(reason, value);
+        return OnGoldToTowerInterection?.Invoke(reason, value) ?? false;
     }
 
     private void OnClickAccelerate()
@@ -553,6 +562,6 @@ public class StageUIController : MonoBehaviour
 
     public void MoveToLobby()
     {
-        OnMoveToLobby.Invoke();
+        OnMoveToLobby?.Invoke();
     }
 }

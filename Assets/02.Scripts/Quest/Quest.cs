@@ -18,12 +18,22 @@ public enum QuestCategory
     Achievement
 }
 
+public enum QuestDifficulty
+{
+    EASY,
+    NORMAL,
+    HARD,
+    HELL
+}
+
 [CreateAssetMenu(fileName = "Quest_", menuName = "Quest/Quest")]
 public class Quest : ScriptableObject
 {
     public event Action<Quest> OnQuestComplete;
 
     [Header("Quest Info")]
+    [SerializeField]
+    private QuestDifficulty difficulty;
     [SerializeField]
     private QuestCategory questCategory;
     [SerializeField]
@@ -41,6 +51,7 @@ public class Quest : ScriptableObject
     [SerializeField]
     private bool isSaveable;    // 업적에서만 사용
 
+    public QuestDifficulty Difficulty => difficulty;
     public QuestCategory Category => questCategory;
     public string QuestUID => questUID;
     public QuestTaskData Task => task;
@@ -68,6 +79,9 @@ public class Quest : ScriptableObject
     public void QuestOnRegister()
     {
         if (Stat == QuestStat.Comoplete)
+            return;
+
+        if (task == null)
             return;
 
         task.OnTaskCompleted += QuestComplete;        
@@ -100,9 +114,12 @@ public class Quest : ScriptableObject
 
         Stat = QuestStat.Comoplete;
 
-        foreach(var reward in rewards)
+        if(rewards != null)
         {
-            reward.Give();
+            foreach (var reward in rewards)
+            {
+                reward.Give();
+            }
         }
 
         task.TaskCompleted();

@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Pool;
 
 /// <summary>
 /// Pool을 용도별로 구분하기 위한 카테고리

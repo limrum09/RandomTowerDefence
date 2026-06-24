@@ -19,27 +19,27 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 66789191680
-    m_Localized: '[Normal} Enemy Defeat 1'
+    m_Localized: Enemy Defeat 1
     m_Metadata:
       m_Items: []
   - m_Id: 3991491719168
-    m_Localized: '[Normal} Enemy Defeat 2'
+    m_Localized: Enemy Defeat 2
     m_Metadata:
       m_Items: []
   - m_Id: 3343387611770880
-    m_Localized: '[Easy] Easy Mode Stage Clear'
+    m_Localized: Easy Mode Stage Clear
     m_Metadata:
       m_Items: []
   - m_Id: 3344484606816256
-    m_Localized: '[Normal] Normal Mode Stage Clear'
+    m_Localized: Normal Mode Stage Clear
     m_Metadata:
       m_Items: []
   - m_Id: 3344556572684288
-    m_Localized: '[Hard] Hard Mode Stage Clear'
+    m_Localized: Hard Mode Stage Clear
     m_Metadata:
       m_Items: []
   - m_Id: 3344615976611840
-    m_Localized: '[Hell] Hell Mode Stage Clear'
+    m_Localized: Hell Mode Stage Clear
     m_Metadata:
       m_Items: []
   - m_Id: 3344583357509632
@@ -71,27 +71,27 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 9853090034495488
-    m_Localized: '[Normal] Human Builder'
+    m_Localized: Human Builder
     m_Metadata:
       m_Items: []
   - m_Id: 9869034261721088
-    m_Localized: '[Normal] Werebeast Builder'
+    m_Localized: Werebeast Builder
     m_Metadata:
       m_Items: []
   - m_Id: 9868959703773184
-    m_Localized: '[Normal] Dragonian Builder'
+    m_Localized: Dragonian Builder
     m_Metadata:
       m_Items: []
   - m_Id: 9868879177330688
-    m_Localized: '[Normal] Dwarf Builder'
+    m_Localized: Dwarf Builder
     m_Metadata:
       m_Items: []
   - m_Id: 9868784738381824
-    m_Localized: '[Normal] Orc Builder'
+    m_Localized: Orc Builder
     m_Metadata:
       m_Items: []
   - m_Id: 9868672515584000
-    m_Localized: '[Normal] Elf Builder'
+    m_Localized: Elf Builder
     m_Metadata:
       m_Items: []
   - m_Id: 9869075542061056
@@ -116,6 +116,14 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 9853313452486656
     m_Localized: Build 150 Human Towers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10129749044244480
+    m_Localized: Tower Collector
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10130560088420352
+    m_Localized: Build 100 towers of any type.
     m_Metadata:
       m_Items: []
   references:

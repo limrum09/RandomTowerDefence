@@ -129,10 +129,21 @@ public class RunSessionDataManager
         if (state == null || amount <= 0)
             return;
 
+        if (state.Level >= 13)
+            return;
+
         state.SetExp(state.CurrentExp + amount);
 
         while(state.CurrentExp >= rule.GetNeedEXP(state.Level))
         {
+            if(state.Level >= 13)
+            {
+                state.SetLevel(13);
+                state.SetExp(0);
+                OnExpChanged?.Invoke(state.CurrentExp, rule.GetNeedEXP(state.Level));
+                return;
+            }
+
             int needExp = rule.GetNeedEXP(state.Level);
             
             state.SetExp(state.CurrentExp - needExp);
@@ -229,7 +240,7 @@ public class RunSessionDataManager
 
     public bool UsingFreeObstacle()
     {
-        if (state.FreeObstacleCnt <= 0 || state == null)
+        if (state == null || state.FreeObstacleCnt <= 0)
             return false;
 
         state.SetFreeObstacleCount(state.FreeObstacleCnt - 1);

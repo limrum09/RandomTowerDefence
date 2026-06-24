@@ -1,3 +1,4 @@
+using Firebase.Auth;
 using System;
 using System.Collections.Generic;
 
@@ -70,11 +71,15 @@ public class StageRuleDataManager
         GetDataToJaon();
     }
 
-    public int GetRuleData(StageRules rule)
+    public bool GetRuleData(StageRules rule, out int value)
     {
         if (!stageRules.TryGetValue(rule, out StageRuleData data))
-            return -1;
+        {
+            value = 0;
+            return false;
+        }
 
-        return data.value;
+        value = data.value;
+        return true;
     }
 }

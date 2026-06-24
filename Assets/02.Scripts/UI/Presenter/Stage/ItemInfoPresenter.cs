@@ -1,5 +1,4 @@
 using System;
-using UnityEditor;
 using UnityEngine;
 
 public class ItemInfoPresenter
@@ -18,6 +17,9 @@ public class ItemInfoPresenter
 
     public void SetModel(ItemData getModel, int getIndex)
     {
+        if (getModel == null)
+            return;
+
         model = getModel;
         index = getIndex;
 

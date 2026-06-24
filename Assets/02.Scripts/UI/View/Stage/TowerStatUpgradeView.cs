@@ -62,7 +62,8 @@ public class TowerStatUpgradeView : MonoBehaviour
 
     private void OnDestroy()
     {
-        local.OnLanguageChanged -= ChangedLanguage;
+        if(local != null)
+            local.OnLanguageChanged -= ChangedLanguage;
     }
 
     public void Init()

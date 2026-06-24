@@ -123,17 +123,25 @@ public class MetaUpgradeView : MonoBehaviour
     private void ChangedEXPBar()
     {
         int level = Managers.Player.GetPlayerLevel();
-        int needEXP = Managers.ResearchLevel.GetNeedExp(level);
-        int currentEXP = Managers.Player.GetCurrentEXP();
 
-        float fill = Mathf.Clamp01((float)currentEXP / needEXP);
-
-        if(fill <= 0)
+        if (level >= 12)
         {
             currentEXPBar.DOKill();
-            currentEXPBar.fillAmount = 0;
+            currentEXPBar.fillAmount = 1f;
             return;
         }
+
+        int currentEXP = Managers.Player.GetCurrentEXP();
+        int needEXP = Managers.ResearchLevel.GetNeedExp(level);
+
+        if(needEXP <= 0)
+        {
+            currentEXPBar.DOKill();
+            currentEXPBar.fillAmount = 0f;
+            return;
+        }
+
+        float fill = Mathf.Clamp01((float)currentEXP / needEXP);
 
         currentEXPBar.DOKill();
         currentEXPBar.DOFillAmount(fill, 0.2f);
@@ -217,6 +225,9 @@ public class MetaUpgradeView : MonoBehaviour
     public void OnClickTowerToggle(TowerType type)
     {
         List<TowerData> datas = Managers.TowerData.GetTowerData(type);
+
+        if (datas == null || datas.Count <= 0)
+            return;
 
         int cnt = datas.Count > selectViews.Count ? selectViews.Count : datas.Count;
 

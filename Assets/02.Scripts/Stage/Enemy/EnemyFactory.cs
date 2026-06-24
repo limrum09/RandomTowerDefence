@@ -94,7 +94,11 @@ public class EnemyFactory
         enemyMove.onDead += EnemyDead;
 
         Vector2Int startCell = grid.WorldToCell(worldPos);
-        enemyMove.Initialize(grid, path, enemyObj, startCell, grid.GoalPos);
+        if(!enemyMove.Initialize(grid, path, enemyObj, startCell, grid.GoalPos))
+        {
+            UnityEngine.Object.Destroy(enemyObj.gameObject);
+            return false;
+        }
 
         skill.SetEenmyFactory(this);
 

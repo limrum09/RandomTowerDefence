@@ -115,6 +115,14 @@ MonoBehaviour:
     m_Key: TASK_BUILD_WEREBEAST_TOWER_150
     m_Metadata:
       m_Items: []
+  - m_Id: 10129749044244480
+    m_Key: ACHIEVEMENT_BUILD_TOWER_100
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10130560088420352
+    m_Key: TASK_BUILD_TOWER_100
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -22,9 +22,10 @@ public class TowerController : MonoBehaviour
     public event Action OnTowerSelectCleared;
     public event Action<Tower> OnShowGradeUpgrade;
     public event Action<Tower> OnShowStatUpgrade;
-    public event Action<GoldChangedReason, int> OnGoldInteraction;
+    public event Func<GoldChangedReason, int, bool> OnGoldInteraction;
     public event Action OnFieldTowerMoveToQueueSlot;
     public event Action OnFirstTowerBuild;
+    public event Action OnSelectTowerRemove;
     public event Action<int> OnQueueTowerBuildSuccess;
 
     private FieldTowerManager fieldTowerManager;
@@ -367,7 +368,7 @@ public class TowerController : MonoBehaviour
         if (data == null)
         {
             // 상세 UI 닫기
-            ClearSelectedTower(false);
+            ClearSelectedTower();
             return;
         }
 
@@ -376,12 +377,12 @@ public class TowerController : MonoBehaviour
         if (move == null)
         {
             // 컴포넌트가 없다면 상세 UI닫기
-            ClearSelectedTower(false);
+            ClearSelectedTower();
             return;
         }
 
         // 타워 상세 UI 닫기
-        ClearSelectedTower(false);
+        ClearSelectedTower();
 
         // 새타워 선택
         selectedTower = tower;
@@ -475,17 +476,22 @@ public class TowerController : MonoBehaviour
     /// 선택된 타워 정보 초기화
     /// </summary>
     /// <param name="hideView"></param>
-    private void ClearSelectedTower(bool hideView = true)
+    private void ClearSelectedTower()
+    {
+        ClearSelectTowerStat();
+        OnTowerSelectCleared?.Invoke();
+    }
+
+    private void ClearRemoveSelectedTower()
+    {
+        ClearSelectTowerStat();
+        OnSelectTowerRemove?.Invoke();
+    }
+
+    private void ClearSelectTowerStat()
     {
         if (selectedTower != null)
             selectedTower.ShowAttackRange(false);
-
-        // 필요 시 간세 UI도 함께 닫음
-        if (hideView)
-        {
-            //selectedTower.ShowAttackRange(false); 
-            OnTowerSelectCleared?.Invoke();
-        }
 
         selectedTower = null;
         selectedTowerCell = Vector2Int.zero;
@@ -503,7 +509,7 @@ public class TowerController : MonoBehaviour
         preview.Hide();
 
         if (clearSelection)
-            ClearSelectedTower(false);
+            ClearSelectedTower();
     }
 
     /// <summary>
@@ -587,19 +593,49 @@ public class TowerController : MonoBehaviour
     /// </summary>
     /// <param name="buildUID"></param>
     /// <param name="towers"></param>
-    private void TowerGradeUpgrade(string buildUID, List<Tower> towers)
+    private bool TowerGradeUpgrade(string buildUID, List<Tower> towers, Vector2Int spawnCell)
     {
-        // 첫 번째 재료 타워의 위치를 업그레이드 타워 생성 위치로 사용
-        Vector2Int spawnCell = towers[0].GetComponent<TowerMove>().GetTowerPosition();
-
         // 재료 타워 제거
-        fieldTowerManager.RemoveTowers(towers);
+        if (!fieldTowerManager.RemoveTowers(towers))
+            return false;
 
         // 업그레이드 타워 생성
-        BuildTower(buildUID, spawnCell);
+        if (!BuildTower(buildUID, spawnCell))
+            return false;        
 
         // 현재 선택 상태 초기화
-        ClearSelectedTower();
+        ClearRemoveSelectedTower();
+
+        return true;
+    }
+
+    /// <summary>
+    /// 업그레이드가 가능한지 확인
+    /// </summary>
+    /// <param name="buildUID"></param>
+    /// <param name="towers"></param>
+    /// <param name="spawnCell"></param>
+    /// <returns></returns>
+    private bool CanGradeUpgrade(string buildUID, List<Tower> towers, out Vector2Int spawnCell)
+    {
+        spawnCell = Vector2Int.zero;
+
+        if (string.IsNullOrEmpty(buildUID))
+            return false;
+
+        if (Managers.TowerData.GetTowerData(buildUID) == null)
+            return false;
+
+        if (towers == null || towers.Count <= 0)
+            return false;
+
+        TowerMove move = towers[0].GetComponent<TowerMove>();
+
+        if (move == null)
+            return false;
+
+        spawnCell = move.GetTowerPosition();
+        return true;
     }
 
     /// <summary>
@@ -607,9 +643,9 @@ public class TowerController : MonoBehaviour
     /// 양수는 골드 획득, 음수는 골드 소비
     /// </summary>
     /// <param name="value"></param>
-    private void GoldInterction(GoldChangedReason reason, int value)
+    private bool GoldInterction(GoldChangedReason reason, int value)
     {
-        OnGoldInteraction?.Invoke(reason, value);
+        return OnGoldInteraction?.Invoke(reason, value) ?? false;
     }
 
     /// <summary>
@@ -659,6 +695,10 @@ public class TowerController : MonoBehaviour
 
         // 다음 등급 타워의 UID 가져오기
         string[] nextTowerUIDs = Managers.TowerData.GetTowerGradeUID(towers[0].Grade + 1);
+
+        if (nextTowerUIDs == null || nextTowerUIDs.Length <= 0)
+            return;
+
         int cnt = nextTowerUIDs.Length;
 
         // 랜덤 업그레이드 결과 선택
@@ -666,9 +706,17 @@ public class TowerController : MonoBehaviour
         
         string buildTowerUID = nextTowerUIDs[idx];
 
+        if (!CanGradeUpgrade(buildTowerUID, towers, out Vector2Int spawnCell))
+            return;
+
+        if (!GoldInterction(GoldChangedReason.UPGRADE, -300))
+            return;
+
         // 업그레이드 실행
-        TowerGradeUpgrade(buildTowerUID, towers);
-        GoldInterction(GoldChangedReason.BUILD , - 300);
+        if (!TowerGradeUpgrade(buildTowerUID, towers, spawnCell))
+        {
+            GoldInterction(GoldChangedReason.GAIN, 300);
+        }
     }
 
     /// <summary>
@@ -689,9 +737,17 @@ public class TowerController : MonoBehaviour
         // 고정 업그레이드 타워 UID 가져오기
         string buildTowerUID = towers[0].NextGradeUID;
 
+        if (!CanGradeUpgrade(buildTowerUID, towers, out Vector2Int spawnCell))
+            return;
+
+        if (!GoldInterction(GoldChangedReason.UPGRADE, -1000))
+            return;
+
         // 업그레이드 실행
-        TowerGradeUpgrade(buildTowerUID, towers);
-        GoldInterction(GoldChangedReason.UPGRADE, -1000);
+        if(!TowerGradeUpgrade(buildTowerUID, towers, spawnCell))
+        {
+            GoldInterction(GoldChangedReason.GAIN, 1000);
+        }
     }
 
     /// <summary>
@@ -721,7 +777,7 @@ public class TowerController : MonoBehaviour
             return false;
 
         // 선택 초기화
-        ClearSelectedTower();
+        ClearRemoveSelectedTower();
         return true;
     }
 }

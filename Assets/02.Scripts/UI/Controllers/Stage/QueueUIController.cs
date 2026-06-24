@@ -16,7 +16,6 @@ public class QueueUIController : MonoBehaviour
     private int length;                         // 대기열 슬롯 개수
 
     public event Action<string, int, Sprite> OnRequestBuildTower;
-    public event Action OnRemoveTowerFromQueue;
     public event Action<int> OnGameOverConvertToGold;
 
     private void Awake()
@@ -36,12 +35,19 @@ public class QueueUIController : MonoBehaviour
         }
     }
 
-    public void MoveFieldTowerToQueue(string uid)
+    /// <summary>
+    /// 대기열에 빈 자리가 있는지 확인
+    /// </summary>
+    /// <returns></returns>
+    public bool HasEmptySlot()
     {
-        if (!AddTower(uid))
-            return;
+        for(int i = 0; i < length; i++)
+        {
+            if (slots[i].IsQueueEmpty)
+                return true;
+        }
 
-        OnRemoveTowerFromQueue?.Invoke();
+        return false;
     }
 
     /// <summary>

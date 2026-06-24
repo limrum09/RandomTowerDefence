@@ -19,6 +19,9 @@ public class TowerStatUpgradePresenter
 
     public void SetModel(Tower getModel)
     {
+        if (getModel == null)
+            return;
+
         model = getModel;
         string modelUid = model.TowerUID;
 
@@ -35,6 +38,9 @@ public class TowerStatUpgradePresenter
         TowerSessionUpgradeData tempSessionDamageData =
             Managers.SessionTowerUpgrade.GetUpgradeStepData(model.TowerUID, UpgradeType.Damge);
 
+        if (tempSessionDamageData == null)
+            return;
+
         int currentDamageStep = TowerStatCalculator.GetAttackStep(model.Type);
         string nextDamageText = $"{(model.CurrentDamage + tempSessionDamageData.increaseValue)} (+{tempSessionDamageData.increaseValue})";
 
@@ -46,6 +52,9 @@ public class TowerStatUpgradePresenter
 
         TowerSessionUpgradeData tempSessionSpeedData = 
             Managers.SessionTowerUpgrade.GetUpgradeStepData(model.TowerUID, UpgradeType.Speed);
+
+        if (tempSessionSpeedData == null)
+            return;
 
         int currentSpeedStep = TowerStatCalculator.GetSpeedStep(model.Type);
         string nextSpeedText = $"{(model.CurrentAtkSpeed + tempSessionSpeedData.increaseValue).ToString("N2")} (+{tempSessionSpeedData.increaseValue.ToString("N2")})";

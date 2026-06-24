@@ -227,6 +227,12 @@ public class Tower : MonoBehaviour
         // 타워 정적 데이터 조회
         data = Managers.TowerData.GetTowerData(towerUID);
 
+        if (data == null)
+        {
+            Debug.LogError($"Tower Data Missing : {towerUID}");
+            return;
+        }   
+
         // TowerData값 복사
         towerType = data.towerType;
         stringKey = data.stringKey;

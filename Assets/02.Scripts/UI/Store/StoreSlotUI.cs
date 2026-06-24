@@ -87,7 +87,7 @@ public class StoreSlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         }
         else
         {
-            tempText.text = Product.type == StoreProductType.None ? "비어있음" : Product.uid;
+            tempText.text = Product.type == StoreProductType.None ? Managers.Local.GetString("UI", "UI_PRODUCT_EMPTY") : Product.uid;
             iconImage.gameObject.SetActive(false);
         }
     }
@@ -97,14 +97,7 @@ public class StoreSlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     /// </summary>
     public void SetStoreSlot()
     {
-        uid = string.Empty;
-        type = StoreProductType.None;
-        price = 0;
-
-        tempText.text = "타워를 넣지 못함";
-        gradeText.text = "0";
-        priceText.text = "0";
-        iconImage.gameObject.SetActive(false);
+        SetStoreSlot(StoreProduct.Empty);
     }
 
     /// <summary>

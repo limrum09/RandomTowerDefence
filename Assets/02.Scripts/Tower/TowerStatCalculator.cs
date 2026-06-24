@@ -70,8 +70,14 @@ public static class TowerStatCalculator
         float baseAtk = Managers.Game.GetTowerDisplayData(data).currentValue2;
         float baseAtkSpeed = Managers.Game.GetTowerDisplayData(data).currentValue1;
 
-        float increaseAtkDamage = Managers.SessionTowerUpgrade.GetUpgradeStepData(data.towerUID, UpgradeType.Damge).increaseValue;
-        float increaseAtkSpeed = Managers.SessionTowerUpgrade.GetUpgradeStepData(data.towerUID, UpgradeType.Speed).increaseValue;
+        TowerSessionUpgradeData damageUpgrade = Managers.SessionTowerUpgrade.GetUpgradeStepData(data.towerUID, UpgradeType.Damge);
+        TowerSessionUpgradeData speedUpgrade = Managers.SessionTowerUpgrade.GetUpgradeStepData(data.towerUID, UpgradeType.Speed);
+
+        if (damageUpgrade == null || speedUpgrade == null)
+            return default;
+
+        float increaseAtkDamage = damageUpgrade.increaseValue;
+        float increaseAtkSpeed = speedUpgrade.increaseValue;
 
         float calDamage = baseAtk + (int)(increaseAtkDamage * GetAttackStep(data.towerType));
         float calSpeed = baseAtkSpeed + (increaseAtkSpeed * GetSpeedStep(data.towerType));
