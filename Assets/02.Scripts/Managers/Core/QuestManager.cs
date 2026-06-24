@@ -25,8 +25,15 @@ public class QuestManager
 
     private void QuestRecieveReport(List<Quest> quests, QuestCategory category, object target, int successCount)
     {
-        foreach(var quest in quests)
+        List<Quest> questCopy = new List<Quest>(quests);
+        foreach(var quest in questCopy)
         {
+            if (quest == null)
+                continue;
+
+            if (!quests.Contains(quest))
+                continue;
+
             quest.QuestRecieveReport(category, target, successCount);
         }
     }
@@ -71,7 +78,7 @@ public class QuestManager
         return newQuest;
     }
 
-    public Quest QeustRegistger(Quest quest)
+    public Quest QuestRegistger(Quest quest)
     {
         Quest newQuest = quest.Clone();
 
@@ -138,7 +145,7 @@ public class QuestManager
 
             foreach(var achievement in lists)
             {
-                QeustRegistger(achievement);
+                QuestRegistger(achievement);
             }
 
             return;
@@ -152,6 +159,19 @@ public class QuestManager
                 continue;
 
             LoadAchievement(saveData, newAchievement);
+        }
+
+        List<Achievement> allAchievement = achievementDatas.GetAllAchievement();
+
+        foreach(var achievement in allAchievement)
+        {
+            bool isOldAchievement = activeAchievement.Any(x => x.QuestUID == achievement.QuestUID) ||
+                completeAchievement.Any(x => x.QuestUID == achievement.QuestUID);
+
+            if (isOldAchievement)
+                continue;
+
+            QuestRegistger(achievement);
         }
     }
 }

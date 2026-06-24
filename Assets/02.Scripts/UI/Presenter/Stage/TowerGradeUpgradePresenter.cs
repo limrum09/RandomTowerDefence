@@ -21,6 +21,9 @@ public class TowerGradeUpgradePresenter
 
     public void SetModel(Tower getModel)
     {
+        if (getModel == null)
+            return;
+
         this.model = getModel;
 
         Sprite icon = ResourceCache.Load<Sprite>($"Tower/Images/Icon_Tower_{model.IconPath}_{model.Grade}_Idle");
@@ -40,6 +43,9 @@ public class TowerGradeUpgradePresenter
         string skillDesSplit = model.SkillDes();
 
         List<SkillValueCollect> skill = Managers.TowerSkill.GetTowerCollections(model.Type);
+
+        if (skill == null || skill.Count <= 0)
+            return;
 
         TowerSkillData skillData = null;
         int isOrc = 0;

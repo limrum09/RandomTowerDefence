@@ -55,7 +55,7 @@ public class EnemyMove : MonoBehaviour
     /// <param name="getEnemy"></param>
     /// <param name="getStartCell"></param>
     /// <param name="getEndCell"></param>
-    public void Initialize(GridManager getGrid, PathFinder getPath, Enemy getEnemy, Vector2Int getStartCell, Vector2Int getEndCell)
+    public bool Initialize(GridManager getGrid, PathFinder getPath, Enemy getEnemy, Vector2Int getStartCell, Vector2Int getEndCell)
     {
         gridManager = getGrid;
         path = getPath;
@@ -68,7 +68,14 @@ public class EnemyMove : MonoBehaviour
         // 시작 위치로 이동
         transform.position = gridManager.CellToWorldCenter(startCell.x, startCell.y);
         // 이동 경로 계산
-        RecalculatePath();
+        if (!RecalculatePath())
+        {
+            isMove = false;
+            return false;
+        }
+
+        isMove = true;
+        return true;
     }
 
     /// <summary>
@@ -97,7 +104,7 @@ public class EnemyMove : MonoBehaviour
     /// <summary>
     /// 현제 위치 기준으로 경로 계산
     /// </summary>
-    private void RecalculatePath()
+    private bool RecalculatePath()
     {
         // 현재 위치를 Grid Cell로 변환
         Vector2Int currentCell = gridManager.WorldToCell(transform.position);
@@ -110,10 +117,11 @@ public class EnemyMove : MonoBehaviour
         if (currentPath == null || currentPath.Count == 0)
         {
             Debug.LogWarning("경로를 찾지 못했습니다.");
-            return;
+            return false;
         }
 
         Debug.Log($"경로 길이 : {currentPath.Count}");
+        return true;
     }
 
     /// <summary>

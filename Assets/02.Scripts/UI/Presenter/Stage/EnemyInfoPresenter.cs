@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EnemyInfoPresenter
@@ -29,8 +30,18 @@ public class EnemyInfoPresenter
         view.SetSkillName(Managers.Local.GetString("Enemy", model.skillStringKey));
 
         string des = Managers.Local.GetString("Enemy", model.skillDesStringKey);
-        string formatStr = string.Format(des, model.duration, model.cooldown, model.tickInterval, model.range, $"{model.skillValue}(+{model.skillValue - model.basicSkillValue})");
-        view.SetSkillDesText(formatStr);
+
+        try
+        {
+            string formatStr = string.Format(des, model.duration, model.cooldown, model.tickInterval, model.range, $"{model.skillValue}(+{model.skillValue - model.basicSkillValue})");
+            view.SetSkillDesText(formatStr);
+        }
+        catch (FormatException e)
+        {
+            Debug.LogError($"Enemy Skill Des format error : {model.skillDesStringKey}, {e.Message}");
+            view.SetSkillDesText(des);
+        }
+        
     }
 
     public void Hide()

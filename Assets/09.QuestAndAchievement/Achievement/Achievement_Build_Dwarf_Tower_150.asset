@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d273925ee3135e42a650376983637eb, type: 3}
   m_Name: Achievement_Build_Dwarf_Tower_150
   m_EditorClassIdentifier: 
+  difficulty: 1
   questCategory: 4
   questUID: ACHIEVEMENT_BUILD_DWARF_TOWER_150
   task:

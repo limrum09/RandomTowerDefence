@@ -16,7 +16,7 @@ public class Managers : MonoBehaviour
             return instance;
         }
     }
-    public static bool HasInstance => instance != null && isQuitting;
+    public static bool HasInstance => instance != null && !isQuitting;
 
     private GameManager game = new GameManager();
     private StageScoreCalculator stageScoreCalculator = new StageScoreCalculator();

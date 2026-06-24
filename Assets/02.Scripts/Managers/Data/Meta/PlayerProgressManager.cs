@@ -1,6 +1,5 @@
 using Firebase.Firestore;
 using System;
-using System.Diagnostics;
 
 [Serializable]
 [FirestoreData]
@@ -29,6 +28,7 @@ public class PlayerProgressData : IValidSaveData
 public class PlayerProgressManager
 {
     private PlayerProgressData playerData = new PlayerProgressData();
+    private const int MaxLevel = 12;
 
     /// <summary>
     /// 임시로 재화 제공
@@ -49,18 +49,39 @@ public class PlayerProgressManager
         if (getExp <= 0)
             return false;
 
-        playerData.exp += getExp;
-
-        int needExp = Managers.ResearchLevel.GetNeedExp(playerData.level);
-
-        if(needExp <= playerData.exp)
+        if(playerData.level >= MaxLevel)
         {
-            playerData.exp -= needExp;
-            playerData.level++;
-            return true;
+            playerData.level = MaxLevel;
+            playerData.exp = 0;
+            return false;
         }
 
-        return false;
+        playerData.exp += getExp;
+
+        bool isLevelUp = false;
+
+        while(playerData.level < MaxLevel)
+        {
+            int needExp = Managers.ResearchLevel.GetNeedExp(playerData.level);
+
+            if (needExp <= 0)
+            {
+                playerData.exp = 0;
+                return isLevelUp;
+            }
+
+            if (playerData.exp < needExp)
+                return isLevelUp;
+
+            playerData.exp -= needExp;
+            playerData.level++;
+            isLevelUp = true;
+        }
+
+        playerData.level = MaxLevel;
+        playerData.exp = 0;        
+
+        return isLevelUp;
     }
 
     /// <summary>
@@ -70,7 +91,7 @@ public class PlayerProgressManager
     /// <param name="getCurrency"></param>
     public void AddCurrency(int getCurrency)
     {
-        if (getCurrency <= -0)
+        if (getCurrency <= 0)
             return;
 
         playerData.metaCurrency += getCurrency;
@@ -122,6 +143,15 @@ public class PlayerProgressManager
     public void LoadSaveData(PlayerProgressData getData)
     {
         playerData = getData != null ? getData : new PlayerProgressData() { level = 1, exp = 0, metaCurrency = 0 };
+
+        if (playerData.level <= 0)
+            playerData.level = 1;
+
+        if(playerData.level >= MaxLevel)
+        {
+            playerData.level = MaxLevel;
+            playerData.exp = 0;
+        }
     }
 
     /// <summary>

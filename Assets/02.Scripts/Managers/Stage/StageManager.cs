@@ -62,6 +62,7 @@ public class StageManager : MonoBehaviour
     private bool isSpawning;
     private bool isStagePlaying;
     private bool isGameOver;
+    private bool isGameEnd;
     private bool isReportedStageEndAchievement;
     private int aliveEnemyCnt;
     private int waveTotalEnemyCount;
@@ -130,6 +131,7 @@ public class StageManager : MonoBehaviour
         currentWave = 1;
         isResetTerrain = true;
         isGameOver = false;
+        isGameEnd = false;
         isReportedStageEndAchievement = false;
         speedIndex = 0;
         waveTotalEnemyCount = 0;
@@ -367,8 +369,10 @@ public class StageManager : MonoBehaviour
         {
             OnWaveStart -= enemySpawn.EnemySpawnStart;
             enemySpawn.OnSpawnEnd -= EnemySpawnEnd;
+        }
 
-            
+        if(factory != null)
+        {
             factory.OnEnemySpawn -= RegisterSpawnEnemy;
             factory.OnEnemySummon -= RegisterSummonEnemy;
             factory.OnEnemyReached -= RegisterReachedEnemy;
@@ -512,11 +516,11 @@ public class StageManager : MonoBehaviour
             return;
         }
 
-        isStagePlaying = false;
-        currentWave++;
-
         if (isGameOver)
             return;
+
+        isStagePlaying = false;
+        currentWave++;
 
         if (currentWave >= 61)
         {
@@ -530,7 +534,12 @@ public class StageManager : MonoBehaviour
         waveTotalEnemyCount = 0;
 
         sessionManager.SetWave(currentWave);
-        RunSession.AddExp(Managers.StageRules.GetRuleData(StageRules.WaveClearRewardExp));
+        
+        if(!Managers.StageRules.GetRuleData(StageRules.WaveClearRewardExp, out int exp))
+        {
+            Debug.LogError($"경험치 획득 오류, 획득 경험치 : {exp}");
+        }
+        RunSession.AddExp(exp);
 
         GetInterestGold();
         OnWaveEnd?.Invoke();
@@ -541,14 +550,23 @@ public class StageManager : MonoBehaviour
     /// </summary>
     private void GetInterestGold()
     {
-        float baseInterest = Managers.StageRules.GetRuleData(StageRules.WaveClearInterestRate);
+        if(!Managers.StageRules.GetRuleData(StageRules.WaveClearInterestRate, out int baseInterest))
+            return;
+
+        if(!Managers.StageRules.GetRuleData(StageRules.MaxInterestGold, out int baseMaxInterest))
+            return;
+
         float increaseInterest = statUpgradeManager.IncreaseInterserPer;
         float totalInterestRate = baseInterest + increaseInterest;
 
         int currentGold = sessionManager.SessionState.Gold;
         int interest = Mathf.FloorToInt(currentGold * (totalInterestRate / 100f));
+        int maxInterest = baseMaxInterest + Mathf.FloorToInt(statUpgradeManager.MaxInterestValue);
 
-        UsingGold(GoldChangedReason.GAIN, interest);
+        interest = Mathf.Clamp(interest, 0, maxInterest);
+
+        if(interest > 0)
+            UsingGold(GoldChangedReason.GAIN, interest);
     }
 
     /// <summary>
@@ -558,6 +576,7 @@ public class StageManager : MonoBehaviour
     private void EnemySpawnEnd()
     {
         isSpawning = false;
+        CheckWaveEnd();
     }
 
     /// <summary>
@@ -692,7 +711,9 @@ public class StageManager : MonoBehaviour
         if (sessionManager.SessionState.Gold < cost)
             return;
 
-        UsingGold(GoldChangedReason.UPGRADE, -cost);
+        if (!UsingGold(GoldChangedReason.UPGRADE, -cost))
+            return;
+            
 
         statUpgradeManager.AddStatAtkDamage(tower.Type, 1);
     }
@@ -708,7 +729,8 @@ public class StageManager : MonoBehaviour
         if (sessionManager.SessionState.Gold < cost)
             return;
 
-        UsingGold(GoldChangedReason.UPGRADE, - cost);
+        if (!UsingGold(GoldChangedReason.UPGRADE, -cost))
+            return;        
 
         statUpgradeManager.AddStatAtkSpeed(tower.Type, 1);
     }
@@ -720,7 +742,6 @@ public class StageManager : MonoBehaviour
     private void ItemAddHandler(ItemData item)
     {
         effectDataManager.ApplyItemEffect(item);
-        UsingGold(GoldChangedReason.BUY, item.buyPrice);
     }
 
     /// <summary>
@@ -756,7 +777,7 @@ public class StageManager : MonoBehaviour
     /// <returns>비용이 부족하다면 실패하고 false를 리턴한다</returns>
     private bool PayObstacleCostHandler(int cost)
     {
-        return UsingGold(GoldChangedReason.BUILD, - cost);
+        return UsingGold(GoldChangedReason.BUILD, -cost);
     }
 
     /// <summary>
@@ -847,6 +868,9 @@ public class StageManager : MonoBehaviour
     /// </summary>
     public void WaveStart()
     {
+        if (isGameOver || sessionManager.SessionState.CurrentLife <= 0)
+            return;
+
         if (isStagePlaying)
         {
             CheckWaveEnd();
@@ -890,6 +914,10 @@ public class StageManager : MonoBehaviour
 
     public void GameEnd()
     {
+        if (isGameEnd)
+            return;
+
+        isGameEnd = true;
         ReportStageEndAchievement();
 
         isGameOver = true;
@@ -912,7 +940,12 @@ public class StageManager : MonoBehaviour
             string setText = $"{reasonText} {value.ToString("+0;-0")}";
             OnCombatText?.Invoke(setText);
         }
+        else
+        {
+            string ressonText = Managers.Local.GetString("UI", "UI_GOLD_LACK");
+            OnCombatText?.Invoke(ressonText);
+        }
 
-        return isCompleted;
+            return isCompleted;
     }
 }

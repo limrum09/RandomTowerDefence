@@ -69,7 +69,8 @@ public class TowerGradeUpgradeView : MonoBehaviour, IPopUpPublicUI
 
     private void OnDestroy()
     {
-        local.OnLanguageChanged -= SetButtonText;
+        if(local != null)
+            local.OnLanguageChanged -= SetButtonText;
     }
 
     private void SetButtonText()

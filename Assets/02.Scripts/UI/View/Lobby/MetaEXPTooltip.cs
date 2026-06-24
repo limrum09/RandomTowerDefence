@@ -13,6 +13,13 @@ public class MetaEXPTooltip : MonoBehaviour
         canvas.alpha = 1.0f;
 
         int level = Managers.Player.GetPlayerLevel();
+
+        if(level >= 12)
+        {
+            currentEXPText.text = $"{Managers.Local.GetString("UI", "UI_MAX_LEVEL")}";
+            return;
+        }
+
         int currentExp = Managers.Player.GetCurrentEXP();
         int needEXP = Managers.ResearchLevel.GetNeedExp(level);
 
