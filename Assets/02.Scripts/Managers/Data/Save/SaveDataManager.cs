@@ -104,6 +104,10 @@ public class SaveDataManager
                 Managers.TowerMetaUpgrade.LoadSaveData(result.Data.towerMetaSaveData);
                 return true;
             case FirestoreLoadStat.DocumentMissing:
+                MetaUpgradeSaveData defaultData = CreateDefaultMetaUpgradeSaveDatas();
+                Managers.PublicMetaUpgrade.LoadSaveData(defaultData.publicMetaSaveData);
+                Managers.TowerMetaUpgrade.LoadSaveData(defaultData.towerMetaSaveData);
+                await GetSaveDoc(META_UPGRADE_SAVE_FILE).SetAsync(defaultData, SetOptions.Overwrite);
                 return false;
             default:
                 Debug.LogError($"Meta Upgrade Load Fail : {result.Stat} / {result.ErrorMessage}");
@@ -121,6 +125,9 @@ public class SaveDataManager
                 Managers.Player.LoadSaveData(result.Data);
                 return true;
             case FirestoreLoadStat.DocumentMissing:
+                PlayerProgressData defaultData = CreateDefaultPlayerProgressData();
+                Managers.Player.LoadSaveData(defaultData);
+                await GetSaveDoc(PLAYER_PROGRESS_FILE).SetAsync(defaultData, SetOptions.Overwrite);
                 return false;
             default:
                 Debug.LogError($"Progress Load Fail : {result.Stat} / {result.ErrorMessage}");
@@ -138,6 +145,9 @@ public class SaveDataManager
                 Managers.QuestMgr.LoadSaveData(result.Data);
                 return true;
             case FirestoreLoadStat.DocumentMissing:
+                QuestSaveDataList defaultData = CreateDefaultQuestSaveData();
+                Managers.QuestMgr.LoadSaveData(defaultData);
+                await GetSaveDoc(QUEST_SAVE_FILE).SetAsync(defaultData, SetOptions.Overwrite);
                 return false;
             default:
                 Debug.LogError($"Quest Load Fail : {result.Stat} / {result.ErrorMessage}");
