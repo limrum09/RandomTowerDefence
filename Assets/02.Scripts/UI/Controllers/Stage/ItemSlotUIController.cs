@@ -9,6 +9,7 @@ public class ItemSlotUIController : MonoBehaviour
     private List<ItemSlotUI> itemSlots = new List<ItemSlotUI>();
 
     private ItemData[] itemUId;
+    private LocalizationDataManager local;
     private int len;
 
     public event Action<ItemData, int> OnClickItem;
@@ -26,12 +27,35 @@ public class ItemSlotUIController : MonoBehaviour
             ClearSlot(i);
         }
     }
+    private void Start()
+    {
+        local = Managers.Local;
+        local.OnLanguageChanged += RefreshAllSlots;
+    }
 
+    private void OnDestroy()
+    {
+        if(local != null)
+            local.OnLanguageChanged -= RefreshAllSlots;
+    }
+
+    /// <summary>
+    /// index 값을 받은 슬롯의 값을 초기화
+    /// </summary>
+    /// <param name="index"></param>
     private void ClearSlot(int index)
     {
         itemUId[index] = null;
         itemSlots[index].RemoveSlotUI();
         itemSlots[index].gameObject.SetActive(false);
+    }
+
+    private void RefreshAllSlots()
+    {
+        for(int i = 0; i < len; i++)
+        {
+            itemSlots[i].RefreshSlotUI();
+        }
     }
 
     private bool IsValidIndex(int index)
@@ -118,30 +142,22 @@ public class ItemSlotUIController : MonoBehaviour
 
     public List<ItemResultData> GetItemResultData()
     {
-        int itemlength = 0;
-        foreach(var item in itemUId)
-        {
-            if (item == null)
-                continue;
+        List<ItemResultData> result = new List<ItemResultData>();
 
-            itemlength++;
-        }
-        ItemResultData[] result = new ItemResultData[itemlength];
-
-        for(int i = 0; i <  itemUId.Length; i++)
+        for(int i = 0; i < itemUId.Length; i++)
         {
             if (itemUId[i] == null)
                 continue;
 
             Sprite itemIon = ResourceCache.Load<Sprite>($"Item/Images/{itemUId[i].iconUID}");
-            int itemSellValue = itemUId[i].salePrice;
-            result[i] = new ItemResultData
+
+            result.Add(new ItemResultData
             {
                 icon = itemIon,
-                sellValue = itemSellValue
-            };
+                sellValue = itemUId[i].salePrice
+            });
         }
 
-        return result.ToList();
+        return result;
     }
 }

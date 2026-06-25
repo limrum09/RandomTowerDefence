@@ -66,6 +66,7 @@ public class ChangedInputPanel : MonoBehaviour
 
         SetInputActionText();
         Managers.Save.MarkInputDirty();
+        Managers.Save.SaveInputKeyData();
     }
 
     /// <summary>

@@ -19,107 +19,107 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 23009046528
-    m_Localized: Increases ATK of all towers by <color=#FF4545>[2]</color>.\nIt shows
+    m_Localized: Increases ATK of all towers by <color=#FF4545>[{0}]</color>.\nIt shows
       its age, but the edge is still razor-sharp.
     m_Metadata:
       m_Items: []
   - m_Id: 23009046530
-    m_Localized: Increases ATK of all towers by <color=#FF4545>[3]</color>.\nBoosts
+    m_Localized: Increases ATK of all towers by <color=#FF4545>[{0}]</color>.\nBoosts
       the morale of allies from the heart of the battlefield.
     m_Metadata:
       m_Items: []
   - m_Id: 23009046532
-    m_Localized: Increases ATK of Human towers by <color=#FF4545>[4]</color>.\nUnder
+    m_Localized: Increases ATK of Human towers by <color=#FF4545>[{0}]</color>.\nUnder
       the strict imperial discipline, humans unite to strengthen the flow of battle.
     m_Metadata:
       m_Items: []
   - m_Id: 23009046534
-    m_Localized: Increases ATK of Elf towers by <color=#FF4545>[4]</color>.\nThe
+    m_Localized: Increases ATK of Elf towers by <color=#FF4545>[{0}]</color>.\nThe
       mystical energy of nature dwells within the Elves.
     m_Metadata:
       m_Items: []
   - m_Id: 23009046536
-    m_Localized: Increases ATK of Orc towers by <color=#FF4545>[4]</color>.\nA fierce
+    m_Localized: Increases ATK of Orc towers by <color=#FF4545>[{0}]</color>.\nA fierce
       roar awakens the primal instincts of the warriors.
     m_Metadata:
       m_Items: []
   - m_Id: 23009046538
-    m_Localized: Increases ATK of Werebeast towers by <color=#FF4545>[4]</color>.\nSharp
+    m_Localized: Increases ATK of Werebeast towers by <color=#FF4545>[{0}]</color>.\nSharp
       instincts allow them to strike at the enemy's weak points.
     m_Metadata:
       m_Items: []
   - m_Id: 23009046540
-    m_Localized: Increases ATK of Dragonian towers by <color=#FF4545>[4]</color>.\nEssence
+    m_Localized: Increases ATK of Dragonian towers by <color=#FF4545>[{0}]</color>.\nEssence
       extracted from dragon bones empowers Dragonians to become more like true dragons.
     m_Metadata:
       m_Items: []
   - m_Id: 23009046542
-    m_Localized: Increases ATK of Dwarf towers by <color=#FF4545>[4]</color>.\nThe
+    m_Localized: Increases ATK of Dwarf towers by <color=#FF4545>[{0}]</color>.\nThe
       steel core hardens the Dwarves, the children of the earth.
     m_Metadata:
       m_Items: []
   - m_Id: 23009046544
-    m_Localized: Increases ATK Speed of all towers by <color=#FF4545>[2]</color>.\nThe
+    m_Localized: Increases ATK Speed of all towers by <color=#FF4545>[{0}]</color>.\nThe
       flow of mana makes your fingertips feel light.
     m_Metadata:
       m_Items: []
   - m_Id: 23009046546
-    m_Localized: Increases ATK Speed of all towers by <color=#FF4545>[4]</color>.\nA
+    m_Localized: Increases ATK Speed of all towers by <color=#FF4545>[{0}]</color>.\nA
       more powerful surge of mana swirls across the battlefield.
     m_Metadata:
       m_Items: []
   - m_Id: 23009046548
-    m_Localized: Reduces skill trigger requirements for all towers by <color=#FF4545>[1]</color>.\nEfficient
+    m_Localized: Reduces skill trigger requirements for all towers by <color=#FF4545>[{0}]</color>.\nEfficient
       design allows for faster skill usage.
     m_Metadata:
       m_Items: []
   - m_Id: 23009046550
-    m_Localized: Increases Gold gained upon killing an enemy by <color=#FF4545>[1]</color>.\nThe
+    m_Localized: Increases Gold gained upon killing an enemy by <color=#FF4545>[{0}]</color>.\nThe
       Goddess of Luck is watching over you.
     m_Metadata:
       m_Items: []
   - m_Id: 23009046552
-    m_Localized: Increases Gold gained upon killing an enemy by <color=#FF4545>[2]</color>.\nThe
+    m_Localized: Increases Gold gained upon killing an enemy by <color=#FF4545>[{0}]</color>.\nThe
       Goddess of Luck looks into your pockets.
     m_Metadata:
       m_Items: []
   - m_Id: 23009046554
-    m_Localized: Immediately restores <color=#FF4545>[3]</color> Life.\nA common
+    m_Localized: Immediately restores <color=#FF4545>[{0}]</color> Life.\nA common
       potion that gently soothes wounds.
     m_Metadata:
       m_Items: []
   - m_Id: 23009046556
-    m_Localized: Immediately restores <color=#FF4545>[5]</color> Life.\nA potion
+    m_Localized: Immediately restores <color=#FF4545>[{0}]</color> Life.\nA potion
       carefully brewed by a professional alchemist.
     m_Metadata:
       m_Items: []
   - m_Id: 23009046558
-    m_Localized: Immediately restores <color=#FF4545>[10]</color> Life.\nA rare elixir
+    m_Localized: Immediately restores <color=#FF4545>[{0}]</color> Life.\nA rare elixir
       brewed by a master alchemist.
     m_Metadata:
       m_Items: []
   - m_Id: 23009046560
-    m_Localized: Immediately grants a random amount of Gold (Max <color=#FF4545>[15]</color>).\nIts
+    m_Localized: Immediately grants a random amount of Gold (Max <color=#FF4545>[{0}]</color>).\nIts
       heavy weight is a sign of good things to come.
     m_Metadata:
       m_Items: []
   - m_Id: 23009046562
-    m_Localized: Increases the maximum bonus interest at the end of a wave by <color=#FF4545>[10]</color>.\nMeticulous
+    m_Localized: Increases the maximum bonus interest at the end of a wave by <color=#FF4545>[{0}]</color>.\nMeticulous
       records lead to efficient asset management.
     m_Metadata:
       m_Items: []
   - m_Id: 23009046564
-    m_Localized: Increases the maximum bonus interest at the end of a wave by <color=#FF4545>[20]</color>.\nThe
+    m_Localized: Increases the maximum bonus interest at the end of a wave by <color=#FF4545>[{0}]</color>.\nThe
       market's capital flows directly to you.
     m_Metadata:
       m_Items: []
   - m_Id: 23009046566
-    m_Localized: Expands Tower Queue slots by <color=#FF4545>[1]</color>.\nAllows
+    m_Localized: Expands Tower Queue slots by <color=#FF4545>[{0}]</color>.\nAllows
       for more strategic tower preparation.
     m_Metadata:
       m_Items: []
   - m_Id: 23009046568
-    m_Localized: Expands Market Sales slots by <color=#FF4545>[1]</color>.\nA wider
+    m_Localized: Expands Market Sales slots by <color=#FF4545>[{0}]</color>.\nA wider
       variety of items now arrive at the market.
     m_Metadata:
       m_Items: []

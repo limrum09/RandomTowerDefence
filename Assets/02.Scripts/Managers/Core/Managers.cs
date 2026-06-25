@@ -116,7 +116,9 @@ public class Managers : MonoBehaviour
 
     private async void OnApplicationQuit()
     {
-        await Save.SaveAllData();
+        if(saveDataManager != null)
+            await saveDataManager.SaveAllData();
+
         isQuitting = true;
     }
 

@@ -118,6 +118,10 @@ public class QueueUIController : MonoBehaviour
         OnRequestBuildTower?.Invoke(uid, index, towerSprite);
     }
 
+    /// <summary>
+    /// 게임 종료 시, 대기열에 있는 타워들의 판매 골드를 반환
+    /// </summary>
+    /// <returns></returns>
     public int GameOverCovertTowerToGold()
     {
         int queueGold = 0;
@@ -128,6 +132,10 @@ public class QueueUIController : MonoBehaviour
                 continue;
 
             TowerData tower = Managers.TowerData.GetTowerData(towerUID[i]);
+
+            if (tower == null)
+                continue;
+
             queueGold += tower.sellPrice;
         }
 

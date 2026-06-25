@@ -130,6 +130,11 @@ public class RunStatUpgradeManager
         OnChangedTowerStat?.Invoke();
     }
 
+    public void AddAbilityTriggerRequirement(int value)
+    {
+        AbilityTriggerRequest += value;
+    }
+
     public void AddGoldDropIncrease(int value) => GoldDropValue += value;
 
     public void ChangeMaxInterest(float value) => MaxInterestValue += value;

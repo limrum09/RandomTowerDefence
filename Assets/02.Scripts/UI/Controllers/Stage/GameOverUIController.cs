@@ -146,7 +146,7 @@ public class GameOverUIController : UIPopAnimationBase
         se.AppendInterval(0.5f);
 
 
-        rewardGemValue = Mathf.RoundToInt(data.finalScore / 10);
+        rewardGemValue = data.rewardCurrency;
 
         se.Append(CountText(gemCntText, rewardGemValue, $"+ "));
         se.AppendInterval(1.0f);

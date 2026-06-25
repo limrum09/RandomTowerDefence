@@ -26,6 +26,13 @@ public class TowerCntSkillInfo : MonoBehaviour
     {
         TowerData tower = Managers.TowerData.GetTowerData(towerUid);
 
+        if(tower == null)
+        {
+            Debug.LogError($"TowerCntSkillInfo.cs tower data missing : {towerUid}");
+            Refresh();
+            return;
+        }
+
         string uid = tower.skillID;
         towerType = getType;
 

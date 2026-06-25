@@ -1,5 +1,7 @@
 using DG.Tweening;
+using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum StageInfoPanelType
@@ -145,7 +147,7 @@ public class InfoPanelController : MonoBehaviour
             se = DOTween.Sequence();
 
             se.Join(rect.DOAnchorPos(originPos + moveOffeset, duration).SetEase(Ease.InCubic));
-            se.Join(rect.DOLocalRotate(new Vector3(0f, 0f, startRotationZ), duration).SetEase(Ease.InCubic));
+            se.Join(rect.DOLocalRotate(new Vector3(0f, 0f, exitRotationZ), duration).SetEase(Ease.InCubic));
 
             se.OnComplete(() =>
             {

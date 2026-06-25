@@ -32,7 +32,7 @@ public class EnemyMove : MonoBehaviour
 
     // 적 사망 이벤트
     // 사망시 골드 지급 등
-    public event Action<float> onDead;
+    public event Action onDead;
     // 목표지점 도착 이벤트
     // 도착시 삭제되고, 플레이어 목숨 감소 등
     public event Action onReachGoal;
@@ -98,7 +98,7 @@ public class EnemyMove : MonoBehaviour
 
         isMove = false;
         // 사망 이벤트 호출
-        onDead?.Invoke(rewardGold);
+        onDead?.Invoke();
     }
 
     /// <summary>

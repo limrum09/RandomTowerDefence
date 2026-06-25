@@ -173,7 +173,7 @@
     {
       "WaveID": "EASY_W010",
       "SpawnOrder": 1,
-      "Enemy_UID": "B001",
+      "Enemy_UID": "E018",
       "EnemyLevel": 4,
       "SpawnCount": 1,
       "StartTime": "0",
@@ -343,7 +343,7 @@
     {
       "WaveID": "EASY_W020",
       "SpawnOrder": 1,
-      "Enemy_UID": "B001",
+      "Enemy_UID": "E018",
       "EnemyLevel": 6,
       "SpawnCount": 1,
       "StartTime": "0",
@@ -513,7 +513,7 @@
     {
       "WaveID": "EASY_W030",
       "SpawnOrder": 1,
-      "Enemy_UID": "B001",
+      "Enemy_UID": "E018",
       "EnemyLevel": 8,
       "SpawnCount": 1,
       "StartTime": "0",
@@ -683,7 +683,7 @@
     {
       "WaveID": "EASY_W040",
       "SpawnOrder": 1,
-      "Enemy_UID": "B001",
+      "Enemy_UID": "E018",
       "EnemyLevel": 10,
       "SpawnCount": 1,
       "StartTime": "0",
@@ -853,7 +853,7 @@
     {
       "WaveID": "EASY_W050",
       "SpawnOrder": 1,
-      "Enemy_UID": "B001",
+      "Enemy_UID": "E018",
       "EnemyLevel": 12,
       "SpawnCount": 1,
       "StartTime": "0",
@@ -1043,7 +1043,7 @@
     {
       "WaveID": "EASY_W060",
       "SpawnOrder": 1,
-      "Enemy_UID": "B001",
+      "Enemy_UID": "E018",
       "EnemyLevel": 14,
       "SpawnCount": 1,
       "StartTime": "0",
@@ -1233,7 +1233,7 @@
     {
       "WaveID": "NORMAL_W010",
       "SpawnOrder": 1,
-      "Enemy_UID": "B002",
+      "Enemy_UID": "E019",
       "EnemyLevel": 6,
       "SpawnCount": 1,
       "StartTime": "0",
@@ -1403,7 +1403,7 @@
     {
       "WaveID": "NORMAL_W020",
       "SpawnOrder": 1,
-      "Enemy_UID": "B002",
+      "Enemy_UID": "E019",
       "EnemyLevel": 8,
       "SpawnCount": 1,
       "StartTime": "0",
@@ -1573,7 +1573,7 @@
     {
       "WaveID": "NORMAL_W030",
       "SpawnOrder": 1,
-      "Enemy_UID": "B002",
+      "Enemy_UID": "E019",
       "EnemyLevel": 10,
       "SpawnCount": 1,
       "StartTime": "0",
@@ -1743,7 +1743,7 @@
     {
       "WaveID": "NORMAL_W040",
       "SpawnOrder": 1,
-      "Enemy_UID": "B002",
+      "Enemy_UID": "E019",
       "EnemyLevel": 12,
       "SpawnCount": 1,
       "StartTime": "0",
@@ -1913,7 +1913,7 @@
     {
       "WaveID": "NORMAL_W050",
       "SpawnOrder": 1,
-      "Enemy_UID": "B002",
+      "Enemy_UID": "E019",
       "EnemyLevel": 14,
       "SpawnCount": 1,
       "StartTime": "0",
@@ -2103,7 +2103,7 @@
     {
       "WaveID": "NORMAL_W060",
       "SpawnOrder": 1,
-      "Enemy_UID": "B002",
+      "Enemy_UID": "E019",
       "EnemyLevel": 16,
       "SpawnCount": 1,
       "StartTime": "0",
@@ -2293,7 +2293,7 @@
     {
       "WaveID": "HARD_W010",
       "SpawnOrder": 1,
-      "Enemy_UID": "B003",
+      "Enemy_UID": "E020",
       "EnemyLevel": 8,
       "SpawnCount": 1,
       "StartTime": "0",
@@ -2463,7 +2463,7 @@
     {
       "WaveID": "HARD_W020",
       "SpawnOrder": 1,
-      "Enemy_UID": "B003",
+      "Enemy_UID": "E020",
       "EnemyLevel": 10,
       "SpawnCount": 1,
       "StartTime": "0",
@@ -2633,7 +2633,7 @@
     {
       "WaveID": "HARD_W030",
       "SpawnOrder": 1,
-      "Enemy_UID": "B003",
+      "Enemy_UID": "E020",
       "EnemyLevel": 12,
       "SpawnCount": 1,
       "StartTime": "0",
@@ -2803,7 +2803,7 @@
     {
       "WaveID": "HARD_W040",
       "SpawnOrder": 1,
-      "Enemy_UID": "B003",
+      "Enemy_UID": "E020",
       "EnemyLevel": 14,
       "SpawnCount": 1,
       "StartTime": "0",
@@ -2973,7 +2973,7 @@
     {
       "WaveID": "HARD_W050",
       "SpawnOrder": 1,
-      "Enemy_UID": "B003",
+      "Enemy_UID": "E020",
       "EnemyLevel": 16,
       "SpawnCount": 1,
       "StartTime": "0",
@@ -3163,7 +3163,7 @@
     {
       "WaveID": "HARD_W060",
       "SpawnOrder": 1,
-      "Enemy_UID": "B003",
+      "Enemy_UID": "E020",
       "EnemyLevel": 18,
       "SpawnCount": 1,
       "StartTime": "0",
@@ -3353,7 +3353,7 @@
     {
       "WaveID": "HELL_W010",
       "SpawnOrder": 1,
-      "Enemy_UID": "B004",
+      "Enemy_UID": "E021",
       "EnemyLevel": 11,
       "SpawnCount": 1,
       "StartTime": "0",
@@ -3523,7 +3523,7 @@
     {
       "WaveID": "HELL_W020",
       "SpawnOrder": 1,
-      "Enemy_UID": "B004",
+      "Enemy_UID": "E021",
       "EnemyLevel": 13,
       "SpawnCount": 1,
       "StartTime": "0",
@@ -3693,7 +3693,7 @@
     {
       "WaveID": "HELL_W030",
       "SpawnOrder": 1,
-      "Enemy_UID": "B004",
+      "Enemy_UID": "E021",
       "EnemyLevel": 15,
       "SpawnCount": 1,
       "StartTime": "0",
@@ -3863,7 +3863,7 @@
     {
       "WaveID": "HELL_W040",
       "SpawnOrder": 1,
-      "Enemy_UID": "B004",
+      "Enemy_UID": "E021",
       "EnemyLevel": 17,
       "SpawnCount": 1,
       "StartTime": "0",
@@ -4033,7 +4033,7 @@
     {
       "WaveID": "HELL_W050",
       "SpawnOrder": 1,
-      "Enemy_UID": "B004",
+      "Enemy_UID": "E021",
       "EnemyLevel": 19,
       "SpawnCount": 1,
       "StartTime": "0",
@@ -4223,7 +4223,7 @@
     {
       "WaveID": "HELL_W060",
       "SpawnOrder": 1,
-      "Enemy_UID": "B004",
+      "Enemy_UID": "E021",
       "EnemyLevel": 21,
       "SpawnCount": 1,
       "StartTime": "0",

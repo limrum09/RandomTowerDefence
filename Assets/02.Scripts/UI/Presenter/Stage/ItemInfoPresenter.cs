@@ -32,7 +32,7 @@ public class ItemInfoPresenter
         view.SetItemScope(model.scopeRange);
         view.SetItemTarget(model.target);
 
-        string des = Managers.Local.GetString("Item", model.itemDesc);
+        string des = string.Format(Managers.Local.GetString("Item", model.itemDesc), Mathf.Abs(model.value));
         view.SetItemDes(des);
         view.SetItemPrice(model.salePrice);
     }

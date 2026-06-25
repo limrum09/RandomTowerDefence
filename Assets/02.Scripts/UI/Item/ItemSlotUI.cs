@@ -48,6 +48,11 @@ public class ItemSlotUI : MonoBehaviour
         RefreshUI();
     }
 
+    public void RefreshSlotUI()
+    {
+        RefreshUI();
+    }
+
     public void SetSlotUI(string uid)
     {
         itemUID = uid;

@@ -12,7 +12,7 @@ public class StageManager : MonoBehaviour
 {
     public event Action OnAfterSettingsInit;
     public event Action OnWaveStart;
-    public event Action OnWaveEnd;
+    public event Action OnWaveEndRefreshStore;
     public event Action<int> OnChangedGameSpeed;
     public event Action<StageResultData> OnGameOver;
     public event Action<string> OnCombatText;
@@ -64,6 +64,7 @@ public class StageManager : MonoBehaviour
     private bool isGameOver;
     private bool isGameEnd;
     private bool isReportedStageEndAchievement;
+    private int enemyKillGold;
     private int aliveEnemyCnt;
     private int waveTotalEnemyCount;
     private int waveRemoveEnemyCount;
@@ -111,8 +112,13 @@ public class StageManager : MonoBehaviour
         fieldTowerManager.Init(Grid);
         Path.Init(Grid);
 
-        sessionManager.Init(1, life, increaseGold, increaseFreeRollCnt,
-            increaseFreeObstacleCnt, 5);
+        int startGold = GetPublicMetaValue(MetaUpgradeType.StartingGold);
+        int freeObstacle = GetPublicMetaValue(MetaUpgradeType.FreeObstacle);
+        int terrainRefresh = GetPublicMetaValue(MetaUpgradeType.FreeTerrainRefresh);
+        enemyKillGold = GetPublicMetaValue(MetaUpgradeType.DropGold, 10);
+
+        sessionManager.Init(1, life, startGold + increaseGold, increaseFreeRollCnt,
+            freeObstacle + increaseFreeObstacleCnt, terrainRefresh + 5);
         
         towerSkillEffect.Init();
         statUpgradeManager.Init();
@@ -165,7 +171,6 @@ public class StageManager : MonoBehaviour
         BindItemEvents();
         BindUIEvents();
         BindFieldEvents();
-        BindWaveEvents();
         BindSessionEvents();
         BindEnemySpawnEvents();
         BindTowerSkillEvents();
@@ -226,18 +231,7 @@ public class StageManager : MonoBehaviour
         if (fieldTowerManager != null)
         {
             fieldTowerManager.OnFieldTowerChanged += towerCntSkill.ChangeFieldTower;
-            fieldTowerManager.OnFieldTowerChanged += towerSkillEffect.ChangeTowerCount;
-        }
-    }
-
-    private void BindWaveEvents()
-    {
-        if (waveManager != null)
-        {
-            OnWaveEnd += waveManager.WaveEnd;
-            waveManager.onWaveRosterData += StageUICtr.SetWaveEnemyInfo;
-            waveManager.onWaveRosterData += enemySpawn.SetSpawnEnemyInfo;
-            waveManager.onWaveRosterData += SetWaveRosterData;
+            fieldTowerManager.OnFieldTowerChanged += TowerSkillCountChanged;
         }
     }
 
@@ -289,7 +283,6 @@ public class StageManager : MonoBehaviour
         UnBindUIEvents();
         UnBindFieldEvents();
         UnBindSessionEvents();
-        UnBindWaveEvents();
         UnBindEnemySpawnEvents();
         UnBindTowerSkillEvents();
         UnBindObstacleEvents();
@@ -348,18 +341,7 @@ public class StageManager : MonoBehaviour
         if (fieldTowerManager != null)
         {
             fieldTowerManager.OnFieldTowerChanged -= towerCntSkill.ChangeFieldTower;
-            fieldTowerManager.OnFieldTowerChanged -= towerSkillEffect.ChangeTowerCount;
-        }
-    }
-
-    private void UnBindWaveEvents()
-    {
-        if (waveManager != null)
-        {
-            OnWaveEnd -= waveManager.WaveEnd;
-            waveManager.onWaveRosterData -= StageUICtr.SetWaveEnemyInfo;
-            waveManager.onWaveRosterData -= enemySpawn.SetSpawnEnemyInfo;
-            waveManager.onWaveRosterData -= SetWaveRosterData;
+            fieldTowerManager.OnFieldTowerChanged -= TowerSkillCountChanged;
         }
     }
 
@@ -492,10 +474,48 @@ public class StageManager : MonoBehaviour
     {
         stageUICtr.SetTerrainRerollCount(sessionManager.SessionState.TerrainRollCnt);
         SetSpawnAndGoalPointSetting();
-        OnWaveEnd?.Invoke();
+        PrepareWaveInit();
         OnChangedGameSpeed?.Invoke(speedValue[speedIndex]);
         obstacleBuilder.Initialized(Grid, Path, fieldTowerManager);
         OnAfterSettingsInit?.Invoke();
+    }
+
+    private int GetPublicMetaValue(MetaUpgradeType type, int fallback = 0)
+    {
+        StageStartOptionBaseData baseData = Managers.StartOption.GetStartOptionData(type);
+        MetaResearchUpgradeData metaData = Managers.ResearchUpgrade.GetMetaResearchDataToPublic(MetaUpgradeTarget.Public, type);
+
+        if(baseData == null || metaData == null)
+            return fallback;
+
+        int level = Managers.PublicMetaUpgrade.GetPublicMetaDataLevel(type);
+        float value = metaData.CalculateValue(baseData.baseValue, level);
+
+        return Mathf.Max(0, Mathf.FloorToInt(value));
+    }
+
+    /// <summary>
+    /// 시작 시, 웨이브 값 호출
+    /// </summary>
+    private void PrepareWaveInit()
+    {
+        WavePrepareResult result = waveManager.TryPrepareNextWave();
+
+        if (result.IsFailed)
+        {
+            WaveDataLoadFailed(result.message);
+            return;
+        }
+
+        if (result.IsEnd)
+        {
+            ClearStage();
+            return;
+        }
+
+        stageUICtr.SetWaveEnemyInfo(result.rosterData);
+        enemySpawn.SetSpawnEnemyInfo(result.rosterData);
+        SetWaveRosterData(result.rosterData);
     }
 
     /// <summary>
@@ -504,45 +524,108 @@ public class StageManager : MonoBehaviour
     /// </summary>
     private void CheckWaveEnd()
     {
-        if (isSpawning)
+        if (!CanCompleteWave())
             return;
+
+        CompleteCurrentWave();
+    }
+
+    /// <summary>
+    /// 웨이브를 완료 할수 있는지 검수
+    /// </summary>
+    /// <returns></returns>
+    private bool CanCompleteWave()
+    {
+        if (isSpawning)
+            return false;
 
         if (aliveEnemyCnt > 0)
-            return;
+            return false;
 
-        if(sessionManager.SessionState.CurrentLife <= 0)
+        if (sessionManager.SessionState.CurrentLife <= 0)
         {
             UserDead();
-            return;
+            return false;
         }
 
         if (isGameOver)
-            return;
+            return false;
 
+        return true;
+    }
+
+    /// <summary>
+    /// 현재 웨이브를 완료 했다면 호출
+    /// </summary>
+    private void CompleteCurrentWave()
+    {
         isStagePlaying = false;
-        currentWave++;
 
-        if (currentWave >= 61)
+        WavePrepareResult result = waveManager.TryPrepareNextWave();
+
+        if (result.IsFailed)
         {
-            Managers.QuestMgr.QuestRecieveReport(QuestCategory.ClearStage, Managers.Game.clearStageTargetUID, 1);
-            GameEnd();
-            Debug.Log("웨이브 종료");
+            WaveDataLoadFailed(result.message);
             return;
         }
+
+        if (result.IsEnd)
+        {
+            ClearStage();
+            return;
+        }
+
+        AdvanceWave(result.rosterData);
+        GiveWaveClearReward();
+        RefreshStoreOnWaveClear();
+    }
+
+    /// <summary>
+    /// 스테이지를 완료 하였을 때 호출
+    /// </summary>
+    private void ClearStage()
+    {
+        Managers.QuestMgr.QuestRecieveReport(QuestCategory.ClearStage, Managers.Game.clearStageTargetUID, 1);
+
+        GameEnd();
+    }
+
+    /// <summary>
+    /// 다음 웨이브를 준비
+    /// </summary>
+    /// <param name="rosterDatas"></param>
+    private void AdvanceWave(List<WaveEnemyRosterData> rosterDatas)
+    {
+        currentWave++;
 
         waveRemoveEnemyCount = 0;
         waveTotalEnemyCount = 0;
 
         sessionManager.SetWave(currentWave);
-        
+
+        stageUICtr.SetWaveEnemyInfo(rosterDatas);
+        enemySpawn.SetSpawnEnemyInfo(rosterDatas);
+        SetWaveRosterData(rosterDatas);
+    }
+
+    /// <summary>
+    /// 웨이브 완료 시, 완료 경험치 지급
+    /// </summary>
+    private void GiveWaveClearReward()
+    {
         if(!Managers.StageRules.GetRuleData(StageRules.WaveClearRewardExp, out int exp))
         {
-            Debug.LogError($"경험치 획득 오류, 획득 경험치 : {exp}");
+            Debug.LogError("Wave clear reward exp missing");
+            return;
         }
-        RunSession.AddExp(exp);
 
+        RunSession.AddExp(exp);
         GetInterestGold();
-        OnWaveEnd?.Invoke();
+    }
+
+    private void RefreshStoreOnWaveClear()
+    {
+        OnWaveEndRefreshStore?.Invoke();
     }
 
     /// <summary>
@@ -561,12 +644,23 @@ public class StageManager : MonoBehaviour
 
         int currentGold = sessionManager.SessionState.Gold;
         int interest = Mathf.FloorToInt(currentGold * (totalInterestRate / 100f));
-        int maxInterest = baseMaxInterest + Mathf.FloorToInt(statUpgradeManager.MaxInterestValue);
+
+        float maxInterestRate = statUpgradeManager.MaxInterestValue;
+        int maxInterest = Mathf.FloorToInt(baseMaxInterest * (1f + maxInterestRate / 100f));
 
         interest = Mathf.Clamp(interest, 0, maxInterest);
 
         if(interest > 0)
             UsingGold(GoldChangedReason.GAIN, interest);
+    }
+
+    /// <summary>
+    /// 현제 적 처시지 획득하는 드랍 골드를 계산
+    /// </summary>
+    /// <returns></returns>
+    private int GetcurrentEnemyKillGold()
+    {
+        return Mathf.Max(0, enemyKillGold + statUpgradeManager.GoldDropValue);
     }
 
     /// <summary>
@@ -591,9 +685,9 @@ public class StageManager : MonoBehaviour
     /// 적이 사망 했을 때, 보상 골드와 킬 카운트를 지급하고 생존 적 수를 감소
     /// </summary>
     /// <param name="reward">처치 보상 골드</param>
-    private void RegisterDeadEnemy(float reward)
+    private void RegisterDeadEnemy()
     {
-        UsingGold(GoldChangedReason.KILL, (int)reward);
+        UsingGold(GoldChangedReason.KILL, GetcurrentEnemyKillGold());
         sessionManager.AddkillCount(1);
         aliveEnemyCnt--;
 
@@ -619,6 +713,26 @@ public class StageManager : MonoBehaviour
         CheckWaveEnd();
     }
 
+    /// <summary>
+    /// WaveManager가 다음 Wave의 데이터를 가져오지 못했을 때 호출`
+    /// </summary>
+    /// <param name="message"></param>
+    private void WaveDataLoadFailed(string message)
+    {
+        Debug.LogError(message);
+
+        isSpawning = false;
+        isStagePlaying = false;
+        isGameOver = true;
+
+        if (enemySpawn != null)
+            enemySpawn.GameOver();
+    }
+
+    /// <summary>
+    /// 해당 웨이브의 적 정보와 스폰 개수들을 저장
+    /// </summary>
+    /// <param name="datas"></param>
     private void SetWaveRosterData(List<WaveEnemyRosterData> datas)
     {
         waveTotalEnemyCount = 0;
@@ -701,6 +815,41 @@ public class StageManager : MonoBehaviour
     }
 
     /// <summary>
+    /// 스킬 사용에 필요한 타워 개수를 줄이는 아이템 획득, 판매 시
+    /// 요구사항을 줄이도록 계산하지 않고, 현재 타워의 개수를 증가 시키는 것으로 계산
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="count"></param>
+    private void TowerSkillCountChanged(TowerType type, int count)
+    {
+        int effectCount = GetEffectiveTowerSkillCount(count);
+        towerSkillEffect.ChangeTowerCount(type, effectCount);
+    }
+
+    /// <summary>
+    /// 아이템이 있다면 해당 값을 더해서 반환
+    /// </summary>
+    /// <param name="count"></param>
+    /// <returns></returns>
+    private int GetEffectiveTowerSkillCount(int count)
+    {
+        int request = statUpgradeManager.AbilityTriggerRequest;
+        return Mathf.Max(0, count - request);
+    }
+
+    /// <summary>
+    /// 모든 타워 스킬의 단계를 재설정
+    /// </summary>
+    private void RefreshAllTowerSkill()
+    {
+        foreach(TowerType type in Enum.GetValues(typeof(TowerType)))
+        {
+            int realCount = fieldTowerManager.GetTowerCount(type);
+            TowerSkillCountChanged(type, realCount);
+        }
+    }
+
+    /// <summary>
     /// 공격력 세션 강화 비용을 확인하고, 골드가 충분하면 해당 타입의 타워의 공격력 강화 단계를 증가
     /// </summary>
     /// <param name="upgradeData">타워 업그레이드 세션 데이터</param>
@@ -742,6 +891,7 @@ public class StageManager : MonoBehaviour
     private void ItemAddHandler(ItemData item)
     {
         effectDataManager.ApplyItemEffect(item);
+        RefreshAllTowerSkill();
     }
 
     /// <summary>
@@ -756,8 +906,9 @@ public class StageManager : MonoBehaviour
             return;
 
         effectDataManager.RemoveItemEffect(item);
-        UsingGold(GoldChangedReason.SELL, item.salePrice);
+        RefreshAllTowerSkill();
 
+        UsingGold(GoldChangedReason.SELL, item.salePrice);
         itemCtr.RemoveItem(index);
     }
 
@@ -812,7 +963,23 @@ public class StageManager : MonoBehaviour
 
         stageResult = Managers.ScoreCal.ScoreCalculator(stageResult);
 
+        GiveStageResultReward(stageResult);
+
         OnGameOver?.Invoke(stageResult);
+    }
+
+    private void GiveStageResultReward(StageResultData result)
+    {
+        if (result == null)
+            return;
+
+        if (result.rewardCurrency <= 0)
+            return;
+
+        Managers.Player.AddCurrency(result.rewardCurrency);
+        Managers.Save.MarkPlayerDirty();
+
+        _ = Managers.Save.SavePlayerProgressData();
     }
 
 
@@ -921,7 +1088,7 @@ public class StageManager : MonoBehaviour
         ReportStageEndAchievement();
 
         isGameOver = true;
-        Invoke("SetScoreCalculate", 1f);
+        Invoke(nameof(SetScoreCalculate), 1f);
     }
 
     /// <summary>
