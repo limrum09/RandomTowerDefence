@@ -61,6 +61,26 @@ public class SaveDataManager
             FirebaseInitializer.Instance.Auth.CurrentUser != null;
     }
 
+    private PlayerProgressData CreateDefaultPlayerProgressData()
+    {
+        return new PlayerProgressData
+        {
+            level = 1,
+            exp = 0,
+            metaCurrency = 0,
+        };
+    }
+
+    private MetaUpgradeSaveData CreateDefaultMetaUpgradeSaveDatas()
+    {
+        return new MetaUpgradeSaveData();
+    }
+
+    private QuestSaveDataList CreateDefaultQuestSaveData()
+    {
+        return new QuestSaveDataList();
+    }
+
     private bool CanSaveFirebaseData()
     {
         if (IsFirebaseLoadFail)
@@ -345,16 +365,9 @@ public class SaveDataManager
 
     public async Task CreateNewUserFirebaseSaveData(string uid)
     {
-        PlayerProgressData playerData = new PlayerProgressData()
-        {
-            level = 1,
-            exp = 0,
-            metaCurrency = 0
-        };
-
-        await GetSaveDoc(uid, PLAYER_PROGRESS_FILE).SetAsync(playerData, SetOptions.Overwrite);
-        await GetSaveDoc(uid, META_UPGRADE_SAVE_FILE).SetAsync(new MetaUpgradeSaveData(), SetOptions.Overwrite);
-        await GetSaveDoc(uid, QUEST_SAVE_FILE).SetAsync(new QuestSaveDataList(), SetOptions.Overwrite);
+        await GetSaveDoc(uid, PLAYER_PROGRESS_FILE).SetAsync(CreateDefaultPlayerProgressData(), SetOptions.Overwrite);
+        await GetSaveDoc(uid, META_UPGRADE_SAVE_FILE).SetAsync(CreateDefaultMetaUpgradeSaveDatas(), SetOptions.Overwrite);
+        await GetSaveDoc(uid, QUEST_SAVE_FILE).SetAsync(CreateDefaultQuestSaveData(), SetOptions.Overwrite);
     }
 
 

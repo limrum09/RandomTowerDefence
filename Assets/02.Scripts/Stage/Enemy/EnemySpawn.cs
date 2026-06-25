@@ -65,6 +65,12 @@ public class EnemySpawn : MonoBehaviour
     {
         // 이전 정보 제거
         waveEnemySpawnsInfo.Clear();
+
+        if(enemyRoster == null || enemyRoster.Count <= 0)
+        {
+            Debug.LogError("Enemy roster is Empty");
+            return;
+        }
     
         for (int i = 0; i < enemyRoster.Count; i++)
         {

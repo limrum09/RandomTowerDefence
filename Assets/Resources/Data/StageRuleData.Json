@@ -9,7 +9,7 @@
     {
       "UID": "MaxInterestGold",
       "String_Key": "STAGE_RULE_MAX_INTEREST_GOLD",
-      "Value": 999999,
+      "Value": 1000,
       "Description": "이자 계산 시 적용 가능한 최대 골드"
     },
     {

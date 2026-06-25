@@ -46,7 +46,7 @@ public class StoreToolTip : MonoBehaviour
     {
         nameText.text = Managers.Local.GetString("Item", data.stringKey);
         gradeText.text = Managers.Local.GetString("Item", "ITEM_GRADE_" + data.grade.ToString().ToUpper());
-        infoText.text = Managers.Local.GetString("Item", data.itemDesc);
+        infoText.text = string.Format(Managers.Local.GetString("Item", data.itemDesc), Mathf.Abs(data.value));
 
         tooltipRect.sizeDelta = new Vector2(tooltipRect.sizeDelta.x, 140f);
         infoTextRect.sizeDelta = new Vector2(infoTextRect.sizeDelta.x, 85f);

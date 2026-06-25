@@ -39,6 +39,9 @@ public class RunEffectDataManager
             case ItemOptions.HealLife:
                 ApplyHealLife(item);
                 break;
+            case ItemOptions.AbilityTriggerRequirement:
+                ApplyAbilityTriggerRequirement(item);
+                break;
         }
     }
     public void RemoveItemEffect(ItemData item)
@@ -59,6 +62,9 @@ public class RunEffectDataManager
                 break;
             case ItemOptions.InterestBoost:
                 RemoveInterestBoost(item);
+                break;
+            case ItemOptions.AbilityTriggerRequirement:
+                RemoveAbilityTriggerRequirement(item);
                 break;
         }
     }
@@ -110,6 +116,22 @@ public class RunEffectDataManager
 
         int gold = UnityEngine.Random.Range(1, item.value + 1);
         stage.UsingGold(GoldChangedReason.GAIN, gold);
+    }
+
+    private void ApplyAbilityTriggerRequirement(ItemData item)
+    {
+        if (statUpgrade == null || item.target != ItemTarget.Tower)
+            return;
+
+        statUpgrade.AddAbilityTriggerRequirement(item.value);
+    }
+
+    private void RemoveAbilityTriggerRequirement(ItemData item)
+    {
+        if (statUpgrade == null || item.target != ItemTarget.Tower)
+            return;
+
+        statUpgrade.AddAbilityTriggerRequirement(-item.value);
     }
 
     private void ApplyGoldDrop(ItemData item) => statUpgrade.AddGoldDropIncrease(item.value);

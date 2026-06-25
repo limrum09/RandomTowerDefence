@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
 public class StageResultData
 {
     public string stageLevel;
@@ -18,6 +16,7 @@ public class StageResultData
     public int itemSellGold;
     public int remainGold;
     public int queueGold;
+    public int rewardCurrency;
 
     public List<TowerResultData> towers = new List<TowerResultData>();
     public List<ItemResultData> items = new List<ItemResultData>();
@@ -79,6 +78,7 @@ public class StageScoreCalculator
         data.waveScore = GetWaveScore(data.clearWave);
 
         data.finalScore = (Mathf.Max(1, (data.stageLevelBonus * data.lifeBonus)) * data.waveScore) + totalGold;
+        data.rewardCurrency = Mathf.Max(0, Mathf.RoundToInt(data.finalScore / 10f));
 
         return data;
     }

@@ -59,7 +59,9 @@ public class QuestManager
         OnAchievementComplete?.Invoke(quest);
         completeAchievement.Add(quest);
         activeAchievement.Remove(quest);
+
         Managers.Save.MarkQuestDirty();
+        _ = Managers.Save.SaveAchievementData();
     }
 
     private void OnQuestCompleted(Quest quest)

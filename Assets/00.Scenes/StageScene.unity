@@ -853,7 +853,7 @@ MonoBehaviour:
   mainCamera: {fileID: 1654911749}
   towerPre: {fileID: 6464877683156130086, guid: b409fb15ee4047b4eb141c2f8151ea30,
     type: 3}
-  towers: {fileID: 650768711}
+  towersParent: {fileID: 650768711}
   preview: {fileID: 1594382237}
 --- !u!4 &115307017
 Transform:

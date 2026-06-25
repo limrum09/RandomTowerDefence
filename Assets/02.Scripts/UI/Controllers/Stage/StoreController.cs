@@ -48,7 +48,13 @@ public class StoreController : MonoBehaviour
 
     private void OnDestroy()
     {
-        stage.RunSession.OnGoldAmountChanged -= ChangedGold;
+        if (stage == null)
+            return;
+
+        if (stage.RunSession != null)
+            stage.RunSession.OnGoldAmountChanged -= ChangedGold;
+
+        stage.OnWaveEndRefreshStore -= RefreshStoreUIOnWaveClear;
     }
     private void Start()
     {
@@ -58,9 +64,10 @@ public class StoreController : MonoBehaviour
             slots[i].SetStoreCTR(this);
         }
 
-        RerollStoreUI(0);
+        RefreshStoreUIOnWaveClear();
 
         stage.RunSession.OnGoldAmountChanged += ChangedGold;
+        stage.OnWaveEndRefreshStore += RefreshStoreUIOnWaveClear;
         ChangedGold(stage.RunSession.SessionState.Gold);
     }
 
@@ -165,6 +172,11 @@ public class StoreController : MonoBehaviour
             default:
                 return string.Empty;
         }
+    }
+
+    private void RefreshStoreUIOnWaveClear()
+    {
+        SetStoreUI();
     }
 
     public void ChangedGold(int value)

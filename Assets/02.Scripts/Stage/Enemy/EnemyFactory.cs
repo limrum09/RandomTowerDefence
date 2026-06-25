@@ -11,7 +11,7 @@ public class EnemyFactory
 
     public event Action OnEnemySpawn;   // 적 1마리가 생성될 때 호출
     public event Action OnEnemyReached; // 적이 목표지점에 도달하면 호출
-    public event Action<float> OnEnemyDead;// 적이 사망시 호출, int = 보상 골드
+    public event Action OnEnemyDead;// 적이 사망시 호출, int = 보상 골드
     public event Action<int> OnEnemySummon;
 
 
@@ -20,9 +20,9 @@ public class EnemyFactory
         OnEnemyReached?.Invoke();
     }
 
-    private void EnemyDead(float reward)
+    private void EnemyDead()
     {
-        OnEnemyDead?.Invoke(reward);
+        OnEnemyDead?.Invoke();
     }
 
     public EnemyFactory(Enemy getBaseEnemy, Transform getEnemyParent, GridManager getGrid, PathFinder getPath)

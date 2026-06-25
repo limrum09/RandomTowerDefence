@@ -4,6 +4,19 @@ using UnityEngine;
 
 public class TowerController : MonoBehaviour
 {
+    private struct TowerRestoreData
+    {
+        public string uid;
+        public Vector2Int cell;
+    }
+
+    private enum RestoreResult
+    {
+        Success,
+        PartialSuccess,
+        Failed
+    }
+
     [Header("Reference")]
     [SerializeField]
     private StageManager stage;
@@ -14,7 +27,7 @@ public class TowerController : MonoBehaviour
     [SerializeField]
     private GameObject towerPre;
     [SerializeField]
-    private GameObject towers;
+    private GameObject towersParent;
     [SerializeField]
     private TowerBuildPreview preview;
 
@@ -283,19 +296,26 @@ public class TowerController : MonoBehaviour
     /// <param name="towerUID">설치할 타워의 UID</param>
     /// <param name="cell">타워 설치를 위한 셀</param>
     /// <returns></returns>
-    private bool BuildTower(string towerUID, Vector2Int cell)
+    private bool BuildTower(string towerUID, Vector2Int cell, bool clearSelect = true)
     {
+        if (string.IsNullOrEmpty(towerUID))
+            return false;
+
+        if (Managers.TowerData.GetTowerData(towerUID) == null)
+            return false;
+
         // 타워를 cell의 위치에 생성할 수 있는지 확인
         if (!CanPlaceTower(cell))
             return false;
 
         // 선택 타워가 있다면 타워 선택 초기화
-        ClearSelectedTower();
+        if (clearSelect)
+            ClearSelectedTower();
 
         // 해당 cell의 좌표값을 월드 좌표로 변환
         Vector3 worldPos = grid.CellToWorldCenter(cell.x, cell.y);
-        // 타워 Prefab을 생성, towers오브젝트를 부모로 지정해서 Hierachy정리
-        GameObject towerObj = Instantiate(towerPre, worldPos, Quaternion.identity, towers.transform);
+        // 타워 Prefab을 생성, towersParent를 부모로 지정해서 Hierachy정리
+        GameObject towerObj = Instantiate(towerPre, worldPos, Quaternion.identity, towersParent.transform);
 
         Tower tower = towerObj.GetComponent<Tower>();
 
@@ -499,6 +519,64 @@ public class TowerController : MonoBehaviour
     }
 
     /// <summary>
+    /// 타워 제거하기전 생성 실패 시, 복구할 타워의 데이터 저장
+    /// </summary>
+    /// <param name="towers"></param>
+    /// <returns></returns>
+    private bool TryCreateRestoreData(List<Tower> towers, out List<TowerRestoreData> datas)
+    {
+        datas = new List<TowerRestoreData>();
+
+        if (towers == null || towers.Count <= 0)
+            return false;
+
+        foreach(Tower tower in towers)
+        {
+            if (tower == null)
+                return false;
+
+            TowerMove move = tower.GetComponent<TowerMove>();
+
+            if (move == null)
+                return false;
+
+            datas.Add(new TowerRestoreData
+            {
+                uid = tower.TowerUID,
+                cell = move.GetTowerPosition()
+            });
+        }
+
+        return datas.Count == towers.Count;
+    }
+
+    /// <summary>
+    /// 타워 복구
+    /// </summary>
+    /// <param name="restoreDatas"></param>
+    private RestoreResult RestoreTowers(List<TowerRestoreData> restoreDatas)
+    {
+        if (restoreDatas == null || restoreDatas.Count <= 0)
+            return RestoreResult.Failed;
+
+        int successCnt = 0;
+
+        foreach(TowerRestoreData data in restoreDatas)
+        {
+            if (BuildTower(data.uid, data.cell, false))
+                successCnt++;
+        }
+
+        if (successCnt == restoreDatas.Count)
+            return RestoreResult.Success;
+
+        if (successCnt > 0)
+            return RestoreResult.PartialSuccess;
+
+        return RestoreResult.Failed;
+    }
+
+    /// <summary>
     /// 타워 이동 모드 종료로 인한 초기화
     /// </summary>
     /// <param name="clearSelection"></param>
@@ -565,6 +643,34 @@ public class TowerController : MonoBehaviour
     }
 
     /// <summary>
+    /// 타워 생성 전 생성할 타워 유효성 검사
+    /// </summary>
+    /// <param name="towerUID"></param>
+    /// <returns></returns>
+    private bool CanBuildTowerData(string towerUID, List<Tower> getTowers, Vector2Int spawnCell)
+    {
+        if (string.IsNullOrEmpty(towerUID))
+            return false;
+
+        if (Managers.TowerData.GetTowerData(towerUID) == null)
+            return false;
+
+        if (getTowers == null || getTowers.Count <= 0)
+            return false;
+
+        if (towerPre == null || towersParent == null)
+            return false;
+
+        if (grid == null || fieldTowerManager == null)
+            return false;
+
+        if (!grid.IsInBounds(spawnCell))
+            return false;
+
+        return true;
+    }
+
+    /// <summary>
     /// 해당 셀에 타워 설치가 가능한지 확인
     /// 해당 조건을 확인
     /// 맵 범위, 시작/도착 지점이 아니고, 장애물이 설치된 셀, 이미 타워가 없어야 함
@@ -593,15 +699,50 @@ public class TowerController : MonoBehaviour
     /// </summary>
     /// <param name="buildUID"></param>
     /// <param name="towers"></param>
-    private bool TowerGradeUpgrade(string buildUID, List<Tower> towers, Vector2Int spawnCell)
+    private bool TowerGradeUpgrade(string buildUID, List<Tower> getTowers, Vector2Int spawnCell)
     {
-        // 재료 타워 제거
-        if (!fieldTowerManager.RemoveTowers(towers))
+        if (!CanBuildTowerData(buildUID, getTowers, spawnCell))
             return false;
+
+        if (!TryCreateRestoreData(getTowers, out List<TowerRestoreData> restoreDatas))
+            return false;
+
+        // 재료 타워 제거
+        if (!fieldTowerManager.RemoveTowers(getTowers, out List<int> removedindex))
+        {
+            List<TowerRestoreData> removeRestoreDatas = new List<TowerRestoreData>();
+
+            foreach(int index in removedindex)
+            {
+                if(index >= 0 && index < restoreDatas.Count)
+                    removeRestoreDatas.Add(restoreDatas[index]);
+            }
+
+            RestoreResult result = RestoreTowers(removeRestoreDatas);
+
+            if (result != RestoreResult.Success)
+                Debug.LogError($"Failed restore tower result - {result}");
+
+            return false;
+        }            
 
         // 업그레이드 타워 생성
         if (!BuildTower(buildUID, spawnCell))
-            return false;        
+        {
+            RestoreResult result = RestoreTowers(restoreDatas);
+
+            if(result == RestoreResult.Failed)
+            {
+                Debug.LogError($"Failed Restore All Towers");
+            }
+            else if(result == RestoreResult.PartialSuccess)
+            {
+                Debug.LogError($"Fail Restore Tower");
+            }
+
+            return false;
+        }
+            
 
         // 현재 선택 상태 초기화
         ClearRemoveSelectedTower();

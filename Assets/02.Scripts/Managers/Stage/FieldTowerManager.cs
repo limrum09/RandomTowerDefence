@@ -17,6 +17,64 @@ public class FieldTowerManager
         return grid != null && grid.IsInBounds(cell);
     }
 
+    /// <summary>
+    /// 타워가 towerMap 어디 있는지 반환
+    /// </summary>
+    /// <param name="tower"></param>
+    /// <param name="cell"></param>
+    /// <returns></returns>
+    private bool TryGetRegisteredTowerCell(Tower tower, out Vector2Int cell)
+    {
+        cell = Vector2Int.zero;
+
+        if (tower == null || towerMap == null || grid == null)
+            return false;
+
+        if (!fieldTowers.Contains(tower))
+            return false;
+
+        for(int i = 0; i < grid.GridWidth; i++)
+        {
+            for(int j = 0; j < grid.GridHeight; j++)
+            {
+                if(towerMap[i, j] == tower)
+                {
+                    cell = new Vector2Int(i, j);
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// 받은 타워들이 제거해도 되는지 확인
+    /// </summary>
+    /// <param name="removeTowers"></param>
+    /// <returns></returns>
+    private bool CanRemoveTowers(List<Tower> removeTowers)
+    {
+        if (removeTowers == null || removeTowers.Count <= 0)
+            return false;
+
+        HashSet<Tower> checkDuplicate = new HashSet<Tower>();
+
+        foreach(Tower tower in removeTowers)
+        {
+            if (tower == null)
+                return false;
+
+            if (!checkDuplicate.Add(tower))
+                return false;
+
+            if(!TryGetRegisteredTowerCell(tower, out Vector2Int cell))
+                return false;
+        }
+
+        return true;
+    }
+
     public void Init(GridManager getGrid)
     {
         grid = getGrid;
@@ -88,6 +146,13 @@ public class FieldTowerManager
         return true;
     }
 
+    /// <summary>
+    /// 받은 타워의 fromCell에서 toCell로 위치를 이동
+    /// </summary>
+    /// <param name="tower"></param>
+    /// <param name="fromCell"></param>
+    /// <param name="toCell"></param>
+    /// <returns></returns>
     public bool MoveTower(Tower tower, Vector2Int fromCell, Vector2Int toCell)
     {
         if (tower == null)
@@ -110,6 +175,12 @@ public class FieldTowerManager
         return true;
     }
 
+    /// <summary>
+    /// tower1Cell과 tower2Cell의 좌표에 있는 두개의 타워의 위치를 변환
+    /// </summary>
+    /// <param name="tower1Cell"></param>
+    /// <param name="tower2Cell"></param>
+    /// <returns></returns>
     public bool SwapTower(Vector2Int tower1Cell, Vector2Int tower2Cell)
     {
         if(!IsValidCell(tower1Cell)  || !IsValidCell(tower2Cell)) 
@@ -127,38 +198,13 @@ public class FieldTowerManager
         return true;
     }
 
-    public bool HasTower(Vector2Int cell)
-    {
-        if (!IsValidCell(cell))
-            return false;
-
-        return towerMap[cell.x, cell.y] != null;
-    }
-
-    public Tower GetTower(Vector2Int cell)
-    {
-        if (!IsValidCell(cell))
-            return null;
-        
-        return towerMap[cell.x, cell.y];
-    }
-
-    public int GetTowerCount(Tower tower) => GetTowerCount(tower.Type);
-    public int GetTowerCount(TowerType type)
-    {
-        if (towerTypeCnt.TryGetValue(type, out var count))
-                return count;
-
-        return 0;
-    }
-
-    public int GetTotalTowerCount() => fieldTowers.Count;
-
-    public List<Tower> GetAllTowers()
-    {
-        return new List<Tower>(fieldTowers);
-    }
-
+    /// <summary>
+    /// 타워 등급 업그레이드
+    /// </summary>
+    /// <param name="selectTower"></param>
+    /// <param name="needCount"></param>
+    /// <param name="towers"></param>
+    /// <returns></returns>
     public bool TryGetGradeUpgradeTower(Tower selectTower, int needCount, out List<Tower> towers)
     {
         towers = new List<Tower>();
@@ -196,17 +242,31 @@ public class FieldTowerManager
         return towers.Count == needCount;
     }
 
-    public bool RemoveTowers(List<Tower> removeTowers)
+    /// <summary>
+    /// 넘겨 받은 모든 타워들 제거
+    /// </summary>
+    /// <param name="removeTowers"></param>
+    /// <returns></returns>
+    public bool RemoveTowers(List<Tower> removeTowers, out List<int> removedIndex)
     {
-        if (removeTowers == null || removeTowers.Count == 0)
+        removedIndex = new List<int>();
+
+        if (!CanRemoveTowers(removeTowers))
             return false;
 
-        int cnt = removeTowers.Count;
         TowerType type = removeTowers[0].Type;
 
-        for (int i = 0; i < cnt; i++)
+        for(int i = 0; i < removeTowers.Count; i++)
         {
-            RemoveTower(removeTowers[i], false);
+            if (RemoveTower(removeTowers[i], false))
+            {
+                removedIndex.Add(i);
+                continue;
+            }
+
+            int failCnt = GetTowerCount(type);
+            OnFieldTowerChanged?.Invoke(type, failCnt);
+            return false;
         }
 
         int tCnt = GetTowerCount(type);
@@ -214,16 +274,19 @@ public class FieldTowerManager
         return true;
     }
     
+    /// <summary>
+    /// 넘겨 받은 타워 하나 제거
+    /// </summary>
+    /// <param name="tower"></param>
+    /// <param name="notify"></param>
+    /// <returns></returns>
     public bool RemoveTower(Tower tower, bool notify = true)
     {
         if(tower == null) 
             return false;
 
-        TowerMove move = tower.GetComponent<TowerMove>();
-        if (move == null)
+        if (!TryGetRegisteredTowerCell(tower, out Vector2Int cell))
             return false;
-
-        Vector2Int cell = move.GetTowerPosition();
 
         if (!UnRegisterTower(tower, cell, notify))
             return false;
@@ -233,6 +296,9 @@ public class FieldTowerManager
         return true;
     }
 
+    /// <summary>
+    /// 모든 타워의 스텟을 재확인
+    /// </summary>
     public void RefreshAllTowerDamageStats()
     {
         foreach(Tower tower in fieldTowers)
@@ -244,6 +310,71 @@ public class FieldTowerManager
         }
     }
 
+    /// <summary>
+    /// 해당 좌표에 타워가 있는지 반환
+    /// </summary>
+    /// <param name="cell"></param>
+    /// <returns></returns>
+    public bool HasTower(Vector2Int cell)
+    {
+        if (!IsValidCell(cell))
+            return false;
+
+        return towerMap[cell.x, cell.y] != null;
+    }
+
+    /// <summary>
+    /// 해당 좌표에 있는 타워를 반환
+    /// </summary>
+    /// <param name="cell"></param>
+    /// <returns></returns>
+    public Tower GetTower(Vector2Int cell)
+    {
+        if (!IsValidCell(cell))
+            return null;
+
+        return towerMap[cell.x, cell.y];
+    }
+
+    /// <summary>
+    /// 받은 타워의 같은 타입의 타워의 개수를 반환
+    /// </summary>
+    /// <param name="tower"></param>
+    /// <returns></returns>
+    public int GetTowerCount(Tower tower) => GetTowerCount(tower.Type);
+
+    /// <summary>
+    /// 받은 타워의 타입을 가지고 있는 타워들의 개수를 반환
+    /// </summary>
+    /// <param name="type"></param>
+    /// <returns></returns>
+    public int GetTowerCount(TowerType type)
+    {
+        if (towerTypeCnt.TryGetValue(type, out var count))
+            return count;
+
+        return 0;
+    }
+
+    /// <summary>
+    /// 모든 타워의 개수를 반환
+    /// </summary>
+    /// <returns></returns>
+    public int GetTotalTowerCount() => fieldTowers.Count;
+
+    /// <summary>
+    /// 모든 타워의 정보를 반환
+    /// </summary>
+    /// <returns></returns>
+    public List<Tower> GetAllTowers()
+    {
+        return new List<Tower>(fieldTowers);
+    }
+
+    /// <summary>
+    /// 필드에 있는 모든 타워의 데이터를 TowerResultData로 가공하여 반환
+    /// </summary>
+    /// <returns></returns>
     public List<TowerResultData> GetTowerResultData()
     {
         Dictionary<TowerType, TowerResultData> result = new Dictionary<TowerType, TowerResultData>();
