@@ -1,7 +1,6 @@
 using Firebase.Firestore;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 [Serializable]
 [FirestoreData]
