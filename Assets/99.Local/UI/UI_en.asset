@@ -291,6 +291,26 @@ MonoBehaviour:
     m_Localized: Max Level
     m_Metadata:
       m_Items: []
+  - m_Id: 8059649055141888
+    m_Localized: Easy Move
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8059844258050048
+    m_Localized: Close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8060278548869120
+    m_Localized: UPG
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8060675921424384
+    m_Localized: ACH
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8060710910308352
+    m_Localized: GATE
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

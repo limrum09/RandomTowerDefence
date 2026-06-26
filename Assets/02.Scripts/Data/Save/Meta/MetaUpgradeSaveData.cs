@@ -10,6 +10,12 @@ public class MetaUpgradeSaveData : IValidSaveData
 
     public bool IsValid()
     {
+        if (towerMetaSaveData == null)
+            return false;
+
+        if(publicMetaSaveData == null) 
+            return false;
+
         return towerMetaSaveData.IsValid() && publicMetaSaveData.IsValid();
     }
 }

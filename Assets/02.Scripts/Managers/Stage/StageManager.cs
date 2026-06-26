@@ -48,16 +48,6 @@ public class StageManager : MonoBehaviour
     [SerializeField]
     private TowerCntSkillInfoController towerCntSkill;
 
-    [Header("Temp Settings Value")]
-    [SerializeField]
-    private int increaseGold;
-    [SerializeField]
-    private int life;
-    [SerializeField]
-    private int increaseFreeRollCnt;
-    [SerializeField]
-    private int increaseFreeObstacleCnt;
-
     private bool isResetTerrain;
     private bool isSpawning;
     private bool isStagePlaying;
@@ -117,8 +107,7 @@ public class StageManager : MonoBehaviour
         int terrainRefresh = GetPublicMetaValue(MetaUpgradeType.FreeTerrainRefresh);
         enemyKillGold = GetPublicMetaValue(MetaUpgradeType.DropGold, 10);
 
-        sessionManager.Init(1, life, startGold + increaseGold, increaseFreeRollCnt,
-            freeObstacle + increaseFreeObstacleCnt, terrainRefresh + 5);
+        sessionManager.Init(1, 10, startGold, 0, freeObstacle, terrainRefresh);
         
         towerSkillEffect.Init();
         statUpgradeManager.Init();
@@ -701,7 +690,7 @@ public class StageManager : MonoBehaviour
     private void RegisterReachedEnemy()
     {
         aliveEnemyCnt--;
-        sessionManager.ChangeLife(-1);
+        sessionManager.SetDamageLife(1);
 
         if(sessionManager.SessionState.CurrentLife <= 0)
         {
@@ -948,6 +937,9 @@ public class StageManager : MonoBehaviour
         sessionManager.GetFreeObstacle(1);
     }
 
+    /// <summary>
+    /// 게임 종료 후 호출, 현재 단계 웨이브, 타워, 재화 등을 고려하여 점수와 지급할 메타 재화를 계산
+    /// </summary>
     private void SetScoreCalculate()
     {
         StageResultData stageResult = new StageResultData();
@@ -968,6 +960,10 @@ public class StageManager : MonoBehaviour
         OnGameOver?.Invoke(stageResult);
     }
 
+    /// <summary>
+    /// 스테이가 종료되면 메타 재화를 넘겨주고 저장
+    /// </summary>
+    /// <param name="result"></param>
     private void GiveStageResultReward(StageResultData result)
     {
         if (result == null)
@@ -982,7 +978,9 @@ public class StageManager : MonoBehaviour
         _ = Managers.Save.SavePlayerProgressData();
     }
 
-
+    /// <summary>
+    /// 스테이지 클리어 업적 갱신
+    /// </summary>
     private void ReportStageEndAchievement()
     {
         if (isReportedStageEndAchievement)
@@ -996,6 +994,10 @@ public class StageManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 타워 생성 업적 갱신
+    /// </summary>
+    /// <param name="type"></param>
     private void ReportBuildTowerAchievement(TowerType type)
     {
         int cnt = fieldTowerManager.GetTowerCount(type);
@@ -1079,12 +1081,16 @@ public class StageManager : MonoBehaviour
         GameEnd();
     }
 
+    /// <summary>
+    /// 게임 종료
+    /// </summary>
     public void GameEnd()
     {
         if (isGameEnd)
             return;
 
         isGameEnd = true;
+
         ReportStageEndAchievement();
 
         isGameOver = true;
@@ -1115,4 +1121,53 @@ public class StageManager : MonoBehaviour
 
             return isCompleted;
     }
+
+#if UNITY_EDITOR
+    private void StopDebugWave()
+    {
+        StopAllCoroutines();
+
+        if (enemySpawn != null)
+            enemySpawn.GameOver();
+
+        isStagePlaying = false;
+        isSpawning = false;
+        aliveEnemyCnt = 0;
+    }
+
+    public void DebugSetDifficulty(string difficulty)
+    {
+        DebugPrepareWave(difficulty, 1);
+    }
+
+    public void DebugPrepareWave(string difficulty, int waveNumber)
+    {
+        if (string.IsNullOrEmpty(difficulty))
+            difficulty = Managers.Game.selectDifficultyLevel;
+
+        if (string.IsNullOrEmpty(difficulty))
+            difficulty = "EASY";
+
+        waveNumber = Mathf.Min(60,Mathf.Max(waveNumber, 1));
+
+        string difficultyUpper = difficulty.ToUpper();
+        string waveUID = $"{difficultyUpper}_W{waveNumber:000}";
+
+        Managers.Game.SelectStageDifficultyLevel(difficultyUpper);
+
+        StopDebugWave();
+
+        isGameOver = false;
+        isGameEnd = false;
+
+        currentWave = waveNumber;
+        waveRemoveEnemyCount = 0;
+        waveTotalEnemyCount = 0;
+
+        sessionManager.SetWave(currentWave);
+
+        waveManager.Init(waveUID);
+        PrepareWaveInit();
+    }
+#endif
 }

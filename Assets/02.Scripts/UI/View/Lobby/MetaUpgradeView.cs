@@ -255,6 +255,7 @@ public class MetaUpgradeView : MonoBehaviour
             infoView.SetPublicInfo(getMetaType, type, getIndex);
         }
     }
+
     public void MetaUpgrade(MetaUpgradeTarget getType, MetaUpgradeType upgradeType, string uid, int upgradeCost, int value, int getIndex)
     {
         bool complete = OnMetaUpgrade?.Invoke(getType, upgradeType, uid, upgradeCost, value) ?? false;
@@ -278,6 +279,13 @@ public class MetaUpgradeView : MonoBehaviour
             Managers.Save.MarkMetaUpgradeDirty();
             Managers.Save.MarkPlayerDirty();
         }
+    }
+
+    public void RefreshPlayerProgress()
+    {
+        ShowPlayerProgressData();
+        ChangedEXPBar();
+        ChangedResearchLevel();
     }
 
     public void ChangedResearchLevel()

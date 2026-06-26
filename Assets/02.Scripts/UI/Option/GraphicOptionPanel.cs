@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Localization;
@@ -108,8 +107,7 @@ public class GraphicOptionPanel : MonoBehaviour
         if (locale == null)
             return;
 
-        LocalizationSettings.SelectedLocale = locale;
-        Managers.Local.SetLanguage(GetSelectLanguage(locale));
+        Managers.Local.ApplyLocale(locale);
         Managers.Graphic.SetLanguageLocaleCode(locale.Identifier.Code);
 
         if (save)
@@ -128,21 +126,6 @@ public class GraphicOptionPanel : MonoBehaviour
         ApplyLanguage(availableLocales[index], true);
     }
 
-    private void ApplySaveLanguage()
-    {
-        string saveLocaleCode = Managers.Graphic.LanguageLocaleCode;
-
-        if (string.IsNullOrEmpty(saveLocaleCode))
-            return;
-
-        Locale saveLocale = FindLocaleByCode(saveLocaleCode);
-
-        if (saveLocale == null)
-            return;
-
-        ApplyLanguage(saveLocale, false);
-    }
-
     private void SetLanguageDropdownValue()
     {
         Locale selectedLocale = LocalizationSettings.SelectedLocale;
@@ -155,27 +138,6 @@ public class GraphicOptionPanel : MonoBehaviour
         languageDropDown.SetValueWithoutNotify(index);
         languageDropDown.RefreshShownValue();
         isSettingLanguageDropdown = false;
-    }
-
-    private SelectLanguege GetSelectLanguage(Locale locale)
-    {
-        string code = locale.Identifier.Code.ToLower();
-
-        if (code.StartsWith("en"))
-            return SelectLanguege.EN;
-
-        return SelectLanguege.KR;
-    }
-
-    private Locale FindLocaleByCode(string code)
-    {
-        for (int i = 0; i < availableLocales.Count; i++)
-        {
-            if (availableLocales[i].Identifier.Code == code)
-                return availableLocales[i];
-        }
-
-        return null;
     }
 
     private string GetLocalDisplayName(Locale locale)
@@ -209,7 +171,6 @@ public class GraphicOptionPanel : MonoBehaviour
 
         languageDropDown.AddOptions(options);
 
-        ApplySaveLanguage();
         SetLanguageDropdownValue();
 
         languageDropDown.onValueChanged.RemoveListener(OnChangedLanguageDropdow);

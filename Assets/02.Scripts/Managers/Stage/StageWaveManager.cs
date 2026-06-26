@@ -85,6 +85,15 @@ public class StageWaveManager : MonoBehaviour
             };
         }
 
+        if(!ValidateRosterData(wave, roster, out string errorMessage))
+        {
+            return new WavePrepareResult
+            {
+                state = WavePrepareState.Failed,
+                message = errorMessage
+            };
+        }
+
         if (string.IsNullOrEmpty(wave.nextWave))
         {
             return new WavePrepareResult
@@ -105,5 +114,79 @@ public class StageWaveManager : MonoBehaviour
             waveData = currentWave,
             rosterData = currentWaveRosterData
         };
+    }
+
+    private bool ValidateRosterData(WaveData wave, List<WaveEnemyRosterData> roster, out string message)
+    {
+        for(int i = 0; i < roster.Count; i++)
+        {
+            WaveEnemyRosterData data = roster[i];
+
+            if (data == null)
+            {
+                message = $"Wave roster row is null : {wave.waveUID},index : {i}";
+                return false;
+            }
+
+            if(data.waveUID != wave.waveUID)
+            {
+                message = $"Wave roster UID not equal : wave {wave.waveUID}, roster : {data.waveUID}, index : {i}";
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(data.enemyUID))
+            {
+                message = $"Enemy UID is empty : enemy : {data.enemyUID}, wave : {wave.waveUID}, index : {i}";
+                return false;
+            }
+
+            EnemyData enemyData = Managers.EnemyData.GetEnemyData(data.enemyUID);
+
+            if(enemyData == null)
+            {
+                message = $"Enemy data Null : {data.enemyUID}, wave {wave.waveUID}, index : {i}";
+                return false;
+            }
+
+            if(Managers.EnemySkillData.GetEnemySkillData(enemyData.enemySkillUID) == null)
+            {
+                message = $"Enemy skill data Null : {enemyData.enemySkillUID}, enemy : {data.enemyUID}, wave {wave.waveUID}, index : {i}";
+                return false;
+            }
+
+            if (data.spawnOrder < 0)
+            {
+                message = $"Spawn order is Invalid : {wave.waveUID}, enemy : {data.enemyUID}, value : {data.spawnOrder}";
+                return false;
+            }
+
+            if (data.enemyLevel < 0)
+            {
+                message = $"Enemy level is Invalid : {wave.waveUID}, enemy : {data.enemyUID}, value : {data.enemyLevel}";
+                return false;
+            }
+
+            if (data.enemyCount <= 0)
+            {
+                message = $"Eenmy count is Invalid : {wave.waveUID}, enemy : {data.enemyUID}, value : {data.enemyCount}";
+                return false;
+            }
+
+            if (data.startTime < 0)
+            {
+                message = $"Start time is Invalid : {wave.waveUID}, enemy : {data.enemyUID}, value : {data.startTime}";
+                return false;
+            }
+
+            if (data.spawnInterval < 0)
+            {
+                message = $"Spawn Interval is Invalid : {wave.waveUID}, enemy : {data.enemyUID}, value : {data.spawnInterval}";
+                return false;
+            }
+        }
+
+        message = string.Empty;
+
+        return true;
     }
 }

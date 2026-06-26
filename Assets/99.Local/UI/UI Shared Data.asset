@@ -287,6 +287,26 @@ MonoBehaviour:
     m_Key: UI_MAX_LEVEL
     m_Metadata:
       m_Items: []
+  - m_Id: 8059649055141888
+    m_Key: UI_OPEN_EASY_MOVE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8059844258050048
+    m_Key: UI_CLOSE_EASY_MOVE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8060278548869120
+    m_Key: UI_UPGRADE_ICON_TEXT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8060675921424384
+    m_Key: UI_ACHIEVEMENT_ICON_TEXT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8060710910308352
+    m_Key: UI_GATE_ICON_TEXT
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

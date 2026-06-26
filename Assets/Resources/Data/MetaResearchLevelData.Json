@@ -65,6 +65,12 @@
       "Required_EXP": 40000,
       "Unlock_Research_Grade": 6,
       "Note": ""
+    },
+    {
+      "Research_Level": 12,
+      "Required_EXP": 9999999,
+      "Unlock_Research_Grade": 6,
+      "Note": ""
     }
   ]
 }

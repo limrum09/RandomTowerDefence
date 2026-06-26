@@ -172,13 +172,23 @@ public class RunSessionDataManager
         return true;
     }
 
-    public void ChangeLife(int value)
+    public void SetDamageLife(int amount)
     {
-        if (state == null || value == 0)
+        if (state == null || amount <= 0)
             return;
 
-        state.SetLife(state.CurrentLife + value);
+        state.SetLife(state.CurrentLife - amount);
         state.SetArriveEnemyCount(state.ArriveEnemyCnt + 1);
+
+        OnLifeChanged?.Invoke(state.CurrentLife);
+    }
+
+    public void HealLife(int amount)
+    {
+        if (state == null || amount <= 0)
+            return;
+
+        state.SetLife(state.CurrentLife + amount);
 
         OnLifeChanged?.Invoke(state.CurrentLife);
     }

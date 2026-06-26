@@ -71,7 +71,11 @@ public class EnemyFactory
         // 기본 Enemy Prefab을 스폰 위치에 생성
         Enemy enemyObj = UnityEngine.Object.Instantiate(baseEnemy, worldPos, Quaternion.identity, enemyParent);
         // 적 데이터 초기화, enemyUID와 level에 따라 스탯/스킬 들이 설정
-        enemyObj.Init(enemyUID, level);
+        if(!enemyObj.Init(enemyUID, level))
+        {
+            UnityEngine.Object.Destroy(enemyObj.gameObject);
+            return false;
+        }
 
         // 컴포넌트 가져오기
         EnemyMove enemyMove = enemyObj.GetComponent<EnemyMove>();

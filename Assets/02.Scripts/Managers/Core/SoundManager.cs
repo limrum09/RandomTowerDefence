@@ -25,6 +25,8 @@ public class SoundSaveData
     public float uiVolume;
     public bool isBGMPlaying;
     public bool isSFXPlaying;
+    public bool isMasterPlaying;
+    public bool isUIPlaying;
 }
 
 /// <summary>
@@ -81,13 +83,13 @@ public class SoundManager
         sfxAudioSource = soundObj.AddComponent<AudioSource>();
         soundObj.transform.SetParent(Managers.Instance.transform);
 
-        ResetSound();
+        ResetSound(false);
     }
 
     /// <summary>
     /// 사운드 옵션을 기본 값으로 초기화, 기본 BGM을 재생
     /// </summary>
-    public void ResetSound()
+    public void ResetSound(bool markDirty = true)
     {
         masterVolume = 1.0f;
         bgmVolume = 1.0f;
@@ -101,6 +103,9 @@ public class SoundManager
         currentBGMUID = string.Empty;
 
         PlayBGM();
+
+        if(markDirty)
+            Managers.Save.MarkSoundDirty();
     }
 
     /// <summary>
@@ -212,6 +217,7 @@ public class SoundManager
     {
         currentBGMUID = soundDataManager.GetNextBGMUID(currentBGMUID);
         PlayBGM();
+        Managers.Save.MarkSoundDirty();
     }
 
     /// <summary>
@@ -221,6 +227,7 @@ public class SoundManager
     {
         currentBGMUID = soundDataManager.GetPrevBGMUID(currentBGMUID);
         PlayBGM();
+        Managers.Save.MarkSoundDirty();
     }
 
     /// <summary>
@@ -302,12 +309,16 @@ public class SoundManager
             return;
 
         currentBGMUID = saveData.currentBGMUID;
-        masterVolume = saveData.masterVolume;
-        bgmVolume = saveData.bgmVolume;
-        sfxVolume = saveData.sfxVolume;
-        uiVolume = saveData.uiVolume;
+
+        masterVolume = Mathf.Clamp01(saveData.masterVolume);
+        bgmVolume = Mathf.Clamp01(saveData.bgmVolume);
+        sfxVolume = Mathf.Clamp01(saveData.sfxVolume);
+        uiVolume = Mathf.Clamp01(saveData.uiVolume);
+
         isBGMPlaying = saveData.isBGMPlaying;
         isSFXPlaying = saveData.isSFXPlaying;
+        isMasterPlaying = saveData.isMasterPlaying;
+        isUIPlaying = saveData.isUIPlaying;
 
         ApplyBGMVolume();
 

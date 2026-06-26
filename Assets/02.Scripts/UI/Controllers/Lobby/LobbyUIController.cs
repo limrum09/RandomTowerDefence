@@ -55,6 +55,11 @@ public class LobbyUIController : MonoBehaviour
         OnSelectStage?.Invoke(level);
     }
 
+    public void RefreshMetaProgress()
+    {
+        metaView?.RefreshPlayerProgress();
+    }
+
     public void ShowMetaUpgradeView()
     {
         metaView?.Show();

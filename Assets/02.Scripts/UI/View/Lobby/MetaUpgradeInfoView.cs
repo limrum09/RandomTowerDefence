@@ -133,6 +133,7 @@ public class MetaUpgradeInfoView : MonoBehaviour
 
         nameText.text = Managers.Local.GetString("UI", Managers.PublicMetaUpgrade.GetTypeName(upgradeType));
         optionInfoText.text = Managers.Local.GetString("UI", Managers.PublicMetaUpgrade.GetTypeInfoStr(upgradeType));
+        icon.sprite = ResourceCache.Load<Sprite>($"UIIcons/{upgradeType}");
 
         MetaUpgradeCal displayData = Managers.Game.GetPublicDisplayData(upgradeType);
         
