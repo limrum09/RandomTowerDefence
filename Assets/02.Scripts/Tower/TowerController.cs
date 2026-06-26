@@ -2,6 +2,13 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum TowerSelectionClearReason
+{
+    Default,
+    InfoPanelChanged,
+    Remove
+}
+
 public class TowerController : MonoBehaviour
 {
     private struct TowerRestoreData
@@ -32,7 +39,7 @@ public class TowerController : MonoBehaviour
     private TowerBuildPreview preview;
 
     public event Action<Tower> OnTowerSelected;
-    public event Action OnTowerSelectCleared;
+    public event Action<TowerSelectionClearReason> OnTowerSelectCleared;
     public event Action<Tower> OnShowGradeUpgrade;
     public event Action<Tower> OnShowStatUpgrade;
     public event Func<GoldChangedReason, int, bool> OnGoldInteraction;
@@ -146,7 +153,7 @@ public class TowerController : MonoBehaviour
                 // 다음 클릭으로 타워 이동 모드 진입
                 SetTowerMoveMode();
                 // 상세 UI 닫기
-                OnTowerSelectCleared?.Invoke();
+                OnTowerSelectCleared?.Invoke(TowerSelectionClearReason.Default);
                 return;
             }
 
@@ -496,10 +503,10 @@ public class TowerController : MonoBehaviour
     /// 선택된 타워 정보 초기화
     /// </summary>
     /// <param name="hideView"></param>
-    private void ClearSelectedTower()
+    public void ClearSelectedTower(TowerSelectionClearReason reason = TowerSelectionClearReason.Default)
     {
         ClearSelectTowerStat();
-        OnTowerSelectCleared?.Invoke();
+        OnTowerSelectCleared?.Invoke(reason);
     }
 
     private void ClearRemoveSelectedTower()

@@ -161,7 +161,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     /// <param name="uid">샐성할 적 UID</param>
     /// <param name="getLevel">생성할 적 레벨</param>
-    public void Init(string uid, int getLevel)
+    public bool Init(string uid, int getLevel)
     {
         // 레벨과 UID 저장
         level = getLevel;
@@ -173,7 +173,7 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
             Debug.Log("Enemy Resolve Info가 없음");
-            return;
+            return false;
         }
         
         // EnemyData 값 복사
@@ -200,6 +200,8 @@ public class Enemy : MonoBehaviour
         skill.Init(this, enemySkillUID);
         // 적 애니메이션 초기화
         anim.SetAnim(uid);
+
+        return true;
     }
 
     public void SetMove(bool pause)

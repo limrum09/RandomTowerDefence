@@ -31,16 +31,6 @@ public class PlayerProgressManager
     private const int MaxLevel = 12;
 
     /// <summary>
-    /// 임시로 재화 제공
-    /// </summary>
-    private void TempAddCurrency()
-    {
-#if UNITY_EDITOR
-        AddCurrency(50000);
-#endif
-    }
-
-    /// <summary>
     /// 경험치를 추가한다.
     /// </summary>
     /// <param name="getExp"></param>
@@ -107,16 +97,17 @@ public class PlayerProgressManager
     {
         if (value <= 0)
         {
-            UnityEngine.Debug.Log("소모 값이 0이하 : " + value);
+            UnityEngine.Debug.LogError("소모 값이 0이하 : " + value);
             return false;
         }
             
 
         if (value > playerData.metaCurrency)
         {
-            TempAddCurrency();
+            UnityEngine.Debug.LogError("소모 값이 0이하 : " + value);
             return false;
         }
+            
 
         playerData.metaCurrency -= value;
 

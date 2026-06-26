@@ -43,9 +43,10 @@ public class EnemySpawn : MonoBehaviour
 
     private EnemyFactory enemyFactory;
     private GridManager grid;           // 적 이동 시에 사용할 GridManager
-    private PathFinder path;            // 적 이동 경로 탐색에 사용할 PathFinder
     private Vector3 spawnPoint;         // 적이 생성될 월드 좌표
+    private bool isSpawnActive;
     private Coroutine waveCoroutine;
+    private Coroutine enemySpawnCoroutine;
 
     public EnemyFactory EnemyFactory => enemyFactory;
     public event Action OnSpawnEnd;     // 스폰이 종료되면 호출
@@ -92,7 +93,6 @@ public class EnemySpawn : MonoBehaviour
     public void SetInitialized(GridManager getGrid, PathFinder getPath)
     {
         grid = getGrid;
-        path = getPath;
 
         enemyFactory = new EnemyFactory(baseEnemy, spawnEnemysParent, getGrid, getPath);
     }
@@ -104,6 +104,7 @@ public class EnemySpawn : MonoBehaviour
     {
         enemyFactory.SetCanSpawn(true);
 
+        isSpawnActive = true;
         spawnPoint = grid.CellToWorldCenter(grid.SpawnPos.x, grid.SpawnPos.y);
 
         if (waveCoroutine != null)
@@ -120,7 +121,15 @@ public class EnemySpawn : MonoBehaviour
     /// <param name="spawnInfo">생성할 적 정보</param>
     private void SpawnOneEnemy(EnemySpawnInfo spawnInfo)
     {
-        enemyFactory.SpawnEnemy(spawnInfo.enemyUID, spawnInfo.level, spawnPoint);
+        if (!isSpawnActive)
+            return;
+
+        bool success = enemyFactory.SpawnEnemy(spawnInfo.enemyUID, spawnInfo.level, spawnPoint);
+
+        if (!success)
+        {
+            Debug.LogError($"Enemy spawn failed : {spawnInfo.enemyUID}, level : {spawnInfo.level}");
+        }
     }
 
     /// <summary>
@@ -146,7 +155,9 @@ public class EnemySpawn : MonoBehaviour
                 yield return new WaitForSeconds(waitTime);
 
             // 해당 저거 그릅 스폰 시작
-            yield return StartCoroutine(StartEnemySpawn(info));
+            enemySpawnCoroutine = StartCoroutine(StartEnemySpawn(info));
+            yield return enemySpawnCoroutine;
+            enemySpawnCoroutine = null;
         }
 
         waveCoroutine = null;
@@ -164,8 +175,14 @@ public class EnemySpawn : MonoBehaviour
     {
         for(int i = 0; i < info.spawnCnt; i++)
         {
+            if (!isSpawnActive)
+                yield break;
+
             // 적 1마리 생성
             SpawnOneEnemy(info);
+
+            if(!isSpawnActive)
+                yield break;
 
             // 스폰 시간동안 대기
             yield return new WaitForSeconds(info.spawnInterval);
@@ -180,16 +197,27 @@ public class EnemySpawn : MonoBehaviour
         }
     }
 
-    public void GameOver()
+    private void StopSpawnCoroutines()
     {
-        enemyFactory.SetCanSpawn(false);
+        if(enemySpawnCoroutine != null)
+        {
+            StopCoroutine(enemySpawnCoroutine);
+            enemySpawnCoroutine = null;
+        }
 
         if (waveCoroutine != null)
         {
             StopCoroutine(waveCoroutine);
             waveCoroutine = null;
         }
-            
+    }
+
+    public void GameOver()
+    {
+        isSpawnActive = false;
+        enemyFactory.SetCanSpawn(false);
+
+        StopSpawnCoroutines();
         RemoveAllEnemies();
     }
 }

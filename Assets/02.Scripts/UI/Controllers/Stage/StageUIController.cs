@@ -300,16 +300,18 @@ public class StageUIController : MonoBehaviour
         }
     }
 
-    private void ShowInfoPanel(StageInfoPanelType type, Action setModel, bool forceRefresh = false)
+    private bool ShowInfoPanel(StageInfoPanelType type, Action setModel, bool forceRefresh = false)
     {
+        if (isInfoPanelTransitioning)
+            return false;
+
         InfoPanelController target = GetInfoPanelAnimator(type);
-         
 
         if (target == null)
-            return;
+            return false;
 
         if (currentInfoPanel == target && !forceRefresh)
-            return;
+            return false;
 
         bool isFirstOpen = currentInfoPanel == null;
 
@@ -333,7 +335,7 @@ public class StageUIController : MonoBehaviour
                 }
             );
 
-            return;
+            return true;
         }
 
         InfoPanelController prev = currentInfoPanel;
@@ -350,7 +352,7 @@ public class StageUIController : MonoBehaviour
                 isInfoPanelTransitioning = false;
             });
 
-            return;
+            return true;
         }
 
         target.Show();
@@ -360,6 +362,8 @@ public class StageUIController : MonoBehaviour
         {
             isInfoPanelTransitioning = false;
         });
+
+        return true;
     }
 
     private void OnClickGradeUpgrade(Tower tower)
@@ -369,7 +373,8 @@ public class StageUIController : MonoBehaviour
 
         towerCtr.SetTowerGradeUpgradeMode();
 
-        ShowInfoPanel(StageInfoPanelType.TowerGradeUpgrade, () => gradePresenter.SetModel(tower));
+        if(!ShowInfoPanel(StageInfoPanelType.TowerGradeUpgrade, () => gradePresenter.SetModel(tower)))
+            return;
     }
 
     private void OnClickStatUpgrade(Tower tower)
@@ -377,7 +382,8 @@ public class StageUIController : MonoBehaviour
         if (tower == null)
             return;
 
-        ShowInfoPanel(StageInfoPanelType.TowerStatUpgrade, () => statPresenter.SetModel(tower));
+        if(!ShowInfoPanel(StageInfoPanelType.TowerStatUpgrade, () => statPresenter.SetModel(tower)))
+            return;
     }
 
     private void OnClickItemInfo(ItemData item, int index)
@@ -385,9 +391,10 @@ public class StageUIController : MonoBehaviour
         if (item == null)
             return;
 
-        actionMenuPresenter.Hide();
+        towerCtr.ClearSelectedTower(TowerSelectionClearReason.InfoPanelChanged);
 
-        ShowInfoPanel(StageInfoPanelType.Item, () => itemInfoPresenter.SetModel(item, index), true);
+        if(!ShowInfoPanel(StageInfoPanelType.Item, () => itemInfoPresenter.SetModel(item, index), true))
+            return;
     }
 
     private void OnClickWaveEnemyInfo(EnemyResolveInfo waveEnemy)
@@ -395,9 +402,10 @@ public class StageUIController : MonoBehaviour
         if (waveEnemy == null)
             return;
 
-        actionMenuPresenter.Hide();
+        towerCtr.ClearSelectedTower(TowerSelectionClearReason.InfoPanelChanged);
 
-        ShowInfoPanel(StageInfoPanelType.Enemy, () => enemyInfoPresenter.GetModel(waveEnemy), true);
+        if(!ShowInfoPanel(StageInfoPanelType.Enemy, () => enemyInfoPresenter.GetModel(waveEnemy), true))
+            return;
     }
 
     private void SetSelectedTower(Tower getTower)
@@ -415,15 +423,15 @@ public class StageUIController : MonoBehaviour
         HideDetailViews();
     }
 
-    private void ClearSelection()
-    {
+    private void ClearSelection(TowerSelectionClearReason reason)
+    {    
         selectedTower = null;
         actionMenuPresenter.Hide();
 
-        if (Managers.InputData.IsPointerOverUI<TowerUIRaycastTarget>())
+        if (reason == TowerSelectionClearReason.InfoPanelChanged)
             return;
 
-        HideDetailViews();
+        HideCurrentInfoPanel();
     }
 
     private void OnClickMove()
@@ -501,7 +509,7 @@ public class StageUIController : MonoBehaviour
         if (item == null)
             return;
 
-        itemInfoPresenter.Hide();
+        HideCurrentInfoPanel();
         OnRequestItemSell?.Invoke(item, index);
     }
 

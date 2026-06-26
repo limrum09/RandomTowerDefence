@@ -173,7 +173,7 @@ public class MetaUpgradeSelectView : MonoBehaviour
         title.text = Managers.Local.GetString("UI", publicMetaManager.GetTypeName(upgradeType));
         info.text = Managers.Local.GetString("UI", publicMetaManager.GetTypeInfoStr(upgradeType));
         upgradeText1.text = Managers.Local.GetString("UI", publicMetaManager.GetTypeCountStr(upgradeType));
-        icon.sprite = null;
+        icon.sprite = ResourceCache.Load<Sprite>($"UIIcons/{upgradeType}");
 
         MetaUpgradeCal displayData = Managers.Game.GetPublicDisplayData(upgradeType);
         upgradeFrame2.SetActive(displayData.useSecondValue);

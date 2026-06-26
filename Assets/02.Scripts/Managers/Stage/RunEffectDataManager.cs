@@ -106,7 +106,7 @@ public class RunEffectDataManager
         if (session == null)
             return;
 
-        session.ChangeLife(item.value);
+        session.HealLife(item.value);
     }
 
     private void ApplyRandomDropGold(ItemData item)

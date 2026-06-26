@@ -4,6 +4,13 @@ using System.IO;
 using System.Threading.Tasks;
 using UnityEngine;
 
+public enum FirebaseSaveCheckState
+{
+    Exists,
+    Missing,
+    Failed
+}
+
 public interface IValidSaveData
 {
     bool IsValid();
@@ -48,10 +55,36 @@ public class SaveDataManager
     public string SavePath(string fileName) => Path.Combine(Application.persistentDataPath, fileName);
     public bool IsFirebaseLoadCompleted { get; private set; }
     public bool IsFirebaseLoadFail { get; private set; }
-    public async Task<bool> HasFirebaseSaveData(string uid)
+
+    public async Task<FirebaseSaveCheckState> CheckFirebaseSaveData(string uid, int timeOutMs = 10000)
     {
-        DocumentSnapshot snapshot = await GetSaveDoc(uid, PLAYER_PROGRESS_FILE).GetSnapshotAsync();
-        return snapshot.Exists;
+        try
+        {
+            Task<DocumentSnapshot> loadTask = GetSaveDoc(uid, PLAYER_PROGRESS_FILE).GetSnapshotAsync();
+            Task timeOutTask = Task.Delay(timeOutMs);
+
+            Task completedTask = await Task.WhenAny(loadTask, timeOutTask);
+
+            if(completedTask == timeOutTask)
+            {
+                Debug.LogError("Firebae save check Time Out");
+                return FirebaseSaveCheckState.Failed;
+            }
+
+            DocumentSnapshot snapshot = await loadTask;
+
+            return snapshot.Exists ? FirebaseSaveCheckState.Exists : FirebaseSaveCheckState.Missing;
+        }
+        catch(Firebase.FirebaseException e)
+        {
+            Debug.LogError($"Firebase save Check Fail : {e.ErrorCode} / {e.Message}");
+            return FirebaseSaveCheckState.Failed;
+        }
+        catch(Exception e)
+        {
+            Debug.LogError($"Firebase save Check Fail : {e.Message}");
+            return FirebaseSaveCheckState.Failed;
+        }
     }
     
     public bool HasSignInUser()
@@ -108,7 +141,7 @@ public class SaveDataManager
                 Managers.PublicMetaUpgrade.LoadSaveData(defaultData.publicMetaSaveData);
                 Managers.TowerMetaUpgrade.LoadSaveData(defaultData.towerMetaSaveData);
                 await GetSaveDoc(META_UPGRADE_SAVE_FILE).SetAsync(defaultData, SetOptions.Overwrite);
-                return false;
+                return true;
             default:
                 Debug.LogError($"Meta Upgrade Load Fail : {result.Stat} / {result.ErrorMessage}");
                 return false;
@@ -128,7 +161,7 @@ public class SaveDataManager
                 PlayerProgressData defaultData = CreateDefaultPlayerProgressData();
                 Managers.Player.LoadSaveData(defaultData);
                 await GetSaveDoc(PLAYER_PROGRESS_FILE).SetAsync(defaultData, SetOptions.Overwrite);
-                return false;
+                return true;
             default:
                 Debug.LogError($"Progress Load Fail : {result.Stat} / {result.ErrorMessage}");
                 return false;
@@ -148,7 +181,7 @@ public class SaveDataManager
                 QuestSaveDataList defaultData = CreateDefaultQuestSaveData();
                 Managers.QuestMgr.LoadSaveData(defaultData);
                 await GetSaveDoc(QUEST_SAVE_FILE).SetAsync(defaultData, SetOptions.Overwrite);
-                return false;
+                return true;
             default:
                 Debug.LogError($"Quest Load Fail : {result.Stat} / {result.ErrorMessage}");
                 return false;
@@ -231,6 +264,13 @@ public class SaveDataManager
         }
     }
 
+    public void LoadLocalOptionData()
+    {
+        LoadInputKeyData();
+        LoadSoundData();
+        LoadGraphicData();
+    }
+
     public async Task<bool> LoadAllData()
     {
         IsFirebaseLoadCompleted = false;
@@ -255,11 +295,6 @@ public class SaveDataManager
             IsFirebaseLoadFail = true;
             return false;
         }
-        
-
-        LoadInputKeyData();
-        LoadSoundData();
-        LoadGraphicData();
 
         return IsFirebaseLoadCompleted;
     }
@@ -289,11 +324,16 @@ public class SaveDataManager
             towerMetaSaveData = Managers.TowerMetaUpgrade.GetTowerUpgradeSaveData()
         };
 
-        await GetSaveDoc(META_UPGRADE_SAVE_FILE).SetAsync(saveData, SetOptions.MergeAll);
+        try
+        {
+            await GetSaveDoc(META_UPGRADE_SAVE_FILE).SetAsync(saveData, SetOptions.MergeAll);
 
-        isMetaUpgradeDirty = false;
-
-        Debug.Log("Meta Upgrade Firestore Save Completed");
+            isMetaUpgradeDirty = false;
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Meta upgrade Firestore save failed : {e.Message}");
+        }
     }
 
     public async Task SavePlayerProgressData()
@@ -306,11 +346,18 @@ public class SaveDataManager
 
         PlayerProgressData saveData = Managers.Player.GetSaveData();
 
-        await GetSaveDoc(PLAYER_PROGRESS_FILE).SetAsync(saveData, SetOptions.MergeAll);
+        try
+        {
+            await GetSaveDoc(PLAYER_PROGRESS_FILE).SetAsync(saveData, SetOptions.MergeAll);
 
-        isPlayerDirty = false;
+            isPlayerDirty = false;
+        }
+        catch(Exception e)
+        {
+            Debug.LogError($"Player pregress Firestore save failed : {e.Message}");
+        }
 
-        Debug.Log("Player Progress Firestore Save Completed");
+        
     }
 
     public async Task SaveAchievementData()
@@ -323,13 +370,17 @@ public class SaveDataManager
 
         QuestSaveDataList saveData = Managers.QuestMgr.GetSaveData();
 
-        await GetSaveDoc(QUEST_SAVE_FILE).SetAsync(saveData, SetOptions.MergeAll);
+        try
+        {
+            await GetSaveDoc(QUEST_SAVE_FILE).SetAsync(saveData, SetOptions.MergeAll);
 
-        isQuestDirty = false;
-
-        Debug.Log("Achievement Firestore Save Completed");
+            isQuestDirty = false;
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Achievement Firestore save failed : {e.Message}");
+        }
     }
-
 
     public void SaveSoundData()
     {
@@ -379,7 +430,6 @@ public class SaveDataManager
         await GetSaveDoc(uid, META_UPGRADE_SAVE_FILE).SetAsync(CreateDefaultMetaUpgradeSaveDatas(), SetOptions.Overwrite);
         await GetSaveDoc(uid, QUEST_SAVE_FILE).SetAsync(CreateDefaultQuestSaveData(), SetOptions.Overwrite);
     }
-
 
     public void MarkMetaUpgradeDirty() => isMetaUpgradeDirty = true;
     public void MarkGraphicDirty() => isGraphicDirty = true;

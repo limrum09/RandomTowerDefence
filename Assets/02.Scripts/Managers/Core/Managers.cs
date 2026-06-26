@@ -152,6 +152,10 @@ public class Managers : MonoBehaviour
 
     private async void Start()
     {
+        Save.LoadLocalOptionData();
+
+        await Local.ApplySavedLocale(Graphic.LanguageLocaleCode);
+
         if (!Save.HasSignInUser())
         {
             Player.LoadSaveData(null);
@@ -166,10 +170,17 @@ public class Managers : MonoBehaviour
 
         string uid = FirebaseInitializer.Instance.Auth.CurrentUser.UserId;
 
-        bool exists = await Save.HasFirebaseSaveData(uid);
+        FirebaseSaveCheckState saveState = await Save.CheckFirebaseSaveData(uid);
 
-        if (!exists)
+        if(saveState == FirebaseSaveCheckState.Failed)
+        {
+            return;
+        }
+
+        if(saveState == FirebaseSaveCheckState.Missing)
+        {
             await Save.CreateNewUserFirebaseSaveData(uid);
+        }
 
         bool loadSuccess = await Save.LoadAllData();
 

@@ -1,0 +1,2093 @@
+fileFormatVersion: 2
+guid: 7eb9247d1f1551e4ca8ebf1ee07ea1b3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3432381160939678944
+    second: FreeObstacle_0
+  - first:
+      213: -4113701965861333914
+    second: FreeObstacle_1
+  - first:
+      213: -1529571314249451655
+    second: FreeObstacle_2
+  - first:
+      213: -771858876798122803
+    second: FreeObstacle_3
+  - first:
+      213: 8848845479609691487
+    second: FreeObstacle_4
+  - first:
+      213: -5568656671888871999
+    second: FreeObstacle_5
+  - first:
+      213: 2286132175667046070
+    second: FreeObstacle_6
+  - first:
+      213: 1125080403413783141
+    second: FreeObstacle_7
+  - first:
+      213: -8288111692138705502
+    second: FreeObstacle_8
+  - first:
+      213: -6063925443013498052
+    second: FreeObstacle_9
+  - first:
+      213: 2238459638128674846
+    second: FreeObstacle_10
+  - first:
+      213: -2702575455822202129
+    second: FreeObstacle_11
+  - first:
+      213: -5301242018110746606
+    second: FreeObstacle_12
+  - first:
+      213: -8765394455261422193
+    second: FreeObstacle_13
+  - first:
+      213: 949164779098052583
+    second: FreeObstacle_14
+  - first:
+      213: -6080724877219166283
+    second: FreeObstacle_15
+  - first:
+      213: -5399313199612908784
+    second: FreeObstacle_16
+  - first:
+      213: -6481717414393086193
+    second: FreeObstacle_17
+  - first:
+      213: 2302482658831898625
+    second: FreeObstacle_18
+  - first:
+      213: 324579461869935816
+    second: FreeObstacle_19
+  - first:
+      213: 5041846279914946810
+    second: FreeObstacle_20
+  - first:
+      213: 6472287818031790730
+    second: FreeObstacle_21
+  - first:
+      213: 8465213236097809759
+    second: FreeObstacle_22
+  - first:
+      213: 4620888587944924965
+    second: FreeObstacle_23
+  - first:
+      213: -4284156781066636110
+    second: FreeObstacle_24
+  - first:
+      213: -6796729871146540585
+    second: FreeObstacle_25
+  - first:
+      213: -2205403036665822951
+    second: FreeObstacle_26
+  - first:
+      213: -5784771206713869540
+    second: FreeObstacle_27
+  - first:
+      213: 6595321566224757695
+    second: FreeObstacle_28
+  - first:
+      213: 1587744993978641991
+    second: FreeObstacle_29
+  - first:
+      213: -3373261189767056857
+    second: FreeObstacle_30
+  - first:
+      213: -8989061960017682939
+    second: FreeObstacle_31
+  - first:
+      213: -7450957505073745760
+    second: FreeObstacle_32
+  - first:
+      213: -7741792066355858498
+    second: FreeObstacle_33
+  - first:
+      213: 8658183422297082640
+    second: FreeObstacle_34
+  - first:
+      213: -8004372070556347589
+    second: FreeObstacle_35
+  - first:
+      213: 2455582558336204135
+    second: FreeObstacle_36
+  - first:
+      213: 2192693689528527167
+    second: FreeObstacle_37
+  - first:
+      213: 7910978534169972132
+    second: FreeObstacle_38
+  - first:
+      213: -4455465550804032006
+    second: FreeObstacle_39
+  - first:
+      213: -542334385897801674
+    second: FreeObstacle_40
+  - first:
+      213: 8940810341600997729
+    second: FreeObstacle_41
+  - first:
+      213: 8362376630292978089
+    second: FreeObstacle_42
+  - first:
+      213: -2948233351744919308
+    second: FreeObstacle_43
+  - first:
+      213: -8362102412049927345
+    second: FreeObstacle_44
+  - first:
+      213: -6696749114773715333
+    second: FreeObstacle_45
+  - first:
+      213: -2734717759393034176
+    second: FreeObstacle_46
+  - first:
+      213: 1713821117300786320
+    second: FreeObstacle_47
+  - first:
+      213: -7880097010611477850
+    second: FreeObstacle_48
+  - first:
+      213: -6608662558175259362
+    second: FreeObstacle_49
+  - first:
+      213: 2232039607686082455
+    second: FreeObstacle_50
+  - first:
+      213: 7146956063121102059
+    second: FreeObstacle_51
+  - first:
+      213: -2955702013352666355
+    second: FreeObstacle_52
+  - first:
+      213: -3369270840276819892
+    second: FreeObstacle_53
+  - first:
+      213: 4400730034284938649
+    second: FreeObstacle_54
+  - first:
+      213: -7675666151925033375
+    second: FreeObstacle_55
+  - first:
+      213: 7953068072717333651
+    second: FreeObstacle_56
+  - first:
+      213: -8603963489526371394
+    second: FreeObstacle_57
+  - first:
+      213: -1986680163535094202
+    second: FreeObstacle_58
+  - first:
+      213: -6927787217196634092
+    second: FreeObstacle_59
+  - first:
+      213: -8349750559280847079
+    second: FreeObstacle_60
+  - first:
+      213: 2416849936408889787
+    second: FreeObstacle_61
+  - first:
+      213: 6113063659800061299
+    second: FreeObstacle_62
+  - first:
+      213: 6842571859195238610
+    second: FreeObstacle_63
+  - first:
+      213: 5443539909869562175
+    second: FreeObstacle_64
+  - first:
+      213: -1077735264878465755
+    second: FreeObstacle_65
+  - first:
+      213: -8069459327590693188
+    second: FreeObstacle_66
+  - first:
+      213: -5765731936443557784
+    second: FreeObstacle_67
+  - first:
+      213: -4470591899112603100
+    second: FreeObstacle_68
+  - first:
+      213: 3859496841694216359
+    second: FreeObstacle_69
+  - first:
+      213: 3080840586452443961
+    second: FreeObstacle_70
+  - first:
+      213: -4769507374390128745
+    second: FreeObstacle_71
+  - first:
+      213: -328033825586535717
+    second: FreeObstacle_72
+  - first:
+      213: -6545537497707389010
+    second: FreeObstacle_73
+  - first:
+      213: 6371819563383997954
+    second: FreeObstacle_74
+  - first:
+      213: -197042537015206790
+    second: FreeObstacle_75
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FreeObstacle_0
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 208
+        width: 2710
+        height: 2123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ec6d87fa7442af20800000000000000
+      internalID: 3432381160939678944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_1
+      rect:
+        serializedVersion: 2
+        x: 789
+        y: 2274
+        width: 17
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 664520d7bd139e6c0800000000000000
+      internalID: -4113701965861333914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_2
+      rect:
+        serializedVersion: 2
+        x: 1896
+        y: 2327
+        width: 43
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 977b8836efed5cae0800000000000000
+      internalID: -1529571314249451655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_3
+      rect:
+        serializedVersion: 2
+        x: 2096
+        y: 2274
+        width: 47
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc447b7e07ec945f0800000000000000
+      internalID: -771858876798122803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_4
+      rect:
+        serializedVersion: 2
+        x: 2232
+        y: 2274
+        width: 19
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5de47c941a6dca70800000000000000
+      internalID: 8848845479609691487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_5
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 2275
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cd64fbc24828b2b0800000000000000
+      internalID: -5568656671888871999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_6
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 2274
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b6a930f919f9bf10800000000000000
+      internalID: 2286132175667046070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_7
+      rect:
+        serializedVersion: 2
+        x: 628
+        y: 2275
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5625b3d7aa61d9f00800000000000000
+      internalID: 1125080403413783141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_8
+      rect:
+        serializedVersion: 2
+        x: 647
+        y: 2275
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ad8f4b0456bafc80800000000000000
+      internalID: -8288111692138705502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_9
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 2275
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3b2ab800fb98dba0800000000000000
+      internalID: -6063925443013498052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_10
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 2275
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1885b65e2b901f10800000000000000
+      internalID: 2238459638128674846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_11
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 2274
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fea370911f58e7ad0800000000000000
+      internalID: -2702575455822202129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_12
+      rect:
+        serializedVersion: 2
+        x: 751
+        y: 2274
+        width: 18
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2105222c8743e66b0800000000000000
+      internalID: -5301242018110746606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_13
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 2279
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8dd6f91f201b5680800000000000000
+      internalID: -8765394455261422193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_14
+      rect:
+        serializedVersion: 2
+        x: 769
+        y: 2275
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e79373765c1c2d00800000000000000
+      internalID: 949164779098052583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_15
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 2275
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b78874f0fcec9ba0800000000000000
+      internalID: -6080724877219166283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_16
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 2274
+        width: 14
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01baef17049c115b0800000000000000
+      internalID: -5399313199612908784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_17
+      rect:
+        serializedVersion: 2
+        x: 838
+        y: 2278
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0ff2ac6a505c06a0800000000000000
+      internalID: -6481717414393086193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_18
+      rect:
+        serializedVersion: 2
+        x: 857
+        y: 2274
+        width: 14
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1081c2577cf04ff10800000000000000
+      internalID: 2302482658831898625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_19
+      rect:
+        serializedVersion: 2
+        x: 878
+        y: 2274
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cc15260d43218400800000000000000
+      internalID: 324579461869935816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_20
+      rect:
+        serializedVersion: 2
+        x: 919
+        y: 2275
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af0847e8a7c38f540800000000000000
+      internalID: 5041846279914946810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_21
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 2281
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8a7fd59a7f22d950800000000000000
+      internalID: 6472287818031790730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_22
+      rect:
+        serializedVersion: 2
+        x: 1233
+        y: 2274
+        width: 12
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5d7b8d669a7a7570800000000000000
+      internalID: 8465213236097809759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_23
+      rect:
+        serializedVersion: 2
+        x: 1238
+        y: 2280
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5271d1f20b1b02040800000000000000
+      internalID: 4620888587944924965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_24
+      rect:
+        serializedVersion: 2
+        x: 1244
+        y: 2274
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b431762b1e9b84c0800000000000000
+      internalID: -4284156781066636110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_25
+      rect:
+        serializedVersion: 2
+        x: 1303
+        y: 2280
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d1260c513a2da1a0800000000000000
+      internalID: -6796729871146540585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_26
+      rect:
+        serializedVersion: 2
+        x: 1343
+        y: 2275
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91147f47f95d461e0800000000000000
+      internalID: -2205403036665822951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_27
+      rect:
+        serializedVersion: 2
+        x: 1362
+        y: 2274
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1b79ec8c3d58bfa0800000000000000
+      internalID: -5784771206713869540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_28
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 2275
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb3bc4e550a478b50800000000000000
+      internalID: 6595321566224757695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_29
+      rect:
+        serializedVersion: 2
+        x: 1441
+        y: 2275
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74e6008e8adc80610800000000000000
+      internalID: 1587744993978641991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_30
+      rect:
+        serializedVersion: 2
+        x: 1480
+        y: 2275
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 722b259f1d4cf21d0800000000000000
+      internalID: -3373261189767056857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_31
+      rect:
+        serializedVersion: 2
+        x: 1516
+        y: 2275
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50e5b2106cf604380800000000000000
+      internalID: -8989061960017682939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_32
+      rect:
+        serializedVersion: 2
+        x: 1532
+        y: 2274
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a07c8140a1e89890800000000000000
+      internalID: -7450957505073745760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_33
+      rect:
+        serializedVersion: 2
+        x: 1557
+        y: 2275
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb3fbe72221af8490800000000000000
+      internalID: -7741792066355858498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_34
+      rect:
+        serializedVersion: 2
+        x: 1867
+        y: 2275
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01b813613fb082870800000000000000
+      internalID: 8658183422297082640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_35
+      rect:
+        serializedVersion: 2
+        x: 1875
+        y: 2274
+        width: 16
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b335e64c202cae090800000000000000
+      internalID: -8004372070556347589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_36
+      rect:
+        serializedVersion: 2
+        x: 1942
+        y: 2274
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76d364a935bf31220800000000000000
+      internalID: 2455582558336204135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_37
+      rect:
+        serializedVersion: 2
+        x: 1979
+        y: 2275
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f39a6911b430e6e10800000000000000
+      internalID: 2192693689528527167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_38
+      rect:
+        serializedVersion: 2
+        x: 1997
+        y: 2274
+        width: 29
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ad01fa001179cd60800000000000000
+      internalID: 7910978534169972132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_39
+      rect:
+        serializedVersion: 2
+        x: 2026
+        y: 2275
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af5e55700b10b22c0800000000000000
+      internalID: -4455465550804032006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_40
+      rect:
+        serializedVersion: 2
+        x: 2045
+        y: 2274
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 638f41bdfbd3978f0800000000000000
+      internalID: -542334385897801674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_41
+      rect:
+        serializedVersion: 2
+        x: 2051
+        y: 2281
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 161344f92a3241c70800000000000000
+      internalID: 8940810341600997729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_42
+      rect:
+        serializedVersion: 2
+        x: 2055
+        y: 2274
+        width: 15
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a914ae4d312d0470800000000000000
+      internalID: 8362376630292978089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_43
+      rect:
+        serializedVersion: 2
+        x: 2157
+        y: 2275
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f8e8421365c517d0800000000000000
+      internalID: -2948233351744919308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_44
+      rect:
+        serializedVersion: 2
+        x: 2171
+        y: 2274
+        width: 27
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f43b35a1928d3fb80800000000000000
+      internalID: -8362102412049927345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_45
+      rect:
+        serializedVersion: 2
+        x: 2219
+        y: 2275
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b764008392e5013a0800000000000000
+      internalID: -6696749114773715333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_46
+      rect:
+        serializedVersion: 2
+        x: 2247
+        y: 2274
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0401d6edfa45c0ad0800000000000000
+      internalID: -2734717759393034176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_47
+      rect:
+        serializedVersion: 2
+        x: 2272
+        y: 2275
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 094c649d937b8c710800000000000000
+      internalID: 1713821117300786320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_48
+      rect:
+        serializedVersion: 2
+        x: 2292
+        y: 2274
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a2a2e6f48544a290800000000000000
+      internalID: -7880097010611477850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_49
+      rect:
+        serializedVersion: 2
+        x: 2321
+        y: 2278
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e151a83ea605944a0800000000000000
+      internalID: -6608662558175259362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_50
+      rect:
+        serializedVersion: 2
+        x: 668
+        y: 2274
+        width: 14
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79f2bb4823cc9fe10800000000000000
+      internalID: 2232039607686082455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_51
+      rect:
+        serializedVersion: 2
+        x: 1265
+        y: 2274
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be458a75ca61f2360800000000000000
+      internalID: 7146956063121102059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_52
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 2274
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0b1538cdac3bf6d0800000000000000
+      internalID: -2955702013352666355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_53
+      rect:
+        serializedVersion: 2
+        x: 1572
+        y: 2274
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c40e73d9502fd31d0800000000000000
+      internalID: -3369270840276819892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_54
+      rect:
+        serializedVersion: 2
+        x: 1955
+        y: 2274
+        width: 13
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99542fd66a8821d30800000000000000
+      internalID: 4400730034284938649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_55
+      rect:
+        serializedVersion: 2
+        x: 2302
+        y: 2274
+        width: 14
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 166d4006d4e8a7590800000000000000
+      internalID: -7675666151925033375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_56
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 1032
+        width: 6
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39431d46649fe5e60800000000000000
+      internalID: 7953068072717333651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_57
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 917
+        width: 6
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebba952cac4989880800000000000000
+      internalID: -8603963489526371394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_58
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 898
+        width: 6
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64efc2acae4ed64e0800000000000000
+      internalID: -1986680163535094202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_59
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 826
+        width: 6
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 410b08f1b3e8bdf90800000000000000
+      internalID: -6927787217196634092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_60
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 813
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91722feea1abf1c80800000000000000
+      internalID: -8349750559280847079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_61
+      rect:
+        serializedVersion: 2
+        x: 2238
+        y: 497
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb9c31f46306a8120800000000000000
+      internalID: 2416849936408889787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_62
+      rect:
+        serializedVersion: 2
+        x: 1896
+        y: 470
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3756bbb9207f5d450800000000000000
+      internalID: 6113063659800061299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_63
+      rect:
+        serializedVersion: 2
+        x: 2128
+        y: 451
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d89a693ad2b5fe50800000000000000
+      internalID: 6842571859195238610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_64
+      rect:
+        serializedVersion: 2
+        x: 1896
+        y: 393
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f39ef68f4b65b8b40800000000000000
+      internalID: 5443539909869562175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_65
+      rect:
+        serializedVersion: 2
+        x: 2126
+        y: 374
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52de1079c7d1b01f0800000000000000
+      internalID: -1077735264878465755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_66
+      rect:
+        serializedVersion: 2
+        x: 1838
+        y: 354
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb68e71de75830090800000000000000
+      internalID: -8069459327590693188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_67
+      rect:
+        serializedVersion: 2
+        x: 1898
+        y: 337
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 868182a1a510cffa0800000000000000
+      internalID: -5765731936443557784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_68
+      rect:
+        serializedVersion: 2
+        x: 1896
+        y: 316
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42287ad9a5445f1c0800000000000000
+      internalID: -4470591899112603100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_69
+      rect:
+        serializedVersion: 2
+        x: 2128
+        y: 315
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a00de4ddefaf8530800000000000000
+      internalID: 3859496841694216359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_70
+      rect:
+        serializedVersion: 2
+        x: 1838
+        y: 296
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 933aa1db03851ca20800000000000000
+      internalID: 3080840586452443961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_71
+      rect:
+        serializedVersion: 2
+        x: 2128
+        y: 296
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79fcedb105e4fcdb0800000000000000
+      internalID: -4769507374390128745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_72
+      rect:
+        serializedVersion: 2
+        x: 2128
+        y: 277
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd22a9f39f6927bf0800000000000000
+      internalID: -328033825586535717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_73
+      rect:
+        serializedVersion: 2
+        x: 1896
+        y: 258
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eafd62953549925a0800000000000000
+      internalID: -6545537497707389010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_74
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 240
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 206436032204d6850800000000000000
+      internalID: 6371819563383997954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FreeObstacle_75
+      rect:
+        serializedVersion: 2
+        x: 2128
+        y: 238
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7c11974bd6f34df0800000000000000
+      internalID: -197042537015206790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      FreeObstacle_0: 3432381160939678944
+      FreeObstacle_1: -4113701965861333914
+      FreeObstacle_10: 2238459638128674846
+      FreeObstacle_11: -2702575455822202129
+      FreeObstacle_12: -5301242018110746606
+      FreeObstacle_13: -8765394455261422193
+      FreeObstacle_14: 949164779098052583
+      FreeObstacle_15: -6080724877219166283
+      FreeObstacle_16: -5399313199612908784
+      FreeObstacle_17: -6481717414393086193
+      FreeObstacle_18: 2302482658831898625
+      FreeObstacle_19: 324579461869935816
+      FreeObstacle_2: -1529571314249451655
+      FreeObstacle_20: 5041846279914946810
+      FreeObstacle_21: 6472287818031790730
+      FreeObstacle_22: 8465213236097809759
+      FreeObstacle_23: 4620888587944924965
+      FreeObstacle_24: -4284156781066636110
+      FreeObstacle_25: -6796729871146540585
+      FreeObstacle_26: -2205403036665822951
+      FreeObstacle_27: -5784771206713869540
+      FreeObstacle_28: 6595321566224757695
+      FreeObstacle_29: 1587744993978641991
+      FreeObstacle_3: -771858876798122803
+      FreeObstacle_30: -3373261189767056857
+      FreeObstacle_31: -8989061960017682939
+      FreeObstacle_32: -7450957505073745760
+      FreeObstacle_33: -7741792066355858498
+      FreeObstacle_34: 8658183422297082640
+      FreeObstacle_35: -8004372070556347589
+      FreeObstacle_36: 2455582558336204135
+      FreeObstacle_37: 2192693689528527167
+      FreeObstacle_38: 7910978534169972132
+      FreeObstacle_39: -4455465550804032006
+      FreeObstacle_4: 8848845479609691487
+      FreeObstacle_40: -542334385897801674
+      FreeObstacle_41: 8940810341600997729
+      FreeObstacle_42: 8362376630292978089
+      FreeObstacle_43: -2948233351744919308
+      FreeObstacle_44: -8362102412049927345
+      FreeObstacle_45: -6696749114773715333
+      FreeObstacle_46: -2734717759393034176
+      FreeObstacle_47: 1713821117300786320
+      FreeObstacle_48: -7880097010611477850
+      FreeObstacle_49: -6608662558175259362
+      FreeObstacle_5: -5568656671888871999
+      FreeObstacle_50: 2232039607686082455
+      FreeObstacle_51: 7146956063121102059
+      FreeObstacle_52: -2955702013352666355
+      FreeObstacle_53: -3369270840276819892
+      FreeObstacle_54: 4400730034284938649
+      FreeObstacle_55: -7675666151925033375
+      FreeObstacle_56: 7953068072717333651
+      FreeObstacle_57: -8603963489526371394
+      FreeObstacle_58: -1986680163535094202
+      FreeObstacle_59: -6927787217196634092
+      FreeObstacle_6: 2286132175667046070
+      FreeObstacle_60: -8349750559280847079
+      FreeObstacle_61: 2416849936408889787
+      FreeObstacle_62: 6113063659800061299
+      FreeObstacle_63: 6842571859195238610
+      FreeObstacle_64: 5443539909869562175
+      FreeObstacle_65: -1077735264878465755
+      FreeObstacle_66: -8069459327590693188
+      FreeObstacle_67: -5765731936443557784
+      FreeObstacle_68: -4470591899112603100
+      FreeObstacle_69: 3859496841694216359
+      FreeObstacle_7: 1125080403413783141
+      FreeObstacle_70: 3080840586452443961
+      FreeObstacle_71: -4769507374390128745
+      FreeObstacle_72: -328033825586535717
+      FreeObstacle_73: -6545537497707389010
+      FreeObstacle_74: 6371819563383997954
+      FreeObstacle_75: -197042537015206790
+      FreeObstacle_8: -8288111692138705502
+      FreeObstacle_9: -6063925443013498052
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

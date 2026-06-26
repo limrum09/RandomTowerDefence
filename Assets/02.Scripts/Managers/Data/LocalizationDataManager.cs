@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Unity.VisualScripting;
+using UnityEngine.Localization;
 using UnityEngine.Localization.Components;
 using UnityEngine.Localization.Settings;
 
@@ -47,6 +49,30 @@ public class LocalizationDataManager
         }
     }
 
+    private Locale FindLocaleByCode(string code)
+    {
+        var locales = LocalizationSettings.AvailableLocales.Locales;
+
+        for(int i = 0; i < locales.Count; i++)
+        {
+            if (locales[i].Identifier.Code == code)
+                return locales[i];
+        }
+
+        return null;
+    }
+
+    private SelectLanguege GetSelectLanguege(Locale locale)
+    {
+        string code = locale.Identifier.Code.ToLower();
+
+        if (code.StartsWith("en"))
+            return SelectLanguege.EN;
+
+        return SelectLanguege.KR;
+    }
+
+
     public void Init()
     {
         datas.Clear();
@@ -88,5 +114,30 @@ public class LocalizationDataManager
         string str = LocalizationSettings.StringDatabase.GetLocalizedString(tableName, key);
 
         return str;
+    }
+
+    public void ApplyLocale(Locale locale)
+    {
+        if (locale == null)
+            return;
+
+        LocalizationSettings.SelectedLocale = locale;
+        SetLanguage(GetSelectLanguege(locale));
+    }
+
+    public async Task ApplySavedLocale(string localeCode)
+    {
+        while (!LocalizationSettings.InitializationOperation.IsDone)
+            await Task.Yield();
+
+        if (string.IsNullOrEmpty(localeCode))
+            return;
+
+        Locale target = FindLocaleByCode(localeCode);
+
+        if (target == null)
+            return;
+
+        ApplyLocale(target);
     }
 }
