@@ -24,7 +24,7 @@
 
 ## 4. 전체 구조
 
-~~~mermaid
+```mermaid
 graph TD
     Scene[Unity Scene] --> Bootstrap[Managers / LoadSceneManager]
     Bootstrap --> StaticData[JSON Data Managers]
@@ -39,7 +39,7 @@ graph TD
     Stage <--> UI[StageUIController / Presenters / Views]
     GlobalState <--> Cloud[SaveDataManager / Firestore]
     Bootstrap --> Local[Sound / Graphic / Input Local JSON]
-~~~
+```
 
 ## 5. 계층별 책임
 
@@ -55,7 +55,7 @@ graph TD
 
 ## 6. 클래스 관계
 
-~~~mermaid
+```mermaid
 classDiagram
     class Managers
     class StageManager
@@ -74,13 +74,13 @@ classDiagram
     StageManager --> StageUIController
     StageUIController --> TowerController
     TowerController --> StageManager
-~~~
+```
 
 **Managers**는 전역 서비스 접근점이고, **StageManager**는 스테이지 범위 객체의 조정자다. 실제 상태 저장은 RunSessionDataManager, FieldTowerManager 등 전용 객체가 담당하고 StageManager는 이벤트를 연결한다.
 
 ## 7. 초기화와 생명주기
 
-~~~mermaid
+```mermaid
 sequenceDiagram
     participant M as Managers
     participant D as Data Managers
@@ -100,7 +100,7 @@ sequenceDiagram
     G->>G: 런타임 매니저 생성 및 이벤트 연결
     U->>L: NotifySceneUIReady()
     G->>L: NotifySceneManagerReady()
-~~~
+```
 
 - Managers는 DontDestroyOnLoad 싱글 인스턴스로 유지된다.
 - 정적 데이터 매니저는 Managers.Awake에서 한 번 초기화된다.
@@ -125,15 +125,15 @@ sequenceDiagram
 
 전역 접근은 프로퍼티를 통해 단일 인스턴스의 서비스로 연결된다.
 
-~~~csharp
+```csharp
 public static TowerDataManager TowerData => Instance.tower;
 public static SaveDataManager Save => Instance.saveDataManager;
 public static QuestManager QuestMgr => Instance.quest;
-~~~
+```
 
 스테이지는 하위 런타임 객체를 직접 생성한 뒤 필요한 참조만 주입한다.
 
-~~~csharp
+```csharp
 Grid = new GridManager();
 Path = new PathFinder();
 sessionManager = new RunSessionDataManager();
@@ -142,7 +142,7 @@ fieldTowerManager = new FieldTowerManager();
 Grid.InitializeGrid(gridWidth, gridHeight, cellSize, mapPlane);
 fieldTowerManager.Init(Grid);
 Path.Init(Grid);
-~~~
+```
 
 Unity 컴포넌트가 아닌 규칙 객체를 일반 C# 객체로 생성해 씬 오브젝트 수를 줄이고, 스테이지 상태가 전역 상태로 누출되는 것을 막는다.
 

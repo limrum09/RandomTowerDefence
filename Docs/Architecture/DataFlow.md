@@ -15,7 +15,7 @@
 
 ## 3. 전체 데이터 흐름
 
-~~~mermaid
+```mermaid
 flowchart LR
     JSON[Resources JSON] --> Loader[JsonLoader]
     Loader --> Rows[Row DTO]
@@ -27,16 +27,16 @@ flowchart LR
     Persistent --> Dirty[Dirty Flags]
     Dirty --> Firestore[SaveDataManager / Firestore]
     Options[Local Option Model] --> LocalJSON[persistentDataPath JSON]
-~~~
+```
 
 ## 4. 정적 데이터 로딩
 
 JsonLoader가 TextAsset을 역직렬화하고 각 DataManager가 문자열·숫자 필드를 enum과 런타임 타입으로 변환한다.
 
-~~~csharp
+```csharp
 TextAsset textAsset = ResourceCache.Load<TextAsset>(resourcePath);
 T data = JsonUtility.FromJson<T>(textAsset.text);
-~~~
+```
 
 | 데이터 | 행 수 |
 |---|---:|
@@ -53,7 +53,7 @@ UID 기반 데이터는 Dictionary에 저장한다. 하나의 웨이브 UID에 �
 
 ## 5. 스테이지 데이터 흐름
 
-~~~mermaid
+```mermaid
 flowchart TD
     StageRule[Stage / Meta Rule] --> Init[StageManager Awake]
     Init --> State[RunSessionState]
@@ -61,7 +61,7 @@ flowchart TD
     Session --> State
     Session --> UIEvent[State Events]
     UIEvent --> SessionView[SessionInfoPresenter]
-~~~
+```
 
 RunSessionState는 값을 보관하고 RunSessionDataManager가 유효성 검사와 이벤트 발생을 담당한다. 골드는 음수 잔액을 허용하지 않으며 성공한 변경만 이벤트를 발행한다.
 
@@ -72,17 +72,17 @@ RunSessionState는 값을 보관하고 RunSessionDataManager가 유효성 검사
 - PublicMetaUpgradeManager: 시작 골드, 드랍 골드, 무료 장애물, 지형 갱신
 - QuestManager: 진행 중·완료 업적과 성공 횟수
 
-~~~text
+```text
 Percent: current = base × (1 + valuePerLevel × level)
 Flat:    current = base + valuePerLevel × level
 Cost:    cost = ceil(costBase × costGrow^level)
-~~~
+```
 
 전투 타워 최종 스탯은 메타 강화 결과에 런 강화, 아이템 강화, 종족 스킬 단계를 합산한다.
 
 ## 7. 저장 데이터 흐름
 
-~~~mermaid
+```mermaid
 sequenceDiagram
     participant Domain as Progress Manager
     participant Save as SaveDataManager
@@ -95,7 +95,7 @@ sequenceDiagram
     Repo->>DB: SDK request
     Repo-->>Save: typed result + status
     Save->>Domain: LoadSaveData
-~~~
+```
 
 원격 저장은 PlayerProgress, MetaUpgrade, Quest 문서로 분리한다. 로컬 옵션은 temp 작성 → 기존 파일 backup → 본 파일 교체 순서로 저장한다.
 

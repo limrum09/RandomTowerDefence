@@ -33,7 +33,7 @@
 
 ## 5. 데이터 흐름
 
-~~~mermaid
+```mermaid
 flowchart TD
     Random[Random Product Roll] --> UID[Tower / Item UID]
     UID --> Data[DataManager Lookup]
@@ -45,13 +45,13 @@ flowchart TD
     Gold -->|Tower| Queue[QueueUIController UID Array]
     Gold -->|Item| ItemSlot[ItemSlotUIController]
     Queue --> BuildRequest[Tower Build Request]
-~~~
+```
 
 StoreProduct는 도메인 원본 전체를 UI 슬롯에 노출하지 않고 상점에 필요한 값만 전달한다.
 
 ## 6. 이벤트 흐름
 
-~~~mermaid
+```mermaid
 sequenceDiagram
     participant Slot as StoreSlotUI
     participant Store as StoreController
@@ -75,13 +75,13 @@ sequenceDiagram
     Queue-->>Tower: OnRequestBuildTower
     Tower-->>Queue: OnQueueTowerBuildSuccess
     Queue->>Queue: RemoveTower(index)
-~~~
+```
 
 ## 7. 핵심 구현 방식
 
 구매는 선차감 후 수용 실패 시 환불하는 단순 트랜잭션이다.
 
-~~~csharp
+```csharp
 if (!UsingGold(GoldChangedReason.BUY, -product.price))
     return;
 
@@ -94,7 +94,7 @@ if (!success)
     stage.UsingGold(GoldChangedReason.GAIN, product.price);
     return;
 }
-~~~
+```
 
 QueueUIController는 UID 배열을 실제 상태로, QueueSlotUI를 표시 상태로 유지한다. 슬롯 클릭 시 인덱스와 UID가 현재 배열 값과 일치하는지 재검증한 뒤 설치 이벤트를 발행한다.
 

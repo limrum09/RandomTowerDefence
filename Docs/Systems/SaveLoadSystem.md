@@ -31,7 +31,7 @@
 
 ## 5. 데이터 흐름
 
-~~~mermaid
+```mermaid
 flowchart TD
     Runtime[Runtime Managers] --> Dirty[Dirty Flags]
     Dirty --> Save[SaveDataManager]
@@ -42,11 +42,11 @@ flowchart TD
     Firestore --> Repo[FirestoreSaveRepository]
     Repo --> Validation[IValidSaveData]
     Validation --> Runtime
-~~~
+```
 
 ## 6. 이벤트 흐름
 
-~~~mermaid
+```mermaid
 sequenceDiagram
     participant M as Managers
     participant S as SaveDataManager
@@ -64,7 +64,7 @@ sequenceDiagram
     R-->>S: Status + validated data
     S->>D: LoadSaveData
     S-->>M: Load completed
-~~~
+```
 
 저장이 필요한 호출 지점에서 MarkPlayerDirty, MarkMetaUpgradeDirty, MarkQuestDirty 등 해당 dirty 메서드를 명시적으로 호출한다. 이후 SaveDataManager의 저장 메서드는 해당 dirty flag가 true인 항목만 SetAsync 또는 로컬 파일 쓰기를 수행한다.
 
@@ -86,13 +86,13 @@ Task.WhenAny로 10초 제한 시간을 적용하고, ConvertTo 이후 IValidSave
 
 ### 로컬 파일 교체
 
-~~~csharp
+```csharp
 File.WriteAllText(tempPath, json);
 if (File.Exists(path))
     File.Copy(path, backupPath, true);
 File.Copy(tempPath, path, true);
 File.Delete(tempPath);
-~~~
+```
 
 완성된 temp 파일이 준비된 뒤 기존 파일을 backup하고 본 파일을 교체한다.
 

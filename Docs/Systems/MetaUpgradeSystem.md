@@ -33,7 +33,7 @@
 
 ## 5. 데이터 흐름
 
-~~~mermaid
+```mermaid
 flowchart LR
     Rules[MetaResearchUpgradeData JSON] --> RuleManager[MetaResearchUpgradeDataManager]
     LevelRules[MetaResearchLevelData JSON] --> LevelManager[MetaResearchLevelDataManager]
@@ -51,13 +51,13 @@ flowchart LR
     PublicMeta --> StageValue[StageManager.GetPublicMetaValue]
     RuleManager --> StageValue
     StageValue --> StageInit[RunSession 초기값 / 적 처치 골드]
-~~~
+```
 
 정적 데이터는 “레벨당 증가량과 비용”, 저장 데이터는 “현재 레벨”만 보유한다.
 
 ## 6. 이벤트 흐름
 
-~~~mermaid
+```mermaid
 sequenceDiagram
     participant View as MetaUpgradeView
     participant UI as LobbyUIController
@@ -86,7 +86,7 @@ sequenceDiagram
         Lobby-->>UI: false
         UI-->>View: false
     end
-~~~
+```
 
 ## 7. 핵심 구현 방식
 
@@ -94,16 +94,16 @@ sequenceDiagram
 
 TowerUpgradeSaveData는 type, grade, damageLevel, attackSpeedLevel만 저장한다. 실제 현재 값은 GameManager가 TowerData의 기본값과 MetaResearchUpgradeData를 결합해 계산한다.
 
-~~~csharp
+```csharp
 case CostIncreaseType.Percent:
     return baseValue * (1f + valueLevelPer * level);
 case CostIncreaseType.Flat:
     return baseValue + valueLevelPer * level;
-~~~
+```
 
-~~~text
+```text
 강화 비용 = ceil(costBase × costGrow^currentLevel)
-~~~
+```
 
 ### 런타임 스탯 합성
 

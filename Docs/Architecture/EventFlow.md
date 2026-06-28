@@ -31,7 +31,7 @@
 
 ## 5. 웨이브 이벤트 흐름
 
-~~~mermaid
+```mermaid
 sequenceDiagram
     participant UI as Wave Start UI
     participant SM as StageManager
@@ -59,13 +59,13 @@ sequenceDiagram
         SM->>RS: SetDamageLife()
     end
     SM->>SM: CheckWaveEnd()
-~~~
+```
 
 웨이브 종료는 **스폰 종료**와 **생존 적 0명**을 모두 만족해야 한다. isSpawning과 aliveEnemyCnt로 두 비동기 조건을 합성한다.
 
 ## 6. 타워 구매·설치 이벤트 흐름
 
-~~~mermaid
+```mermaid
 sequenceDiagram
     participant Store as StoreController
     participant Queue as QueueUIController
@@ -82,13 +82,13 @@ sequenceDiagram
     Tower-->>UI: OnQueueTowerBuildSuccess
     UI->>Queue: RemoveTower
     Field-->>UI: OnFieldTowerChanged
-~~~
+```
 
 대기열은 설치를 요청할 뿐 필드 상태를 변경하지 않는다. 필드 점유 상태의 단일 소유자는 FieldTowerManager다.
 
 ## 7. UI Presenter 흐름
 
-~~~mermaid
+```mermaid
 sequenceDiagram
     participant View
     participant Presenter
@@ -101,13 +101,13 @@ sequenceDiagram
     Domain-->>UI: Result / state event
     UI->>Presenter: SetModel
     Presenter->>View: SetText / SetIcon / Show
-~~~
+```
 
 View는 표시와 Unity UI 이벤트만 담당하고 Presenter가 모델을 표시 값으로 변환한다.
 
 ## 8. 퀘스트 이벤트 흐름
 
-~~~mermaid
+```mermaid
 flowchart LR
     Gameplay[게임플레이 발생] --> Report[QuestManager Report]
     Report --> Filter[Category / Target 검사]
@@ -117,7 +117,7 @@ flowchart LR
     Complete --> Manager[QuestManager 목록 이동]
     Manager --> Dirty[MarkQuestDirty]
     Manager --> Save[SaveAchievementData]
-~~~
+```
 
 활성 목록을 복사한 뒤 순회하여 완료 처리 중 원본 목록이 변경되어도 열거 예외가 발생하지 않도록 했다.
 
@@ -131,7 +131,7 @@ StageManager와 StageUIController는 Bind와 UnBind 메서드를 대칭으로 �
 
 ## 10. 핵심 코드
 
-~~~csharp
+```csharp
 private bool CanCompleteWave()
 {
     if (isSpawning) return false;
@@ -143,7 +143,7 @@ private bool CanCompleteWave()
     }
     return !isGameOver;
 }
-~~~
+```
 
 이벤트 도착 순서와 무관하게 같은 종료 검사를 호출해 상태를 수렴시킨다.
 

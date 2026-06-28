@@ -31,7 +31,7 @@
 
 ## 5. 데이터 흐름
 
-~~~mermaid
+```mermaid
 flowchart LR
     Domain[Enemy / Item / Tower / Session] --> Presenter
     DataManagers[Localization / ResourceCache] --> Presenter
@@ -40,13 +40,13 @@ flowchart LR
     View --> Presenter
     Presenter --> UI[StageUIController]
     UI --> Domain
-~~~
+```
 
 Presenter는 아이콘 경로, 현지화 키, 숫자 포맷을 해석하고 View에는 즉시 표시 가능한 값만 전달한다.
 
 ## 6. 이벤트 흐름
 
-~~~mermaid
+```mermaid
 sequenceDiagram
     participant TowerCtr as TowerController
     participant UI as StageUIController
@@ -68,7 +68,7 @@ sequenceDiagram
     GradeV->>GradeP: normal upgrade UnityAction
     GradeP-->>UI: onClickNormalUpgrade
     UI->>TowerCtr: TowerGradeNormalUpgrade
-~~~
+```
 
 SessionInfoPresenter는 RunSessionDataManager 이벤트를 직접 구독하고 화면 종료 시 대칭적으로 해제한다.
 
@@ -76,7 +76,7 @@ SessionInfoPresenter는 RunSessionDataManager 이벤트를 직접 구독하고 �
 
 ### MVP 분리
 
-~~~csharp
+```csharp
 public void SetModel(ItemData model, int index)
 {
     Sprite icon = ResourceCache.Load<Sprite>(
@@ -86,7 +86,7 @@ public void SetModel(ItemData model, int index)
         Managers.Local.GetString("Item", model.stringKey));
     view.SetItemPrice(model.salePrice);
 }
-~~~
+```
 
 View는 모델 조회 방법을 모르며 SetIcon, SetItemName 같은 표시 API만 제공한다.
 

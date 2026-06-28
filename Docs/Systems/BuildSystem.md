@@ -55,7 +55,7 @@
 
 ## 5. 데이터 흐름
 
-~~~mermaid
+```mermaid
 flowchart TD
     A[StoreController.RequestBuy] --> B[QueueUIController.AddTower]
     B -->|성공| C[QueueSlotUI에 Tower UID 표시]
@@ -74,7 +74,7 @@ flowchart TD
     N -->|실패| O[생성 GameObject Destroy / 큐 유지]
     N -->|성공| P[TowerController.OnQueueTowerBuildSuccess]
     P --> Q[QueueUIController.RemoveTower]
-~~~
+```
 
 건설 실패 시 TryBuildPendingTower가 EndBuildMode를 호출하지만 OnQueueTowerBuildSuccess는 발생시키지 않는다. 따라서 선택한 큐 슬롯은 유지된다.
 
@@ -89,7 +89,7 @@ flowchart TD
 | TowerController.OnFirstTowerBuild | 첫 설치 성공 시 TryBuildPendingTower | TowerController.Start | StageManager.SuccessBuildTower 호출 |
 | FieldTowerManager.OnFieldTowerChanged | RegisterTower, UnRegisterTower, MoveTower, RemoveTowers | StageManager.BindFieldEvents | TowerCntSkillInfoController.ChangeFieldTower와 StageManager.TowerSkillCountChanged 호출 |
 
-~~~mermaid
+```mermaid
 sequenceDiagram
     participant QueueSlot as QueueSlotUI
     participant Queue as QueueUIController
@@ -114,7 +114,7 @@ sequenceDiagram
     else 등록 실패
         TowerCtr->>TowerCtr: Destroy generated tower
     end
-~~~
+```
 
 StageUIController는 OnDestroy에서 두 큐 관련 이벤트 연결을 해제한다. OnFirstTowerBuild도 TowerController.OnDestroy에서 해제한다.
 
@@ -124,23 +124,23 @@ StageUIController는 OnDestroy에서 두 큐 관련 이벤트 연결을 해제�
 
 InputManager.GetMouseCellPosition은 카메라를 통해 마우스 월드 좌표를 구한 뒤 GridManager.WorldToCell을 호출한다.
 
-~~~csharp
+```csharp
 public Vector2Int GetMouseCellPosition(
     Camera camera, GridManager grid)
 {
     Vector3 mouseWorld = GetMouseWorldPosition(camera);
     return grid.WorldToCell(mouseWorld);
 }
-~~~
+```
 
 GridManager는 맵 원점과 셀 크기를 이용해 셀 인덱스를 계산한다.
 
-~~~csharp
+```csharp
 int x = Mathf.FloorToInt(
     (worldPos.x - mapOrigin.x) / cellSize);
 int y = Mathf.FloorToInt(
     (worldPos.y - mapOrigin.y) / cellSize);
-~~~
+```
 
 ### 7.2 설치 가능 여부 검사
 
@@ -152,7 +152,7 @@ TowerController.CanUseTowerCell과 CanPlaceTower가 조건을 단계적으로 �
 - FieldTowerManager.HasTower: 기존 타워가 점유 중인지 확인
 - RunSessionDataManager.GetMaxBuildTowerCount: 현재 레벨의 최대 타워 수를 초과하는지 확인
 
-~~~csharp
+```csharp
 private bool CanPlaceTower(Vector2Int cell)
 {
     if (!CanUseTowerCell(cell))
@@ -167,7 +167,7 @@ private bool CanPlaceTower(Vector2Int cell)
 
     return true;
 }
-~~~
+```
 
 일반 설치는 **장애물이 존재하는 셀**만 허용한다. 이 조건은 현재 코드에 명시되어 있다.
 

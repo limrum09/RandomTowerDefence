@@ -32,7 +32,7 @@
 
 ## 5. 데이터 흐름
 
-~~~mermaid
+```mermaid
 flowchart LR
     Asset[Quest ScriptableObject] --> Clone[Runtime Clone]
     Report[Category + Target + Count] --> Manager[QuestManager]
@@ -43,13 +43,13 @@ flowchart LR
     Task --> Progress[Current Success]
     Progress --> Reward[QuestRewardData]
     Progress -->|Achievement 저장 대상| Save[QuestSaveData]
-~~~
+```
 
 원본 Quest와 Task는 등록 시 복제되며, 진행 상태는 복제본에만 존재한다.
 
 ## 6. 이벤트 흐름
 
-~~~mermaid
+```mermaid
 sequenceDiagram
     participant Game as Gameplay System
     participant QM as QuestManager
@@ -72,13 +72,13 @@ sequenceDiagram
     else 일반 Quest
         QM->>QM: activeQuest에서 제거
     end
-~~~
+```
 
 ## 7. 핵심 구현 방식
 
 ### 범용 보고 필터
 
-~~~csharp
+```csharp
 if (TaskCategory != category) return;
 if (!TaskContainsTarget(target)) return;
 
@@ -87,7 +87,7 @@ CurrentSuccess = TaskAction.Run(
 
 if (IsCompleted)
     OnTaskCompleted?.Invoke();
-~~~
+```
 
 Category는 사건 종류, TaskTarget은 사건 대상을 판별한다. targets가 비어 있으면 해당 카테고리의 모든 대상을 허용한다.
 

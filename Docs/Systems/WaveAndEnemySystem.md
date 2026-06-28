@@ -36,7 +36,7 @@
 
 ## 5. 데이터 흐름
 
-~~~mermaid
+```mermaid
 flowchart LR
     WaveJSON[WaveData JSON] --> WM[WaveDataManager]
     RosterJSON[WaveEnemyRosterData JSON] --> RM[WaveEnemyRosterDataManager]
@@ -48,13 +48,13 @@ flowchart LR
     Factory --> Enemy[Enemy Instance]
     Grid[GridManager] --> Path[PathFinder]
     Path --> Enemy
-~~~
+```
 
 현재 데이터에는 240개 웨이브와 424개 로스터 행이 있으며 웨이브 UID는 NextWave로 연결된다.
 
 ## 6. 이벤트 흐름
 
-~~~mermaid
+```mermaid
 sequenceDiagram
     participant SM as StageManager
     participant WM as StageWaveManager
@@ -72,7 +72,7 @@ sequenceDiagram
     EF-->>SM: OnEnemyDead / OnEnemyReached
     ES-->>SM: OnSpawnEnd
     SM->>SM: CheckWaveEnd
-~~~
+```
 
 ## 7. 핵심 구현 방식
 
@@ -80,13 +80,13 @@ sequenceDiagram
 
 TryPrepareNextWave는 다음 UID, 웨이브 존재 여부, 로스터 존재 여부, 적·스킬 참조, 레벨, 수량, 시작 시간, 스폰 간격을 검사한다. 결과는 Success, End, Failed와 메시지를 가진 WavePrepareResult로 반환한다.
 
-~~~csharp
+```csharp
 if (!ValidateRosterData(wave, roster, out string error))
     return new WavePrepareResult {
         state = WavePrepareState.Failed,
         message = error
     };
-~~~
+```
 
 ### 웨이브 종료 판정
 
