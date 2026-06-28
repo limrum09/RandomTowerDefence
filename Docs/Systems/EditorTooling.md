@@ -97,6 +97,6 @@ AnimatorDatas는 같은 Editor 폴더에 있는 보조 ScriptableObject다. Refr
 ## 8. 한계와 개선 가능성
 
 - 일부 도구는 프로젝트 내부 JSON Row, enum, Resources 경로, 런타임 관리자 구조에 강하게 의존한다.
-- TODO: 확인 필요 — Undo/Redo 지원 범위
+- Undo/Redo 지원 하지 않는다.
 - 변경 이력, 검증 결과 내보내기와 같은 일괄 검증 리포트, 데이터 간 참조 검증 범위는 확장할 수 있다.
 - Addressables 또는 별도 데이터 파이프라인을 도입할 경우 고정 경로와 Resources 조회 방식을 함께 개선할 필요가 있다.
