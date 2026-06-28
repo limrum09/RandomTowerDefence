@@ -45,8 +45,17 @@ RandomTowerDefence는 Unity 6 기반 2D 타워 디펜스 프로젝트입니다. 
 | 저장 및 불러오기 | 로컬 옵션과 계정 진행 데이터를 분리하고 Firestore 오류 상태, 데이터 검증, 타임아웃, dirty flag를 처리 | [SaveLoadSystem](Docs/Systems/SaveLoadSystem.md) |
 | 퀘스트 및 업적 | ScriptableObject 원본을 런타임 객체로 복제하고 공통 보고 API, 진행도·완료 이벤트, 저장 데이터를 관리 | [QuestSystem](Docs/Systems/QuestSystem.md) |
 | UI 정보 패널 | View, Presenter, StageUIController의 역할을 나누고 이벤트 기반 갱신과 패널 전환 상태를 관리 | [UIInfoPanelSystem](Docs/Systems/UIInfoPanelSystem.md) |
+| Editor Tooling | 데이터 제작과 Play Mode 디버깅을 보조하는 Unity Editor 확장 도구 | [EditorTooling](Docs/Systems/EditorTooling.md) |
 
-## 6. 기술 스택
+## 6. Editor Tools / 개발 편의 도구
+
+- Tower, Enemy, Item, Wave JSON 데이터를 편집·검증하는 전용 EditorWindow를 구현했습니다.
+- Quest, Target, Condition ScriptableObject의 생성·검색·편집·삭제 흐름을 도구화했습니다.
+- Play Mode에서 업적과 스테이지·로비 진행 상태를 확인하는 디버깅 도구를 구성했습니다.
+- CustomPropertyDrawer로 조건에 따른 Inspector 필드 표시와 활성 상태를 제어합니다.
+- 상세 내용: [Editor Tooling](Docs/Systems/EditorTooling.md)
+
+## 7. 기술 스택
 
 | 기술 | 사용 위치 |
 |---|---|
@@ -59,21 +68,21 @@ RandomTowerDefence는 Unity 6 기반 2D 타워 디펜스 프로젝트입니다. 
 | Unity UI | View 컴포넌트, 입력 전달, 정보 패널과 세션 상태 표시 |
 | ScriptableObject | 퀘스트·업적 원본 데이터 구성 |
 
-## 7. 대표 문제 해결 사례
+## 8. 대표 문제 해결 사례
 
-### 7.1 구매와 배치 시점 분리
+### 8.1 구매와 배치 시점 분리
 
 - **Problem:** 구매 시점과 실제 배치 시점이 달라 골드, 대기열, 생성 객체, 필드 점유 상태가 어긋날 수 있었습니다.
 - **Solution:** StoreController → QueueUIController → TowerController → FieldTowerManager로 구매, 보관, 배치 검증, 필드 등록 책임을 분리했습니다.
 - **Result:** 대기열 수용 실패 시 골드를 환불하고, 필드 등록 성공 시에만 설치 완료 이벤트로 큐를 제거합니다.
 
-### 7.2 웨이브 종료 조건 처리
+### 8.2 웨이브 종료 조건 처리
 
 - **Problem:** 적 스폰 완료와 필드의 마지막 적 제거가 서로 다른 시점에 발생합니다.
 - **Solution:** isSpawning과 aliveEnemyCnt를 별도로 관리하고 스폰 종료, 적 사망, 적 도착 시 동일한 종료 조건을 다시 검사합니다.
 - **Result:** 스폰이 끝나고 생존 적이 0명인 경우에만 웨이브 완료 흐름으로 이동합니다.
 
-### 7.3 저장 실패와 데이터 검증
+### 8.3 저장 실패와 데이터 검증
 
 - **Problem:** 신규 사용자 문서 누락과 네트워크·권한·시간 초과·데이터 손상을 같은 실패로 처리하기 어려웠습니다.
 - **Solution:** FireStoreLoadResult로 로드 상태를 구분하고 IValidSaveData 검증, 타임아웃, 저장 영역별 dirty flag를 적용했습니다.
@@ -81,7 +90,7 @@ RandomTowerDefence는 Unity 6 기반 2D 타워 디펜스 프로젝트입니다. 
 
 자세한 설계 판단과 한계는 [Case Study](Docs/Portfolio/CaseStudy.md)에서 확인할 수 있습니다.
 
-## 8. 기술 문서
+## 9. 기술 문서
 
 ### 문서 안내
 
@@ -104,8 +113,9 @@ RandomTowerDefence는 Unity 6 기반 2D 타워 디펜스 프로젝트입니다. 
 - [저장 및 불러오기 시스템](Docs/Systems/SaveLoadSystem.md)
 - [퀘스트 및 업적 시스템](Docs/Systems/QuestSystem.md)
 - [UI 정보 패널 시스템](Docs/Systems/UIInfoPanelSystem.md)
+- [Editor Tooling](Docs/Systems/EditorTooling.md)
 
-## 9. 개선 방향
+## 10. 개선 방향
 
 - 플레이 영상과 핵심 흐름 GIF를 추가해 구현 결과를 시각적으로 제시
 - StageManager와 TowerController에 집중된 조정 책임의 세분화 검토
@@ -113,6 +123,6 @@ RandomTowerDefence는 Unity 6 기반 2D 타워 디펜스 프로젝트입니다. 
 - 저장 데이터의 schemaVersion과 마이그레이션 정책 검토
 - 건설, 큐 상태, 웨이브 종료, 저장 검증 흐름에 자동화 테스트 추가
 
-## 10. 연락 / 포트폴리오
+## 11. 연락 / 포트폴리오
 
 - TODO: 포트폴리오 사이트 링크 추가
