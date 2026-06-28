@@ -10,7 +10,7 @@ RandomTowerDefence는 Unity 6 기반의 2D 타워 디펜스 프로젝트입니�
 - TODO: 상점 → 대기열 → 타워 설치 GIF 추가
 - TODO: 웨이브 전투 GIF 추가
 - TODO: 메타 성장 UI GIF 추가
-
+- 
 ## 3. 프로젝트 정보
 
 | 항목 | 내용 |
