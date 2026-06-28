@@ -8,18 +8,14 @@ RandomTowerDefence는 Unity 6 기반 2D 타워 디펜스 프로젝트다. 상점
 
 ## 2. 최종 결과
 
-기능 개발을 종료하고 포트폴리오 문서화 단계로 전환했다. 현재 코드와 기술 문서에서 확인되는 주요 구현 결과는 다음과 같다.
+기능 개발을 종료하고 포트폴리오 문서화 단계로 전환했다. 구매·배치·전투·성장·저장을 연결하는 런타임 시스템과 이를 지원하는 UI, 퀘스트, Editor Tooling을 구현했다.
 
-| 시스템 | 구현 결과 | 상세 문서 |
-|---|---|---|
-| 타워 건설 | 그리드 좌표 변환, 설치 가능 여부 검사, 타워 생성, 필드 점유 등록, 성공 후 큐 갱신 | [BuildSystem](Systems/BuildSystem.md) |
-| 상점 및 대기열 | 구매와 배치 시점 분리, 골드 차감, 타워 UID 보관, 수용 실패 시 환불 | [ShopAndQueueSystem](Systems/ShopAndQueueSystem.md) |
-| 웨이브 및 적 | JSON 사전 검증, 적 생성, A* 이동, 생존 적 집계, 복합 종료 조건 처리 | [WaveAndEnemySystem](Systems/WaveAndEnemySystem.md) |
-| 메타 성장 | 기본 스탯, 영구 강화, 런 강화 단계를 분리한 최종 스탯 계산 | [MetaUpgradeSystem](Systems/MetaUpgradeSystem.md) |
-| 저장 및 불러오기 | 로컬 옵션과 Firestore 계정 진행 분리, 결과 타입화, 데이터 검증, dirty flag 처리 | [SaveLoadSystem](Systems/SaveLoadSystem.md) |
-| 퀘스트 및 업적 | ScriptableObject 기반 원본 데이터, 런타임 복제, 공통 보고 API, 완료 이벤트와 저장 | [QuestSystem](Systems/QuestSystem.md) |
-| UI 정보 패널 | Presenter/View 역할 분리, 이벤트 기반 표시 갱신, 패널 전환 상태 관리 | [UIInfoPanelSystem](Systems/UIInfoPanelSystem.md) |
-| Editor Tooling | Tower·Enemy·Item·Wave JSON 편집과 검증, 퀘스트 에셋 제작, Play Mode 디버깅 보조 | [EditorTooling](Systems/EditorTooling.md) |
+- 게임플레이: 타워 건설, 상점·대기열, 웨이브·적, 런 강화
+- 영구 진행: 메타 성장, 퀘스트·업적, Firebase·로컬 저장
+- 표현과 제작 지원: Presenter/View 기반 UI, JSON·ScriptableObject 제작과 디버깅 도구
+- 문서화: Architecture, Systems, Case Study 문서로 책임과 흐름 정리
+
+구현 범위는 [ProjectSummary](Portfolio/ProjectSummary.md), 세부 시스템은 [기술 문서 메인](README.md)에서 확인할 수 있다.
 
 ## 3. 잘된 점
 
@@ -75,33 +71,16 @@ isSpawning과 aliveEnemyCnt를 별도 상태로 관리하고 스폰 종료, 적 
 
 원격 문서가 없는 신규 사용자와 실제 네트워크·권한 오류를 같은 실패로 처리할 수 없었다. FireStoreLoadResult 상태와 기본 데이터 생성 경로를 분리하고, 로컬 저장은 임시 파일 작성과 기존 파일 백업 후 교체하는 순서로 구성했다.
 
-## 5. 주요 문제 해결 사례
+## 5. 주요 문제 해결 사례에서 얻은 판단
 
-### 구매와 배치 시점 분리
+세부 Problem/Solution/Result와 클래스·이벤트 흐름은 [Case Study](Portfolio/CaseStudy.md)에 정리했다. 회고 관점에서 남은 판단은 다음과 같다.
 
-- **Problem:** 구매 성공 이후 큐 수용이나 필드 설치가 실패하면 골드와 배치 상태가 어긋날 수 있었다.
-- **Solution:** 구매, UID 보관, 설치 요청, 셀 검증, 필드 등록을 별도 책임으로 나누었다.
-- **Result:** 큐 수용 실패 시 골드를 환불하고, FieldTowerManager 등록 성공 시에만 설치 완료 이벤트로 큐를 제거한다.
-
-### 웨이브 종료 조건 처리
-
-- **Problem:** 스폰 완료와 생존 적 0명은 동시에 발생하지 않는다.
-- **Solution:** isSpawning과 aliveEnemyCnt를 함께 검사하는 단일 종료 조건을 여러 종료 가능 지점에서 호출했다.
-- **Result:** 스폰이 끝나고 필드에 생존 적이 없을 때만 다음 웨이브 또는 스테이지 종료 흐름으로 이동한다.
-
-### 저장 실패와 데이터 검증
-
-- **Problem:** 문서 누락, 연결 오류, 권한, 시간 초과, 역직렬화 이후의 잘못된 값을 구분해야 했다.
-- **Solution:** FireStoreLoadResult, 제한 시간, IValidSaveData, 저장 영역별 dirty flag를 적용했다.
-- **Result:** 신규 사용자 기본값 생성과 실제 오류 처리가 분리되고, 변경된 원격 저장 영역만 저장 대상이 된다.
-
-### Editor Tooling을 통한 데이터 제작 보조
-
-- **Problem:** 여러 JSON과 ScriptableObject를 직접 수정하면 UID, enum, 참조, 수치 입력을 반복해서 확인해야 했다.
-- **Solution:** 데이터 종류별 EditorWindow, Validate 탭, 퀘스트 에셋 생성 도구, Play Mode 디버거를 구성했다.
-- **Result:** Unity Editor 안에서 데이터 편집과 검증, 테스트 입력을 수행할 수 있는 제작 흐름이 마련되었다.
-
-세부 문제 정의와 처리 순서는 [Case Study](Portfolio/CaseStudy.md)에서 확인할 수 있다.
+| 사례 | 회고 관점 |
+|---|---|
+| 구매와 배치 분리 | 부분 성공 상태를 먼저 정의해야 골드, 큐, 생성 객체, 필드 점유의 복구 기준이 명확해진다. |
+| 웨이브 종료 판정 | 비동기적으로 도착하는 이벤트보다 현재 상태를 다시 검사하는 종료 조건이 흐름을 단순하게 만든다. |
+| 저장 실패와 검증 | 정상 경로보다 문서 누락, 시간 초과, 권한, 손상 데이터의 구분이 저장 경계 설계에 중요하다. |
+| Editor Tooling | 데이터 기반 구조는 편집 기능뿐 아니라 참조와 입력값을 확인하는 검증 도구가 함께 필요하다. |
 
 ## 6. 아쉬운 점
 
@@ -111,7 +90,6 @@ isSpawning과 aliveEnemyCnt를 별도 상태로 관리하고 스폰 종료, 적 
 - 종료 시 저장 외에 체크포인트, 재시도 큐, 오프라인 복구 정책을 더 구체화할 수 있다.
 - 현재 저장소에서 자동화 테스트 파일은 확인되지 않았다. 그리드 검증, 큐 유지, 웨이브 종료, 저장 모델 검증을 자동화할 여지가 있다.
 - Editor Tool의 Undo/Redo 지원 범위와 변경 이력 관리가 확인되지 않았고, 검증 결과를 통합 리포트로 내보내는 기능은 없다.
-- 플레이 영상, GIF, 주요 화면 스크린샷이 아직 공개 문서에 추가되지 않았다.
 
 ## 7. 다시 개발한다면
 
@@ -146,12 +124,3 @@ isSpawning과 aliveEnemyCnt를 별도 상태로 관리하고 스폰 종료, 적 
 ## 10. 포트폴리오 마무리 메시지
 
 RandomTowerDefence는 Unity 6 기반 타워 디펜스의 플레이 흐름과 함께 데이터 기반 콘텐츠 관리, 이벤트 기반 런타임 연결, 저장 실패 처리, UI 책임 분리, Unity Editor 제작 도구를 구현하고 문서화한 프로젝트다. 구현 결과뿐 아니라 현재 구조의 한계와 다음 검증 항목까지 정리함으로써 시스템을 나누고 연결하는 과정에서의 기술적 판단을 보여 준다.
-
-## 남은 TODO
-
-- 플레이 영상 추가
-- 상점 → 대기열 → 타워 설치 GIF 추가
-- 웨이브 전투 GIF 추가
-- 메타 성장 UI GIF 추가
-- 주요 화면 스크린샷 추가
-- 성능 측정 자료가 필요하면 프로파일러 결과 추가

@@ -211,48 +211,24 @@ CanCompleteWave는 스폰 중 여부, 생존 적 수, 현재 생명, 게임 종�
 
 성능 개선 효과를 입증할 프로파일러 수치와 자동화 테스트 결과는 현재 자료에서 확인되지 않았다.
 
-## 9. 아쉬운 점과 개선 방향
+## 9. 검증 범위와 후속 과제
 
-### 포트폴리오 자료
+이 문서는 현재 코드와 데이터의 정적 검토를 기준으로 구현 판단을 설명한다. 성능 수치, 자동화 테스트 결과, 실제 개발 당시의 디버깅 기록은 확인된 자료가 있는 범위에서만 다뤘다.
 
-- 플레이 영상, GIF, 스크린샷이 아직 문서에 연결되지 않았다.
-- ProjectSummary와 QuestSystem에 남은 TODO를 실제 기획·구현 의도와 대조해야 한다.
+- Enemy·Tower 생성, A* 경로 계산, TowerAttack 범위 탐색의 실제 비용은 프로파일러 측정이 필요하다.
+- StageManager와 TowerController의 조정 책임은 기능 증가 시 더 작은 흐름 객체로 분리할 수 있다.
+- 저장 모델의 schemaVersion, 마이그레이션, 재시도 정책은 후속 설계가 필요하다.
+- Resources 문자열 경로는 Addressables 또는 별도 데이터 파이프라인 도입 시 재검토할 수 있다.
+- TODO: 확인 필요 — KillEnemy, CollectItem, UpgradeTower의 실제 QuestRecieveReport 연결 의도
 
-### 코드 구조
+기술적 부채와 다시 개발할 때의 우선순위는 [Postmortem](../Postmortem.md)에 정리했다.
 
-- StageManager와 TowerController는 여러 흐름을 조정하므로 기능 증가 시 의존성과 변경 범위가 커질 수 있다.
-- WaveFlow, StageReward, BuildMode, MoveMode처럼 책임별 객체로 분리할 수 있다.
-- Managers 기반 Service Locator는 접근이 단순하지만 의존성이 생성자나 필드에 드러나지 않는다.
-- 인터페이스 기반 서비스 주입 또는 Composition Root를 적용하면 테스트 대역 구성이 쉬워진다.
-
-### 성능과 검증
-
-- Enemy와 Tower는 Instantiate/Destroy를 사용한다. 실제 병목 여부는 프로파일러 확인이 필요하다.
-- 동일한 시작·목표 셀의 A* 경로 캐시와 PriorityQueue 적용을 검토할 수 있다.
-- TowerAttack의 OverlapCircleAll은 NonAlloc 방식 또는 적 인덱스 구조와 비교할 수 있다.
-- 그리드 검증, 큐 유지, 합성 복구, 웨이브 종료, 저장 모델 검증에 자동화 테스트를 추가할 수 있다.
-
-### 데이터와 저장
-
-- Resources 문자열 경로가 증가할 경우 Addressables 또는 ScriptableObject 기반 관리와 비교가 필요하다.
-- 저장 모델에 schemaVersion과 마이그레이션 정책이 없다.
-- 종료 시 async void 저장에만 의존하지 않고 체크포인트 저장과 재시도 큐를 둘 수 있다.
-- KillEnemy, CollectItem, UpgradeTower의 실제 QuestRecieveReport 연결은 확인되지 않았다.
-
-## 10. 프로젝트를 통해 배운 점
-
-- **책임 분리**: 기능의 수보다 상태를 누가 소유하고 누가 조정하는지 명확히 하는 것이 중요하다.
-- **이벤트 흐름 문서화**: 이벤트는 직접 참조를 줄이지만 발행자와 구독자의 연결을 코드만으로 추적하기 어려울 수 있다.
-- **실패 경로 설계**: 구매 환불, 설치 실패 시 큐 유지, 합성 재료 복구처럼 부분 성공 상태를 먼저 정의해야 한다.
-- **저장 경계**: 성공 처리뿐 아니라 문서 누락, 네트워크, 권한, 시간 초과, 데이터 손상을 구분해야 한다.
-- **UI 역할 분리**: Presenter가 표시 값을 만들고 View가 Unity UI를 조작하도록 나누면 게임 상태 변경 위치가 명확해진다.
-- **포트폴리오 구성**: 기능 목록보다 문제, 선택한 구조, 실제 처리 순서, 남은 한계를 함께 제시해야 구현 판단을 설명할 수 있다.
-
-## 11. 관련 자료
+## 10. 관련 자료
 
 ### 프로젝트 개요
 
-- [ProjectSummary](ProjectSummary.md) — 프로젝트 범위와 핵심 시스템 요약
+- [ProjectSummary](ProjectSummary.md) — 구현 범위와 면접 포인트 요약
+- [Postmortem](../Postmortem.md) — 잘된 점, 어려웠던 점, 기술적 부채와 개선 방향
 
 ### 아키텍처
 
@@ -269,13 +245,4 @@ CanCompleteWave는 스폰 중 여부, 생존 적 수, 현재 생명, 게임 종�
 - [SaveLoadSystem](../Systems/SaveLoadSystem.md) — 로컬·Firestore 저장과 검증
 - [QuestSystem](../Systems/QuestSystem.md) — 퀘스트·업적 진행과 저장
 - [UIInfoPanelSystem](../Systems/UIInfoPanelSystem.md) — Presenter/View와 정보 패널 전환
-
-## 남은 TODO
-
-- 플레이 영상 추가
-- 상점·건설·전투 GIF 추가
-- 주요 화면 스크린샷 추가
-- 포트폴리오 사이트 링크 추가
-- 타워 건설·합성 복구의 실제 디버깅 사례 확인
-- 웨이브 startTime 그룹의 동시 스폰 의도 확인
-- KillEnemy, CollectItem, UpgradeTower 퀘스트 연결 의도 확인
+- [EditorTooling](../Systems/EditorTooling.md) — 데이터 제작·검증과 Play Mode 디버깅 도구
