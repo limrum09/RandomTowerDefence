@@ -69,7 +69,7 @@ public class EnemySpawn : MonoBehaviour
 
         if(enemyRoster == null || enemyRoster.Count <= 0)
         {
-            Debug.LogError("Enemy roster is Empty");
+            Debug.LogWarning("Enemy roster is Empty");
             return;
         }
     
@@ -128,7 +128,7 @@ public class EnemySpawn : MonoBehaviour
 
         if (!success)
         {
-            Debug.LogError($"Enemy spawn failed : {spawnInfo.enemyUID}, level : {spawnInfo.level}");
+            Debug.LogWarning($"Enemy spawn failed : {spawnInfo.enemyUID}, level : {spawnInfo.level}");
         }
     }
 

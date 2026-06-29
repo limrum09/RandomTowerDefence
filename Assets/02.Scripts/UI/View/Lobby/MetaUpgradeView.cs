@@ -162,7 +162,7 @@ public class MetaUpgradeView : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.LogError($"Hide Save Failed : {e.Message}");
+            Debug.LogWarning($"Hide Save Failed : {e.Message}");
         }
     }
 

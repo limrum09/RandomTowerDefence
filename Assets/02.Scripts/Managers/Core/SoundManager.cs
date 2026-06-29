@@ -340,8 +340,12 @@ public class SoundManager
             sfxVolume = sfxVolume,
             masterVolume = masterVolume,
             uiVolume = uiVolume,
+
+            isMasterPlaying = isMasterPlaying,
             isBGMPlaying = isBGMPlaying,
             isSFXPlaying = isSFXPlaying,
+            isUIPlaying = isUIPlaying,
+
             currentBGMUID = currentBGMUID
         };
     }

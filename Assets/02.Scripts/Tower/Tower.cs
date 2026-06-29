@@ -229,7 +229,7 @@ public class Tower : MonoBehaviour
 
         if (data == null)
         {
-            Debug.LogError($"Tower Data Missing : {towerUID}");
+            Debug.LogWarning($"Tower Data Missing : {towerUID}");
             return;
         }   
 

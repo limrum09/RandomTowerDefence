@@ -22,7 +22,7 @@ Sprite:
   m_AtlasName: 
   m_PackingTag: 
   m_RenderDataKey:
-    a32fb582658b3274eb5ed66e651b6833: -5905554895996043004
+    a32fb582658b3274eb5ed66e651b6833: 397798007
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -220,4 +220,4 @@ Sprite:
     - {x: 0.099999994, y: 0.06}
   m_Bones: []
   m_ScriptableObjects: []
-  m_SpriteID: 401469e6c114b0ea0800000000000000
+  m_SpriteID: 73ecc72cfcbd24845b5d6f21afcdcf4b

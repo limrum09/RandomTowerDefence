@@ -615,6 +615,7 @@ GameObject:
   - component: {fileID: 69726792}
   - component: {fileID: 69726791}
   - component: {fileID: 69726790}
+  - component: {fileID: 69726793}
   m_Layer: 5
   m_Name: LobbyButton
   m_TagString: Untagged
@@ -736,6 +737,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 69726788}
   m_CullTransparentMesh: 1
+--- !u!114 &69726793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69726788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1b51f254d2e66448cfb1b107b8e38b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundUID: UIClick01
 --- !u!1 &84878894
 GameObject:
   m_ObjectHideFlags: 0
@@ -7860,6 +7874,7 @@ GameObject:
   - component: {fileID: 764103354}
   - component: {fileID: 764103353}
   - component: {fileID: 764103352}
+  - component: {fileID: 764103356}
   m_Layer: 5
   m_Name: GameStartButton
   m_TagString: Untagged
@@ -8006,6 +8021,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 764103350}
   m_CullTransparentMesh: 1
+--- !u!114 &764103356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764103350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1b51f254d2e66448cfb1b107b8e38b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundUID: UIClick01
 --- !u!1001 &766690795
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8753,6 +8781,7 @@ GameObject:
   - component: {fileID: 828854126}
   - component: {fileID: 828854125}
   - component: {fileID: 828854124}
+  - component: {fileID: 828854128}
   m_Layer: 5
   m_Name: AccelerateButton
   m_TagString: Untagged
@@ -8876,6 +8905,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 828854122}
   m_CullTransparentMesh: 1
+--- !u!114 &828854128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828854122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1b51f254d2e66448cfb1b107b8e38b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundUID: UIClick01
 --- !u!1001 &837376789
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9812,6 +9854,7 @@ GameObject:
   - component: {fileID: 909279889}
   - component: {fileID: 909279888}
   - component: {fileID: 909279887}
+  - component: {fileID: 909279890}
   m_Layer: 5
   m_Name: InputOptionButton
   m_TagString: Untagged
@@ -9933,6 +9976,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 909279885}
   m_CullTransparentMesh: 1
+--- !u!114 &909279890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909279885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1b51f254d2e66448cfb1b107b8e38b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundUID: UIClick01
 --- !u!1001 &913086440
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10964,6 +11020,7 @@ GameObject:
   - component: {fileID: 1115170337}
   - component: {fileID: 1115170336}
   - component: {fileID: 1115170335}
+  - component: {fileID: 1115170338}
   m_Layer: 5
   m_Name: OptionButton
   m_TagString: Untagged
@@ -11085,6 +11142,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1115170333}
   m_CullTransparentMesh: 1
+--- !u!114 &1115170338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115170333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1b51f254d2e66448cfb1b107b8e38b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundUID: UIClick01
 --- !u!1 &1118560754
 GameObject:
   m_ObjectHideFlags: 0
@@ -224376,6 +224446,7 @@ GameObject:
   - component: {fileID: 1538461998}
   - component: {fileID: 1538461997}
   - component: {fileID: 1538461996}
+  - component: {fileID: 1538461999}
   m_Layer: 5
   m_Name: ContinueButton
   m_TagString: Untagged
@@ -224497,6 +224568,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1538461994}
   m_CullTransparentMesh: 1
+--- !u!114 &1538461999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538461994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1b51f254d2e66448cfb1b107b8e38b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundUID: UIClick01
 --- !u!1 &1543483449
 GameObject:
   m_ObjectHideFlags: 0
@@ -227062,6 +227146,7 @@ GameObject:
   - component: {fileID: 1791760692}
   - component: {fileID: 1791760691}
   - component: {fileID: 1791760690}
+  - component: {fileID: 1791760693}
   m_Layer: 5
   m_Name: ReRollButton
   m_TagString: Untagged
@@ -227183,6 +227268,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1791760688}
   m_CullTransparentMesh: 1
+--- !u!114 &1791760693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791760688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1b51f254d2e66448cfb1b107b8e38b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundUID: UIClick01
 --- !u!1001 &1798021608
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -231273,7 +231371,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fc681c437c99e2f4da196341230522bb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5b5d0cd5255d0294fba7cf9da2baf8e4, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1

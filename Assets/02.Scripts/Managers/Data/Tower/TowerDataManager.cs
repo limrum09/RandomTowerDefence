@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
+
 public class TowerDataManager
 {
     Dictionary<string, TowerData> towerDatas = new Dictionary<string, TowerData>();
@@ -47,8 +47,6 @@ public class TowerDataManager
         tempTowerGradeUID.Clear();
 
         GetTowerDataToJson();
-
-        Debug.Log("Tower Data Count : " + towerDatas.Count);
 
         tempTowerGradeUID[1] = new string[] { "T0011", "T0021", "T0031", "T0041", "T0051", "T0061" };
         tempTowerGradeUID[2] = new string[] { "T0012", "T0022", "T0032", "T0042", "T0052", "T0062" };

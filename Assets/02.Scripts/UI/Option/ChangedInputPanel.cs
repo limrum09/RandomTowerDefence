@@ -12,6 +12,8 @@ public class ChangedInputPanel : MonoBehaviour
     private TextMeshProUGUI inputNameText;
     [SerializeField]
     private TMP_InputField inputField;
+    [SerializeField]
+    private string uiSound = "Tick01";
 
     private InputAction action;
     private bool isChanging;
@@ -36,6 +38,7 @@ public class ChangedInputPanel : MonoBehaviour
         isChanging = true;
         inputField.text = lastChar;
         inputField.caretPosition = 1;
+        Managers.Sound.PlayUISFX(uiSound);
         isChanging = false;
     }
 
@@ -62,7 +65,7 @@ public class ChangedInputPanel : MonoBehaviour
         {
             inputField.SetTextWithoutNotify(currentChar);
             return;
-        }            
+        }
 
         SetInputActionText();
         Managers.Save.MarkInputDirty();

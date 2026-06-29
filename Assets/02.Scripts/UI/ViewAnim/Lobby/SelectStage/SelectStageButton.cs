@@ -89,6 +89,11 @@ public class SelectStageButton : UIHoverBase
         OnExitHover?.Invoke();
     }
 
+    protected override bool CanClick(PointerEventData evnetData)
+    {
+        return !IsInputLocked && isConditionPass;
+    }
+
     public void OnSelectAnimComplete()
     {
         OnStageMove?.Invoke();

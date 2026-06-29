@@ -293,7 +293,7 @@ public class QuestEditorWindow : EditorWindow
 
         if (!AssetDatabase.IsValidFolder(path))
         {
-            Debug.LogError($"폴더가 없습니다. {path}");
+            Debug.LogWarning($"폴더가 없습니다. {path}");
             return;
         }
 
@@ -569,7 +569,7 @@ public class QuestEditorWindow : EditorWindow
     {
         if (!AssetDatabase.IsValidFolder(folderPath))
         {
-            Debug.LogError($"폴더가 없습니다. {folderPath}");
+            Debug.LogWarning($"폴더가 없습니다. {folderPath}");
             return;
         }
 
@@ -795,7 +795,7 @@ public class QuestEditorWindow : EditorWindow
     {
         if (!AssetDatabase.IsValidFolder(folderPath))
         {
-            Debug.LogError($"폴더가 없습니다. {folderPath}");
+            Debug.LogWarning($"폴더가 없습니다. {folderPath}");
             return;
         }
 

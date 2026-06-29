@@ -604,7 +604,7 @@ public class StageManager : MonoBehaviour
     {
         if(!Managers.StageRules.GetRuleData(StageRules.WaveClearRewardExp, out int exp))
         {
-            Debug.LogError("Wave clear reward exp missing");
+            Debug.LogWarning("Wave clear reward exp missing");
             return;
         }
 
@@ -708,7 +708,7 @@ public class StageManager : MonoBehaviour
     /// <param name="message"></param>
     private void WaveDataLoadFailed(string message)
     {
-        Debug.LogError(message);
+        Debug.LogWarning(message);
 
         isSpawning = false;
         isStagePlaying = false;

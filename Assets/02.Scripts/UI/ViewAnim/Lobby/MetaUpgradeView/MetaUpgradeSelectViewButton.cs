@@ -37,4 +37,9 @@ public class MetaUpgradeSelectViewButton : UIHoverBase
 
         OnSelect?.Invoke();
     }
+
+    protected override bool CanClick(PointerEventData evnetData)
+    {
+        return !IsInputLocked;
+    }
 }
