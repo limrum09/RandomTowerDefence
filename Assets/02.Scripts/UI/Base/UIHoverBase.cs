@@ -11,13 +11,14 @@ public abstract class UIHoverBase : MonoBehaviour, IPointerClickHandler, IPointe
         if (!CanClick(eventData))
             return;
 
-        Managers.Sound.PlayUISFX("UIClick01");
+        if(Managers.HasInstance)
+            Managers.Sound.PlayUISFX("UIClick01");
         OnClick(eventData);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (CanClick(eventData))
+        if (CanClick(eventData) && Managers.HasInstance)
             Managers.Sound.PlayUISFX("Tick01");
 
         OnEnter(eventData);
