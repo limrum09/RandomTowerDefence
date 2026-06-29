@@ -22,6 +22,8 @@ public class CameraMovement : MonoBehaviour
     private Camera mainCamera;
 
     private Vector3 dragStartWorldPosition;
+    private float cameraZ = -10f;
+
     private void LateUpdate()
     {
         if (!Input.GetKey(KeyCode.LeftShift))
@@ -51,7 +53,7 @@ public class CameraMovement : MonoBehaviour
             Vector3 currentWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             Vector3 drag = dragStartWorldPosition - currentWorldPos;
 
-            transform.position += drag;
+            transform.position += new Vector3(drag.x, drag.y, 0f);
         }
     }
 
@@ -69,6 +71,7 @@ public class CameraMovement : MonoBehaviour
 
         pos.x = Mathf.Clamp(pos.x, minX, maxX);
         pos.y = Mathf.Clamp(pos.y, minY, maxY);
+        pos.z = cameraZ;
 
         transform.position = pos;
     }

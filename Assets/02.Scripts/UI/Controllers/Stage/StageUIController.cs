@@ -268,6 +268,8 @@ public class StageUIController : MonoBehaviour
 
         isInfoPanelTransitioning = true;
 
+        Managers.Sound.PlayUISFX("BookFlip01");
+
         InfoPanelController prev = currentInfoPanel;
 
         currentInfoPanel = null;
@@ -335,6 +337,7 @@ public class StageUIController : MonoBehaviour
                 }
             );
 
+            Managers.Sound.PlayUISFX("BookFlip01");
             return true;
         }
 
@@ -352,6 +355,7 @@ public class StageUIController : MonoBehaviour
                 isInfoPanelTransitioning = false;
             });
 
+            Managers.Sound.PlayUISFX("BookFlip01");
             return true;
         }
 
@@ -363,6 +367,7 @@ public class StageUIController : MonoBehaviour
             isInfoPanelTransitioning = false;
         });
 
+        Managers.Sound.PlayUISFX("BookFlip01");
         return true;
     }
 
@@ -459,7 +464,7 @@ public class StageUIController : MonoBehaviour
 
         if (!queueCtr.AddTower(uid))
         {
-            Debug.LogError($"대기열로 타워 이동 실패");
+            Debug.LogWarning($"대기열로 타워 이동 실패");
         }
     }
 

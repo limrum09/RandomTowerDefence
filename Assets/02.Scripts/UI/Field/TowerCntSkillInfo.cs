@@ -28,7 +28,7 @@ public class TowerCntSkillInfo : MonoBehaviour
 
         if(tower == null)
         {
-            Debug.LogError($"TowerCntSkillInfo.cs tower data missing : {towerUid}");
+            Debug.LogWarning($"TowerCntSkillInfo.cs tower data missing : {towerUid}");
             Refresh();
             return;
         }

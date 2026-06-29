@@ -22,7 +22,7 @@ Sprite:
   m_AtlasName: 
   m_PackingTag: 
   m_RenderDataKey:
-    a32fb582658b3274eb5ed66e651b6833: 8048336452699445449
+    a32fb582658b3274eb5ed66e651b6833: 529063185
   m_AtlasTags: []
   m_SpriteAtlas: {fileID: 0}
   m_RD:
@@ -103,7 +103,7 @@ Sprite:
         format: 0
         dimension: 0
       m_DataSize: 80
-      _typelessdata: 8fc2f5bd8fc2f53d000000008fc2f53d8fc2f53d000000008fc2f5bd8fc2f5bd000000008fc2f53d8fc2f5bd00000000abaaaa3c0000503f5555153e0000503fabaaaa3c0000303f5555153e0000303f
+      _typelessdata: 8fc2f5bd8fc2f53d000000008fc2f53d8fc2f53d000000008fc2f5bd8fc2f5bd000000008fc2f53d8fc2f5bd000000000000000000000000000000000000000000000000000000000000000000000000
     m_Bindpose: []
     textureRect:
       serializedVersion: 2
@@ -194,7 +194,7 @@ Sprite:
         format: 0
         dimension: 0
       m_DataSize: 80
-      _typelessdata: 8fc2f5bd8fc2f53d000000008fc2f53d8fc2f53d000000008fc2f5bd8fc2f5bd000000008fc2f53d8fc2f5bd00000000abaaaa3c0000503f5555153e0000503fabaaaa3c0000303f5555153e0000303f
+      _typelessdata: 8fc2f5bd8fc2f53d000000008fc2f53d8fc2f53d000000008fc2f5bd8fc2f5bd000000008fc2f53d8fc2f5bd000000000000000000000000000000000000000000000000000000000000000000000000
     m_Bindpose: []
     textureRect:
       serializedVersion: 2
@@ -218,4 +218,4 @@ Sprite:
     - {x: 0.06, y: 0.099999994}
   m_Bones: []
   m_ScriptableObjects: []
-  m_SpriteID: 9c85aff9c5f61bf60800000000000000
+  m_SpriteID: 61542138ed1eff843842566d6ff356a7

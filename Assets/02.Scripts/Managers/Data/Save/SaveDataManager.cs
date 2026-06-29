@@ -67,7 +67,7 @@ public class SaveDataManager
 
             if(completedTask == timeOutTask)
             {
-                Debug.LogError("Firebae save check Time Out");
+                Debug.LogWarning("Firebae save check Time Out");
                 return FirebaseSaveCheckState.Failed;
             }
 
@@ -77,12 +77,12 @@ public class SaveDataManager
         }
         catch(Firebase.FirebaseException e)
         {
-            Debug.LogError($"Firebase save Check Fail : {e.ErrorCode} / {e.Message}");
+            Debug.LogWarning($"Firebase save Check Fail : {e.ErrorCode} / {e.Message}");
             return FirebaseSaveCheckState.Failed;
         }
         catch(Exception e)
         {
-            Debug.LogError($"Firebase save Check Fail : {e.Message}");
+            Debug.LogWarning($"Firebase save Check Fail : {e.Message}");
             return FirebaseSaveCheckState.Failed;
         }
     }
@@ -143,7 +143,7 @@ public class SaveDataManager
                 await GetSaveDoc(META_UPGRADE_SAVE_FILE).SetAsync(defaultData, SetOptions.Overwrite);
                 return true;
             default:
-                Debug.LogError($"Meta Upgrade Load Fail : {result.Stat} / {result.ErrorMessage}");
+                Debug.LogWarning($"Meta Upgrade Load Fail : {result.Stat} / {result.ErrorMessage}");
                 return false;
         }
     }
@@ -163,7 +163,7 @@ public class SaveDataManager
                 await GetSaveDoc(PLAYER_PROGRESS_FILE).SetAsync(defaultData, SetOptions.Overwrite);
                 return true;
             default:
-                Debug.LogError($"Progress Load Fail : {result.Stat} / {result.ErrorMessage}");
+                Debug.LogWarning($"Progress Load Fail : {result.Stat} / {result.ErrorMessage}");
                 return false;
         }
     }
@@ -183,7 +183,7 @@ public class SaveDataManager
                 await GetSaveDoc(QUEST_SAVE_FILE).SetAsync(defaultData, SetOptions.Overwrite);
                 return true;
             default:
-                Debug.LogError($"Quest Load Fail : {result.Stat} / {result.ErrorMessage}");
+                Debug.LogWarning($"Quest Load Fail : {result.Stat} / {result.ErrorMessage}");
                 return false;
         }
     }
@@ -234,7 +234,7 @@ public class SaveDataManager
         }
         catch (Exception e)
         {
-            Debug.LogError($"False Load Player Progress Data {e.Message}");
+            Debug.LogWarning($"False Load Player Progress Data {e.Message}");
             return null;
         }
     }
@@ -260,7 +260,7 @@ public class SaveDataManager
         }
         catch (Exception e)
         {
-            Debug.LogError($"False Save {saveData} {e.Message}");
+            Debug.LogWarning($"False Save {saveData} {e.Message}");
         }
     }
 
@@ -332,7 +332,7 @@ public class SaveDataManager
         }
         catch (Exception e)
         {
-            Debug.LogError($"Meta upgrade Firestore save failed : {e.Message}");
+            Debug.LogWarning($"Meta upgrade Firestore save failed : {e.Message}");
         }
     }
 
@@ -354,7 +354,7 @@ public class SaveDataManager
         }
         catch(Exception e)
         {
-            Debug.LogError($"Player pregress Firestore save failed : {e.Message}");
+            Debug.LogWarning($"Player pregress Firestore save failed : {e.Message}");
         }
 
         
@@ -378,7 +378,7 @@ public class SaveDataManager
         }
         catch (Exception e)
         {
-            Debug.LogError($"Achievement Firestore save failed : {e.Message}");
+            Debug.LogWarning($"Achievement Firestore save failed : {e.Message}");
         }
     }
 

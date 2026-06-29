@@ -728,7 +728,7 @@ public class TowerController : MonoBehaviour
             RestoreResult result = RestoreTowers(removeRestoreDatas);
 
             if (result != RestoreResult.Success)
-                Debug.LogError($"Failed restore tower result - {result}");
+                Debug.LogWarning($"Failed restore tower result - {result}");
 
             return false;
         }            
@@ -740,11 +740,11 @@ public class TowerController : MonoBehaviour
 
             if(result == RestoreResult.Failed)
             {
-                Debug.LogError($"Failed Restore All Towers");
+                Debug.LogWarning($"Failed Restore All Towers");
             }
             else if(result == RestoreResult.PartialSuccess)
             {
-                Debug.LogError($"Fail Restore Tower");
+                Debug.LogWarning($"Fail Restore Tower");
             }
 
             return false;

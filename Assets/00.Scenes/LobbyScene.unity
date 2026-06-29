@@ -636,8 +636,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4072792744308653432, guid: a32fb582658b3274eb5ed66e651b6833,
-    type: 3}
+  m_Sprite: {fileID: -1513087045, guid: a32fb582658b3274eb5ed66e651b6833, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -668,6 +667,7 @@ GameObject:
   - component: {fileID: 72879449}
   - component: {fileID: 72879448}
   - component: {fileID: 72879451}
+  - component: {fileID: 72879452}
   m_Layer: 5
   m_Name: HideEasyMove
   m_TagString: Untagged
@@ -875,6 +875,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 576c63d3c4303874baa3e9dbd301b386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &72879452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72879446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1b51f254d2e66448cfb1b107b8e38b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundUID: BookSlide01
 --- !u!1 &81131823
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,6 +898,7 @@ GameObject:
   m_Component:
   - component: {fileID: 81131824}
   - component: {fileID: 81131825}
+  - component: {fileID: 81131826}
   m_Layer: 5
   m_Name: ElfTower
   m_TagString: Untagged
@@ -962,6 +976,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!114 &81131826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81131823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4e13c833a176cc419d76baee885a31f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundUID: BookSlide01
 --- !u!1 &83386409
 GameObject:
   m_ObjectHideFlags: 0
@@ -4846,6 +4873,7 @@ GameObject:
   m_Component:
   - component: {fileID: 488285538}
   - component: {fileID: 488285539}
+  - component: {fileID: 488285540}
   m_Layer: 5
   m_Name: WerebeastTower
   m_TagString: Untagged
@@ -4923,6 +4951,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!114 &488285540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488285537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4e13c833a176cc419d76baee885a31f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundUID: BookSlide01
 --- !u!1 &491943183
 GameObject:
   m_ObjectHideFlags: 0
@@ -7512,6 +7553,7 @@ GameObject:
   - component: {fileID: 716188345}
   - component: {fileID: 716188344}
   - component: {fileID: 716188343}
+  - component: {fileID: 716188346}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -7623,6 +7665,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 716188341}
   m_CullTransparentMesh: 1
+--- !u!114 &716188346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716188341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1b51f254d2e66448cfb1b107b8e38b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundUID: UIClick01
 --- !u!1 &727764028
 GameObject:
   m_ObjectHideFlags: 0
@@ -9750,6 +9805,7 @@ GameObject:
   - component: {fileID: 905517965}
   - component: {fileID: 905517964}
   - component: {fileID: 905517963}
+  - component: {fileID: 905517966}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -9861,6 +9917,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 905517961}
   m_CullTransparentMesh: 1
+--- !u!114 &905517966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905517961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1b51f254d2e66448cfb1b107b8e38b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundUID: UIClick01
 --- !u!1 &908157080
 GameObject:
   m_ObjectHideFlags: 0
@@ -9919,6 +9988,7 @@ GameObject:
   - component: {fileID: 929440689}
   - component: {fileID: 929440692}
   - component: {fileID: 929440690}
+  - component: {fileID: 929440693}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -10010,6 +10080,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 929440688}
   m_CullTransparentMesh: 1
+--- !u!114 &929440693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929440688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1b51f254d2e66448cfb1b107b8e38b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundUID: UIClick01
 --- !u!1 &931461760
 GameObject:
   m_ObjectHideFlags: 0
@@ -11310,6 +11393,7 @@ GameObject:
   - component: {fileID: 1095400731}
   - component: {fileID: 1095400730}
   - component: {fileID: 1095400729}
+  - component: {fileID: 1095400732}
   m_Layer: 5
   m_Name: GameExitButton
   m_TagString: Untagged
@@ -11431,6 +11515,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1095400727}
   m_CullTransparentMesh: 1
+--- !u!114 &1095400732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095400727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1b51f254d2e66448cfb1b107b8e38b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundUID: UIClick01
 --- !u!1 &1107712089
 GameObject:
   m_ObjectHideFlags: 0
@@ -12001,8 +12098,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8048336452699445449, guid: a32fb582658b3274eb5ed66e651b6833,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7d0de29f1ab718944a3e66446b38a5fa, type: 2}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12196,6 +12292,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1209681959}
   - component: {fileID: 1209681960}
+  - component: {fileID: 1209681961}
   m_Layer: 5
   m_Name: Public
   m_TagString: Untagged
@@ -12273,6 +12370,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &1209681961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209681958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4e13c833a176cc419d76baee885a31f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundUID: BookSlide01
 --- !u!1 &1220362197
 GameObject:
   m_ObjectHideFlags: 0
@@ -12852,6 +12962,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1259698198}
   - component: {fileID: 1259698199}
+  - component: {fileID: 1259698200}
   m_Layer: 5
   m_Name: HumanTower
   m_TagString: Untagged
@@ -12929,6 +13040,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &1259698200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259698197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4e13c833a176cc419d76baee885a31f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundUID: BookSlide01
 --- !u!1 &1261041063
 GameObject:
   m_ObjectHideFlags: 0
@@ -12939,6 +13063,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1261041064}
   - component: {fileID: 1261041065}
+  - component: {fileID: 1261041066}
   m_Layer: 5
   m_Name: Tower
   m_TagString: Untagged
@@ -13017,6 +13142,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!114 &1261041066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261041063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4e13c833a176cc419d76baee885a31f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundUID: BookSlide01
 --- !u!1 &1266192073
 GameObject:
   m_ObjectHideFlags: 0
@@ -13339,6 +13477,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1289361657}
   - component: {fileID: 1289361658}
+  - component: {fileID: 1289361659}
   m_Layer: 5
   m_Name: DragonianTower
   m_TagString: Untagged
@@ -13416,6 +13555,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!114 &1289361659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289361656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4e13c833a176cc419d76baee885a31f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundUID: BookSlide01
 --- !u!1 &1302682720
 GameObject:
   m_ObjectHideFlags: 0
@@ -14327,6 +14479,7 @@ GameObject:
   - component: {fileID: 1367310410}
   - component: {fileID: 1367310409}
   - component: {fileID: 1367310408}
+  - component: {fileID: 1367310413}
   m_Layer: 5
   m_Name: GotoAchievement
   m_TagString: Untagged
@@ -14466,6 +14619,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1367310413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367310407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1b51f254d2e66448cfb1b107b8e38b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundUID: UIClick01
 --- !u!1 &1394118848
 GameObject:
   m_ObjectHideFlags: 0
@@ -15165,6 +15331,7 @@ GameObject:
   - component: {fileID: 1432003463}
   - component: {fileID: 1432003462}
   - component: {fileID: 1432003461}
+  - component: {fileID: 1432003464}
   m_Layer: 5
   m_Name: SettingButton
   m_TagString: Untagged
@@ -15286,6 +15453,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1432003459}
   m_CullTransparentMesh: 1
+--- !u!114 &1432003464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432003459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1b51f254d2e66448cfb1b107b8e38b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundUID: UIClick01
 --- !u!1 &1439810579
 GameObject:
   m_ObjectHideFlags: 0
@@ -15916,6 +16096,7 @@ GameObject:
   - component: {fileID: 1522793288}
   - component: {fileID: 1522793287}
   - component: {fileID: 1522793286}
+  - component: {fileID: 1522793289}
   m_Layer: 5
   m_Name: EndOptionButton
   m_TagString: Untagged
@@ -16037,6 +16218,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1522793284}
   m_CullTransparentMesh: 1
+--- !u!114 &1522793289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1522793284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1b51f254d2e66448cfb1b107b8e38b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundUID: UIClick01
 --- !u!1 &1542580081
 GameObject:
   m_ObjectHideFlags: 0
@@ -16661,6 +16855,7 @@ GameObject:
   - component: {fileID: 1594679396}
   - component: {fileID: 1594679395}
   - component: {fileID: 1594679398}
+  - component: {fileID: 1594679399}
   m_Layer: 5
   m_Name: OptionButton
   m_TagString: Untagged
@@ -16794,6 +16989,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 576c63d3c4303874baa3e9dbd301b386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1594679399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594679393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1b51f254d2e66448cfb1b107b8e38b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundUID: UIClick01
 --- !u!1 &1604192945
 GameObject:
   m_ObjectHideFlags: 0
@@ -17197,6 +17405,7 @@ GameObject:
   - component: {fileID: 1633516099}
   - component: {fileID: 1633516098}
   - component: {fileID: 1633516101}
+  - component: {fileID: 1633516102}
   m_Layer: 5
   m_Name: ShowEasyMove
   m_TagString: Untagged
@@ -17416,6 +17625,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 576c63d3c4303874baa3e9dbd301b386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1633516102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633516096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1b51f254d2e66448cfb1b107b8e38b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundUID: BookSlide01
 --- !u!1001 &1639276421
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18127,6 +18349,7 @@ GameObject:
   - component: {fileID: 1654654508}
   - component: {fileID: 1654654507}
   - component: {fileID: 1654654506}
+  - component: {fileID: 1654654511}
   m_Layer: 5
   m_Name: GotoGate
   m_TagString: Untagged
@@ -18266,6 +18489,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1654654511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654654505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1b51f254d2e66448cfb1b107b8e38b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundUID: UIClick01
 --- !u!1 &1658446287
 GameObject:
   m_ObjectHideFlags: 0
@@ -19376,8 +19612,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4648906578745775118, guid: a32fb582658b3274eb5ed66e651b6833,
-    type: 3}
+  m_Sprite: {fileID: -1350671930, guid: a32fb582658b3274eb5ed66e651b6833, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -21455,6 +21690,7 @@ GameObject:
   - component: {fileID: 2004539464}
   - component: {fileID: 2004539463}
   - component: {fileID: 2004539462}
+  - component: {fileID: 2004539467}
   m_Layer: 5
   m_Name: GotoUpgrade
   m_TagString: Untagged
@@ -21594,6 +21830,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2004539467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004539461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1b51f254d2e66448cfb1b107b8e38b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundUID: UIClick01
 --- !u!1 &2018933340
 GameObject:
   m_ObjectHideFlags: 0
@@ -21679,6 +21928,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2022184745}
   - component: {fileID: 2022184746}
+  - component: {fileID: 2022184747}
   m_Layer: 5
   m_Name: 'OrcTower '
   m_TagString: Untagged
@@ -21756,6 +22006,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!114 &2022184747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022184744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4e13c833a176cc419d76baee885a31f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundUID: BookSlide01
 --- !u!1 &2027672467
 GameObject:
   m_ObjectHideFlags: 0
@@ -22044,6 +22307,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2054965944}
   - component: {fileID: 2054965945}
+  - component: {fileID: 2054965946}
   m_Layer: 5
   m_Name: DwarfTower
   m_TagString: Untagged
@@ -22121,6 +22385,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 0
+--- !u!114 &2054965946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054965943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4e13c833a176cc419d76baee885a31f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundUID: BookSlide01
 --- !u!1 &2063551084
 GameObject:
   m_ObjectHideFlags: 0

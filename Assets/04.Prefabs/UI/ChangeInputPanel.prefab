@@ -726,6 +726,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputNameText: {fileID: 7704050834684671191}
   inputField: {fileID: 4444204545751035727}
+  uiSound: Tick01
 --- !u!1 &7368795177235191046
 GameObject:
   m_ObjectHideFlags: 0

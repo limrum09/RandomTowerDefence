@@ -97,14 +97,14 @@ public class PlayerProgressManager
     {
         if (value <= 0)
         {
-            UnityEngine.Debug.LogError("소모 값이 0이하 : " + value);
+            UnityEngine.Debug.LogWarning("소모 값이 0이하 : " + value);
             return false;
         }
             
 
         if (value > playerData.metaCurrency)
         {
-            UnityEngine.Debug.LogError("소모 값이 0이하 : " + value);
+            UnityEngine.Debug.LogWarning("재화 부족 : " + value);
             return false;
         }
             

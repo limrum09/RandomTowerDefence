@@ -37,7 +37,7 @@ public class GameEffectManager
             SetFollow(effect, tf, Vector3.zero);
     }
 
-    public void Play2DAnimationEffect(string name, Transform target, Transform tower, PoolCategory category = PoolCategory.Common, float randomPositionRange = 0.15f, float randomRoationRange = 0.15f, bool isFacing = false)
+    public void Play2DAnimationEffect(string name, Transform target, Transform tower, PoolCategory category = PoolCategory.Common, float randomPositionRange = 0.15f, float randomRoationRange = 0.15f, bool isFacing = false, float attackSpeed = 1.0f)
     {
         if (target == null)
             return;
@@ -47,6 +47,11 @@ public class GameEffectManager
 
         if (effect == null)
             return;
+
+        Animator animator = effect.GetComponent<Animator>();
+
+        if (animator != null)
+            animator.speed = Mathf.Max(attackSpeed, 0.01f);
 
         Vector3 randomOffest = new Vector3(0f, UnityEngine.Random.Range(-randomPositionRange, randomPositionRange), 0f);
         SetFollow(effect, target, randomOffest);

@@ -99,7 +99,6 @@ public class SettingUIController : MonoBehaviour
         canvas.blocksRaycasts = true;
 
         anim.Play();
-        Debug.Log($"Show Setting Panel {canvas.alpha}");
     }
 
     /// <summary>

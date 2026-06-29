@@ -38,7 +38,7 @@ public class EnemyInfoPresenter
         }
         catch (FormatException e)
         {
-            Debug.LogError($"Enemy Skill Des format error : {model.skillDesStringKey}, {e.Message}");
+            Debug.LogWarning($"Enemy Skill Des format error : {model.skillDesStringKey}, {e.Message}");
             view.SetSkillDesText(des);
         }
         
