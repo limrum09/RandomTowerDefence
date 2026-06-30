@@ -14,6 +14,8 @@ public class RerollButtonClick : MonoBehaviour
     private Button rollButton;
     [SerializeField]
     private TextMeshProUGUI text;
+    [SerializeField]
+    private PortalCtr portal;
 
     private LocalizationDataManager local;
     private int rerollCnt;
@@ -46,6 +48,7 @@ public class RerollButtonClick : MonoBehaviour
 
         rerollCnt = cnt;
         SetText();
+        portal.SetDir();
 
         if (cnt <= 0)
         {

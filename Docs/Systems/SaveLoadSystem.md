@@ -100,18 +100,23 @@ File.Delete(tempPath);
 
 PlayerProgress, MetaUpgrade, Quest를 별도 문서로 저장한다. 한 시스템의 변경이 다른 대형 문서 전체 쓰기로 이어지지 않는다.
 
-## 8. 설계 의도
+## 8. 설계 방식
 
-- **Repository**: 외부 SDK와 게임 로직의 경계 형성
-- **Result Object**: 실패 원인을 enum과 메시지로 전달
-- **Dirty Flag**: 변경된 문서만 저장
-- **Validation Contract**: 모든 저장 모델이 자체 유효성 제공
-- **Fallback Initialization**: 문서 누락을 신규 사용자 흐름으로 처리
-- **Write-Temp-and-Replace**: 로컬 저장 손상 위험 완화
+### 저장소 접근 책임 분리
+
+Firebase Firestore 접근은 `FirestoreSaveRepository`로 분리했다. `SaveDataManager`는 Firebase API의 세부 예외보다 `Success`, `DocumentMissing`, `NetworkError`, `PermissionError`, `Timeout`, `DataCorrupted` 같은 로드 결과 상태를 기준으로 흐름을 처리한다. 이는 외부 저장소 접근 책임을 경계로 분리한 Repository-style Save Access이며, 정형화된 패턴 전체를 구현했다고 단정하지 않는다.
+
+### 저장 데이터 검증과 신규 사용자 구분
+
+원격에서 읽은 데이터는 역직렬화한 뒤 `IValidSaveData`를 통해 값의 유효성을 검사한다. 문서가 없는 `DocumentMissing`은 신규 사용자 상태로 처리해 기본 데이터를 생성하고, 네트워크·권한·시간 초과·데이터 손상은 실제 로드 실패로 구분한다. 기본 데이터 생성과 오류 대응이 같은 실패 분기에 섞이지 않는다.
+
+### 저장 범위와 수명주기 분리
+
+로컬 옵션과 계정 진행은 저장 위치와 수명주기를 나누고, 원격 진행 데이터도 PlayerProgress, MetaUpgrade, Quest 문서로 구분한다. 변경된 영역만 저장 대상으로 표시하며 로컬 파일은 임시 파일 작성 후 교체해 쓰기 도중 기존 파일이 손상될 가능성을 줄인다.
 
 ## 9. 문제 해결 과정
 
-원격 문서 없음은 오류가 아니라 신규 사용자 상태다. Repository 결과에서 DocumentMissing을 별도 상태로 분리하고 SaveDataManager가 기본 모델을 메모리와 Firestore 양쪽에 적용한다.
+원격 문서 없음은 오류가 아니라 신규 사용자 상태다. 저장소 접근 결과에서 `DocumentMissing`을 별도 상태로 분리하고 `SaveDataManager`가 기본 모델을 메모리와 Firestore 양쪽에 적용한다.
 
 네트워크 지연으로 로딩이 무한정 대기하지 않도록 타임아웃을 추가했다. 데이터 변환 성공만으로 신뢰하지 않고 음수 재화, 잘못된 enum, null 컬렉션을 IsValid로 검사한다.
 
@@ -138,6 +143,6 @@ PlayerProgress, MetaUpgrade, Quest를 별도 문서로 저장한다. 한 시스�
 ## 12. 포트폴리오에 강조할 점
 
 - 로컬 옵션과 계정 진행을 수명주기 기준으로 분리
-- Firebase 오류를 도메인 결과로 변환한 Repository
+- Firebase 오류를 게임 흐름에서 처리할 수 있는 로드 결과로 변환한 저장소 접근 경계
 - 타임아웃, 기본값, 데이터 검증, dirty flag를 포함한 저장 실패 처리
 - 로컬 temp/backup 교체 방식과 원격 문서 분할 전략

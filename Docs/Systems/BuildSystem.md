@@ -208,21 +208,19 @@ TryBuildPendingTower는 BuildTower가 true를 반환한 경우에만 OnQueueTowe
 
 BeginBuildTower에 현재 선택과 같은 UID·슬롯 인덱스가 다시 전달되면 GetRandomObstacleCell을 호출한다. 이 메서드는 장애물 셀 중 타워가 없는 셀을 모아 무작위로 하나를 선택해 설치를 시도한다. 코드에는 별도 클릭 시간 판정은 없다.
 
-## 8. 설계 의도
+## 8. 설계 방식
 
-| 책임 | 담당 클래스 | 분리 근거 |
-|---|---|---|
-| 구매와 결제 | StoreController | 필드 배치 규칙을 알지 않고 Queue 추가 결과만 처리 |
-| 구매 타워 보관 | QueueUIController | GameObject 대신 UID와 슬롯 인덱스 유지 |
-| UI 이벤트 연결 | StageUIController | Queue와 TowerController가 서로를 직렬화 필드로 직접 보유하지 않음 |
-| 입력과 건설 절차 | TowerController | 설치 모드와 검증·생성 순서를 조정 |
-| 좌표 체계 | GridManager, InputManager | 월드/셀 변환을 건설 코드에서 분리 |
-| 설치 가능한 지형 | ObstacleBuilder | 장애물 점유 정보의 소유자 |
-| 타워 점유 상태 | FieldTowerManager | 셀 배열과 전체 목록의 단일 변경 지점 |
-| 타워 자체 초기화 | Tower | UID로 정적 데이터와 현재 스탯 적용 |
-| 표시 | TowerBuildPreview | 설치 판정 결과만 받아 시각화 |
+### 구매 상태와 설치 상태 분리
 
-전체 구조는 Controller가 절차를 조정하고, 각 데이터 소유자가 검증에 필요한 조회 API를 제공하는 방식이다. 이벤트는 설치 요청과 설치 완료 이후의 큐 갱신을 분리하는 데 사용한다.
+구매한 타워는 즉시 필드에 생성되지 않고 `QueueUIController`의 슬롯에 UID로 저장된다. 실제 설치는 플레이어가 큐 슬롯과 그리드 셀을 선택한 뒤 진행된다. 설치 검증이나 필드 등록이 실패하면 큐 상태를 유지하고, 등록이 성공한 경우에만 성공 이벤트를 통해 해당 슬롯을 제거한다.
+
+### 배치 검증과 필드 등록 책임 분리
+
+`TowerController`는 큐 슬롯과 타워 UID를 받아 설치 흐름을 조정하고, 그리드 범위, 시작·도착 셀, 장애물 존재 여부, 기존 타워 점유 여부, 최대 설치 수를 검사한다. 실제 필드 등록과 셀 점유 상태 관리는 `FieldTowerManager`가 담당한다. 따라서 상점과 큐 UI는 그리드 배치 규칙을 직접 알 필요가 없고, 설치 가능 여부 판단을 건설 흐름 안에 모을 수 있다.
+
+### 좌표·지형·표시 책임 분리
+
+`InputManager`와 `GridManager`는 마우스 위치와 셀 좌표 변환을, `ObstacleBuilder`는 설치 가능한 지형 조회를, `TowerBuildPreview`는 검증 결과 표시를 담당한다. `TowerController`는 이 조회 결과를 조합하되 각 데이터의 저장 방식이나 표시 세부사항까지 소유하지 않는다.
 
 ## 9. 문제 해결 과정
 
