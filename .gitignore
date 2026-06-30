@@ -67,6 +67,9 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+# Local portfolio and interview notes
+/PortfolioEmphasisNotes.local.md
+
 # Packed Addressables
 /[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
 

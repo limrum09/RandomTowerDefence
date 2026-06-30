@@ -221,7 +221,7 @@ CanCompleteWave는 스폰 중 여부, 생존 적 수, 현재 생명, 게임 종�
 
 ### 프로젝트 개요
 
-- [ProjectSummary](ProjectSummary.md) — 구현 범위와 면접 포인트 요약
+- [ProjectSummary](ProjectSummary.md) — 구현 범위와 핵심 기술 요약
 - [Postmortem](../Postmortem.md) — 잘된 점, 어려웠던 점, 기술적 부채와 개선 방향
 
 ### 아키텍처
