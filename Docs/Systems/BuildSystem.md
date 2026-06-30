@@ -291,14 +291,3 @@ TowerController는 Input.GetMouseButtonDown과 Input.GetKeyDown을 사용한다.
 ### 테스트
 
 그리드 경계, 최대 타워 수, 큐 유지, 등록 실패, 합성 복구에 대한 자동화 테스트 파일은 현재 확인되지 않았다. FieldTowerManager와 검증 로직을 MonoBehaviour 입력 처리에서 더 분리하면 단위 테스트 작성이 쉬워진다.
-
-## 12. 포트폴리오에 강조할 점
-
-- **구매와 배치 시점 분리**: 상점 → 대기열 → 건설 모드 → 필드 등록으로 책임을 구분했다.
-- **성공 이후 상태 반영**: FieldTowerManager 등록 성공 후에만 큐 제거 이벤트를 발생시킨다.
-- **좌표 변환과 검증 단계 분리**: InputManager, GridManager, ObstacleBuilder, FieldTowerManager의 조회 결과를 조합한다.
-- **필드 상태 중앙화**: 셀 배열, 전체 타워 목록, 종족별 개수를 FieldTowerManager가 관리한다.
-- **실패 경로 처리**: 생성·등록 실패 오브젝트 제거와 등급 업그레이드 재료 복구 경로가 존재한다.
-- **이벤트 기반 연결**: QueueUIController와 TowerController의 요청·완료 흐름을 StageUIController에서 명시적으로 바인딩하고 해제한다.
-
-면접에서는 일반적인 “타워를 생성했다”보다, **설치 성공을 어떤 조건으로 정의했고 큐·GameObject·필드 점유 데이터의 일관성을 어떻게 유지했는지**를 중심으로 설명할 수 있다.

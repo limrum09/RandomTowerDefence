@@ -8,7 +8,7 @@
 
 ## Portfolio
 
-- [ProjectSummary](Portfolio/ProjectSummary.md) — 채용 담당자가 프로젝트 범위, 핵심 시스템, 기술적 특징을 빠르게 파악할 수 있도록 요약합니다.
+- [ProjectSummary](Portfolio/ProjectSummary.md) — 프로젝트 범위, 핵심 시스템, 기술적 특징을 요약합니다.
 - [CaseStudy](Portfolio/CaseStudy.md) — 프로젝트 배경, 문제 정의, 설계 선택, 구현 결과를 사례 중심으로 정리하기 위한 문서입니다.
 
 ## Architecture
