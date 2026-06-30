@@ -100,13 +100,19 @@ QueueUIController는 UID 배열을 실제 상태로, QueueSlotUI를 표시 상�
 
 상점은 StageManager.OnWaveEndRefreshStore와 RunSessionDataManager.OnGoldAmountChanged를 구독해 웨이브 갱신과 골드 표시를 처리한다. 큐의 두 설치 이벤트는 StageUIController.BindQueueUI에서 연결되고 UnBindQueueUI에서 해제된다.
 
-## 8. 설계 의도
+## 8. 설계 방식
 
-- **Buffer / Queue**: 구매와 필드 배치 시점을 분리한다.
-- **Transaction with Refund**: 수용 실패 시 골드를 원복한다.
-- **Presentation Model**: StoreProduct로 상점 표시 데이터만 구성한다.
-- **Observer**: 웨이브와 골드 상태 변경을 구독한다.
-- **Command Event**: Queue는 TowerController를 직접 소유하지 않고 설치 요청을 발행한다.
+### 구매 책임과 설치 책임 분리
+
+`StoreController`는 골드 사용 가능 여부와 `QueueUIController.AddTower` 결과를 처리한다. 구매에 성공한 타워 UID는 큐 슬롯에 저장되고, 실제 그리드 배치 검증은 타워 건설 시스템에서 처리한다. 따라서 상점 UI는 그리드 배치 규칙이나 필드 점유 상태를 직접 알 필요가 없다.
+
+### 큐 상태와 골드 상태의 일관성 유지
+
+큐에 빈 공간이 없으면 구매를 확정하지 않는다. 골드를 차감한 뒤 큐가 타워를 수용하지 못하면 같은 가격을 환불하고 상품 슬롯도 유지한다. 이 흐름은 구매 실패와 이후의 설치 실패를 서로 다른 단계로 처리하면서 골드와 큐 상태가 어긋나지 않게 한다.
+
+### 이벤트를 통한 설치 요청 전달
+
+`QueueUIController`는 슬롯의 UID와 인덱스를 검증한 뒤 설치 요청 이벤트를 발생시키고, `StageUIController`가 이를 `TowerController`에 연결한다. 큐는 설치 절차를 직접 실행하지 않고 구매한 타워의 보관과 요청 전달에 집중한다.
 
 ## 9. 문제 해결 과정
 

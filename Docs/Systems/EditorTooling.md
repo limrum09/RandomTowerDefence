@@ -88,11 +88,17 @@ ConditionalFieldDrawer는 ConditionFieldAtrribute를 위한 CustomPropertyDrawer
 
 AnimatorDatas는 같은 Editor 폴더에 있는 보조 ScriptableObject다. RefreshAnimators ContextMenu에서 AssetDatabase.FindAssets("t:AnimatorController")로 AnimatorController를 검색하고, 이름이 Ani로 끝나는 컨트롤러 목록을 갱신한다.
 
-## 7. 설계 의도
+## 7. 설계 방식
 
-반복적인 JSON 수정, ScriptableObject 생성, Play Mode 테스트를 Unity Editor 도구로 보조해 수작업 입력 오류를 줄이고 확인 절차를 단축하는 방향으로 구성했다.
+### Editor Tooling 기반 데이터 검증
 
-데이터별 EditorWindow는 각 JSON 구조와 런타임 계산 규칙을 직접 사용한다. 퀘스트 제작은 에셋 유형별 생성 경로를 제공하고, 디버거는 런타임 관리자에 테스트 입력을 전달하며, Inspector 보조 기능은 데이터 입력 시점의 표시 상태를 제어한다.
+JSON과 ScriptableObject 데이터를 수작업으로 관리할 때 생길 수 있는 UID 중복, enum 변환 오류, 누락 참조, 잘못된 수치 입력을 Unity Editor 안에서 확인한다. 데이터별 `EditorWindow`와 `Validate` 탭이 실제 JSON 구조와 런타임 계산 규칙을 사용하므로 저장 전에 데이터 관계와 입력 범위를 점검할 수 있다.
+
+### 데이터 제작과 검증 흐름 연결
+
+편집 창은 데이터 추가·복제·삭제·저장과 미리보기를 제공하고, 퀘스트 도구는 ScriptableObject 유형별 생성 경로를 제공한다. 제작과 검증을 같은 흐름에 두어 원본 파일을 직접 오가며 수정하는 작업을 줄이고, `Custom Inspector`, Play Mode 디버거, `ConditionalFieldDrawer`로 실행 중 확인과 조건부 입력까지 보조한다.
+
+이 구성은 별도의 패턴을 적용했다는 의미보다 데이터 기반 시스템을 안전하게 운영하기 위한 제작·검증 워크플로우다.
 
 ## 8. 한계와 개선 가능성
 

@@ -113,14 +113,19 @@ TowerStatCalculator는 메타 강화가 반영된 기본 공격력·속도에 �
 
 특정 종족·등급 또는 공용 타입의 저장 행이 없으면 조회 시 0레벨 데이터를 생성한다. 신규 저장 데이터와 기존 사용자 데이터 모두 동일한 조회 경로를 사용한다.
 
-## 8. 설계 의도
+## 8. 설계 방식
 
-- **Data-Driven Formula**: 수치와 증가 방식을 JSON으로 분리
-- **Separation of Base and Progress**: 원본 스탯과 사용자 진행 상태 분리
-- **Lazy Initialization**: 누락된 강화 행을 0레벨로 보완
-- **Facade**: GameManager가 여러 데이터 소스를 UI용 결과로 조합
-- **Dirty Flag**: 실제 강화 성공 시 관련 문서만 저장 대상으로 표시
-- **Layered Stat Calculation**: 메타 성장과 런 성장을 순서대로 합성
+### 런타임 상태와 영구 성장 상태 분리
+
+전투 중 적용되는 런 강화와 계정 단위 메타 성장은 수명주기가 다르므로 별도 상태로 관리한다. 메타 성장은 Firestore에 저장되는 계정 진행 데이터로 유지되고, 런 강화는 스테이지 진행 중에만 유지된다. 이 구분으로 런 종료 시 초기화할 값과 다음 실행에도 복원할 값을 분명히 한다.
+
+### 원본 데이터와 계산 결과 분리
+
+최종 타워 스탯은 원본 `TowerData`를 직접 수정하지 않고 기본값, 영구 성장 단계, 현재 런 강화 단계를 계산 과정에서 순서대로 합산한다. JSON의 밸런스 원본과 사용자별 진행 상태, 전투 중 계산 결과가 섞이지 않으며 각 단계의 적용 위치를 추적할 수 있다.
+
+### 누락된 진행 데이터 보완
+
+`TowerMetaUpgradeManager`와 `PublicMetaUpgradeManager`는 요청한 강화 항목이 저장 목록에 없으면 0레벨 항목을 만든다. 신규 콘텐츠가 추가되거나 이전 저장 데이터에 항목이 없어도 동일한 조회 흐름을 사용할 수 있고, 실제 강화 성공 시 관련 저장 상태만 변경 대상으로 표시한다.
 
 ## 9. 문제 해결 과정
 
@@ -140,7 +145,6 @@ TowerMetaUpgradeManager.GetSaveData와 PublicMetaUpgradeManager.GetMetaSaveData�
 
 - maxLevel과 비용 검증을 UI가 아니라 도메인 서비스에서도 강제한다.
 - 재화 차감과 강화 레벨 증가를 하나의 MetaUpgradeTransaction으로 묶는다.
-- GameManager.MetaUpgradeCal의 isUnlocked는 실제로 잠금 패널 활성 여부로 쓰이므로 isLocked로 이름을 명확히 한다.
 - TowerMetaUpgradeManager의 List.Find를 종족·등급 복합 키 Dictionary로 변경한다.
 - TowerStatCalculator의 전역 static 의존성을 인스턴스 서비스로 바꿔 테스트 가능성을 높인다.
 - 강화 공식과 경계값을 단위 테스트로 검증한다.

@@ -74,7 +74,7 @@ SessionInfoPresenter는 RunSessionDataManager 이벤트를 직접 구독하고 �
 
 ## 7. 핵심 구현 방식
 
-### MVP 분리
+### 표시 값 변환과 View 갱신 분리
 
 ```csharp
 public void SetModel(ItemData model, int index)
@@ -98,14 +98,19 @@ InfoPanelController는 새 전환 전에 기존 DOTween Sequence를 Kill한다. 
 
 StageUIController는 currentInfoPanel과 isInfoPanelTransitioning을 사용해 현재 패널과 전환 중 여부를 관리한다. currentInfoPanelType도 기록하지만, 현재 코드에서는 값을 설정하거나 None으로 초기화할 뿐 분기 조건에서 읽는 위치는 확인되지 않았다.
 
-## 8. 설계 의도
+## 8. 설계 방식
 
-- **MVP**: View 표시와 모델 변환 분리
-- **Mediator**: StageUIController가 UI와 게임 시스템 사이를 중재
-- **Observer**: 세션 상태와 선택 상태를 이벤트로 반영
-- **State Guard**: 패널 전환 중 입력과 중복 패널 방지
-- **표시 변환 책임**: Presenter가 도메인 데이터를 UI에 전달할 문자열·아이콘·수치로 변환
-- **완료 콜백 연결**: Tween 완료와 Animator의 Animation Event 사이에 Action 콜백을 전달
+### Presenter와 View 책임 분리
+
+Presenter는 도메인 데이터를 현지화된 문자열, 아이콘, 수치 같은 표시 값으로 변환한다. View는 변환된 값을 받아 TextMeshPro, Image, Button 등 Unity UI 컴포넌트를 갱신한다. 이는 특정 UI 패턴을 완전히 구현했다는 선언보다 표시 값 변환과 Unity UI 조작을 서로 다른 책임으로 둔 설계다.
+
+### 입력·표시·전환 책임 분리
+
+View의 버튼 입력은 Presenter를 거쳐 명령 이벤트로 전달되고, `StageUIController`가 이를 타워·아이템 등 게임 시스템의 동작에 연결한다. `InfoPanelController`는 CanvasGroup, DOTween, Animator를 이용한 개별 패널 전환을 담당하며 `StageUIController`는 현재 패널과 전환 중 상태를 확인해 중복 입력을 막는다.
+
+### 상태 변경 시점에만 화면 갱신
+
+세션 정보와 선택 상태는 C# 이벤트로 전달되어 값이 바뀐 시점에 Presenter가 View를 갱신한다. 화면이 매 프레임 도메인 상태를 조회하지 않아도 되고, 화면 종료 시 이벤트 연결을 해제해 재진입 후 중복 호출을 방지한다.
 
 ## 9. 문제 해결 과정
 
@@ -134,7 +139,7 @@ StageUIController는 currentInfoPanel과 isInfoPanelTransitioning을 사용해 �
 
 ## 12. 포트폴리오에 강조할 점
 
-- MVP와 Mediator를 적용한 UI-게임 로직 분리
+- 표시 값 변환, Unity UI 갱신, 게임 명령 연결의 책임 분리
 - Tween과 Animator를 조합하면서 전환 충돌을 제어한 상태 관리
 - 이벤트 기반 세션 UI로 불필요한 폴링 제거
 - 현지화 포맷 실패까지 고려한 방어적 Presenter 구현

@@ -109,9 +109,8 @@ sequenceDiagram
 
 ## 9. 사용한 디자인
 
-- DTO: JSON Row와 Firestore 저장 모델
+- DTO: JSON 과 Firestore 저장 모델
 - Repository: Firebase SDK 오류를 FireStoreLoadResult로 변환
-- Data Mapper: DataManager가 Row를 런타임 모델로 변환
 - Dirty Flag: 변경된 저장 영역만 기록
 - Single Source of Truth: 세션 상태는 RunSessionState, 필드 타워는 FieldTowerManager가 소유
 

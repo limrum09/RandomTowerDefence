@@ -103,13 +103,11 @@ RandomTowerDefence는 Unity 6 기반 2D 타워 디펜스 프로젝트다. 플레
 
 ## 6. 현재 한계
 
-- 플레이 영상, GIF, 주요 화면 스크린샷은 아직 추가가 필요하다.
 - 성능 병목 여부는 Unity Profiler 기반 측정이 필요하다.
 - Enemy·Tower 생성과 파괴, 적별 경로 탐색, TowerAttack 타겟 탐색 비용은 실제 플레이 상황에서 추가 검증이 필요하다.
 - 일부 조정 책임이 StageManager와 TowerController에 집중되어 있어 흐름별 조정 객체 분리를 검토할 수 있다.
 - 저장 데이터의 schemaVersion과 버전별 마이그레이션 정책은 보완 여지가 있다.
 - 그리드 검증, 큐 유지, 웨이브 완료, 저장 모델 검증 등 주요 규칙의 자동화 테스트를 보강할 수 있다.
-- Editor Tool은 Undo/Redo, 변경 이력, 통합 검증 리포트 측면에서 개선할 수 있다.
 
 ## 7. 다시 개발한다면
 
@@ -134,9 +132,4 @@ RandomTowerDefence는 Unity 6 기반 2D 타워 디펜스 프로젝트다. 플레
 
 ## 9. 남은 TODO
 
-- 플레이 영상 추가
-- 상점 → 대기열 → 타워 설치 GIF 추가
-- 웨이브 전투 GIF 추가
-- 메타 성장 UI GIF 추가
-- 주요 화면 스크린샷 추가
 - 필요 시 Unity Profiler 측정 결과 추가

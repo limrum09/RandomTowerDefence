@@ -23,6 +23,7 @@
 | [QuestManager](../../Assets/02.Scripts/Managers/Core/QuestManager.cs) | 등록, 보고 분배, 활성·완료 목록, 저장 |
 | [Quest](../../Assets/02.Scripts/Quest/Quest.cs) | 카테고리, 조건, Task, 보상, 완료 생명주기 |
 | [Achievement](../../Assets/02.Scripts/Quest/Achievement.cs) | 저장 가능한 Quest 특수화 |
+| [QuestReporter](../../Assets/02.Scripts/Quest/QuestReporter.cs) | GameObject의 상태 변화나 상호작용을 Inspector 설정에 따라 공통 보고 흐름으로 전달 |
 | [QuestTaskData](../../Assets/02.Scripts/Quest/Task/QuestTaskData.cs) | 대상 필터, 성공 횟수, 완료 판정 |
 | [TaskTarget](../../Assets/02.Scripts/Quest/Task/Target/TaskTarget.cs) | 보고 대상 비교 추상화 |
 | [EnemyTarget](../../Assets/02.Scripts/Quest/Task/Target/EnemyTarget.cs) / [UIDTarget](../../Assets/02.Scripts/Quest/Task/Target/UIDTarget.cs) | 적 타입 또는 문자열 UID 비교 구현 |
@@ -35,7 +36,9 @@
 ```mermaid
 flowchart LR
     Asset[Quest ScriptableObject] --> Clone[Runtime Clone]
-    Report[Category + Target + Count] --> Manager[QuestManager]
+    Component[QuestReporter Component] --> Report[Category + Target + Count]
+    Direct[Direct Report Call] --> Report
+    Report --> Manager[QuestManager]
     Manager --> Clone
     Clone --> Condition[QuestCondition]
     Clone --> Task[QuestTaskData]
@@ -51,13 +54,20 @@ flowchart LR
 
 ```mermaid
 sequenceDiagram
-    participant Game as Gameplay System
+    participant Object as Gameplay Object
+    participant Reporter as QuestReporter
+    participant System as Gameplay System
     participant QM as QuestManager
     participant Q as Quest
     participant T as QuestTaskData
     participant S as SaveDataManager
 
-    Game->>QM: QuestRecieveReport(category, target, count)
+    alt GameObject 상태 변화 또는 상호작용
+        Object->>Reporter: Report
+        Reporter->>QM: QuestRecieveReport(category, target, count)
+    else 컴포넌트에 연결하기 어려운 진행 조건
+        System->>QM: QuestRecieveReport(category, target, count)
+    end
     QM->>Q: QuestRecieveReport
     Q->>Q: Condition check
     Q->>T: TaskRecieveReport
@@ -99,26 +109,40 @@ Quest.Clone은 ScriptableObject를 Instantiate하고 QuestTaskData를 새 객체
 
 QuestManager는 활성 목록의 복사본을 순회한다. 보고 중 퀘스트가 완료되어 원본 목록에서 제거되어도 반복이 안전하다.
 
-## 8. 설계 의도
+## 8. 설계 방식
 
-- **Prototype**: ScriptableObject 정의를 런타임 복제
-- **구성 기반 데이터**: Quest가 Condition, Task, Reward 참조를 조합
-- **Strategy 역할**: TaskTarget.IsEqual과 QuestCondition.IsPass를 추상 메서드로 분리
-- **Observer**: Task 완료 → Quest 완료 → QuestManager 처리의 이벤트 연쇄
-- **연산 분리**: TaskAction.Run이 Set, Add, ContinuePositive 계산을 담당
-- **Data-Driven Authoring**: 전용 EditorWindow와 에셋 데이터베이스
+### ScriptableObject 원본 정의와 런타임 진행 상태 분리
+
+`ScriptableObject`는 퀘스트와 업적의 원본 정의로 사용하고, 등록할 때 `Quest.Clone`과 `QuestTaskData.Clone`으로 플레이 중 진행 상태를 가진 객체를 만든다. 플레이 중 수치 변경이 원본 에셋에 기록되는 것을 막고, 저장 데이터에는 UID와 진행 상태만 따로 기록할 수 있다.
+
+### 공통 Report API 기반 진행 처리
+
+보고 지점은 개별 퀘스트나 업적을 직접 찾지 않고 카테고리, 대상, 횟수를 공통 `QuestManager.QuestRecieveReport` 흐름에 전달한다. `QuestManager`가 활성 퀘스트와 업적에 보고를 분배하고, `QuestTaskData`, `TaskTarget`, `QuestCondition`이 카테고리·대상·활성 조건을 판정한다. 콘텐츠가 늘어나도 보고하는 오브젝트나 게임 시스템이 개별 정의를 알 필요가 없다.
+
+### Component 기반 Quest Reporting
+
+적 처치, 아이템 획득, 타워 업그레이드처럼 특정 GameObject의 상태 변화나 상호작용에 연결되는 진행 조건은 `QuestReporter` 컴포넌트로 보고할 수 있다. 각 오브젝트는 Inspector에서 `Category`, `Target`, `Success Count`, `Target Tags`를 설정한다. `QuestReporter.Report`를 직접 호출하거나, 설정한 태그의 Collider가 진입·이탈할 때 공통 Report 흐름으로 진행도를 전달한다.
+
+`KillEnemy`의 경우 Enemy 오브젝트가 `QuestReporter`를 보유하고, `Enemy`의 체력이 0 이하가 되어 `Die` 처리가 실행될 때 `onDead` UnityEvent가 `QuestReporter.Report`를 호출한다. 목표 지점 도착은 `EnemyMove`의 별도 도착 흐름이므로 적 처치 보고에 포함되지 않는다. `CollectItem`, `UpgradeTower`도 특정 오브젝트나 상호작용 시점에서 같은 컴포넌트 보고 방식을 사용할 수 있다.
+
+반면 스테이지 클리어(`ClearStage`)처럼 특정 GameObject 컴포넌트에 연결하기 어려운 진행 조건은 `StageManager`가 공통 Report API를 직접 호출한다. 따라서 전체 보고 구조는 컴포넌트 기반 보고와 코드 직접 보고를 함께 사용한다.
+
+### 완료 처리와 목록 변경 분리
+
+Task 완료, Quest 완료, `QuestManager`의 목록 이동은 이벤트로 이어진다. 보고 도중 완료 항목이 활성 목록에서 제거될 수 있으므로 복사본을 순회하고 원본 포함 여부를 다시 확인한다. 이는 특정 관찰 패턴의 완전한 적용을 주장하기보다, 진행 계산과 완료 후 목록 갱신의 책임을 나눈 구조다.
 
 ## 9. 문제 해결 과정
 
-QuestManager는 QuestCategory, target, count를 받는 공통 보고 메서드를 제공한다. StageManager에서 명시적으로 확인되는 보고 호출은 ClearStage와 BuildTower다. QuestReporter는 직렬화된 category와 target을 사용해 보고할 수 있다. KillEnemy, CollectItem, UpgradeTower의 실제 발생 지점 연결은 현재 검색 범위에서 확인되지 않았다.
+`QuestManager`는 `QuestCategory`, target, count를 받는 공통 보고 메서드를 제공한다. GameObject의 생명주기나 상호작용과 연결되는 조건은 Inspector에서 설정한 `QuestReporter`를 통해 전달하고, `ClearStage`와 `BuildTower`처럼 시스템 흐름에서 집계하거나 특정 컴포넌트에 귀속하기 어려운 조건은 `StageManager`가 같은 API를 직접 호출한다. 두 경로는 보고 시작점만 다르고 이후의 분배와 조건 판정 흐름은 공유한다.
 
 완료 이벤트가 목록을 변경하는 문제는 활성 목록 복사 순회와 Contains 재검사로 해결했다. 저장 복원 시 기존 업적을 UID로 찾아 복제하고, 새 버전에 추가된 업적은 저장에 없더라도 자동 등록한다.
 
 ## 10. 결과
 
 - QuestCategory enum에 KillEnemy, ClearStage, CollectItem, UpgradeTower, BuildTower, Achievement가 정의되어 있다.
-- ClearStage와 BuildTower는 StageManager에서 QuestRecieveReport 호출이 확인된다.
-- TODO: 확인 필요 — KillEnemy, CollectItem, UpgradeTower의 실제 게임플레이 보고 연결은 코드 검색에서 확인되지 않았다.
+- `ClearStage`와 `BuildTower`는 `StageManager`가 공통 Report API를 직접 호출한다.
+- `KillEnemy`는 Enemy의 `onDead` UnityEvent와 연결된 `QuestReporter`가 보고하며, 목표 지점 도착은 적 처치로 보고하지 않는다.
+- `CollectItem`, `UpgradeTower`처럼 특정 오브젝트의 생명주기나 상호작용에 연결되는 조건도 `QuestReporter`를 통해 보고할 수 있다.
 - EASY, NORMAL, HARD, HELL 난이도 업적을 동일 데이터 모델로 관리한다.
 - 진행 중·완료 업적을 분리하고 UI에서 정렬·필터링한다.
 - 저장 버전에 없던 신규 업적도 로드 후 추가된다.
@@ -139,6 +163,7 @@ QuestManager는 QuestCategory, target, count를 받는 공통 보고 메서드�
 ## 12. 포트폴리오에 강조할 점
 
 - 게임 시스템과 업적 정의를 분리한 범용 보고 구조
-- ScriptableObject Prototype으로 원본과 런타임 상태를 분리
+- Inspector에서 구성하는 `QuestReporter`와 코드 직접 호출을 함께 사용하는 보고 진입점
+- ScriptableObject 원본과 런타임 진행 상태를 복제로 분리
 - TaskTarget·QuestCondition 추상화와 완료 이벤트 연쇄
 - 콘텐츠 추가를 지원하는 전용 에디터와 저장 호환 처리
