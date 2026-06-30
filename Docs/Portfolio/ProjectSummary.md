@@ -50,16 +50,7 @@ flowchart LR
 - **Dirty Flag:** 변경된 원격 저장 영역만 기록
 - **Editor Extension:** EditorWindow, CustomEditor, CustomPropertyDrawer로 제작·검증 보조
 
-## 5. 면접에서 설명할 핵심
-
-1. 구매·큐·GameObject·필드 점유 상태의 일관성을 어떻게 유지했는가
-2. 스폰 완료와 생존 적 수를 어떻게 하나의 웨이브 종료 조건으로 구성했는가
-3. 정적 콘텐츠, 런 상태, 계정 저장 데이터를 어떤 기준으로 분리했는가
-4. 이벤트 기반 연결과 Manager 중심 조정 구조의 장단점은 무엇인가
-5. 저장 실패를 상태로 구분하고 역직렬화 데이터를 어떻게 검증했는가
-6. JSON·ScriptableObject 제작과 Play Mode 검증을 Editor Tool로 어떻게 보조했는가
-
-## 6. 상세 문서
+## 5. 상세 문서
 
 - [Case Study](CaseStudy.md) — 문제 정의, 설계 전략, 구현 사례
 - [System Architecture](../Architecture/SystemArchitecture.md) — 시스템 계층과 조정 관계

@@ -59,10 +59,6 @@ flowchart LR
 
 ## Key Features
 
-> **Design Visuals**
->
-> - TODO: Save & Load 데이터 흐름 다이어그램 추가
-
 ### 1. Tower Build System
 
 구매한 타워는 즉시 필드에 생성되지 않고 UID가 큐에 저장된다. 실제 설치 시점에 큐 선택, 셀과 장애물, 기존 타워 점유, 필드 등록 결과를 검증하고 성공한 경우에만 큐를 갱신한다.
@@ -150,13 +146,37 @@ flowchart LR
 
 ### 5. Save & Load System
 
-기기별 입력·사운드·그래픽 옵션과 계정 진행 데이터는 저장 목적과 수명주기가 다르다. 옵션은 로컬 JSON으로, Player·Meta·Quest 진행은 Firebase Firestore로 나눠 저장한다.
+기기별 입력·사운드·그래픽 옵션과 계정 진행 데이터는 저장 목적과 수명주기가 다르다. 옵션은 로컬 JSON으로, Player·Meta·Achievement 진행은 `users/{uid}/save` 아래 Firebase Firestore 문서로 나눠 저장한다.
 
 - **문제:** 원격 문서 없음과 네트워크·권한·시간 초과·손상 데이터를 같은 실패로 처리하면 초기화와 복구 기준이 불명확해진다.
-- **설계:** Firebase Firestore 접근은 `FirestoreSaveRepository`로 분리하고, 로드 결과를 `Success`, `DocumentMissing`, `NetworkError`, `PermissionError`, `Timeout`, `DataCorrupted`로 구분한다. `IValidSaveData`가 역직렬화된 모델을 검증하고 `SaveDataManager`가 영역별 dirty flag를 관리한다.
+- **설계:** 원격 저장은 `SaveDataManager`가 Firestore `SetAsync`로 처리하고, 원격 로드는 `FirestoreSaveRepository.LoadAsync`로 분리한다. 로드 결과를 상태값으로 구분하고 `IValidSaveData`로 원격 모델을 검증하며, `SaveDataManager`는 영역별 dirty flag를 관리한다.
 - **이점:** 신규 사용자 기본 데이터 생성과 실제 로드 실패를 구분하고 변경된 원격 저장 영역만 기록한다.
-- **주요 클래스 흐름:** **Managers → SaveDataManager → FirestoreSaveRepository → Firebase Firestore / SaveDataManager → Local JSON**
+- **주요 클래스 흐름:** **Managers → SaveDataManager → Local JSON / Firebase Firestore SetAsync / FirestoreSaveRepository LoadAsync**
 - **상세 문서:** [SaveLoadSystem](Docs/Systems/SaveLoadSystem.md)
+
+```mermaid
+flowchart LR
+    Runtime["Runtime Data<br/>Player / Meta / Achievement / Options"]
+    Dirty["Dirty Flags"]
+    Save["SaveDataManager"]
+    Local["Local JSON<br/>Input / Sound / Graphic"]
+    Cloud["Firestore Documents<br/>Player / Meta / Achievement"]
+    Repo["FirestoreSaveRepository<br/>Load Only"]
+    Result["Load Result Status"]
+    Valid["IValidSaveData / Default Data"]
+
+    Runtime --> Dirty
+    Dirty --> Save
+    Save -->|Local Save| Local
+    Save -->|SetAsync Save| Cloud
+
+    Local -->|Startup Load| Save
+    Cloud -->|LoadAsync| Repo
+    Repo --> Result
+    Result -->|Success| Valid
+    Result -->|DocumentMissing| Valid
+    Valid --> Runtime
+```
 
 ### 6. Quest & Achievement System
 
@@ -239,7 +259,6 @@ Key Features 전반에서 반복된 설계 판단은 세 가지다.
 - [기술 문서 메인](Docs/README.md)
 - [프로젝트 요약](Docs/Portfolio/ProjectSummary.md)
 - [케이스 스터디](Docs/Portfolio/CaseStudy.md)
-- [면접 예상 질문](Docs/Portfolio/InterviewQA.md)
 - [프로젝트 회고](Docs/Postmortem.md)
 
 ### Architecture
@@ -259,14 +278,12 @@ Key Features 전반에서 반복된 설계 판단은 세 가지다.
 - [UI 정보 패널 시스템](Docs/Systems/UIInfoPanelSystem.md)
 - [Editor Tooling](Docs/Systems/EditorTooling.md)
 
-## Current Limitations / Future Improvements
+## Future Improvements
 
-- 플레이 영상, GIF, 주요 화면 스크린샷 추가 필요
 - Unity Profiler 기반 생성·파괴, 경로 탐색, 타겟 탐색 비용 측정
 - 건설, 큐 상태, 웨이브 종료, 저장 검증 규칙의 자동화 테스트 보강
 - 저장 데이터 schemaVersion과 마이그레이션 정책 검토
 - StageManager와 TowerController에 집중된 조정 책임 분리 검토
-- Editor Tool의 공통 편집 기반과 통합 검증 리포트 검토
 
 ## Contact
 

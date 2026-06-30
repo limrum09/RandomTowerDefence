@@ -10,7 +10,6 @@
 
 - [ProjectSummary](Portfolio/ProjectSummary.md) — 채용 담당자가 프로젝트 범위, 핵심 시스템, 기술적 특징을 빠르게 파악할 수 있도록 요약합니다.
 - [CaseStudy](Portfolio/CaseStudy.md) — 프로젝트 배경, 문제 정의, 설계 선택, 구현 결과를 사례 중심으로 정리하기 위한 문서입니다.
-- [InterviewQA](Portfolio/InterviewQA.md) — 아키텍처, 게임플레이, 데이터, 저장, 성능에 관한 면접 예상 질문과 답변을 정리합니다.
 
 ## Architecture
 

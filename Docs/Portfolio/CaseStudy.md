@@ -181,19 +181,13 @@ TowerController.BuildTower는 UID 존재 여부와 배치 가능 여부를 먼�
 
 등급 합성은 여러 타워를 제거한 뒤 새 타워를 생성하므로 별도 복구 경로가 있다. TowerRestoreData에 재료 타워의 UID와 셀을 보관하고, 제거 또는 결과 생성이 실패하면 RestoreTowers를 호출한다. 복구 결과는 Success, PartialSuccess, Failed로 구분한다.
 
-해당 처리 이전에 어떤 버그가 발생했는지와 재현 과정은 커밋 또는 이슈 자료에서 확인되지 않았다.
-
-> TODO: 확인 필요 — 타워 건설·합성 복구 로직을 도입하게 된 실제 디버깅 사례
-
 ### 7.2 이벤트 도착 순서와 무관한 웨이브 판정
 
 EnemySpawnEnd, RegisterDeadEnemy, RegisterReachedEnemy는 모두 마지막에 CheckWaveEnd를 호출한다. 특정 이벤트 하나가 완료 판정을 독점하지 않고 현재 상태를 다시 검사한다.
 
 CanCompleteWave는 스폰 중 여부, 생존 적 수, 현재 생명, 게임 종료 상태를 순서대로 확인한다. 이벤트 호출 순서 자체보다 isSpawning과 aliveEnemyCnt의 현재값을 기준으로 판단한다.
 
-현재 EnemySpawn은 적 그룹 하나의 스폰이 끝난 뒤 다음 그룹을 처리한다. 서로 겹치는 startTime 그룹이 의도된 것인지는 확인되지 않았다.
-
-> TODO: 확인 필요 — 웨이브 로스터의 startTime 그룹이 동시에 스폰되어야 하는지 여부
+현재 EnemySpawn은 적 그룹 하나의 스폰이 끝난 뒤 다음 그룹을 처리한다.
 
 ## 8. 결과와 검증
 
