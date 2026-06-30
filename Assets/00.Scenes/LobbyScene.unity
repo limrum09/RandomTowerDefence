@@ -1911,6 +1911,7 @@ GameObject:
   - component: {fileID: 252802817}
   - component: {fileID: 252802818}
   - component: {fileID: 252802819}
+  - component: {fileID: 252802820}
   m_Layer: 5
   m_Name: AllToggle
   m_TagString: Untagged
@@ -2027,6 +2028,19 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &252802820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252802816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4e13c833a176cc419d76baee885a31f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundUID: BookSlide01
 --- !u!1 &266400477
 GameObject:
   m_ObjectHideFlags: 0
@@ -5051,6 +5065,7 @@ GameObject:
   - component: {fileID: 492166938}
   - component: {fileID: 492166937}
   - component: {fileID: 492166936}
+  - component: {fileID: 492166939}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -5172,6 +5187,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 492166934}
   m_CullTransparentMesh: 1
+--- !u!114 &492166939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492166934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1b51f254d2e66448cfb1b107b8e38b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundUID: UIClick01
 --- !u!1 &493218264
 GameObject:
   m_ObjectHideFlags: 0
@@ -5652,6 +5680,7 @@ GameObject:
   - component: {fileID: 515892828}
   - component: {fileID: 515892829}
   - component: {fileID: 515892830}
+  - component: {fileID: 515892831}
   m_Layer: 5
   m_Name: CompletedToggle
   m_TagString: Untagged
@@ -5768,6 +5797,19 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &515892831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 515892827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4e13c833a176cc419d76baee885a31f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundUID: BookSlide01
 --- !u!1001 &516782032
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20994,6 +21036,7 @@ GameObject:
   - component: {fileID: 1927112535}
   - component: {fileID: 1927112536}
   - component: {fileID: 1927112537}
+  - component: {fileID: 1927112538}
   m_Layer: 5
   m_Name: ActiveToggle
   m_TagString: Untagged
@@ -21110,6 +21153,19 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &1927112538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927112534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4e13c833a176cc419d76baee885a31f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundUID: BookSlide01
 --- !u!1 &1952178684
 GameObject:
   m_ObjectHideFlags: 0

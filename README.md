@@ -59,16 +59,123 @@ flowchart LR
 
 ## Key Features
 
-| 시스템 | 요약 | 상세 문서 |
-|---|---|---|
-| Tower Build System | 장애물 셀 위에 타워를 배치하고 생성·필드 점유·큐 상태를 순서대로 갱신 | [BuildSystem](Docs/Systems/BuildSystem.md) |
-| Shop & Queue System | 구매와 배치 시점을 분리하고 타워 UID를 대기열에 보관 | [ShopAndQueueSystem](Docs/Systems/ShopAndQueueSystem.md) |
-| Wave & Enemy System | JSON 웨이브 로스터 검증, 적 생성·이동, 생존 적 집계와 종료 판정 | [WaveAndEnemySystem](Docs/Systems/WaveAndEnemySystem.md) |
-| Meta Upgrade System | 기본 스탯, 런 강화, 계정 메타 성장을 분리해 최종 능력치 계산 | [MetaUpgradeSystem](Docs/Systems/MetaUpgradeSystem.md) |
-| Save & Load System | 로컬 JSON과 Firebase Firestore의 저장 대상을 분리하고 실패 상태를 구분 | [SaveLoadSystem](Docs/Systems/SaveLoadSystem.md) |
-| Quest & Achievement System | ScriptableObject 원본과 런타임 진행 상태를 분리해 퀘스트·업적 관리 | [QuestSystem](Docs/Systems/QuestSystem.md) |
-| UI Info Panel System | Presenter/View 기반 정보 표시와 패널 전환 상태 관리 | [UIInfoPanelSystem](Docs/Systems/UIInfoPanelSystem.md) |
-| Editor Tooling | 데이터 제작·검증과 Play Mode 디버깅을 위한 Unity Editor 확장 | [EditorTooling](Docs/Systems/EditorTooling.md) |
+> **Design Visuals**
+>
+> - TODO: Save & Load 데이터 흐름 다이어그램 추가
+> - TODO: Editor Tooling 화면 캡처 추가
+
+### 1. Tower Build System
+
+구매한 타워는 즉시 필드에 생성되지 않고 UID가 큐에 저장된다. 실제 설치 시점에 큐 선택, 셀과 장애물, 기존 타워 점유, 필드 등록 결과를 검증하고 성공한 경우에만 큐를 갱신한다.
+
+- **문제:** 구매 상태와 실제 필드 설치 상태가 분리되어 있어 설치 시점의 검증과 실패 처리가 필요했다.
+- **설계:** TowerController가 큐 슬롯과 UID, 그리드 범위, 시작·도착 셀, 장애물, 기존 타워, 최대 설치 수를 검사한 뒤 FieldTowerManager에 등록한다.
+- **이점:** 설치나 필드 등록이 실패하면 큐를 유지하고, 등록 성공 시에만 큐를 제거해 두 상태의 갱신 기준을 맞췄다.
+- **주요 클래스 흐름:** **StoreController → QueueUIController → TowerController → FieldTowerManager**
+- **상세 문서:** [BuildSystem](Docs/Systems/BuildSystem.md)
+
+```mermaid
+flowchart LR
+    Store["Store<br/>Purchase"] --> Check{"Gold and Queue<br/>OK?"}
+    Check -->|No| Reject["Reject"]
+    Check -->|Yes| Queue["Queue<br/>Store UID"]
+
+    Queue --> Select["Select Slot / Cell"]
+    Select --> Validate{"Placement<br/>Valid?"}
+    Validate -->|No| Keep["Keep Queue"]
+    Validate -->|Yes| Register["Register<br/>Field"]
+
+    Register -->|Fail| Rollback["Rollback<br/>Keep Queue"]
+    Register -->|Success| Done["Remove Queue<br/>Complete"]
+```
+
+### 2. Shop & Queue System
+
+상점 구매와 그리드 배치를 분리하고 QueueUIController가 슬롯별 타워 UID를 보관한다. 구매 흐름은 골드 사용 가능 여부와 큐 수용 결과를 확인하며, 큐가 가득 차면 차감한 골드를 환불하고 구매를 확정하지 않는다.
+
+- **문제:** 구매와 설치를 한 단계로 처리하면 상점 UI가 그리드와 생성 규칙까지 알아야 하고, 큐 수용 실패 시 골드만 차감될 수 있었다.
+- **설계:** StoreController가 결제 결과와 QueueUIController.AddTower 반환값을 처리하고, 큐는 이후 설치 요청 이벤트만 발행한다.
+- **이점:** 큐에 공간이 없는 구매와 필드 설치 실패를 서로 다른 단계에서 처리할 수 있다.
+- **주요 클래스 흐름:** **StoreController → StageManager.UsingGold → RunSessionDataManager → QueueUIController**
+- **상세 문서:** [ShopAndQueueSystem](Docs/Systems/ShopAndQueueSystem.md)
+
+### 3. Wave & Enemy System
+
+WaveData와 WaveEnemyRosterData JSON을 준비 단계에서 검증한 뒤 EnemySpawn과 EnemyFactory가 적 생성과 초기화를 담당한다. 스폰 완료와 필드의 마지막 적 제거가 다른 시점에 발생하므로 두 상태를 함께 사용해 완료를 판단한다.
+
+- **문제:** 스폰 종료만 확인하면 적이 남은 채 웨이브가 끝날 수 있고, 생존 적 수만 확인하면 생성 예정 적을 놓칠 수 있었다.
+- **설계:** isSpawning과 aliveEnemyCnt를 별도로 기록하고 스폰 종료, 적 사망, 목표 도착 시 같은 CheckWaveEnd를 호출한다.
+- **이점:** 스폰이 끝나고 생존 적이 없는 경우에만 다음 웨이브 또는 스테이지 종료 흐름으로 이동한다.
+- **주요 클래스 흐름:** **StageManager → StageWaveManager → EnemySpawn → EnemyFactory → Enemy**
+- **상세 문서:** [WaveAndEnemySystem](Docs/Systems/WaveAndEnemySystem.md)
+
+```mermaid
+flowchart LR
+    Data["Wave JSON"] --> Spawn["Spawn"]
+    Spawn --> Factory["EnemyFactory"]
+    Factory --> Enemy["Enemy"]
+    Factory --> AliveUp["aliveEnemyCnt++"]
+
+    Spawn --> End["isSpawning = false"]
+    Enemy --> Event["Dead / Arrive"]
+    Event --> AliveDown["aliveEnemyCnt--"]
+
+    End --> Check["CheckWaveEnd"]
+    AliveDown --> Check
+    Check --> Done{"Spawn End<br/>Alive 0?"}
+    Done -->|No| Continue["Continue"]
+    Done -->|Yes| Complete["Wave Complete"]
+```
+
+### 4. Meta Upgrade System
+
+전투 중에만 유지되는 런 강화와 계정에 저장되는 메타 성장은 수명주기가 다르다. 영구 강화가 적용된 기본값에 현재 런의 일반·아이템·스킬 강화 단계를 더해 최종 타워 스탯을 계산한다.
+
+- **문제:** 영구 성장과 런 성장을 원본 TowerData나 UI에서 직접 합산하면 저장 상태와 실제 전투 값이 어긋날 수 있었다.
+- **설계:** TowerMetaUpgradeManager가 영구 레벨을 보관하고 GameManager가 기본값과 메타 값을 결합하며 TowerStatCalculator가 RunStatUpgradeManager의 현재 런 단계를 합성한다.
+- **이점:** 원본 밸런스 데이터를 변경하지 않고 계정 성장과 런 상태를 독립적으로 저장·초기화할 수 있다.
+- **주요 클래스 흐름:** **TowerMetaUpgradeManager → GameManager.GetTowerDisplayData → TowerStatCalculator ← RunStatUpgradeManager**
+- **상세 문서:** [MetaUpgradeSystem](Docs/Systems/MetaUpgradeSystem.md)
+
+### 5. Save & Load System
+
+기기별 입력·사운드·그래픽 옵션과 계정 진행 데이터는 저장 목적과 수명주기가 다르다. 옵션은 로컬 JSON으로, Player·Meta·Quest 진행은 Firebase Firestore로 나눠 저장한다.
+
+- **문제:** 원격 문서 없음과 네트워크·권한·시간 초과·손상 데이터를 같은 실패로 처리하면 초기화와 복구 기준이 불명확해진다.
+- **설계:** FirestoreSaveRepository가 로드 결과를 상태로 변환하고 IValidSaveData가 역직렬화된 모델을 검증하며, SaveDataManager가 영역별 dirty flag를 관리한다.
+- **이점:** 신규 사용자 기본 데이터 생성과 실제 로드 실패를 구분하고 변경된 원격 저장 영역만 기록한다.
+- **주요 클래스 흐름:** **Managers → SaveDataManager → FirestoreSaveRepository → Firebase Firestore / SaveDataManager → Local JSON**
+- **상세 문서:** [SaveLoadSystem](Docs/Systems/SaveLoadSystem.md)
+
+### 6. Quest & Achievement System
+
+ScriptableObject는 퀘스트와 업적의 원본 정의로 사용하고, 플레이 중 진행도는 복제한 런타임 객체가 보유한다. 게임 시스템은 카테고리, 대상, 횟수를 공통 Report API로 전달한다.
+
+- **문제:** 원본 에셋에 진행도를 기록하거나 게임 시스템이 개별 업적을 직접 호출하면 상태 공유와 콘텐츠 추가 의존성이 생길 수 있었다.
+- **설계:** QuestManager가 보고를 분배하고 QuestTaskData가 TaskTarget과 QuestCondition을 통해 대상과 활성 조건을 판정한다.
+- **이점:** 원본 에셋을 변경하지 않으면서 완료 이벤트, 보상, Achievement 저장 흐름을 공통 구조로 처리한다.
+- **주요 클래스 흐름:** **QuestManager → Quest / Achievement → QuestTaskData → TaskTarget / QuestCondition**
+- **상세 문서:** [QuestSystem](Docs/Systems/QuestSystem.md)
+
+### 7. UI Info Panel System
+
+Presenter가 도메인 모델을 문자열·아이콘·수치 같은 표시 값으로 변환하고 View가 TextMeshPro, Image, Button 등 Unity UI를 갱신한다. StageUIController와 InfoPanelController가 입력 전달과 패널 전환 상태를 관리한다.
+
+- **문제:** View가 게임 규칙과 모델 조회까지 담당하면 패널별 책임이 커지고 연속 입력 시 Tween과 Animator 전환이 겹칠 수 있었다.
+- **설계:** Presenter/View를 분리하고 StageUIController가 게임 시스템 명령과 이벤트를 연결하며 InfoPanelController가 전환 중 입력 상태를 제어한다.
+- **이점:** 표시 변환, Unity UI 조작, 게임 명령의 위치가 분리되고 주요 이벤트를 화면 수명주기에 맞춰 해제할 수 있다.
+- **주요 클래스 흐름:** **Gameplay System ↔ StageUIController ↔ Presenter ↔ View / StageUIController → InfoPanelController**
+- **상세 문서:** [UIInfoPanelSystem](Docs/Systems/UIInfoPanelSystem.md)
+
+### 8. Editor Tooling
+
+반복적인 JSON 편집, ScriptableObject 생성, 검증, Play Mode 테스트를 Unity Editor 안에서 처리하도록 전용 도구를 구성했다. 런타임 코드를 변경하지 않고 제작 데이터와 테스트 대상을 다룬다.
+
+- **문제:** Tower, Enemy, Item, Wave, Quest 데이터를 직접 편집하면 UID, enum, 참조, 수치 입력을 반복해서 확인해야 했다.
+- **설계:** 테이블 EditorWindow와 Validate 탭, Quest/Achievement 제작 창, Custom Inspector 디버거, ConditionalFieldDrawer를 작성했다.
+- **이점:** 데이터 편집과 검증, 에셋 생성, 테스트 입력을 Unity Editor 안에서 수행할 수 있다.
+- **주요 클래스 흐름:** **EditorWindow / CustomEditor / CustomPropertyDrawer → JSON / ScriptableObject / Runtime Debug Target**
+- **상세 문서:** [EditorTooling](Docs/Systems/EditorTooling.md)
 
 ## Technical Highlights
 
@@ -81,61 +188,13 @@ flowchart LR
 
 ## Problem Solving
 
-### 1. 큐 기반 구매 흐름과 타워 배치 검증
+Key Features 전반에서 반복된 설계 판단은 세 가지다.
 
-**Problem**
+- **부분 성공 상태 관리:** 결제, 큐 저장, GameObject 생성, 필드 등록을 각각 확인하고 성공한 단계에 맞춰 환불·유지·제거를 결정했다.
+- **복합 완료 조건:** 웨이브는 단일 이벤트가 아니라 스폰 상태와 생존 적 수의 현재값을 함께 검사한다.
+- **외부 데이터 실패 구분:** Firestore 결과와 저장 모델 검증을 분리해 신규 사용자 초기화와 실제 오류 대응의 경계를 정했다.
 
-상점에서 타워를 구매하면 타워가 즉시 그리드에 생성되는 것이 아니라, 먼저 대기열에 저장됩니다. 구매 자체는 골드와 대기열 빈 공간을 확인하면 처리할 수 있었지만, 이후 대기열에 저장된 타워를 실제 필드에 배치하는 과정에서 더 까다로운 검증이 필요했습니다. 타워는 아무 셀에나 설치될 수 없고, 플레이어가 설치한 장애물 셀 위에만 배치되어야 하며, 기존 타워 점유 상태와 선택된 큐 슬롯 상태도 함께 확인해야 했습니다.
-
-**Solution**
-
-상점은 구매 가능 여부와 대기열 공간만 확인하고, 구매 성공 시 타워 UID를 큐에 저장하도록 역할을 제한했습니다. 실제 타워 배치는 TowerController와 FieldTowerManager에서 처리하며, 선택된 셀의 장애물 존재 여부, 기존 타워 점유 여부, 선택된 타워 UID, 필드 등록 가능 여부를 순서대로 검증했습니다.
-
-**Result**
-
-대기열에 빈 공간이 없으면 구매가 발생하지 않고, 배치 검증에 실패하면 큐 상태를 유지합니다. 장애물 셀 위에 정상적으로 타워가 배치되고 필드 등록이 성공한 경우에만 설치 완료 이벤트를 통해 큐에서 해당 타워를 제거하도록 흐름을 정리했습니다.
-
-### 2. 웨이브 종료 조건 처리
-
-**Problem**
-
-적 스폰 종료와 필드의 생존 적 수가 0이 되는 시점은 서로 다르게 발생합니다.
-
-**Solution**
-
-isSpawning과 aliveEnemyCnt를 별도로 관리하고 스폰 종료, 적 사망, 적 도착 시 같은 완료 조건을 다시 검사했습니다.
-
-**Result**
-
-스폰이 끝나고 생존 적이 0명인 경우에만 다음 웨이브 또는 스테이지 종료 흐름으로 이동합니다.
-
-### 3. 저장 실패와 데이터 검증
-
-**Problem**
-
-Firestore 문서 없음, 네트워크 오류, 권한 오류, 시간 초과, 데이터 손상을 구분해야 했습니다.
-
-**Solution**
-
-Firestore 로드 결과를 Success, DocumentMissing, NetworkError, PermissionError, Timeout, DataCorrupted 등의 상태로 나누고 IValidSaveData 검증을 적용했습니다.
-
-**Result**
-
-신규 사용자 기본 데이터 생성과 실제 로드 실패 처리를 분리하고, dirty flag로 변경된 저장 영역만 기록합니다.
-
-> 자세한 문제 정의와 클래스·이벤트 흐름은 [Case Study](Docs/Portfolio/CaseStudy.md)에서 확인할 수 있습니다.
-
-## Editor Tools
-
-반복적인 데이터 입력과 테스트를 Unity Editor 안에서 처리할 수 있도록 제작 도구를 구성했습니다.
-
-- Tower / Enemy / Item / Wave JSON 데이터 테이블 에디터
-- Quest / Achievement 및 Target / Condition 에셋 제작 도구
-- 업적, 스테이지, 로비 진행 상태를 확인하는 Play Mode 디버깅 도구
-- ConditionalFieldDrawer를 이용한 Inspector 필드 표시·활성 상태 제어
-- 중복 UID, enum, 누락 참조, 잘못된 수치 등을 확인하는 데이터 검증 탭
-
-상세 도구와 실제 파일 위치는 [Editor Tooling](Docs/Systems/EditorTooling.md)에 정리했습니다.
+자세한 문제 정의, 선택한 전략, 처리 순서는 [Case Study](Docs/Portfolio/CaseStudy.md)에서 확인할 수 있다.
 
 ## Tech Stack
 
@@ -149,6 +208,14 @@ Firestore 로드 결과를 Success, DocumentMissing, NetworkError, PermissionErr
 | DOTween | UI 이동과 패널 전환 Sequence |
 | ScriptableObject | 퀘스트·업적 원본 데이터 |
 | Unity Editor Extension | 데이터 제작, 검증, Custom Inspector와 디버깅 도구 |
+
+## Third-party Assets / Resources
+
+| Asset / Resource | Source | Usage | License / Note |
+|---|---|---|---|
+| TODO | TODO | TODO | TODO: 라이선스 확인 필요 |
+
+> 사용 에셋의 출처와 라이선스는 공개 전 정리할 예정입니다.
 
 ## Documentation
 
