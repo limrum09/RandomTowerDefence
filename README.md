@@ -11,17 +11,17 @@
 | Build Flow | Wave Battle |
 |---|---|
 | 상점 → 대기열 → 타워 설치 | 웨이브 스폰 → 전투 |
-| <a href="Docs/Media/Build_Tower.gif"><img src="Docs/Media/Build_Tower.gif" alt="Tower build flow" width="420"></a> | <a href="Docs/Media/Wave_Enemy.gif"><img src="Docs/Media/Wave_Enemy.gif" alt="Wave and enemy flow" width="420"></a> |
+| <a href="Docs/Media/Build_Tower.gif"><img src="Docs/Media/Build_Tower.gif" alt="Tower build flow" width="400"></a> | <a href="Docs/Media/Wave_Enemy.gif"><img src="Docs/Media/Wave_Enemy.gif" alt="Wave and enemy flow" width="420"></a> |
 
 | Meta Growth | Editor Tooling |
 |---|---|
 | 메타 성장 UI | Quest Editor |
-| <a href="Docs/Media/Meta_Upgrade.gif"><img src="Docs/Media/Meta_Upgrade.gif" alt="Meta upgrade flow" width="420"></a> | <a href="#9-editor-tooling"><img src="Docs/Images/Quest01.png" alt="Quest editor preview" width="420"></a> |
+| <a href="Docs/Media/Meta_Upgrade.gif"><img src="Docs/Media/Meta_Upgrade.gif" alt="Meta upgrade flow" width="400"></a> | <a href="#9-editor-tooling"><img src="Docs/Images/Quest01.png" alt="Quest editor preview" width="420"></a> |
 
 | Achievement UI | Achievement Debugger |
 |---|---|
 | 업적 진행 현황 | 진행도 디버깅 |
-| <a href="Docs/Images/Achievement_Active.png"><img src="Docs/Images/Achievement_Active.png" alt="Achievement progress UI" width="420"></a> | <a href="Docs/Images/Quest_Debugger.png"><img src="Docs/Images/Quest_Debugger.png" alt="Achievement debugger" width="420"></a> |
+| <a href="Docs/Images/Achievement_Active.png"><img src="Docs/Images/Achievement_Active.png" alt="Achievement progress UI" width="400"></a> | <a href="Docs/Images/Quest_Debugger.png"><img src="Docs/Images/Quest_Debugger.png" alt="Achievement debugger" width="420"></a> |
 
 <!-- 플레이 영상이 준비되면 Preview 첫 행에 추가 -->
 
@@ -243,7 +243,7 @@ flowchart LR
 
 ### 5. Meta Upgrade System
 
-전투 중에만 유지되는 런 강화와 계정에 저장되는 메타 성장은 수명주기가 다르다. 영구 강화가 적용된 기본값에 현재 런의 일반·아이템·스킬 강화 단계를 더해 최종 타워 스탯을 계산한다.
+전투 중에만 유지되는 런 강화와 계정에 저장되는 메타 성장은 유지 범위가 다르다. 영구 강화가 적용된 기본값에 현재 런의 일반·아이템·스킬 강화 단계를 더해 최종 타워 스탯을 계산한다.
 
 <p align="center">
   <img src="Docs/Media/Meta_Upgrade.gif" alt="Meta upgrade flow" width="720">
@@ -257,7 +257,7 @@ flowchart LR
 
 ### 6. Save & Load System
 
-기기별 입력·사운드·그래픽 옵션과 계정 진행 데이터는 저장 목적과 수명주기가 다르다. 옵션은 로컬 JSON으로, Player·Meta·Achievement 진행은 `users/{uid}/save` 아래 Firebase Firestore 문서로 나눠 저장한다.
+기기별 입력·사운드·그래픽 옵션과 계정 진행 데이터는 저장 위치와 적용 범위가 다르다. 옵션은 로컬 JSON으로, Player·Meta·Achievement 진행은 `users/{uid}/save` 아래 Firebase Firestore 문서로 나눠 저장한다.
 
 ```mermaid
 flowchart LR
