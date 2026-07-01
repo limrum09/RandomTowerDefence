@@ -37,6 +37,21 @@
 | 대상 플랫폼 | PC / Steam 배포 목표 |
 | 개발 상태 | 주요 기능 구현 완료, 포트폴리오 문서화 진행 |
 
+
+## Tech Stack
+
+| 기술 | 사용 목적 |
+|---|---|
+| Unity 6 | 2D 게임 클라이언트와 Unity Editor 확장 구현 |
+| C# | 게임 로직, UI, 저장 흐름, Editor Tooling |
+| Firebase Authentication / Firestore | 사용자 인증과 계정 진행 데이터 저장 |
+| JSON | 정적 게임 데이터와 로컬 옵션 저장 |
+| Unity UI / TextMeshPro | 게임 UI, 입력 컴포넌트, 정보 패널 |
+| DOTween | UI 이동과 패널 전환 Sequence |
+| ScriptableObject | 퀘스트·업적 원본 데이터 |
+| Unity Editor Extension | 데이터 제작, 검증, Custom Inspector와 디버깅 도구 |
+
+
 ## My Role
 
 1인 개발 기준으로 전체 구현을 담당했다.
@@ -347,19 +362,6 @@ Key Features 전반에서 반복된 설계 판단은 세 가지다.
 - **외부 데이터 실패 구분:** Firebase Firestore 결과와 저장 모델 검증을 분리해 신규 사용자 초기화와 실제 오류 대응의 경계를 정했다.
 
 자세한 문제 정의, 선택한 전략, 처리 순서는 [Case Study](Docs/Portfolio/CaseStudy.md)에서 확인할 수 있다.
-
-## Tech Stack
-
-| 기술 | 사용 목적 |
-|---|---|
-| Unity 6 | 2D 게임 클라이언트와 Unity Editor 확장 구현 |
-| C# | 게임 로직, UI, 저장 흐름, Editor Tooling |
-| Firebase Authentication / Firestore | 사용자 인증과 계정 진행 데이터 저장 |
-| JSON | 정적 게임 데이터와 로컬 옵션 저장 |
-| Unity UI / TextMeshPro | 게임 UI, 입력 컴포넌트, 정보 패널 |
-| DOTween | UI 이동과 패널 전환 Sequence |
-| ScriptableObject | 퀘스트·업적 원본 데이터 |
-| Unity Editor Extension | 데이터 제작, 검증, Custom Inspector와 디버깅 도구 |
 
 ## Third-party Assets / Resources
 
