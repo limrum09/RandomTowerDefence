@@ -365,11 +365,38 @@ Key Features 전반에서 반복된 설계 판단은 세 가지다.
 
 ## Third-party Assets / Resources
 
-| Asset / Resource | Source | Usage | License / Note |
-|---|---|---|---|
-| TODO | TODO | TODO | TODO: 라이선스 확인 필요 |
+### Packages
 
-> 사용 에셋의 출처와 라이선스는 공개 전 정리할 예정이다.
+| Package | Version | Source | Usage | License / Note |
+|---|---:|---|---|---|
+| SpriteGlow | Git commit `0544299` | [Elringus / sprite-glow](https://github.com/elringus/sprite-glow) | 선택 오브젝트 발광 효과 | MIT License |
+| Firebase Unity SDK | 13.11.0 | [Firebase for Unity](https://firebase.google.com/docs/unity/setup) | 사용자 인증, Realtime Database 초기화, Firestore 저장 | Google SDK 이용 조건 및 포함 고지 적용 |
+| External Dependency Manager for Unity | 1.2.187 | [Google / unity-jar-resolver](https://github.com/googlesamples/unity-jar-resolver) | Firebase 네이티브 의존성 관리 | Apache License 2.0 |
+| DOTween | 버전 확인 필요 | [Demigiant DOTween](https://dotween.demigiant.com/) | UI 이동·팝업과 전투 텍스트 애니메이션 | [DOTween License](https://dotween.demigiant.com/license.php) |
+
+Unity Input System, Localization, Universal Render Pipeline, Shader Graph, Unity UI와 Newtonsoft Json은 Unity Registry 패키지를 사용한다. 세부 버전은 [`Packages/manifest.json`](Packages/manifest.json)에 기록되어 있다.
+
+### Art / VFX / UI
+
+| Asset | Creator | Source | Usage | License / Note |
+|---|---|---|---|---|
+| Pixel Art Top Down - Basic | Cainos | [Unity Asset Store](https://assetstore-fallback.unity.com/publishers/40001) | 스테이지 환경, 타일과 오브젝트 | [Unity Asset Store EULA](https://unity.com/legal/as-terms) |
+| Character Auras | Hovl Studio | [Unity Asset Store](https://assetstore.unity.com/packages/vfx/particles/spells/character-auras-164961) | 캐릭터 Aura VFX | Unity Asset Store EULA |
+| Cartoon FX Remaster Free | Jean Moreno / JMO Assets | [Unity Asset Store](https://assetstore.unity.com/packages/vfx/particles/cartoon-fx-remaster-free-109565) | 전투 및 UI VFX | Unity Asset Store EULA |
+| Tiny RPG Character Asset Pack | Zerie | [itch.io](https://zerie.itch.io/tiny-rpg-character-asset-pack) | 타워와 캐릭터 스프라이트·애니메이션 | 개인·상업 프로젝트 사용 및 수정 허용, 재판매·재배포 금지 |
+| Pixel Portal | Grappe | [itch.io](https://grappe.itch.io/pixelportal) | 적 생성 Portal 스프라이트·프리팹 | itch.io 상품 및 구매 조건 적용 |
+| Pixel Hero Maker [Megapack] | Hippo | [Unity Asset Store](https://assetstore.unity.com/publishers/11086) | `PixelFantasy` 폴더의 캐릭터, 적, 타워와 환경 이미지 | Unity Asset Store EULA |
+| Pocket Inventory Series | Humble Pixel | [itch.io](https://humblepixel.itch.io/pocket-inventory-series-5-player-status) | 인벤토리와 패널 UI 이미지 | 상업·비상업 사용 및 수정 허용, 원본·수정본 재배포 금지 |
+
+### Fonts / Audio
+
+| Asset | Creator | Source | Usage | License / Note |
+|---|---|---|---|---|
+| DungGeunMo | Kil Hyung-jin 외 | 폰트 내 메타데이터 | UI 텍스트 | Public Domain, Version 1.301 |
+| Maplestory Bold / Light | NEXON Korea | [메이플스토리 서체](https://m.maplestory.nexon.com/Media/Font) | UI 텍스트 | 무료 사용 가능, 출처 표기 권장 |
+| A mysterious little box | HarumachiMusic | [Pixabay](https://pixabay.com/music/folk-a-mysterious-little-box-ancient-like-folk-music-233859/) | BGM | Pixabay Content License |
+| Bon Voyage! | HarumachiMusic | [Pixabay Music](https://pixabay.com/music/) | BGM | 원본 페이지 확인 필요 |
+| UI Sound Effects | dragon-studio, floraphonic, matthewvakaliuk73627, u_a4gfvwagf1 | [Pixabay Sound Effects](https://pixabay.com/sound-effects/) | 페이지 전환, 획득, 클릭과 Tick 효과음 | 원본 페이지와 다운로드 기록 확인 필요 |
 
 ## Documentation
 
